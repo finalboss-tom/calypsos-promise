@@ -29,7 +29,11 @@ const REQUIRED_SCENARIOS = [
 function collectFixtureIds(bundle) {
   const ids = new Set();
 
-  for (const collection of [bundle.chronicles, bundle.subjects, bundle.actors]) {
+  for (const collection of [
+    bundle.chronicles,
+    bundle.subjects,
+    bundle.actors,
+  ]) {
     for (const entity of collection) ids.add(entity.id);
   }
 
@@ -101,7 +105,10 @@ test("declares every required Sprint 3 scenario with resolvable evidence", () =>
   )) {
     assert.ok(evidenceIds.length > 0, `${scenario} has no fixture evidence`);
     for (const evidenceId of evidenceIds) {
-      assert.ok(ids.has(evidenceId), `${scenario} references missing ${evidenceId}`);
+      assert.ok(
+        ids.has(evidenceId),
+        `${scenario} references missing ${evidenceId}`,
+      );
     }
   }
 });
