@@ -9,7 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  formatting:
+    name: formatting
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -42,7 +43,35 @@ jobs:
       - name: Fail on formatting differences
         if: steps.formatting.outcome == 'failure'
         run: exit 1
-      - run: pnpm policy:check
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm test
+
+  validate:
+    name: ${{ matrix.check.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        check:
+          - name: repository-policy
+            command: pnpm policy:check
+          - name: content-validation
+            command: pnpm content:check
+          - name: lint
+            command: pnpm lint
+          - name: typecheck
+            command: pnpm typecheck
+          - name: tests
+            command: pnpm test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run ${{ matrix.check.name }}
+        run: ${{ matrix.check.command }}
