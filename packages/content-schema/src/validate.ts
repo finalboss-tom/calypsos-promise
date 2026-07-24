@@ -54,11 +54,16 @@ const RETIRED_LANGUAGE = [
   "guaranteed data value",
 ] as const;
 
-export function validateContent(input: unknown): ValidationResult<CalypsoContent> {
+export function validateContent(
+  input: unknown,
+): ValidationResult<CalypsoContent> {
   const issues: ValidationIssue[] = [];
 
   if (!isRecord(input)) {
-    return { ok: false, issues: [{ path: "$", message: "Content must be an object." }] };
+    return {
+      ok: false,
+      issues: [{ path: "$", message: "Content must be an object." }],
+    };
   }
 
   requireString(input, "id", issues);
@@ -88,7 +93,10 @@ export function validateContent(input: unknown): ValidationResult<CalypsoContent
   }
 
   if (!Number.isInteger(input.revision) || Number(input.revision) < 1) {
-    issues.push({ path: "revision", message: "Revision must be a positive integer." });
+    issues.push({
+      path: "revision",
+      message: "Revision must be a positive integer.",
+    });
   }
 
   validateAllowedValue(input, "kind", ALLOWED_KINDS, issues);
@@ -129,14 +137,20 @@ export function validateContent(input: unknown): ValidationResult<CalypsoContent
 
 function validateAuthorship(value: unknown, issues: ValidationIssue[]): void {
   if (!isRecord(value)) {
-    issues.push({ path: "authorship", message: "authorship must be an object." });
+    issues.push({
+      path: "authorship",
+      message: "authorship must be an object.",
+    });
     return;
   }
 
-  if (!["human-authored", "ai-assisted-reviewed"].includes(String(value.mode))) {
+  if (
+    !["human-authored", "ai-assisted-reviewed"].includes(String(value.mode))
+  ) {
     issues.push({
       path: "authorship.mode",
-      message: "authorship.mode must be human-authored or ai-assisted-reviewed.",
+      message:
+        "authorship.mode must be human-authored or ai-assisted-reviewed.",
     });
   }
   requireStringArray(value, "humanContributors", issues, "authorship.");
@@ -216,7 +230,10 @@ function validateScene(
 ): void {
   const choices = input.choices;
   if (!Array.isArray(choices)) {
-    issues.push({ path: "choices", message: "Scene choices must be an array." });
+    issues.push({
+      path: "choices",
+      message: "Scene choices must be an array.",
+    });
     return;
   }
 
@@ -243,12 +260,7 @@ function validateQuest(
   requireString(input, "deferralPath", issues);
   requireArray(input, "requirements", issues);
 
-  validateAllowedValue(
-    input,
-    "connectedLoop",
-    ALLOWED_CONNECTED_LOOPS,
-    issues,
-  );
+  validateAllowedValue(input, "connectedLoop", ALLOWED_CONNECTED_LOOPS, issues);
   validateAllowedValue(
     input,
     "progressDimension",
@@ -324,7 +336,10 @@ function validateQuest(
 
   const rewards = input.rewards;
   if (!Array.isArray(rewards)) {
-    issues.push({ path: "rewards", message: "Quest rewards must be an array." });
+    issues.push({
+      path: "rewards",
+      message: "Quest rewards must be an array.",
+    });
     return;
   }
 
@@ -359,7 +374,10 @@ function validateNotification(
   issues: ValidationIssue[],
 ): void {
   if (input.shameFree !== true) {
-    issues.push({ path: "shameFree", message: "Notifications must be shame-free." });
+    issues.push({
+      path: "shameFree",
+      message: "Notifications must be shame-free.",
+    });
   }
   requireString(input, "pressureFreeAlternative", issues);
 }
