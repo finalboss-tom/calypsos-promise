@@ -113,7 +113,13 @@
           ]
         },
         "capabilityStatus": {
-          "enum": ["live", "experimental", "planned", "long-horizon", "deferred"]
+          "enum": [
+            "live",
+            "experimental",
+            "planned",
+            "long-horizon",
+            "deferred"
+          ]
         },
         "kind": {
           "enum": [
@@ -390,7 +396,9 @@
           "required": ["type", "dimension", "amount"],
           "properties": {
             "type": { "const": "progress" },
-            "dimension": { "enum": ["vitality", "chronicle", "fellowship", "renown"] },
+            "dimension": {
+              "enum": ["vitality", "chronicle", "fellowship", "renown"]
+            },
             "amount": { "type": "number", "exclusiveMinimum": 0 }
           }
         },
@@ -576,7 +584,9 @@
           "properties": {
             "kind": { "const": "notification" },
             "channel": { "enum": ["push", "email", "in-app"] },
-            "purpose": { "enum": ["quest", "story", "permission", "safety", "system"] },
+            "purpose": {
+              "enum": ["quest", "story", "permission", "safety", "system"]
+            },
             "body": { "type": "string", "minLength": 1 },
             "destinationRoute": { "type": "string", "minLength": 1 },
             "urgency": { "enum": ["low", "normal", "time-sensitive"] },
