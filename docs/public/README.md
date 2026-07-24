@@ -21,6 +21,7 @@ Related documents:
 - `../../PUBLIC_DOMAIN.md` — human-readable public-domain commons declaration and migration requirements
 - `../decisions/0004-public-domain-commons.md` — accepted constitutional decision
 - `../website/campaign-entry-points.md` — website routes, conversion flows, provenance archive, status page, press room, analytics, and accessibility requirements
+- `../website/open-campaign-transparency.md` — public strategy, campaign log, experiment, reports, costs, corrections, and dashboard surfaces
 
 ## Open-campaign rule
 
