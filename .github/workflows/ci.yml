@@ -29,7 +29,25 @@ jobs:
           name: pnpm-lockfile
           path: pnpm-lock.yaml
           if-no-files-found: error
-      - run: pnpm format:check
+      - name: Check formatting
+        id: formatting
+        continue-on-error: true
+        run: pnpm format:check
+      - name: Prepare formatting patch
+        if: steps.formatting.outcome == 'failure'
+        run: |
+          pnpm format
+          git diff --binary > formatting.patch
+      - name: Upload formatting patch
+        if: steps.formatting.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: formatting-patch
+          path: formatting.patch
+          if-no-files-found: error
+      - name: Fail on formatting differences
+        if: steps.formatting.outcome == 'failure'
+        run: exit 1
       - run: pnpm policy:check
       - run: pnpm lint
       - run: pnpm typecheck
