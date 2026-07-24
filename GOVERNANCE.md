@@ -1,7 +1,8 @@
 # Governance Baseline
 
 **Status:** BASELINE  
-**Long-horizon mandate:** FROZEN through `VISION.md` and Decision 0003
+**Long-horizon mandate:** FROZEN through `VISION.md` and Decision 0003  
+**Operational feedback baseline:** Decision 0006
 
 Calypso’s Promise begins with maintainer-led governance because early execution requires coherent responsibility. It is designed to progressively transfer authority as the product, evidence, contributor community, safeguards, and institution mature.
 
@@ -117,6 +118,25 @@ These should become early candidates for bounded participatory governance.
 - Security incidents may require temporary private decisions followed by a public post-incident record when safe.
 - No current community poll or informal vote may waive privacy, security, clinical, accessibility, consent, or legal controls.
 
+## Feedback-to-governed-work loop
+
+Decision 0006 establishes product feedback, public issues, prioritization, contribution, implementation, validation, and outcome review as one traceable institutional loop. The canonical architecture is `docs/governance/feedback-to-governed-work.md`.
+
+Current rules are:
+
+- GitHub issues are the canonical public ledger for public-safe work items.
+- Health information, account-specific support, private correspondence, security reports, conduct evidence, and other protected source material remain outside public issues.
+- Future in-product intake must classify and minimize information before creating or linking a public issue.
+- Community input should distinguish affectedness, reproduction, priority preference, willingness to validate, willingness to contribute, and domain evidence.
+- Raw reactions and comment volume are discovery signals, not verified identity, evidence, or a binding vote.
+- Priority should become a deterministic, versioned, explainable policy with recorded inputs, confidence, authority, and override rationale.
+- Maintainers retain roadmap authority during Phase 0 and should publish reasons when material community input is not followed.
+- Binding authority over selected low-risk domains or a defined share of roadmap capacity may transfer only through the gates, charters, appeals, specialist controls, and rollback rules in `ROADMAP.md`.
+- Safety, constitutional, privacy, security, clinical, accessibility, legal, consent, conduct, and data-integrity duties take precedence over popularity or a computed score.
+- Validated issue reporting, reproduction, triage, specification, implementation, review, testing, documentation, and outcome measurement may earn scoped Fellowship contribution credit. Raw activity does not create permanent privilege.
+
+Closing an issue is not equivalent to solving the problem. Material work items should preserve the path from evidence and decision through release, measured outcome, correction, reopening, or rollback.
+
 ## Progressive authority transfer
 
 Authority transfers only through a published governance gate.
@@ -198,6 +218,8 @@ The project should publish, subject to privacy and security limits:
 - governance experiments and failures
 - roadmap-gate evidence
 - succession and key-person-risk status
+- material priority assessments and overrides
+- roadmap-capacity allocations and outcomes
 
 Private handling is permitted for security incidents, personal information, protected disclosures, personnel matters, or legally restricted material. The reason for confidentiality and the responsible authority should be documented when safe.
 
@@ -258,6 +280,10 @@ The following remain open design work:
 - the final weighted-governance formula
 - identity and anti-Sybil mechanisms
 - council composition and constituency boundaries
+- feedback signal identity, verification, and privacy
+- priority scales, weights, thresholds, and tie-breakers
+- the percentage of roadmap capacity eligible for binding community control
+- contribution-credit scope, decay, portability, and appeal
 - legal entities and their relationship to constitutional governance
 - treasury custody and voting mechanics
 - token, blockchain, or on-chain components
