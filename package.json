@@ -15,7 +15,8 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "policy:check": "node tools/policy/check-repository.mjs",
-    "check": "pnpm format:check && pnpm policy:check && pnpm lint && pnpm typecheck && pnpm test"
+    "content:check": "node packages/content-schema/src/validate-content.mjs",
+    "check": "pnpm format:check && pnpm policy:check && pnpm content:check && pnpm lint && pnpm typecheck && pnpm test"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
