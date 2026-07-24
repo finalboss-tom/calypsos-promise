@@ -1,0 +1,13 @@
+{
+  "name": "@calypsos-promise/site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.mjs",
+    "build": "node --check src/server.mjs",
+    "lint": "node --check src/server.mjs",
+    "typecheck": "tsc --noEmit --allowJs --checkJs --module NodeNext --moduleResolution NodeNext --target ES2023 src/server.mjs",
+    "test": "node --test"
+  }
+}
