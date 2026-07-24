@@ -29,23 +29,23 @@ The fixtures do not introduce:
 
 ## Required-scenario coverage
 
-| Required scenario | Fixture evidence |
-| --- | --- |
-| Exact device timestamp | proposed imported step observation with an offset-qualified exact instant and device source version |
-| Calendar date without time | confirmed manual step observation using a calendar date without fabricated midnight |
-| Approximate historical recollection | confirmed reflection preserving the words “around spring 2021” with bounded seasonal uncertainty |
-| Open interval | confirmed sleep-state interval with a start and explicitly open end |
-| Bounded interval | confirmed sleep-state interval with separate local start and end boundaries |
-| Manual observation | person-authored step and weight observations with manual source artifacts and capture events |
-| Imported external claim | proposed medication-dose claims from two immutable document versions |
-| Unit normalization with preserved raw value | corrected `180 lb` source claim plus a separate kilogram-derived record |
-| Deterministic derived value with source chain | versioned pound-to-kilogram transformation and derivation events pointing to the source record |
-| Correction with inspectable history | wrong-unit record, corrected successor, shared source truth, correction reason, and dependent record |
-| Conflicting sources | two document versions with exact locators and an unresolved conflict relationship |
-| Duplicate candidate and reversible merge | two replayed connector records, duplicate-candidate evidence, preserved source chains, and non-destructive composite |
-| Versioned source document with exact locator | synthetic PDF versions `v1` and `v2`, each with its own page locator and source snapshot |
-| Export containing records and provenance | request, plan, manifest, artifact, and delivery chain with explicit omission evidence |
-| Deletion, retention exception, tombstone, and completion evidence | scoped request, dependency resolution, accountable temporary exception, minimal tombstone, and completion record |
+| Required scenario                                                 | Fixture evidence                                                                                                     |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Exact device timestamp                                            | proposed imported step observation with an offset-qualified exact instant and device source version                  |
+| Calendar date without time                                        | confirmed manual step observation using a calendar date without fabricated midnight                                  |
+| Approximate historical recollection                               | confirmed reflection preserving the words “around spring 2021” with bounded seasonal uncertainty                     |
+| Open interval                                                     | confirmed sleep-state interval with a start and explicitly open end                                                  |
+| Bounded interval                                                  | confirmed sleep-state interval with separate local start and end boundaries                                          |
+| Manual observation                                                | person-authored step and weight observations with manual source artifacts and capture events                         |
+| Imported external claim                                           | proposed medication-dose claims from two immutable document versions                                                 |
+| Unit normalization with preserved raw value                       | corrected `180 lb` source claim plus a separate kilogram-derived record                                              |
+| Deterministic derived value with source chain                     | versioned pound-to-kilogram transformation and derivation events pointing to the source record                       |
+| Correction with inspectable history                               | wrong-unit record, corrected successor, shared source truth, correction reason, and dependent record                 |
+| Conflicting sources                                               | two document versions with exact locators and an unresolved conflict relationship                                    |
+| Duplicate candidate and reversible merge                          | two replayed connector records, duplicate-candidate evidence, preserved source chains, and non-destructive composite |
+| Versioned source document with exact locator                      | synthetic PDF versions `v1` and `v2`, each with its own page locator and source snapshot                             |
+| Export containing records and provenance                          | request, plan, manifest, artifact, and delivery chain with explicit omission evidence                                |
+| Deletion, retention exception, tombstone, and completion evidence | scoped request, dependency resolution, accountable temporary exception, minimal tombstone, and completion record     |
 
 ## Public and synthetic requirements
 
