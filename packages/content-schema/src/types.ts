@@ -14,6 +14,13 @@ export type ReviewState =
   | "approved"
   | "retired";
 
+export type CapabilityStatus =
+  | "live"
+  | "experimental"
+  | "planned"
+  | "long-horizon"
+  | "deferred";
+
 export type ContentKind =
   | "character"
   | "zone"
@@ -41,29 +48,45 @@ export interface BaseContent {
   revision: number;
   foundationStatus: FoundationStatus;
   reviewState: ReviewState;
+  capabilityStatus: CapabilityStatus;
   title: string;
   summary: string;
-  canonReferences: string[];
+  locale: string;
   tags: string[];
+  canonReferences: string[];
+  dependencies: string[];
+  owner: string;
+  reviewers: string[];
+  createdAt: string;
+  updatedAt: string;
   authorship: Authorship;
+  historicalContext?: boolean;
   spoilerGate?: SpoilerGate;
+  supersedes?: string;
+  replacedBy?: string;
 }
 
 export interface CharacterContent extends BaseContent {
   kind: "character";
+  slug: string;
   displayName: string;
   role: string;
-  homeZoneIds: string[];
-  voicePrinciples: string[];
-  forbiddenBehaviors: string[];
+  values: string[];
+  voiceRules: string[];
+  prohibitedBehaviors: string[];
+  zoneIds: string[];
 }
 
 export interface ZoneContent extends BaseContent {
   kind: "zone";
-  guideIds: string[];
+  slug: string;
+  guideCharacterIds: string[];
   publicPurpose: string;
+  inWorldPurpose: string;
   playerValue: string;
   systemIds: string[];
+  sceneIds: string[];
+  accessibilityNotes: string[];
   unlock: {
     mode: "public" | "story" | "capability-gated";
     requiredContentIds: string[];
@@ -73,67 +96,100 @@ export interface ZoneContent extends BaseContent {
 export interface SceneChoice {
   id: string;
   label: string;
-  consequence: string;
-  mayRefuse: boolean;
+  consequenceText: string;
+  nextSceneId?: string;
+  actionId?: string;
+  refusal: boolean;
 }
 
 export interface SceneContent extends BaseContent {
   kind: "scene";
   zoneId: string;
   sequence: number;
-  beatIds: string[];
+  speakerIds: string[];
+  dialogueIds: string[];
   choices: SceneChoice[];
-  completionContentIds: string[];
-}
-
-export interface DialogueLine {
-  id: string;
-  speakerId: string;
-  text: string;
-  canonReferences: string[];
+  prerequisiteStateIds: string[];
+  grantsStateIds: string[];
 }
 
 export interface DialogueContent extends BaseContent {
   kind: "dialogue";
-  sceneId: string;
-  lines: DialogueLine[];
+  speakerId: string;
+  text: string;
+  plainLanguageText?: string;
+  emotionalIntent: string;
+}
+
+export interface QuestRequirement {
+  id: string;
+  type:
+    | "player-confirmation"
+    | "chronicle-record"
+    | "learning-completion"
+    | "permission-action"
+    | "scene-completion"
+    | "manual-action";
+  parameters: Record<string, string | number | boolean>;
+}
+
+export interface QuestReward {
+  type:
+    | "renown"
+    | "vitality"
+    | "chronicle"
+    | "fellowship"
+    | "laurel"
+    | "restoration"
+    | "story-unlock"
+    | "clue";
+  amount?: number;
+  targetId?: string;
 }
 
 export interface QuestContent extends BaseContent {
   kind: "quest";
   zoneId: string;
+  playerValue: string;
   objective: string;
-  evidence: {
-    type: "player-confirmation" | "chronicle-record" | "learning-completion" | "permission-action";
-    minimumCount: number;
-  };
-  rewards: Array<{
-    type: "renown" | "vitality" | "chronicle" | "fellowship" | "laurel" | "story-unlock";
-    amount?: number;
-    contentId?: string;
-  }>;
-  safetyBoundaries: string[];
+  requirements: QuestRequirement[];
+  rewards: QuestReward[];
+  estimatedMinutes: number;
+  optional: boolean;
+  canDecline: true;
   refusalPath: string;
+  safetyNotes: string[];
+  privacyNotes: string[];
+}
+
+export interface LessonClaim {
+  text: string;
+  evidenceClass: "general-education" | "descriptive" | "uncertain";
+  sourceReferences: string[];
 }
 
 export interface LessonContent extends BaseContent {
   kind: "lesson";
   learningObjectives: string[];
-  claims: Array<{
-    text: string;
-    evidenceClass: "general-education" | "descriptive" | "uncertain";
-    sourceReferences: string[];
-  }>;
+  body: string;
+  plainLanguageBody: string;
+  claims: LessonClaim[];
   comprehensionPrompt: string;
+  reviewDomains: Array<
+    "clinical" | "privacy" | "security" | "accessibility" | "canon"
+  >;
 }
 
 export interface NotificationContent extends BaseContent {
   kind: "notification";
+  channel: "push" | "email" | "in-app";
   purpose: "quest" | "story" | "permission" | "safety" | "system";
   body: string;
-  actionLabel?: string;
-  route?: string;
-  quietHoursEligible: boolean;
+  destinationRoute: string;
+  urgency: "low" | "normal" | "time-sensitive";
+  expiresAfterMinutes?: number;
+  mayInterrupt: boolean;
+  shameFree: true;
   pressureFreeAlternative: string;
 }
 
