@@ -15,6 +15,8 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 The next planned design-to-build target is **Sprint 3 — Canonical data model v1**. It should begin with ontology, schema, provenance, correction, conflict, export, and deletion contracts. Production migrations, real health-data flows, providers, and runtime services remain outside the current baseline until their own gates are accepted.
 
+Read `docs/roadmap/current-status.md` for the integrated phase assessment, completed baselines, open gates, and Sprint 3 entry boundary.
+
 **Frozen foundations**
 
 - Product thesis and player promise
