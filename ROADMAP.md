@@ -31,11 +31,14 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Public pull requests, decision records, contribution policy, and review requirements
 - Named specialist-review domains
 - Initial succession and key-person-risk register
+- A public feedback-to-governed-work baseline linking issues, prioritization, implementation, validation, and outcome review
 
 **Governance unlock**
 
 - Public visibility into decisions
 - Contributor proposal and review rights
+- Structured public-safe issue intake and an inspectable work ledger
+- Non-binding community signals with maintainer rationale
 - No broad community control over safety-critical or constitutional systems yet
 
 **Exit gate**
@@ -68,8 +71,11 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 
 - Structured player feedback
 - Public issue and proposal pathways
+- Safe in-product creation or linking of public work items after classification and minimization
+- Typed signals for affectedness, reproduction, priority preference, validation, contribution, and domain evidence
 - Non-binding player and contributor advisory sessions
-- Published reasons when advice is not followed
+- Versioned advisory priority assessments
+- Published reasons for material deferrals, declines, and overrides
 
 **Exit gate**
 
@@ -78,6 +84,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Acceptable consent comprehension
 - No unresolved critical safety or security blocker
 - No founder-only operational credential or undocumented recovery path
+- Public feedback can be routed without exposing protected health, account, security, conduct, or third-party information
 
 ## Phase 2 — Evidence and trust
 
@@ -104,7 +111,8 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Player advisory body
 - Contributor council
 - Specialist councils for bounded domains
-- Delegated authority over low-risk content, documentation, community, and tooling decisions
+- Delegated authority over low-risk content, documentation, community, tooling, and selected triage decisions
+- Council participation in evidence validation and priority review under published charters
 - Appeals to maintainers for delegated decisions
 
 **Exit gate**
@@ -114,6 +122,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Representative player participation
 - Council charters, term limits, recusals, and removal procedures
 - Public financial controls and an independently reviewable treasury record
+- At least one bounded feedback-prioritization pilot has published participation, concentration, decisions, outcomes, failures, and corrections
 
 ## Phase 3 — Community stewardship
 
@@ -138,9 +147,11 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 **Governance unlock**
 
 - Binding delegated authority for defined non-constitutional domains
+- A defined percentage of eligible roadmap or grant capacity controlled through a chartered community process
+- Explicit maintenance, safety, constitutional, and accountable executive capacity reserves
 - Elected or selected council seats under public criteria
 - Revocable delegation
-- Transparent voting and rationale records
+- Transparent voting, priority assessments, override records, rationale, and measured outcomes
 - A formal petition process for constitutional or roadmap review
 
 **Exit gate**
@@ -150,6 +161,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Tested disaster recovery and emergency succession
 - Independent review of capture, conflict, and representation risks
 - Demonstrated ability to replace a major vendor without abandoning the mission
+- Binding roadmap-capacity governance has completed at least one review cycle without weakening player rights or safety controls
 
 ## Phase 4 — Research Commons and public-good infrastructure
 
@@ -298,17 +310,35 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 
 This phase never permanently completes. The institution must repeatedly demonstrate that it remains useful, legitimate, solvent, correctable, and aligned with the people it exists to serve.
 
+## Feedback-to-governed-work authority path
+
+Decision 0006 and `docs/governance/feedback-to-governed-work.md` define the operational path from user friction to progressively governed work.
+
+The path is intentionally asymmetric:
+
+- public visibility and contribution begin early
+- advisory signals begin before binding votes
+- low-risk delegated domains unlock before strategic, economic, research, or constitutional authority
+- only a bounded share of eligible capacity transfers at first
+- maintenance, safety, constitutional, and accountable executive reserves remain explicit
+- success in one decision class does not grant authority over every other class
+- every mechanism remains subject to outcome review, appeal, sunset, and rollback
+
+This allows ordinary product refinement to teach and test governance without making user support a pretext for premature DAO control.
+
 ## Governance-model research backlog
 
 The following work is required before Phase 6:
 
 1. Recover and catalogue the original HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 2. Model decision classes and affected constituencies.
-3. Compare one-person-one-vote, contribution-weighted, reputation-weighted, expertise-qualified, delegated, bicameral, quadratic, conviction, and hybrid systems.
-4. Design privacy-preserving identity and anti-Sybil options.
-5. Define capital-weight caps and donor protections.
-6. Define founder-reserved powers, their justifications, and measurable sunsets.
-7. Simulate capture, apathy, plutocracy, contributor oligarchy, popularity contests, expertise capture, collusion, and emergency abuse.
-8. Establish appeal, ombuds, dispute, and constitutional-review functions.
-9. Design treasury, compensation, and public-good allocation governance.
-10. Pilot bounded decisions before transferring constitutional authority.
+3. Define the feedback-work-item, typed-signal, evidence, priority-assessment, override, contribution, and outcome contracts.
+4. Design and test deterministic priority dimensions, scales, weights, thresholds, tie-breakers, and missing-data behavior against synthetic and bounded real backlogs.
+5. Compare one-person-one-vote, contribution-weighted, reputation-weighted, expertise-qualified, delegated, bicameral, quadratic, conviction, and hybrid systems.
+6. Design privacy-preserving identity and anti-Sybil options.
+7. Define capital-weight caps and donor protections.
+8. Define founder-reserved powers, their justifications, and measurable sunsets.
+9. Simulate capture, apathy, plutocracy, contributor oligarchy, popularity contests, expertise capture, collusion, brigading, AI-generated consensus, and emergency abuse.
+10. Establish appeal, ombuds, dispute, and constitutional-review functions.
+11. Design treasury, compensation, and public-good allocation governance.
+12. Pilot bounded decisions and roadmap-capacity allocations before transferring constitutional authority.
