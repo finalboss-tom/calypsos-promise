@@ -1,0 +1,51 @@
+name: Apply immune system formatting
+
+on:
+  push:
+    branches:
+      - agent/immune-system-baseline
+    paths:
+      - .github/workflows/apply-immune-formatting.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/immune-system-baseline
+          fetch-depth: 0
+
+      - name: Normalize changed files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          paths = [
+              Path('.github/ISSUE_TEMPLATE/system-challenge.yml'),
+              Path('CONTRIBUTING.md'),
+              Path('README.md'),
+              Path('docs/decisions/0007-institutional-immune-system.md'),
+              Path('docs/governance/assumption-registry.md'),
+              Path('docs/governance/institutional-immune-system.md'),
+          ]
+
+          for path in paths:
+              data = path.read_bytes()
+              if data and not data.endswith(b'\n'):
+                  path.write_bytes(data + b'\n')
+          PY
+
+          rm .github/workflows/apply-immune-formatting.yml
+          git diff --check
+
+      - name: Commit formatting
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/ISSUE_TEMPLATE/system-challenge.yml CONTRIBUTING.md README.md docs/decisions/0007-institutional-immune-system.md docs/governance/assumption-registry.md docs/governance/institutional-immune-system.md .github/workflows/apply-immune-formatting.yml
+          git commit -m "chore: apply repository formatting"
+          git push origin HEAD:agent/immune-system-baseline
