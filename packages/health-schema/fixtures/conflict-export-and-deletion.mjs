@@ -31,10 +31,8 @@ export const SOURCE_VERSION_DOCUMENT_V1 =
   "source-version.document.medication.v1";
 export const SOURCE_VERSION_DOCUMENT_V2 =
   "source-version.document.medication.v2";
-export const LOCATOR_DOCUMENT_V1 =
-  "locator.document.medication.v1.page-one";
-export const LOCATOR_DOCUMENT_V2 =
-  "locator.document.medication.v2.page-one";
+export const LOCATOR_DOCUMENT_V1 = "locator.document.medication.v1.page-one";
+export const LOCATOR_DOCUMENT_V2 = "locator.document.medication.v2.page-one";
 
 export const RELATIONSHIP_DOSE_CONFLICT = "relationship.conflict.medication";
 export const RELATIONSHIP_REPLAY_DUPLICATE = "relationship.duplicate.steps";
@@ -46,14 +44,12 @@ export const EXPORT_MANIFEST = "export-manifest.synthetic.full";
 export const EXPORT_ARTIFACT = "export-artifact.synthetic.full";
 export const EXPORT_DELIVERY = "export-delivery.synthetic.full";
 
-export const DELETION_REQUEST =
-  "deletion-request.synthetic.medication-v1";
+export const DELETION_REQUEST = "deletion-request.synthetic.medication-v1";
 export const DELETION_SCOPE = "deletion-scope.synthetic.medication-v1";
 export const RETENTION_EXCEPTION =
   "retention-exception.synthetic.medication-v1";
 export const TOMBSTONE = "tombstone.synthetic.medication-v1";
-export const DELETION_EVIDENCE =
-  "deletion-evidence.synthetic.medication-v1";
+export const DELETION_EVIDENCE = "deletion-evidence.synthetic.medication-v1";
 
 export function addConflictExportAndDeletionScenarios(bundle) {
   const sourceDocument = "source.document.medication";
@@ -414,291 +410,40 @@ export function addConflictExportAndDeletionScenarios(bundle) {
     revision(
       {
         id: RELATIONSHIP_DOSE_CONFLICT,
-        relationshipType: "conflict",
-        sourceRecordIds: [RECORD_DOSE_V1, RECORD_DOSE_V2],
-        targetRecordIds: [RECORD_DOSE_V1, RECORD_DOSE_V2],
-        actorId: OPERATOR,
-        recordedAt: "2026-07-24T11:10:00Z",
-        reasonCode: "source-version-disagreement",
-        reasonText: "Two source versions report different dose text.",
-        sourceReferenceIds: [
-          SOURCE_VERSION_DOCUMENT_V1,
-          SOURCE_VERSION_DOCUMENT_V2,
-        ],
-        reviewState: "confirmed",
-        conflictType: "source-version-disagreement",
-        resolutionState: "unresolved",
-      },
-      { actor: OPERATOR },
-    ),
-    revision(
-      {
-        id: RELATIONSHIP_REPLAY_DUPLICATE,
-        relationshipType: "duplicate-candidate",
-        sourceRecordIds: [RECORD_REPLAY_ONE, RECORD_REPLAY_TWO],
-        targetRecordIds: [RECORD_REPLAY_ONE, RECORD_REPLAY_TWO],
-        actorId: CONNECTOR,
-        recordedAt: "2026-07-24T10:22:00Z",
-        reasonCode: "connector-replay",
-        decisionMethodId: "method.duplicate.connector-replay",
-        decisionMethodVersion: "1",
-        reviewState: "proposed",
-        confidence: 1,
-        detectionEvidence: [
-          "same source event time",
-          "same value",
-          "connector replay sequence",
-        ],
-      },
-      { actor: CONNECTOR },
-    ),
-    revision(
-      {
-        id: RELATIONSHIP_REPLAY_MERGE,
-        relationshipType: "merge",
-        sourceRecordIds: [RECORD_REPLAY_ONE, RECORD_REPLAY_TWO],
-        targetRecordIds: [RECORD_REPLAY_MERGED],
-        actorId: OPERATOR,
-        recordedAt: "2026-07-24T10:30:00Z",
-        reasonCode: "confirmed-replay-composite",
-        reasonText:
-          "Create a non-destructive composite while preserving both source chains.",
-        sourceReferenceIds: [sourceReplayV1, sourceReplayV2],
-        reviewState: "confirmed",
-        outputRecordId: RECORD_REPLAY_MERGED,
-        mergePolicyId: "policy.merge.connector-replay",
-        mergePolicyVersion: "1",
-        retainedFieldsByRecord: {
-          [RECORD_REPLAY_ONE]: ["sourceReferences"],
-          [RECORD_REPLAY_TWO]: ["sourceReferences"],
-        },
-        unresolvedFields: [],
-        reversible: true,
-      },
-      { actor: OPERATOR },
-    ),
-  );
-
-  bundle.attachments.push(
-    revision(
-      {
-        id: attachmentV1,
-        sourceArtifactId: sourceDocument,
-        sourceVersionId: SOURCE_VERSION_DOCUMENT_V1,
-        targetId: RECORD_DOSE_V1,
-        targetKind: "chronicle-record",
-        role: "primary-evidence",
-        lifecycleState: "active",
-      },
-      { actor: SOURCE_ACTOR },
-    ),
-    revision(
-      {
-        id: attachmentV2,
-        sourceArtifactId: sourceDocument,
-        sourceVersionId: SOURCE_VERSION_DOCUMENT_V2,
-        targetId: RECORD_DOSE_V2,
-        targetKind: "chronicle-record",
-        role: "correction-support",
-        lifecycleState: "active",
-      },
-      {
-        actor: SOURCE_ACTOR,
-        revisionNumber: 2,
-        createdAt: "2026-07-24T11:00:00Z",
-      },
-    ),
-  );
-
-  bundle.exportRequests.push(
-    revision({
-      id: EXPORT_REQUEST,
-      chronicleId: CHRONICLE,
-      requestedBy: PERSON,
-      requestedAt: "2026-07-24T13:00:00Z",
-      formats: ["application/json", "text/markdown"],
-      scope: [
-        { kind: "chronicle-record", includeHistory: true },
-        {
-          kind: "source-version",
-          includeRawRepresentation: false,
-          includeHistory: true,
-        },
-        { kind: "provenance", includeHistory: true },
-        { kind: "relationship", includeHistory: true },
-      ],
-      includeHumanReadable: true,
-      includeMachineReadable: true,
-      state: "ready",
-    }),
-  );
-  bundle.exportPlans.push(
-    revision(
-      {
-        id: EXPORT_PLAN,
-        exportRequestId: EXPORT_REQUEST,
-        includedIds: [
-          RECORD_MANUAL_STEPS,
-          RECORD_WEIGHT_CORRECTED,
-          RECORD_WEIGHT_NORMALIZED,
-          SOURCE_VERSION_WEIGHT,
-          DERIVATION_WEIGHT,
-          RELATIONSHIP_WEIGHT_CORRECTION,
-        ],
-        omittedItems: [
-          {
-            id: SOURCE_VERSION_DOCUMENT_V1,
-            kind: "source-version",
-            reason: "Retained under a synthetic exception; metadata only.",
-          },
-        ],
-        schemaVersions: ["0.1.0"],
-        generatedAt: "2026-07-24T13:01:00Z",
-      },
-      { actor: SERVICE },
-    ),
-  );
-  bundle.exportManifests.push(
-    revision(
-      {
-        id: EXPORT_MANIFEST,
-        exportPlanId: EXPORT_PLAN,
-        entries: [
-          {
-            path: "chronicle.json",
-            mediaType: "application/json",
-            sourceId: CHRONICLE,
-          },
-          { path: "README.md", mediaType: "text/markdown" },
-          {
-            path: "sources/weight.txt",
-            mediaType: "text/plain",
-            sourceId: SOURCE_VERSION_WEIGHT,
-          },
-        ],
-        generatedAt: "2026-07-24T13:02:00Z",
-        limitations: ["Synthetic fixture only."],
-      },
-      { actor: SERVICE },
-    ),
-  );
-  bundle.exportArtifacts.push(
-    revision(
-      {
-        id: EXPORT_ARTIFACT,
-        exportRequestId: EXPORT_REQUEST,
-        exportPlanId: EXPORT_PLAN,
-        exportManifestId: EXPORT_MANIFEST,
-        format: "application/zip",
-        generatedAt: "2026-07-24T13:03:00Z",
-        expiresAt: "2026-07-31T13:03:00Z",
-        state: "ready",
-      },
-      { actor: SERVICE },
-    ),
-  );
-  bundle.exportDeliveries.push(
-    revision(
-      {
-        id: EXPORT_DELIVERY,
-        exportArtifactId: EXPORT_ARTIFACT,
-        deliveredToActorId: PERSON,
-        deliveryMethod: "synthetic-local-copy",
-        deliveredAt: "2026-07-24T13:04:00Z",
-        state: "delivered",
-      },
-      { actor: SERVICE },
-    ),
-  );
-
-  bundle.deletionRequests.push(
-    revision({
-      id: DELETION_REQUEST,
-      chronicleId: CHRONICLE,
-      requestedBy: PERSON,
-      requestedAt: "2026-07-24T14:00:00Z",
-      targets: [
-        { kind: "chronicle-record", id: RECORD_DOSE_V1 },
-        { kind: "source-version", id: SOURCE_VERSION_DOCUMENT_V1 },
-      ],
-      reason: "Synthetic deletion lifecycle scenario.",
-      state: "partially-completed",
-    }),
-  );
-  bundle.deletionScopeResolutions.push(
-    revision(
-      {
-        id: DELETION_SCOPE,
-        deletionRequestId: DELETION_REQUEST,
-        resolvedTargets: [
-          { kind: "chronicle-record", id: RECORD_DOSE_V1 },
-          { kind: "source-version", id: SOURCE_VERSION_DOCUMENT_V1 },
-        ],
-        dependentIds: [RELATIONSHIP_DOSE_CONFLICT, attachmentV1],
-        excludedTargets: [],
-        resolvedAt: "2026-07-24T14:01:00Z",
-      },
-      { actor: OPERATOR },
-    ),
-  );
-  bundle.retentionExceptions.push(
-    revision(
-      {
-        id: RETENTION_EXCEPTION,
-        deletionRequestId: DELETION_REQUEST,
-        target: { kind: "source-version", id: SOURCE_VERSION_DOCUMENT_V1 },
-        authorityReference: "synthetic-policy-reference",
-        policyId: "policy.retention.synthetic-review",
-        policyVersion: "1",
-        reason: "Synthetic temporary review hold.",
-        minimumRetainedFields: [
-          "id",
-          "sourceArtifactId",
-          "availabilityState",
-        ],
-        startsAt: "2026-07-24T14:02:00Z",
-        reviewAt: "2026-08-24T14:02:00Z",
-        endsAt: "2026-09-24T14:02:00Z",
-        accountableActorId: OPERATOR,
-        appealAvailable: true,
-        state: "active",
-      },
-      { actor: OPERATOR },
-    ),
-  );
-  bundle.tombstones.push(
-    revision(
-      {
-        id: TOMBSTONE,
-        deletionRequestId: DELETION_REQUEST,
-        deletedTargetKind: "chronicle-record",
-        deletedTargetId: RECORD_DOSE_V1,
-        purpose: "record-deletion-completion",
-        retainedFields: {
-          deletionState: "completed",
-          completedAt: "2026-07-24T14:05:00Z",
-        },
-      },
-      { actor: OPERATOR },
-    ),
-  );
-  bundle.deletionCompletionEvidence.push(
-    revision(
-      {
-        id: DELETION_EVIDENCE,
-        deletionRequestId: DELETION_REQUEST,
-        completedAt: "2026-07-24T14:05:00Z",
-        completedTargets: [
-          { kind: "chronicle-record", id: RECORD_DOSE_V1 },
-        ],
-        retainedUnderExceptionIds: [RETENTION_EXCEPTION],
-        tombstoneIds: [TOMBSTONE],
-        failedTargets: [],
-        accountableActorId: OPERATOR,
-      },
-      { actor: OPERATOR },
-    ),
-  );
-
-  return bundle;
-}
+        relationsh\\Nˆ˜ÛÛ™›Xİ‹ˆÛİ\˜ÙT™XÛÜ™YÎˆÔ‘PÓÔ‘ÑÔÑWÕŒK‘PÓÔ‘ÑÔÑWÕŒ—Kˆ\™Ù]™XÛÜ™YÎˆÔ‘PÓÔ‘ÑÔÑWÕŒK‘PÓÔ‘ÑÔÑWÕŒ—KˆXİÜ’YˆÔTUÔ‹ˆ™XÛÜ™Y]ˆŒŒ‹LËLLNŒLŒˆ‹ˆ™X\ÛÛÛÙNˆœÛİ\˜ÙK]™\œÚ[Û‹Y\ØYÜ™Y[Y[‹ˆ™X\ÛÛ•^ˆ•ÛÈÛİ\˜ÙH™\œÚ[ÛœÈ™\ÜY™™\™[ÜÙH^ˆ‹ˆÛİ\˜ÙT™Y™\™[˜ÙRYÎˆÂˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒKˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒ‹ˆKˆ™]šY]Ôİ]Nˆ˜ÛÛ™š\›YY‹ˆÛÛ™›Xİ\NˆœÛİ\˜ÙK]™\œÚ[Û‹Y\ØYÜ™Y[Y[‹ˆ™\ÛÛ][Û”İ]Nˆ[œ™\ÛÛ™Y‹ˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ™]š\Ú[ÛŠˆÂˆYˆ‘SUSÓ”ÒTÔ‘TVWÑTPĞUKˆ™[][ÛœÚ\\Nˆ™\XØ]KXØ[™Y]H‹ˆÛİ\˜ÙT™XÛÜ™YÎˆÔ‘PÓÔ‘Ô‘TVWÓÓ‘K‘PÓÔ‘Ô‘TVWÕÓ×Kˆ\™Ù]™XÛÜ™YÎˆÔ‘PÓÔ‘Ô‘TVWÓÓ‘K‘PÓÔ‘Ô‘TVWÕÓ×KˆXİÜ’YˆÓÓ“‘PÕÔ‹ˆ™XÛÜ™Y]ˆŒŒ‹LËLLŒŒŒˆ‹ˆ™X\ÛÛÛÙNˆ˜ÛÛ›™XİÜ‹\™\^H‹ˆXÚ\Ú[Û“Y]ÙYˆ›Y]Ù™\XØ]K˜ÛÛ›™XİÜ‹\™\^H‹ˆXÚ\Ú[Û“Y]Ù™\œÚ[ÛˆŒH‹ˆ™]šY]Ôİ]Nˆœ›ÜÜÙY‹ˆÛÛ™šY[˜ÙNˆKˆ]Xİ[Û‘]šY[˜ÙNˆÂˆœØ[YHÛİ\˜ÙH]™[[YH‹ˆœØ[YH˜[YH‹ˆ˜ÛÛ›™XİÜˆ™\^HÙ\]Y[˜ÙH‹ˆKˆKˆÈXİÜˆÓÓ“‘PÕÔˆKˆ
+Kˆ™]š\Ú[ÛŠˆÂˆYˆ‘SUSÓ”ÒTÔ‘TVWÓQT‘ÑKˆ™[][ÛœÚ\\Nˆ›Y\™ÙH‹ˆÛİ\˜ÙT™XÛÜ™YÎˆÔ‘PÓÔ‘Ô‘TVWÓÓ‘K‘PÓÔ‘Ô‘TVWÕÓ×Kˆ\™Ù]™XÛÜ™YÎˆÔ‘PÓÔ‘Ô‘TVWÓQT‘ÑQKˆXİÜ’YˆÔTUÔ‹ˆ™XÛÜ™Y]ˆŒŒ‹LËLLŒÌŒˆ‹ˆ™X\ÛÛÛÙNˆ˜ÛÛ™š\›YY\™\^KXÛÛ\ÜÚ]H‹ˆ™X\ÛÛ•^‚ˆÜ™X]HH›Û‹Y\İXİ]™HÛÛ\ÜÚ]HÚ[H™\Ù\š[™È›İÛİ\˜ÙHÚZ[œËˆ‹ˆÛİ\˜ÙT™Y™\™[˜ÙRYÎˆÜÛİ\˜ÙT™\^UŒKÛİ\˜ÙT™\^UŒ—Kˆ™]šY]Ôİ]Nˆ˜ÛÛ™š\›YY‹ˆİ]]™XÛÜ™Yˆ‘PÓÔ‘Ô‘TVWÓQT‘ÑQˆY\™ÙTÛXŞRYˆœÛXŞK›Y\™ÙK˜ÛÛ›™XİÜ‹\™\^H‹ˆY\™ÙTÛXŞU™\œÚ[ÛˆŒH‹ˆ™]Z[™YšY[ĞT™XÛÜ™ˆÂˆÔ‘PÓÔ‘Ô‘TVWÓÓ‘WNˆÈœÛİ\˜ÙT™Y™\™[˜Ù\È—KˆÔ‘PÓÔ‘Ô‘TVWÕÓ×NˆÈœÛİ\˜ÙT™Y™\™[˜Ù\È—KˆKˆ[œ™\ÛÛ™YšY[Îˆ×Kˆ™]™\œÚX›NˆYKˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ
+NÂ‚ˆ[™K˜]XÚY[Ëœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆ]XÚY[ŒKˆÛİ\˜ÙP\Y˜XİYˆÛİ\˜ÙQØİ[Y[ˆÛİ\˜ÙU™\œÚ[Û’YˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒKˆ\™Ù]Yˆ‘PÓÔ‘ÑÔÑWÕŒKˆ\™Ù]Ú[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹ˆ›ÛNˆœš[X\KY]šY[˜ÙH‹ˆY™XŞXÛTİ]Nˆ˜Xİ]™H‹ˆKˆÂˆXİÜˆÓÕTÑWĞPÕÔˆKˆ
+Kˆ™]š\Ú[ÛŠˆÂˆYˆ]XÚY[Œ‹ˆÛİ\˜ÙP\Y˜XİYˆÛİ\˜ÙQØİ[Y[ˆÛİ\˜ÙU™\œÚ[Û’YˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒ‹ˆ\™Ù]Yˆ‘PÓÔ‘ÑÔÑWÕŒ‹ˆ\™Ù]Ú[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹ˆ›ÛNˆ˜ÛÜœ™Xİ[Û‹\İ\Ü‹ˆY™XŞXÛTİ]Nˆ˜Xİ]™H‹ˆKˆÂˆXİÜˆÓÕTÑWĞPÕÔ‹ˆ™]š\Ú[Û“[X™\ˆ‹ˆÜ™X]Y]ˆŒŒ‹LËLLNŒŒˆ‹ˆKˆ
+Kˆ
+NÂ‚ˆ[™K™^Ü™\]Y\İËœ\Ú
+ˆ™]š\Ú[ÛŠÂˆYˆVÔ•Ô‘TUQTÕˆÚ›ÛšXÛRYˆÒ“Ó’PÓKˆ™\]Y\İYNˆT”ÓÓ‹ˆ™\]Y\İY]ˆŒŒ‹LËLLÎŒŒˆ‹ˆ›Ü›X]ÎˆÈ˜\XØ][Û‹ÚœÛÛˆ‹^ÛX\šÙİÛˆ—KˆØÛÜNˆÂˆÈÚ[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹[˜ÛYR\İÜNˆYHKˆÂˆÚ[™ˆœÛİ\˜ÙK]™\œÚ[Ûˆ‹ˆ[˜ÛYT˜]Ô™\™\Ù[][Ûˆ˜[ÙKˆ[˜ÛYR\İÜNˆYKˆKˆÈÚ[™ˆœ›İ™[˜[˜ÙH‹[˜ÛYR\İÜNˆYHKˆÈÚ[™ˆœ™[][ÛœÚ\‹[˜ÛYR\İÜNˆYHKˆKˆ[˜ÛYR[X[”™XYX›NˆYKˆ[˜ÛYSXXÚ[™T™XYX›NˆYKˆİ]Nˆœ™XYH‹ˆJKˆ
+NÂˆ[™K™^Ü[œËœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆVÔ•ÔS‹ˆ^Ü™\]Y\İYˆVÔ•Ô‘TUQTÕˆ[˜ÛYYYÎˆÂˆ‘PÓÔ‘ÓPS•PSÔÕTËˆ‘PÓÔ‘ÕÑRQÒĞÓÔ”‘PÕQˆ‘PÓÔ‘ÕÑRQÒÓ“Ô“PSV‘QˆÓÕTÑWÕ‘T”ÒSÓ—ÕÑRQÒˆT’UUSÓ—ÕÑRQÒˆ‘SUSÓ”ÒTÕÑRQÒĞÓÔ”‘PÕSÓ‹ˆKˆÛZ]Y][\ÎˆÂˆÂˆYˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒKˆÚ[™ˆœÛİ\˜ÙK]™\œÚ[Ûˆ‹ˆ™X\ÛÛˆ”™]Z[™Y[™\ˆHŞ[]XÈ^Ù\[ÛÈY]Y]HÛ›Kˆ‹ˆKˆKˆØÚ[XU™\œÚ[ÛœÎˆÈŒŒKŒ—KˆÙ[™\˜]Y]ˆŒŒ‹LËLLÎŒNŒˆ‹ˆKˆÈXİÜˆÑT•’PÑHKˆ
+Kˆ
+NÂˆ[™K™^ÜX[šY™\İËœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆVÔ•ÓPS’Q‘TÕˆ^Ü[’YˆVÔ•ÔS‹ˆ[šY\ÎˆÂˆÂˆ]ˆ˜Ú›ÛšXÛKšœÛÛˆ‹ˆYYXU\Nˆ˜\XØ][Û‹ÚœÛÛˆ‹ˆÛİ\˜ÙRYˆÒ“Ó’PÓKˆKˆÈ]ˆ”‘PQQK›Y‹YYXU\Nˆ^ÛX\šÙİÛˆˆKˆÂˆ]ˆœÛİ\˜Ù\ËİÙZYÚ‹ˆYYXU\Nˆ^ÜZ[ˆ‹ˆÛİ\˜ÙRYˆÓÕTÑWÕ‘T”ÒSÓ—ÕÑRQÒˆKˆKˆÙ[™\˜]Y]ˆŒŒ‹LËLLÎŒŒˆ‹ˆ[Z]][ÛœÎˆÈ”Ş[]XÈš^\™HÛ›Kˆ—KˆKˆÈXİÜˆÑT•’PÑHKˆ
+Kˆ
+NÂˆ[™K™^Ü\Y˜XİËœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆVÔ•ĞT•QPÕˆ^Ü™\]Y\İYˆVÔ•Ô‘TUQTÕˆ^Ü[’YˆVÔ•ÔS‹ˆ^ÜX[šY™\İYˆVÔ•ÓPS’Q‘TÕˆ›Ü›X]ˆ˜\XØ][Û‹Şš\‹ˆÙ[™\˜]Y]ˆŒŒ‹LËLLÎŒÎŒˆ‹ˆ^\™\Ğ]ˆŒŒ‹LËLÌULÎŒÎŒˆ‹ˆİ]Nˆœ™XYH‹ˆKˆÈXİÜˆÑT•’PÑHKˆ
+Kˆ
+NÂˆ[™K™^Ü[]™\šY\Ëœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆVÔ•ÑSU‘T–Kˆ^Ü\Y˜XİYˆVÔ•ĞT•QPÕˆ[]™\™YĞXİÜ’YˆT”ÓÓ‹ˆ[]™\SY]ÙˆœŞ[]XË[ØØ[XÛÜH‹ˆ[]™\™Y]ˆŒŒ‹LËLLÎŒŒˆ‹ˆİ]Nˆ™[]™\™Y‹ˆKˆÈXİÜˆÑT•’PÑHKˆ
+Kˆ
+NÂ‚ˆ[™K™[][Û”™\]Y\İËœ\Ú
+ˆ™]š\Ú[ÛŠÂˆYˆSUSÓ—Ô‘TUQTÕˆÚ›ÛšXÛRYˆÒ“Ó’PÓKˆ™\]Y\İYNˆT”ÓÓ‹ˆ™\]Y\İY]ˆŒŒ‹LËLMŒŒˆ‹ˆ\™Ù]ÎˆÂˆÈÚ[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹Yˆ‘PÓÔ‘ÑÔÑWÕŒHKˆÈÚ[™ˆœÛİ\˜ÙK]™\œÚ[Ûˆ‹YˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒHKˆKˆ™X\ÛÛˆ”Ş[]XÈ[][ÛˆY™XŞXÛHØÙ[˜\š[Ëˆ‹ˆİ]Nˆœ\X[KXÛÛ\]Y‹ˆJKˆ
+NÂˆ[™K™[][Û”ØÛÜT™\ÛÛ][ÛœËœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆSUSÓ—ÔĞÓÔKˆ[][Û”™\]Y\İYˆSUSÓ—Ô‘TUQTÕˆ™\ÛÛ™Y\™Ù]ÎˆÂˆÈÚ[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹Yˆ‘PÓÔ‘ÑÔÑWÕŒHKˆÈÚ[™ˆœÛİ\˜ÙK]™\œÚ[Ûˆ‹YˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒHKˆKˆ\[™[YÎˆÔ‘SUSÓ”ÒTÑÔÑWĞÓÓ‘“PÕ]XÚY[ŒWKˆ^ÛYY\™Ù]Îˆ×Kˆ™\ÛÛ™Y]ˆŒŒ‹LËLMŒNŒˆ‹ˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ
+NÂˆ[™Kœ™][[Û‘^Ù\[ÛœËœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆ‘US•SÓ—ÑVÑTSÓ‹ˆ[][Û”™\]Y\İYˆSUSÓ—Ô‘TUQTÕˆ\™Ù]ˆÈÚ[™ˆœÛİ\˜ÙK]™\œÚ[Ûˆ‹YˆÓÕTÑWÕ‘T”ÒSÓ—ÑĞÕSQS•ÕŒHKˆ]]Üš]T™Y™\™[˜ÙNˆœŞ[]XË\ÛXŞK\™Y™\™[˜ÙH‹ˆÛXŞRYˆœÛXŞKœ™][[Û‹œŞ[]XË\™]šY]È‹ˆÛXŞU™\œÚ[ÛˆŒH‹ˆ™X\ÛÛˆ”Ş[]XÈ[\Ü˜\H™]šY]ÈÛˆ‹ˆZ[š[][T™]Z[™YšY[ÎˆÈšY‹œÛİ\˜ÙP\Y˜XİY‹˜]˜Z[Xš[]Tİ]H—Kˆİ\Ğ]ˆŒŒ‹LËLMŒŒˆ‹ˆ™]šY]Ğ]ˆŒŒ‹LLMŒŒˆ‹ˆ[™Ğ]ˆŒŒ‹LKLMŒŒˆ‹ˆXØÛİ[X›PXİÜ’YˆÔTUÔ‹ˆ\X[]˜Z[X›NˆYKˆİ]Nˆ˜Xİ]™H‹ˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ
+NÂˆ[™KÛXœİÛ™\Ëœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆÓP”ÕÓ‘Kˆ[][Û”™\]Y\İYˆSUSÓ—Ô‘TUQTÕˆ[]Y\™Ù]Ú[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹ˆ[]Y\™Ù]Yˆ‘PÓÔ‘ÑÔÑWÕŒKˆ\œÜÙNˆœ™XÛÜ™Y[][Û‹XÛÛ\][Ûˆ‹ˆ™]Z[™YšY[ÎˆÂˆ[][Û”İ]Nˆ˜ÛÛ\]Y‹ˆÛÛ\]Y]ˆŒŒ‹LËLMŒNŒˆ‹ˆKˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ
+NÂˆ[™K™[][ÛÛÛ\][Û‘]šY[˜ÙKœ\Ú
+ˆ™]š\Ú[ÛŠˆÂˆYˆSUSÓ—ÑU’QSÑKˆ[][Û”™\]Y\İYˆSUSÓ—Ô‘TUQTÕˆÛÛ\]Y]ˆŒŒ‹LËLMŒNŒˆ‹ˆÛÛ\]Y\™Ù]ÎˆŞÈÚ[™ˆ˜Ú›ÛšXÛK\™XÛÜ™‹Yˆ‘PÓÔ‘ÑÔÑWÕŒHWKˆ™]Z[™Y[™\‘^Ù\[Û’YÎˆÔ‘US•SÓ—ÑVÑTSÓ—KˆÛXœİÛ™RYÎˆÕÓP”ÕÓ‘WKˆ˜Z[Y\™Ù]Îˆ×KˆXØÛİ[X›PXİÜ’YˆÔTUÔ‹ˆKˆÈXİÜˆÔTUÔˆKˆ
+Kˆ
+NÂ‚ˆ™]\›ˆ[™NÂŸB
