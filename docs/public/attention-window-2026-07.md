@@ -5,7 +5,7 @@
 
 ## Current situation
 
-Christopher Nolan’s *The Odyssey* opened theatrically on July 17, 2026. Its reported opening weekend was approximately $264 million worldwide, the largest global opening of Nolan’s career. IMAX reported a record $52 million global opening for the film in its format.
+Christopher Nolan’s _The Odyssey_ opened theatrically on July 17, 2026. Its reported opening weekend was approximately $264 million worldwide, the largest global opening of Nolan’s career. IMAX reported a record $52 million global opening for the film in its format.
 
 The attention cycle is broader than box office performance. It currently includes:
 
@@ -157,16 +157,16 @@ The project should be able to remove every reference to the current film and rem
 
 ## Reactive opportunity matrix
 
-| Event | Response angle | Avoid |
-| --- | --- | --- |
-| New box-office milestone | Ancient stories still mobilize mass attention; the project turns renewed cultural attention toward a public-good journey | Celebrating commercial success as proof of product demand |
-| Scholar debate about fidelity | Shared source material supports argument and reinterpretation; publish the project’s source map and distinctions between ancient canon and new Ogygia canon | Claiming one definitive Homeric interpretation |
-| Public-domain or spinoff discussion | Explain why public-domain inheritance permits experimentation and why Calypso’s Promise follows the same commons logic | Using film-branded imagery or titles |
-| Casting culture-war controversy | Do not enter the partisan dispute; restate that public-domain stories survive through plural reinterpretation | Quote-posting outrage, dunking, or engagement bait |
-| AI-generated competing adaptation | Discuss provenance, human responsibility, and why AI may assist but not silently author canon or authoritative health records | Making the project a referendum on a celebrity or AI company |
-| Calypso-focused criticism or scholarship | Publish the project’s inversion: a gift without freedom is not a gift | Defending every ancient action by the character |
-| Data-ownership news | Explain the Living Chronicle, private defaults, receipts, and the distinction between economic participation and meaningful control | “Sell your data” as the campaign headline |
-| DAO or crypto news | Explain progressive decentralization and evidence-gated authority transfer | Implying token plans or speculative upside |
+| Event                                    | Response angle                                                                                                                                              | Avoid                                                        |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| New box-office milestone                 | Ancient stories still mobilize mass attention; the project turns renewed cultural attention toward a public-good journey                                    | Celebrating commercial success as proof of product demand    |
+| Scholar debate about fidelity            | Shared source material supports argument and reinterpretation; publish the project’s source map and distinctions between ancient canon and new Ogygia canon | Claiming one definitive Homeric interpretation               |
+| Public-domain or spinoff discussion      | Explain why public-domain inheritance permits experimentation and why Calypso’s Promise follows the same commons logic                                      | Using film-branded imagery or titles                         |
+| Casting culture-war controversy          | Do not enter the partisan dispute; restate that public-domain stories survive through plural reinterpretation                                               | Quote-posting outrage, dunking, or engagement bait           |
+| AI-generated competing adaptation        | Discuss provenance, human responsibility, and why AI may assist but not silently author canon or authoritative health records                               | Making the project a referendum on a celebrity or AI company |
+| Calypso-focused criticism or scholarship | Publish the project’s inversion: a gift without freedom is not a gift                                                                                       | Defending every ancient action by the character              |
+| Data-ownership news                      | Explain the Living Chronicle, private defaults, receipts, and the distinction between economic participation and meaningful control                         | “Sell your data” as the campaign headline                    |
+| DAO or crypto news                       | Explain progressive decentralization and evidence-gated authority transfer                                                                                  | Implying token plans or speculative upside                   |
 
 ## Media hooks ranked by durability
 
