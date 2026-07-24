@@ -6,30 +6,30 @@ This record documents how the conflicting Sprint 2 content contracts converged o
 
 ## Resolved common metadata
 
-| Retired or conflicting variant | Authoritative field | Resolution |
-| --- | --- | --- |
-| `version` | `revision` | Canonical records and validators use a positive integer revision |
-| generic `status` | `reviewState` | Publication is no longer represented as a source-review state |
-| `canonRefs` | `canonReferences` | Renamed everywhere in active contracts and examples |
-| missing capability label | `capabilityStatus` | Required on every content record |
-| missing dependency list | `dependencies` | Required, using an empty array when none exist |
-| `reviewers` as labels | `reviewRequirements` | Values are explicit review domains |
-| implied approval | `reviewApprovals` | Named human approval evidence is explicit |
-| missing provenance | `authorship` | Responsible humans and material AI assistance are declared |
-| no replacement metadata | `supersedes`, `replacedBy` | Optional and used only for explicit replacement relationships |
+| Retired or conflicting variant | Authoritative field        | Resolution                                                       |
+| ------------------------------ | -------------------------- | ---------------------------------------------------------------- |
+| `version`                      | `revision`                 | Canonical records and validators use a positive integer revision |
+| generic `status`               | `reviewState`              | Publication is no longer represented as a source-review state    |
+| `canonRefs`                    | `canonReferences`          | Renamed everywhere in active contracts and examples              |
+| missing capability label       | `capabilityStatus`         | Required on every content record                                 |
+| missing dependency list        | `dependencies`             | Required, using an empty array when none exist                   |
+| `reviewers` as labels          | `reviewRequirements`       | Values are explicit review domains                               |
+| implied approval               | `reviewApprovals`          | Named human approval evidence is explicit                        |
+| missing provenance             | `authorship`               | Responsible humans and material AI assistance are declared       |
+| no replacement metadata        | `supersedes`, `replacedBy` | Optional and used only for explicit replacement relationships    |
 
 ## Resolved identifiers
 
-| Concept | Grammar | Example |
-| --- | --- | --- |
-| Content ID | lowercase dotted namespace; segments may contain hyphens | `scene.lantern-shore.arrival` |
-| Slug | lowercase kebab-case | `lantern-shore-arrival` |
-| Story state | dotted namespace | `state.met-aster` |
-| Action | dotted namespace | `action.begin-prologue` |
-| Requirement | dotted namespace | `requirement.confirm-observation` |
-| Purpose | dotted namespace | `purpose.core-chronicle` |
-| Canon reference | `canon.` dotted namespace | `canon.character.aster` |
-| Event name | deferred runtime decision | no Sprint 2 transport commitment |
+| Concept         | Grammar                                                  | Example                           |
+| --------------- | -------------------------------------------------------- | --------------------------------- |
+| Content ID      | lowercase dotted namespace; segments may contain hyphens | `scene.lantern-shore.arrival`     |
+| Slug            | lowercase kebab-case                                     | `lantern-shore-arrival`           |
+| Story state     | dotted namespace                                         | `state.met-aster`                 |
+| Action          | dotted namespace                                         | `action.begin-prologue`           |
+| Requirement     | dotted namespace                                         | `requirement.confirm-observation` |
+| Purpose         | dotted namespace                                         | `purpose.core-chronicle`          |
+| Canon reference | `canon.` dotted namespace                                | `canon.character.aster`           |
+| Event name      | deferred runtime decision                                | no Sprint 2 transport commitment  |
 
 ## Lifecycle resolution
 
