@@ -94,17 +94,17 @@ The examples remain in `specialist-review`. No absent specialist approval is rep
 
 The following conflicts were resolved:
 
-| Conflicting form | Sprint 2 baseline |
-| --- | --- |
-| `1.0.0` versus `0.1.0` | `0.1.0` pre-stable schema |
-| `version` versus `revision` | `revision` |
-| generic `status` | `reviewState` plus separate `capabilityStatus` |
-| `canonRefs` versus `canonReferences` | `canonReferences` |
-| kebab-only record IDs versus dotted IDs | dotted namespaced IDs; kebab-case slugs |
-| implied reviewers | review requirements plus named approval records |
-| boolean refusal marker | continue, defer, refuse, or exit disposition |
-| partial quest reward model | deterministic incentive contract and allowlisted rewards |
-| publication mixed with review | publication belongs to a release manifest, not source review state |
+| Conflicting form                        | Sprint 2 baseline                                                  |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| `1.0.0` versus `0.1.0`                  | `0.1.0` pre-stable schema                                          |
+| `version` versus `revision`             | `revision`                                                         |
+| generic `status`                        | `reviewState` plus separate `capabilityStatus`                     |
+| `canonRefs` versus `canonReferences`    | `canonReferences`                                                  |
+| kebab-only record IDs versus dotted IDs | dotted namespaced IDs; kebab-case slugs                            |
+| implied reviewers                       | review requirements plus named approval records                    |
+| boolean refusal marker                  | continue, defer, refuse, or exit disposition                       |
+| partial quest reward model              | deterministic incentive contract and allowlisted rewards           |
+| publication mixed with review           | publication belongs to a release manifest, not source review state |
 
 The detailed record is maintained in `docs/product/content-schema-migration-map.md`.
 
