@@ -6,7 +6,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 ## Project status
 
-The repository is being established from a completed product, Octalysis, architecture, and lore design phase.
+The frozen product, architecture, gameplay, and lore foundations are committed. The repository is now in the first implementation sprint: establishing a safe, reproducible open-source operating model and runnable monorepo.
 
 **Frozen foundations**
 
@@ -23,19 +23,38 @@ The repository is being established from a completed product, Octalysis, archite
 
 - Clinical, regulatory, privacy, and research-governance implementation details
 - Infrastructure and AI vendors
-- Open-source license and trademark policy
+- Final open-source license adoption and trademark policy
 - Hosted-service economics
 - Connector rollout order
 - Research and compensated-opportunity gates
 
-## Planned repository surfaces
+## Quick start
+
+Requirements:
+
+- Node.js 24+
+- pnpm 10.13.1
+
+```bash
+corepack enable
+pnpm install --frozen-lockfile
+pnpm check
+pnpm --filter @calypsos-promise/site dev
+```
+
+Open `http://localhost:3000` to confirm the Sprint 1 site workspace is running.
+
+The current application is intentionally minimal. It proves the repository can be installed, validated, and run without credentials, production services, or real health data.
+
+## Repository surfaces
 
 - `apps/site` — public website and playable prologue
-- `apps/game` — universal Expo game for web, iOS, and Android
-- `apps/api` — modular TypeScript domain application
-- `apps/mcp-chronicle` — private, policy-controlled agent tools
-- `apps/mcp-forge` — contributor and documentation tools using synthetic data
-- `content` — versioned canon, quests, dialogue, education, and safety content
+- `apps/game` — planned universal Expo game for web, iOS, and Android
+- `apps/api` — planned modular TypeScript domain application
+- `apps/mcp-chronicle` — planned private, policy-controlled agent tools
+- `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
+- `packages/domain` — shared domain invariants and contracts
+- `content` — planned versioned canon, quests, dialogue, education, and safety content
 - `docs` — frozen foundations, architecture decisions, website briefs, and sprint plans
 
 ## Core rule
@@ -44,6 +63,6 @@ The repository is being established from a completed product, Octalysis, archite
 
 No contributor workflow, public demo, test environment, or open-source agent may require production health data. Synthetic fixtures are the default development material.
 
-## Documentation
+## Contributing and security
 
-The initial documentation warehouse and implementation sprint plan are being prepared in a review branch before becoming the repository baseline.
+Read `CONTRIBUTING.md`, `GOVERNANCE.md`, and `SECURITY.md` before opening a pull request. Material changes to frozen components require an accepted decision record.

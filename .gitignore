@@ -1,0 +1,15 @@
+node_modules/
+.turbo/
+dist/
+.next/
+coverage/
+.expo/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+*.pem
+*.key
+*.p12
+*.pfx
