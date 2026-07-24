@@ -28,8 +28,7 @@ export const RECORD_WEIGHT_CORRECTED = "record.body.weight-corrected";
 export const RECORD_WEIGHT_NORMALIZED = "record.body.weight-normalized";
 
 export const SOURCE_VERSION_WEIGHT = "source-version.manual.weight.v1";
-export const DERIVATION_WEIGHT =
-  "provenance.derivation.weight-normalization";
+export const DERIVATION_WEIGHT = "provenance.derivation.weight-normalization";
 export const RELATIONSHIP_WEIGHT_CORRECTION = "relationship.correction.weight";
 
 export function addTimeSourceAndCorrectionScenarios(bundle) {
@@ -575,7 +574,8 @@ export function addTimeSourceAndCorrectionScenarios(bundle) {
       actorId: PERSON,
       recordedAt: NOW,
       reasonCode: "unit-error",
-      reasonText: "The source said 180 lb, but the first record used kilograms.",
+      reasonText:
+        "The source said 180 lb, but the first record used kilograms.",
       sourceReferenceIds: [version.weight, locator.weight],
       reviewState: "confirmed",
       correctionType: "unit-error",
