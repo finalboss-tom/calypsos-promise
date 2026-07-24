@@ -1,0 +1,20 @@
+{
+  "id": "dialogue.aster.first-light",
+  "schemaVersion": "0.1.0",
+  "version": 1,
+  "status": "approved",
+  "kind": "dialogue",
+  "title": "Nothing Has Been Taken",
+  "summary": "Aster establishes the privacy and consent premise at the moment of arrival.",
+  "locale": "en-US",
+  "tags": ["aster", "consent", "arrival"],
+  "canonRefs": ["canon.opening-cinematic", "canon.law.right-of-key"],
+  "owner": "project-maintainer",
+  "reviewers": ["canon", "privacy", "accessibility"],
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "speakerId": "character.aster",
+  "text": "Nothing has been taken. Nothing will be taken without a key you turn yourself.",
+  "plainLanguageText": "We have not collected your personal data. You choose what to add and permit.",
+  "emotionalIntent": "Reassure without minimizing the importance of the choice."
+}
