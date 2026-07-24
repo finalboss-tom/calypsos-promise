@@ -12,21 +12,21 @@ jobs:
   attest:
     runs-on: ubuntu-latest
     steps:
-      - name: Require DCO attestation in pull request body
+      - name: Require transitional DCO certification
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
           if [ "$PR_NUMBER" = "3" ] && [ "$PR_AUTHOR" = "finalboss-tom" ]; then
-            echo 'Bootstrap exception: PR #3 predates DCO automation. Future pull requests require attestation.'
+            echo 'Bootstrap exception: PR #3 predates DCO automation. Future pull requests require certification.'
             exit 0
           fi
-          if ! printf '%s' "$PR_BODY" | grep -Eiq -- '- \[[xX]\] Every commit includes a `Signed-off-by` line'; then
-            echo 'DCO attestation is missing. Check the DCO box in the pull request template after signing commits.'
+          if ! printf '%s' "$PR_BODY" | grep -Eiq -- '- \[[xX]\] I certify this contribution under the Developer Certificate of Origin and will sign off the squash-merge commit'; then
+            echo 'DCO certification is missing. Check the certification box in the pull request template.'
             exit 1
           fi
-          echo 'DCO attestation recorded.'
+          echo 'Transitional DCO certification recorded.'
 
-# Transitional control: replace with a commit-level DCO app/check before accepting
-# external contributions. PR #3 is the one-time repository-bootstrap exception.
+# Transitional control: this certifies contribution rights at the pull-request level.
+# Replace it with commit-level DCO validation before external contribution volume grows.
