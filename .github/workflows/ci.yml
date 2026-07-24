@@ -40,7 +40,7 @@ jobs:
           git diff --name-only -z | tar --null -T - -czf formatted-files.tar.gz
       - name: Upload formatting fixes
         if: steps.formatting.outcome == 'failure'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: formatting-fixes
           path: |
