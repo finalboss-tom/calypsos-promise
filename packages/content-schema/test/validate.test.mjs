@@ -72,7 +72,9 @@ const validQuest = {
 };
 
 function messages(result) {
-  return result.issues.map((issue) => `${issue.path}: ${issue.message}`).join(" ");
+  return result.issues
+    .map((issue) => `${issue.path}: ${issue.message}`)
+    .join(" ");
 }
 
 test("accepts a schema-aligned quest with deterministic incentives", () => {
@@ -182,7 +184,10 @@ test("rejects unsupported connected loops and requirement types", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(messages(result), /connectedLoop.*unsupported|type.*unsupported/);
+  assert.match(
+    messages(result),
+    /connectedLoop.*unsupported|type.*unsupported/,
+  );
 });
 
 test("rejects completion rules that reference unknown requirements", () => {
