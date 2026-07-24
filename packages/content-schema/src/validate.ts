@@ -135,7 +135,10 @@ export function validateContent(
     });
   }
   if (!Number.isInteger(input.revision) || Number(input.revision) < 1) {
-    issues.push({ path: "revision", message: "Revision must be a positive integer." });
+    issues.push({
+      path: "revision",
+      message: "Revision must be a positive integer.",
+    });
   }
 
   validateAuthorship(input.authorship, issues);
@@ -165,7 +168,10 @@ export function validateContent(
 
 function validateAuthorship(value: unknown, issues: ValidationIssue[]): void {
   if (!isRecord(value)) {
-    issues.push({ path: "authorship", message: "authorship must be an object." });
+    issues.push({
+      path: "authorship",
+      message: "authorship must be an object.",
+    });
     return;
   }
   validateAllowed(
@@ -218,12 +224,7 @@ function validateApprovals(
     requireString(approval, "domain", issues, prefix);
     requireString(approval, "reviewer", issues, prefix);
     requireString(approval, "reviewedAt", issues, prefix);
-    validateAllowed(
-      approval.domain,
-      `${prefix}domain`,
-      REVIEW_DOMAINS,
-      issues,
-    );
+    validateAllowed(approval.domain, `${prefix}domain`, REVIEW_DOMAINS, issues);
     if (
       typeof approval.domain === "string" &&
       typeof approval.reviewer === "string" &&
@@ -256,13 +257,20 @@ function validateOptionalMetadata(
   }
   if (input.spoilerGate === undefined) return;
   if (!isRecord(input.spoilerGate)) {
-    issues.push({ path: "spoilerGate", message: "spoilerGate must be an object." });
+    issues.push({
+      path: "spoilerGate",
+      message: "spoilerGate must be an object.",
+    });
     return;
   }
   const gate = input.spoilerGate;
   if (gate.requiredClueIds !== undefined) {
     requireStringArray(gate, "requiredClueIds", issues, "spoilerGate.");
-    validateIdArray(gate.requiredClueIds, "spoilerGate.requiredClueIds", issues);
+    validateIdArray(
+      gate.requiredClueIds,
+      "spoilerGate.requiredClueIds",
+      issues,
+    );
   }
   if (gate.requiredContentIds !== undefined) {
     requireStringArray(gate, "requiredContentIds", issues, "spoilerGate.");
@@ -292,14 +300,20 @@ function validateScene(
 
   const choices = input.choices;
   if (!Array.isArray(choices) || choices.length === 0) {
-    issues.push({ path: "choices", message: "Scene choices must be a non-empty array." });
+    issues.push({
+      path: "choices",
+      message: "Scene choices must be a non-empty array.",
+    });
     return;
   }
 
   let hasAgencyPath = false;
   choices.forEach((choice, index) => {
     if (!isRecord(choice)) {
-      issues.push({ path: `choices.${index}`, message: "Scene choice must be an object." });
+      issues.push({
+        path: `choices.${index}`,
+        message: "Scene choice must be an object.",
+      });
       return;
     }
     const prefix = `choices.${index}.`;
@@ -382,8 +396,14 @@ function validateQuest(
   if (input.canDefer !== true) {
     issues.push({ path: "canDefer", message: "Quests must permit deferral." });
   }
-  if (!Number.isFinite(input.estimatedMinutes) || Number(input.estimatedMinutes) <= 0) {
-    issues.push({ path: "estimatedMinutes", message: "estimatedMinutes must be positive." });
+  if (
+    !Number.isFinite(input.estimatedMinutes) ||
+    Number(input.estimatedMinutes) <= 0
+  ) {
+    issues.push({
+      path: "estimatedMinutes",
+      message: "estimatedMinutes must be positive.",
+    });
   }
   requireArray(input, "accessibilityVariants", issues);
   requireStringArray(input, "dataCategories", issues);
@@ -462,7 +482,10 @@ function validateCompletionRule(
     new Set(["all", "any"]),
     issues,
   );
-  if (!Array.isArray(value.requirementIds) || value.requirementIds.length === 0) {
+  if (
+    !Array.isArray(value.requirementIds) ||
+    value.requirementIds.length === 0
+  ) {
     issues.push({
       path: "completionRule.requirementIds",
       message: "Completion rule requires at least one requirement ID.",
@@ -471,7 +494,10 @@ function validateCompletionRule(
   }
   for (const requirementId of value.requirementIds) {
     validateId(requirementId, "completionRule.requirementIds", issues);
-    if (typeof requirementId === "string" && !requirementIds.has(requirementId)) {
+    if (
+      typeof requirementId === "string" &&
+      !requirementIds.has(requirementId)
+    ) {
       issues.push({
         path: "completionRule.requirementIds",
         message: `Unknown completion requirement ${requirementId}.`,
@@ -482,7 +508,10 @@ function validateCompletionRule(
 
 function validateRewards(value: unknown, issues: ValidationIssue[]): void {
   if (!Array.isArray(value) || value.length === 0) {
-    issues.push({ path: "rewards", message: "Quest rewards must be a non-empty array." });
+    issues.push({
+      path: "rewards",
+      message: "Quest rewards must be a non-empty array.",
+    });
     return;
   }
   value.forEach((reward, index) => {
@@ -519,7 +548,10 @@ function validateNotification(
 ): void {
   requireString(input, "pressureFreeAlternative", issues);
   if (input.shameFree !== true) {
-    issues.push({ path: "shameFree", message: "Notifications must be shame-free." });
+    issues.push({
+      path: "shameFree",
+      message: "Notifications must be shame-free.",
+    });
   }
 }
 
@@ -583,7 +615,8 @@ function validateId(
   if (typeof value === "string" && !ID_PATTERN.test(value)) {
     issues.push({
       path,
-      message: "Use a lowercase dotted namespace; segments may contain hyphens.",
+      message:
+        "Use a lowercase dotted namespace; segments may contain hyphens.",
     });
   }
 }
