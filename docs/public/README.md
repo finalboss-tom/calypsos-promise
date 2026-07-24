@@ -20,6 +20,8 @@ Related documents:
 
 - `../../PUBLIC_DOMAIN.md` — human-readable public-domain commons declaration and migration requirements
 - `../decisions/0004-public-domain-commons.md` — accepted constitutional decision
+- `../decisions/0005-principled-confidentiality.md` — accepted public-information and confidentiality boundary
+- `../policies/publication-and-confidentiality.md` — detailed information classes, publication rules, redaction, review, retention, and incident response
 - `../website/campaign-entry-points.md` — website routes, conversion flows, provenance archive, status page, press room, analytics, and accessibility requirements
 - `../website/open-campaign-transparency.md` — public strategy, campaign log, experiment, reports, costs, corrections, and dashboard surfaces
 
@@ -39,7 +41,11 @@ The project should publish not only its outward message but the material machine
 - failed hypotheses
 - resulting strategic changes
 
-Privacy, safety, security, confidentiality, and other people’s legitimate rights remain protected. Private contact details, personal signup records, personal health information, confidential sources, off-the-record material, and abuse-enabling operational details do not become public merely because the campaign strategy is public.
+The project publishes reviewed, minimized, derived institutional records—not raw source material.
+
+Privacy, safety, security, confidentiality, and other people’s legitimate rights remain protected. Private contact details, personal signup records, personal health information, confidential sources, off-the-record material, conduct evidence, credentials, vulnerability details, and abuse-enabling operational information do not become public merely because the campaign strategy is public.
+
+Only information classified as PUBLIC under the publication and confidentiality policy belongs in the public repository or campaign ledger.
 
 ## Communication hierarchy
 
@@ -49,12 +55,13 @@ When documents appear to conflict, use this order:
 2. Frozen Vision and accepted decision records
 3. Governance and public roadmap
 4. Current capability status
-5. Public campaign system and open marketing strategy
-6. Channel-specific launch copy
-7. Time-sensitive attention briefs and calendars
-8. Campaign-log observations and provisional experiments
+5. Public-information and confidentiality policy
+6. Public campaign system and open marketing strategy
+7. Channel-specific launch copy
+8. Time-sensitive attention briefs and calendars
+9. Campaign-log observations and provisional experiments
 
-A social post, pitch, experiment, or campaign-log entry may never silently change a product right, capability status, evidence claim, public-domain scope, or governance commitment.
+A social post, pitch, experiment, or campaign-log entry may never silently change a product right, capability status, evidence claim, public-domain scope, governance commitment, or information-protection boundary.
 
 ## Required public distinctions
 
@@ -67,8 +74,10 @@ Every campaign surface must preserve these distinctions:
 - live versus experimental versus planned versus long-horizon capability
 - personal value versus separately authorized collective benefit
 - accountable present leadership versus future progressive decentralization
+- public institutional record versus protected raw source material
 - public strategy versus private correspondence and personal contact data
 - qualified participation versus raw reach or vanity metrics
+- confidentiality that protects people and systems versus secrecy that conceals power or failure
 
 ## Artifact status
 
@@ -77,6 +86,8 @@ Channel copy is ready for founder review but remains draft until the founder:
 - adds personal memories and details only the founder can supply
 - confirms dates, names, and public claims
 - removes confidential or unsupported material
+- classifies and minimizes any nonpublic source material
+- completes required maintainer and specialist review
 - selects the canonical campaign link
 - approves the exact first call to action
 - confirms the public-domain legal-status wording at the time of publication
@@ -98,6 +109,7 @@ Update these documents when:
 - a campaign hypothesis is tested
 - a material outreach, paid relationship, cost, correction, or incident occurs
 - a monthly communication report is published
+- the information-classification or publication workflow changes
 - the current attention brief passes its review date
 
 Time-sensitive files should be retained as institutional memory and marked historical rather than rewritten to imply the project always knew the final outcome.
