@@ -2,7 +2,7 @@
 
 This directory warehouses components that are approved as constitutional or canonical foundations for Calypso’s Promise.
 
-A frozen document may still receive corrections, clarifications, accessibility improvements, or implementation notes. Material changes to its promise, meaning, safety boundary, or canon require an explicit decision record.
+A frozen document may still receive corrections, clarifications, accessibility improvements, or implementation notes. Material changes to its promise, meaning, safety boundary, institutional mandate, or canon require an explicit decision record.
 
 ## Frozen in this baseline
 
@@ -19,6 +19,14 @@ A frozen document may still receive corrections, clarifications, accessibility i
 11. MCP is a guarded agent adapter over domain services
 12. No reward for unnecessary intimate disclosure, no punitive streaks, no false scarcity, and no implied secondary-use consent
 13. Personal value precedes research or commercial value
+14. Progressive decentralization toward a self-sustaining, founder-independent institution is a permanent constraint; specific DAO, token, blockchain, identity, legal, and voting mechanisms remain gated
+
+## Governing institutional documents
+
+- `VISION.md` — the frozen long-horizon institutional mandate
+- `ROADMAP.md` — public product, evidence, economic, and governance gates
+- `GOVERNANCE.md` — present authority and progressive-transfer baseline
+- `docs/decisions/0003-progressive-decentralization.md` — accepted decision establishing the constraint
 
 ## Status vocabulary
 
