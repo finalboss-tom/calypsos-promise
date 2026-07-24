@@ -25,14 +25,16 @@ Never place real health information, credentials, access tokens, private exports
 Requirements:
 
 - Node.js 24+
-- pnpm 10+
+- pnpm 10.13.1
 
 ```bash
-pnpm install
+corepack enable
+pnpm install --frozen-lockfile
 pnpm check
+pnpm --filter @calypsos-promise/site dev
 ```
 
-The repository will gain runnable applications incrementally. Until those applications exist, `pnpm check` validates formatting, repository policy, types, and available tests.
+The local site listens on `http://localhost:3000`. No account, secret, cloud service, or production data is required.
 
 ## Workflow
 
@@ -41,7 +43,8 @@ The repository will gain runnable applications incrementally. Until those applic
 3. Make the smallest coherent change.
 4. Add or update tests and documentation.
 5. Run `pnpm check`.
-6. Open a pull request using the template.
+6. Sign commits with `git commit -s`.
+7. Open a pull request using the template.
 
 ## Pull-request expectations
 
@@ -70,6 +73,7 @@ Use `docs/decisions/TEMPLATE.md`.
 ## Commit and review policy
 
 - Prefer conventional commit prefixes such as `feat:`, `fix:`, `docs:`, `test:`, `build:`, and `chore:`.
+- Certify contributions using the Developer Certificate of Origin with a `Signed-off-by` line.
 - At least one maintainer approval is required before merge.
 - Security-sensitive changes require a security reviewer.
 - Canon changes require a canon decision record.
