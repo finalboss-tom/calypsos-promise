@@ -2,7 +2,7 @@
 
 **Status date:** 2026-07-24  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0, 1, and 2 complete; Sprint 3 is next  
+**Design-to-build sequence:** Sprints 0, 1, and 2 complete; Sprint 3 in progress  
 **Runtime status:** Minimal contributor-safe site workspace only; no production health-data runtime
 
 ## Executive status
@@ -14,7 +14,7 @@ Calypso’s Promise now has two coordinated roadmaps:
 
 The project has completed the first three design-to-build sprints, but it has not yet declared institutional Phase 0 complete. Phase 0 remains active until its remaining organizational and evidence gates are reviewed explicitly.
 
-The next planned design-to-build target is Sprint 3, the canonical Living Chronicle data model. Sprint 3 should begin as architecture, ontology, schema, provenance, and validation work. It should not silently become a production database, provider, or real-data integration sprint.
+Sprint 3, the canonical Living Chronicle data model, is now in progress as architecture, ontology, schema, provenance, and validation work. It must not silently become a production database, provider, or real-data integration sprint.
 
 ## Merged baseline
 
@@ -122,9 +122,9 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 
 These are governance and resilience requirements, not reasons to introduce a token, treasury, identity system, legal wrapper, or broad vote prematurely.
 
-## Next design-to-build target: Sprint 3
+## Active design-to-build target: Sprint 3
 
-Sprint 3 should define the authoritative Living Chronicle contract, including:
+Sprint 3 is defining the authoritative Living Chronicle contract, including:
 
 - account and pseudonymous Chronicle identity
 - observations and intervals
@@ -136,6 +136,8 @@ Sprint 3 should define the authoritative Living Chronicle contract, including:
 - export and deletion states
 - explicit separation among Chronicle truth, story state, quest state, consent, receipts, and Aster memory
 - synthetic fixtures covering varied people and accessibility contexts
+
+The Sprint 3 plan is maintained in `docs/roadmap/sprint-3-plan.md`. The initial conceptual model is in `docs/architecture/living-chronicle-ontology.md`.
 
 ### Sprint 3 constitutional tests
 
