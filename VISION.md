@@ -132,6 +132,7 @@ Calypso’s Promise must not:
 - confuse open-source code with open personal health data
 - treat contributor activity as automatic qualification for every decision class
 - use community voting to bypass clinical, privacy, security, accessibility, or legal safeguards
+- allow ordinary governance to dilute deterministic incentive, refusal, non-punitive return, or personal-value-first boundaries without constitutional review and evidence
 - preserve founder privileges after their stated justification and sunset conditions have expired
 - sacrifice the frozen player promise for organizational growth
 
