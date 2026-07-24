@@ -28,17 +28,20 @@ jobs:
         id: formatting
         continue-on-error: true
         run: pnpm format:check
-      - name: Prepare formatting patch
+      - name: Prepare formatting fixes
         if: steps.formatting.outcome == 'failure'
         run: |
           pnpm format
           git diff --binary > formatting.patch
-      - name: Upload formatting patch
+          git diff --name-only -z | tar --null -T - -czf formatted-files.tar.gz
+      - name: Upload formatting fixes
         if: steps.formatting.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
-          name: formatting-patch
-          path: formatting.patch
+          name: formatting-fixes
+          path: |
+            formatting.patch
+            formatted-files.tar.gz
           if-no-files-found: error
       - name: Fail on formatting differences
         if: steps.formatting.outcome == 'failure'
