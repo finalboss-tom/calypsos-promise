@@ -20,39 +20,39 @@ This calendar begins with the current Odyssey attention window and deliberately 
 
 ## Week 1 — Leave the island
 
-| Date | Asset | Core idea | Evidence or visual | CTA |
-| --- | --- | --- | --- | --- |
-| Mon Jul 27 | Founder signal post | The project has existed and evolved for years; the current cultural moment makes it understandable | Founder portrait or original Ogygia horizon | Join the founding expedition |
-| Tue Jul 28 | Founder origin essay | ConstitutionDAO → HealthDAO → CureDAO → shipwreck → reconstruction | Dated project timeline | Read the full origin |
-| Wed Jul 29 | Provenance artifact | The old 99designs work is part of the history, not something to erase | Side-by-side old concept and current constitution | Explore what changed |
-| Thu Jul 30 | Public-domain manifesto | The story belongs to everyone; the project is being built to belong to everyone | Public-domain lineage graphic | Read the commons declaration |
-| Fri Jul 31 | Public/private distinction | The project may be public domain; a person’s health data is not | Open Forge and House of Keys split visual | Read the health-data covenant |
-| Sat Aug 1 | Ogygia introduction | The island represents remembering the whole person | Original island map crop | Approach the island |
-| Sun Aug 2 | Weekly captain’s log | What the campaign revealed, corrected, and clarified | Repository activity and public questions | Follow the voyage |
+| Date       | Asset                      | Core idea                                                                                          | Evidence or visual                                | CTA                           |
+| ---------- | -------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------- |
+| Mon Jul 27 | Founder signal post        | The project has existed and evolved for years; the current cultural moment makes it understandable | Founder portrait or original Ogygia horizon       | Join the founding expedition  |
+| Tue Jul 28 | Founder origin essay       | ConstitutionDAO → HealthDAO → CureDAO → shipwreck → reconstruction                                 | Dated project timeline                            | Read the full origin          |
+| Wed Jul 29 | Provenance artifact        | The old 99designs work is part of the history, not something to erase                              | Side-by-side old concept and current constitution | Explore what changed          |
+| Thu Jul 30 | Public-domain manifesto    | The story belongs to everyone; the project is being built to belong to everyone                    | Public-domain lineage graphic                     | Read the commons declaration  |
+| Fri Jul 31 | Public/private distinction | The project may be public domain; a person’s health data is not                                    | Open Forge and House of Keys split visual         | Read the health-data covenant |
+| Sat Aug 1  | Ogygia introduction        | The island represents remembering the whole person                                                 | Original island map crop                          | Approach the island           |
+| Sun Aug 2  | Weekly captain’s log       | What the campaign revealed, corrected, and clarified                                               | Repository activity and public questions          | Follow the voyage             |
 
 ## Week 2 — Explain the Promise
 
-| Date | Asset | Core idea | Evidence or visual | CTA |
-| --- | --- | --- | --- | --- |
-| Mon Aug 3 | Living Chronicle explainer | One life, fragmented records; the Chronicle restores continuity and provenance | Synthetic timeline | See how it works |
-| Tue Aug 4 | Calypso reinterpretation | A gift without freedom is not a gift | Original Calypso note typography | Read the Promise |
-| Wed Aug 5 | Seven Laws carousel | Story rules become real product behavior | One law per panel | Read all Seven Laws |
-| Thu Aug 6 | AI boundary post | AI proposes; the player confirms; evidence sets the ceiling | Synthetic Aster draft and confirmation | Review the architecture |
-| Fri Aug 7 | Broken Lantern post | Return without shame; no punitive streaks | Restored lantern visual | Join as a future player |
-| Sat Aug 8 | Direct-mode product post | What exists now and what does not | Live / experimental / planned / long-horizon matrix | Read current status |
-| Sun Aug 9 | Open Q&A | Answer the best questions from week one without overselling | Founder video or text AMA | Ask one hard question |
+| Date      | Asset                      | Core idea                                                                      | Evidence or visual                                  | CTA                     |
+| --------- | -------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------- | ----------------------- |
+| Mon Aug 3 | Living Chronicle explainer | One life, fragmented records; the Chronicle restores continuity and provenance | Synthetic timeline                                  | See how it works        |
+| Tue Aug 4 | Calypso reinterpretation   | A gift without freedom is not a gift                                           | Original Calypso note typography                    | Read the Promise        |
+| Wed Aug 5 | Seven Laws carousel        | Story rules become real product behavior                                       | One law per panel                                   | Read all Seven Laws     |
+| Thu Aug 6 | AI boundary post           | AI proposes; the player confirms; evidence sets the ceiling                    | Synthetic Aster draft and confirmation              | Review the architecture |
+| Fri Aug 7 | Broken Lantern post        | Return without shame; no punitive streaks                                      | Restored lantern visual                             | Join as a future player |
+| Sat Aug 8 | Direct-mode product post   | What exists now and what does not                                              | Live / experimental / planned / long-horizon matrix | Read current status     |
+| Sun Aug 9 | Open Q&A                   | Answer the best questions from week one without overselling                    | Founder video or text AMA                           | Ask one hard question   |
 
 ## Week 3 — Build the institution
 
-| Date | Asset | Core idea | Evidence or visual | CTA |
-| --- | --- | --- | --- | --- |
-| Mon Aug 10 | Why not a DAO first? | Authority without product value and capacity is theater | Progressive-decentralization ladder | Read the governance mandate |
-| Tue Aug 11 | Founder-exit post | Success means the institution can continue without its founder | Hundred-year watch graphic | Review the roadmap |
-| Wed Aug 12 | Open Forge invitation | Public-domain work still needs disciplined contribution and review | Contributor path map | Take a first issue |
-| Thu Aug 13 | Incentive model post | Reward useful participation, never broader consent or intimate disclosure | Five progress dimensions | Review the incentive contract |
-| Fri Aug 14 | Commons economics post | Sustainable services can exist without exclusive ownership of the foundations | Service-value stack | Follow economic design work |
-| Sat Aug 15 | Specialist invitation | Ask for bounded review, not blanket endorsement | Review-domain cards | Volunteer a review domain |
-| Sun Aug 16 | Campaign transition | The movie cycle is not the mission; the durable build continues | Ship sailing beyond theater lights | Subscribe to captain’s logs |
+| Date       | Asset                  | Core idea                                                                     | Evidence or visual                  | CTA                           |
+| ---------- | ---------------------- | ----------------------------------------------------------------------------- | ----------------------------------- | ----------------------------- |
+| Mon Aug 10 | Why not a DAO first?   | Authority without product value and capacity is theater                       | Progressive-decentralization ladder | Read the governance mandate   |
+| Tue Aug 11 | Founder-exit post      | Success means the institution can continue without its founder                | Hundred-year watch graphic          | Review the roadmap            |
+| Wed Aug 12 | Open Forge invitation  | Public-domain work still needs disciplined contribution and review            | Contributor path map                | Take a first issue            |
+| Thu Aug 13 | Incentive model post   | Reward useful participation, never broader consent or intimate disclosure     | Five progress dimensions            | Review the incentive contract |
+| Fri Aug 14 | Commons economics post | Sustainable services can exist without exclusive ownership of the foundations | Service-value stack                 | Follow economic design work   |
+| Sat Aug 15 | Specialist invitation  | Ask for bounded review, not blanket endorsement                               | Review-domain cards                 | Volunteer a review domain     |
+| Sun Aug 16 | Campaign transition    | The movie cycle is not the mission; the durable build continues               | Ship sailing beyond theater lights  | Subscribe to captain’s logs   |
 
 ## Core asset specifications
 
@@ -87,12 +87,12 @@ Each milestone should include what changed, not merely a date.
 
 Use a two-column structure:
 
-| Earlier thesis | Current constitutional position |
-| --- | --- |
-| Sell access to health data | Personal value first; separately authorized compensated opportunities later |
-| Ownership as an economic question | Control includes comprehension, privacy, receipts, refusal, correction, export, and exit |
-| DAO as starting structure | Progressive decentralization through evidence gates |
-| Brand and software protected through IP | Original project materials dedicated to the public-domain commons |
+| Earlier thesis                          | Current constitutional position                                                          |
+| --------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Sell access to health data              | Personal value first; separately authorized compensated opportunities later              |
+| Ownership as an economic question       | Control includes comprehension, privacy, receipts, refusal, correction, export, and exit |
+| DAO as starting structure               | Progressive decentralization through evidence gates                                      |
+| Brand and software protected through IP | Original project materials dedicated to the public-domain commons                        |
 
 Do not mock or caricature the earlier work.
 
