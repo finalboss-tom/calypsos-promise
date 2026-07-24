@@ -6,7 +6,16 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 ## Project status
 
-The frozen foundations and repository operating baseline are committed. The project is now working through the controlled-vocabulary, incentive-contract, and content-schema foundation before runtime implementation expands.
+Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted. The first three design-to-build sprints are complete and merged:
+
+- Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
+- Sprint 1 established the runnable monorepo and open-source operating baseline.
+- Sprint 2 established controlled vocabulary, the deterministic incentive contract, content schemas, canonical examples, content governance, and minimum viable validation.
+- PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
+
+The next planned design-to-build target is **Sprint 3 — Canonical data model v1**. It should begin with ontology, schema, provenance, correction, conflict, export, and deletion contracts. Production migrations, real health-data flows, providers, and runtime services remain outside the current baseline until their own gates are accepted.
+
+Read `docs/roadmap/current-status.md` for the integrated phase assessment, completed baselines, open gates, and Sprint 3 entry boundary.
 
 **Frozen foundations**
 
@@ -18,17 +27,19 @@ The frozen foundations and repository operating baseline are committed. The proj
 - AI proposes, the player confirms, and deterministic domain services store
 - Structured records remain authoritative
 - MCP exposes selected domain capabilities to authorized agents; it is not the product’s database or core application protocol
+- Personal value before secondary use, deterministic incentives, meaningful refusal, and non-punitive return
 - Progressive decentralization toward a self-sustaining, founder-independent institution
 
-**Still to be validated or selected**
+**Current gates and unresolved work**
 
-- Clinical, regulatory, privacy, and research-governance implementation details
-- Infrastructure and AI vendors
-- Final open-source license adoption and trademark policy
-- Hosted-service economics
-- Connector rollout order
-- Research and compensated-opportunity gates
-- Weighted-governance, identity, legal, treasury, and optional on-chain mechanisms
+- Complete an explicit Phase 0 exit review against `ROADMAP.md`.
+- Publish the initial key-person dependency, succession, and founder-reserved-power records required by Decision 0003.
+- Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
+- Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
+- Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
+- Define and validate the Sprint 3 Living Chronicle model before introducing database migrations or production data paths.
+- Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
+- Keep weighted-governance, identity, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
 ## Long-horizon mandate
 
@@ -69,7 +80,7 @@ The current application is intentionally minimal. It proves the repository can b
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
 - `packages/domain` — shared domain invariants and contracts
-- `content` — planned versioned canon, quests, dialogue, education, and safety content
+- `content` — versioned canon, quests, dialogue, education, and safety content
 - `docs` — frozen foundations, architecture decisions, website briefs, and sprint plans
 
 ## Core rule

@@ -1,6 +1,8 @@
 # Sprint 2 Completion Record
 
-**Status:** BASELINE sprint deliverables complete; merge review pending
+**Status:** BASELINE complete and merged  
+**Pull request:** #9  
+**Squash commit:** `3cdcc6fc7fe6a500ce57c00530109c2e976c9e70`
 
 ## Purpose
 
@@ -120,24 +122,24 @@ The first formal maintainer review identified three merge blockers:
 
 The remediation:
 
-- makes `pnpm content:check` build and invoke the reusable TypeScript validator before repository-wide reference checks;
-- validates connected loops, progress dimensions, requirement types, completion references, review evidence, reward types, reward shapes, scene agency, and authorship provenance;
-- requires at least one dot in content, state, action, purpose, requirement, and reward-target identifiers in both the validator and JSON Schema;
-- replaces the inaccurate checkbox with a truthful pull-request-level DCO certification and requires a `Signed-off-by` trailer on the squash-merge commit;
-- adds regression tests for every blocker and adjacent incentive invariants.
+- made `pnpm content:check` build and invoke the reusable TypeScript validator before repository-wide reference checks;
+- validated connected loops, progress dimensions, requirement types, completion references, review evidence, reward types, reward shapes, scene agency, and authorship provenance;
+- required at least one dot in content, state, action, purpose, requirement, and reward-target identifiers in both the validator and JSON Schema;
+- replaced the inaccurate checkbox with a truthful pull-request-level DCO certification and required a `Signed-off-by` trailer on the squash-merge commit;
+- added regression tests for every blocker and adjacent incentive invariants.
 
-## Validation evidence
+## Validation and merge evidence
 
-The completed remediation artifacts were validated at commit:
+The final reviewed pull-request head was:
 
 ```text
-8516dc64f2833801fbd6b74ca93938c603c6ee72
+90175dae35fdf2bab0c57c3642f21d8d8eb46a5d
 ```
 
 GitHub Actions evidence:
 
-- CI run `30113400565`, run number `107`: success
-- DCO Attestation run `30113400578`, run number `93`: success
+- CI run `30113496204`, run number `108`: success
+- ready-for-review DCO Attestation run `30113628370`, run number `96`: success
 
 The CI run reported success for:
 
@@ -148,19 +150,39 @@ The CI run reported success for:
 - typecheck
 - tests
 
-This completion-record commit must also pass the same pull-request checks before the pull request is marked ready or merged.
+PR #9 was squash merged into `main` as:
 
-## Review gates still open
+```text
+3cdcc6fc7fe6a500ce57c00530109c2e976c9e70
+```
 
-Sprint completion does not imply content publication approval.
+The squash commit retained the required DCO sign-off trailer.
 
-The following remain open:
+## Post-merge institutional integration
+
+PR #10 subsequently added progressive decentralization and founder independence as frozen institutional and architectural constraints.
+
+That mandate reinforces rather than replaces Sprint 2. Decision 0003 explicitly protects the deterministic incentive model, meaningful refusal, non-punitive return, and personal-value-first sequence from ordinary governance dilution.
+
+Future governance therefore may not:
+
+- weaken Sprint 2 incentive or refusal boundaries through ordinary policy
+- turn broader consent or intimate disclosure into progression or governance power
+- allow capital, contribution volume, or popularity to bypass player rights
+- use token, blockchain, or DAO mechanisms as substitutes for personal utility and accountable execution
+
+Material changes to those boundaries require constitutional review, an accepted decision record, and supporting evidence.
+
+## Publication gates still open
+
+Sprint completion and merge do not imply content publication approval.
+
+The following remain open for affected records:
 
 - named editorial review where required
 - named canon review where required
 - qualified privacy, safety, accessibility, clinical, security, research-governance, or economic-claims review where required
-- follow-up maintainer review of the remediated pull-request diff
-- merge approval
+- inclusion in a future identified immutable content release
 
 Until qualified reviewers exist, affected records remain in review rather than implying approval.
 
@@ -185,19 +207,21 @@ Calypso Engine, graph, and Story Studio implementation details remain proposals.
 
 ## Next planning boundary
 
-The next architecture sprint may define the canonical Living Chronicle data model, including identity, observation, interval, variable, unit, provenance, approximate-time, correction, conflict, supersession, deletion, and synthetic-fixture contracts.
+The next design-to-build sprint may define the canonical Living Chronicle data model, including identity, observation, interval, variable, unit, provenance, approximate-time, correction, conflict, supersession, deletion, and synthetic-fixture contracts.
 
 That work must remain separate from story and progression state and must not introduce production data flows before its own review gates are established.
 
-## Closure condition
+It must also preserve the PR #10 institutional constraints by favoring portable records, replaceable infrastructure boundaries, public decision memory, and designs that do not make permanent founder or vendor control necessary.
 
-Sprint 2 is complete when:
+## Closure evidence
 
-- this record is committed
-- final CI and DCO pass on the pull-request head
-- the pull-request description matches the final diff
-- no unresolved contradiction with frozen foundations remains
-- the remediation receives follow-up maintainer review
-- the pull request is marked ready for review
+Sprint 2 is complete because:
 
-Merge remains a separate maintainer decision.
+- the completion record is committed
+- final CI and DCO passed on the reviewed pull-request head
+- the pull-request description matched the final diff
+- the formal maintainer-review blockers were remediated
+- no unresolved contradiction with frozen foundations remained
+- the pull request was marked ready and squash merged with a DCO sign-off
+
+Content publication and later implementation remain separate gated decisions.
