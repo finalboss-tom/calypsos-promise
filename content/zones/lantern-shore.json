@@ -1,27 +1,42 @@
 {
   "id": "zone.lantern-shore",
   "schemaVersion": "0.1.0",
-  "version": 1,
-  "status": "approved",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
   "kind": "zone",
   "title": "Lantern Shore",
   "summary": "The arrival point where a person learns what Calypso’s Promise is and chooses whether to begin.",
   "locale": "en-US",
   "tags": ["onboarding", "fourteen-lanterns", "arrival"],
-  "canonRefs": ["canon.location.ogygia", "canon.character.aster", "canon.message.calypso-final"],
+  "canonReferences": [
+    "canon.location.ogygia",
+    "canon.character.aster",
+    "canon.message.calypso-final"
+  ],
+  "dependencies": ["character.aster", "scene.lantern-shore.arrival"],
   "owner": "project-maintainer",
-  "reviewers": ["canon", "accessibility", "privacy"],
+  "reviewRequirements": ["canon", "accessibility", "privacy"],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "human-authored",
+    "humanContributors": ["project-maintainer"]
+  },
   "createdAt": "2026-07-24T00:00:00Z",
   "updatedAt": "2026-07-24T00:00:00Z",
   "slug": "lantern-shore",
   "guideCharacterIds": ["character.aster"],
   "publicPurpose": "Explain the product, its limits, and the player’s choices before account creation or personal data collection.",
   "inWorldPurpose": "The Castaway awakens, meets Aster, reads Calypso’s message, and decides whether to approach Ogygia.",
-  "unlockRuleIds": [],
+  "playerValue": "Understand the promise, limits, privacy boundary, and available choices before deciding whether to begin.",
   "sceneIds": ["scene.lantern-shore.arrival"],
   "accessibilityNotes": [
     "The complete explanation must be available without animation.",
     "All choices must be keyboard and screen-reader accessible.",
     "Leaving must be as visible and functional as continuing."
-  ]
+  ],
+  "unlock": {
+    "mode": "public",
+    "requiredContentIds": []
+  }
 }
