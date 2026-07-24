@@ -23,6 +23,8 @@ importers:
 
   apps/site: {}
 
+  packages/content-schema: {}
+
   packages/domain: {}
 
 packages:

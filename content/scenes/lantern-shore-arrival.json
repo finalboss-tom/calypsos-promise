@@ -1,0 +1,61 @@
+{
+  "id": "scene.lantern-shore.arrival",
+  "schemaVersion": "0.1.0",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
+  "kind": "scene",
+  "title": "The First Light",
+  "summary": "Aster welcomes the Castaway and explains that nothing has been taken and beginning is optional.",
+  "locale": "en-US",
+  "tags": ["arrival", "choice", "first-lantern"],
+  "canonReferences": [
+    "canon.opening-cinematic",
+    "canon.law.open-hand",
+    "canon.character.aster"
+  ],
+  "dependencies": [
+    "zone.lantern-shore",
+    "character.aster",
+    "dialogue.aster.first-light"
+  ],
+  "owner": "project-maintainer",
+  "reviewRequirements": ["canon", "privacy", "accessibility"],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "ai-assisted-reviewed",
+    "humanContributors": ["project-maintainer"],
+    "aiTools": ["ChatGPT"]
+  },
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "zoneId": "zone.lantern-shore",
+  "sequence": 1,
+  "speakerIds": ["character.aster"],
+  "dialogueIds": ["dialogue.aster.first-light"],
+  "choices": [
+    {
+      "id": "choice.accept-first-voyage",
+      "label": "Accept the first voyage",
+      "consequenceText": "Begin the synthetic prologue without creating a real Chronicle.",
+      "disposition": "continue",
+      "actionId": "action.begin-prologue"
+    },
+    {
+      "id": "choice.explain-first-voyage",
+      "label": "Tell me exactly what this requires",
+      "consequenceText": "Show a direct explanation before any further choice.",
+      "disposition": "defer",
+      "actionId": "action.explain-prologue"
+    },
+    {
+      "id": "choice.leave-island",
+      "label": "Leave the island for now",
+      "consequenceText": "Exit without punishment, account creation, or personal data collection.",
+      "disposition": "exit",
+      "actionId": "action.exit-prologue"
+    }
+  ],
+  "prerequisiteStateIds": [],
+  "grantsStateIds": ["state.met-aster"]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "quest.first-reflection",
+  "schemaVersion": "0.1.0",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
+  "kind": "quest",
+  "title": "The First Reflection",
+  "summary": "A brief optional quest that helps the player add one confirmed observation to the Living Chronicle.",
+  "locale": "en-US",
+  "tags": ["fourteen-lanterns", "chronicle", "reflection"],
+  "canonReferences": [
+    "canon.lantern.first-reflection",
+    "canon.law.true-chronicle",
+    "canon.law.open-hand"
+  ],
+  "dependencies": ["zone.lantern-shore", "character.aster"],
+  "owner": "project-maintainer",
+  "reviewRequirements": [
+    "editorial",
+    "canon",
+    "privacy",
+    "safety",
+    "accessibility"
+  ],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "ai-assisted-reviewed",
+    "humanContributors": ["project-maintainer"],
+    "aiTools": ["ChatGPT"]
+  },
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "publicTitle": "Record one observation",
+  "inWorldTitle": "The First Reflection",
+  "zoneId": "zone.lantern-shore",
+  "guideCharacterId": "character.aster",
+  "connectedLoop": "build-chronicle",
+  "playerValue": "Create one useful, player-confirmed starting point in the Living Chronicle without requiring broad disclosure.",
+  "objective": "Confirm one brief personal observation chosen by the player.",
+  "progressDimension": "chronicle",
+  "requirements": [
+    {
+      "id": "requirement.confirm-first-observation",
+      "type": "player-confirmation",
+      "description": "The player confirms one observation they chose to record.",
+      "parameters": {
+        "minimumCount": 1,
+        "syntheticAllowed": true
+      }
+    }
+  ],
+  "completionRule": {
+    "mode": "all",
+    "requirementIds": ["requirement.confirm-first-observation"]
+  },
+  "rewards": [
+    {
+      "type": "progress",
+      "dimension": "chronicle",
+      "amount": 1
+    },
+    {
+      "type": "restoration",
+      "targetId": "restoration.lantern-shore.first-reflection"
+    }
+  ],
+  "estimatedMinutes": 3,
+  "accessibilityVariants": [
+    {
+      "id": "accessibility.text-only",
+      "label": "Text-only reflection",
+      "description": "Complete the reflection without voice, animation, or timed interaction."
+    }
+  ],
+  "dataCategories": ["player-chosen-observation"],
+  "permissionPurposeIds": ["purpose.core-chronicle"],
+  "safetyClassification": "general",
+  "feedback": "Show the confirmed observation, its source, and what changed in the Chronicle.",
+  "narrativeConsequence": "The first page of the Living Chronicle becomes visible at Lantern Shore.",
+  "canDefer": true,
+  "canDecline": true,
+  "deferralPath": "The player may continue exploring Lantern Shore and return later without penalty.",
+  "refusalPath": "The player may decline and continue without creating a Chronicle entry.",
+  "analyticsHypothesis": "A short, clearly optional first reflection can demonstrate immediate Chronicle value without increasing pressure to disclose."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "dialogue.aster.first-light",
+  "schemaVersion": "0.1.0",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
+  "kind": "dialogue",
+  "title": "Nothing Has Been Taken",
+  "summary": "Aster establishes the privacy and consent premise at the moment of arrival.",
+  "locale": "en-US",
+  "tags": ["aster", "consent", "arrival"],
+  "canonReferences": ["canon.opening-cinematic", "canon.law.right-of-key"],
+  "dependencies": ["character.aster"],
+  "owner": "project-maintainer",
+  "reviewRequirements": ["canon", "privacy", "accessibility"],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "ai-assisted-reviewed",
+    "humanContributors": ["project-maintainer"],
+    "aiTools": ["ChatGPT"]
+  },
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "speakerId": "character.aster",
+  "text": "Nothing has been taken. Nothing will be taken without a key you turn yourself.",
+  "plainLanguageText": "We have not collected your personal data. You choose what to add and permit.",
+  "emotionalIntent": "Reassure without minimizing the importance of the choice."
+}
