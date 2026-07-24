@@ -24,6 +24,7 @@ Related documents:
 - `../policies/publication-and-confidentiality.md` — detailed information classes, publication rules, redaction, review, retention, and incident response
 - `../website/campaign-entry-points.md` — website routes, conversion flows, provenance archive, status page, press room, analytics, and accessibility requirements
 - `../website/open-campaign-transparency.md` — public strategy, campaign log, experiment, reports, costs, corrections, and dashboard surfaces
+- `../website/public-information-boundary.md` — separate public schemas, private-source isolation, forms, approvals, APIs, analytics, metadata, and removal controls
 
 ## Open-campaign rule
 
