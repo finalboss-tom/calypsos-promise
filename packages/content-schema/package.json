@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.json",
     "lint": "tsc -p tsconfig.json --noEmit",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --test",
+    "test": "pnpm run build && node --test",
     "validate:content": "node src/validate-content.mjs"
   }
 }
