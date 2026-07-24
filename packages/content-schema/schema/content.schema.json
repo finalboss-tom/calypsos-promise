@@ -1,0 +1,650 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://calypsospromise.org/schemas/content/0.1.0/content.schema.json",
+  "title": "Calypso’s Promise Content Record",
+  "description": "Pre-stable Sprint 2 schema for versioned narrative, educational, quest, and notification content.",
+  "oneOf": [
+    { "$ref": "#/$defs/character" },
+    { "$ref": "#/$defs/zone" },
+    { "$ref": "#/$defs/scene" },
+    { "$ref": "#/$defs/dialogue" },
+    { "$ref": "#/$defs/quest" },
+    { "$ref": "#/$defs/lesson" },
+    { "$ref": "#/$defs/notification" }
+  ],
+  "$defs": {
+    "contentId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "reviewState": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "editorial-review",
+        "specialist-review",
+        "approved",
+        "retired"
+      ]
+    },
+    "capabilityStatus": {
+      "type": "string",
+      "enum": ["live", "experimental", "planned", "long-horizon", "deferred"]
+    },
+    "reviewDomain": {
+      "type": "string",
+      "enum": [
+        "editorial",
+        "canon",
+        "privacy",
+        "safety",
+        "clinical",
+        "accessibility",
+        "security",
+        "research-governance",
+        "economic-claims"
+      ]
+    },
+    "authorship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "humanContributors"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["human-authored", "ai-assisted-reviewed"]
+        },
+        "humanContributors": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "aiTools": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "reviewApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain", "reviewer", "reviewedAt"],
+      "properties": {
+        "domain": { "$ref": "#/$defs/reviewDomain" },
+        "reviewer": { "type": "string", "minLength": 1 },
+        "reviewedAt": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    },
+    "spoilerGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimumTide": { "type": "integer", "minimum": 1 },
+        "requiredClueIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/contentId" }
+        },
+        "requiredContentIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/contentId" }
+        }
+      }
+    },
+    "baseContent": {
+      "type": "object",
+      "required": [
+        "id",
+        "schemaVersion",
+        "revision",
+        "reviewState",
+        "capabilityStatus",
+        "kind",
+        "title",
+        "summary",
+        "locale",
+        "tags",
+        "canonReferences",
+        "dependencies",
+        "owner",
+        "reviewRequirements",
+        "reviewApprovals",
+        "authorship",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/contentId" },
+        "schemaVersion": { "const": "0.1.0" },
+        "revision": { "type": "integer", "minimum": 1 },
+        "reviewState": { "$ref": "#/$defs/reviewState" },
+        "capabilityStatus": { "$ref": "#/$defs/capabilityStatus" },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "character",
+            "zone",
+            "scene",
+            "dialogue",
+            "quest",
+            "lesson",
+            "notification"
+          ]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "locale": { "type": "string", "minLength": 2 },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "canonReferences": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^canon\\.[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/contentId" }
+        },
+        "owner": { "type": "string", "minLength": 1 },
+        "reviewRequirements": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/reviewDomain" }
+        },
+        "reviewApprovals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/reviewApproval" }
+        },
+        "authorship": { "$ref": "#/$defs/authorship" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "historicalContext": { "type": "boolean" },
+        "spoilerGate": { "$ref": "#/$defs/spoilerGate" },
+        "supersedes": { "$ref": "#/$defs/contentId" },
+        "replacedBy": { "$ref": "#/$defs/contentId" }
+      }
+    },
+    "character": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "slug",
+            "displayName",
+            "role",
+            "values",
+            "voiceRules",
+            "prohibitedBehaviors",
+            "zoneIds"
+          ],
+          "properties": {
+            "kind": { "const": "character" },
+            "slug": { "$ref": "#/$defs/slug" },
+            "displayName": { "type": "string", "minLength": 1 },
+            "role": { "type": "string", "minLength": 1 },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "voiceRules": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "prohibitedBehaviors": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "zoneIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "zone": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "slug",
+            "guideCharacterIds",
+            "publicPurpose",
+            "inWorldPurpose",
+            "playerValue",
+            "sceneIds",
+            "accessibilityNotes",
+            "unlock"
+          ],
+          "properties": {
+            "kind": { "const": "zone" },
+            "slug": { "$ref": "#/$defs/slug" },
+            "guideCharacterIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "publicPurpose": { "type": "string", "minLength": 1 },
+            "inWorldPurpose": { "type": "string", "minLength": 1 },
+            "playerValue": { "type": "string", "minLength": 1 },
+            "sceneIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "accessibilityNotes": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "unlock": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["mode", "requiredContentIds"],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": ["public", "story", "capability-gated"]
+                },
+                "requiredContentIds": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": { "$ref": "#/$defs/contentId" }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "sceneChoice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "consequenceText", "disposition"],
+      "properties": {
+        "id": { "$ref": "#/$defs/contentId" },
+        "label": { "type": "string", "minLength": 1 },
+        "consequenceText": { "type": "string", "minLength": 1 },
+        "disposition": {
+          "type": "string",
+          "enum": ["continue", "defer", "refuse", "exit"]
+        },
+        "nextSceneId": { "$ref": "#/$defs/contentId" },
+        "actionId": { "$ref": "#/$defs/contentId" }
+      }
+    },
+    "scene": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "zoneId",
+            "sequence",
+            "speakerIds",
+            "dialogueIds",
+            "choices",
+            "prerequisiteStateIds",
+            "grantsStateIds"
+          ],
+          "properties": {
+            "kind": { "const": "scene" },
+            "zoneId": { "$ref": "#/$defs/contentId" },
+            "sequence": { "type": "integer", "minimum": 0 },
+            "speakerIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "dialogueIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "choices": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/sceneChoice" },
+              "contains": {
+                "type": "object",
+                "required": ["disposition"],
+                "properties": {
+                  "disposition": { "enum": ["defer", "refuse", "exit"] }
+                }
+              }
+            },
+            "prerequisiteStateIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "grantsStateIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "dialogue": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": ["speakerId", "text", "emotionalIntent"],
+          "properties": {
+            "kind": { "const": "dialogue" },
+            "speakerId": { "$ref": "#/$defs/contentId" },
+            "text": { "type": "string", "minLength": 1 },
+            "plainLanguageText": { "type": "string", "minLength": 1 },
+            "emotionalIntent": { "type": "string", "minLength": 1 }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "questRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "description", "parameters"],
+      "properties": {
+        "id": { "$ref": "#/$defs/contentId" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "player-confirmation",
+            "chronicle-record",
+            "learning-completion",
+            "permission-review",
+            "scene-completion",
+            "manual-action"
+          ]
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": { "type": ["string", "number", "boolean"] }
+        }
+      }
+    },
+    "questCompletionRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "requirementIds"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["all", "any"] },
+        "requirementIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/contentId" }
+        }
+      }
+    },
+    "questReward": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "dimension", "amount"],
+          "properties": {
+            "type": { "const": "progress" },
+            "dimension": {
+              "type": "string",
+              "enum": ["vitality", "chronicle", "fellowship", "renown"]
+            },
+            "amount": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "amount"],
+          "properties": {
+            "type": { "const": "laurel" },
+            "amount": { "type": "number", "exclusiveMinimum": 0 },
+            "laurelId": { "$ref": "#/$defs/contentId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "targetId"],
+          "properties": {
+            "type": { "const": "restoration" },
+            "targetId": { "$ref": "#/$defs/contentId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "targetId"],
+          "properties": {
+            "type": { "const": "story-unlock" },
+            "targetId": { "$ref": "#/$defs/contentId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "targetId"],
+          "properties": {
+            "type": { "const": "clue" },
+            "targetId": { "$ref": "#/$defs/contentId" }
+          }
+        }
+      ]
+    },
+    "accessibilityVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "description"],
+      "properties": {
+        "id": { "$ref": "#/$defs/contentId" },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "quest": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "publicTitle",
+            "inWorldTitle",
+            "zoneId",
+            "guideCharacterId",
+            "connectedLoop",
+            "playerValue",
+            "objective",
+            "progressDimension",
+            "requirements",
+            "completionRule",
+            "rewards",
+            "estimatedMinutes",
+            "accessibilityVariants",
+            "dataCategories",
+            "permissionPurposeIds",
+            "safetyClassification",
+            "feedback",
+            "narrativeConsequence",
+            "canDefer",
+            "canDecline",
+            "deferralPath",
+            "refusalPath",
+            "analyticsHypothesis"
+          ],
+          "properties": {
+            "kind": { "const": "quest" },
+            "publicTitle": { "type": "string", "minLength": 1 },
+            "inWorldTitle": { "type": "string", "minLength": 1 },
+            "zoneId": { "$ref": "#/$defs/contentId" },
+            "guideCharacterId": { "$ref": "#/$defs/contentId" },
+            "connectedLoop": {
+              "type": "string",
+              "enum": [
+                "build-chronicle",
+                "improve-understanding",
+                "control-and-share-value"
+              ]
+            },
+            "playerValue": { "type": "string", "minLength": 1 },
+            "objective": { "type": "string", "minLength": 1 },
+            "progressDimension": {
+              "type": "string",
+              "enum": ["vitality", "chronicle", "fellowship", "renown"]
+            },
+            "requirements": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/questRequirement" }
+            },
+            "completionRule": { "$ref": "#/$defs/questCompletionRule" },
+            "rewards": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/questReward" }
+            },
+            "estimatedMinutes": { "type": "number", "exclusiveMinimum": 0 },
+            "accessibilityVariants": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/accessibilityVariant" }
+            },
+            "dataCategories": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "permissionPurposeIds": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "safetyClassification": {
+              "type": "string",
+              "enum": ["general", "sensitive", "specialist-review-required"]
+            },
+            "feedback": { "type": "string", "minLength": 1 },
+            "narrativeConsequence": { "type": "string", "minLength": 1 },
+            "canDefer": { "const": true },
+            "canDecline": { "const": true },
+            "deferralPath": { "type": "string", "minLength": 1 },
+            "refusalPath": { "type": "string", "minLength": 1 },
+            "analyticsHypothesis": { "type": "string", "minLength": 1 }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "lessonClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "evidenceClass", "sourceReferences"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "evidenceClass": {
+          "type": "string",
+          "enum": ["general-education", "descriptive", "uncertain"]
+        },
+        "sourceReferences": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "lesson": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "learningObjectives",
+            "body",
+            "plainLanguageBody",
+            "claims",
+            "comprehensionPrompt"
+          ],
+          "properties": {
+            "kind": { "const": "lesson" },
+            "learningObjectives": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "body": { "type": "string", "minLength": 1 },
+            "plainLanguageBody": { "type": "string", "minLength": 1 },
+            "claims": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/lessonClaim" }
+            },
+            "comprehensionPrompt": { "type": "string", "minLength": 1 }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "notification": {
+      "allOf": [
+        { "$ref": "#/$defs/baseContent" },
+        {
+          "type": "object",
+          "required": [
+            "channel",
+            "purpose",
+            "body",
+            "destinationRoute",
+            "urgency",
+            "mayInterrupt",
+            "shameFree",
+            "pressureFreeAlternative"
+          ],
+          "properties": {
+            "kind": { "const": "notification" },
+            "channel": { "type": "string", "enum": ["push", "email", "in-app"] },
+            "purpose": {
+              "type": "string",
+              "enum": ["quest", "story", "permission", "safety", "system"]
+            },
+            "body": { "type": "string", "minLength": 1 },
+            "destinationRoute": { "type": "string", "minLength": 1 },
+            "urgency": {
+              "type": "string",
+              "enum": ["low", "normal", "time-sensitive"]
+            },
+            "expiresAfterMinutes": { "type": "number", "exclusiveMinimum": 0 },
+            "mayInterrupt": { "type": "boolean" },
+            "shameFree": { "const": true },
+            "pressureFreeAlternative": { "type": "string", "minLength": 1 }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}
