@@ -13,9 +13,9 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 - Sprint 2 established controlled vocabulary, the deterministic incentive contract, content schemas, canonical examples, content governance, and minimum viable validation.
 - PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
 
-The next planned design-to-build target is **Sprint 3 — Canonical data model v1**. It should begin with ontology, schema, provenance, correction, conflict, export, and deletion contracts. Production migrations, real health-data flows, providers, and runtime services remain outside the current baseline until their own gates are accepted.
+**Sprint 3 — Canonical data model v1 is now in progress.** The active work is ontology, schema, provenance, correction, conflict, export, deletion, and model validation. Production migrations, real health-data flows, providers, connectors, and runtime services remain outside the current Sprint 3 boundary until their own gates are accepted.
 
-Read `docs/roadmap/current-status.md` for the integrated phase assessment, completed baselines, open gates, and Sprint 3 entry boundary.
+Read `docs/roadmap/current-status.md` for the integrated phase assessment. Read `docs/roadmap/sprint-3-plan.md` and `docs/architecture/living-chronicle-ontology.md` for the active Sprint 3 scope and conceptual model. Sprint work is tracked in issue #13.
 
 **Frozen foundations**
 
