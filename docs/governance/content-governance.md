@@ -74,15 +74,15 @@ An approval does not automatically carry forward after a semantic change.
 
 ## Minimum review matrix
 
-| Content kind | Default review expectations |
-| --- | --- |
-| Character | editorial and canon; safety or privacy when authority, persuasion, records, or permissions are discussed |
-| Zone | editorial and canon; accessibility for required navigation or presentation; privacy when data behavior is explained |
-| Scene and choice | editorial and canon; accessibility; privacy or safety when permissions, records, sensitive actions, or pressure are involved |
-| Dialogue | editorial and canon; accessibility for plain-language alternatives; specialist review for health, privacy, research, or economic claims |
-| Quest | editorial, canon, safety, and accessibility; privacy when data or permissions are touched; clinical for health claims; economic-claims for compensation language |
-| Lesson | editorial and accessibility; domain specialist review matching the claims and sources |
-| Notification | editorial, safety, and accessibility; privacy when the destination or message reveals sensitive context |
+| Content kind     | Default review expectations                                                                                                                                      |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Character        | editorial and canon; safety or privacy when authority, persuasion, records, or permissions are discussed                                                         |
+| Zone             | editorial and canon; accessibility for required navigation or presentation; privacy when data behavior is explained                                              |
+| Scene and choice | editorial and canon; accessibility; privacy or safety when permissions, records, sensitive actions, or pressure are involved                                     |
+| Dialogue         | editorial and canon; accessibility for plain-language alternatives; specialist review for health, privacy, research, or economic claims                          |
+| Quest            | editorial, canon, safety, and accessibility; privacy when data or permissions are touched; clinical for health claims; economic-claims for compensation language |
+| Lesson           | editorial and accessibility; domain specialist review matching the claims and sources                                                                            |
+| Notification     | editorial, safety, and accessibility; privacy when the destination or message reveals sensitive context                                                          |
 
 The matrix is a minimum. A content owner may require additional domains.
 
