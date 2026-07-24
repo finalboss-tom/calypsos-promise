@@ -50,7 +50,9 @@ const records = [];
 
 async function collectJson(directory) {
   const files = [];
-  for (const entry of await readdir(directory, { withFileTypes: true }).catch(() => [])) {
+  for (const entry of await readdir(directory, { withFileTypes: true }).catch(
+    () => [],
+  )) {
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) files.push(...(await collectJson(fullPath)));
     else if (entry.name.endsWith(".json")) files.push(fullPath);
@@ -81,14 +83,18 @@ function validateReviewApprovals(value, file) {
   );
   for (const domain of value.reviewRequirements ?? []) {
     if (!approvedDomains.has(domain)) {
-      errors.push(`${file}: missing named approval for review domain ${domain}`);
+      errors.push(
+        `${file}: missing named approval for review domain ${domain}`,
+      );
     }
   }
 }
 
 function validateQuest(value, file) {
-  if (value.canDecline !== true) errors.push(`${file}: quests must permit decline`);
-  if (value.canDefer !== true) errors.push(`${file}: quests must permit deferral`);
+  if (value.canDecline !== true)
+    errors.push(`${file}: quests must permit decline`);
+  if (value.canDefer !== true)
+    errors.push(`${file}: quests must permit deferral`);
   if (!Number.isFinite(value.estimatedMinutes) || value.estimatedMinutes <= 0) {
     errors.push(`${file}: estimatedMinutes must be positive`);
   }
@@ -102,8 +108,14 @@ function validateQuest(value, file) {
   }
   if (Array.isArray(value.rewards)) {
     value.rewards.forEach((reward, index) => {
-      if (!reward || typeof reward !== "object" || !allowedRewardTypes.has(reward.type)) {
-        errors.push(`${file}: rewards[${index}] uses an unsupported reward type`);
+      if (
+        !reward ||
+        typeof reward !== "object" ||
+        !allowedRewardTypes.has(reward.type)
+      ) {
+        errors.push(
+          `${file}: rewards[${index}] uses an unsupported reward type`,
+        );
       }
       if (
         reward?.type === "progress" &&
@@ -145,16 +157,22 @@ for (const file of await collectJson(contentRoot)) {
     errors.push(`${relative}: unsupported kind ${String(value.kind)}`);
   }
   if (!allowedReviewStates.has(value.reviewState)) {
-    errors.push(`${relative}: unsupported reviewState ${String(value.reviewState)}`);
+    errors.push(
+      `${relative}: unsupported reviewState ${String(value.reviewState)}`,
+    );
   }
   if (!allowedCapabilityStatuses.has(value.capabilityStatus)) {
-    errors.push(`${relative}: unsupported capabilityStatus ${String(value.capabilityStatus)}`);
+    errors.push(
+      `${relative}: unsupported capabilityStatus ${String(value.capabilityStatus)}`,
+    );
   }
   if (!Number.isInteger(value.revision) || value.revision < 1) {
     errors.push(`${relative}: revision must be a positive integer`);
   }
   if (typeof value.id === "string" && !contentIdPattern.test(value.id)) {
-    errors.push(`${relative}: id must be lowercase and namespaced with dots or hyphens`);
+    errors.push(
+      `${relative}: id must be lowercase and namespaced with dots or hyphens`,
+    );
   }
   if (
     !value.authorship ||
@@ -162,12 +180,15 @@ for (const file of await collectJson(contentRoot)) {
     !Array.isArray(value.authorship.humanContributors) ||
     value.authorship.humanContributors.length === 0
   ) {
-    errors.push(`${relative}: authorship must name at least one human contributor`);
+    errors.push(
+      `${relative}: authorship must name at least one human contributor`,
+    );
   }
 
   if (typeof value.id === "string") {
     const duplicate = ids.get(value.id);
-    if (duplicate) errors.push(`${relative}: duplicate id also used by ${duplicate}`);
+    if (duplicate)
+      errors.push(`${relative}: duplicate id also used by ${duplicate}`);
     else ids.set(value.id, relative);
   }
 
@@ -175,7 +196,9 @@ for (const file of await collectJson(contentRoot)) {
   if (value.historicalContext !== true && value.reviewState !== "retired") {
     for (const pattern of retiredPatterns) {
       if (pattern.test(activeText)) {
-        errors.push(`${relative}: active content contains retired terminology (${pattern})`);
+        errors.push(
+          `${relative}: active content contains retired terminology (${pattern})`,
+        );
       }
     }
   }
@@ -196,7 +219,9 @@ for (const file of await collectJson(contentRoot)) {
         ["defer", "refuse", "exit"].includes(choice?.disposition),
       )
     ) {
-      errors.push(`${relative}: scenes with choices need a defer, refusal, or exit route`);
+      errors.push(
+        `${relative}: scenes with choices need a defer, refusal, or exit route`,
+      );
     }
   }
 }
@@ -204,7 +229,9 @@ for (const file of await collectJson(contentRoot)) {
 for (const { file, value } of records) {
   for (const dependency of value.dependencies ?? []) {
     if (!ids.has(dependency)) {
-      errors.push(`${file}: dependency ${dependency} does not resolve to content`);
+      errors.push(
+        `${file}: dependency ${dependency} does not resolve to content`,
+      );
     }
   }
   for (const referenceField of [
@@ -215,7 +242,9 @@ for (const { file, value } of records) {
   ]) {
     const reference = value[referenceField];
     if (typeof reference === "string" && !ids.has(reference)) {
-      errors.push(`${file}: ${referenceField} ${reference} does not resolve to content`);
+      errors.push(
+        `${file}: ${referenceField} ${reference} does not resolve to content`,
+      );
     }
   }
   for (const referenceListField of [
@@ -226,19 +255,26 @@ for (const { file, value } of records) {
   ]) {
     for (const reference of value[referenceListField] ?? []) {
       if (!ids.has(reference)) {
-        errors.push(`${file}: ${referenceListField} reference ${reference} does not resolve to content`);
+        errors.push(
+          `${file}: ${referenceListField} reference ${reference} does not resolve to content`,
+        );
       }
     }
   }
   for (const choice of value.choices ?? []) {
     if (choice.nextSceneId && !ids.has(choice.nextSceneId)) {
-      errors.push(`${file}: choice nextSceneId ${choice.nextSceneId} does not resolve to content`);
+      errors.push(
+        `${file}: choice nextSceneId ${choice.nextSceneId} does not resolve to content`,
+      );
     }
   }
 }
 
 if (errors.length > 0) {
-  console.error("Content validation failed:\n" + errors.map((error) => `- ${error}`).join("\n"));
+  console.error(
+    "Content validation failed:\n" +
+      errors.map((error) => `- ${error}`).join("\n"),
+  );
   process.exit(1);
 }
 
