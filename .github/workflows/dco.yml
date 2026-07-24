@@ -1,0 +1,27 @@
+name: DCO Attestation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  attest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require DCO attestation in pull request body
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if ! printf '%s' "$PR_BODY" | grep -Eiq -- '- \[[xX]\] Every commit includes a `Signed-off-by` line'; then
+            echo 'DCO attestation is missing. Check the DCO box in the pull request template after signing commits.'
+            exit 1
+          fi
+          echo 'DCO attestation recorded.'
+
+# Transitional control: install or replace with a commit-level DCO app/check before
+# accepting external contributions. The contributor remains legally responsible for
+# the attestation made in the pull request.
