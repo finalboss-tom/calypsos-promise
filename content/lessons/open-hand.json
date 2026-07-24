@@ -12,12 +12,7 @@
   "canonReferences": ["canon.law.open-hand", "canon.law.right-of-key"],
   "dependencies": ["zone.lantern-shore", "character.aster"],
   "owner": "project-maintainer",
-  "reviewRequirements": [
-    "editorial",
-    "canon",
-    "privacy",
-    "accessibility"
-  ],
+  "reviewRequirements": ["editorial", "canon", "privacy", "accessibility"],
   "reviewApprovals": [],
   "authorship": {
     "mode": "human-authored",
