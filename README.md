@@ -6,7 +6,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 ## Project status
 
-The frozen product, architecture, gameplay, and lore foundations are committed. The repository is now in the first implementation sprint: establishing a safe, reproducible open-source operating model and runnable monorepo.
+The frozen foundations and repository operating baseline are committed. The project is now working through the controlled-vocabulary, incentive-contract, and content-schema foundation before runtime implementation expands.
 
 **Frozen foundations**
 
@@ -18,6 +18,7 @@ The frozen product, architecture, gameplay, and lore foundations are committed. 
 - AI proposes, the player confirms, and deterministic domain services store
 - Structured records remain authoritative
 - MCP exposes selected domain capabilities to authorized agents; it is not the product’s database or core application protocol
+- Progressive decentralization toward a self-sustaining, founder-independent institution
 
 **Still to be validated or selected**
 
@@ -27,6 +28,20 @@ The frozen product, architecture, gameplay, and lore foundations are committed. 
 - Hosted-service economics
 - Connector rollout order
 - Research and compensated-opportunity gates
+- Weighted-governance, identity, legal, treasury, and optional on-chain mechanisms
+
+## Long-horizon mandate
+
+The consumer application is the beginning, not the final institutional form.
+
+Calypso’s Promise is designed to earn trust through personal utility, help people build longitudinal health records under their control, enable separately authorized collective benefit, and progressively transfer stewardship as evidence and organizational capacity mature.
+
+- Read `VISION.md` for the institutional purpose and hundred-year objective.
+- Read `ROADMAP.md` for product, evidence, economics, governance, and founder-exit gates.
+- Read `GOVERNANCE.md` for current authority and progressive-decentralization rules.
+- Read `docs/decisions/0003-progressive-decentralization.md` for the accepted architectural decision.
+
+Token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred. Founder independence and accountable collective stewardship do not.
 
 ## Quick start
 
