@@ -1,0 +1,43 @@
+name: Format feedback governance branch
+
+on:
+  push:
+    branches: [docs/feedback-governance-loop]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: format-feedback-governance-branch
+  cancel-in-progress: true
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/feedback-governance-loop
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Apply repository formatting
+        run: pnpm format
+      - name: Commit formatting changes
+        run: |
+          if git diff --quiet; then
+            echo "No formatting changes required."
+            exit 0
+          fi
+          git config user.name "finalboss-tom"
+          git config user.email "109227940+finalboss-tom@users.noreply.github.com"
+          git add -A
+          git commit -s -m "style: apply repository formatting"
+          git push origin HEAD:docs/feedback-governance-loop
