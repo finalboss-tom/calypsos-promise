@@ -1,0 +1,40 @@
+{
+  "id": "scene.lantern-shore.arrival",
+  "schemaVersion": "0.1.0",
+  "version": 1,
+  "status": "approved",
+  "kind": "scene",
+  "title": "The First Light",
+  "summary": "Aster welcomes the Castaway and explains that nothing has been taken and beginning is optional.",
+  "locale": "en-US",
+  "tags": ["arrival", "choice", "first-lantern"],
+  "canonRefs": ["canon.opening-cinematic", "canon.law.open-hand", "canon.character.aster"],
+  "owner": "project-maintainer",
+  "reviewers": ["canon", "privacy", "accessibility"],
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "zoneId": "zone.lantern-shore",
+  "speakerIds": ["character.aster"],
+  "dialogueIds": ["dialogue.aster.first-light"],
+  "choices": [
+    {
+      "id": "choice.accept-first-voyage",
+      "label": "Accept the first voyage",
+      "actionId": "action.begin-prologue"
+    },
+    {
+      "id": "choice.explain-first-voyage",
+      "label": "Tell me exactly what this requires",
+      "nextSceneId": "scene.lantern-shore.explanation"
+    },
+    {
+      "id": "choice.leave-island",
+      "label": "Leave the island for now",
+      "actionId": "action.exit-prologue",
+      "refusal": true
+    }
+  ],
+  "prerequisiteIds": [],
+  "grantsStateIds": ["state.met-aster"],
+  "capabilityStatus": "planned"
+}
