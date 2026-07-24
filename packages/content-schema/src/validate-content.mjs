@@ -41,7 +41,8 @@ for (const file of await collectJson(contentRoot)) {
 
   if (typeof value.id === "string") {
     const duplicate = ids.get(value.id);
-    if (duplicate) errors.push(`${relative}: duplicate id also used by ${duplicate}`);
+    if (duplicate)
+      errors.push(`${relative}: duplicate id also used by ${duplicate}`);
     else ids.set(value.id, relative);
   }
 }
