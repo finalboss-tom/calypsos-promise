@@ -1,18 +1,10 @@
 export const CONTENT_SCHEMA_VERSION = "0.1.0" as const;
 
 export type ReviewState =
-  | "draft"
-  | "editorial-review"
-  | "specialist-review"
-  | "approved"
-  | "retired";
+  "draft" | "editorial-review" | "specialist-review" | "approved" | "retired";
 
 export type CapabilityStatus =
-  | "live"
-  | "experimental"
-  | "planned"
-  | "long-horizon"
-  | "deferred";
+  "live" | "experimental" | "planned" | "long-horizon" | "deferred";
 
 export type ReviewDomain =
   | "editorial"
@@ -135,15 +127,10 @@ export interface DialogueContent extends BaseContent {
 }
 
 export type ConnectedLoop =
-  | "build-chronicle"
-  | "improve-understanding"
-  | "control-and-share-value";
+  "build-chronicle" | "improve-understanding" | "control-and-share-value";
 
 export type ProgressDimension =
-  | "vitality"
-  | "chronicle"
-  | "fellowship"
-  | "renown";
+  "vitality" | "chronicle" | "fellowship" | "renown";
 
 export type QuestRequirementType =
   | "player-confirmation"
@@ -206,9 +193,7 @@ export interface AccessibilityVariant {
 }
 
 export type SafetyClassification =
-  | "general"
-  | "sensitive"
-  | "specialist-review-required";
+  "general" | "sensitive" | "specialist-review-required";
 
 export interface QuestContent extends BaseContent {
   kind: "quest";
