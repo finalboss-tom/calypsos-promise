@@ -1,0 +1,41 @@
+{
+  "id": "notification.lantern-shore.return",
+  "schemaVersion": "0.1.0",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
+  "kind": "notification",
+  "title": "The Lantern Is Still Here",
+  "summary": "A low-pressure invitation to return to Lantern Shore after an interruption.",
+  "locale": "en-US",
+  "tags": ["broken-lantern", "return", "non-punitive"],
+  "canonReferences": [
+    "canon.lantern.broken-lantern",
+    "canon.law.open-hand"
+  ],
+  "dependencies": ["zone.lantern-shore"],
+  "owner": "project-maintainer",
+  "reviewRequirements": [
+    "editorial",
+    "canon",
+    "privacy",
+    "safety",
+    "accessibility"
+  ],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "human-authored",
+    "humanContributors": ["project-maintainer"]
+  },
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "channel": "in-app",
+  "purpose": "story",
+  "body": "The lantern is still here. Return when it feels useful, choose a smaller route, or leave it for another day.",
+  "destinationRoute": "/island/lantern-shore",
+  "urgency": "low",
+  "expiresAfterMinutes": 10080,
+  "mayInterrupt": false,
+  "shameFree": true,
+  "pressureFreeAlternative": "Dismiss the invitation, pause future reminders, or continue using the core experience without returning to this route."
+}
