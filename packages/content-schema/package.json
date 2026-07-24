@@ -12,6 +12,6 @@
     "lint": "tsc -p tsconfig.json --noEmit",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "pnpm run build && node --test",
-    "validate:content": "node src/validate-content.mjs"
+    "validate:content": "pnpm run build && node src/validate-content.mjs"
   }
 }
