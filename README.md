@@ -12,6 +12,7 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
 - Sprint 2 established controlled vocabulary, the deterministic incentive contract, content schemas, canonical examples, content governance, and minimum viable validation.
 - PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
+- Decision 0006 establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
 
 The next planned design-to-build target is **Sprint 3 — Canonical data model v1**. It should begin with ontology, schema, provenance, correction, conflict, export, and deletion contracts. Production migrations, real health-data flows, providers, and runtime services remain outside the current baseline until their own gates are accepted.
 
@@ -39,7 +40,7 @@ Read `docs/roadmap/current-status.md` for the integrated phase assessment, compl
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
 - Define and validate the Sprint 3 Living Chronicle model before introducing database migrations or production data paths.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
-- Keep weighted-governance, identity, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
+- Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
 ## Long-horizon mandate
 
@@ -53,6 +54,16 @@ Calypso’s Promise is designed to earn trust through personal utility, help peo
 - Read `docs/decisions/0003-progressive-decentralization.md` for the accepted architectural decision.
 
 Token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred. Founder independence and accountable collective stewardship do not.
+
+## Public feedback and governed work
+
+GitHub issues are the current canonical ledger for public-safe product and contributor work. They should connect a problem or proposal to evidence, prioritization, decision, implementation, validation, release, measured outcome, correction, and institutional learning.
+
+Public issues must never contain real health information, account-specific support, private correspondence, security reports, conduct evidence, production data, or other protected source material. Use synthetic or explicitly public examples.
+
+Community reactions and comments are advisory during Phase 0. Decision 0006 defines the path toward typed signals, deterministic and explainable priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity without bypassing maintainers, specialists, safety controls, or constitutional rights.
+
+Read `docs/governance/feedback-to-governed-work.md` for the complete architecture.
 
 ## Quick start
 
@@ -81,7 +92,7 @@ The current application is intentionally minimal. It proves the repository can b
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
 - `packages/domain` — shared domain invariants and contracts
 - `content` — versioned canon, quests, dialogue, education, and safety content
-- `docs` — frozen foundations, architecture decisions, website briefs, and sprint plans
+- `docs` — frozen foundations, architecture decisions, governance, website briefs, and sprint plans
 
 ## Core rule
 
@@ -91,4 +102,4 @@ No contributor workflow, public demo, test environment, or open-source agent may
 
 ## Contributing and security
 
-Read `CONTRIBUTING.md`, `GOVERNANCE.md`, and `SECURITY.md` before opening a pull request. Material changes to frozen components require an accepted decision record.
+Read `CONTRIBUTING.md`, `GOVERNANCE.md`, and `SECURITY.md` before opening an issue or pull request. Material changes to frozen components require an accepted decision record.
