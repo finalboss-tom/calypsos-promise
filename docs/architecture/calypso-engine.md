@@ -367,19 +367,19 @@ Whether these are persisted events, integration messages, or both remains PROPOS
 
 ## Data ownership matrix
 
-| Domain information | Authoritative owner |
-| --- | --- |
-| Canon and published narrative content | Content repository and publication process |
-| Player story progression | Story Engine |
-| Quest lifecycle | Quest Engine |
-| Game rewards and unlock balances | Progression Engine |
-| Player-controlled health and life records | Chronicle Engine |
-| Permissions and withdrawals | Consent Engine |
-| Lesson completion | Learning Engine |
-| Notification delivery state | Notification Engine |
-| AI invocation provenance | AI Gateway |
-| Accounts and sessions | Identity and Access Boundary |
-| Research participation state | Research and Public-Good Gateway |
+| Domain information                        | Authoritative owner                        |
+| ----------------------------------------- | ------------------------------------------ |
+| Canon and published narrative content     | Content repository and publication process |
+| Player story progression                  | Story Engine                               |
+| Quest lifecycle                           | Quest Engine                               |
+| Game rewards and unlock balances          | Progression Engine                         |
+| Player-controlled health and life records | Chronicle Engine                           |
+| Permissions and withdrawals               | Consent Engine                             |
+| Lesson completion                         | Learning Engine                            |
+| Notification delivery state               | Notification Engine                        |
+| AI invocation provenance                  | AI Gateway                                 |
+| Accounts and sessions                     | Identity and Access Boundary               |
+| Research participation state              | Research and Public-Good Gateway           |
 
 No replicated read model becomes authoritative merely because it is convenient to query.
 
