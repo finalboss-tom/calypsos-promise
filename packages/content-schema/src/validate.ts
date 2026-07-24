@@ -5,8 +5,11 @@ import {
   type ValidationResult,
 } from "./types.js";
 
-const CONTENT_ID_PATTERN = /^[a-z0-9]+(?:[.-][a-z0-9]+)*$/;
-const ALLOWED_KINDS = new Set([
+const ID_PATTERN =
+  /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\.[a-z0-9]+(?:-[a-z0-9]+)*)+$/;
+const CANON_PATTERN =
+  /^canon\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\.[a-z0-9]+(?:-[a-z0-9]+)*)*$/;
+const KINDS = new Set([
   "character",
   "zone",
   "scene",
@@ -15,32 +18,46 @@ const ALLOWED_KINDS = new Set([
   "lesson",
   "notification",
 ]);
-const ALLOWED_REVIEW_STATES = new Set([
+const REVIEW_STATES = new Set([
   "draft",
   "editorial-review",
   "specialist-review",
   "approved",
   "retired",
 ]);
-const ALLOWED_CAPABILITY_STATUSES = new Set([
+const CAPABILITY_STATUSES = new Set([
   "live",
   "experimental",
   "planned",
   "long-horizon",
   "deferred",
 ]);
-const ALLOWED_CONNECTED_LOOPS = new Set([
+const REVIEW_DOMAINS = new Set([
+  "editorial",
+  "canon",
+  "privacy",
+  "safety",
+  "clinical",
+  "accessibility",
+  "security",
+  "research-governance",
+  "economic-claims",
+]);
+const LOOPS = new Set([
   "build-chronicle",
   "improve-understanding",
   "control-and-share-value",
 ]);
-const ALLOWED_PROGRESS_DIMENSIONS = new Set([
-  "vitality",
-  "chronicle",
-  "fellowship",
-  "renown",
+const DIMENSIONS = new Set(["vitality", "chronicle", "fellowship", "renown"]);
+const REQUIREMENT_TYPES = new Set([
+  "player-confirmation",
+  "chronicle-record",
+  "learning-completion",
+  "permission-review",
+  "scene-completion",
+  "manual-action",
 ]);
-const ALLOWED_REWARD_TYPES = new Set([
+const REWARD_TYPES = new Set([
   "progress",
   "laurel",
   "restoration",
@@ -58,7 +75,6 @@ export function validateContent(
   input: unknown,
 ): ValidationResult<CalypsoContent> {
   const issues: ValidationIssue[] = [];
-
   if (!isRecord(input)) {
     return {
       ok: false,
@@ -66,24 +82,51 @@ export function validateContent(
     };
   }
 
-  requireString(input, "id", issues);
-  requireString(input, "kind", issues);
-  requireString(input, "title", issues);
-  requireString(input, "summary", issues);
-  requireString(input, "locale", issues);
-  requireString(input, "owner", issues);
-  requireStringArray(input, "tags", issues);
-  requireStringArray(input, "canonReferences", issues);
-  requireStringArray(input, "dependencies", issues);
-  requireStringArray(input, "reviewRequirements", issues);
+  for (const key of [
+    "id",
+    "kind",
+    "title",
+    "summary",
+    "locale",
+    "owner",
+    "createdAt",
+    "updatedAt",
+  ]) {
+    requireString(input, key, issues);
+  }
+  for (const key of [
+    "tags",
+    "canonReferences",
+    "dependencies",
+    "reviewRequirements",
+  ]) {
+    requireStringArray(input, key, issues);
+  }
   requireArray(input, "reviewApprovals", issues);
 
-  if (typeof input.id === "string" && !CONTENT_ID_PATTERN.test(input.id)) {
-    issues.push({
-      path: "id",
-      message: "Use a lowercase namespaced identifier with dots or hyphens.",
-    });
-  }
+  validateId(input.id, "id", issues);
+  validateIdArray(input.dependencies, "dependencies", issues);
+  validatePatternArray(
+    input.canonReferences,
+    "canonReferences",
+    CANON_PATTERN,
+    "Canon references must begin with canon. and use dotted namespaces.",
+    issues,
+  );
+  validateAllowed(input.kind, "kind", KINDS, issues);
+  validateAllowed(input.reviewState, "reviewState", REVIEW_STATES, issues);
+  validateAllowed(
+    input.capabilityStatus,
+    "capabilityStatus",
+    CAPABILITY_STATUSES,
+    issues,
+  );
+  validateAllowedArray(
+    input.reviewRequirements,
+    "reviewRequirements",
+    REVIEW_DOMAINS,
+    issues,
+  );
 
   if (input.schemaVersion !== CONTENT_SCHEMA_VERSION) {
     issues.push({
@@ -91,24 +134,13 @@ export function validateContent(
       message: `Expected schema version ${CONTENT_SCHEMA_VERSION}.`,
     });
   }
-
   if (!Number.isInteger(input.revision) || Number(input.revision) < 1) {
-    issues.push({
-      path: "revision",
-      message: "Revision must be a positive integer.",
-    });
+    issues.push({ path: "revision", message: "Revision must be a positive integer." });
   }
 
-  validateAllowedValue(input, "kind", ALLOWED_KINDS, issues);
-  validateAllowedValue(input, "reviewState", ALLOWED_REVIEW_STATES, issues);
-  validateAllowedValue(
-    input,
-    "capabilityStatus",
-    ALLOWED_CAPABILITY_STATUSES,
-    issues,
-  );
   validateAuthorship(input.authorship, issues);
-  validateApprovalRecords(input.reviewApprovals, issues);
+  validateApprovals(input, issues);
+  validateOptionalMetadata(input, issues);
 
   const serialized = JSON.stringify(input).toLowerCase();
   if (input.historicalContext !== true && input.reviewState !== "retired") {
@@ -122,10 +154,6 @@ export function validateContent(
     }
   }
 
-  if (input.reviewState === "approved") {
-    validateReviewCompleteness(input, issues);
-  }
-
   if (input.kind === "scene") validateScene(input, issues);
   if (input.kind === "quest") validateQuest(input, issues);
   if (input.kind === "notification") validateNotification(input, issues);
@@ -137,22 +165,15 @@ export function validateContent(
 
 function validateAuthorship(value: unknown, issues: ValidationIssue[]): void {
   if (!isRecord(value)) {
-    issues.push({
-      path: "authorship",
-      message: "authorship must be an object.",
-    });
+    issues.push({ path: "authorship", message: "authorship must be an object." });
     return;
   }
-
-  if (
-    !["human-authored", "ai-assisted-reviewed"].includes(String(value.mode))
-  ) {
-    issues.push({
-      path: "authorship.mode",
-      message:
-        "authorship.mode must be human-authored or ai-assisted-reviewed.",
-    });
-  }
+  validateAllowed(
+    value.mode,
+    "authorship.mode",
+    new Set(["human-authored", "ai-assisted-reviewed"]),
+    issues,
+  );
   requireStringArray(value, "humanContributors", issues, "authorship.");
   if (
     Array.isArray(value.humanContributors) &&
@@ -163,15 +184,29 @@ function validateAuthorship(value: unknown, issues: ValidationIssue[]): void {
       message: "At least one responsible human contributor is required.",
     });
   }
+  if (value.aiTools !== undefined) {
+    requireStringArray(value, "aiTools", issues, "authorship.");
+  }
+  if (
+    value.mode === "ai-assisted-reviewed" &&
+    (!Array.isArray(value.aiTools) || value.aiTools.length === 0)
+  ) {
+    issues.push({
+      path: "authorship.aiTools",
+      message: "AI-assisted content must identify a material AI tool.",
+    });
+  }
 }
 
-function validateApprovalRecords(
-  value: unknown,
+function validateApprovals(
+  input: Record<string, unknown>,
   issues: ValidationIssue[],
 ): void {
-  if (!Array.isArray(value)) return;
+  const approvals = input.reviewApprovals;
+  if (!Array.isArray(approvals)) return;
 
-  value.forEach((approval, index) => {
+  const completeDomains = new Set<string>();
+  approvals.forEach((approval, index) => {
     if (!isRecord(approval)) {
       issues.push({
         path: `reviewApprovals.${index}`,
@@ -179,43 +214,31 @@ function validateApprovalRecords(
       });
       return;
     }
-    requireString(approval, "domain", issues, `reviewApprovals.${index}.`);
-    requireString(approval, "reviewer", issues, `reviewApprovals.${index}.`);
-    requireString(approval, "reviewedAt", issues, `reviewApprovals.${index}.`);
+    const prefix = `reviewApprovals.${index}.`;
+    requireString(approval, "domain", issues, prefix);
+    requireString(approval, "reviewer", issues, prefix);
+    requireString(approval, "reviewedAt", issues, prefix);
+    validateAllowed(
+      approval.domain,
+      `${prefix}domain`,
+      REVIEW_DOMAINS,
+      issues,
+    );
+    if (
+      typeof approval.domain === "string" &&
+      typeof approval.reviewer === "string" &&
+      approval.reviewer.trim() !== "" &&
+      typeof approval.reviewedAt === "string" &&
+      approval.reviewedAt.trim() !== ""
+    ) {
+      completeDomains.add(approval.domain);
+    }
   });
-}
 
-function validateReviewCompleteness(
-  input: Record<string, unknown>,
-  issues: ValidationIssue[],
-): void {
   const requirements = input.reviewRequirements;
-  const approvals = input.reviewApprovals;
-  if (!Array.isArray(approvals)) {
-    issues.push({
-      path: "reviewApprovals",
-      message: "Approved content requires review approvals.",
-    });
-    return;
-  }
-  if (!Array.isArray(requirements)) return;
-
-  const approvedDomains = new Set(
-    approvals
-      .filter(isRecord)
-      .filter(
-        (approval) =>
-          typeof approval.reviewer === "string" &&
-          approval.reviewer.trim() !== "" &&
-          typeof approval.reviewedAt === "string" &&
-          approval.reviewedAt.trim() !== "",
-      )
-      .map((approval) => approval.domain)
-      .filter((domain): domain is string => typeof domain === "string"),
-  );
-
+  if (input.reviewState !== "approved" || !Array.isArray(requirements)) return;
   for (const domain of requirements) {
-    if (typeof domain === "string" && !approvedDomains.has(domain)) {
+    if (typeof domain === "string" && !completeDomains.has(domain)) {
       issues.push({
         path: "reviewApprovals",
         message: `Missing named approval for required review domain ${domain}.`,
@@ -224,24 +247,93 @@ function validateReviewCompleteness(
   }
 }
 
+function validateOptionalMetadata(
+  input: Record<string, unknown>,
+  issues: ValidationIssue[],
+): void {
+  for (const key of ["supersedes", "replacedBy"]) {
+    if (input[key] !== undefined) validateId(input[key], key, issues);
+  }
+  if (input.spoilerGate === undefined) return;
+  if (!isRecord(input.spoilerGate)) {
+    issues.push({ path: "spoilerGate", message: "spoilerGate must be an object." });
+    return;
+  }
+  const gate = input.spoilerGate;
+  if (gate.requiredClueIds !== undefined) {
+    requireStringArray(gate, "requiredClueIds", issues, "spoilerGate.");
+    validateIdArray(gate.requiredClueIds, "spoilerGate.requiredClueIds", issues);
+  }
+  if (gate.requiredContentIds !== undefined) {
+    requireStringArray(gate, "requiredContentIds", issues, "spoilerGate.");
+    validateIdArray(
+      gate.requiredContentIds,
+      "spoilerGate.requiredContentIds",
+      issues,
+    );
+  }
+}
+
 function validateScene(
   input: Record<string, unknown>,
   issues: ValidationIssue[],
 ): void {
+  requireString(input, "zoneId", issues);
+  validateId(input.zoneId, "zoneId", issues);
+  for (const key of [
+    "speakerIds",
+    "dialogueIds",
+    "prerequisiteStateIds",
+    "grantsStateIds",
+  ]) {
+    requireStringArray(input, key, issues);
+    validateIdArray(input[key], key, issues);
+  }
+
   const choices = input.choices;
-  if (!Array.isArray(choices)) {
-    issues.push({
-      path: "choices",
-      message: "Scene choices must be an array.",
-    });
+  if (!Array.isArray(choices) || choices.length === 0) {
+    issues.push({ path: "choices", message: "Scene choices must be a non-empty array." });
     return;
   }
 
-  const hasAgencyPath = choices.some(
-    (choice) =>
-      isRecord(choice) &&
-      ["defer", "refuse", "exit"].includes(String(choice.disposition)),
-  );
+  let hasAgencyPath = false;
+  choices.forEach((choice, index) => {
+    if (!isRecord(choice)) {
+      issues.push({ path: `choices.${index}`, message: "Scene choice must be an object." });
+      return;
+    }
+    const prefix = `choices.${index}.`;
+    requireString(choice, "id", issues, prefix);
+    validateId(choice.id, `${prefix}id`, issues);
+    requireString(choice, "label", issues, prefix);
+    requireString(choice, "consequenceText", issues, prefix);
+    validateAllowed(
+      choice.disposition,
+      `${prefix}disposition`,
+      new Set(["continue", "defer", "refuse", "exit"]),
+      issues,
+    );
+    if (["defer", "refuse", "exit"].includes(String(choice.disposition))) {
+      hasAgencyPath = true;
+    }
+    if (choice.nextSceneId !== undefined) {
+      validateId(choice.nextSceneId, `${prefix}nextSceneId`, issues);
+    }
+    if (choice.actionId !== undefined) {
+      validateId(choice.actionId, `${prefix}actionId`, issues);
+    }
+    if (
+      choice.disposition === "continue" &&
+      choice.nextSceneId === undefined &&
+      choice.actionId === undefined
+    ) {
+      issues.push({
+        path: `choices.${index}`,
+        message: "Continue choices require a nextSceneId or actionId.",
+      });
+    }
+  });
+
   if (!hasAgencyPath) {
     issues.push({
       path: "choices",
@@ -254,117 +346,169 @@ function validateQuest(
   input: Record<string, unknown>,
   issues: ValidationIssue[],
 ): void {
-  requireString(input, "playerValue", issues);
-  requireString(input, "objective", issues);
-  requireString(input, "refusalPath", issues);
-  requireString(input, "deferralPath", issues);
-  requireArray(input, "requirements", issues);
-
-  validateAllowedValue(input, "connectedLoop", ALLOWED_CONNECTED_LOOPS, issues);
-  validateAllowedValue(
-    input,
+  for (const key of [
+    "publicTitle",
+    "inWorldTitle",
+    "zoneId",
+    "guideCharacterId",
+    "playerValue",
+    "objective",
+    "feedback",
+    "narrativeConsequence",
+    "deferralPath",
+    "refusalPath",
+    "analyticsHypothesis",
+  ]) {
+    requireString(input, key, issues);
+  }
+  validateId(input.zoneId, "zoneId", issues);
+  validateId(input.guideCharacterId, "guideCharacterId", issues);
+  validateAllowed(input.connectedLoop, "connectedLoop", LOOPS, issues);
+  validateAllowed(
+    input.progressDimension,
     "progressDimension",
-    ALLOWED_PROGRESS_DIMENSIONS,
+    DIMENSIONS,
     issues,
   );
-
+  validateAllowed(
+    input.safetyClassification,
+    "safetyClassification",
+    new Set(["general", "sensitive", "specialist-review-required"]),
+    issues,
+  );
   if (input.canDecline !== true) {
     issues.push({ path: "canDecline", message: "Quests must permit decline." });
   }
   if (input.canDefer !== true) {
     issues.push({ path: "canDefer", message: "Quests must permit deferral." });
   }
-
-  const requirements = input.requirements;
-  const requirementIds = new Set<string>();
-  if (Array.isArray(requirements)) {
-    requirements.forEach((requirement, index) => {
-      if (!isRecord(requirement)) {
-        issues.push({
-          path: `requirements.${index}`,
-          message: "Quest requirement must be an object.",
-        });
-        return;
-      }
-      requireString(requirement, "id", issues, `requirements.${index}.`);
-      requireString(requirement, "type", issues, `requirements.${index}.`);
-      requireString(
-        requirement,
-        "description",
-        issues,
-        `requirements.${index}.`,
-      );
-      if (typeof requirement.id === "string") {
-        requirementIds.add(requirement.id);
-      }
-    });
+  if (!Number.isFinite(input.estimatedMinutes) || Number(input.estimatedMinutes) <= 0) {
+    issues.push({ path: "estimatedMinutes", message: "estimatedMinutes must be positive." });
   }
+  requireArray(input, "accessibilityVariants", issues);
+  requireStringArray(input, "dataCategories", issues);
+  requireStringArray(input, "permissionPurposeIds", issues);
+  validateIdArray(input.permissionPurposeIds, "permissionPurposeIds", issues);
 
-  const completionRule = input.completionRule;
-  if (!isRecord(completionRule)) {
+  const requirementIds = validateRequirements(input.requirements, issues);
+  validateCompletionRule(input.completionRule, requirementIds, issues);
+  validateRewards(input.rewards, issues);
+}
+
+function validateRequirements(
+  value: unknown,
+  issues: ValidationIssue[],
+): Set<string> {
+  const ids = new Set<string>();
+  if (!Array.isArray(value) || value.length === 0) {
+    issues.push({
+      path: "requirements",
+      message: "Quest requirements must be a non-empty array.",
+    });
+    return ids;
+  }
+  value.forEach((requirement, index) => {
+    if (!isRecord(requirement)) {
+      issues.push({
+        path: `requirements.${index}`,
+        message: "Quest requirement must be an object.",
+      });
+      return;
+    }
+    const prefix = `requirements.${index}.`;
+    requireString(requirement, "id", issues, prefix);
+    validateId(requirement.id, `${prefix}id`, issues);
+    requireString(requirement, "description", issues, prefix);
+    validateAllowed(
+      requirement.type,
+      `${prefix}type`,
+      REQUIREMENT_TYPES,
+      issues,
+    );
+    if (!isRecord(requirement.parameters)) {
+      issues.push({
+        path: `${prefix}parameters`,
+        message: "Quest requirement parameters must be an object.",
+      });
+    }
+    if (typeof requirement.id === "string") {
+      if (ids.has(requirement.id)) {
+        issues.push({
+          path: `${prefix}id`,
+          message: `Duplicate quest requirement ID ${requirement.id}.`,
+        });
+      }
+      ids.add(requirement.id);
+    }
+  });
+  return ids;
+}
+
+function validateCompletionRule(
+  value: unknown,
+  requirementIds: Set<string>,
+  issues: ValidationIssue[],
+): void {
+  if (!isRecord(value)) {
     issues.push({
       path: "completionRule",
       message: "Quests require a structured deterministic completion rule.",
     });
-  } else {
-    if (!["all", "any"].includes(String(completionRule.mode))) {
-      issues.push({
-        path: "completionRule.mode",
-        message: "Completion mode must be all or any.",
-      });
-    }
-    const completionRequirementIds = completionRule.requirementIds;
-    if (!Array.isArray(completionRequirementIds)) {
-      issues.push({
-        path: "completionRule.requirementIds",
-        message: "Completion rule requires an array of requirement IDs.",
-      });
-    } else {
-      for (const requirementId of completionRequirementIds) {
-        if (
-          typeof requirementId !== "string" ||
-          !requirementIds.has(requirementId)
-        ) {
-          issues.push({
-            path: "completionRule.requirementIds",
-            message: `Unknown completion requirement ${String(requirementId)}.`,
-          });
-        }
-      }
-    }
+    return;
   }
-
-  const rewards = input.rewards;
-  if (!Array.isArray(rewards)) {
+  validateAllowed(
+    value.mode,
+    "completionRule.mode",
+    new Set(["all", "any"]),
+    issues,
+  );
+  if (!Array.isArray(value.requirementIds) || value.requirementIds.length === 0) {
     issues.push({
-      path: "rewards",
-      message: "Quest rewards must be an array.",
+      path: "completionRule.requirementIds",
+      message: "Completion rule requires at least one requirement ID.",
     });
     return;
   }
+  for (const requirementId of value.requirementIds) {
+    validateId(requirementId, "completionRule.requirementIds", issues);
+    if (typeof requirementId === "string" && !requirementIds.has(requirementId)) {
+      issues.push({
+        path: "completionRule.requirementIds",
+        message: `Unknown completion requirement ${requirementId}.`,
+      });
+    }
+  }
+}
 
-  rewards.forEach((reward, index) => {
-    if (!isRecord(reward) || !ALLOWED_REWARD_TYPES.has(String(reward.type))) {
+function validateRewards(value: unknown, issues: ValidationIssue[]): void {
+  if (!Array.isArray(value) || value.length === 0) {
+    issues.push({ path: "rewards", message: "Quest rewards must be a non-empty array." });
+    return;
+  }
+  value.forEach((reward, index) => {
+    if (!isRecord(reward) || !REWARD_TYPES.has(String(reward.type))) {
       issues.push({
         path: `rewards.${index}.type`,
         message: "Quest reward type is not allowed by the incentive model.",
       });
       return;
     }
-
     if (reward.type === "progress") {
-      if (!ALLOWED_PROGRESS_DIMENSIONS.has(String(reward.dimension))) {
-        issues.push({
-          path: `rewards.${index}.dimension`,
-          message: "Progress reward dimension is not allowed.",
-        });
+      validateAllowed(
+        reward.dimension,
+        `rewards.${index}.dimension`,
+        DIMENSIONS,
+        issues,
+      );
+      requirePositiveNumber(reward.amount, `rewards.${index}.amount`, issues);
+    } else if (reward.type === "laurel") {
+      requirePositiveNumber(reward.amount, `rewards.${index}.amount`, issues);
+      if (reward.laurelId !== undefined) {
+        validateId(reward.laurelId, `rewards.${index}.laurelId`, issues);
       }
-      if (!Number.isFinite(reward.amount) || Number(reward.amount) <= 0) {
-        issues.push({
-          path: `rewards.${index}.amount`,
-          message: "Progress rewards require a positive amount.",
-        });
-      }
+    } else {
+      requireString(reward, "targetId", issues, `rewards.${index}.`);
+      validateId(reward.targetId, `rewards.${index}.targetId`, issues);
     }
   });
 }
@@ -373,26 +517,84 @@ function validateNotification(
   input: Record<string, unknown>,
   issues: ValidationIssue[],
 ): void {
-  if (input.shameFree !== true) {
-    issues.push({
-      path: "shameFree",
-      message: "Notifications must be shame-free.",
-    });
-  }
   requireString(input, "pressureFreeAlternative", issues);
+  if (input.shameFree !== true) {
+    issues.push({ path: "shameFree", message: "Notifications must be shame-free." });
+  }
 }
 
-function validateAllowedValue(
-  input: Record<string, unknown>,
-  key: string,
+function validateAllowed(
+  value: unknown,
+  path: string,
   allowed: Set<string>,
   issues: ValidationIssue[],
 ): void {
-  if (!allowed.has(String(input[key]))) {
+  if (!allowed.has(String(value))) {
+    issues.push({ path, message: `${path} has an unsupported value.` });
+  }
+}
+
+function validateAllowedArray(
+  value: unknown,
+  path: string,
+  allowed: Set<string>,
+  issues: ValidationIssue[],
+): void {
+  if (!Array.isArray(value)) return;
+  value.forEach((item, index) => {
+    if (typeof item === "string" && !allowed.has(item)) {
+      issues.push({
+        path: `${path}.${index}`,
+        message: `${path} contains an unsupported value.`,
+      });
+    }
+  });
+}
+
+function validatePatternArray(
+  value: unknown,
+  path: string,
+  pattern: RegExp,
+  message: string,
+  issues: ValidationIssue[],
+): void {
+  if (!Array.isArray(value)) return;
+  value.forEach((item, index) => {
+    if (typeof item === "string" && !pattern.test(item)) {
+      issues.push({ path: `${path}.${index}`, message });
+    }
+  });
+}
+
+function validateIdArray(
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void {
+  if (!Array.isArray(value)) return;
+  value.forEach((item, index) => validateId(item, `${path}.${index}`, issues));
+}
+
+function validateId(
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void {
+  if (typeof value === "string" && !ID_PATTERN.test(value)) {
     issues.push({
-      path: key,
-      message: `${key} has an unsupported value.`,
+      path,
+      message: "Use a lowercase dotted namespace; segments may contain hyphens.",
     });
+  }
+}
+
+function requirePositiveNumber(
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void {
+  if (!Number.isFinite(value) || Number(value) <= 0) {
+    issues.push({ path, message: `${path} must be a positive number.` });
   }
 }
 
@@ -423,11 +625,11 @@ function requireStringArray(
   const candidate = value[key];
   if (
     !Array.isArray(candidate) ||
-    candidate.some((item) => typeof item !== "string")
+    candidate.some((item) => typeof item !== "string" || item.trim() === "")
   ) {
     issues.push({
       path: `${prefix}${key}`,
-      message: `${prefix}${key} must be an array of strings.`,
+      message: `${prefix}${key} must be an array of non-empty strings.`,
     });
   }
 }
