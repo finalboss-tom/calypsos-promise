@@ -477,7 +477,7 @@ Every pitch should:
 - avoid inflated exclusivity or urgency
 - make the interview subject and available materials explicit
 - disclose material conflicts and relationships
-n- provide a correction contact
+- provide a correction contact
 
 Mass generic pitching should be avoided. A small number of researched contacts is preferable to indiscriminate outreach.
 
