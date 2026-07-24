@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security or privacy issue privately
+    url: https://github.com/finalboss-tom/calypsos-promise/security/policy
+    about: Do not open a public issue for vulnerabilities, credentials, authorization bypasses, exposed records, or accidental disclosure.
+  - name: Read conduct reporting instructions
+    url: https://github.com/finalboss-tom/calypsos-promise/blob/main/CODE_OF_CONDUCT.md#enforcement
+    about: Conduct evidence and complaints must be reported privately to maintainers.
+  - name: Review the public feedback protocol
+    url: https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/governance/feedback-triage-operating-protocol.md
+    about: Use public issues only for public-safe or synthetic product, accessibility, documentation, content, governance, and contributor feedback.

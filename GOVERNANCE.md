@@ -122,6 +122,12 @@ These should become early candidates for bounded participatory governance.
 
 Decision 0006 establishes product feedback, public issues, prioritization, contribution, implementation, validation, and outcome review as one traceable institutional loop. The canonical architecture is `docs/governance/feedback-to-governed-work.md`.
 
+The current Phase 0 operating layer is defined by:
+
+- `docs/governance/feedback-triage-operating-protocol.md` — roles, cadence, taxonomy, evidence, routing, closure, appeals, and audit
+- `docs/governance/feedback-label-registry.yml` — canonical prefixed label names and descriptions
+- `docs/governance/feedback-record-templates.md` — copy-paste triage, signal, decision, validation, closure, reopening, rollback, and credit records
+
 Current rules are:
 
 - GitHub issues are the canonical public ledger for public-safe work items.
@@ -134,6 +140,9 @@ Current rules are:
 - Binding authority over selected low-risk domains or a defined share of roadmap capacity may transfer only through the gates, charters, appeals, specialist controls, and rollback rules in `ROADMAP.md`.
 - Safety, constitutional, privacy, security, clinical, accessibility, legal, consent, conduct, and data-integrity duties take precedence over popularity or a computed score.
 - Validated issue reporting, reproduction, triage, specification, implementation, review, testing, documentation, and outcome measurement may earn scoped Fellowship contribution credit. Raw activity does not create permanent privilege.
+- Issue classification routes work to the correct authority; it does not redefine product or data semantics owned by another active workstream.
+
+An issue labeled as affecting the Living Chronicle may coordinate with Sprint 3, but the feedback protocol does not modify PR #14, define Chronicle schema meaning, or bypass Sprint 3 review and acceptance gates.
 
 Closing an issue is not equivalent to solving the problem. Material work items should preserve the path from evidence and decision through release, measured outcome, correction, reopening, or rollback.
 

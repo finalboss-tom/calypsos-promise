@@ -12,6 +12,7 @@ Read these first:
 - `docs/product/gameplay-foundation.md`
 - `docs/product/incentive-model.md`
 - `docs/governance/feedback-to-governed-work.md`
+- `docs/governance/feedback-triage-operating-protocol.md`
 - `docs/policies/publication-and-confidentiality.md`
 - `SECURITY.md`
 
@@ -67,6 +68,45 @@ Do not open a public issue for:
 Those matters require the applicable private support, security, conduct, privacy, or specialist path. When a public record is appropriate, an authorized steward may later publish a reviewed, minimized institutional derivative.
 
 Community reactions, comments, and issue activity are advisory signals during institutional Phase 0. They do not bypass maintainer authority, specialist review, safety controls, or decision records. Decision 0006 and `docs/governance/feedback-to-governed-work.md` define the path toward typed signals, deterministic priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity.
+
+The current manual process is defined in `docs/governance/feedback-triage-operating-protocol.md`. It establishes:
+
+- one primary type, lifecycle state, evidence state, and decision class after triage
+- one or more affected areas and required review flags
+- exact closure reasons
+- a maintainer intake and prioritization cadence
+- structured public triage, decision, validation, closure, reopening, and contribution-credit records
+- private routing for security, privacy incidents, conduct, and other protected matters
+
+The canonical label names and descriptions are in `docs/governance/feedback-label-registry.yml`. Copy-paste records are in `docs/governance/feedback-record-templates.md`.
+
+### Participating in triage
+
+Public-safe triage contributions may include:
+
+- reproducing or disproving an issue with synthetic evidence
+- identifying a duplicate or dependency
+- clarifying the problem separately from the proposed solution
+- improving acceptance evidence
+- identifying accessibility, privacy, consent, safety, canon, or governance boundaries
+- offering implementation, review, or validation help
+- measuring whether a released change solved the stated problem
+
+Do not change labels or summarize signals in a way that implies authority you do not hold. During Phase 0, maintainers own the canonical triage record and decision routing.
+
+### Typed signals
+
+When participating, state the signal you are providing:
+
+- affected
+- reproduced or confirmed
+- priority preference
+- can validate
+- can contribute
+- domain evidence
+- dependency
+
+Do not reveal a diagnosis, disability, account identity, private experience, or unnecessary personal detail to express affectedness. Repeated comments or reactions do not multiply a signal.
 
 A useful contribution may include reporting, reproducing, triaging, specifying, implementing, reviewing, testing, documenting, validating, or measuring an outcome. Credit depends on validated value rather than issue or comment volume.
 
