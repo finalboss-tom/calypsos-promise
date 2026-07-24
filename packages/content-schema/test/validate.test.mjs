@@ -71,6 +71,10 @@ const validQuest = {
     "A brief confirmed entry demonstrates immediate personal value.",
 };
 
+function messages(result) {
+  return result.issues.map((issue) => `${issue.path}: ${issue.message}`).join(" ");
+}
+
 test("accepts a schema-aligned quest with deterministic incentives", () => {
   const result = validateContent(validQuest);
   assert.equal(result.ok, true);
@@ -88,8 +92,7 @@ test("accepts approved content only when required domains have named approvals",
     })),
   };
 
-  const result = validateContent(approved);
-  assert.equal(result.ok, true);
+  assert.equal(validateContent(approved).ok, true);
 });
 
 test("rejects retired language in active content", () => {
@@ -99,10 +102,7 @@ test("rejects retired language in active content", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(
-    result.issues.map((issue) => issue.message).join(" "),
-    /Retired language/,
-  );
+  assert.match(messages(result), /Retired language/);
 });
 
 test("rejects approved content with a missing named review domain", () => {
@@ -119,10 +119,25 @@ test("rejects approved content with a missing named review domain", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(
-    result.issues.map((issue) => issue.message).join(" "),
-    /Missing named approval/,
-  );
+  assert.match(messages(result), /Missing named approval/);
+});
+
+test("rejects blank reviewer evidence for approved content", () => {
+  const result = validateContent({
+    ...validQuest,
+    reviewState: "approved",
+    reviewRequirements: ["privacy"],
+    reviewApprovals: [
+      {
+        domain: "privacy",
+        reviewer: "",
+        reviewedAt: "2026-07-24T00:00:00Z",
+      },
+    ],
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /reviewer.*non-empty|Missing named approval/);
 });
 
 test("rejects compensation disguised as a quest reward", () => {
@@ -132,10 +147,42 @@ test("rejects compensation disguised as a quest reward", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(
-    result.issues.map((issue) => issue.message).join(" "),
-    /not allowed by the incentive model/,
-  );
+  assert.match(messages(result), /not allowed by the incentive model/);
+});
+
+test("rejects malformed allowlisted reward shapes", () => {
+  const result = validateContent({
+    ...validQuest,
+    rewards: [
+      { type: "progress", dimension: "laurels", amount: 1 },
+      { type: "story-unlock" },
+    ],
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /dimension.*unsupported|targetId.*non-empty/);
+});
+
+test("rejects unsupported connected loops and requirement types", () => {
+  const result = validateContent({
+    ...validQuest,
+    connectedLoop: "monetize-data",
+    requirements: [
+      {
+        id: "requirement.grant-permission",
+        type: "permission-action",
+        description: "Grant broader permission.",
+        parameters: {},
+      },
+    ],
+    completionRule: {
+      mode: "all",
+      requirementIds: ["requirement.grant-permission"],
+    },
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /connectedLoop.*unsupported|type.*unsupported/);
 });
 
 test("rejects completion rules that reference unknown requirements", () => {
@@ -148,10 +195,17 @@ test("rejects completion rules that reference unknown requirements", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(
-    result.issues.map((issue) => issue.message).join(" "),
-    /Unknown completion requirement/,
-  );
+  assert.match(messages(result), /Unknown completion requirement/);
+});
+
+test("rejects bare identifiers without a dotted namespace", () => {
+  const result = validateContent({
+    ...validQuest,
+    id: "first-reflection",
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /dotted namespace/);
 });
 
 test("rejects scenes without a defer, refusal, or exit route", () => {
@@ -177,8 +231,36 @@ test("rejects scenes without a defer, refusal, or exit route", () => {
   });
 
   assert.equal(result.ok, false);
-  assert.match(
-    result.issues.map((issue) => issue.message).join(" "),
-    /defer, refusal, or exit/,
-  );
+  assert.match(messages(result), /defer, refusal, or exit/);
+});
+
+test("rejects continue choices without a target", () => {
+  const result = validateContent({
+    ...baseMetadata,
+    id: "scene.lantern-shore.test",
+    kind: "scene",
+    zoneId: "zone.lantern-shore",
+    sequence: 1,
+    speakerIds: ["character.aster"],
+    dialogueIds: [],
+    choices: [
+      {
+        id: "choice.continue",
+        label: "Continue",
+        consequenceText: "Continue forward.",
+        disposition: "continue",
+      },
+      {
+        id: "choice.exit",
+        label: "Leave",
+        consequenceText: "Leave without penalty.",
+        disposition: "exit",
+      },
+    ],
+    prerequisiteStateIds: [],
+    grantsStateIds: [],
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /Continue choices require/);
 });
