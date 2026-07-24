@@ -20,15 +20,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: pnpm
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-      - name: Upload generated lockfile until Sprint 1 commits it
-        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: pnpm-lockfile
-          path: pnpm-lock.yaml
-          if-no-files-found: error
+        run: pnpm install --frozen-lockfile
       - name: Check formatting
         id: formatting
         continue-on-error: true
