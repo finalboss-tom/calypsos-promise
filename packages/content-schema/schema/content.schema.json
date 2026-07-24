@@ -626,7 +626,10 @@
           ],
           "properties": {
             "kind": { "const": "notification" },
-            "channel": { "type": "string", "enum": ["push", "email", "in-app"] },
+            "channel": {
+              "type": "string",
+              "enum": ["push", "email", "in-app"]
+            },
             "purpose": {
               "type": "string",
               "enum": ["quest", "story", "permission", "safety", "system"]
