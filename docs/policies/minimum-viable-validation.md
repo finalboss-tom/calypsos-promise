@@ -129,12 +129,13 @@ Until a qualified specialist exists, the absence of review must be recorded as a
 
 The baseline requires:
 
-- DCO sign-off
+- truthful certification that the contributor has the right to submit the contribution under the Developer Certificate of Origin
+- a `Signed-off-by` trailer on the final squash-merge commit during the current transitional workflow
 - disclosure of material AI assistance
 - contributor responsibility for licensing and correctness
 - source attribution where a contribution depends on external material
 
-The current pull-request-body DCO attestation is transitional. Commit-level DCO validation should replace it before external contribution volume grows.
+The current pull-request-body DCO certification is a transitional control for the repository’s early maintainer-only phase. Commit-level DCO validation must replace it before external contribution volume grows. The transitional check must not claim that every exploratory commit is signed when it is not.
 
 ## Pull-request minimum
 
@@ -149,7 +150,7 @@ A material pull request should state:
 - validation performed
 - remaining uncertainty
 - AI assistance
-- DCO attestation
+- DCO certification
 
 ## Merge gate
 
