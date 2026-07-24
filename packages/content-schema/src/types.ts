@@ -1,11 +1,4 @@
-export const CONTENT_SCHEMA_VERSION = "1.0.0" as const;
-
-export type FoundationStatus =
-  | "FROZEN"
-  | "BASELINE"
-  | "PROPOSED"
-  | "DEFERRED"
-  | "RETIRED";
+export const CONTENT_SCHEMA_VERSION = "0.1.0" as const;
 
 export type ReviewState =
   | "draft"
@@ -21,6 +14,17 @@ export type CapabilityStatus =
   | "long-horizon"
   | "deferred";
 
+export type ReviewDomain =
+  | "editorial"
+  | "canon"
+  | "privacy"
+  | "safety"
+  | "clinical"
+  | "accessibility"
+  | "security"
+  | "research-governance"
+  | "economic-claims";
+
 export type ContentKind =
   | "character"
   | "zone"
@@ -32,7 +36,15 @@ export type ContentKind =
 
 export interface Authorship {
   mode: "human-authored" | "ai-assisted-reviewed";
-  reviewedBy: string[];
+  humanContributors: string[];
+  aiTools?: string[];
+}
+
+export interface ReviewApproval {
+  domain: ReviewDomain;
+  reviewer: string;
+  reviewedAt: string;
+  notes?: string;
 }
 
 export interface SpoilerGate {
@@ -43,12 +55,11 @@ export interface SpoilerGate {
 
 export interface BaseContent {
   id: string;
-  kind: ContentKind;
   schemaVersion: typeof CONTENT_SCHEMA_VERSION;
   revision: number;
-  foundationStatus: FoundationStatus;
   reviewState: ReviewState;
   capabilityStatus: CapabilityStatus;
+  kind: ContentKind;
   title: string;
   summary: string;
   locale: string;
@@ -56,10 +67,11 @@ export interface BaseContent {
   canonReferences: string[];
   dependencies: string[];
   owner: string;
-  reviewers: string[];
+  reviewRequirements: ReviewDomain[];
+  reviewApprovals: ReviewApproval[];
+  authorship: Authorship;
   createdAt: string;
   updatedAt: string;
-  authorship: Authorship;
   historicalContext?: boolean;
   spoilerGate?: SpoilerGate;
   supersedes?: string;
@@ -84,7 +96,6 @@ export interface ZoneContent extends BaseContent {
   publicPurpose: string;
   inWorldPurpose: string;
   playerValue: string;
-  systemIds: string[];
   sceneIds: string[];
   accessibilityNotes: string[];
   unlock: {
@@ -93,13 +104,15 @@ export interface ZoneContent extends BaseContent {
   };
 }
 
+export type ChoiceDisposition = "continue" | "defer" | "refuse" | "exit";
+
 export interface SceneChoice {
   id: string;
   label: string;
   consequenceText: string;
+  disposition: ChoiceDisposition;
   nextSceneId?: string;
   actionId?: string;
-  refusal: boolean;
 }
 
 export interface SceneContent extends BaseContent {
@@ -121,45 +134,107 @@ export interface DialogueContent extends BaseContent {
   emotionalIntent: string;
 }
 
+export type ConnectedLoop =
+  | "build-chronicle"
+  | "improve-understanding"
+  | "control-and-share-value";
+
+export type ProgressDimension =
+  | "vitality"
+  | "chronicle"
+  | "fellowship"
+  | "renown";
+
+export type QuestRequirementType =
+  | "player-confirmation"
+  | "chronicle-record"
+  | "learning-completion"
+  | "permission-review"
+  | "scene-completion"
+  | "manual-action";
+
 export interface QuestRequirement {
   id: string;
-  type:
-    | "player-confirmation"
-    | "chronicle-record"
-    | "learning-completion"
-    | "permission-action"
-    | "scene-completion"
-    | "manual-action";
+  type: QuestRequirementType;
+  description: string;
   parameters: Record<string, string | number | boolean>;
 }
 
-export interface QuestReward {
-  type:
-    | "renown"
-    | "vitality"
-    | "chronicle"
-    | "fellowship"
-    | "laurel"
-    | "restoration"
-    | "story-unlock"
-    | "clue";
-  amount?: number;
-  targetId?: string;
+export interface QuestCompletionRule {
+  mode: "all" | "any";
+  requirementIds: string[];
 }
+
+export interface ProgressReward {
+  type: "progress";
+  dimension: ProgressDimension;
+  amount: number;
+}
+
+export interface LaurelReward {
+  type: "laurel";
+  amount: number;
+  laurelId?: string;
+}
+
+export interface RestorationReward {
+  type: "restoration";
+  targetId: string;
+}
+
+export interface StoryUnlockReward {
+  type: "story-unlock";
+  targetId: string;
+}
+
+export interface ClueReward {
+  type: "clue";
+  targetId: string;
+}
+
+export type QuestReward =
+  | ProgressReward
+  | LaurelReward
+  | RestorationReward
+  | StoryUnlockReward
+  | ClueReward;
+
+export interface AccessibilityVariant {
+  id: string;
+  label: string;
+  description: string;
+}
+
+export type SafetyClassification =
+  | "general"
+  | "sensitive"
+  | "specialist-review-required";
 
 export interface QuestContent extends BaseContent {
   kind: "quest";
+  publicTitle: string;
+  inWorldTitle: string;
   zoneId: string;
+  guideCharacterId: string;
+  connectedLoop: ConnectedLoop;
   playerValue: string;
   objective: string;
+  progressDimension: ProgressDimension;
   requirements: QuestRequirement[];
+  completionRule: QuestCompletionRule;
   rewards: QuestReward[];
   estimatedMinutes: number;
-  optional: boolean;
+  accessibilityVariants: AccessibilityVariant[];
+  dataCategories: string[];
+  permissionPurposeIds: string[];
+  safetyClassification: SafetyClassification;
+  feedback: string;
+  narrativeConsequence: string;
+  canDefer: true;
   canDecline: true;
+  deferralPath: string;
   refusalPath: string;
-  safetyNotes: string[];
-  privacyNotes: string[];
+  analyticsHypothesis: string;
 }
 
 export interface LessonClaim {
@@ -175,9 +250,6 @@ export interface LessonContent extends BaseContent {
   plainLanguageBody: string;
   claims: LessonClaim[];
   comprehensionPrompt: string;
-  reviewDomains: Array<
-    "clinical" | "privacy" | "security" | "accessibility" | "canon"
-  >;
 }
 
 export interface NotificationContent extends BaseContent {
