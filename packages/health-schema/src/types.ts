@@ -173,12 +173,7 @@ export interface ApproximateTemporalAssertion {
 
 export interface NamedPeriodTemporalAssertion {
   kind: "named-period";
-  periodKind:
-    | "month"
-    | "season"
-    | "school-year"
-    | "life-phase"
-    | "custom";
+  periodKind: "month" | "season" | "school-year" | "life-phase" | "custom";
   label: string;
   start?: IsoDate | IsoDateTime;
   end?: IsoDate | IsoDateTime;
@@ -327,11 +322,7 @@ export type ChronicleValue =
 export type ValueShape = ChronicleValue["kind"];
 
 export type VariableStatus =
-  | "draft"
-  | "review"
-  | "active"
-  | "deprecated"
-  | "retired";
+  "draft" | "review" | "active" | "deprecated" | "retired";
 
 export type VariableTemporalSemantics =
   | "instantaneous"
@@ -421,10 +412,7 @@ export interface UnitDefinition extends RevisionMetadata {
   dimensionId: UnitDimensionId;
   canonicalUnitId?: UnitId;
   conversionCapability:
-    | "identity"
-    | "direct-versioned"
-    | "context-required"
-    | "not-convertible";
+    "identity" | "direct-versioned" | "context-required" | "not-convertible";
   precisionGuidance?: string;
   displayGuidance?: string;
   externalMappings: ReadonlyArray<ExternalMapping>;
@@ -512,12 +500,7 @@ export interface GoalPayload {
   description: TextValue;
   targetValue?: ChronicleValue;
   targetVariableId?: VariableId;
-  goalState:
-    | "planned"
-    | "active"
-    | "paused"
-    | "completed"
-    | "abandoned";
+  goalState: "planned" | "active" | "paused" | "completed" | "abandoned";
 }
 
 export interface DerivedPayload {
@@ -526,10 +509,7 @@ export interface DerivedPayload {
   inputRecordIds: ReadonlyArray<ChronicleRecordId>;
   derivationId: DerivationId;
   invalidationBehavior:
-    | "invalidate"
-    | "recompute"
-    | "retain-with-warning"
-    | "policy-required";
+    "invalidate" | "recompute" | "retain-with-warning" | "policy-required";
 }
 
 export interface AssociationPayload {
@@ -760,10 +740,7 @@ export interface ConfirmationEvent extends RevisionMetadata {
 }
 
 export type ProvenanceEvent =
-  | CaptureEvent
-  | ImportEvent
-  | TransformationEvent
-  | DerivationEvent;
+  CaptureEvent | ImportEvent | TransformationEvent | DerivationEvent;
 
 export interface ExternalReference extends RevisionMetadata {
   id: ExternalReferenceId;
@@ -775,14 +752,11 @@ export interface ExternalReference extends RevisionMetadata {
 }
 
 export type RelationshipReviewState =
-  | "proposed"
-  | "confirmed"
-  | "disputed"
-  | "reversed"
-  | "retired";
+  "proposed" | "confirmed" | "disputed" | "reversed" | "retired";
 
-export interface RecordRelationshipBase<TRelationshipType extends string>
-  extends RevisionMetadata {
+export interface RecordRelationshipBase<
+  TRelationshipType extends string,
+> extends RevisionMetadata {
   id: RelationshipId;
   relationshipType: TRelationshipType;
   sourceRecordIds: ReadonlyArray<ChronicleRecordId>;
@@ -799,13 +773,11 @@ export interface RecordRelationshipBase<TRelationshipType extends string>
   reversesRelationshipId?: RelationshipId;
 }
 
-export interface AmendmentRelationship
-  extends RecordRelationshipBase<"amendment"> {
+export interface AmendmentRelationship extends RecordRelationshipBase<"amendment"> {
   changesInterpretation: boolean;
 }
 
-export interface CorrectionRelationship
-  extends RecordRelationshipBase<"correction"> {
+export interface CorrectionRelationship extends RecordRelationshipBase<"correction"> {
   correctionType:
     | "source-error"
     | "recording-error"
@@ -824,29 +796,21 @@ export interface CorrectionRelationship
   dependentRecordIds: ReadonlyArray<ChronicleRecordId>;
 }
 
-export interface SupersessionRelationship
-  extends RecordRelationshipBase<"supersession"> {}
+export interface SupersessionRelationship extends RecordRelationshipBase<"supersession"> {}
 
-export interface RetractionRelationship
-  extends RecordRelationshipBase<"retraction"> {
+export interface RetractionRelationship extends RecordRelationshipBase<"retraction"> {
   sourceState: "retained" | "deleted" | "unavailable" | "unknown";
   dependentRecordIds: ReadonlyArray<ChronicleRecordId>;
 }
 
-export interface InvalidationRelationship
-  extends RecordRelationshipBase<"invalidation"> {
+export interface InvalidationRelationship extends RecordRelationshipBase<"invalidation"> {
   ruleId: PolicyId;
   ruleVersion: string;
   affectedPurpose?: string;
-  recomputationState:
-    | "not-applicable"
-    | "available"
-    | "required"
-    | "blocked";
+  recomputationState: "not-applicable" | "available" | "required" | "blocked";
 }
 
-export interface ConflictRelationship
-  extends RecordRelationshipBase<"conflict"> {
+export interface ConflictRelationship extends RecordRelationshipBase<"conflict"> {
   conflictType: string;
   temporalOverlap?: TemporalAssertion;
   variableId?: VariableId;
@@ -854,14 +818,12 @@ export interface ConflictRelationship
   preferredRecordId?: ChronicleRecordId;
 }
 
-export interface DuplicateCandidateRelationship
-  extends RecordRelationshipBase<"duplicate-candidate"> {
+export interface DuplicateCandidateRelationship extends RecordRelationshipBase<"duplicate-candidate"> {
   confidence?: number;
   detectionEvidence: ReadonlyArray<string>;
 }
 
-export interface ConfirmedDuplicateRelationship
-  extends RecordRelationshipBase<"confirmed-duplicate"> {
+export interface ConfirmedDuplicateRelationship extends RecordRelationshipBase<"confirmed-duplicate"> {
   preferredRecordId?: ChronicleRecordId;
   retainedUniqueMetadata: ReadonlyArray<string>;
   reversible: boolean;
@@ -871,19 +833,19 @@ export interface MergeRelationship extends RecordRelationshipBase<"merge"> {
   outputRecordId?: ChronicleRecordId;
   mergePolicyId: PolicyId;
   mergePolicyVersion: string;
-  retainedFieldsByRecord: Readonly<Record<ChronicleRecordId, ReadonlyArray<string>>>;
+  retainedFieldsByRecord: Readonly<
+    Record<ChronicleRecordId, ReadonlyArray<string>>
+  >;
   unresolvedFields: ReadonlyArray<string>;
   reversible: boolean;
 }
 
-export interface UnmergeRelationship
-  extends RecordRelationshipBase<"unmerge"> {
+export interface UnmergeRelationship extends RecordRelationshipBase<"unmerge"> {
   reversedMergeRelationshipId: RelationshipId;
   affectedDerivedRecordIds: ReadonlyArray<ChronicleRecordId>;
 }
 
-export interface PreferredPresentationRelationship
-  extends RecordRelationshipBase<"preferred-presentation"> {
+export interface PreferredPresentationRelationship extends RecordRelationshipBase<"preferred-presentation"> {
   preferredRecordId: ChronicleRecordId;
   alternativeRecordIds: ReadonlyArray<ChronicleRecordId>;
   presentationScope: string;
@@ -1011,7 +973,8 @@ export interface ExportRequest extends RevisionMetadata {
   scope: ReadonlyArray<ExportScopeItem>;
   includeHumanReadable: boolean;
   includeMachineReadable: boolean;
-  state: "received" | "planning" | "generating" | "ready" | "failed" | "cancelled";
+  state:
+    "received" | "planning" | "generating" | "ready" | "failed" | "cancelled";
 }
 
 export interface ExportPlan extends RevisionMetadata {

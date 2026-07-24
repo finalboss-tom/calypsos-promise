@@ -38,7 +38,7 @@ This version is intentionally pre-stable:
 The exported constant is:
 
 ```ts
-LIVING_CHRONICLE_SCHEMA_VERSION = "0.1.0"
+LIVING_CHRONICLE_SCHEMA_VERSION = "0.1.0";
 ```
 
 ## Package boundary
