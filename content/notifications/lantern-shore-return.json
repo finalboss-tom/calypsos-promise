@@ -9,10 +9,7 @@
   "summary": "A low-pressure invitation to return to Lantern Shore after an interruption.",
   "locale": "en-US",
   "tags": ["broken-lantern", "return", "non-punitive"],
-  "canonReferences": [
-    "canon.lantern.broken-lantern",
-    "canon.law.open-hand"
-  ],
+  "canonReferences": ["canon.lantern.broken-lantern", "canon.law.open-hand"],
   "dependencies": ["zone.lantern-shore"],
   "owner": "project-maintainer",
   "reviewRequirements": [
