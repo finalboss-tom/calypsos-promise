@@ -57,13 +57,13 @@ New Calypso’s Promise material should use a legally operative dedication rathe
 
 The exact instruments require qualified review, but the implementation should preserve the following outcome:
 
-| Material | Baseline direction | Reason |
-| --- | --- | --- |
-| Original software | Public-domain dedication with an unconditional fallback, with the Unlicense and CC0 evaluated alongside patent implications | Preserve unrestricted use while providing a fallback where waiver is ineffective |
-| Original documentation, lore, art, schemas, and synthetic fixtures | CC0 1.0 Universal or an equivalent public-domain dedication | One consistent cross-media dedication with a global fallback |
-| Ancient source texts and clearly preexisting public-domain works | Accurate source and public-domain-status notice | Do not falsely claim ownership or a new dedication |
-| Third-party materials | Their actual license or permission | The project cannot give away another party’s rights |
-| Personal or production data | No public-domain dedication | Individual control and privacy are constitutional requirements |
+| Material                                                           | Baseline direction                                                                                                          | Reason                                                                           |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Original software                                                  | Public-domain dedication with an unconditional fallback, with the Unlicense and CC0 evaluated alongside patent implications | Preserve unrestricted use while providing a fallback where waiver is ineffective |
+| Original documentation, lore, art, schemas, and synthetic fixtures | CC0 1.0 Universal or an equivalent public-domain dedication                                                                 | One consistent cross-media dedication with a global fallback                     |
+| Ancient source texts and clearly preexisting public-domain works   | Accurate source and public-domain-status notice                                                                             | Do not falsely claim ownership or a new dedication                               |
+| Third-party materials                                              | Their actual license or permission                                                                                          | The project cannot give away another party’s rights                              |
+| Personal or production data                                        | No public-domain dedication                                                                                                 | Individual control and privacy are constitutional requirements                   |
 
 A canonical `LICENSE`, file notices, contributor certification, dependency audit, and migration record must be completed before the repository describes every current file as legally dedicated.
 
