@@ -50,6 +50,7 @@ The following statements are binding:
 12. Founder independence is a success condition. The institution must eventually operate, govern, recover, and preserve its mission without founder intervention.
 13. The project must maintain a public institutional roadmap showing what powers and responsibilities unlock at each gate.
 14. The hundred-year objective is a design discipline requiring succession, amendment, treasury, archive, migration, dispute, anti-capture, fork, merger, sunset, and dissolution planning.
+15. The deterministic incentive model, meaningful refusal, non-punitive return, and personal-value-first sequence are constitutional boundaries; ordinary governance may not weaken them without an accepted decision record and supporting evidence.
 
 ## Consequences
 
@@ -150,7 +151,7 @@ Rollback of a mechanism does not roll back the institutional constraint. A repla
 
 ## Freeze impact
 
-This decision establishes a new frozen institutional constraint and clarifies the existing product and architecture foundations.
+This decision establishes a new frozen institutional constraint and clarifies the existing product, incentive, and architecture foundations.
 
 It does not alter:
 
@@ -158,7 +159,9 @@ It does not alter:
 - personal utility before secondary use
 - private-by-default operation
 - meaningful refusal
+- non-punitive return
 - prohibition on rewarding broader consent
+- deterministic incentive boundaries
 - open code and private production health data
 - AI and deterministic-domain boundaries
 - the deferral of token, blockchain, NFT, or on-chain DAO implementation
