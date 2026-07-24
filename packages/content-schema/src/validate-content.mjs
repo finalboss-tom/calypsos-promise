@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
+const contentIdPattern = /^[a-z0-9]+(?:[.-][a-z0-9]+)*$/;
 const allowedKinds = new Set([
   "zone",
   "character",
@@ -12,12 +13,26 @@ const allowedKinds = new Set([
   "lesson",
   "notification",
 ]);
-const allowedStatuses = new Set([
+const allowedReviewStates = new Set([
   "draft",
-  "review",
+  "editorial-review",
+  "specialist-review",
   "approved",
-  "published",
   "retired",
+]);
+const allowedCapabilityStatuses = new Set([
+  "live",
+  "experimental",
+  "planned",
+  "long-horizon",
+  "deferred",
+]);
+const allowedRewardTypes = new Set([
+  "progress",
+  "laurel",
+  "restoration",
+  "story-unlock",
+  "clue",
 ]);
 const retiredPatterns = [
   /trojan horse/i,
@@ -31,6 +46,7 @@ const retiredPatterns = [
 
 const errors = [];
 const ids = new Map();
+const records = [];
 
 async function collectJson(directory) {
   const files = [];
@@ -52,6 +68,53 @@ function requireArray(value, field, file) {
   if (!Array.isArray(value)) errors.push(`${file}: ${field} must be an array`);
 }
 
+function validateReviewApprovals(value, file) {
+  if (value.reviewState !== "approved") return;
+  if (!Array.isArray(value.reviewApprovals)) {
+    errors.push(`${file}: approved content requires reviewApprovals`);
+    return;
+  }
+  const approvedDomains = new Set(
+    value.reviewApprovals
+      .filter((approval) => approval && typeof approval === "object")
+      .map((approval) => approval.domain),
+  );
+  for (const domain of value.reviewRequirements ?? []) {
+    if (!approvedDomains.has(domain)) {
+      errors.push(`${file}: missing named approval for review domain ${domain}`);
+    }
+  }
+}
+
+function validateQuest(value, file) {
+  if (value.canDecline !== true) errors.push(`${file}: quests must permit decline`);
+  if (value.canDefer !== true) errors.push(`${file}: quests must permit deferral`);
+  if (!Number.isFinite(value.estimatedMinutes) || value.estimatedMinutes <= 0) {
+    errors.push(`${file}: estimatedMinutes must be positive`);
+  }
+  requireString(value.playerValue, "playerValue", file);
+  requireString(value.refusalPath, "refusalPath", file);
+  requireString(value.deferralPath, "deferralPath", file);
+  requireArray(value.requirements, "requirements", file);
+  requireArray(value.rewards, "rewards", file);
+  if (!value.completionRule || typeof value.completionRule !== "object") {
+    errors.push(`${file}: quests require a structured completionRule`);
+  }
+  if (Array.isArray(value.rewards)) {
+    value.rewards.forEach((reward, index) => {
+      if (!reward || typeof reward !== "object" || !allowedRewardTypes.has(reward.type)) {
+        errors.push(`${file}: rewards[${index}] uses an unsupported reward type`);
+      }
+      if (
+        reward?.type === "progress" &&
+        (!Number.isFinite(reward.amount) || reward.amount <= 0)
+      ) {
+        errors.push(`${file}: progress rewards require a positive amount`);
+      }
+    });
+  }
+}
+
 for (const file of await collectJson(contentRoot)) {
   const relative = path.relative(root, file);
   let value;
@@ -62,14 +125,18 @@ for (const file of await collectJson(contentRoot)) {
     continue;
   }
 
+  records.push({ file: relative, value });
+
   requireString(value.id, "id", relative);
   requireString(value.title, "title", relative);
   requireString(value.summary, "summary", relative);
   requireString(value.locale, "locale", relative);
   requireString(value.owner, "owner", relative);
   requireArray(value.tags, "tags", relative);
-  requireArray(value.canonRefs, "canonRefs", relative);
-  requireArray(value.reviewers, "reviewers", relative);
+  requireArray(value.canonReferences, "canonReferences", relative);
+  requireArray(value.dependencies, "dependencies", relative);
+  requireArray(value.reviewRequirements, "reviewRequirements", relative);
+  requireArray(value.reviewApprovals, "reviewApprovals", relative);
 
   if (value.schemaVersion !== "0.1.0") {
     errors.push(`${relative}: schemaVersion must be 0.1.0`);
@@ -77,11 +144,25 @@ for (const file of await collectJson(contentRoot)) {
   if (!allowedKinds.has(value.kind)) {
     errors.push(`${relative}: unsupported kind ${String(value.kind)}`);
   }
-  if (!allowedStatuses.has(value.status)) {
-    errors.push(`${relative}: unsupported status ${String(value.status)}`);
+  if (!allowedReviewStates.has(value.reviewState)) {
+    errors.push(`${relative}: unsupported reviewState ${String(value.reviewState)}`);
   }
-  if (!Number.isInteger(value.version) || value.version < 1) {
-    errors.push(`${relative}: version must be a positive integer`);
+  if (!allowedCapabilityStatuses.has(value.capabilityStatus)) {
+    errors.push(`${relative}: unsupported capabilityStatus ${String(value.capabilityStatus)}`);
+  }
+  if (!Number.isInteger(value.revision) || value.revision < 1) {
+    errors.push(`${relative}: revision must be a positive integer`);
+  }
+  if (typeof value.id === "string" && !contentIdPattern.test(value.id)) {
+    errors.push(`${relative}: id must be lowercase and namespaced with dots or hyphens`);
+  }
+  if (
+    !value.authorship ||
+    typeof value.authorship !== "object" ||
+    !Array.isArray(value.authorship.humanContributors) ||
+    value.authorship.humanContributors.length === 0
+  ) {
+    errors.push(`${relative}: authorship must name at least one human contributor`);
   }
 
   if (typeof value.id === "string") {
@@ -91,7 +172,7 @@ for (const file of await collectJson(contentRoot)) {
   }
 
   const activeText = JSON.stringify(value);
-  if (!value.historicalContext && value.status !== "retired") {
+  if (value.historicalContext !== true && value.reviewState !== "retired") {
     for (const pattern of retiredPatterns) {
       if (pattern.test(activeText)) {
         errors.push(`${relative}: active content contains retired terminology (${pattern})`);
@@ -99,15 +180,9 @@ for (const file of await collectJson(contentRoot)) {
     }
   }
 
-  if (value.kind === "quest") {
-    if (value.canDecline !== true) errors.push(`${relative}: quests must permit decline`);
-    if (!Number.isFinite(value.estimatedMinutes) || value.estimatedMinutes <= 0) {
-      errors.push(`${relative}: estimatedMinutes must be positive`);
-    }
-    requireString(value.playerValue, "playerValue", relative);
-    requireArray(value.requirements, "requirements", relative);
-    requireArray(value.rewards, "rewards", relative);
-  }
+  validateReviewApprovals(value, relative);
+
+  if (value.kind === "quest") validateQuest(value, relative);
 
   if (value.kind === "notification" && value.shameFree !== true) {
     errors.push(`${relative}: notifications must set shameFree to true`);
@@ -115,8 +190,49 @@ for (const file of await collectJson(contentRoot)) {
 
   if (value.kind === "scene") {
     requireArray(value.choices, "choices", relative);
-    if (Array.isArray(value.choices) && !value.choices.some((choice) => choice.refusal === true)) {
-      errors.push(`${relative}: scenes with choices must include a refusal or exit choice`);
+    if (
+      Array.isArray(value.choices) &&
+      !value.choices.some((choice) =>
+        ["defer", "refuse", "exit"].includes(choice?.disposition),
+      )
+    ) {
+      errors.push(`${relative}: scenes with choices need a defer, refusal, or exit route`);
+    }
+  }
+}
+
+for (const { file, value } of records) {
+  for (const dependency of value.dependencies ?? []) {
+    if (!ids.has(dependency)) {
+      errors.push(`${file}: dependency ${dependency} does not resolve to content`);
+    }
+  }
+  for (const referenceField of [
+    "zoneId",
+    "speakerId",
+    "guideCharacterId",
+    "nextSceneId",
+  ]) {
+    const reference = value[referenceField];
+    if (typeof reference === "string" && !ids.has(reference)) {
+      errors.push(`${file}: ${referenceField} ${reference} does not resolve to content`);
+    }
+  }
+  for (const referenceListField of [
+    "zoneIds",
+    "sceneIds",
+    "speakerIds",
+    "dialogueIds",
+  ]) {
+    for (const reference of value[referenceListField] ?? []) {
+      if (!ids.has(reference)) {
+        errors.push(`${file}: ${referenceListField} reference ${reference} does not resolve to content`);
+      }
+    }
+  }
+  for (const choice of value.choices ?? []) {
+    if (choice.nextSceneId && !ids.has(choice.nextSceneId)) {
+      errors.push(`${file}: choice nextSceneId ${choice.nextSceneId} does not resolve to content`);
     }
   }
 }
