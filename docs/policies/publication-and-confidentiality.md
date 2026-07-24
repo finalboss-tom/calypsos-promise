@@ -188,24 +188,24 @@ No public derivative may be published until the relevant owner and specialist de
 
 ## Publication eligibility matrix
 
-| Information | Public treatment |
-| --- | --- |
-| Approved strategy, decision, current status, and public claim | Publish directly with version and date |
-| Draft or unverified claim | Keep in REVIEW until approved |
-| Campaign performance | Publish aggregate, contextualized results |
-| Outreach activity | Publish categories and aggregate outcomes, not private target lists or correspondence |
-| Paid relationship | Publish the relationship, purpose, and material terms; protect unnecessary personal or contractual detail |
-| Partner negotiation | Keep private temporarily; publish the resulting relationship and material conflicts when approved |
-| Individual compensation | Aggregate by default; publish person-level amounts only with a legitimate requirement and review |
-| Form or signup data | Never publish raw; publish aggregate participation only after re-identification review |
-| Health or account information | Never publish raw; do not use in campaign ledgers |
-| Private message or quotation | Publish only with permission or exceptional reviewed public-interest justification |
-| Security vulnerability | Keep private through remediation; publish a safe advisory when appropriate |
-| Conduct complaint | Keep evidence private; publish process and outcome only when lawful, fair, and safe |
-| Incident | Publish scope, impact, response, and lessons without exposing affected people or enabling recurrence |
-| Legal advice or strategy | Keep confidential; publish the resulting policy or decision when possible |
-| Contract | Publish the relationship and material institutional effect; publish full text only when rights and purpose support it |
-| Small or unique group result | Withhold, combine, or generalize until individuals cannot reasonably be identified |
+| Information                                                   | Public treatment                                                                                                      |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Approved strategy, decision, current status, and public claim | Publish directly with version and date                                                                                |
+| Draft or unverified claim                                     | Keep in REVIEW until approved                                                                                         |
+| Campaign performance                                          | Publish aggregate, contextualized results                                                                             |
+| Outreach activity                                             | Publish categories and aggregate outcomes, not private target lists or correspondence                                 |
+| Paid relationship                                             | Publish the relationship, purpose, and material terms; protect unnecessary personal or contractual detail             |
+| Partner negotiation                                           | Keep private temporarily; publish the resulting relationship and material conflicts when approved                     |
+| Individual compensation                                       | Aggregate by default; publish person-level amounts only with a legitimate requirement and review                      |
+| Form or signup data                                           | Never publish raw; publish aggregate participation only after re-identification review                                |
+| Health or account information                                 | Never publish raw; do not use in campaign ledgers                                                                     |
+| Private message or quotation                                  | Publish only with permission or exceptional reviewed public-interest justification                                    |
+| Security vulnerability                                        | Keep private through remediation; publish a safe advisory when appropriate                                            |
+| Conduct complaint                                             | Keep evidence private; publish process and outcome only when lawful, fair, and safe                                   |
+| Incident                                                      | Publish scope, impact, response, and lessons without exposing affected people or enabling recurrence                  |
+| Legal advice or strategy                                      | Keep confidential; publish the resulting policy or decision when possible                                             |
+| Contract                                                      | Publish the relationship and material institutional effect; publish full text only when rights and purpose support it |
+| Small or unique group result                                  | Withhold, combine, or generalize until individuals cannot reasonably be identified                                    |
 
 ## Prohibited public content
 
