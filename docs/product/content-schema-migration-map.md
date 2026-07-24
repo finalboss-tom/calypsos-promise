@@ -1,249 +1,215 @@
-# Content Schema Reconciliation Map
+# Content Schema Reconciliation Record
 
-**Status:** BASELINE migration plan for Sprint 2
+**Status:** BASELINE reconciliation complete for Sprint 2
 
-This map identifies how current Sprint 2 artifacts should converge on the authoritative `0.1.0` content-schema baseline. It is a migration plan, not a runtime migration.
+This record documents how the conflicting Sprint 2 content contracts converged on the authoritative pre-stable `0.1.0` baseline. It describes repository and documentation migration only; no production data or runtime migration occurred.
 
-## Common metadata
+## Resolved common metadata
 
-| Current variant                     | Baseline field             | Action                                                 |
-| ----------------------------------- | -------------------------- | ------------------------------------------------------ |
-| `version`                           | `revision`                 | Rename in examples and validator                       |
-| `status`                            | `reviewState`              | Rename and remove `published` from source review state |
-| `canonRefs`                         | `canonReferences`          | Rename everywhere                                      |
-| missing `capabilityStatus`          | `capabilityStatus`         | Add to every active record                             |
-| missing `dependencies`              | `dependencies`             | Add, using an empty array where none exist             |
-| `reviewers` as review-domain labels | `reviewRequirements`       | Rename and treat values as domains                     |
-| no named approvals                  | `reviewApprovals`          | Add explicit named human approval records              |
-| no authorship metadata              | `authorship`               | Add mode and responsible humans                        |
-| `historicalContext`                 | `historicalContext`        | Retain as optional boolean                             |
-| no replacement metadata             | `supersedes`, `replacedBy` | Add only when applicable                               |
+| Retired or conflicting variant | Authoritative field | Resolution |
+| --- | --- | --- |
+| `version` | `revision` | Canonical records and validators use a positive integer revision |
+| generic `status` | `reviewState` | Publication is no longer represented as a source-review state |
+| `canonRefs` | `canonReferences` | Renamed everywhere in active contracts and examples |
+| missing capability label | `capabilityStatus` | Required on every content record |
+| missing dependency list | `dependencies` | Required, using an empty array when none exist |
+| `reviewers` as labels | `reviewRequirements` | Values are explicit review domains |
+| implied approval | `reviewApprovals` | Named human approval evidence is explicit |
+| missing provenance | `authorship` | Responsible humans and material AI assistance are declared |
+| no replacement metadata | `supersedes`, `replacedBy` | Optional and used only for explicit replacement relationships |
 
-## Identifier decisions
+## Resolved identifiers
 
-| Concept         | Baseline grammar          | Example                       |
-| --------------- | ------------------------- | ----------------------------- |
-| Content ID      | dotted namespace          | `scene.lantern-shore.arrival` |
-| Slug            | kebab-case                | `lantern-shore-arrival`       |
-| Story state     | dotted namespace          | `state.met-aster`             |
-| Action          | dotted namespace          | `action.begin-prologue`       |
-| Canon reference | `canon.` dotted namespace | `canon.character.aster`       |
-| Event name      | deferred runtime decision | no Sprint 2 enforcement       |
+| Concept | Grammar | Example |
+| --- | --- | --- |
+| Content ID | lowercase dotted namespace; segments may contain hyphens | `scene.lantern-shore.arrival` |
+| Slug | lowercase kebab-case | `lantern-shore-arrival` |
+| Story state | dotted namespace | `state.met-aster` |
+| Action | dotted namespace | `action.begin-prologue` |
+| Requirement | dotted namespace | `requirement.confirm-observation` |
+| Purpose | dotted namespace | `purpose.core-chronicle` |
+| Canon reference | `canon.` dotted namespace | `canon.character.aster` |
+| Event name | deferred runtime decision | no Sprint 2 transport commitment |
 
-## Character record
+## Lifecycle resolution
 
-### Retain
+The branch now separates:
+
+- `reviewState` — source authoring and review
+- `capabilityStatus` — whether the represented capability is live, experimental, planned, long-horizon, or deferred
+- publication — membership in an identified immutable content release
+- retirement — source eligibility for future publication
+- supersession and replacement — explicit prospective relationships
+- recall — removal of an unsafe or materially incorrect published release from further distribution
+
+The operational rules are defined in `docs/governance/content-governance.md`.
+
+## Content-kind reconciliation
+
+### Character
+
+Resolved fields include:
 
 - `slug`
+- `displayName`
 - `role`
 - `values`
 - `voiceRules`
 - `prohibitedBehaviors`
 - `zoneIds`
 
-### Add
+Character content does not create medical, consent, review, or governing authority.
 
-- `displayName`
-- reconciled common metadata
+### Zone
 
-### Remove or avoid
-
-- no additional character authority fields beyond approved canon and safety roles
-
-## Zone record
-
-### Retain
+Resolved fields include:
 
 - `slug`
 - `guideCharacterIds`
 - `publicPurpose`
 - `inWorldPurpose`
+- `playerValue`
 - `sceneIds`
 - `accessibilityNotes`
+- structured `unlock`
 
-### Rename
+The required `playerValue` keeps world-building connected to a concrete benefit for the person using the experience.
 
-- `unlockRuleIds` becomes a structured `unlock` object
+### Dialogue
 
-### Add
-
-- `playerValue`
-- `systemIds`
-- reconciled common metadata
-
-The `playerValue` requirement keeps zone design connected to the project’s core objective rather than allowing world-building without a player-facing purpose.
-
-## Dialogue record
-
-### Retain
+Resolved fields include:
 
 - `speakerId`
 - `text`
-- `plainLanguageText`
+- optional `plainLanguageText`
 - `emotionalIntent`
 
-### Add
+Dialogue remains authored presentation content. It does not independently grant permissions, rewards, Chronicle mutations, or canon changes.
 
-- reconciled common metadata
+### Scene and choice
 
-Dialogue remains authored content. It does not independently grant rewards, permissions, or Chronicle mutations.
-
-## Scene record
-
-### Retain
-
-- `zoneId`
-- `speakerIds`
-- `dialogueIds`
-- `choices`
-- `grantsStateIds`
-
-### Rename
-
-- `prerequisiteIds` becomes `prerequisiteStateIds`
-
-### Add
-
-- `sequence`
-- explicit choice `disposition`
-- visible `consequenceText`
-- reconciled common metadata
-
-### Choice disposition
-
-Each choice uses one of:
+The old boolean refusal marker was replaced by explicit choice disposition:
 
 - `continue`
 - `defer`
 - `refuse`
 - `exit`
 
-The current boolean `refusal` field should be replaced because it cannot distinguish defer, refuse, and exit.
+Choices also declare visible consequence text and an explicit next scene or action when applicable. Interactive scenes require a defer, refuse, or exit route.
 
-## Quest record
+### Quest
 
-The existing TypeScript quest contract and test fixture are not aligned with the frozen Gameplay Foundation. The reconciled quest record must include the fuller incentive contract.
+The reconciled quest contract now includes:
 
-### Required identity and meaning
+- public and in-world titles
+- connected product loop
+- player value
+- progress dimension
+- structured requirements
+- deterministic completion rule
+- approved reward types
+- estimated time and accessibility variants
+- data categories and permission purposes
+- safety classification
+- feedback and narrative consequence
+- decline and deferral paths
+- analytics hypothesis
 
-- `publicTitle`
-- `inWorldTitle`
-- `zoneId`
-- `guideCharacterId`
-- `connectedLoop`
-- `playerValue`
-- `objective`
+The reward model allows:
 
-### Required incentive structure
+- progress in Vitality, Chronicle, Fellowship, or Renown
+- non-cash Laurels
+- restoration
+- story unlocks
+- clues
 
-- `progressDimension`
-- `requirements`
-- `completionRule`
-- `rewards`
-- `feedback`
-- `narrativeConsequence`
+Cash and compensation are excluded from quest rewards. Permission review may be a requirement; granting broader permission may not be rewarded merely because it is granted.
 
-### Required agency and burden structure
+### Lesson
 
-- `estimatedMinutes`
-- `accessibilityVariants`
-- `dataCategories`
-- `permissionPurposeIds`
-- `safetyClassification`
-- `canDecline: true`
-- `deferralBehavior`
-- `refusalBehavior`
-
-### Required review and learning structure
-
-- `analyticsHypothesis`
-- reconciled common metadata
-
-### Reward constraints
-
-- `progress` rewards target Vitality, Chronicle, Fellowship, or Renown
-- `laurel` rewards are non-cash
-- `restoration`, `story-unlock`, and `clue` rewards target explicit IDs
-- compensation is excluded from the quest reward model
-- permission grants are excluded from completion requirements and rewards
-
-## Lesson record
-
-### Retain
+Resolved fields include:
 
 - `learningObjectives`
 - `body`
 - `plainLanguageBody`
-- `claims`
+- structured claims
+- evidence classification
+- source references
 - `comprehensionPrompt`
 
-### Move
+Review domains are expressed through the common review model.
 
-- `reviewDomains` is represented through common `reviewRequirements`
+### Notification
 
-### Add
+Resolved fields include:
 
-- reconciled common metadata
-
-## Notification record
-
-### Retain
-
-- `channel`
-- `purpose`
-- `body`
-- `destinationRoute`
-- `urgency`
-- `expiresAfterMinutes`
-- `mayInterrupt`
+- channel and purpose
+- body and destination
+- urgency and expiration
+- interruption behavior
 - `shameFree: true`
 - `pressureFreeAlternative`
 
-### Add
+The canonical return notification demonstrates the Broken Lantern principle: return is invited without punishment, urgency, or loss of core access.
 
-- reconciled common metadata
+## Contract surfaces
 
-## Validator reconciliation
+The following now target the same `0.1.0` contract:
 
-### Repository validator
+- `docs/product/content-schema-baseline.md`
+- `packages/content-schema/src/types.ts`
+- `packages/content-schema/src/validate.ts`
+- `packages/content-schema/src/validate-content.mjs`
+- `packages/content-schema/schema/content.schema.json`
+- reusable validator tests
+- canonical content examples
 
-`validate-content.mjs` currently matches the older examples better than the TypeScript validator, but it uses obsolete metadata names and mixes publication with review state.
+The repository validator is the authoritative executable MVV gate for committed content. The TypeScript validator is the reusable record-level validator. The JSON Schema is the authoring-tool export.
 
-It should be revised to target this baseline and remain the initial authoritative executable MVV validator.
+`graph.ts` remains exploratory and outside the package export. It does not redefine the baseline record model.
 
-### TypeScript validator
+## Canonical examples
 
-`validate.ts` currently targets `1.0.0`, rejects dotted IDs, uses conflicting quest fields, and validates only part of the common metadata.
+Sprint 2 now includes examples for all seven content kinds:
 
-It should not be treated as authoritative until it implements the same contract as the repository validator.
+- character — Aster
+- zone — Lantern Shore
+- scene — Lantern Shore arrival
+- dialogue — Aster’s first-light dialogue
+- quest — The First Reflection
+- lesson — The Open Hand
+- notification — The Lantern Is Still Here
 
-### TypeScript types
+The examples remain in specialist review rather than claiming approvals that have not occurred.
 
-`types.ts` contains useful candidate structures but must be revised to:
+## Validation evidence
 
-- use `0.1.0`
-- remove `FoundationStatus` from ordinary content records
-- adopt the review requirement and approval model
-- adopt the complete quest incentive contract
-- distinguish choice dispositions
-- align all fields with canonical examples and validator behavior
+The separated MVV workflow exposes:
 
-### Graph types
+- formatting
+- repository policy
+- content validation
+- lint
+- typecheck
+- tests
+- DCO
 
-`graph.ts` remains exploratory and outside the package export. It should not influence the baseline record model during Sprint 2 cleanup.
+Before the final completion record is frozen, the current branch head must pass every check after the JSON Schema and governance additions.
 
-## Migration order
+## Remaining implementation work
 
-1. Update TypeScript contracts to match the baseline specification.
-2. Update canonical JSON records to use reconciled metadata.
-3. Add one canonical quest record that demonstrates the incentive contract.
-4. Add lesson and notification examples.
-5. Update the repository validator.
-6. Update the TypeScript validator and tests.
-7. Add dependency and direct-reference validation.
-8. Format the branch and run all MVV checks.
-9. Update the PR body with actual passing evidence.
+The following are outside the reconciliation itself:
 
-## Hold point
+- stable `1.0.0` and migration guarantees
+- release-manifest schema
+- runtime content compatibility
+- Story Studio implementation
+- content-pack distribution
+- localization release coordination
+- signed release and recall tooling
 
-Do not create runtime, database, event, service, or Story Studio implementation contracts while this migration is incomplete.
+These decisions must preserve the baseline contract and incentive invariants.
+
+## Hold point satisfied
+
+The schema, examples, validators, tests, JSON Schema export, and governance terminology are now internally aligned. Runtime, database, event, service, and Story Studio implementation decisions remain deferred to later sprints.
