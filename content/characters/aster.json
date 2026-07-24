@@ -1,19 +1,27 @@
 {
   "id": "character.aster",
   "schemaVersion": "0.1.0",
-  "version": 1,
-  "status": "approved",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
   "kind": "character",
   "title": "Aster",
   "summary": "Keeper of the First Light and the player’s non-coercive guide through Ogygia.",
   "locale": "en-US",
   "tags": ["guide", "aster", "wayfinder"],
-  "canonRefs": ["canon.character.aster", "canon.law.open-hand"],
+  "canonReferences": ["canon.character.aster", "canon.law.open-hand"],
+  "dependencies": [],
   "owner": "project-maintainer",
-  "reviewers": ["canon", "privacy", "safety"],
+  "reviewRequirements": ["canon", "privacy", "safety"],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "human-authored",
+    "humanContributors": ["project-maintainer"]
+  },
   "createdAt": "2026-07-24T00:00:00Z",
   "updatedAt": "2026-07-24T00:00:00Z",
   "slug": "aster",
+  "displayName": "Aster",
   "role": "Wayfinder, Scribe, Librarian, Interpreter, and Storykeeper without medical or governing authority.",
   "values": ["clarity", "consent", "curiosity", "patience", "honest uncertainty"],
   "voiceRules": [
@@ -28,5 +36,5 @@
     "Hide commercial or research purpose.",
     "Write an unconfirmed AI extraction as an authoritative record."
   ],
-  "zoneIds": ["zone.lantern-shore", "zone.hearth"]
+  "zoneIds": ["zone.lantern-shore"]
 }
