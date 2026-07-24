@@ -42,26 +42,27 @@ The baseline protects:
 ### Content contract
 
 - authoritative pre-stable schema version `0.1.0`
-- dotted namespaced content identifiers
+- strict dotted namespaced identifiers
 - kebab-case slugs
-- common metadata and authorship provenance
+- common metadata and truthful authorship provenance
 - explicit review requirements and named review approvals
 - separation of source review, capability status, publication, retirement, replacement, recall, and rollback
 - TypeScript record contracts
-- reusable record-level validator
-- repository-wide content validator
+- one reusable record-level validator used by the authoritative repository content gate
+- repository-wide duplicate and direct-reference validation
 - JSON Schema draft 2020-12 authoring export
 
 ### Incentive and agency contract
 
 - connected-loop and player-value declarations for quests
-- structured requirements
-- deterministic completion rules
-- approved reward-type allowlist
+- allowlisted structured requirement types
+- deterministic completion rules and requirement references
+- approved reward-type and reward-shape validation
 - explicit progress dimensions
 - no cash or compensation quest reward
 - permission review without rewarded permission granting
 - scene choice dispositions for continue, defer, refuse, and exit
+- required target for continue choices
 - shame-free notification requirements
 
 ### Canonical examples
@@ -76,7 +77,7 @@ Sprint 2 includes one canonical example for every supported content kind:
 - lesson — The Open Hand
 - notification — The Lantern Is Still Here
 
-The examples remain in `specialist-review`. No absent specialist approval is represented as complete.
+The examples remain in `specialist-review`. No absent specialist approval is represented as complete. Material AI assistance is recorded with a responsible human contributor and the assisting tool.
 
 ### Governance and contributor experience
 
@@ -89,6 +90,7 @@ The examples remain in `specialist-review`. No absent specialist approval is rep
 - minimum viable validation policy
 - separate CI checks so formatting cannot conceal substantive failures
 - contributor-facing formatting-fix artifact
+- truthful transitional DCO certification with final squash-commit sign-off
 
 ## Reconciliation decisions
 
@@ -108,18 +110,34 @@ The following conflicts were resolved:
 
 The detailed record is maintained in `docs/product/content-schema-migration-map.md`.
 
+## Maintainer review remediation
+
+The first formal maintainer review identified three merge blockers:
+
+1. the repository content gate enforced less than the declared reusable contract;
+2. identifier validation allowed bare, non-namespaced values;
+3. the transitional DCO check verified an inaccurate per-commit claim.
+
+The remediation:
+
+- makes `pnpm content:check` build and invoke the reusable TypeScript validator before repository-wide reference checks;
+- validates connected loops, progress dimensions, requirement types, completion references, review evidence, reward types, reward shapes, scene agency, and authorship provenance;
+- requires at least one dot in content, state, action, purpose, requirement, and reward-target identifiers in both the validator and JSON Schema;
+- replaces the inaccurate checkbox with a truthful pull-request-level DCO certification and requires a `Signed-off-by` trailer on the squash-merge commit;
+- adds regression tests for every blocker and adjacent incentive invariants.
+
 ## Validation evidence
 
-The completed Sprint 2 baseline artifacts were validated at commit:
+The completed remediation artifacts were validated at commit:
 
 ```text
-4634065c289b6a6f307b98c993232a1d60fbc914
+8516dc64f2833801fbd6b74ca93938c603c6ee72
 ```
 
 GitHub Actions evidence:
 
-- CI run `30108560211`, run number `84`: success
-- DCO Attestation run `30108560154`, run number `67`: success
+- CI run `30113400565`, run number `107`: success
+- DCO Attestation run `30113400578`, run number `93`: success
 
 The CI run reported success for:
 
@@ -141,7 +159,7 @@ The following remain open:
 - named editorial review where required
 - named canon review where required
 - qualified privacy, safety, accessibility, clinical, security, research-governance, or economic-claims review where required
-- maintainer review of the full pull-request diff
+- follow-up maintainer review of the remediated pull-request diff
 - merge approval
 
 Until qualified reviewers exist, affected records remain in review rather than implying approval.
@@ -179,6 +197,7 @@ Sprint 2 is complete when:
 - final CI and DCO pass on the pull-request head
 - the pull-request description matches the final diff
 - no unresolved contradiction with frozen foundations remains
+- the remediation receives follow-up maintainer review
 - the pull request is marked ready for review
 
 Merge remains a separate maintainer decision.
