@@ -1,0 +1,48 @@
+{
+  "id": "lesson.open-hand",
+  "schemaVersion": "0.1.0",
+  "revision": 1,
+  "reviewState": "specialist-review",
+  "capabilityStatus": "planned",
+  "kind": "lesson",
+  "title": "The Open Hand",
+  "summary": "A plain-language lesson about consent, refusal, and purpose-specific permission in Calypso’s Promise.",
+  "locale": "en-US",
+  "tags": ["consent", "seven-laws", "plain-language"],
+  "canonReferences": ["canon.law.open-hand", "canon.law.right-of-key"],
+  "dependencies": ["zone.lantern-shore", "character.aster"],
+  "owner": "project-maintainer",
+  "reviewRequirements": [
+    "editorial",
+    "canon",
+    "privacy",
+    "accessibility"
+  ],
+  "reviewApprovals": [],
+  "authorship": {
+    "mode": "human-authored",
+    "humanContributors": ["project-maintainer"]
+  },
+  "createdAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-24T00:00:00Z",
+  "learningObjectives": [
+    "Explain that permission should be specific to a purpose.",
+    "Recognize that refusal should not cause punishment or loss of core access.",
+    "Distinguish reviewing a permission from granting it."
+  ],
+  "body": "The Law of the Open Hand means that a choice is only meaningful when the purpose is clear and refusal remains real. A person may inspect a permission, ask questions, decline it, or withdraw it later according to the documented rules. Progress must not depend on granting broader access than the current task requires.",
+  "plainLanguageBody": "You should be told what a permission is for before choosing. You may say no without losing the core experience. Looking at a permission is not the same as agreeing to it.",
+  "claims": [
+    {
+      "text": "Purpose-specific permission is a product rule of Calypso’s Promise.",
+      "evidenceClass": "descriptive",
+      "sourceReferences": ["docs/frozen/product-constitution.md"]
+    },
+    {
+      "text": "The project prohibits rewarding broader consent merely because it is broader.",
+      "evidenceClass": "descriptive",
+      "sourceReferences": ["docs/frozen/product-constitution.md"]
+    }
+  ],
+  "comprehensionPrompt": "Which action shows a meaningful choice: reviewing a permission and deciding freely, or receiving extra progress only for accepting it?"
+}
