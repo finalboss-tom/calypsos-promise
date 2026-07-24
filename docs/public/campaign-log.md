@@ -177,9 +177,9 @@ State the belief before execution.
 
 #### Execution log
 
-| Date | Action | Channel | Public asset | Cost | Observation | Decision |
-|---|---|---|---|---:|---|---|
-| YYYY-MM-DD |  |  |  | $0 |  |  |
+| Date       | Action | Channel | Public asset | Cost | Observation | Decision |
+| ---------- | ------ | ------- | ------------ | ---: | ----------- | -------- |
+| YYYY-MM-DD |        |         |              |   $0 |             |          |
 
 #### Results
 
@@ -230,9 +230,9 @@ List the message, asset, channel, process, product, or policy changes resulting 
 
 #### Public correction history
 
-| Date | Original claim or error | Correction | Affected surfaces | Completed |
-|---|---|---|---|---|
-| YYYY-MM-DD |  |  |  | No |
+| Date       | Original claim or error | Correction | Affected surfaces | Completed |
+| ---------- | ----------------------- | ---------- | ----------------- | --------- |
+| YYYY-MM-DD |                         |            |                   | No        |
 
 ---
 
@@ -304,15 +304,15 @@ Experiments involving deceptive consent, health fear, shame, false scarcity, hid
 
 #### Costs
 
-| Category | Amount | Notes |
-|---|---:|---|
-| Creative production | $0 |  |
-| Paid distribution | $0 |  |
-| Contractors | $0 |  |
-| Events and travel | $0 |  |
-| Software and services | $0 |  |
-| Other | $0 |  |
-| **Total cash cost** | **$0** |  |
+| Category              | Amount | Notes |
+| --------------------- | -----: | ----- |
+| Creative production   |     $0 |       |
+| Paid distribution     |     $0 |       |
+| Contractors           |     $0 |       |
+| Events and travel     |     $0 |       |
+| Software and services |     $0 |       |
+| Other                 |     $0 |       |
+| **Total cash cost**   | **$0** |       |
 
 #### Estimated non-cash effort
 
