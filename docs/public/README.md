@@ -4,7 +4,7 @@
 
 This directory contains the campaign, founder-story, public-domain, provenance, public-trust, marketing, public-relations, and campaign-operations materials that translate the project’s frozen foundations into public communication.
 
-These documents do not override the Product Constitution, World and Lore Canon, Vision, Governance, Roadmap, or accepted decision records.
+These documents do not override the Product Constitution, World and Lore Canon, Vision, Governance, Roadmap, accepted decision records, or the public-information boundary.
 
 ## Canonical documents
 
