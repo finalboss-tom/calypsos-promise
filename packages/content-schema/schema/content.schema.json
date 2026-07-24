@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://calypsospromise.org/schemas/content/0.1.0/content.schema.json",
   "title": "Calypso’s Promise Content Record",
-  "description": "Pre-stable Sprint 2 schema for versioned narrative, educational, quest, and notification content.",
+  "description": "Pre-stable Sprint 2 authoring schema for narrative, educational, quest, and notification content.",
   "oneOf": [
     { "$ref": "#/$defs/character" },
     { "$ref": "#/$defs/zone" },
@@ -15,25 +15,11 @@
   "$defs": {
     "contentId": {
       "type": "string",
-      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)+$"
     },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
-    },
-    "reviewState": {
-      "type": "string",
-      "enum": [
-        "draft",
-        "editorial-review",
-        "specialist-review",
-        "approved",
-        "retired"
-      ]
-    },
-    "capabilityStatus": {
-      "type": "string",
-      "enum": ["live", "experimental", "planned", "long-horizon", "deferred"]
     },
     "reviewDomain": {
       "type": "string",
@@ -55,21 +41,30 @@
       "required": ["mode", "humanContributors"],
       "properties": {
         "mode": {
-          "type": "string",
           "enum": ["human-authored", "ai-assisted-reviewed"]
         },
         "humanContributors": {
           "type": "array",
           "minItems": 1,
-          "uniqueItems": true,
           "items": { "type": "string", "minLength": 1 }
         },
         "aiTools": {
           "type": "array",
-          "uniqueItems": true,
           "items": { "type": "string", "minLength": 1 }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["mode"],
+            "properties": { "mode": { "const": "ai-assisted-reviewed" } }
+          },
+          "then": {
+            "required": ["aiTools"],
+            "properties": { "aiTools": { "minItems": 1 } }
+          }
+        }
+      ]
     },
     "reviewApproval": {
       "type": "object",
@@ -82,24 +77,7 @@
         "notes": { "type": "string" }
       }
     },
-    "spoilerGate": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "minimumTide": { "type": "integer", "minimum": 1 },
-        "requiredClueIds": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": { "$ref": "#/$defs/contentId" }
-        },
-        "requiredContentIds": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": { "$ref": "#/$defs/contentId" }
-        }
-      }
-    },
-    "baseContent": {
+    "base": {
       "type": "object",
       "required": [
         "id",
@@ -125,10 +103,19 @@
         "id": { "$ref": "#/$defs/contentId" },
         "schemaVersion": { "const": "0.1.0" },
         "revision": { "type": "integer", "minimum": 1 },
-        "reviewState": { "$ref": "#/$defs/reviewState" },
-        "capabilityStatus": { "$ref": "#/$defs/capabilityStatus" },
+        "reviewState": {
+          "enum": [
+            "draft",
+            "editorial-review",
+            "specialist-review",
+            "approved",
+            "retired"
+          ]
+        },
+        "capabilityStatus": {
+          "enum": ["live", "experimental", "planned", "long-horizon", "deferred"]
+        },
         "kind": {
-          "type": "string",
           "enum": [
             "character",
             "zone",
@@ -144,20 +131,17 @@
         "locale": { "type": "string", "minLength": 2 },
         "tags": {
           "type": "array",
-          "uniqueItems": true,
           "items": { "type": "string", "minLength": 1 }
         },
         "canonReferences": {
           "type": "array",
-          "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^canon\\.[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+            "pattern": "^canon\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
           }
         },
         "dependencies": {
           "type": "array",
-          "uniqueItems": true,
           "items": { "$ref": "#/$defs/contentId" }
         },
         "owner": { "type": "string", "minLength": 1 },
@@ -174,14 +158,38 @@
         "createdAt": { "type": "string", "format": "date-time" },
         "updatedAt": { "type": "string", "format": "date-time" },
         "historicalContext": { "type": "boolean" },
-        "spoilerGate": { "$ref": "#/$defs/spoilerGate" },
         "supersedes": { "$ref": "#/$defs/contentId" },
-        "replacedBy": { "$ref": "#/$defs/contentId" }
-      }
+        "replacedBy": { "$ref": "#/$defs/contentId" },
+        "spoilerGate": {
+          "type": "object",
+          "properties": {
+            "minimumTide": { "type": "integer", "minimum": 1 },
+            "requiredClueIds": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/contentId" }
+            },
+            "requiredContentIds": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/contentId" }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["reviewState"],
+            "properties": { "reviewState": { "const": "approved" } }
+          },
+          "then": {
+            "properties": { "reviewApprovals": { "minItems": 1 } }
+          }
+        }
+      ]
     },
     "character": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -198,24 +206,11 @@
             "slug": { "$ref": "#/$defs/slug" },
             "displayName": { "type": "string", "minLength": 1 },
             "role": { "type": "string", "minLength": 1 },
-            "values": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string", "minLength": 1 }
-            },
-            "voiceRules": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string", "minLength": 1 }
-            },
-            "prohibitedBehaviors": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string", "minLength": 1 }
-            },
+            "values": { "type": "array", "minItems": 1 },
+            "voiceRules": { "type": "array", "minItems": 1 },
+            "prohibitedBehaviors": { "type": "array", "minItems": 1 },
             "zoneIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             }
           }
@@ -225,7 +220,7 @@
     },
     "zone": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -243,7 +238,6 @@
             "slug": { "$ref": "#/$defs/slug" },
             "guideCharacterIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
             "publicPurpose": { "type": "string", "minLength": 1 },
@@ -251,25 +245,17 @@
             "playerValue": { "type": "string", "minLength": 1 },
             "sceneIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
-            "accessibilityNotes": {
-              "type": "array",
-              "items": { "type": "string", "minLength": 1 }
-            },
+            "accessibilityNotes": { "type": "array" },
             "unlock": {
               "type": "object",
               "additionalProperties": false,
               "required": ["mode", "requiredContentIds"],
               "properties": {
-                "mode": {
-                  "type": "string",
-                  "enum": ["public", "story", "capability-gated"]
-                },
+                "mode": { "enum": ["public", "story", "capability-gated"] },
                 "requiredContentIds": {
                   "type": "array",
-                  "uniqueItems": true,
                   "items": { "$ref": "#/$defs/contentId" }
                 }
               }
@@ -287,17 +273,28 @@
         "id": { "$ref": "#/$defs/contentId" },
         "label": { "type": "string", "minLength": 1 },
         "consequenceText": { "type": "string", "minLength": 1 },
-        "disposition": {
-          "type": "string",
-          "enum": ["continue", "defer", "refuse", "exit"]
-        },
+        "disposition": { "enum": ["continue", "defer", "refuse", "exit"] },
         "nextSceneId": { "$ref": "#/$defs/contentId" },
         "actionId": { "$ref": "#/$defs/contentId" }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["disposition"],
+            "properties": { "disposition": { "const": "continue" } }
+          },
+          "then": {
+            "anyOf": [
+              { "required": ["nextSceneId"] },
+              { "required": ["actionId"] }
+            ]
+          }
+        }
+      ]
     },
     "scene": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -315,12 +312,10 @@
             "sequence": { "type": "integer", "minimum": 0 },
             "speakerIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
             "dialogueIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
             "choices": {
@@ -328,7 +323,6 @@
               "minItems": 1,
               "items": { "$ref": "#/$defs/sceneChoice" },
               "contains": {
-                "type": "object",
                 "required": ["disposition"],
                 "properties": {
                   "disposition": { "enum": ["defer", "refuse", "exit"] }
@@ -337,12 +331,10 @@
             },
             "prerequisiteStateIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
             "grantsStateIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             }
           }
@@ -352,7 +344,7 @@
     },
     "dialogue": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": ["speakerId", "text", "emotionalIntent"],
@@ -374,7 +366,6 @@
       "properties": {
         "id": { "$ref": "#/$defs/contentId" },
         "type": {
-          "type": "string",
           "enum": [
             "player-confirmation",
             "chronicle-record",
@@ -391,20 +382,6 @@
         }
       }
     },
-    "questCompletionRule": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["mode", "requirementIds"],
-      "properties": {
-        "mode": { "type": "string", "enum": ["all", "any"] },
-        "requirementIds": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": { "$ref": "#/$defs/contentId" }
-        }
-      }
-    },
     "questReward": {
       "oneOf": [
         {
@@ -413,10 +390,7 @@
           "required": ["type", "dimension", "amount"],
           "properties": {
             "type": { "const": "progress" },
-            "dimension": {
-              "type": "string",
-              "enum": ["vitality", "chronicle", "fellowship", "renown"]
-            },
+            "dimension": { "enum": ["vitality", "chronicle", "fellowship", "renown"] },
             "amount": { "type": "number", "exclusiveMinimum": 0 }
           }
         },
@@ -435,43 +409,15 @@
           "additionalProperties": false,
           "required": ["type", "targetId"],
           "properties": {
-            "type": { "const": "restoration" },
-            "targetId": { "$ref": "#/$defs/contentId" }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["type", "targetId"],
-          "properties": {
-            "type": { "const": "story-unlock" },
-            "targetId": { "$ref": "#/$defs/contentId" }
-          }
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["type", "targetId"],
-          "properties": {
-            "type": { "const": "clue" },
+            "type": { "enum": ["restoration", "story-unlock", "clue"] },
             "targetId": { "$ref": "#/$defs/contentId" }
           }
         }
       ]
     },
-    "accessibilityVariant": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["id", "label", "description"],
-      "properties": {
-        "id": { "$ref": "#/$defs/contentId" },
-        "label": { "type": "string", "minLength": 1 },
-        "description": { "type": "string", "minLength": 1 }
-      }
-    },
     "quest": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -506,7 +452,6 @@
             "zoneId": { "$ref": "#/$defs/contentId" },
             "guideCharacterId": { "$ref": "#/$defs/contentId" },
             "connectedLoop": {
-              "type": "string",
               "enum": [
                 "build-chronicle",
                 "improve-understanding",
@@ -516,7 +461,6 @@
             "playerValue": { "type": "string", "minLength": 1 },
             "objective": { "type": "string", "minLength": 1 },
             "progressDimension": {
-              "type": "string",
               "enum": ["vitality", "chronicle", "fellowship", "renown"]
             },
             "requirements": {
@@ -524,28 +468,44 @@
               "minItems": 1,
               "items": { "$ref": "#/$defs/questRequirement" }
             },
-            "completionRule": { "$ref": "#/$defs/questCompletionRule" },
+            "completionRule": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["mode", "requirementIds"],
+              "properties": {
+                "mode": { "enum": ["all", "any"] },
+                "requirementIds": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "$ref": "#/$defs/contentId" }
+                }
+              }
+            },
             "rewards": {
               "type": "array",
+              "minItems": 1,
               "items": { "$ref": "#/$defs/questReward" }
             },
             "estimatedMinutes": { "type": "number", "exclusiveMinimum": 0 },
             "accessibilityVariants": {
               "type": "array",
-              "items": { "$ref": "#/$defs/accessibilityVariant" }
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "label", "description"],
+                "properties": {
+                  "id": { "$ref": "#/$defs/contentId" },
+                  "label": { "type": "string", "minLength": 1 },
+                  "description": { "type": "string", "minLength": 1 }
+                }
+              }
             },
-            "dataCategories": {
-              "type": "array",
-              "uniqueItems": true,
-              "items": { "type": "string", "minLength": 1 }
-            },
+            "dataCategories": { "type": "array" },
             "permissionPurposeIds": {
               "type": "array",
-              "uniqueItems": true,
               "items": { "$ref": "#/$defs/contentId" }
             },
             "safetyClassification": {
-              "type": "string",
               "enum": ["general", "sensitive", "specialist-review-required"]
             },
             "feedback": { "type": "string", "minLength": 1 },
@@ -560,27 +520,9 @@
       ],
       "unevaluatedProperties": false
     },
-    "lessonClaim": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["text", "evidenceClass", "sourceReferences"],
-      "properties": {
-        "text": { "type": "string", "minLength": 1 },
-        "evidenceClass": {
-          "type": "string",
-          "enum": ["general-education", "descriptive", "uncertain"]
-        },
-        "sourceReferences": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
-        }
-      }
-    },
     "lesson": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -592,16 +534,23 @@
           ],
           "properties": {
             "kind": { "const": "lesson" },
-            "learningObjectives": {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string", "minLength": 1 }
-            },
+            "learningObjectives": { "type": "array", "minItems": 1 },
             "body": { "type": "string", "minLength": 1 },
             "plainLanguageBody": { "type": "string", "minLength": 1 },
             "claims": {
               "type": "array",
-              "items": { "$ref": "#/$defs/lessonClaim" }
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["text", "evidenceClass", "sourceReferences"],
+                "properties": {
+                  "text": { "type": "string", "minLength": 1 },
+                  "evidenceClass": {
+                    "enum": ["general-education", "descriptive", "uncertain"]
+                  },
+                  "sourceReferences": { "type": "array", "minItems": 1 }
+                }
+              }
             },
             "comprehensionPrompt": { "type": "string", "minLength": 1 }
           }
@@ -611,7 +560,7 @@
     },
     "notification": {
       "allOf": [
-        { "$ref": "#/$defs/baseContent" },
+        { "$ref": "#/$defs/base" },
         {
           "type": "object",
           "required": [
@@ -626,20 +575,11 @@
           ],
           "properties": {
             "kind": { "const": "notification" },
-            "channel": {
-              "type": "string",
-              "enum": ["push", "email", "in-app"]
-            },
-            "purpose": {
-              "type": "string",
-              "enum": ["quest", "story", "permission", "safety", "system"]
-            },
+            "channel": { "enum": ["push", "email", "in-app"] },
+            "purpose": { "enum": ["quest", "story", "permission", "safety", "system"] },
             "body": { "type": "string", "minLength": 1 },
             "destinationRoute": { "type": "string", "minLength": 1 },
-            "urgency": {
-              "type": "string",
-              "enum": ["low", "normal", "time-sensitive"]
-            },
+            "urgency": { "enum": ["low", "normal", "time-sensitive"] },
             "expiresAfterMinutes": { "type": "number", "exclusiveMinimum": 0 },
             "mayInterrupt": { "type": "boolean" },
             "shameFree": { "const": true },
