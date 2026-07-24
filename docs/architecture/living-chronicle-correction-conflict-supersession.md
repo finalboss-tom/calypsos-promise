@@ -324,21 +324,21 @@ A preference decision conceptually records:
 
 ## Correction decision matrix
 
-| Situation | Required representation | What remains visible |
-| --- | --- | --- |
-| Typographical metadata fix with no semantic effect | revision | prior revision according to version policy |
-| Added context that does not make the prior claim wrong | amendment | prior record, amendment relationship, new context |
-| Wrong value, unit, time, subject, or mapping | correction | prior record, successor, reason, actor, provenance |
-| Newer state replaces an older still-valid state | supersession | both records and supersession relationship |
-| Claim withdrawn as unreliable | retraction | prior claim existence, retraction reason, source state |
-| Contract rule makes record unusable | invalidation | record, rule, scope, trigger, recomputation status |
-| Valid sources disagree | conflict | all participating records and source chains |
-| Records may represent the same claim | duplicate candidate | all records and detection evidence |
-| Human or governed process confirms sameness | confirmed duplicate | all records, decision, preference, reversibility |
-| Composite representation is created | merge | all inputs, merge policy, output, unresolved differences |
-| Merge decision is reversed | unmerge | original records, merge and unmerge history |
-| One record is shown by default | preferred presentation | alternatives, reason, scope, reversal path |
-| Person requests erasure | deletion lifecycle | deletion request, scope, processing, exceptions, evidence |
+| Situation                                              | Required representation | What remains visible                                      |
+| ------------------------------------------------------ | ----------------------- | --------------------------------------------------------- |
+| Typographical metadata fix with no semantic effect     | revision                | prior revision according to version policy                |
+| Added context that does not make the prior claim wrong | amendment               | prior record, amendment relationship, new context         |
+| Wrong value, unit, time, subject, or mapping           | correction              | prior record, successor, reason, actor, provenance        |
+| Newer state replaces an older still-valid state        | supersession            | both records and supersession relationship                |
+| Claim withdrawn as unreliable                          | retraction              | prior claim existence, retraction reason, source state    |
+| Contract rule makes record unusable                    | invalidation            | record, rule, scope, trigger, recomputation status        |
+| Valid sources disagree                                 | conflict                | all participating records and source chains               |
+| Records may represent the same claim                   | duplicate candidate     | all records and detection evidence                        |
+| Human or governed process confirms sameness            | confirmed duplicate     | all records, decision, preference, reversibility          |
+| Composite representation is created                    | merge                   | all inputs, merge policy, output, unresolved differences  |
+| Merge decision is reversed                             | unmerge                 | original records, merge and unmerge history               |
+| One record is shown by default                         | preferred presentation  | alternatives, reason, scope, reversal path                |
+| Person requests erasure                                | deletion lifecycle      | deletion request, scope, processing, exceptions, evidence |
 
 ## Correction types
 
