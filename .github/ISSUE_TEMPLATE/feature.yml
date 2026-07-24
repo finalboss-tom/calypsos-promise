@@ -1,20 +1,51 @@
-name: Feature proposal
-description: Propose a product, platform, game, lore, or contributor improvement
-title: "[Feature]: "
+name: Product feedback or feature proposal
+description: Report public-safe friction or propose a product, platform, game, lore, governance, or contributor improvement
+title: "[Feedback]: "
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Calypso’s Promise.
+
+        This issue is public and may be copied permanently. Do not include real health information, account details, contact information, private correspondence, production logs or payloads, credentials, vulnerability details, conduct evidence, or screenshots and attachments containing protected information.
+
+        Use a synthetic or explicitly public example. Security, privacy, account-specific, conduct, and person-specific health matters require a private path rather than a GitHub issue.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Feedback type
+      description: What kind of public work item is this?
+      options:
+        - Defect or unexpected behavior
+        - Product or feature proposal
+        - Accessibility barrier
+        - Documentation or contributor experience
+        - Content, lore, or narrative improvement
+        - Governance or institutional proposal
+        - Performance or reliability
+        - Other public-safe improvement
+    validations:
+      required: true
+
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What human or contributor problem should this solve?
+      label: Problem or opportunity
+      description: Describe the human or contributor problem. Separate the problem from any preferred solution.
+      placeholder: What is difficult, missing, confusing, unsafe, inaccessible, or unnecessarily costly?
     validations:
       required: true
+
   - type: textarea
     id: outcome
     attributes:
       label: Desired outcome
+      description: What observable result would make this meaningfully better?
+      placeholder: Describe the outcome, not only the implementation.
     validations:
       required: true
+
   - type: dropdown
     id: area
     attributes:
@@ -30,16 +61,64 @@ body:
         - Lore / content
         - Open-source tooling
         - Accessibility
+        - Governance / community
         - Research (deferred)
+        - Other / unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public-safe evidence or reproduction
+      description: Provide synthetic steps, public sources, or other non-sensitive evidence. Leave out protected details.
+      placeholder: Steps, expected behavior, observed behavior, frequency, public references, or a synthetic example.
+
+  - type: dropdown
+    id: affectedness
+    attributes:
+      label: Relationship to the issue
+      description: This is an advisory signal, not a request for health or identity information.
+      options:
+        - This materially affects my use or contribution
+        - I reproduced or independently confirmed it
+        - I observed it through public or synthetic evidence
+        - I am proposing an improvement without claiming direct affectedness
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: participation
+    attributes:
+      label: Ways I may be able to help
+      description: Optional. These signals help with validation and contributor readiness; they do not create automatic governance weight.
+      options:
+        - label: I can validate a proposed resolution
+        - label: I can help improve the specification or acceptance criteria
+        - label: I can contribute implementation, design, documentation, or tests
+        - label: I can provide relevant domain review through an appropriate safe path
+
   - type: textarea
     id: boundaries
     attributes:
-      label: Constitutional and safety boundaries
-      description: Explain relevant Seven Laws, privacy, health-safety, accessibility, or canon constraints.
+      label: Constitutional, safety, or accessibility boundaries
+      description: Identify relevant player rights, privacy, consent, health-safety, security, accessibility, lore, or governance constraints when known.
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Public-safe acceptance evidence
+      description: How could the project verify the outcome without production data or protected information?
+      placeholder: Tests, synthetic fixtures, accessibility checks, documentation review, or participant validation.
+
   - type: checkboxes
     id: data
     attributes:
-      label: Data boundary
+      label: Public information boundary
       options:
-        - label: This proposal can be developed and tested with public or synthetic data only.
+        - label: This issue contains only public or synthetic information and can be developed and tested without production health data.
+          required: true
+        - label: I checked the title, text, links, screenshots, attachments, and metadata for private health, account, contact, security, conduct, or third-party information.
+          required: true
+        - label: I understand that reactions and comments are advisory signals and do not bypass maintainer, specialist, safety, or constitutional review.
           required: true

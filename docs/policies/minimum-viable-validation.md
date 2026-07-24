@@ -77,6 +77,9 @@ At the current stage, useful tests include:
 - retired terminology
 - reward-type allowlists
 - schema fixtures that should pass and fail
+- deterministic feedback priority behavior when a policy is implemented
+- decision-class, safety-precedence, and override-record invariants
+- contribution-credit fixtures that reject raw activity as automatic value or authority
 
 Coverage percentage is not an MVV gate. Meaningful invariant coverage is.
 
@@ -109,7 +112,26 @@ Every material pull request should identify:
 
 A change that cannot name its relationship to the project’s core objective should be narrowed, deferred, or justified as necessary enabling work.
 
-### 7. Human review
+### 7. Feedback and governance validation
+
+Decision 0006 and `docs/governance/feedback-to-governed-work.md` extend MVV to public feedback, prioritization, contribution credit, and delegated governance.
+
+Before automation, the public repository should enforce the cheapest objective boundaries:
+
+- issue intake requires a problem, desired outcome, affected area, and public-information certification
+- protected health, account, security, conduct, and production information is directed away from public issues
+- prioritized work names a decision class and accountable authority
+- automated assessments name a policy revision and preserve their inputs
+- material overrides record an authority and rationale
+- community signals cannot bypass safety, constitutional, privacy, security, clinical, accessibility, legal, consent, or conduct review
+- closed work items state whether they were completed, declined, duplicated, superseded, invalid, out of scope, or unable to reproduce
+- delivered work links to acceptance evidence and can be reopened or rolled back when the problem persists
+- contribution credit names evidence and a validation authority
+- issue, reaction, comment, or vote volume cannot directly mint Fellowship credit or universal governance power
+
+Before binding community prioritization, validation must also include synthetic governance fixtures, capture and concentration analysis, participant-comprehension review, a bounded charter, appeal and rollback paths, and published pilot outcomes.
+
+### 8. Human review
 
 At least one maintainer review is required before merge.
 
@@ -122,10 +144,11 @@ Specialist review is required when available for material changes involving:
 - research governance
 - compensation or economic claims
 - frozen canon
+- binding governance or priority mechanisms
 
 Until a qualified specialist exists, the absence of review must be recorded as an unresolved gate rather than implied approval.
 
-### 8. Contribution provenance
+### 9. Contribution provenance
 
 The baseline requires:
 
@@ -220,7 +243,7 @@ The following are good practices to add when justified by project maturity:
 - secret-scanning push protection
 - SBOM and build provenance
 - release automation
-- issue triage labels and service-level expectations
+- automated issue triage, typed-signal, priority-assessment, and outcome dashboards
 - contributor recognition and maintainer succession automation
 
 They should be adopted deliberately, not copied into the repository without an owner and maintenance plan.
@@ -229,4 +252,4 @@ They should be adopted deliberately, not copied into the repository without an o
 
 MVV succeeds when a new contributor can understand the rules, run one command, receive actionable failures, and make a safe contribution without access to private data or undocumented maintainer knowledge.
 
-For Calypso’s Promise specifically, validation must also preserve the hardcoded incentive model: personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader consent or unnecessary intimate disclosure.
+For Calypso’s Promise specifically, validation must also preserve the hardcoded incentive model: personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, no reward for broader consent or unnecessary intimate disclosure, and no conversion of raw feedback activity into automatic value or governance authority.

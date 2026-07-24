@@ -15,22 +15,22 @@ The current `apps/site` workspace is a small Node HTTP server that proves the mo
 
 ## Readiness by layer
 
-| Layer | Status | Evidence | Main gap |
-| --- | --- | --- | --- |
-| Product promise | BASELINE / FROZEN | Product Constitution and incentive model | translate into page-level copy and interactions |
-| World and lore | FROZEN | Ogygia canon, zones, cast, Seven Laws, Seven Tides, Fourteen Lanterns | produce approved map and visual language without inventing canon |
-| Website information architecture | BASELINE | public IA plus campaign, transparency, and disclosure supplements | reconcile the documents into one build sequence |
-| Public campaign content | BASELINE content exists | founder essay, launch kit, strategy, campaign log, calendar | create truthful public rendering and source links |
-| Public-domain direction | ACCEPTED direction | public-domain declaration and Decision 0004 | legal migration, file notices, contributor dedication, and rights audit remain incomplete |
-| Public-information boundary | BASELINE | Decision 0005, publication policy, website controls | implement separate PUBLIC schemas and publishing controls |
-| Visual direction | EXPLORATORY | three website concept directions and the world-experience framework | select and refine one canonical target; complete rights and accessibility review |
-| Technical framework | FROZEN direction | Next.js for `apps/site`; pnpm/Turborepo monorepo | replace the minimal Node server during an accepted website implementation slice |
-| Design system | PLANNED | architecture reserves design-token and web-UI packages | tokens, typography, layout, icon, motion, and component rules do not exist |
-| Production pages | NOT IMPLEMENTED | none | homepage, Promise, status, trust, commons, campaign, Forge, support, and press routes |
-| Synthetic prologue | PLANNED | IA and Sprint 9 flow | no browser interaction, fictional Chronicle, Aster draft, confirmation, or receipt UI |
-| Analytics | DEFERRED pending rules | minimal-measurement requirements documented | retention, deletion, consent, vendor, and implementation not selected |
-| Accessibility and performance | ACCEPTANCE CRITERIA ONLY | keyboard, reduced-motion, direct-mode, low-bandwidth, and no-scroll-jacking rules | no implementation or audit evidence |
-| Deployment and operations | NOT SELECTED | domains are directional; vendors remain unfrozen | hosting, previews, release, caching, monitoring, and incident operations |
+| Layer                            | Status                   | Evidence                                                                          | Main gap                                                                                  |
+| -------------------------------- | ------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Product promise                  | BASELINE / FROZEN        | Product Constitution and incentive model                                          | translate into page-level copy and interactions                                           |
+| World and lore                   | FROZEN                   | Ogygia canon, zones, cast, Seven Laws, Seven Tides, Fourteen Lanterns             | produce approved map and visual language without inventing canon                          |
+| Website information architecture | BASELINE                 | public IA plus campaign, transparency, and disclosure supplements                 | reconcile the documents into one build sequence                                           |
+| Public campaign content          | BASELINE content exists  | founder essay, launch kit, strategy, campaign log, calendar                       | create truthful public rendering and source links                                         |
+| Public-domain direction          | ACCEPTED direction       | public-domain declaration and Decision 0004                                       | legal migration, file notices, contributor dedication, and rights audit remain incomplete |
+| Public-information boundary      | BASELINE                 | Decision 0005, publication policy, website controls                               | implement separate PUBLIC schemas and publishing controls                                 |
+| Visual direction                 | EXPLORATORY              | three website concept directions and the world-experience framework               | select and refine one canonical target; complete rights and accessibility review          |
+| Technical framework              | FROZEN direction         | Next.js for `apps/site`; pnpm/Turborepo monorepo                                  | replace the minimal Node server during an accepted website implementation slice           |
+| Design system                    | PLANNED                  | architecture reserves design-token and web-UI packages                            | tokens, typography, layout, icon, motion, and component rules do not exist                |
+| Production pages                 | NOT IMPLEMENTED          | none                                                                              | homepage, Promise, status, trust, commons, campaign, Forge, support, and press routes     |
+| Synthetic prologue               | PLANNED                  | IA and Sprint 9 flow                                                              | no browser interaction, fictional Chronicle, Aster draft, confirmation, or receipt UI     |
+| Analytics                        | DEFERRED pending rules   | minimal-measurement requirements documented                                       | retention, deletion, consent, vendor, and implementation not selected                     |
+| Accessibility and performance    | ACCEPTANCE CRITERIA ONLY | keyboard, reduced-motion, direct-mode, low-bandwidth, and no-scroll-jacking rules | no implementation or audit evidence                                                       |
+| Deployment and operations        | NOT SELECTED             | domains are directional; vendors remain unfrozen                                  | hosting, previews, release, caching, monitoring, and incident operations                  |
 
 ## What is already coherent
 

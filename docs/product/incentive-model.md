@@ -143,6 +143,30 @@ A compensated opportunity is a separate, purpose-specific offer with its own ide
 
 The project’s public-good purpose does not justify concealed access, coercive incentives, or weakened validation.
 
+## Feedback and governance contributions
+
+Decision 0006 and `docs/governance/feedback-to-governed-work.md` apply the incentive architecture to product refinement and institutional learning.
+
+The following may create Fellowship value when the contribution is distinct, safe, reviewable, and validated:
+
+- reporting a reproducible public-safe issue
+- independently confirming or disproving a report
+- identifying a duplicate while preserving linked evidence
+- improving a problem statement, specification, or acceptance criteria
+- contributing qualified review through the appropriate channel
+- designing or implementing an accessible solution
+- reviewing code, content, architecture, policy, or governance
+- testing a proposed resolution with synthetic or personally safe conditions
+- improving documentation, migration, or recovery guidance
+- measuring whether a release or institutional change solved the stated problem
+- correcting a mistaken priority assessment, decision, or outcome claim
+
+Any contribution-credit rule must declare the action, evidence, validation authority, revision, dispute path, and resulting scoped credit. AI may propose attribution or summarize evidence but may not award authoritative credit by itself.
+
+The system must not reward issue count, reaction volume, voting frequency, duplicate flooding, performative comments, unnecessary disclosure, broader consent, manufactured urgency, social reach, wealth, donation size, or avoidable work created to claim later credit.
+
+Fellowship credit does not automatically create universal governance power, permanent privilege, transferable property, compensation, ownership, or authority over unrelated decision classes. Any relationship between contribution and governance must remain scoped, reviewable, appealable, subject to decay or rotation where appropriate, and bounded by affectedness, competence, conflicts, privacy, and capture controls.
+
 ## Product-centered change test
 
 Every material product, content, or architecture change should identify one of the following:
@@ -165,11 +189,14 @@ Automated validation should begin with rules that are objective and inexpensive:
 - notifications declare shame-free behavior
 - retired extraction-oriented terminology is rejected from active content
 - reward and completion rules remain structured rather than AI-decided
+- feedback contribution credit names evidence and a validation authority
+- raw issue, reaction, comment, or vote volume cannot directly mint Fellowship credit
+- contribution credit cannot silently grant universal governance authority
 
-Human review remains necessary for contextual rules that cannot be safely reduced to string matching, including whether a quest rewards unnecessary disclosure or manipulates consent.
+Human review remains necessary for contextual rules that cannot be safely reduced to string matching, including whether a quest rewards unnecessary disclosure, manipulates consent, or whether claimed feedback work created validated value.
 
 ## Success condition
 
 The model is working when the Living Chronicle becomes more useful, the island visibly restores, the player understands what changed, and the person retains control throughout the process.
 
-Engagement without increasing personal utility, understanding, agency, or restoration is not success for Calypso’s Promise.
+Engagement without increasing personal utility, understanding, agency, restoration, or validated public value is not success for Calypso’s Promise.

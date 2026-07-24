@@ -101,22 +101,22 @@ Research, compensated opportunities, governance, donation, and community partici
 
 The visual concepts established useful spatial functions but used several non-canonical labels. Those labels remain design shorthand only and must not silently replace frozen canon.
 
-| Visual concept shorthand | Canonical expression | Website function |
-| --- | --- | --- |
-| Harbor or arrival port | **Lantern Shore** | arrival, orientation, public prologue, first explanation |
-| Private sanctuary or home | **The Hearth of Hestia** | private-home concept and authenticated boundary |
-| Privacy sanctuary | **The House of Keys** | permissions, access history, consent, privacy, and data control |
-| Recovery sanctuary | **The Recovery Springs** | recovery, sleep, mood, stress, and energy education |
-| Library of Threads | **Mnemosyne’s Library** | memory, provenance, timeline, educational knowledge, and institutional history |
-| Observatory | **Athena’s Observatory** | questions, evidence, uncertainty, experiments, and careful interpretation |
-| Agora | **The Agora of Hermes** | public exchange, connectors, roads, terms, and community orientation |
-| Forge | **The Open Forge** | open-source contribution, public tools, schemas, and documentation |
-| Compass as navigation | **The Wayfinder Orb** and Aster | route selection and guided interaction; not a geographic zone |
-| Compass as governance | **The House of Oaths** | transparent terms, governance, authority, and institutional commitments |
-| Lighthouse | **The First Light** as a visual motif | guidance and return; not a new canonical zone without a decision record |
-| Achievement hall | **The Hall of Laurels** | narrative restoration and non-cash commemorative rewards |
-| Public stories | **The Theater of Apollo** | education, public narrative, press, and approved storytelling |
-| Legacy archive | **The Quiet Archive** | mortality, legacy, delegated care, and durable institutional memory |
+| Visual concept shorthand  | Canonical expression                  | Website function                                                               |
+| ------------------------- | ------------------------------------- | ------------------------------------------------------------------------------ |
+| Harbor or arrival port    | **Lantern Shore**                     | arrival, orientation, public prologue, first explanation                       |
+| Private sanctuary or home | **The Hearth of Hestia**              | private-home concept and authenticated boundary                                |
+| Privacy sanctuary         | **The House of Keys**                 | permissions, access history, consent, privacy, and data control                |
+| Recovery sanctuary        | **The Recovery Springs**              | recovery, sleep, mood, stress, and energy education                            |
+| Library of Threads        | **Mnemosyne’s Library**               | memory, provenance, timeline, educational knowledge, and institutional history |
+| Observatory               | **Athena’s Observatory**              | questions, evidence, uncertainty, experiments, and careful interpretation      |
+| Agora                     | **The Agora of Hermes**               | public exchange, connectors, roads, terms, and community orientation           |
+| Forge                     | **The Open Forge**                    | open-source contribution, public tools, schemas, and documentation             |
+| Compass as navigation     | **The Wayfinder Orb** and Aster       | route selection and guided interaction; not a geographic zone                  |
+| Compass as governance     | **The House of Oaths**                | transparent terms, governance, authority, and institutional commitments        |
+| Lighthouse                | **The First Light** as a visual motif | guidance and return; not a new canonical zone without a decision record        |
+| Achievement hall          | **The Hall of Laurels**               | narrative restoration and non-cash commemorative rewards                       |
+| Public stories            | **The Theater of Apollo**             | education, public narrative, press, and approved storytelling                  |
+| Legacy archive            | **The Quiet Archive**                 | mortality, legacy, delegated care, and durable institutional memory            |
 
 The complete canonical zone list remains in `docs/frozen/world-and-lore-canon.md`.
 
