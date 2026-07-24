@@ -15,7 +15,7 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "policy:check": "node tools/policy/check-repository.mjs",
-    "content:check": "node packages/content-schema/src/validate-content.mjs",
+    "content:check": "pnpm --filter @calypsos-promise/content-schema validate:content",
     "check": "pnpm format:check && pnpm policy:check && pnpm content:check && pnpm lint && pnpm typecheck && pnpm test"
   },
   "devDependencies": {
