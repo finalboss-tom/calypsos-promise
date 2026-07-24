@@ -1,6 +1,9 @@
 name: Format feedback governance branch
 
 on:
+  pull_request:
+    branches: [main]
+    types: [synchronize]
   push:
     branches: [docs/feedback-governance-loop]
 
@@ -13,6 +16,7 @@ concurrency:
 
 jobs:
   format:
+    if: github.event_name == 'push' || github.head_ref == 'docs/feedback-governance-loop'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
