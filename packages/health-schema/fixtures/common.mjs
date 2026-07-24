@@ -42,7 +42,11 @@ export function revision(
   };
 }
 
-export function sourceReference(sourceArtifactId, sourceVersionId, ...locatorIds) {
+export function sourceReference(
+  sourceArtifactId,
+  sourceVersionId,
+  ...locatorIds
+) {
   return {
     sourceArtifactId,
     sourceVersionId,
