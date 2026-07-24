@@ -67,7 +67,8 @@ const validQuest = {
   canDecline: true,
   deferralPath: "The quest remains available without penalty.",
   refusalPath: "The player may continue exploring without completing it.",
-  analyticsHypothesis: "A brief confirmed entry demonstrates immediate personal value.",
+  analyticsHypothesis:
+    "A brief confirmed entry demonstrates immediate personal value.",
 };
 
 test("accepts a schema-aligned quest with deterministic incentives", () => {
