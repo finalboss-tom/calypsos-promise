@@ -1,0 +1,216 @@
+version: 1
+status: baseline
+applies_to: public GitHub work items
+source: docs/governance/feedback-triage-operating-protocol.md
+notes:
+  - This file is the canonical manual registry and is not yet synchronized automatically with GitHub.
+  - Labels are readable without color because names use stable prefixes.
+  - Numeric priority labels are intentionally excluded until a deterministic policy is tested and accepted.
+families:
+  - prefix: type
+    cardinality: exactly-one-after-triage
+    labels:
+      - name: type:defect
+        color: d73a4a
+        description: Observed behavior differs from intended or documented behavior.
+      - name: type:feature
+        color: a2eeef
+        description: New capability or materially expanded outcome.
+      - name: type:accessibility
+        color: 5319e7
+        description: Accessibility barrier or exclusion is the primary problem.
+      - name: type:documentation
+        color: 0075ca
+        description: Documentation, explanation, examples, or onboarding work.
+      - name: type:content
+        color: c5def5
+        description: Lore, narrative, education, copy, or governed content work.
+      - name: type:governance
+        color: 6f42c1
+        description: Authority, policy, accountability, transparency, or participation work.
+      - name: type:performance
+        color: fbca04
+        description: Speed, reliability, resource use, or operational-quality work.
+      - name: type:maintenance
+        color: bfdadc
+        description: Correctness, dependencies, portability, tooling, or long-term operability.
+      - name: type:question
+        color: d876e3
+        description: Clarification request that may be reclassified after triage.
+
+  - prefix: area
+    cardinality: one-or-more-after-triage
+    labels:
+      - name: area:website
+        color: 1d76db
+        description: Public website or browser discovery surface.
+      - name: area:game
+        color: 1d76db
+        description: Playable application, quests, progression, or story experience.
+      - name: area:living-chronicle
+        color: 1d76db
+        description: Living Chronicle domain; schema meaning remains governed by Sprint 3.
+      - name: area:aster-ai
+        color: 1d76db
+        description: Aster, AI interaction, proposal, retrieval, or safety behavior.
+      - name: area:mcp-agents
+        color: 1d76db
+        description: MCP, agent interfaces, tools, or authorization adapters.
+      - name: area:privacy-consent
+        color: 1d76db
+        description: Privacy, consent, permissions, receipts, or data-control behavior.
+      - name: area:security
+        color: 1d76db
+        description: Security architecture or safe public security work.
+      - name: area:lore-content
+        color: 1d76db
+        description: Lore, canon, narrative, education, or content system.
+      - name: area:open-source
+        color: 1d76db
+        description: Repository, contributor tooling, CI, documentation, or releases.
+      - name: area:accessibility
+        color: 1d76db
+        description: Accessibility across product, content, website, or contributor surfaces.
+      - name: area:governance-community
+        color: 1d76db
+        description: Governance, community operations, participation, or institutional process.
+      - name: area:research-deferred
+        color: 1d76db
+        description: Research direction that remains gated or deferred.
+      - name: area:cross-cutting
+        color: 1d76db
+        description: Work that materially spans several areas.
+
+  - prefix: state
+    cardinality: exactly-one
+    labels:
+      - name: state:needs-triage
+        color: e4e669
+        description: Public-safety review, normalization, duplicate review, or classification is incomplete.
+      - name: state:needs-evidence
+        color: e4e669
+        description: Additional safe reproduction, affectedness, feasibility, or acceptance evidence is needed.
+      - name: state:validated
+        color: 0e8a16
+        description: Sufficient evidence exists for accountable prioritization.
+      - name: state:prioritized
+        color: 0e8a16
+        description: Current authority recorded a manual priority rationale.
+      - name: state:committed
+        color: 0e8a16
+        description: Accepted into a bounded sprint, release, roadmap, or work allocation.
+      - name: state:in-progress
+        color: 0052cc
+        description: Linked implementation or other accountable work is underway.
+      - name: state:needs-validation
+        color: fbca04
+        description: Proposed resolution requires review, testing, or participant confirmation.
+      - name: state:released
+        color: 0e8a16
+        description: Change is available on the relevant surface; outcome remains separate.
+      - name: state:outcome-review
+        color: 5319e7
+        description: Project is assessing whether the change solved the stated problem.
+      - name: state:blocked
+        color: b60205
+        description: Progress depends on a stated dependency, authority, capacity, or review gate.
+
+  - prefix: evidence
+    cardinality: exactly-one-primary
+    labels:
+      - name: evidence:reported
+        color: d4c5f9
+        description: Plausible report or proposal without independent confirmation.
+      - name: evidence:reproduced
+        color: c2e0c6
+        description: Problem reproduced using public or synthetic evidence.
+      - name: evidence:independently-confirmed
+        color: 0e8a16
+        description: Independent participant, source, test, or method confirms material evidence.
+      - name: evidence:specialist-reviewed
+        color: 006b75
+        description: Qualified bounded reviewer evaluated the relevant claim or risk.
+      - name: evidence:contested
+        color: fbca04
+        description: Material evidence conflicts and uncertainty must be preserved.
+      - name: evidence:insufficient
+        color: b60205
+        description: Current evidence is insufficient; this does not prove bad faith or falsity.
+
+  - prefix: decision
+    cardinality: exactly-one-after-triage
+    labels:
+      - name: decision:constitutional
+        color: 6f42c1
+        description: Mission, player rights, frozen commitments, governance structure, or institutional continuity.
+      - name: decision:safety-rights
+        color: b60205
+        description: Privacy, consent, security, health safety, accessibility, due process, or protected rights.
+      - name: decision:strategic-economic
+        color: c24e00
+        description: Roadmap strategy, major partnerships, funding, compensation, or material economics.
+      - name: decision:technical-operational
+        color: 0366d6
+        description: Implementation, maintenance, routine releases, tooling, or operations within accepted boundaries.
+      - name: decision:community-cultural
+        color: 7057ff
+        description: Contributor programs, community process, moderation norms, events, or non-frozen culture.
+
+  - prefix: review
+    cardinality: zero-or-more
+    labels:
+      - name: review:security
+        color: b60205
+        description: Security review required; sensitive evidence remains private.
+      - name: review:privacy
+        color: b60205
+        description: Privacy or consent review required.
+      - name: review:health-safety
+        color: b60205
+        description: Health-safety or clinical-boundary review required.
+      - name: review:accessibility
+        color: 5319e7
+        description: Accessibility review required.
+      - name: review:legal
+        color: b60205
+        description: Legal review required; privileged advice remains private.
+      - name: review:canon
+        color: 6f42c1
+        description: Canon or frozen lore review required.
+      - name: review:research
+        color: b60205
+        description: Research-governance review required.
+      - name: review:economic
+        color: c24e00
+        description: Economic, compensation, treasury, or funding review required.
+      - name: review:conduct-private
+        color: b60205
+        description: Conduct review required through a private evidence process.
+
+  - prefix: resolution
+    cardinality: exactly-one-when-closed
+    labels:
+      - name: resolution:completed
+        color: 0e8a16
+        description: Accepted outcome delivered with linked validation or outcome evidence.
+      - name: resolution:duplicate
+        color: cfd3d7
+        description: Canonical linked work item tracks the same underlying problem.
+      - name: resolution:declined
+        color: 922267
+        description: Responsible authority chose not to pursue the item and recorded why.
+      - name: resolution:superseded
+        color: cfd3d7
+        description: Newer decision, design, or work item replaces this item.
+      - name: resolution:invalid
+        color: b60205
+        description: Verified evidence or accepted constraints invalidate the claim or proposal.
+      - name: resolution:out-of-scope
+        color: cfd3d7
+        description: Item does not belong in the current project, phase, repository, or public system.
+      - name: resolution:unable-to-reproduce
+        color: fbca04
+        description: Reasonable public-safe attempts did not reproduce the issue.
+      - name: resolution:withdrawn
+        color: cfd3d7
+        description: Reporter or proposing authority withdrew the request.
