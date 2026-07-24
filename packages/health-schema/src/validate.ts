@@ -45,7 +45,10 @@ const TOMBSTONE_RETAINED_FIELD_ALLOWLIST = new Set([
 function isIsoDate(value: string): boolean {
   if (!ISO_DATE_PATTERN.test(value)) return false;
   const parsed = new Date(`${value}T00:00:00Z`);
-  return !Number.isNaN(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === value;
+  return (
+    !Number.isNaN(parsed.valueOf()) &&
+    parsed.toISOString().slice(0, 10) === value
+  );
 }
 
 function isIsoDateTime(value: string): boolean {
@@ -58,7 +61,9 @@ function isLocalDateTime(value: string): boolean {
 
 function compareTemporalText(left: string, right: string): number | undefined {
   const leftValue = Date.parse(left.includes("T") ? left : `${left}T00:00:00Z`);
-  const rightValue = Date.parse(right.includes("T") ? right : `${right}T00:00:00Z`);
+  const rightValue = Date.parse(
+    right.includes("T") ? right : `${right}T00:00:00Z`,
+  );
   if (Number.isNaN(leftValue) || Number.isNaN(rightValue)) return undefined;
   return Math.sign(leftValue - rightValue);
 }
@@ -88,13 +93,16 @@ function compareDecimalText(left: string, right: string): number | undefined {
   const direction = leftNormalized.negative ? -1 : 1;
   if (leftNormalized.integer.length !== rightNormalized.integer.length) {
     return (
-      Math.sign(leftNormalized.integer.length - rightNormalized.integer.length) *
-      direction
+      Math.sign(
+        leftNormalized.integer.length - rightNormalized.integer.length,
+      ) * direction
     );
   }
 
   if (leftNormalized.integer !== rightNormalized.integer) {
-    return (leftNormalized.integer < rightNormalized.integer ? -1 : 1) * direction;
+    return (
+      (leftNormalized.integer < rightNormalized.integer ? -1 : 1) * direction
+    );
   }
 
   const width = Math.max(
@@ -244,10 +252,20 @@ function validateTemporalAssertion(
         );
       }
       if (temporal.start !== undefined) {
-        validateTemporalAssertion(temporal.start, `${path}.start`, recordIds, issues);
+        validateTemporalAssertion(
+          temporal.start,
+          `${path}.start`,
+          recordIds,
+          issues,
+        );
       }
       if (temporal.end !== undefined) {
-        validateTemporalAssertion(temporal.end, `${path}.end`, recordIds, issues);
+        validateTemporalAssertion(
+          temporal.end,
+          `${path}.end`,
+          recordIds,
+          issues,
+        );
       }
       break;
     case "approximate": {
@@ -276,11 +294,7 @@ function validateTemporalAssertion(
         ["latest", temporal.latest],
         ["centralEstimate", temporal.centralEstimate],
       ] as const) {
-        if (
-          value !== undefined &&
-          !isIsoDate(value) &&
-          !isIsoDateTime(value)
-        ) {
+        if (value !== undefined && !isIsoDate(value) && !isIsoDateTime(value)) {
           addIssue(
             issues,
             "TEMPORAL_APPROXIMATE_VALUE_INVALID",
@@ -381,10 +395,20 @@ function validateTemporalAssertion(
         );
       }
       if (temporal.start !== undefined) {
-        validateTemporalAssertion(temporal.start, `${path}.start`, recordIds, issues);
+        validateTemporalAssertion(
+          temporal.start,
+          `${path}.start`,
+          recordIds,
+          issues,
+        );
       }
       if (temporal.end !== undefined) {
-        validateTemporalAssertion(temporal.end, `${path}.end`, recordIds, issues);
+        validateTemporalAssertion(
+          temporal.end,
+          `${path}.end`,
+          recordIds,
+          issues,
+        );
       }
       break;
   }
@@ -709,7 +733,9 @@ export function validateChronicleSchemaBundle(
 
   const actorIds = new Set(bundle.actors.map((actor) => actor.id));
   const subjectIds = new Set(bundle.subjects.map((subject) => subject.id));
-  const chronicleIds = new Set(bundle.chronicles.map((chronicle) => chronicle.id));
+  const chronicleIds = new Set(
+    bundle.chronicles.map((chronicle) => chronicle.id),
+  );
   const variableIds = new Set(bundle.variables.map((variable) => variable.id));
   const categorySetIds = new Set(
     bundle.categorySets.map((categorySet) => categorySet.id),
@@ -764,7 +790,9 @@ export function validateChronicleSchemaBundle(
   const retentionExceptionIds = new Set(
     bundle.retentionExceptions.map((exception) => exception.id),
   );
-  const tombstoneIds = new Set(bundle.tombstones.map((tombstone) => tombstone.id));
+  const tombstoneIds = new Set(
+    bundle.tombstones.map((tombstone) => tombstone.id),
+  );
 
   const globalIds = new Map<string, string>();
   const register = (id: string, path: string) => {
@@ -841,7 +869,9 @@ export function validateChronicleSchemaBundle(
   });
 
   bundle.categorySets.forEach((categorySet, setIndex) => {
-    const localCategoryIds = new Set(categorySet.categories.map((category) => category.id));
+    const localCategoryIds = new Set(
+      categorySet.categories.map((category) => category.id),
+    );
     categorySet.categories.forEach((category, categoryIndex) => {
       const path = `categorySets[${setIndex}].categories[${categoryIndex}]`;
       register(category.id, `${path}.id`);
@@ -969,9 +999,16 @@ export function validateChronicleSchemaBundle(
         `Subject ${record.subjectId} does not exist.`,
       );
     }
-    validateTemporalAssertion(record.temporalAssertion, `${path}.temporalAssertion`, recordIds, issues);
+    validateTemporalAssertion(
+      record.temporalAssertion,
+      `${path}.temporalAssertion`,
+      recordIds,
+      issues,
+    );
 
-    const expectedAssertionClass: Partial<Record<ChronicleRecord["family"], ChronicleRecord["assertionClass"]>> = {
+    const expectedAssertionClass: Partial<
+      Record<ChronicleRecord["family"], ChronicleRecord["assertionClass"]>
+    > = {
       reflection: "reflection",
       goal: "intention",
       derived: "deterministic-calculation",
@@ -987,7 +1024,10 @@ export function validateChronicleSchemaBundle(
         `Record family ${record.family} requires assertion class ${expected}.`,
       );
     }
-    if (record.family === "interval" && record.temporalAssertion.kind !== "interval") {
+    if (
+      record.family === "interval" &&
+      record.temporalAssertion.kind !== "interval"
+    ) {
       addIssue(
         issues,
         "INTERVAL_TEMPORAL_REQUIRED",
@@ -1173,7 +1213,10 @@ export function validateChronicleSchemaBundle(
           recordIds,
           issues,
         );
-        if (record.payload.targetVariableId !== undefined && !variableIds.has(record.payload.targetVariableId)) {
+        if (
+          record.payload.targetVariableId !== undefined &&
+          !variableIds.has(record.payload.targetVariableId)
+        ) {
           addIssue(
             issues,
             "REFERENCE_DANGLING",
@@ -1263,16 +1306,18 @@ export function validateChronicleSchemaBundle(
             "Inference records require evidence records.",
           );
         }
-        record.payload.evidenceRecordIds.forEach((evidenceId, evidenceIndex) => {
-          if (!recordIds.has(evidenceId)) {
-            addIssue(
-              issues,
-              "REFERENCE_DANGLING",
-              `${path}.payload.evidenceRecordIds[${evidenceIndex}]`,
-              `Evidence record ${evidenceId} does not exist.`,
-            );
-          }
-        });
+        record.payload.evidenceRecordIds.forEach(
+          (evidenceId, evidenceIndex) => {
+            if (!recordIds.has(evidenceId)) {
+              addIssue(
+                issues,
+                "REFERENCE_DANGLING",
+                `${path}.payload.evidenceRecordIds[${evidenceIndex}]`,
+                `Evidence record ${evidenceId} does not exist.`,
+              );
+            }
+          },
+        );
         validateValue(
           record.payload.conclusion,
           `${path}.payload.conclusion`,
@@ -1451,7 +1496,10 @@ export function validateChronicleSchemaBundle(
         }
         break;
       case "derivation":
-        if (event.inputRecordIds.length === 0 || event.outputRecordIds.length === 0) {
+        if (
+          event.inputRecordIds.length === 0 ||
+          event.outputRecordIds.length === 0
+        ) {
           addIssue(
             issues,
             "DERIVATION_CHAIN_INCOMPLETE",
@@ -1459,16 +1507,18 @@ export function validateChronicleSchemaBundle(
             "Derivation events require input and output records.",
           );
         }
-        [...event.inputRecordIds, ...event.outputRecordIds].forEach((id, idIndex) => {
-          if (!recordIds.has(id)) {
-            addIssue(
-              issues,
-              "REFERENCE_DANGLING",
-              `${path}.recordReferences[${idIndex}]`,
-              `Record ${id} does not exist.`,
-            );
-          }
-        });
+        [...event.inputRecordIds, ...event.outputRecordIds].forEach(
+          (id, idIndex) => {
+            if (!recordIds.has(id)) {
+              addIssue(
+                issues,
+                "REFERENCE_DANGLING",
+                `${path}.recordReferences[${idIndex}]`,
+                `Record ${id} does not exist.`,
+              );
+            }
+          },
+        );
         if (!actorIds.has(event.actorId)) {
           addIssue(
             issues,
@@ -1818,7 +1868,11 @@ export function validateChronicleSchemaBundle(
         `Actor ${exception.accountableActorId} does not exist.`,
       );
     }
-    if (compareTemporalText(exception.startsAt, exception.reviewAt) >= 0) {
+    const reviewOrder = compareTemporalText(
+      exception.startsAt,
+      exception.reviewAt,
+    );
+    if (reviewOrder !== undefined && reviewOrder >= 0) {
       addIssue(
         issues,
         "RETENTION_REVIEW_INVALID",
@@ -1828,7 +1882,7 @@ export function validateChronicleSchemaBundle(
     }
     if (
       exception.endsAt !== undefined &&
-      compareTemporalText(exception.startsAt, exception.endsAt) >= 0
+      (compareTemporalText(exception.startsAt, exception.endsAt) ?? -1) >= 0
     ) {
       addIssue(
         issues,
@@ -1857,7 +1911,11 @@ export function validateChronicleSchemaBundle(
         `Deletion request ${tombstone.deletionRequestId} does not exist.`,
       );
     }
-    validateNamespacedId(tombstone.deletedTargetId, `${path}.deletedTargetId`, issues);
+    validateNamespacedId(
+      tombstone.deletedTargetId,
+      `${path}.deletedTargetId`,
+      issues,
+    );
     Object.keys(tombstone.retainedFields).forEach((field) => {
       if (!TOMBSTONE_RETAINED_FIELD_ALLOWLIST.has(field)) {
         addIssue(
