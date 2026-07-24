@@ -1,31 +1,41 @@
 # ADR-0002 — Software License Baseline
 
-**Status:** PROPOSED pending legal review
+**Status:** SUPERSEDED by `docs/decisions/0004-public-domain-commons.md`
 
-## Context
+## Historical context
 
-Calypso’s Promise is intended to remain open even when modified and offered as a network service. A permissive license would allow a hosted derivative to keep server-side modifications private, weakening the project’s public-good and reciprocal-development goals.
+This decision originally proposed GNU Affero General Public License v3.0 or later (`AGPL-3.0-or-later`) as the software-license direction.
 
-## Decision
+The proposal attempted to protect the public-good project from hosted derivatives that kept server-side modifications private. AGPL reciprocity was considered preferable to a permissive license because it could require operators of modified network services to provide corresponding source to their users.
 
-Use **GNU Affero General Public License v3.0 or later (`AGPL-3.0-or-later`)** as the baseline software-license direction.
+## Why the proposal was superseded
 
-The AGPL is specifically designed for network software and requires operators of modified publicly accessible versions to make the corresponding modified source available to users of that service.
+The founding steward clarified that Calypso’s Promise is intended to be a public-domain project, not merely an open-source project with reciprocal copyright conditions.
 
-## Boundaries
+AGPL depends on copyright restrictions to require source disclosure. That conflicts with the accepted direction that original project materials should be usable, modifiable, hosted, sold, combined, and redistributed without seeking permission or accepting copyright-based reciprocity obligations.
 
-- This decision applies to software unless a subdirectory states another approved license.
-- Health data, user content, trademarks, character art, narrative assets, and third-party materials are not automatically licensed merely because software is.
-- The Calypso’s Promise name, logos, official characters, and official-deployment claims require a separate trademark policy.
-- No contributor agreement may silently change the license of accepted contributions.
-- The repository will use DCO sign-off rather than a copyright-assignment CLA unless a later ADR changes that policy.
+Decision 0004 therefore retires this baseline.
 
-## Consequences
+## Historical boundaries that remain valid
 
-- Hosted modifications must preserve source availability obligations under the license.
-- Some organizations avoid AGPL dependencies; that is accepted in exchange for stronger reciprocity.
-- Final adoption and the canonical `LICENSE` file require legal review of the complete repository structure and content licensing.
+The following cautions remain applicable during the public-domain migration:
 
-## Evidence
+- Personal health data and user content are not licensed or dedicated merely because project materials are open.
+- Third-party materials retain their actual terms.
+- The project cannot dedicate rights it does not own.
+- Contributor submissions require explicit and valid rights certification.
+- A public-domain software instrument must be reviewed for copyright fallback, warranty, and patent implications.
+- Canonical provenance and truthful review claims remain necessary even when forks require no permission.
 
-The official AGPL text describes it as a copyleft license designed to ensure cooperation for network server software and requires modified server source to be made available to users interacting with it.
+## Replacement direction
+
+See:
+
+- `PUBLIC_DOMAIN.md`
+- `docs/decisions/0004-public-domain-commons.md`
+
+The replacement direction evaluates a public-domain dedication with a legally effective fallback for software and a CC0-style dedication for original non-software materials, subject to qualified legal review, authorship audit, third-party notices, and contributor-workflow migration.
+
+## Record preservation
+
+This file remains in the repository because the AGPL proposal is part of the project’s institutional history. Superseding a decision does not erase why it was initially reasonable or which risks it attempted to address.

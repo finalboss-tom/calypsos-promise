@@ -20,13 +20,17 @@ A frozen document may still receive corrections, clarifications, accessibility i
 12. No reward for unnecessary intimate disclosure, no punitive streaks, no false scarcity, and no implied secondary-use consent
 13. Personal value precedes research or commercial value
 14. Progressive decentralization toward a self-sustaining, founder-independent institution is a permanent constraint; specific DAO, token, blockchain, identity, legal, and voting mechanisms remain gated
+15. Radical legibility with principled confidentiality: publish reviewed institutional records while protecting raw personal, health, security, legal, conduct, correspondence, and operational source material
 
 ## Governing institutional documents
 
 - `VISION.md` — the frozen long-horizon institutional mandate
 - `ROADMAP.md` — public product, evidence, economic, and governance gates
 - `GOVERNANCE.md` — present authority and progressive-transfer baseline
-- `docs/decisions/0003-progressive-decentralization.md` — accepted decision establishing the constraint
+- `docs/decisions/0003-progressive-decentralization.md` — accepted decision establishing the institutional progression
+- `docs/decisions/0004-public-domain-commons.md` — accepted decision establishing the public-domain commons direction
+- `docs/decisions/0005-principled-confidentiality.md` — accepted decision establishing the public-information boundary
+- `docs/policies/publication-and-confidentiality.md` — operational implementation of the disclosure boundary
 
 ## Status vocabulary
 
