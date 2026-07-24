@@ -7,9 +7,11 @@ Thank you for helping build Calypso’s Promise.
 Read these first:
 
 - `docs/frozen/product-constitution.md`
-- `docs/frozen/architecture-foundation.md`
-- `docs/frozen/world-lore-canon.md`
-- `docs/frozen/gameplay-foundation.md`
+- `docs/frozen/architecture.md`
+- `docs/frozen/world-and-lore-canon.md`
+- `docs/product/gameplay-foundation.md`
+- `docs/product/incentive-model.md`
+- `docs/governance/feedback-to-governed-work.md`
 - `docs/policies/publication-and-confidentiality.md`
 - `SECURITY.md`
 
@@ -45,6 +47,28 @@ If you discover protected information in a public project surface:
 3. report it privately under `SECURITY.md`
 4. rotate or revoke exposed credentials immediately when authorized
 5. allow the incident owner to coordinate removal, notification, and a safe public record
+
+## Feedback and issue intake
+
+GitHub issues are the current canonical public ledger for public-safe product, contributor, documentation, accessibility, content, and governance work.
+
+Use the issue template to state the problem, desired outcome, affected area, public-safe evidence, relevant boundaries, and possible acceptance evidence. Separate the problem from a preferred implementation so maintainers and contributors can evaluate alternatives.
+
+Do not open a public issue for:
+
+- person-specific health or clinical information
+- account-specific support
+- private correspondence or support transcripts
+- security vulnerabilities or credentials
+- conduct complaints or witness evidence
+- production logs, payloads, exports, screenshots, or documents
+- another person’s protected information
+
+Those matters require the applicable private support, security, conduct, privacy, or specialist path. When a public record is appropriate, an authorized steward may later publish a reviewed, minimized institutional derivative.
+
+Community reactions, comments, and issue activity are advisory signals during institutional Phase 0. They do not bypass maintainer authority, specialist review, safety controls, or decision records. Decision 0006 and `docs/governance/feedback-to-governed-work.md` define the path toward typed signals, deterministic priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity.
+
+A useful contribution may include reporting, reproducing, triaging, specifying, implementing, reviewing, testing, documenting, validating, or measuring an outcome. Credit depends on validated value rather than issue or comment volume.
 
 ## Development setup
 
