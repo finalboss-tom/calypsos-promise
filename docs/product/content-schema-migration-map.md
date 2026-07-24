@@ -6,29 +6,29 @@ This map identifies how current Sprint 2 artifacts should converge on the author
 
 ## Common metadata
 
-| Current variant | Baseline field | Action |
-| --- | --- | --- |
-| `version` | `revision` | Rename in examples and validator |
-| `status` | `reviewState` | Rename and remove `published` from source review state |
-| `canonRefs` | `canonReferences` | Rename everywhere |
-| missing `capabilityStatus` | `capabilityStatus` | Add to every active record |
-| missing `dependencies` | `dependencies` | Add, using an empty array where none exist |
-| `reviewers` as review-domain labels | `reviewRequirements` | Rename and treat values as domains |
-| no named approvals | `reviewApprovals` | Add explicit named human approval records |
-| no authorship metadata | `authorship` | Add mode and responsible humans |
-| `historicalContext` | `historicalContext` | Retain as optional boolean |
-| no replacement metadata | `supersedes`, `replacedBy` | Add only when applicable |
+| Current variant                     | Baseline field             | Action                                                 |
+| ----------------------------------- | -------------------------- | ------------------------------------------------------ |
+| `version`                           | `revision`                 | Rename in examples and validator                       |
+| `status`                            | `reviewState`              | Rename and remove `published` from source review state |
+| `canonRefs`                         | `canonReferences`          | Rename everywhere                                      |
+| missing `capabilityStatus`          | `capabilityStatus`         | Add to every active record                             |
+| missing `dependencies`              | `dependencies`             | Add, using an empty array where none exist             |
+| `reviewers` as review-domain labels | `reviewRequirements`       | Rename and treat values as domains                     |
+| no named approvals                  | `reviewApprovals`          | Add explicit named human approval records              |
+| no authorship metadata              | `authorship`               | Add mode and responsible humans                        |
+| `historicalContext`                 | `historicalContext`        | Retain as optional boolean                             |
+| no replacement metadata             | `supersedes`, `replacedBy` | Add only when applicable                               |
 
 ## Identifier decisions
 
-| Concept | Baseline grammar | Example |
-| --- | --- | --- |
-| Content ID | dotted namespace | `scene.lantern-shore.arrival` |
-| Slug | kebab-case | `lantern-shore-arrival` |
-| Story state | dotted namespace | `state.met-aster` |
-| Action | dotted namespace | `action.begin-prologue` |
-| Canon reference | `canon.` dotted namespace | `canon.character.aster` |
-| Event name | deferred runtime decision | no Sprint 2 enforcement |
+| Concept         | Baseline grammar          | Example                       |
+| --------------- | ------------------------- | ----------------------------- |
+| Content ID      | dotted namespace          | `scene.lantern-shore.arrival` |
+| Slug            | kebab-case                | `lantern-shore-arrival`       |
+| Story state     | dotted namespace          | `state.met-aster`             |
+| Action          | dotted namespace          | `action.begin-prologue`       |
+| Canon reference | `canon.` dotted namespace | `canon.character.aster`       |
+| Event name      | deferred runtime decision | no Sprint 2 enforcement       |
 
 ## Character record
 
