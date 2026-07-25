@@ -1,0 +1,21 @@
+[hero]
+parts=4
+encoded_bytes=65148
+compact_bytes=65148
+decoded_bytes=48860
+sha256=960a7d7e60a15d8497ce914bc29115409fc85343962eaebf024adb36658129e6
+header=52494646d4be00005745425056503820
+
+[aster]
+parts=2
+encoded_bytes=33724
+compact_bytes=33724
+decoded_bytes=25292
+sha256=21c7d16b83d745df699f97e307750d5793ef364fa4c468bc6c885aa14a7202d6
+header=52494646c46200005745425056503820
+
+[ogygia]
+parts=3
+encoded_bytes=40483
+compact_bytes=40483
+decode_error=Error: Incorrect padding
