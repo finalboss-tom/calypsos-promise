@@ -19,17 +19,46 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref }}
-      - name: Decode website assets
+      - name: Decode and verify website assets
         run: |
-          set -euo pipefail
-          cat .asset-staging/hero/part-* | base64 --decode > apps/site/public/assets/hero-ogygia.webp
-          cat .asset-staging/aster/part-* | base64 --decode > apps/site/public/assets/aster.webp
-          cat .asset-staging/ogygia/part-* | base64 --decode > apps/site/public/assets/ogygia-day.webp
-          file apps/site/public/assets/hero-ogygia.webp
-          file apps/site/public/assets/aster.webp
-          file apps/site/public/assets/ogygia-day.webp
+          python - <<'PY'
+          from base64 import b64decode
+          from hashlib import sha256
+          from pathlib import Path
+
+          assets = {
+              "hero": (
+                  "apps/site/public/assets/hero-ogygia.webp",
+                  "960a7d7e60a15d8497ce914bc29115409fc85343962eaebf024adb36658129e6",
+              ),
+              "aster": (
+                  "apps/site/public/assets/aster.webp",
+                  "21c7d16b83d745df699f97e307750d5793ef364fa4c468bc6c885aa14a7202d6",
+              ),
+              "ogygia": (
+                  "apps/site/public/assets/ogygia-day.webp",
+                  "f8255f8782d983bf620afd694468e39b613983c9cd8c6cc29a77fca7356d3feb",
+              ),
+          }
+
+          for name, (destination, expected_hash) in assets.items():
+              chunks = sorted(Path(f".asset-staging/{name}").glob("part-*"))
+              encoded = "".join(chunk.read_text().strip() for chunk in chunks)
+              payload = b64decode(encoded, validate=True)
+              actual_hash = sha256(payload).hexdigest()
+              if actual_hash != expected_hash:
+                  raise SystemExit(
+                      f"{name}: expected {expected_hash}, got {actual_hash}"
+                  )
+              if payload[:4] != b"RIFF" or payload[8:12] != b"WEBP":
+                  raise SystemExit(f"{name}: decoded payload is not WebP")
+              target = Path(destination)
+              target.write_bytes(payload)
+              print(f"{name}: {len(payload)} bytes, {actual_hash}")
+          PY
           rm -rf .asset-staging
-      - name: Commit materialized assets
+          rm .github/workflows/materialize-concept-art.yml
+      - name: Commit verified assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
