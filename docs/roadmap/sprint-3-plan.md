@@ -1,6 +1,8 @@
 # Sprint 3 — Canonical Data Model v1
 
-**Status:** IN PROGRESS — architecture, ontology, schema, validation, and documentation only
+**Status:** COMPLETE — merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`
+
+**Completion record:** `docs/roadmap/sprint-3-completion-record.md`
 
 ## Goal
 
@@ -265,7 +267,7 @@ Sprint 3 does not select or implement:
 - identity or anti-Sybil systems
 - legal entities, treasury custody, ownership instruments, tokens, blockchain, NFTs, or on-chain governance
 
-The existing roadmap lists database migrations as a Sprint 3 deliverable. Under the current architecture-only constraint, Sprint 3 may define migration requirements and synthetic migration scenarios, but executable production migrations remain deferred until the model is accepted and runtime implementation resumes.
+The existing roadmap lists database migrations as a Sprint 3 deliverable. Under the architecture-only constraint, Sprint 3 defines migration requirements and synthetic migration scenarios, but executable production migrations remain deferred until the model is accepted and runtime implementation resumes.
 
 ## Governance and institutional checks
 
@@ -281,7 +283,7 @@ Every material model decision must answer:
 
 A “yes” to either of the last two risk questions is a hold point.
 
-## Proposed execution sequence
+## Execution sequence
 
 1. Freeze Sprint 3 scope, terms, and non-scope.
 2. Establish authority, identity, and truth-class distinctions.
@@ -293,6 +295,8 @@ A “yes” to either of the last two risk questions is a hold point.
 8. Add contracts, schemas, validators, and synthetic fixtures.
 9. Run a cross-contract consistency review.
 10. Record unresolved questions and Sprint 3 completion evidence.
+
+During execution, the final implementation work was split into TypeScript contracts and schema version (3.9), deterministic validators and invariant tests (3.10), public synthetic fixtures (3.11), and cross-contract completion review (3.12). The split changed review granularity, not the goal or non-scope.
 
 ## Sprint acceptance criteria
 
@@ -308,5 +312,11 @@ Sprint 3 closes only when:
 - no health disclosure affects game rewards or governance weight
 - provider and storage choices remain replaceable
 - unresolved specialist questions are explicit rather than implied as approved
-- formatting, policy, typecheck, tests, and any Sprint 3 model-validation checks pass
+- formatting, policy, typecheck, tests, and Sprint 3 model-validation checks pass
 - the completion record identifies what remains proposed or deferred
+
+## Completion evidence
+
+All acceptance criteria were recorded as met at the pre-stable contract boundary in `docs/roadmap/sprint-3-completion-record.md`.
+
+The completion branch head `fddd37820935495ba94af701cf63d096ad6d8e34` passed CI run `30136291859` and DCO Attestation run `30136291851`. PR #14 was then squash-merged into `main` as commit `19c1045a24679246dae209e13c62038362c69cc1`, closing issue #13.

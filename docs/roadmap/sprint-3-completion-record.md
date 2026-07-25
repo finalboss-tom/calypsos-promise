@@ -1,14 +1,15 @@
 # Sprint 3 Completion Record — Canonical Data Model v1
 
-**Status:** COMPLETE ON BRANCH — acceptance evidence recorded; merge into `main` remains pending explicit approval  
+**Status:** COMPLETE AND MERGED — accepted through PR #14 and present on `main`  
 **Schema version:** `0.1.0` pre-stable  
+**Squash commit:** `19c1045a24679246dae209e13c62038362c69cc1`  
 **Scope:** architecture, ontology, contracts, deterministic validation, public synthetic fixtures, compatibility requirements, and documentation only
 
 ## Completion decision
 
-Sprint 3 has produced a coherent baseline for the authoritative Living Chronicle without selecting production persistence, providers, connectors, accounts, real-data ingestion, consent infrastructure, research access, clinical decision support, or economic and governance mechanisms.
+Sprint 3 produced and merged a coherent baseline for the authoritative Living Chronicle without selecting production persistence, providers, connectors, accounts, real-data ingestion, consent infrastructure, research access, clinical decision support, or economic and governance mechanisms.
 
-The baseline is accepted for review as a pre-stable contract. It is not a claim that the product runtime, security controls, legal posture, clinical safety, accessibility implementation, or institutional Phase 0 are complete.
+The baseline is accepted as a pre-stable contract. It is not a claim that the product runtime, security controls, legal posture, clinical safety, accessibility implementation, or institutional Phase 0 are complete.
 
 ## Review authority
 
@@ -148,7 +149,7 @@ A future JSON Schema must match the TypeScript discriminators and deterministic 
 
 ## Compatibility and migration decision
 
-`docs/product/living-chronicle-compatibility-migration.md` now defines additive, conditional, and breaking changes; preservation invariants; synthetic migration evidence; export compatibility; and rollback boundaries.
+`docs/product/living-chronicle-compatibility-migration.md` defines additive, conditional, and breaking changes; preservation invariants; synthetic migration evidence; export compatibility; and rollback boundaries.
 
 No executable production migration is introduced. Future migrations must preserve identity, source truth, temporal precision, provenance, authority, lifecycle, correction, conflict, export omissions, retention exceptions, tombstones, and domain separation.
 
@@ -164,7 +165,8 @@ No executable production migration is introduced. Future migrations must preserv
 - **Disclosure does not affect rewards or governance power:** met at the contract boundary.
 - **Provider and storage choices remain replaceable:** met at the identity and custody boundary.
 - **Unresolved specialist questions remain explicit:** met through the deferred and hold-point register below.
-- **Repository validation passes on the substantive completion head:** met.
+- **Repository validation passes on the completion head:** met.
+- **Completed baseline is present on `main`:** met through squash merge `19c1045a24679246dae209e13c62038362c69cc1`.
 
 ## Deferred and unresolved register
 
@@ -197,22 +199,27 @@ Sprint 4 or later work must stop and seek a specific reviewed decision when it w
 - make a provider, operator, founder, or proprietary client necessary to interpret or export canonical records; or
 - represent an unresolved safety, privacy, accessibility, clinical, legal, or research question as approved.
 
-## Merge gate
+## Merge record
 
-This completion record establishes that the Sprint 3 branch may be prepared for review after final repository checks pass.
+PR #14 was squash-merged into `main` on 2026-07-25 as commit `19c1045a24679246dae209e13c62038362c69cc1`.
 
-It does not authorize merge. Squash merge into `main` remains subject to explicit steward instruction, unchanged head verification, successful required checks, and truthful DCO signoff on the squash commit.
+The squash commit records:
+
+- the accepted Sprint 3 scope and boundaries;
+- closure of issue #13;
+- a truthful `Signed-off-by: Tom <tvarney@gmail.com>` trailer; and
+- the completed Living Chronicle architecture, contracts, validators, fixtures, compatibility requirements, and evidence.
 
 ## Validation evidence
 
-Substantive completion head:
+Validated completion branch head:
 
 ```text
-70c0f618d180e6f9cc1cd7a00807618bd6ed828b
+fddd37820935495ba94af701cf63d096ad6d8e34
 ```
 
-- CI run `30136219429`, run number `222`: success
-- DCO Attestation run `30136219431`, run number `245`: success
+- CI run `30136291859`, run number `223`: success
+- DCO Attestation run `30136291851`, run number `246`: success
 - formatting: success
 - repository policy: success
 - content validation: success
@@ -220,6 +227,10 @@ Substantive completion head:
 - typecheck: success
 - tests: success
 
-The passing test suite includes deterministic bundle validation, malformed-contract regressions, JSON serialization round-trip evidence, required-scenario identity resolution, synthetic-data enforcement, inclusive accessibility-context checks, and direct cross-contract assertions for authority, source preservation, derivation, correction, conflict, duplicate handling, export, deletion, and domain separation.
+Merged squash commit:
 
-The final evidence-only reconciliation commit is validated separately by the pull-request checks and recorded in PR #14 and issue #13. Embedding that commit’s own SHA here would create a self-referential update cycle.
+```text
+19c1045a24679246dae209e13c62038362c69cc1
+```
+
+The merge commit is the authoritative `main`-branch record. The validated branch head remains the exact pre-merge evidence for the accepted diff.
