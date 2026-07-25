@@ -1,6 +1,8 @@
 # Current Project Status
 
-**Status date:** 2026-07-25  
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md)
+
+**Status date:** 2026-07-24  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
 **Design-to-build sequence:** Sprints 0–3 complete and merged; Sprint 4 is the next planned target  
 **Runtime status:** Minimal contributor-safe site workspace only; no production health-data runtime
@@ -9,8 +11,8 @@
 
 Calypso’s Promise has two coordinated roadmaps:
 
-1. `docs/roadmap/sprints.md` defines the near-term design-to-build sequence.
-2. `ROADMAP.md` defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
+1. [`docs/roadmap/sprints.md`](sprints.md) defines the near-term design-to-build sequence.
+2. [`ROADMAP.md`](../../ROADMAP.md) defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
 
 Sprints 0–3 are complete and merged. Sprint 3 entered the merged baseline through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
 
@@ -103,7 +105,7 @@ Sprint 3 preserves person control, traceable derivation, visible uncertainty and
 
 ## Institutional Phase 0 gate assessment
 
-`ROADMAP.md` defines four Phase 0 exit gates.
+[`ROADMAP.md`](../../ROADMAP.md) defines four Phase 0 exit gates.
 
 ### Core foundations are internally consistent
 
@@ -131,7 +133,7 @@ Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes 
 
 **Status:** Met.
 
-`VISION.md`, `GOVERNANCE.md`, `ROADMAP.md`, the Frozen Foundations register, and Decision 0003 establish the constraint.
+[`VISION.md`](../../VISION.md), [`GOVERNANCE.md`](../../GOVERNANCE.md), [`ROADMAP.md`](../../ROADMAP.md), the [Frozen Foundations register](../frozen/README.md), and [Decision 0003](../decisions/0003-progressive-decentralization.md) establish the constraint.
 
 ## Remaining Phase 0 closure work
 

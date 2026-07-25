@@ -59,6 +59,8 @@ jobs:
       fail-fast: false
       matrix:
         check:
+          - name: documentation-links
+            command: pnpm docs:check
           - name: repository-policy
             command: pnpm policy:check
           - name: content-validation

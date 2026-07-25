@@ -1,5 +1,7 @@
 # Frozen Foundations
 
+[Documentation home](../README.md) · [Product Constitution](product-constitution.md) · [Architecture](architecture.md) · [World and Lore](world-and-lore-canon.md) · [Vision](../../VISION.md)
+
 This directory warehouses components that are approved as constitutional or canonical foundations for Calypso’s Promise.
 
 A frozen document may still receive corrections, clarifications, accessibility improvements, or implementation notes. Material changes to its promise, meaning, safety boundary, institutional mandate, or canon require an explicit decision record.
@@ -24,13 +26,13 @@ A frozen document may still receive corrections, clarifications, accessibility i
 
 ## Governing institutional documents
 
-- `VISION.md` — the frozen long-horizon institutional mandate
-- `ROADMAP.md` — public product, evidence, economic, and governance gates
-- `GOVERNANCE.md` — present authority and progressive-transfer baseline
-- `docs/decisions/0003-progressive-decentralization.md` — accepted decision establishing the institutional progression
-- `docs/decisions/0004-public-domain-commons.md` — accepted decision establishing the public-domain commons direction
-- `docs/decisions/0005-principled-confidentiality.md` — accepted decision establishing the public-information boundary
-- `docs/policies/publication-and-confidentiality.md` — operational implementation of the disclosure boundary
+- [Vision](../../VISION.md) — the frozen long-horizon institutional mandate
+- [Public Institutional Roadmap](../../ROADMAP.md) — public product, evidence, economic, and governance gates
+- [Governance Baseline](../../GOVERNANCE.md) — present authority and progressive-transfer baseline
+- [Decision 0003](../decisions/0003-progressive-decentralization.md) — accepted decision establishing the institutional progression
+- [Decision 0004](../decisions/0004-public-domain-commons.md) — accepted decision establishing the public-domain commons direction
+- [Decision 0005](../decisions/0005-principled-confidentiality.md) — accepted decision establishing the public-information boundary
+- [Publication and Confidentiality Policy](../policies/publication-and-confidentiality.md) — operational implementation of the disclosure boundary
 
 ## Status vocabulary
 

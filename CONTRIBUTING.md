@@ -1,22 +1,26 @@
 # Contributing to Calypso’s Promise
 
+[Repository home](README.md) · [Documentation](docs/README.md) · [Current status](docs/roadmap/current-status.md) · [Module boundaries](docs/architecture/module-boundaries.md) · [Security](SECURITY.md)
+
 Thank you for helping build Calypso’s Promise.
 
 ## Before contributing
 
 Read these first:
 
-- `docs/frozen/product-constitution.md`
-- `docs/frozen/architecture.md`
-- `docs/frozen/world-and-lore-canon.md`
-- `docs/product/gameplay-foundation.md`
-- `docs/product/incentive-model.md`
-- `docs/governance/feedback-to-governed-work.md`
-- `docs/governance/feedback-triage-operating-protocol.md`
-- `docs/governance/institutional-immune-system.md`
-- `docs/governance/assumption-registry.md`
-- `docs/policies/publication-and-confidentiality.md`
-- `SECURITY.md`
+- [Documentation Home](docs/README.md)
+- [Product Constitution](docs/frozen/product-constitution.md)
+- [Architecture Foundation](docs/frozen/architecture.md)
+- [World and Lore Canon](docs/frozen/world-and-lore-canon.md)
+- [Gameplay Foundation](docs/product/gameplay-foundation.md)
+- [Incentive Model](docs/product/incentive-model.md)
+- [Repository and Module Boundaries](docs/architecture/module-boundaries.md)
+- [Feedback to Governed Work](docs/governance/feedback-to-governed-work.md)
+- [Manual Feedback Triage Protocol](docs/governance/feedback-triage-operating-protocol.md)
+- [Institutional Immune System](docs/governance/institutional-immune-system.md)
+- [Assumption Registry](docs/governance/assumption-registry.md)
+- [Publication and Confidentiality](docs/policies/publication-and-confidentiality.md)
+- [Security Policy](SECURITY.md)
 
 Frozen components may only change through an accepted decision record.
 
@@ -34,7 +38,7 @@ When work depends on protected source material, create a synthetic example or a 
 
 ## Information handling
 
-Only information classified as **PUBLIC** under `docs/policies/publication-and-confidentiality.md` belongs in this repository.
+Only information classified as **PUBLIC** under the [Publication and Confidentiality Policy](docs/policies/publication-and-confidentiality.md) belongs in this repository.
 
 The other classes remain outside public and ordinary contributor systems:
 
@@ -47,7 +51,7 @@ If you discover protected information in a public project surface:
 
 1. do not quote, repost, download, or include it in a new public issue
 2. stop work that may spread it
-3. report it privately under `SECURITY.md`
+3. report it privately under [Security](SECURITY.md)
 4. rotate or revoke exposed credentials immediately when authorized
 5. allow the incident owner to coordinate removal, notification, and a safe public record
 
@@ -69,9 +73,9 @@ Do not open a public issue for:
 
 Those matters require the applicable private support, security, conduct, privacy, or specialist path. When a public record is appropriate, an authorized steward may later publish a reviewed, minimized institutional derivative.
 
-Community reactions, comments, and issue activity are advisory signals during institutional Phase 0. They do not bypass maintainer authority, specialist review, safety controls, or decision records. Decision 0006 and `docs/governance/feedback-to-governed-work.md` define the path toward typed signals, deterministic priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity.
+Community reactions, comments, and issue activity are advisory signals during institutional Phase 0. They do not bypass maintainer authority, specialist review, safety controls, or decision records. [Decision 0006](docs/decisions/0006-feedback-to-governed-work.md) and the [Feedback-to-Governed-Work Architecture](docs/governance/feedback-to-governed-work.md) define the path toward typed signals, deterministic priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity.
 
-The current manual process is defined in `docs/governance/feedback-triage-operating-protocol.md`. It establishes:
+The current manual process is defined in the [Feedback Triage Operating Protocol](docs/governance/feedback-triage-operating-protocol.md). It establishes:
 
 - one primary type, lifecycle state, evidence state, and decision class after triage
 - one or more affected areas and required review flags
@@ -80,7 +84,7 @@ The current manual process is defined in `docs/governance/feedback-triage-operat
 - structured public triage, decision, validation, closure, reopening, and contribution-credit records
 - private routing for security, privacy incidents, conduct, and other protected matters
 
-The canonical label names and descriptions are in `docs/governance/feedback-label-registry.yml`. Copy-paste records are in `docs/governance/feedback-record-templates.md`.
+The canonical label names and descriptions are in the [Feedback Label Registry](docs/governance/feedback-label-registry.yml). Copy-paste records are in [Feedback Record Templates](docs/governance/feedback-record-templates.md).
 
 ### Participating in triage
 
@@ -150,6 +154,8 @@ pnpm --filter @calypsos-promise/site dev
 
 The local site listens on `http://localhost:3000`. No account, secret, cloud service, or production data is required.
 
+Use `pnpm docs:check` for a focused relative-link validation. The full `pnpm check` runs formatting, documentation links, repository policy, content validation, linting, type checking, and tests.
+
 ## Workflow
 
 1. Open or select an issue.
@@ -170,6 +176,12 @@ Before publishing a branch or pull request, inspect:
 - links and URL query parameters
 - AI prompts, traces, and generated output included in the change
 
+## Module and package expectations
+
+Before creating or expanding a module, read [Repository and Module Boundaries](docs/architecture/module-boundaries.md).
+
+A new package or service needs a bounded responsibility, current consumer, deliberate public API, inward dependency direction, owner, tests, and public or synthetic fixtures. Do not create empty placeholders to mirror the planned topology, deep-import another package’s private source, or add consent, research, marketplace, quest, narrative, AI-provider, or application behavior to the Living Chronicle contract merely because it references Chronicle data.
+
 ## Pull-request expectations
 
 A pull request should state:
@@ -182,6 +194,7 @@ A pull request should state:
 - Evidence used to validate the change
 - Remaining uncertainty
 - Material assumptions, guardrails, rollback, restoration, or revalidation implications when applicable
+- Module ownership and dependency-direction implications when application or package boundaries change
 
 ## Decision records
 
@@ -196,7 +209,7 @@ Create a decision record when a change materially affects:
 - Hosted-service economics
 - Institutional immune-system authority or removal of meaningful challenge, appeal, containment, rollback, restoration, or revalidation
 
-Use `docs/decisions/TEMPLATE.md`.
+Use the [Decision Record Template](docs/decisions/0000-template.md).
 
 ## Commit and review policy
 
