@@ -13,9 +13,11 @@ They are contract evidence, not product seed data, clinical examples, training d
 
 ## Fixture boundary
 
-The baseline fixture is composed from deterministic ECMAScript data modules under `packages/health-schema/fixtures/`.
+The baseline Chronicle fixture is composed from deterministic ECMAScript data modules under `packages/health-schema/fixtures/`.
 
-This representation is intentional while JSON Schema and an untrusted-JSON decoding boundary remain later Sprint 3 work. The composed result is a plain `ChronicleSchemaBundle`, and tests require it to remain valid after a JSON serialization round trip.
+This representation is intentional while JSON Schema and an untrusted-JSON decoding boundary remain deferred. The composed result is a plain `ChronicleSchemaBundle`, and tests require it to remain valid after a JSON serialization round trip.
+
+A separate synthetic accessibility-context matrix varies names, age bands, locales, language direction, access needs, and data-availability conditions. That matrix is not Chronicle data, a demographic classification system, or product seed data.
 
 The fixtures do not introduce:
 
@@ -47,20 +49,34 @@ The fixtures do not introduce:
 | Export containing records and provenance                          | request, plan, manifest, artifact, and delivery chain with explicit omission evidence                                |
 | Deletion, retention exception, tombstone, and completion evidence | scoped request, dependency resolution, accountable temporary exception, minimal tombstone, and completion record     |
 
+## Inclusive interaction coverage
+
+The separate accessibility-context matrix includes obviously synthetic contexts with varied:
+
+- display names
+- teen, adult, and older-adult age bands
+- left-to-right and right-to-left locales
+- English-first, Spanish-first, multilingual, and culturally adaptable presentation contexts
+- screen-reader, keyboard-only, large-text, high-contrast, reduced-motion, plain-language, and touch-spacing needs
+- manual-only, document-import, device-export, intermittent-connectivity, offline, and paper-source availability
+
+The matrix assigns no health status, diagnosis, treatment, capability judgment, outcome, consent, reward, progression, compensation, or governance authority to any context.
+
 ## Public and synthetic requirements
 
-All source artifacts in the fixture are classified `synthetic`.
+All source artifacts in the Chronicle fixture are classified `synthetic`.
 
 The test suite validates the aggregate under the `public-or-synthetic` fixture policy. A future fixture contribution fails this policy when it marks any source artifact `private`.
 
-The fixture declaration also states that it contains:
+The fixture declarations also state that they contain:
 
 - no production or private health data
 - no diagnosis, treatment recommendation, or causal claim
 - no secondary-use permission
 - no compensation, progression, or governance effect
+- no real-person accessibility or demographic profile
 
-These are repository and review boundaries, not claims that an automated validator can prove every privacy or legal property of arbitrary prose.
+These are repository and review boundaries, not claims that an automated validator can prove every privacy, accessibility, or legal property of arbitrary prose.
 
 ## Evidence requirements
 
@@ -69,12 +85,13 @@ The fixture baseline is accepted only when tests demonstrate:
 1. the complete bundle passes deterministic invariant validation;
 2. the same bundle passes after JSON serialization and parsing;
 3. every required scenario maps to one or more globally resolvable fixture identities;
-4. the fixture declaration remains explicitly synthetic and incentive-neutral;
-5. repository formatting, policy, content validation, lint, typecheck, tests, and DCO pass on the current head.
+4. the fixture declarations remain explicitly synthetic and incentive-neutral;
+5. inclusive contexts vary without adding health outcomes or institutional authority; and
+6. repository formatting, policy, content validation, lint, typecheck, tests, and DCO pass on the current head.
 
 ## Change rules
 
-Fixture changes must preserve source truth, Chronicle truth, authority, lifecycle, provenance, correction, conflict, export, and deletion boundaries.
+Fixture changes must preserve source truth, Chronicle truth, authority, lifecycle, provenance, correction, conflict, export, deletion, and incentive boundaries.
 
 A fixture must not be made easier to validate by:
 
@@ -85,5 +102,6 @@ A fixture must not be made easier to validate by:
 - omitting retained-under-exception state
 - retaining sensitive values in tombstones
 - rewarding disclosure, source volume, retention, broader consent, or intimate detail
+- encoding stereotyped health outcomes into accessibility or cultural contexts
 
 Changes that reveal a contract inconsistency should update the contract or document the unresolved question rather than disguising the inconsistency in fixture data.
