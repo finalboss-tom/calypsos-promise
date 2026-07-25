@@ -27,22 +27,18 @@ test("keeps the accessibility matrix synthetic and outside Chronicle truth", () 
 });
 
 test("varies names, age bands, locales, access needs, and data availability", () => {
-  for (const field of [
-    "displayName",
-    "ageBand",
-    "locale",
-    "languageContext",
-  ]) {
+  for (const field of ["displayName", "ageBand", "locale", "languageContext"]) {
     assert.ok(
-      new Set(syntheticAccessibilityContexts.map((context) => context[field])).size >
-        1,
+      new Set(syntheticAccessibilityContexts.map((context) => context[field]))
+        .size > 1,
       `${field} is not varied`,
     );
   }
 
   assert.ok(
-    new Set(syntheticAccessibilityContexts.flatMap((context) => context.accessNeeds))
-      .size > 3,
+    new Set(
+      syntheticAccessibilityContexts.flatMap((context) => context.accessNeeds),
+    ).size > 3,
   );
   assert.ok(
     new Set(
