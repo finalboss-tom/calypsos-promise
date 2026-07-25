@@ -27,6 +27,8 @@ importers:
 
   packages/domain: {}
 
+  packages/health-schema: {}
+
 packages:
 
   '@turbo/darwin-64@2.10.6':

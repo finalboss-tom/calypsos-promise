@@ -1,20 +1,20 @@
 # Current Project Status
 
-**Status date:** 2026-07-24  
+**Status date:** 2026-07-25  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0, 1, and 2 complete; Sprint 3 is next  
+**Design-to-build sequence:** Sprints 0–3 complete and merged; Sprint 4 is the next planned target  
 **Runtime status:** Minimal contributor-safe site workspace only; no production health-data runtime
 
 ## Executive status
 
-Calypso’s Promise now has two coordinated roadmaps:
+Calypso’s Promise has two coordinated roadmaps:
 
 1. `docs/roadmap/sprints.md` defines the near-term design-to-build sequence.
 2. `ROADMAP.md` defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
 
-The project has completed the first three design-to-build sprints, but it has not yet declared institutional Phase 0 complete. Phase 0 remains active until its remaining organizational and evidence gates are reviewed explicitly.
+Sprints 0–3 are complete and merged. Sprint 3 entered the merged baseline through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
 
-The next planned design-to-build target is Sprint 3, the canonical Living Chronicle data model. Sprint 3 should begin as architecture, ontology, schema, provenance, and validation work. It should not silently become a production database, provider, or real-data integration sprint.
+The next planned design-to-build target is Sprint 4 — House of Keys consent architecture. Institutional Phase 0 remains active until its remaining organizational and evidence gates are reviewed explicitly. Sprint 3 completion does not declare the product runtime, security posture, clinical or legal review, House of Keys, research infrastructure, economics, governance transition, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -76,6 +76,31 @@ Established as a frozen institutional and architectural constraint:
 - founder independence is a success condition
 - the deterministic incentive model, meaningful refusal, non-punitive return, and personal-value-first sequence are constitutional boundaries
 
+### Sprint 3 — Canonical data model v1
+
+Merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`. Closed issue #13 contains the workstream and exit-criteria ledger.
+
+Established:
+
+- provider-independent and pseudonymous Chronicle identity
+- explicit subject, actor, author, recorder, source, confirmer, transformer, and custody distinctions
+- exact, date-only, local, approximate, recurring, bounded, and open temporal representations
+- observations, intervals, reflections, goals, derived records, associations, and inferences
+- stable variables, discriminated values, categories, units, mappings, and deterministic normalization
+- raw source artifacts, immutable versions, exact locators, and provenance chains
+- correction, supersession, retraction, invalidation, conflict, duplicate, merge, unmerge, and preferred-presentation semantics
+- document, attachment, stored-representation, derived-representation, and replaceable custody contracts
+- export, omission, deletion, retention-exception, tombstone, and completion-evidence lifecycles
+- independent Living Chronicle schema version `0.1.0`
+- strict TypeScript contracts and a JSON-serializable aggregate bundle
+- deterministic cross-reference and invariant validation
+- public synthetic fixtures for every required Sprint 3 scenario
+- separate inclusive synthetic interaction contexts
+- migration and compatibility requirements without executable production migrations
+- cross-contract completion evidence and an explicit deferred-work register
+
+Sprint 3 preserves person control, traceable derivation, visible uncertainty and conflict, inspectable correction history, explicit deletion, provider replaceability, and the prohibition on converting disclosure into rewards or governance power.
+
 ## Institutional Phase 0 gate assessment
 
 `ROADMAP.md` defines four Phase 0 exit gates.
@@ -84,13 +109,13 @@ Established as a frozen institutional and architectural constraint:
 
 **Status:** Baseline met, subject to future evidence and specialist review.
 
-PR #9 reconciled vocabulary, incentives, content schemas, validators, examples, and governance. PR #10 added a compatible frozen institutional mandate rather than replacing the player promise or incentive contract.
+PR #9 reconciled vocabulary, incentives, content schemas, validators, examples, and governance. PR #10 added a compatible frozen institutional mandate rather than replacing the player promise or incentive contract. PR #14 added the merged Living Chronicle baseline without weakening those boundaries.
 
 ### Repository controls meet minimum viable validation
 
 **Status:** Baseline met.
 
-The repository provides `pnpm check`, synthetic-data-only contribution rules, independent CI checks, content validation, tests, and transitional DCO certification.
+The repository provides `pnpm check`, synthetic-data-only contribution rules, independent CI checks, content and model validation, tests, and transitional DCO certification.
 
 Administrative branch-protection settings and commit-level DCO enforcement still require verification or implementation before external contribution volume grows.
 
@@ -98,7 +123,7 @@ Administrative branch-protection settings and commit-level DCO enforcement still
 
 **Status:** Partially met.
 
-The principal frozen foundations, Sprint 2 contracts, progressive-decentralization decision, governance baseline, and public institutional roadmap are committed.
+The principal frozen foundations, Sprint 2 contracts, progressive-decentralization decision, governance baseline, public institutional roadmap, feedback-to-governed-work architecture, and Sprint 3 Chronicle contract are committed in repository artifacts.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes still need to be recovered, catalogued, and classified. Future material decisions must continue moving into decision records and repository artifacts.
 
@@ -106,7 +131,7 @@ Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes 
 
 **Status:** Met.
 
-`VISION.md`, `GOVERNANCE.md`, `ROADMAP.md`, the Frozen Foundations register, and Decision 0003 now establish the constraint.
+`VISION.md`, `GOVERNANCE.md`, `ROADMAP.md`, the Frozen Foundations register, and Decision 0003 establish the constraint.
 
 ## Remaining Phase 0 closure work
 
@@ -122,51 +147,46 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 
 These are governance and resilience requirements, not reasons to introduce a token, treasury, identity system, legal wrapper, or broad vote prematurely.
 
-## Next design-to-build target: Sprint 3
+## Next design-to-build target: Sprint 4
 
-Sprint 3 should define the authoritative Living Chronicle contract, including:
+Sprint 4 — House of Keys consent architecture should make purpose-specific authority a first-class domain while preserving the Sprint 3 Chronicle boundary.
 
-- account and pseudonymous Chronicle identity
-- observations and intervals
-- variables, categories, units, and normalization
-- raw sources and provenance chains
-- approximate time
-- correction, supersession, conflict, and duplicate handling
-- attachments and document versions
-- export and deletion states
-- explicit separation among Chronicle truth, story state, quest state, consent, receipts, and Aster memory
-- synthetic fixtures covering varied people and accessibility contexts
+Planned work includes:
 
-### Sprint 3 constitutional tests
+- purpose and data-category taxonomies
+- versioned consent grants
+- recipient and duration models
+- revocation behavior
+- access receipt formats
+- permission explanations and comprehension evidence
+- deterministic policy evaluation
 
-The model must preserve:
+Sprint 4 must not collapse consent into Chronicle truth, use blanket consent, reward broader permission, or require research or commerce participation for core personal utility.
 
-- person-controlled records and portable exports
-- provenance for every derived record
-- correction without silent history rewriting
-- deletion semantics that are explicit and testable
-- no requirement for research, commerce, governance participation, or broader consent to receive core personal value
-- no conversion of health disclosure into progression or governance power
-- provider and storage choices that remain replaceable enough to support founder independence
-- no production health data in public contributor workflows
+## Sprint 3 deferred implementation boundary
 
-### Sprint 3 non-scope at entry
+The merged Sprint 3 baseline does not select or implement:
 
-Until the model and its review gates are accepted, Sprint 3 should not select or implement:
-
-- a production database topology
-- production migrations against real user data
-- cloud or AI providers
-- connector rollout
-- research access
-- compensation or marketplace flows
+- a production database topology, event model, or migration runner
+- production accounts, authentication, identity proofing, or recovery
+- cloud, storage, queue, analytics, document-processing, connector, or AI providers
+- real health-data ingestion or connector rollout
+- House of Keys consent evaluation or access receipts
+- research access, compensation, marketplaces, or data sales
+- clinical terminology, diagnosis, treatment, decision support, or causal inference
+- production encryption, key management, malware controls, audit, or secure deletion
+- story, quest, progression, notification, or Aster-memory persistence
 - identity or anti-Sybil systems
 - treasury or ownership mechanisms
 - token, blockchain, NFT, or on-chain DAO infrastructure
 
+A complete JSON Schema and safe decoder from untrusted input also remain deferred. The accepted `0.1.0` boundary is the strict TypeScript contract, deterministic validator, and JSON-serializable synthetic interchange evidence.
+
 ## Publication and release status
 
-The canonical Sprint 2 records are examples in `specialist-review`. They are not approved production content and are not part of an immutable content release.
+The canonical Sprint 2 records remain examples in `specialist-review`. They are not approved production content and are not part of an immutable content release.
+
+The Sprint 3 Living Chronicle contract is merged, pre-stable, and synthetic-data-only. It is not a production data-model deployment or authorization to process real health data.
 
 The current application remains a minimal, credential-free workspace proving that the repository can install, validate, and run without production services or real health data.
 
@@ -176,7 +196,7 @@ No claim should imply that Phase 1’s useful private product, Phase 2’s trust
 
 This record should be updated when:
 
-- a design-to-build sprint closes or changes status
+- a design-to-build sprint closes, merges, or changes status
 - an institutional phase gate is accepted, rejected, paused, or rolled back
 - a frozen decision changes the relationship among product, incentives, governance, or founder independence
 - a material unresolved gate gains an owner or evidence
