@@ -8,19 +8,20 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–2 are complete and merged:
+Sprints 0–3 are complete and merged:
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
 - Sprint 2 established controlled vocabulary, the deterministic incentive contract, content schemas, canonical examples, content governance, and minimum viable validation.
 - PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
 - Decision 0006 establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
+- Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
 
-**Sprint 3 — Canonical data model v1 is complete on draft PR #14 and pending explicit merge approval.** It defines the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
+The next planned design-to-build target is **Sprint 4 — House of Keys consent architecture**. It will define purpose-specific authority, grants, revocation, access receipts, comprehension, and policy evaluation without introducing blanket consent or production health-data flows.
 
-Sprint 3 does not introduce production migrations, real health-data flows, accounts, providers, connectors, consent infrastructure, research access, clinical decision support, or runtime services.
+Sprint 3 did not introduce production migrations, real health-data flows, accounts, providers, connectors, consent infrastructure, research access, clinical decision support, or runtime services.
 
-Read `docs/roadmap/current-status.md` for the integrated phase assessment. Read `docs/roadmap/sprint-3-completion-record.md` for the Sprint 3 acceptance decision, evidence, hold points, and deferred register. Sprint work is tracked in issue #13.
+Read `docs/roadmap/current-status.md` for the integrated phase assessment. Read `docs/roadmap/sprint-3-completion-record.md` for the merged Sprint 3 acceptance decision, evidence, hold points, and deferred register. The completed Sprint 3 work is recorded in closed issue #13; the broader sprint program remains tracked in issue #2.
 
 **Frozen foundations**
 
@@ -37,7 +38,6 @@ Read `docs/roadmap/current-status.md` for the integrated phase assessment. Read 
 
 **Current gates and unresolved work**
 
-- Review and explicitly merge Sprint 3 before treating it as part of the merged baseline.
 - Complete an explicit Phase 0 exit review against `ROADMAP.md`.
 - Publish the initial key-person dependency, succession, and founder-reserved-power records required by Decision 0003.
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
