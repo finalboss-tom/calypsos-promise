@@ -1,5 +1,7 @@
 # Public Narrative and Campaign Documents
 
+[Documentation home](../README.md) · [Campaign system](campaign-system.md) · [Marketing and PR](marketing-and-pr-strategy.md) · [Campaign log](campaign-log.md) · [Website documentation](../website/README.md)
+
 **Status:** BASELINE public-communication system
 
 This directory contains the campaign, founder-story, public-domain, provenance, public-trust, marketing, public-relations, and campaign-operations materials that translate the project’s frozen foundations into public communication.
@@ -8,23 +10,23 @@ These documents do not override the Product Constitution, World and Lore Canon, 
 
 ## Canonical documents
 
-- `campaign-system.md` — durable narrative architecture, genealogy, health-data covenant, stewardship model, launch gates, scorecard, and response doctrine
-- `marketing-and-pr-strategy.md` — open marketing and public-relations doctrine, audiences, channels, press strategy, current-events protocol, measurement, reporting, experiments, crisis response, and transparency boundaries
-- `campaign-log.md` — live decision, outreach, experiment, cost, correction, and results log with the initial campaign record
-- `founder-origin-essay.md` — long-form founder essay, ready for personal revision
-- `launch-kit.md` — posts, website copy, press pitch, media points, FAQs, and moderation guidance
-- `attention-window-2026-07.md` — dated analysis of the current Odyssey attention cycle
-- `content-calendar-2026-07-27.md` — 21-day rollout from cultural attention into durable project communication
+- [Campaign System](campaign-system.md) — durable narrative architecture, genealogy, health-data covenant, stewardship model, launch gates, scorecard, and response doctrine
+- [Marketing and PR Strategy](marketing-and-pr-strategy.md) — open marketing and public-relations doctrine, audiences, channels, press strategy, current-events protocol, measurement, reporting, experiments, crisis response, and transparency boundaries
+- [Campaign Log](campaign-log.md) — live decision, outreach, experiment, cost, correction, and results log with the initial campaign record
+- [Founder Origin Essay](founder-origin-essay.md) — long-form founder essay, ready for personal revision
+- [Launch Kit](launch-kit.md) — posts, website copy, press pitch, media points, FAQs, and moderation guidance
+- [Attention Window — July 2026](attention-window-2026-07.md) — dated analysis of the current Odyssey attention cycle
+- [Content Calendar — July 27, 2026](content-calendar-2026-07-27.md) — 21-day rollout from cultural attention into durable project communication
 
 Related documents:
 
-- `../../PUBLIC_DOMAIN.md` — human-readable public-domain commons declaration and migration requirements
-- `../decisions/0004-public-domain-commons.md` — accepted constitutional decision
-- `../decisions/0005-principled-confidentiality.md` — accepted public-information and confidentiality boundary
-- `../policies/publication-and-confidentiality.md` — detailed information classes, publication rules, redaction, review, retention, and incident response
-- `../website/campaign-entry-points.md` — website routes, conversion flows, provenance archive, status page, press room, analytics, and accessibility requirements
-- `../website/open-campaign-transparency.md` — public strategy, campaign log, experiment, reports, costs, corrections, and dashboard surfaces
-- `../website/public-information-boundary.md` — separate public schemas, private-source isolation, forms, approvals, APIs, analytics, metadata, and removal controls
+- [Public-Domain Commons](../../PUBLIC_DOMAIN.md) — human-readable public-domain commons declaration and migration requirements
+- [Decision 0004](../decisions/0004-public-domain-commons.md) — accepted constitutional decision
+- [Decision 0005](../decisions/0005-principled-confidentiality.md) — accepted public-information and confidentiality boundary
+- [Publication and Confidentiality Policy](../policies/publication-and-confidentiality.md) — detailed information classes, publication rules, redaction, review, retention, and incident response
+- [Website Campaign Entry Points](../website/campaign-entry-points.md) — website routes, conversion flows, provenance archive, status page, press room, analytics, and accessibility requirements
+- [Website Open Campaign Transparency](../website/open-campaign-transparency.md) — public strategy, campaign log, experiment, reports, costs, corrections, and dashboard surfaces
+- [Website Public Information Boundary](../website/public-information-boundary.md) — separate public schemas, private-source isolation, forms, approvals, APIs, analytics, metadata, and removal controls
 
 ## Open-campaign rule
 
