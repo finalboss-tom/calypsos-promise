@@ -7,7 +7,10 @@ if (signupForm instanceof HTMLFormElement) {
   signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!(status instanceof HTMLElement) || !(submitButton instanceof HTMLButtonElement)) {
+    if (
+      !(status instanceof HTMLElement) ||
+      !(submitButton instanceof HTMLButtonElement)
+    ) {
       return;
     }
 
@@ -36,7 +39,8 @@ if (signupForm instanceof HTMLFormElement) {
 
       window.location.assign(result.redirect ?? "/joined");
     } catch (error) {
-      status.textContent = error instanceof Error ? error.message : "Signup is unavailable.";
+      status.textContent =
+        error instanceof Error ? error.message : "Signup is unavailable.";
       status.dataset.state = "error";
       submitButton.disabled = false;
     }

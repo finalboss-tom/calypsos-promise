@@ -16,20 +16,31 @@ before(async () => {
 });
 
 after(async () => {
-  await new Promise((resolve, reject) => siteServer.close((error) => (error ? reject(error) : resolve())));
+  await new Promise((resolve, reject) =>
+    siteServer.close((error) => (error ? reject(error) : resolve())),
+  );
 });
 
 test("validates purpose-limited signup fields", () => {
-  assert.deepEqual(validateSignup({ email: " Seeker@Example.com ", consent: true }), {
-    ok: true,
-    email: "seeker@example.com",
-  });
+  assert.deepEqual(
+    validateSignup({ email: " Seeker@Example.com ", consent: true }),
+    {
+      ok: true,
+      email: "seeker@example.com",
+    },
+  );
   assert.equal(validateSignup({ email: "invalid", consent: true }).ok, false);
-  assert.equal(validateSignup({ email: "seeker@example.com", consent: false }).ok, false);
-  assert.deepEqual(validateSignup({ email: "anything", consent: false, website: "spam" }), {
-    ok: true,
-    ignored: true,
-  });
+  assert.equal(
+    validateSignup({ email: "seeker@example.com", consent: false }).ok,
+    false,
+  );
+  assert.deepEqual(
+    validateSignup({ email: "anything", consent: false, website: "spam" }),
+    {
+      ok: true,
+      ignored: true,
+    },
+  );
 });
 
 test("serves the cinematic public gateway with security headers", async () => {
@@ -37,7 +48,10 @@ test("serves the cinematic public gateway with security headers", async () => {
   const html = await response.text();
 
   assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-security-policy"), /default-src 'self'/);
+  assert.match(
+    response.headers.get("content-security-policy"),
+    /default-src 'self'/,
+  );
   assert.match(html, /View on GitHub/);
   assert.match(html, /Meet Aster/);
   assert.match(html, /AI proposes/);
@@ -106,6 +120,8 @@ test("forwards a validated signup to the configured private endpoint", async () 
   } finally {
     if (previousWebhook) process.env.SIGNUP_WEBHOOK_URL = previousWebhook;
     else delete process.env.SIGNUP_WEBHOOK_URL;
-    await new Promise((resolve, reject) => provider.close((error) => (error ? reject(error) : resolve())));
+    await new Promise((resolve, reject) =>
+      provider.close((error) => (error ? reject(error) : resolve())),
+    );
   }
 });
