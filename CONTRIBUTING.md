@@ -13,6 +13,8 @@ Read these first:
 - `docs/product/incentive-model.md`
 - `docs/governance/feedback-to-governed-work.md`
 - `docs/governance/feedback-triage-operating-protocol.md`
+- `docs/governance/institutional-immune-system.md`
+- `docs/governance/assumption-registry.md`
 - `docs/policies/publication-and-confidentiality.md`
 - `SECURITY.md`
 
@@ -110,6 +112,28 @@ Do not reveal a diagnosis, disability, account identity, private experience, or 
 
 A useful contribution may include reporting, reproducing, triaging, specifying, implementing, reviewing, testing, documenting, validating, or measuring an outcome. Credit depends on validated value rather than issue or comment volume.
 
+## Challenges and revalidation
+
+A contributor may use the **System challenge or revalidation request** issue form to challenge a public assumption, outcome metric, incentive, product behavior, architecture, policy, governance decision, authority structure, public claim, emergency action, or the Institutional Immune System itself.
+
+A useful challenge should:
+
+- identify a specific target or claim
+- separate observation from interpretation where possible
+- include public-safe evidence and relevant uncertainty
+- identify affected people, rights, or systems without exposing protected information
+- describe a test, review, reproduction, comparison, or invalidation condition that could resolve the dispute
+- request containment only when delay could compound harm
+- disclose material relationships, expertise, authorship, authority, or conflicts
+
+A complete replacement solution is not required to demonstrate a material defect.
+
+Challenges are evaluated by evidence, affectedness, risk, rights implications, uncertainty, reproducibility, and falsifiability—not by the challenger’s status or reaction volume. Filing a challenge does not itself activate emergency authority, reverse a decision, or create contribution credit.
+
+The immune-system metaphor applies to harmful conditions and mechanisms, not people or groups. Do not characterize critics, users, contributors, minorities, or dissenters as pathogens or threats merely because they disagree.
+
+Protected health, account, security, conduct, legal, personnel, correspondence, or negotiation evidence must use an authorized private route. Public records may include only reviewed, minimized institutional derivatives.
+
 ## Development setup
 
 Requirements:
@@ -157,6 +181,7 @@ A pull request should state:
 - Information classification and publication review
 - Evidence used to validate the change
 - Remaining uncertainty
+- Material assumptions, guardrails, rollback, restoration, or revalidation implications when applicable
 
 ## Decision records
 
@@ -169,6 +194,7 @@ Create a decision record when a change materially affects:
 - Public information or confidentiality boundaries
 - Open-source governance
 - Hosted-service economics
+- Institutional immune-system authority or removal of meaningful challenge, appeal, containment, rollback, restoration, or revalidation
 
 Use `docs/decisions/TEMPLATE.md`.
 

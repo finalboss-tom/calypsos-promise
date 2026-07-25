@@ -16,6 +16,7 @@ Sprints 0–3 are complete and merged:
 - PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
 - Decision 0006 establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
 - Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
+- Decision 0007 establishes the Institutional Immune System as the cross-cutting architecture for assumptions, outcomes, challenge, containment, reversibility, appeal, restoration, revalidation, and protection against institutional capture.
 
 The next planned design-to-build target is **Sprint 4 — House of Keys consent architecture**. It will define purpose-specific authority, grants, revocation, access receipts, comprehension, and policy evaluation without introducing blanket consent or production health-data flows.
 
@@ -69,6 +70,17 @@ Public issues must never contain real health information, account-specific suppo
 Community reactions and comments are advisory during Phase 0. Decision 0006 defines the path toward typed signals, deterministic and explainable priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity without bypassing maintainers, specialists, safety controls, or constitutional rights.
 
 Read `docs/governance/feedback-to-governed-work.md` for the complete architecture.
+
+## Institutional immune system
+
+Calypso’s Promise treats corrigibility as architecture. Material mechanisms should expose their assumptions, intended outcomes, guardrails, uncertainty, challenge path, rollback or containment behavior, appeal, restoration, and revalidation timing in proportion to their consequence.
+
+The immune-system metaphor applies to harmful conditions and mechanisms—not people or groups. A person who demonstrates that an accepted premise or favored mechanism is wrong is contributing to the project’s ability to survive its own mistakes.
+
+- Read `docs/governance/institutional-immune-system.md` for the canonical architecture.
+- Read `docs/governance/assumption-registry.md` for the seeded causal, product, incentive, governance, architecture, and corrigibility hypotheses.
+- Use the **System challenge or revalidation request** issue form to challenge a public assumption, metric, incentive, policy, architecture, decision, or institutional mechanism using public-safe evidence.
+- Read `docs/decisions/0007-institutional-immune-system.md` for the accepted baseline decision.
 
 ## Quick start
 

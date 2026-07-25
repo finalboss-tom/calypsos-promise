@@ -1,0 +1,130 @@
+name: System challenge or revalidation request
+description: Challenge a public assumption, metric, incentive, policy, architecture, decision, or institutional mechanism using public-safe evidence
+title: "[Challenge]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A well-supported challenge is a contribution to Calypso’s Promise, even when it disputes an accepted direction.
+
+        This issue is public and may be copied permanently. Do not include real health information, account details, contact information, private correspondence, production logs or payloads, credentials, vulnerability details, conduct evidence, legal advice, private negotiations, or screenshots and attachments containing protected information.
+
+        Use public sources, repository records, synthetic examples, or safely minimized institutional evidence. Security, privacy, account-specific, conduct, legal, personnel, and person-specific health evidence requires an authorized private path.
+
+        The immune-system metaphor applies to harmful conditions and mechanisms—not people or groups. Do not describe critics, users, contributors, minorities, or dissenters as pathogens, infections, foreign bodies, or threats merely because they disagree.
+
+  - type: dropdown
+    id: target_type
+    attributes:
+      label: Challenge target
+      description: What kind of public project claim or mechanism are you challenging?
+      options:
+        - Registered assumption
+        - Outcome, metric, or proxy
+        - Incentive, progression, or reward rule
+        - Product behavior or user experience
+        - Architecture, schema, model, or implementation
+        - Governance, priority, delegation, or authority decision
+        - Safety, rights, consent, privacy, or accessibility boundary
+        - Public claim, campaign, or institutional behavior
+        - Emergency, containment, rollback, or restoration behavior
+        - The Institutional Immune System itself
+        - Other public-safe target
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: Target record or mechanism
+      description: Link or name the assumption ID, decision, policy, issue, pull request, file, metric, feature, or other target when possible.
+      placeholder: AS-0004, Decision 0006, docs/path.md, issue #123, or a clear mechanism name
+    validations:
+      required: true
+
+  - type: textarea
+    id: challenged_claim
+    attributes:
+      label: Challenged claim
+      description: State the premise, expected outcome, interpretation, or decision you believe may be wrong, incomplete, stale, unsafe, or no longer justified.
+      placeholder: The project currently assumes or claims that...
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed_problem
+    attributes:
+      label: Observed problem or counterexample
+      description: Describe what contradicts the claim or why continued reliance may cause harm. Separate observations from your interpretation where possible.
+      placeholder: Public or synthetic observation, failure pattern, contradiction, unintended incentive, excluded group, or residual harm.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public-safe evidence
+      description: Provide repository records, reproducible synthetic examples, public sources, tests, comparisons, or other non-sensitive evidence. Note uncertainty and evidence that could support the current view as well.
+      placeholder: Links, steps, fixtures, measurements, public references, competing explanations, and known limitations.
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected people, rights, or systems
+      description: Identify who or what may be affected without disclosing diagnoses, private identities, account records, or other protected information.
+      placeholder: Players using direct mode, contributors without GitHub expertise, a low-frequency accessibility need, canonical record integrity, or a governance constituency.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency and containment
+      description: Is temporary containment needed while the challenge is reviewed? This is advisory and does not itself activate emergency authority.
+      options:
+        - No immediate containment requested
+        - Monitor and schedule revalidation
+        - Narrow or pause a bounded rollout
+        - Urgent private escalation may be required
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: falsification
+    attributes:
+      label: What could resolve the dispute?
+      description: Describe a review, test, reproduction, audit, comparison, participant validation, or evidence condition that could distinguish competing explanations.
+      placeholder: A synthetic fixture, independent review, controlled comparison, policy simulation, accessibility test, or named invalidation condition.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Alternative, correction, or acceptance conditions
+      description: Optional. A complete replacement is not required to demonstrate a defect. Share a narrower claim, safer fallback, restoration need, or possible alternative when known.
+
+  - type: textarea
+    id: relationship
+    attributes:
+      label: Relevant relationship, expertise, or conflict
+      description: Disclose material authorship, authority, funding, employment, contribution, affectedness, or other relationship that may help reviewers understand perspective and conflicts. Do not disclose protected personal information.
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Public information and participation boundary
+      options:
+        - label: This challenge contains only public or synthetic information and can be reviewed without production health data or other protected source material.
+          required: true
+        - label: I checked the title, text, links, screenshots, attachments, and metadata for private health, account, contact, security, conduct, legal, personnel, negotiation, or third-party information.
+          required: true
+        - label: I understand that a challenge is evaluated by evidence, affectedness, risk, rights, uncertainty, and falsifiability—not by reaction or comment volume.
+          required: true
+        - label: I understand that filing a challenge does not itself activate containment, reverse a decision, create contribution credit, or bypass the current decision authority.
+          required: true
+        - label: I have directed criticism toward a claim, condition, behavior, or mechanism rather than categorizing a person or group as a threat through the immune-system metaphor.
+          required: true
