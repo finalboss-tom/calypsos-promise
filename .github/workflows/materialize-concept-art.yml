@@ -1,0 +1,35 @@
+name: Materialize concept art
+
+on:
+  push:
+    branches: [fix/website-concept-art]
+    paths:
+      - ".asset-staging/**"
+      - ".github/workflows/materialize-concept-art.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Decode website assets
+        run: |
+          set -euo pipefail
+          cat .asset-staging/hero/part-* | base64 --decode > apps/site/public/assets/hero-ogygia.webp
+          cat .asset-staging/aster/part-* | base64 --decode > apps/site/public/assets/aster.webp
+          cat .asset-staging/ogygia/part-* | base64 --decode > apps/site/public/assets/ogygia-day.webp
+          file apps/site/public/assets/hero-ogygia.webp
+          file apps/site/public/assets/aster.webp
+          file apps/site/public/assets/ogygia-day.webp
+          rm -rf .asset-staging
+      - name: Commit materialized assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: replace degraded website concept art"
+          git push
