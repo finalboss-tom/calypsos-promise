@@ -1,8 +1,9 @@
 name: Materialize concept art
 
 on:
-  push:
-    branches: [fix/website-concept-art]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
     paths:
       - ".asset-staging/**"
       - ".github/workflows/materialize-concept-art.yml"
@@ -16,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
       - name: Decode website assets
         run: |
           set -euo pipefail
@@ -32,4 +35,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "fix: replace degraded website concept art"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
