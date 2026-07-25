@@ -1,4 +1,4 @@
-name: Materialize concept art
+name: Diagnose concept art staging
 
 on:
   pull_request:
@@ -12,61 +12,44 @@ permissions:
   contents: write
 
 jobs:
-  materialize:
+  diagnose:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref }}
-      - name: Decode and verify website assets
+      - name: Inspect staged payloads
         run: |
-          set -euo pipefail
           python - <<'PY'
           import base64
           import hashlib
           from pathlib import Path
 
-          assets = {
-              "hero": (
-                  Path("apps/site/public/assets/hero-ogygia.webp"),
-                  "2ed76f384c7c7111e4c78aa14546476976c33e5c5d944f5a8c8aedd591d2c066",
-              ),
-              "aster": (
-                  Path("apps/site/public/assets/aster.webp"),
-                  "172bb63b8a211d77b5c2f9566a6630eb3d64436aa4ad141669e73c426541f0e9",
-              ),
-              "ogygia": (
-                  Path("apps/site/public/assets/ogygia-day.webp"),
-                  "27ee71886888c7f118a549e30e138f3db437076fe41fc34ec84df6dd73d03d11",
-              ),
-          }
-
-          for name, (destination, expected_sha) in assets.items():
+          lines = []
+          for name in ("hero", "aster", "ogygia"):
               parts = sorted(Path(f".asset-staging/{name}").glob("part-*"))
-              if not parts:
-                  raise SystemExit(f"No staged chunks found for {name}")
               encoded = b"".join(part.read_bytes() for part in parts)
-              encoded = b"".join(encoded.split())
-              decoded = base64.b64decode(encoded, validate=True)
-              actual_sha = hashlib.sha256(decoded).hexdigest()
-              if actual_sha != expected_sha:
-                  raise SystemExit(
-                      f"SHA-256 mismatch for {name}: expected {expected_sha}, got {actual_sha}"
-                  )
-              if decoded[:4] != b"RIFF" or decoded[8:12] != b"WEBP":
-                  raise SystemExit(f"Decoded {name} is not a WebP file")
-              destination.write_bytes(decoded)
-              print(f"{name}: {len(decoded)} bytes, sha256={actual_sha}")
+              compact = b"".join(encoded.split())
+              lines.append(f"[{name}]")
+              lines.append(f"parts={len(parts)}")
+              lines.append(f"encoded_bytes={len(encoded)}")
+              lines.append(f"compact_bytes={len(compact)}")
+              try:
+                  decoded = base64.b64decode(compact, validate=False)
+                  lines.append(f"decoded_bytes={len(decoded)}")
+                  lines.append(f"sha256={hashlib.sha256(decoded).hexdigest()}")
+                  lines.append(f"header={decoded[:16].hex()}")
+              except Exception as error:
+                  lines.append(f"decode_error={type(error).__name__}: {error}")
+              lines.append("")
+          Path(".asset-diagnostics.txt").write_text("\n".join(lines), encoding="utf-8")
+          print("\n".join(lines))
           PY
-          file apps/site/public/assets/hero-ogygia.webp
-          file apps/site/public/assets/aster.webp
-          file apps/site/public/assets/ogygia-day.webp
-          rm -rf .asset-staging .github/workflows/materialize-concept-art.yml
-      - name: Commit verified assets
+      - name: Commit diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "fix: replace degraded website concept art"
+          git add .asset-diagnostics.txt
+          git commit -m "chore: record concept-art staging diagnostics"
           git push origin HEAD:${{ github.head_ref }}
