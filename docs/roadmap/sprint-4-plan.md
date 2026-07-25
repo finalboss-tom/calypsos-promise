@@ -43,13 +43,19 @@ This plan does not change the accepted Sprint 4 goal, deliverables, or acceptanc
 
 ## Workstreams
 
-### 4.1 Authority, identity, and domain boundary
+### 4.1 Authority, identity, and domain boundary — complete at baseline level
 
 Define the controlling person, subject, account actor, requester, recipient, processor, policy evaluator, and receipt issuer. Record which actors may propose, evaluate, confirm, revoke, or merely observe permission state.
 
-### 4.2 Purpose taxonomy
+Baseline artifact: [`docs/architecture/house-of-keys-ontology.md`](../architecture/house-of-keys-ontology.md)
+
+### 4.2 Purpose taxonomy — complete at baseline level
 
 Define stable, versioned purposes with direct explanations, lifecycle status, compatibility rules, and safeguards against purpose substitution or broadening.
+
+Baseline artifact: [`docs/architecture/house-of-keys-purpose-taxonomy.md`](../architecture/house-of-keys-purpose-taxonomy.md)
+
+The baseline establishes non-grantable family nodes, grantable leaf purposes, essential-use and secondary-use classifications, conservative compatibility, lifecycle states, semantic-change rules, direct explanations, and explicit rejection of vague labels such as “improve the product,” “partners,” or “future uses.”
 
 ### 4.3 Data-category taxonomy
 
