@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createServer } from "node:http";
 import { after, before, test } from "node:test";
 
-import { createSiteServer } from "../src/server.mjs";
+import vercelServer, { createSiteServer } from "../src/server.mjs";
 import { validateSignup } from "../src/signup.mjs";
 
 let siteServer;
@@ -19,6 +19,12 @@ after(async () => {
   await new Promise((resolve, reject) =>
     siteServer.close((error) => (error ? reject(error) : resolve())),
   );
+});
+
+test("exports an unbound HTTP server for Vercel", () => {
+  assert.equal(typeof vercelServer.emit, "function");
+  assert.equal(typeof vercelServer.listen, "function");
+  assert.equal(vercelServer.listening, false);
 });
 
 test("validates purpose-limited signup fields", () => {
