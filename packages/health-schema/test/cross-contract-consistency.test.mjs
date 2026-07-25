@@ -6,8 +6,7 @@ import {
   syntheticScenarioCoverage as coverage,
 } from "../fixtures/index.mjs";
 
-const byId = (collection, id) =>
-  collection.find((entity) => entity.id === id);
+const byId = (collection, id) => collection.find((entity) => entity.id === id);
 
 test("keeps imported claims proposed and human confirmation explicit", () => {
   const deviceRecord = byId(bundle.records, coverage.exactDeviceTimestamp[0]);
@@ -67,7 +66,10 @@ test("keeps conflict and duplicate decisions visible and non-destructive", () =>
   const conflict = byId(bundle.relationships, conflictId);
   assert.equal(conflict.relationshipType, "conflict");
   assert.equal(conflict.resolutionState, "unresolved");
-  assert.deepEqual(new Set(conflict.sourceRecordIds), new Set([doseOneId, doseTwoId]));
+  assert.deepEqual(
+    new Set(conflict.sourceRecordIds),
+    new Set([doseOneId, doseTwoId]),
+  );
 
   const doseVersions = [doseOneId, doseTwoId].map(
     (id) => byId(bundle.records, id).sourceReferences[0].sourceVersionId,
