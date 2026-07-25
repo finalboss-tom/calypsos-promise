@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Repository review](repository-reconciliation-2026-07-24.md)
 
 This is the canonical entry point for repository documentation. It is designed to answer four questions quickly:
 
@@ -33,9 +33,10 @@ The application is the first operating surface of a long-lived public-benefit in
 ### Understand what exists now
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Sprint Roadmap](roadmap/sprints.md)
-3. [Repository and Module Boundaries](architecture/module-boundaries.md)
-4. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+2. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+3. [Sprint Roadmap](roadmap/sprints.md)
+4. [Repository and Module Boundaries](architecture/module-boundaries.md)
+5. [Minimum Viable Validation](policies/minimum-viable-validation.md)
 
 ### Contribute code, content, or documentation
 
