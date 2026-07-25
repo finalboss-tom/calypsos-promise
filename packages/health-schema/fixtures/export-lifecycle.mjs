@@ -1,9 +1,4 @@
-import {
-  CHRONICLE,
-  PERSON,
-  SERVICE,
-  revision,
-} from "./common.mjs";
+import { CHRONICLE, PERSON, SERVICE, revision } from "./common.mjs";
 import {
   EXPORT_ARTIFACT,
   EXPORT_DELIVERY,
