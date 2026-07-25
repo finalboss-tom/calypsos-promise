@@ -12,10 +12,11 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint Sequence](sprints.md)
-3. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 4 Plan](sprint-4-plan.md)
+3. [Sprint Sequence](sprints.md)
+4. [Public Institutional Roadmap](../../ROADMAP.md)
 
-## Completion records
+## Completion records and plans
 
 - [Sprint 1 Completion](sprint-1-completion.md)
 - [Sprint 2 Plan](sprint-2-plan.md)
@@ -23,6 +24,7 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Sprint 2 Consistency Cleanup](sprint-2-consistency-cleanup.md)
 - [Sprint 3 Plan](sprint-3-plan.md)
 - [Sprint 3 Completion Record](sprint-3-completion-record.md)
+- [Sprint 4 Plan](sprint-4-plan.md) — active
 
 ## Status rule
 
