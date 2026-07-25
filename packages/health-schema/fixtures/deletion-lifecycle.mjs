@@ -1,9 +1,4 @@
-import {
-  CHRONICLE,
-  OPERATOR,
-  PERSON,
-  revision,
-} from "./common.mjs";
+import { CHRONICLE, OPERATOR, PERSON, revision } from "./common.mjs";
 import {
   ATTACHMENT_DOCUMENT_V1,
   DELETION_EVIDENCE,
