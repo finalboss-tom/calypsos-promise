@@ -127,12 +127,15 @@ export function createSiteServer() {
   });
 }
 
+const siteServer = createSiteServer();
+export default siteServer;
+
 if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
   const port = Number(process.env.PORT ?? 3000);
-  createSiteServer().listen(port, () =>
+  siteServer.listen(port, () =>
     console.log(`Calypso’s Promise site listening on http://localhost:${port}`),
   );
 }
