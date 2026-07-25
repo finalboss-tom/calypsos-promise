@@ -6,7 +6,9 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 ## Project status
 
-Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted. The first three design-to-build sprints are complete and merged:
+Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
+
+Sprints 0–2 are complete and merged:
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -14,9 +16,11 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 - PR #10 added the frozen progressive-decentralization and founder-independence mandate, public institutional roadmap, decision classes, authority-transfer gates, and hundred-year objective.
 - Decision 0006 establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
 
-The next planned design-to-build target is **Sprint 3 — Canonical data model v1**. It should begin with ontology, schema, provenance, correction, conflict, export, and deletion contracts. Production migrations, real health-data flows, providers, and runtime services remain outside the current baseline until their own gates are accepted.
+**Sprint 3 — Canonical data model v1 is complete on draft PR #14 and pending explicit merge approval.** It defines the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
 
-Read `docs/roadmap/current-status.md` for the integrated phase assessment, completed baselines, open gates, and Sprint 3 entry boundary.
+Sprint 3 does not introduce production migrations, real health-data flows, accounts, providers, connectors, consent infrastructure, research access, clinical decision support, or runtime services.
+
+Read `docs/roadmap/current-status.md` for the integrated phase assessment. Read `docs/roadmap/sprint-3-completion-record.md` for the Sprint 3 acceptance decision, evidence, hold points, and deferred register. Sprint work is tracked in issue #13.
 
 **Frozen foundations**
 
@@ -33,12 +37,13 @@ Read `docs/roadmap/current-status.md` for the integrated phase assessment, compl
 
 **Current gates and unresolved work**
 
+- Review and explicitly merge Sprint 3 before treating it as part of the merged baseline.
 - Complete an explicit Phase 0 exit review against `ROADMAP.md`.
 - Publish the initial key-person dependency, succession, and founder-reserved-power records required by Decision 0003.
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
-- Define and validate the Sprint 3 Living Chronicle model before introducing database migrations or production data paths.
+- Design House of Keys consent, threat-model, security, and untrusted-input boundaries before production data paths.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
 - Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
@@ -91,6 +96,7 @@ The current application is intentionally minimal. It proves the repository can b
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
 - `packages/domain` — shared domain invariants and contracts
+- `packages/health-schema` — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
 - `content` — versioned canon, quests, dialogue, education, and safety content
 - `docs` — frozen foundations, architecture decisions, governance, website briefs, and sprint plans
 
