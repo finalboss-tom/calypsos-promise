@@ -1,20 +1,20 @@
 # Current Project Status
 
-**Status date:** 2026-07-24  
+**Status date:** 2026-07-25  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0–2 merged; Sprint 3 complete on its review branch and pending explicit merge approval  
+**Design-to-build sequence:** Sprints 0–3 complete and merged; Sprint 4 is the next planned target  
 **Runtime status:** Minimal contributor-safe site workspace only; no production health-data runtime
 
 ## Executive status
 
-Calypso’s Promise now has two coordinated roadmaps:
+Calypso’s Promise has two coordinated roadmaps:
 
 1. `docs/roadmap/sprints.md` defines the near-term design-to-build sequence.
 2. `ROADMAP.md` defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
 
-The project has completed the first three merged design-to-build sprints. Sprint 3 has also completed its architecture, schema, validation, fixture, compatibility, and cross-contract review work on draft PR #14, but it is not part of the merged baseline until an explicitly approved merge occurs.
+Sprints 0–3 are complete and merged. Sprint 3 entered the merged baseline through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
 
-Institutional Phase 0 remains active until its remaining organizational and evidence gates are reviewed explicitly. Sprint 3 completion does not declare the product runtime, security posture, clinical or legal review, House of Keys, research infrastructure, economics, governance transition, or Phase 0 complete.
+The next planned design-to-build target is Sprint 4 — House of Keys consent architecture. Institutional Phase 0 remains active until its remaining organizational and evidence gates are reviewed explicitly. Sprint 3 completion does not declare the product runtime, security posture, clinical or legal review, House of Keys, research infrastructure, economics, governance transition, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -76,6 +76,31 @@ Established as a frozen institutional and architectural constraint:
 - founder independence is a success condition
 - the deterministic incentive model, meaningful refusal, non-punitive return, and personal-value-first sequence are constitutional boundaries
 
+### Sprint 3 — Canonical data model v1
+
+Merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`. Closed issue #13 contains the workstream and exit-criteria ledger.
+
+Established:
+
+- provider-independent and pseudonymous Chronicle identity
+- explicit subject, actor, author, recorder, source, confirmer, transformer, and custody distinctions
+- exact, date-only, local, approximate, recurring, bounded, and open temporal representations
+- observations, intervals, reflections, goals, derived records, associations, and inferences
+- stable variables, discriminated values, categories, units, mappings, and deterministic normalization
+- raw source artifacts, immutable versions, exact locators, and provenance chains
+- correction, supersession, retraction, invalidation, conflict, duplicate, merge, unmerge, and preferred-presentation semantics
+- document, attachment, stored-representation, derived-representation, and replaceable custody contracts
+- export, omission, deletion, retention-exception, tombstone, and completion-evidence lifecycles
+- independent Living Chronicle schema version `0.1.0`
+- strict TypeScript contracts and a JSON-serializable aggregate bundle
+- deterministic cross-reference and invariant validation
+- public synthetic fixtures for every required Sprint 3 scenario
+- separate inclusive synthetic interaction contexts
+- migration and compatibility requirements without executable production migrations
+- cross-contract completion evidence and an explicit deferred-work register
+
+Sprint 3 preserves person control, traceable derivation, visible uncertainty and conflict, inspectable correction history, explicit deletion, provider replaceability, and the prohibition on converting disclosure into rewards or governance power.
+
 ## Institutional Phase 0 gate assessment
 
 `ROADMAP.md` defines four Phase 0 exit gates.
@@ -84,7 +109,7 @@ Established as a frozen institutional and architectural constraint:
 
 **Status:** Baseline met, subject to future evidence and specialist review.
 
-PR #9 reconciled vocabulary, incentives, content schemas, validators, examples, and governance. PR #10 added a compatible frozen institutional mandate rather than replacing the player promise or incentive contract. Sprint 3 now supplies a review-ready Living Chronicle baseline without weakening those boundaries.
+PR #9 reconciled vocabulary, incentives, content schemas, validators, examples, and governance. PR #10 added a compatible frozen institutional mandate rather than replacing the player promise or incentive contract. PR #14 added the merged Living Chronicle baseline without weakening those boundaries.
 
 ### Repository controls meet minimum viable validation
 
@@ -98,7 +123,7 @@ Administrative branch-protection settings and commit-level DCO enforcement still
 
 **Status:** Partially met.
 
-The principal frozen foundations, Sprint 2 contracts, progressive-decentralization decision, governance baseline, public institutional roadmap, and Sprint 3 Chronicle contract are committed or review-ready in repository artifacts.
+The principal frozen foundations, Sprint 2 contracts, progressive-decentralization decision, governance baseline, public institutional roadmap, feedback-to-governed-work architecture, and Sprint 3 Chronicle contract are committed in repository artifacts.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes still need to be recovered, catalogued, and classified. Future material decisions must continue moving into decision records and repository artifacts.
 
@@ -122,45 +147,25 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 
 These are governance and resilience requirements, not reasons to introduce a token, treasury, identity system, legal wrapper, or broad vote prematurely.
 
-## Completed design-to-build target: Sprint 3
+## Next design-to-build target: Sprint 4
 
-Sprint 3 now defines a review-ready authoritative Living Chronicle contract covering:
+Sprint 4 — House of Keys consent architecture should make purpose-specific authority a first-class domain while preserving the Sprint 3 Chronicle boundary.
 
-- account-independent and pseudonymous Chronicle identity
-- observations, intervals, reflections, goals, derived records, associations, and inferences
-- variables, categories, values, units, mappings, and normalization
-- raw sources, immutable versions, exact locators, and provenance chains
-- exact, local, approximate, recurring, bounded, and open time
-- correction, supersession, retraction, conflict, duplicate, merge, unmerge, and preferred presentation
-- attachments, custody references, and derived source representations
-- export, omission, deletion, retention-exception, tombstone, and completion-evidence lifecycles
-- the independent pre-stable Living Chronicle schema version `0.1.0`
-- strict TypeScript contracts and a JSON-serializable aggregate bundle
-- deterministic cross-reference and invariant validation
-- public synthetic fixtures for every required scenario
-- separate inclusive synthetic interaction contexts
-- migration and compatibility requirements
-- explicit separation among Chronicle truth, story state, quest state, progression, consent, receipts, Aster memory, research, compensation, and governance
+Planned work includes:
 
-The Sprint 3 plan is in `docs/roadmap/sprint-3-plan.md`. The conceptual model is in `docs/architecture/living-chronicle-ontology.md`. The completion decision and deferred register are in `docs/roadmap/sprint-3-completion-record.md`.
+- purpose and data-category taxonomies
+- versioned consent grants
+- recipient and duration models
+- revocation behavior
+- access receipt formats
+- permission explanations and comprehension evidence
+- deterministic policy evaluation
 
-### Sprint 3 constitutional tests
+Sprint 4 must not collapse consent into Chronicle truth, use blanket consent, reward broader permission, or require research or commerce participation for core personal utility.
 
-The completed branch preserves:
+## Sprint 3 deferred implementation boundary
 
-- person-controlled records and portable exports
-- provenance for every normalized or derived record
-- correction without silent history rewriting
-- visible conflict and reversible duplicate handling
-- deletion semantics that are explicit and testable
-- no requirement for research, commerce, governance participation, or broader consent to receive core personal value
-- no conversion of health disclosure into progression or governance power
-- provider and storage choices that remain replaceable enough to support founder independence
-- no production or private health data in public contributor workflows
-
-### Sprint 3 deferred implementation boundary
-
-Sprint 3 completion does not select or implement:
+The merged Sprint 3 baseline does not select or implement:
 
 - a production database topology, event model, or migration runner
 - production accounts, authentication, identity proofing, or recovery
@@ -181,7 +186,7 @@ A complete JSON Schema and safe decoder from untrusted input also remain deferre
 
 The canonical Sprint 2 records remain examples in `specialist-review`. They are not approved production content and are not part of an immutable content release.
 
-The Sprint 3 Living Chronicle contract is pre-stable, review-ready, and synthetic-data-only. It is not a production data model deployment or authorization to process real health data.
+The Sprint 3 Living Chronicle contract is merged, pre-stable, and synthetic-data-only. It is not a production data-model deployment or authorization to process real health data.
 
 The current application remains a minimal, credential-free workspace proving that the repository can install, validate, and run without production services or real health data.
 
