@@ -12,6 +12,7 @@ This directory contains versioned architecture baselines that implement the froz
 4. [Story Studio](story-studio.md) — planned authoring, review, validation, and publication surface
 5. [Living Chronicle Ontology](living-chronicle-ontology.md) — canonical data-model overview
 6. [House of Keys Ontology and Authority Boundary](house-of-keys-ontology.md) — purpose-specific permission truth, actors, authority, grants, decisions, and receipts
+7. [House of Keys Purpose Taxonomy](house-of-keys-purpose-taxonomy.md) — stable, versioned purposes, lifecycle, compatibility, and anti-substitution rules
 
 ## Living Chronicle architecture
 
@@ -27,6 +28,7 @@ This directory contains versioned architecture baselines that implement the froz
 ## House of Keys architecture
 
 - [Ontology and Authority Boundary](house-of-keys-ontology.md)
+- [Purpose Taxonomy](house-of-keys-purpose-taxonomy.md)
 
 The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
 
