@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "node src/server.mjs",
-    "build": "node --check src/server.mjs",
-    "lint": "node --check src/server.mjs",
-    "typecheck": "tsc --noEmit --allowJs --checkJs --module NodeNext --moduleResolution NodeNext --target ES2023 src/server.mjs",
+    "build": "node src/check-site.mjs",
+    "lint": "node --check src/server.mjs && node --check src/signup.mjs && node --check src/check-site.mjs && node --check public/site.js",
+    "typecheck": "tsc --noEmit --allowJs --checkJs --module NodeNext --moduleResolution NodeNext --target ES2023 src/server.mjs src/signup.mjs src/check-site.mjs",
     "test": "node --test"
   }
 }
