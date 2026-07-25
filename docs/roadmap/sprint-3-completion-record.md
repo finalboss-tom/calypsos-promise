@@ -164,7 +164,7 @@ No executable production migration is introduced. Future migrations must preserv
 - **Disclosure does not affect rewards or governance power:** met at the contract boundary.
 - **Provider and storage choices remain replaceable:** met at the identity and custody boundary.
 - **Unresolved specialist questions remain explicit:** met through the deferred and hold-point register below.
-- **Repository validation passes on the completion head:** pending final evidence insertion after all completion updates.
+- **Repository validation passes on the substantive completion head:** met.
 
 ## Deferred and unresolved register
 
@@ -205,4 +205,21 @@ It does not authorize merge. Squash merge into `main` remains subject to explici
 
 ## Validation evidence
 
-Final completion-head evidence will be recorded here after the status, roadmap, issue, and pull-request summaries are reconciled and the resulting head passes all repository checks.
+Substantive completion head:
+
+```text
+70c0f618d180e6f9cc1cd7a00807618bd6ed828b
+```
+
+- CI run `30136219429`, run number `222`: success
+- DCO Attestation run `30136219431`, run number `245`: success
+- formatting: success
+- repository policy: success
+- content validation: success
+- lint: success
+- typecheck: success
+- tests: success
+
+The passing test suite includes deterministic bundle validation, malformed-contract regressions, JSON serialization round-trip evidence, required-scenario identity resolution, synthetic-data enforcement, inclusive accessibility-context checks, and direct cross-contract assertions for authority, source preservation, derivation, correction, conflict, duplicate handling, export, deletion, and domain separation.
+
+The final evidence-only reconciliation commit is validated separately by the pull-request checks and recorded in PR #14 and issue #13. Embedding that commit’s own SHA here would create a self-referential update cycle.
