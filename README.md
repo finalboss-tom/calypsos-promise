@@ -17,7 +17,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–3 are complete and merged:
+Sprints 0–3 are complete and merged. **Sprint 4 — House of Keys consent architecture is now in progress.**
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -26,12 +26,11 @@ Sprints 0–3 are complete and merged:
 - [Decision 0006](docs/decisions/0006-feedback-to-governed-work.md) establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
 - Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
 - [Decision 0007](docs/decisions/0007-institutional-immune-system.md) establishes the Institutional Immune System as the cross-cutting architecture for assumptions, outcomes, challenge, containment, reversibility, appeal, restoration, revalidation, and protection against institutional capture.
+- Sprint 4 is tracked in issue #32 and draft PR #33. Its [execution plan](docs/roadmap/sprint-4-plan.md) preserves the accepted goal, deliverables, and acceptance criteria while beginning with the [House of Keys authority boundary](docs/architecture/house-of-keys-ontology.md).
 
-The next planned design-to-build target is **Sprint 4 — House of Keys consent architecture**. It will define purpose-specific authority, grants, revocation, access receipts, comprehension, and policy evaluation without introducing blanket consent or production health-data flows.
+Sprint 4 defines purpose-specific authority, grants, revocation, access receipts, comprehension, and policy evaluation without introducing blanket consent or production health-data flows. Permission truth remains separate from Chronicle truth, and consent state does not belong in `packages/health-schema`.
 
-Sprint 3 did not introduce production migrations, real health-data flows, accounts, providers, connectors, consent infrastructure, research access, clinical decision support, or runtime services.
-
-Read the [integrated current status](docs/roadmap/current-status.md) and [Sprint 3 completion record](docs/roadmap/sprint-3-completion-record.md) for evidence, hold points, and deferred work. The completed Sprint 3 work is recorded in closed issue #13; the broader sprint program remains tracked in issue #2.
+Read the [integrated current status](docs/roadmap/current-status.md), [Sprint 4 plan](docs/roadmap/sprint-4-plan.md), and [Sprint 3 completion record](docs/roadmap/sprint-3-completion-record.md) for evidence, boundaries, and deferred work. The broader sprint program remains tracked in issue #2.
 
 ### Frozen foundations
 
@@ -53,7 +52,7 @@ Read the [integrated current status](docs/roadmap/current-status.md) and [Sprint
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
-- Design House of Keys consent, threat-model, security, and untrusted-input boundaries before production data paths.
+- Complete House of Keys architecture, then the threat-model, security, and untrusted-input boundaries before production data paths.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
 - Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
@@ -104,15 +103,15 @@ pnpm check
 pnpm --filter @calypsos-promise/site dev
 ```
 
-Open `http://localhost:3000` to confirm the Sprint 1 site workspace is running.
+Open `http://localhost:3000` to run the public repository gateway locally.
 
-The current application is intentionally minimal. It proves the repository can be installed, validated, and run without credentials, production services, or real health data. `pnpm check` includes formatting, documentation-link validation, repository policy, content validation, linting, type checking, and tests.
+The current application remains bounded. It explains the project and links to the repository without providing accounts, private Chronicle storage, health-data intake, research enrollment, or production House of Keys behavior. `pnpm check` includes formatting, documentation-link validation, repository policy, content validation, linting, type checking, and tests.
 
 ## Repository surfaces
 
 ### Implemented now
 
-- [`apps/site`](apps/site) — minimal public-site workspace and contributor smoke test
+- [`apps/site`](apps/site) — bounded public repository gateway and purpose-limited signup adapter
 - [`packages/domain`](packages/domain) — shared repository invariants and contracts
 - [`packages/content-schema`](packages/content-schema) — content contracts, deterministic validators, graph contracts, and JSON Schema
 - [`packages/health-schema`](packages/health-schema) — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
@@ -122,6 +121,7 @@ The current application is intentionally minimal. It proves the repository can b
 
 ### Planned and gated
 
+- `packages/consent` — active Sprint 4 target; create only when its bounded contract and tests are introduced
 - `apps/game` — planned universal Expo game for web, iOS, and Android
 - `apps/api` — planned modular TypeScript domain application
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
