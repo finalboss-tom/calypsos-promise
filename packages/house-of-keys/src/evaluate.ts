@@ -815,8 +815,8 @@ export function evaluateHouseOfKeysPolicy(
     ]);
   }
 
-  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort((left, right) =>
-    left.localeCompare(right),
+  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort(
+    (left, right) => left.localeCompare(right),
   );
   const receiptRequiredByGrant = authorizingGrants.some((grant) =>
     grant.conditions.some(
