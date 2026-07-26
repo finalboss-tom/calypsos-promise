@@ -81,9 +81,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-revocation-lifecycle-model.
 
 The baseline defines proposed, pending-confirmation, active, suspended, expired, exhausted, withdrawn, declined, superseded, and invalidated states; immutable lifecycle events; closed-state transitions; complete-grant revocation with narrower successors instead of hidden mutation; effective-time and decision-freshness rules; prospective denial of future access; explicit in-flight-operation races; review-bounded renewal; narrow and expiring suspension; successor confirmation; retention and downstream-use hold points; and non-punitive refusal and withdrawal.
 
-### 4.6 Access receipt format and audit boundary
+### 4.6 Access receipt format and audit boundary — complete at baseline level
 
 Define append-only, player-inspectable receipts for requested and performed access. Separate decisions, attempts, successful access, denial, and failure. A receipt records what occurred; it does not create permission.
+
+Baseline artifact: [`docs/architecture/house-of-keys-access-receipt-audit-boundary.md`](../architecture/house-of-keys-access-receipt-audit-boundary.md)
+
+The baseline defines distinct receipt event kinds for requests, allow, deny, indeterminate decisions, attempts, access completion, non-disclosure completion, partial outcomes, failures, stopped operations, lifecycle changes, and corrections; preserves correlation without collapsing claims; requires exact grant, policy, scope, actor, outcome, and timing references; minimizes duplicated health content; uses append-only correction rather than overwrite; treats missing or defective receipts as failures rather than proof of no access; separates player-facing receipts from protected operational audit records; and keeps cryptographic integrity, production logging, retention, delivery, and incident controls deferred.
 
 ### 4.7 Permission explanations and comprehension evidence
 
