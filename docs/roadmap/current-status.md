@@ -1,11 +1,11 @@
 # Current Project Status
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 5 review](pre-sprint-5-alignment-review.md)
 
 **Status date:** 2026-07-26  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0–3 complete and merged; Sprint 4 complete on draft PR #33 and pending approval and merge  
-**Runtime status:** Bounded public repository gateway only; no production health-data or House of Keys runtime
+**Design-to-build sequence:** Sprints 0–4 complete and merged; pre-Sprint 5 alignment review in progress  
+**Runtime status:** Bounded public repository gateway only; no production health-data, House of Keys, account, agent, or research runtime
 
 ## Executive status
 
@@ -14,13 +14,18 @@ Calypso’s Promise has two coordinated roadmaps:
 1. [`docs/roadmap/sprints.md`](sprints.md) defines the near-term design-to-build sequence.
 2. [`ROADMAP.md`](../../ROADMAP.md) defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
 
-Sprints 0–3 are complete and merged. Sprint 3 entered the merged baseline through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
+Sprints 0–4 are complete and merged.
 
-Sprint 4 — House of Keys consent architecture is complete for review through issue #32 and draft PR #33. The accepted goal, deliverables, and acceptance criteria in [`docs/roadmap/sprints.md`](sprints.md#sprint-4--house-of-keys-consent-architecture) were not modified. The [Sprint 4 Plan](sprint-4-plan.md) and [Sprint 4 Completion Record](sprint-4-completion-record.md) map the implementation, cross-contract review, deterministic evidence, compatibility boundaries, hold points, and unresolved register.
+- Sprint 3 entered the merged baseline through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
+- Sprint 4 entered the merged baseline through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`, establishing the pre-stable House of Keys architecture, contracts, validator, pure policy evaluator, receipts, synthetic evidence, compatibility boundaries, and completion record.
 
-Sprint 4 remains unmerged until explicit founding-steward approval. Sprint 5 is the next canonical sprint only after the Sprint 4 merge boundary is resolved and a separate entry review greenlights it.
+The accepted Sprint 4 goal, deliverables, and acceptance criteria in [`docs/roadmap/sprints.md`](sprints.md#sprint-4--house-of-keys-consent-architecture) were not modified. The [Sprint 4 Plan](sprint-4-plan.md) and [Sprint 4 Completion Record](sprint-4-completion-record.md) record implementation, cross-contract review, deterministic evidence, compatibility boundaries, hold points, and unresolved work.
 
-Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing Sprint 4 does not declare the product runtime, security posture, clinical or legal review, research infrastructure, economics, governance transition, or Phase 0 complete.
+Draft PR #34 performs the [pre-Sprint 5 repository alignment review](pre-sprint-5-alignment-review.md). It reconciles post-merge status, mission and incentive traceability, Sprint 2 permission references, the Sprint 3 execution clarification, the Living Chronicle and House of Keys security handoff, and the unchanged Sprint 5 boundary.
+
+Sprint 5 — Threat model and security baseline is the next canonical sprint. It has not started or been greenlit by this status record. Entry should occur through a separate issue, plan, branch, and draft pull request after the alignment reconciliation merges.
+
+Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing Sprint 4 and preparing Sprint 5 do not declare the product runtime, security posture, clinical or legal review, research infrastructure, economics, governance transition, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -44,7 +49,7 @@ Established:
 - independent formatting, policy, lint, typecheck, test, and DCO checks
 - a credential-free contributor environment
 
-The exact license file, trademark policy, branch-protection administration, and commit-level DCO enforcement remain follow-on work.
+The exact legal dedication instruments, trademark policy, branch-protection administration, and commit-level DCO enforcement remain follow-on work.
 
 ### Sprint 2 — Controlled vocabulary, incentives, and content schemas
 
@@ -64,7 +69,7 @@ Established:
 - content review, replacement, publication, recall, and rollback governance
 - canonical examples that remain honestly marked `specialist-review`
 
-The Sprint 2 incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader consent or unnecessary intimate disclosure.
+The Sprint 2 incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader permission or unnecessary intimate disclosure.
 
 ### Progressive-decentralization mandate
 
@@ -77,14 +82,14 @@ Established as a frozen institutional and architectural constraint:
 - early accountable leadership is compatible with the end state only when it is bounded and reduces key-person dependency
 - governance distinguishes constitutional, safety, strategic, economic, technical, operational, and community decisions
 - capital cannot purchase unlimited control, player rights, private-data access, or immunity from oversight
-- governance participation cannot require broader health-data consent or unnecessary intimate disclosure
+- governance participation cannot require broader health-data permission or unnecessary intimate disclosure
 - token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred
 - founder independence is a success condition
-- the deterministic incentive model, meaningful refusal, non-punitive return, and personal-value-first sequence are constitutional boundaries
+- deterministic incentives, meaningful refusal, non-punitive return, and personal value first are constitutional boundaries
 
 ### Sprint 3 — Canonical data model v1
 
-Merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`. Closed issue #13 contains the workstream and exit-criteria ledger.
+Merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`.
 
 Established:
 
@@ -100,11 +105,40 @@ Established:
 - independent Living Chronicle schema version `0.1.0`
 - strict TypeScript contracts and a JSON-serializable aggregate bundle
 - deterministic cross-reference and invariant validation
-- public synthetic fixtures for every required Sprint 3 scenario
+- public synthetic fixtures and inclusive interaction contexts
 - migration and compatibility requirements without executable production migrations
 - cross-contract completion evidence and an explicit deferred-work register
 
 Sprint 3 preserves person control, traceable derivation, visible uncertainty and conflict, inspectable correction history, explicit deletion, provider replaceability, and the prohibition on converting disclosure into rewards or governance power.
+
+The historical Sprint 3 deliverable list named story, quest, permission, receipt, Aster-memory, and database-migration directions. The accepted completion record kept those domains outside Chronicle truth and deferred executable production migrations. This is an execution clarification, not a retroactive scope change.
+
+### Sprint 4 — House of Keys consent architecture
+
+Merged through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`. Closed issue #32 contains the workstream and acceptance ledger.
+
+Established:
+
+- a separate House of Keys bounded capability rather than permission state inside `packages/health-schema`
+- versioned purpose and data-category taxonomies with non-grantable families and explicit grantable leaves
+- atomic grants binding controlling authority, recipient, resource, subjects, exact category and action revisions, selectors, conditions, duration, explanation, comprehension requirement, and confirmation
+- prospective revocation and explicit lifecycle states and events
+- person-inspectable access-receipt contracts separated from decisions, execution, and protected operational audit records
+- direct and narrative explanation parity, accessible alternatives, and non-punitive comprehension evidence
+- a pure, provider-independent, side-effect-free `allow`, `deny`, or `indeterminate` evaluator
+- the independent package `@calypsos-promise/house-of-keys` at contract version `0.1.0-pre.1`
+- deterministic structural validation, seventeen public synthetic policy scenarios, one synthetic completed-access receipt, and twenty-nine Node tests
+- cross-contract remediation for exact revisions, selector narrowing, explanation parity, grant authority, lifecycle evidence, receipt validation, decision correlation, required actors, and personal-core independence
+
+The accepted Sprint 4 criteria are met:
+
+- blanket permission cannot authorize an action
+- active grants and receipts are inspectable
+- withdrawn authority denies future access
+- personal-core use remains independent from optional research or commerce
+- missing or conflicting material authority fails closed
+
+The [Sprint 4 Completion Record](sprint-4-completion-record.md) is the canonical evidence, compatibility, hold-point, and unresolved-work record.
 
 ### Website Track 0A — Repository gateway
 
@@ -118,34 +152,23 @@ Established:
 - a purpose-limited email-interest form behind a separately configured private webhook
 - no account, private Chronicle, health-data intake, research enrollment, analytics, or production permission behavior
 
-This accepted implementation slice does not replace Sprint 8 or alter Sprint 4.
+This accepted implementation slice does not replace Sprint 8 or alter the Sprint 5 boundary.
 
-## Sprint 4 review baseline — House of Keys consent architecture
+## Mission and incentive alignment assessment
 
-**Status:** Complete on draft PR #33; pending explicit approval and merge.
+**Status:** Strong and internally consistent at the current pre-runtime boundary.
 
-The Sprint 4 branch establishes:
+The Product Constitution, Vision, Architecture Foundation, Gameplay Foundation, controlled vocabulary, incentive model, institutional roadmap, Governance Baseline, Institutional Immune System, Living Chronicle, House of Keys, contributor policy, public site, and synthetic evidence reinforce the same ordering:
 
-- a separate House of Keys bounded capability rather than consent state inside `packages/health-schema`
-- versioned purpose and data-category taxonomies with non-grantable families and explicit grantable leaves
-- atomic grants binding controlling authority, recipient, resource, subjects, category and action revisions, selectors, conditions, duration, explanation, comprehension requirement, and confirmation
-- prospective revocation and explicit lifecycle states and events
-- person-inspectable access-receipt contracts separated from decisions, execution, and protected operational audit records
-- direct and narrative explanation parity, accessible alternatives, and non-punitive comprehension evidence
-- a pure, provider-independent, side-effect-free `allow`, `deny`, or `indeterminate` evaluator
-- the independent package `@calypsos-promise/house-of-keys` at contract version `0.1.0-pre.1`
-- deterministic structural validation, seventeen public synthetic policy scenarios, one synthetic completed-access receipt, and twenty-nine Node tests
-- cross-contract remediation for exact revisions, selector narrowing, explanation parity, grant authority, lifecycle transition evidence, receipt validation, decision correlation, required actors, and personal-core independence
+1. useful personal value first;
+2. individual control and meaningful refusal;
+3. deterministic authority rather than AI or UI convenience;
+4. private people and public code kept separate;
+5. separately authorized research, commerce, compensation, and collective benefit;
+6. evidence-gated institutional authority; and
+7. explicit challenge, containment, rollback, restoration, and revalidation.
 
-The accepted Sprint 4 criteria are met on the review branch:
-
-- blanket consent cannot authorize an action
-- active grants and receipts are inspectable
-- withdrawn authority denies future access
-- personal-core use remains independent from optional research or commerce
-- missing or conflicting material authority fails closed
-
-The [Sprint 4 Completion Record](sprint-4-completion-record.md) is the canonical review record for evidence, compatibility, hold points, and unresolved work.
+The [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) records the traceability table, repaired drift, security handoff, and entry recommendation.
 
 ## Institutional Phase 0 gate assessment
 
@@ -155,7 +178,7 @@ The [Sprint 4 Completion Record](sprint-4-completion-record.md) is the canonical
 
 **Status:** Baseline met, subject to future evidence and specialist review.
 
-PR #9 reconciled vocabulary, incentives, content schemas, validators, examples, and governance. PR #10 added a compatible frozen institutional mandate. PR #14 added the merged Living Chronicle baseline. Draft PR #33 adds a compatible House of Keys permission baseline without weakening the player promise, Chronicle boundary, incentive contract, or progressive-decentralization mandate.
+The merged Sprint 2, progressive-decentralization, Sprint 3, Institutional Immune System, and Sprint 4 baselines are compatible with the frozen Promise. The pre-Sprint 5 review repairs lower-layer status and vocabulary drift without changing frozen foundations.
 
 ### Repository controls meet minimum viable validation
 
@@ -169,7 +192,7 @@ Administrative branch-protection settings and commit-level DCO enforcement still
 
 **Status:** Partially met.
 
-The principal frozen foundations, Sprint 2 contracts, progressive-decentralization decision, governance baseline, public institutional roadmap, feedback-to-governed-work architecture, Institutional Immune System, Sprint 3 Chronicle contract, Sprint 4 entry decision, House of Keys architecture, implementation baseline, and completion review are committed in repository artifacts.
+The principal frozen foundations, Sprint contracts, progressive-decentralization decision, governance baseline, public institutional roadmap, feedback-to-governed-work architecture, Institutional Immune System, Living Chronicle, House of Keys, and completion reviews are committed in repository artifacts.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes still need to be recovered, catalogued, and classified. Future material decisions must continue moving into decision records and repository artifacts.
 
@@ -191,23 +214,23 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 6. a decision on when transitional PR-level DCO is replaced by commit-level enforcement
 7. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, and rollback conditions
 
-These are governance and resilience requirements, not reasons to introduce a token, treasury, identity system, legal wrapper, or broad vote prematurely. They remain active in parallel and do not block review and merge of architecture-only Sprint 4.
+These are governance and resilience requirements, not reasons to introduce a token, treasury, identity system, legal wrapper, or broad vote prematurely. They remain active in parallel and do not block architecture-only Sprint 5 drafting.
 
 ## Current design-to-build boundary
 
-The immediate boundary is review and explicit approval of PR #33.
+The immediate boundary is completion and review of draft PR #34.
 
-Sprint 5 — threat model and security architecture — remains next in the canonical sprint sequence, but it has not been started or greenlit by this status record. Its accepted scope must remain unchanged unless a separately reviewed decision says otherwise.
+Sprint 5 — Threat model and security baseline remains next in the canonical sprint sequence. Its accepted goal, deliverables, and acceptance criteria remain unchanged. A separate entry decision should greenlight it only after the pre-Sprint 5 alignment review merges.
 
-Before production data paths, later work must address the Sprint 4 unresolved register, including:
+Sprint 5 must map defenses across:
 
-- production identity, authentication, delegation, and recovery
-- event-to-state projection and distributed revocation enforcement
-- atomic single-use or bounded-count consumption
-- safe decoding from unknown input
-- production receipt integrity, delivery, retention, and incident handling
-- the integrated threat model, encryption, key management, malware controls, and secure deletion
-- accessibility, privacy, legal, research, clinical, security, and retention specialist review
+- Living Chronicle records, sources, provenance, exports, deletion, and custody
+- House of Keys taxonomies, grants, lifecycle, explanations, comprehension, decisions, capacity, and receipts
+- accounts, recovery, operators, insiders, and administrative access
+- connectors, uploads, documents, AI, MCP, supply chain, and future research actors
+- the bounded public-site signup adapter and its secret, retention, correction, and deletion boundary
+
+It must not represent a documented control as deployed, select providers by implication, authorize production data, or use security as a reason to weaken refusal, non-AI fallbacks, personal-core independence, export, deletion, correction, or accessibility.
 
 ## Deferred implementation boundary
 
@@ -226,15 +249,13 @@ The current repository does not select or implement:
 - treasury or ownership mechanisms
 - token, blockchain, NFT, or on-chain DAO infrastructure
 
-A complete JSON Schema and safe decoder from unknown Chronicle or House of Keys input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
+Complete JSON Schema and safe decoding from unknown Chronicle or House of Keys input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
 
 ## Publication and release status
 
 The canonical Sprint 2 records remain examples in `specialist-review`. They are not approved production content and are not part of an immutable content release.
 
-The Sprint 3 Living Chronicle contract is merged, pre-stable, and synthetic-data-only. It is not a production data-model deployment or authorization to process real health data.
-
-The Sprint 4 House of Keys contract is complete on a draft pull request, pre-stable, and synthetic-data-only. Until approved and merged, it is not part of `main`; after merge it will still not be a production consent deployment or legal approval.
+The Sprint 3 Living Chronicle and Sprint 4 House of Keys contracts are merged, pre-stable, and synthetic-data-only. They are not production deployments, specialist certifications, or authorization to process real health data.
 
 The current website is an accepted public repository gateway, not a live personal-health product. It does not provide accounts, private Chronicle storage, production AI interaction, research enrollment, or production House of Keys behavior.
 
@@ -244,8 +265,8 @@ No claim should imply that Phase 1’s useful private product, Phase 2’s trust
 
 This record should be updated when:
 
-- PR #33 is approved, merged, closed, or materially revised
-- a design-to-build sprint begins, closes, merges, or changes status
+- the pre-Sprint 5 review is accepted, merged, closed, or materially revised
+- Sprint 5 begins, closes, merges, or changes status
 - an institutional phase gate is accepted, rejected, paused, or rolled back
 - a frozen decision changes the relationship among product, incentives, governance, or founder independence
 - a material unresolved gate gains an owner or evidence
