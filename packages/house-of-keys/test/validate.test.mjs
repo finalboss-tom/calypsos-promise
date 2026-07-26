@@ -55,3 +55,30 @@ test("rejects satisfied evidence that omits a required concept", () => {
   assert.equal(result.valid, false);
   assert.ok(issueCodes(result).has("COMPREHENSION_MISMATCH"));
 });
+
+test("rejects an explanation whose duration differs from the grant", () => {
+  const bundle = clone(syntheticHouseOfKeysBundle);
+  bundle.explanations[0].duration.endsAt = "2026-07-28T00:00:00Z";
+
+  const result = validateHouseOfKeysSchemaBundle(bundle);
+  assert.equal(result.valid, false);
+  assert.ok(issueCodes(result).has("EXPLANATION_MISMATCH"));
+});
+
+test("rejects a receipt that references an unavailable grant revision", () => {
+  const bundle = clone(syntheticHouseOfKeysBundle);
+  bundle.receipts[0].grantReferences[0].grantRevision = 2;
+
+  const result = validateHouseOfKeysSchemaBundle(bundle);
+  assert.equal(result.valid, false);
+  assert.ok(issueCodes(result).has("REFERENCE_DANGLING"));
+});
+
+test("rejects ordinary grant authority assigned to a non-controlling actor", () => {
+  const bundle = clone(syntheticHouseOfKeysBundle);
+  bundle.grants[0].grantingAuthorityId = "actor.study.requester";
+
+  const result = validateHouseOfKeysSchemaBundle(bundle);
+  assert.equal(result.valid, false);
+  assert.ok(issueCodes(result).has("GRANTING_AUTHORITY_INVALID"));
+});
