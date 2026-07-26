@@ -57,11 +57,7 @@ export interface PurposeDefinition extends DefinitionRevision {
 }
 
 export type PermissionTruthClass =
-  | "chronicle"
-  | "source"
-  | "derived"
-  | "interpretive"
-  | "permission";
+  "chronicle" | "source" | "derived" | "interpretive" | "permission";
 
 export interface DataCategoryDefinition extends DefinitionRevision {
   truthClass: PermissionTruthClass;
