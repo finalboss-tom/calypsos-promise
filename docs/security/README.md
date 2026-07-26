@@ -4,7 +4,8 @@
 
 **Status:** Sprint 5 working area — workstreams 5.1–5.3 complete at the internal architecture level; 5.4 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
-**Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed
+**Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
+**Threat baseline:** Forty-six threats, twenty-eight control objectives, and forty-six residual risks are registered; production-facing risks remain blocking
 
 ## Purpose
 
