@@ -1,3 +1,3 @@
 export * from "./graph.js";
 export * from "./types.js";
-export * from "./validate.js";
+export { validateContent } from "./validate-contract.js";
