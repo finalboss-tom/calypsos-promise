@@ -2,10 +2,11 @@
 
 [Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — workstreams 5.1–5.8 complete at the internal architecture level; 5.9 next  
+**Status:** Sprint 5 working area — workstreams 5.1–5.9 complete at the internal architecture and design-tabletop level; 5.10 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, recovery, incident-response, deletion-verification, or administrative runtime is authorized or represented as deployed  
-**Control baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, fourteen identity controls, twenty-eight Chronicle controls, thirty-six House of Keys controls, thirty-six untrusted-input controls, forty-nine encryption/key/secret/environment controls, and forty-five resilience/incident/audit/deletion controls are registered; production-facing risks remain blocking
+**Control baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, fourteen identity controls, twenty-eight Chronicle controls, thirty-six House of Keys controls, thirty-six untrusted-input controls, forty-nine encryption/key/secret/environment controls, and forty-five resilience/incident/audit/deletion controls are registered  
+**Exercise baseline:** Fifteen required synthetic abuse cases, fifteen paired founding-steward design-tabletop records, and a stable exercise-gap register are complete; no multi-party, independent, implementation, or operational exercise evidence is claimed
 
 ## Purpose
 
@@ -44,7 +45,7 @@ A lower layer may implement or test a higher-layer rule. It may not silently wea
 
 ## Core separations
 
-Security reviews must preserve the distinction among:
+Security reviews preserve the distinction among:
 
 - account identity;
 - Chronicle pseudonyms and subjects;
@@ -60,10 +61,11 @@ Security reviews must preserve the distinction among:
 - cryptographic and secret-management evidence;
 - environment and deployment state;
 - availability, backup, restore, and incident state;
-- deletion verification and external-copy uncertainty; and
+- deletion verification and external-copy uncertainty;
+- exercise and simulation evidence; and
 - public institutional records.
 
-No single database object, service, identity provider, model, operator, key, secret, environment, network, provider, backup, incident record, or audit log becomes the authority for all of these domains.
+No single database object, service, identity provider, model, operator, key, secret, environment, network, provider, backup, incident record, tabletop, or audit log becomes the authority for all of these domains.
 
 ## Completed internal workstreams
 
@@ -125,7 +127,7 @@ Successful parsing, scanning, synchronization, retrieval, generation, tool execu
 - [Environment Isolation and Private-Origin Design](environment-isolation-and-private-origin-design.md)
 - [Encryption, Key, Secret, and Environment Control Register](encryption-key-secret-environment-control-register.md)
 
-Defines forty-nine `CTL-KSE-*` controls for minimization before encryption, authenticated transport, storage and temporary-state protection, envelope key hierarchy, key and secret lifecycle, cryptographic agility, provider replacement, trusted environment identity, synthetic-only non-production, private origins, network and egress controls, immutable artifact promotion, isolated analytics/research/administration/recovery, teardown, and founder-independent continuity.
+Defines forty-nine `CTL-KSE-*` controls for minimization before encryption, authenticated transport, storage and temporary-state protection, envelope key hierarchy, key and secret lifecycle, provider replacement, trusted environment identity, synthetic-only non-production, private origins, network and egress controls, immutable artifact promotion, isolated analytics/research/administration/recovery, teardown, and founder-independent continuity.
 
 Encryption, key or secret possession, network location, provider ownership, successful deployment, and cryptographic integrity do not create identity, permission, Chronicle truth, recipient authority, clinical truth, deletion proof, or institutional legitimacy.
 
@@ -138,39 +140,47 @@ Encryption, key or secret possession, network location, provider ownership, succ
 
 Defines forty-five `CTL-RID-*` controls and explicit availability, backup, restore, incident, protected-audit, deletion, verification, recipient, and residual-copy states.
 
-The baseline requires:
+The baseline requires fail-closed authority, accessible non-AI fallback, isolated backups and restore environments, post-snapshot authority and deletion reconciliation, queue and bounded-use recovery ordering, private incident response, minimized protected audit, and bounded deletion evidence that does not claim universal downstream erasure.
 
-- rights-critical, core-value, and optional-assisted capability classes;
-- fail-closed authority with truthful read-only, queued, manual, unavailable, containment, and recovery states;
-- accessible non-AI fallback;
-- backup purpose, scope, manifests, isolation, encryption, retention, inventory, restore tests, quarantine, and bounded destruction claims;
-- isolated restore environments and clean credentials;
-- post-snapshot reconciliation of account compromise, Chronicle corrections, House of Keys lifecycle, execution, receipts, connectors, keys, incidents, deletion, and tombstones before activation;
-- queue, retry, dead-letter, idempotency, and bounded-use recovery ordering;
-- multi-party bounded activation, rollback, and post-restore monitoring;
-- private incident intake, qualitative consequence analysis, narrow containment, least-capability investigation, clean rebuild, domain correction, accessible notification, safe public derivatives, restoration, residual harm, and exercises;
-- minimized protected audit schemas, separate access authority, linked corrections, explicit retention classes, narrow incident holds, expiry, deletion, and public institutional derivatives; and
-- verified deletion authority, complete dependency graphs, prevention of regeneration, target-specific execution, backup and recipient uncertainty, bounded completion evidence, challenge, and correction.
+### 5.9 — synthetic abuse cases and tabletop exercises
 
-Recovery restores reconciled authority-bearing domain state, not merely stored bytes or infrastructure availability. A deletion receipt proves only the bounded procedure and evidence it identifies; it does not prove that every uncontrolled downstream copy ceased to exist.
+- [Synthetic Abuse-Case and Tabletop Exercise Method](synthetic-abuse-case-and-tabletop-method.md)
+- [Synthetic Security Abuse-Case Register](synthetic-abuse-case-register.md)
+- [Synthetic Tabletop Records 1–8](tabletop-exercise-records-1.md)
+- [Synthetic Tabletop Records 9–15](tabletop-exercise-records-2.md)
+- [Synthetic Evidence Gap and Follow-Up Register](synthetic-evidence-gap-and-follow-up-register.md)
 
-No production service objective, backup system, restore environment, monitoring or paging system, incident team, audit store, retention automation, deletion worker, provider deletion integration, recipient workflow, or verification service is selected, authorized, or represented as deployed. Independent security, privacy, reliability, cryptography, infrastructure, accessibility, legal, clinical, research, records-governance, incident-response, and vendor review remains pending.
+Defines fifteen stable `SYN-*` abuse cases and fifteen paired `TTX-*` founding-steward design-tabletop records covering:
 
-## Remaining workstreams
+- cross-user Chronicle leakage;
+- compromised agents and MCP clients;
+- stolen sessions and abusive recovery;
+- malicious uploads and prompt injection;
+- purpose laundering and stale permission decisions;
+- revocation during queued or in-flight execution;
+- receipt omission, duplication, and forgery;
+- insider curiosity and emergency-power abuse;
+- secret exposure in CI or previews;
+- dependency, build, and release compromise;
+- ransomware and backup restoration;
+- deletion verification with backups and external recipients;
+- provider outage and regional failure;
+- public-site signup disclosure and retention incidents; and
+- research scope expansion.
 
-### 5.9 — synthetic abuse cases and tabletop exercises — next
+Each tabletop records assumptions, actual and simulated roles, ordered injects, decisions, architecture evidence, containment, correction, restoration, person-visible behavior, gaps, residual harm, follow-up owners, and revalidation triggers.
 
-Create public synthetic scenarios for cross-user leakage, compromised agents, account recovery abuse, malicious uploads, prompt injection, stale authority, revocation races, false receipts, operator and emergency abuse, secret exposure, supply-chain compromise, ransomware, restore reconciliation, deletion verification, provider outage, public signup incidents, and research scope expansion.
+All fifteen exercises reached founding-steward design-tabletop evidence only. No exercise proves production control implementation, operational response time, provider behavior, multi-party readiness, accessibility effectiveness, legal sufficiency, independent review, or production readiness.
 
-Synthetic evidence will test the design boundary. It will not prove that production controls exist.
+## Remaining workstream
 
-### 5.10 — cross-contract review and completion record
+### 5.10 — cross-contract review, control-status truth, specialist holdpoints, and completion record — next
 
-Reconcile every accepted deliverable, acceptance criterion, control status, residual risk, specialist hold point, owner, revalidation trigger, and public capability claim.
+Reconcile every accepted deliverable, acceptance criterion, control status, residual risk, exercise result, gap, specialist holdpoint, owner, revalidation trigger, and public capability claim. Create the Sprint 5 completion record without converting documentation or synthetic evidence into deployed-control claims.
 
 ## Artifact rules
 
-Every material security artifact must identify:
+Every material security artifact identifies:
 
 - status and authority;
 - scope and explicit non-scope;
@@ -187,7 +197,9 @@ Every material security artifact must identify:
 
 Use [`control-status-and-risk-vocabulary.md`](control-status-and-risk-vocabulary.md).
 
-A control must not be described as deployed because it is documented, included in a diagram, tested with synthetic data, accepted by the founding steward, enabled by a provider default, or available from a possible vendor.
+A control must not be described as deployed because it is documented, included in a diagram, exercised with synthetic data, accepted by the founding steward, enabled by a provider default, or available from a possible vendor.
+
+A founding-steward design tabletop is stronger than an unexercised requirement and weaker than a multi-party tabletop, executable isolated test, deployed control, protected operational evidence, or independent review.
 
 ## Public-information boundary
 
@@ -210,7 +222,7 @@ Protected evidence belongs in an authorized private system. Public artifacts may
 
 The project currently has no named independent security reviewer. Founding-steward acceptance is accountable internal review, not independent specialist review.
 
-Until a qualified reviewer is named or a separately reviewed temporary exception is accepted, Sprint 5 artifacts remain internal architecture and design baselines rather than production security certification.
+Until a qualified reviewer is named or a separately reviewed temporary exception is accepted, Sprint 5 artifacts remain internal architecture, procedure, and design-tabletop baselines rather than production security certification.
 
 ## Navigation
 
@@ -242,6 +254,11 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Incident Response and Protected Audit Retention Plan](incident-response-and-audit-retention-plan.md)
 - [Deletion Verification Procedure](deletion-verification-procedure.md)
 - [Resilience, Incident, Audit, and Deletion Controls](resilience-incident-deletion-control-register.md)
+- [Synthetic Exercise Method](synthetic-abuse-case-and-tabletop-method.md)
+- [Synthetic Abuse-Case Register](synthetic-abuse-case-register.md)
+- [Tabletop Records 1–8](tabletop-exercise-records-1.md)
+- [Tabletop Records 9–15](tabletop-exercise-records-2.md)
+- [Synthetic Evidence Gap Register](synthetic-evidence-gap-and-follow-up-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
