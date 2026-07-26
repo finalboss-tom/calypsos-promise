@@ -2,7 +2,6 @@ import type { HouseOfKeysContractVersion } from "./version.js";
 
 export type NamespacedId = `${string}.${string}`;
 export type IsoDateTime = string;
-
 export type DataClassification = "public" | "synthetic" | "private";
 
 export type ActorKind =
@@ -58,7 +57,11 @@ export interface PurposeDefinition extends DefinitionRevision {
 }
 
 export type PermissionTruthClass =
-  "chronicle" | "source" | "derived" | "interpretive" | "permission";
+  | "chronicle"
+  | "source"
+  | "derived"
+  | "interpretive"
+  | "permission";
 
 export interface DataCategoryDefinition extends DefinitionRevision {
   truthClass: PermissionTruthClass;
@@ -76,18 +79,20 @@ export interface RecipientDefinition extends DefinitionRevision {
   excludedParties: ReadonlyArray<string>;
 }
 
+export type ActionFamily =
+  | "read"
+  | "create"
+  | "transform"
+  | "derive"
+  | "transmit"
+  | "export"
+  | "maintain"
+  | "correct"
+  | "delete"
+  | "permission";
+
 export interface ActionDefinition extends DefinitionRevision {
-  actionFamily:
-    | "read"
-    | "create"
-    | "transform"
-    | "derive"
-    | "transmit"
-    | "export"
-    | "maintain"
-    | "correct"
-    | "delete"
-    | "permission";
+  actionFamily: ActionFamily;
 }
 
 export type GrantLifecycleState =
@@ -153,8 +158,11 @@ export interface ScopeSelector {
   exactSourceArtifactIds?: ReadonlyArray<NamespacedId>;
   exactDocumentVersionIds?: ReadonlyArray<NamespacedId>;
   exactAttachmentIds?: ReadonlyArray<NamespacedId>;
+  exactPermissionRecordIds?: ReadonlyArray<NamespacedId>;
+  recordLifecycleStates?: ReadonlyArray<string>;
   representedFrom?: IsoDateTime;
   representedThrough?: IsoDateTime;
+  requiresProvenanceClosure?: boolean;
 }
 
 export interface GrantCondition {
@@ -207,6 +215,8 @@ export interface LifecycleEvent {
   grantRevision: number;
   previousState: GrantLifecycleState;
   nextState: GrantLifecycleState;
+  transitionActorId: NamespacedId;
+  authorityBasis: string;
   effectiveAt: IsoDateTime;
   recordedAt: IsoDateTime;
   reasonCode: NamespacedId;
@@ -222,7 +232,12 @@ export interface ExplanationSnapshot {
   recipientId: NamespacedId;
   recipientRevision: number;
   dataCategoryIds: ReadonlyArray<NamespacedId>;
+  dataCategoryRevisions: Readonly<Record<string, number>>;
+  selector?: ScopeSelector;
   actionIds: ReadonlyArray<NamespacedId>;
+  actionRevisions: Readonly<Record<string, number>>;
+  conditionIds: ReadonlyArray<NamespacedId>;
+  duration: GrantDuration;
   durationSummary: string;
   directSummary: string;
   narrativeSummary?: string;
@@ -261,11 +276,13 @@ export interface ComprehensionEvidence {
 
 export interface ConfirmationEvidence {
   id: NamespacedId;
+  revision: number;
   grantId: NamespacedId;
   grantRevision: number;
   grantingAuthorityId: NamespacedId;
   confirmedAt: IsoDateTime;
   decision: "confirmed" | "declined";
+  dataClassification: DataClassification;
 }
 
 export interface CapacitySnapshot {
@@ -283,6 +300,16 @@ export interface ConditionFact {
   actualValue?: string | boolean;
 }
 
+export type OperationBoundary =
+  | "view"
+  | "retrieve"
+  | "create"
+  | "transform"
+  | "transmit"
+  | "export"
+  | "maintain"
+  | "permission-administration";
+
 export interface PolicyRequest {
   id: NamespacedId;
   revision: number;
@@ -297,17 +324,12 @@ export interface PolicyRequest {
   purposeId: NamespacedId;
   purposeRevision: number;
   dataCategoryIds: ReadonlyArray<NamespacedId>;
+  dataCategoryRevisions: Readonly<Record<string, number>>;
   selector?: ScopeSelector;
   actionIds: ReadonlyArray<NamespacedId>;
+  actionRevisions: Readonly<Record<string, number>>;
   requestedConditionIds: ReadonlyArray<NamespacedId>;
-  operationBoundary:
-    | "view"
-    | "retrieve"
-    | "transform"
-    | "transmit"
-    | "export"
-    | "maintain"
-    | "permission-administration";
+  operationBoundary: OperationBoundary;
   receiptRequired: boolean;
   requestedAt: IsoDateTime;
 }
@@ -328,6 +350,78 @@ export interface PolicyBundle {
   fixtureDataClassification: DataClassification;
 }
 
+export type ReceiptEventKind =
+  | "receipt.policy-requested"
+  | "receipt.policy-allowed"
+  | "receipt.policy-denied"
+  | "receipt.policy-indeterminate"
+  | "receipt.operation-attempted"
+  | "receipt.access-completed"
+  | "receipt.operation-completed"
+  | "receipt.operation-partial"
+  | "receipt.operation-failed"
+  | "receipt.operation-stopped"
+  | "receipt.lifecycle-changed"
+  | "receipt.receipt-corrected";
+
+export type ReceiptExecutionState =
+  | "not-applicable"
+  | "attempted"
+  | "complete"
+  | "partial"
+  | "failed"
+  | "stopped"
+  | "unknown";
+
+export interface GrantRevisionReference {
+  grantId: NamespacedId;
+  grantRevision: number;
+}
+
+export interface AccessReceipt {
+  id: NamespacedId;
+  contractVersion: HouseOfKeysContractVersion;
+  revision: number;
+  eventKind: ReceiptEventKind;
+  lifecycleState: "active" | "corrected" | "invalidated";
+  correlationId: NamespacedId;
+  controlledResourceId: NamespacedId;
+  subjectIds: ReadonlyArray<NamespacedId>;
+  requesterId: NamespacedId;
+  requesterKind: ActorKind;
+  primaryRecipientId: NamespacedId;
+  primaryRecipientRevision: number;
+  performingActorId?: NamespacedId;
+  processorId?: NamespacedId;
+  receiptIssuerId: NamespacedId;
+  purposeId: NamespacedId;
+  purposeRevision: number;
+  dataCategoryIds: ReadonlyArray<NamespacedId>;
+  dataCategoryRevisions: Readonly<Record<string, number>>;
+  selector?: ScopeSelector;
+  actionIds: ReadonlyArray<NamespacedId>;
+  actionRevisions: Readonly<Record<string, number>>;
+  grantReferences: ReadonlyArray<GrantRevisionReference>;
+  policyRequestId: NamespacedId;
+  policyRequestRevision: number;
+  policyDecisionId: NamespacedId;
+  decisionOutcome: "allow" | "deny" | "indeterminate";
+  executionState: ReceiptExecutionState;
+  dataReleaseBoundaryCrossed: boolean;
+  reasonCodes: ReadonlyArray<string>;
+  requestedAt?: IsoDateTime;
+  decidedAt?: IsoDateTime;
+  attemptedAt?: IsoDateTime;
+  releasedAt?: IsoDateTime;
+  completedAt?: IsoDateTime;
+  failedAt?: IsoDateTime;
+  recordedAt: IsoDateTime;
+  unresolvedState: ReadonlyArray<string>;
+  personVisibleSummary: string;
+  correctsReceiptId?: NamespacedId;
+  dataClassification: DataClassification;
+}
+
 export interface HouseOfKeysSchemaBundle {
   contractVersion: HouseOfKeysContractVersion;
   actors: ReadonlyArray<ActorReference>;
@@ -337,6 +431,7 @@ export interface HouseOfKeysSchemaBundle {
   explanations: ReadonlyArray<ExplanationSnapshot>;
   comprehensionEvidence: ReadonlyArray<ComprehensionEvidence>;
   confirmations: ReadonlyArray<ConfirmationEvidence>;
+  receipts: ReadonlyArray<AccessReceipt>;
 }
 
 export interface PolicyEvaluationInput {
@@ -345,6 +440,8 @@ export interface PolicyEvaluationInput {
   evaluatorRevision: number;
   policyId: NamespacedId;
   policyRevision: number;
+  decisionId: NamespacedId;
+  correlationId: NamespacedId;
   evaluationTime: IsoDateTime;
   executionWindowEndsAt?: IsoDateTime;
   request: PolicyRequest;
@@ -364,6 +461,8 @@ export interface GrantEvaluationFinding {
 }
 
 export interface PolicyDecision {
+  decisionId: NamespacedId;
+  correlationId: NamespacedId;
   outcome: PolicyDecisionOutcome;
   contractVersion: HouseOfKeysContractVersion;
   evaluatorId: NamespacedId;
