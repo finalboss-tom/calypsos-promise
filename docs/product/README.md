@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Product Constitution](../frozen/product-constitution.md) · [Architecture](../architecture/README.md) · [Current status](../roadmap/current-status.md)
 
-This directory contains gameplay, vocabulary, incentive, content, and Living Chronicle product contracts. The [Product Constitution](../frozen/product-constitution.md) remains authoritative when a baseline, example, or implementation detail appears to conflict with the player promise or non-negotiable rights.
+This directory contains gameplay, vocabulary, incentive, content, Living Chronicle, and House of Keys product contracts. The [Product Constitution](../frozen/product-constitution.md) remains authoritative when a baseline, example, or implementation detail appears to conflict with the player promise or non-negotiable rights.
 
 ## Product foundations
 
@@ -32,6 +32,12 @@ Related architecture and governance:
 
 For the underlying domain models, use the [Living Chronicle architecture index](../architecture/README.md#living-chronicle-architecture).
 
+## House of Keys contracts
+
+1. [House of Keys Contract and Validation Baseline](house-of-keys-contract-baseline.md)
+
+For the underlying permission models, use the [House of Keys architecture index](../architecture/README.md#house-of-keys-architecture).
+
 ## Product rule
 
-A schema, quest, reward, notification, or narrative flow must preserve personal value first, meaningful refusal, non-punitive return, purpose-specific permission, visible uncertainty, accessibility, and the separation between authoritative records and AI-generated proposals.
+A schema, quest, reward, notification, narrative flow, permission request, policy decision, or receipt must preserve personal value first, meaningful refusal, non-punitive return, purpose-specific permission, visible uncertainty, accessibility, and the separation between authoritative records and AI-generated proposals.

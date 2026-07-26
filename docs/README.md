@@ -7,7 +7,7 @@ This is the canonical entry point for repository documentation. It is designed t
 1. What is Calypso’s Promise ultimately trying to accomplish?
 2. Which documents are authoritative for the decision I am making?
 3. What is implemented now, planned next, or intentionally deferred?
-4. Where should a contributor make a change without crossing a product, privacy, safety, canon, or governance boundary?
+4. Where should a contributor make a change without crossing a product, privacy, safety, canon, consent, or governance boundary?
 
 ## Primary directive
 
@@ -33,10 +33,19 @@ The application is the first operating surface of a long-lived public-benefit in
 ### Understand what exists now
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
-3. [Sprint Roadmap](roadmap/sprints.md)
-4. [Repository and Module Boundaries](architecture/module-boundaries.md)
-5. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+2. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+3. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+4. [Sprint Roadmap](roadmap/sprints.md)
+5. [Repository and Module Boundaries](architecture/module-boundaries.md)
+6. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+
+### Understand the Living Chronicle and House of Keys
+
+1. [Living Chronicle Architecture](architecture/README.md#living-chronicle-architecture)
+2. [Living Chronicle Contract Baseline](product/living-chronicle-schema-baseline.md)
+3. [House of Keys Architecture](architecture/README.md#house-of-keys-architecture)
+4. [House of Keys Contract and Validation Baseline](product/house-of-keys-contract-baseline.md)
+5. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
 
 ### Contribute code, content, or documentation
 
@@ -80,7 +89,7 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 | -------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------- |
 | Frozen foundations   | Constitutional and canonical constraints                             | [Frozen Foundations](frozen/README.md)                      |
 | Decisions            | Material architectural and institutional choices                     | [Decision Records](decisions/README.md)                     |
-| Architecture         | System, data, AI, story, and module boundaries                       | [Architecture Documentation](architecture/README.md)        |
+| Architecture         | System, data, consent, AI, story, and module boundaries              | [Architecture Documentation](architecture/README.md)        |
 | Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts  | [Product Documentation](product/README.md)                  |
 | Governance           | Contribution, content, feedback, challenge, and correction systems   | [Governance Documentation](governance/README.md)            |
 | Roadmap              | Current status, sprint sequence, evidence, and completion records    | [Roadmap Documentation](roadmap/README.md)                  |
@@ -92,14 +101,17 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 The current codebase is intentionally smaller than the frozen target topology.
 
-- [`apps/site`](../apps/site) — credential-free contributor smoke-test site; not yet the planned Next.js experience
+- [`apps/site`](../apps/site) — bounded public repository gateway and purpose-limited signup adapter
 - [`packages/domain`](../packages/domain) — small shared invariant package for public and synthetic contributor data
 - [`packages/content-schema`](../packages/content-schema) — pre-stable content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../packages/health-schema) — pre-stable Living Chronicle contracts, deterministic cross-reference validation, and public synthetic fixtures
+- [`packages/house-of-keys`](../packages/house-of-keys) — pre-stable purpose-specific permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures; pending merge through PR #33
 - [`content`](../content) — versioned, review-gated public content examples
 - [`tools`](../tools) — repository policy and documentation validation
 
-Planned applications, services, packages, infrastructure, and production data paths remain design targets until a sprint creates them with an owner, public contract, tests, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
+The House of Keys package remains separate from the Living Chronicle package. It may reference controlled Chronicle resources, but permission truth, grant state, decisions, receipts, and comprehension evidence do not become Chronicle truth.
+
+Planned applications, services, packages, infrastructure, production orchestration, and real-data paths remain design targets until a sprint creates them with an owner, public contract, tests, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
 
 ## Navigation and maintenance rules
 

@@ -10,6 +10,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
 - **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Review Sprint 4:** [Sprint 4 Completion Record](docs/roadmap/sprint-4-completion-record.md) → [Draft PR #33](https://github.com/finalboss-tom/calypsos-promise/pull/33)
 - **Build safely:** [Contributing](CONTRIBUTING.md) → [Module Boundaries](docs/architecture/module-boundaries.md) → [Development Policy](docs/policies/development.md)
 - **Explore the full repository:** [Documentation Home](docs/README.md)
 
@@ -17,7 +18,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–3 are complete and merged:
+Sprints 0–3 are complete and merged. **Sprint 4 — House of Keys consent architecture is complete on draft PR #33 and pending explicit approval and merge.**
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -26,12 +27,13 @@ Sprints 0–3 are complete and merged:
 - [Decision 0006](docs/decisions/0006-feedback-to-governed-work.md) establishes a feedback-to-governed-work baseline connecting public issues, evidence, deterministic prioritization, contribution, implementation, validation, outcomes, and phase-gated community authority.
 - Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
 - [Decision 0007](docs/decisions/0007-institutional-immune-system.md) establishes the Institutional Immune System as the cross-cutting architecture for assumptions, outcomes, challenge, containment, reversibility, appeal, restoration, revalidation, and protection against institutional capture.
+- Sprint 4 is tracked in issue #32 and draft PR #33. Its [completion record](docs/roadmap/sprint-4-completion-record.md) records the unchanged scope, cross-contract findings, deterministic evidence, compatibility boundaries, hold points, and unresolved register.
 
-The next planned design-to-build target is **Sprint 4 — House of Keys consent architecture**. It will define purpose-specific authority, grants, revocation, access receipts, comprehension, and policy evaluation without introducing blanket consent or production health-data flows.
+Sprint 4 defines purpose-specific authority, grants, revocation, access receipts, comprehension, and deterministic policy evaluation without introducing blanket consent or production health-data flows. Permission truth remains separate from Chronicle truth, and consent state does not belong in `packages/health-schema`.
 
-Sprint 3 did not introduce production migrations, real health-data flows, accounts, providers, connectors, consent infrastructure, research access, clinical decision support, or runtime services.
+The Sprint 4 review branch adds `@calypsos-promise/house-of-keys` at contract version `0.1.0-pre.1`, seventeen public synthetic policy scenarios, one synthetic completed-access receipt, and twenty-nine Node tests. The package is not a production consent system and is not part of `main` until PR #33 is explicitly approved and merged.
 
-Read the [integrated current status](docs/roadmap/current-status.md) and [Sprint 3 completion record](docs/roadmap/sprint-3-completion-record.md) for evidence, hold points, and deferred work. The completed Sprint 3 work is recorded in closed issue #13; the broader sprint program remains tracked in issue #2.
+Read the [integrated current status](docs/roadmap/current-status.md), [Sprint 4 completion record](docs/roadmap/sprint-4-completion-record.md), [Sprint 4 plan](docs/roadmap/sprint-4-plan.md), and [Sprint 3 completion record](docs/roadmap/sprint-3-completion-record.md) for evidence, boundaries, and deferred work. The broader sprint program remains tracked in issue #2.
 
 ### Frozen foundations
 
@@ -48,12 +50,13 @@ Read the [integrated current status](docs/roadmap/current-status.md) and [Sprint
 
 ### Current gates and unresolved work
 
+- Review and explicitly approve or reject Sprint 4 PR #33 before beginning Sprint 5.
 - Complete an explicit Phase 0 exit review against [the institutional roadmap](ROADMAP.md).
 - Publish the initial key-person dependency, succession, and founder-reserved-power records required by Decision 0003.
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
-- Design House of Keys consent, threat-model, security, and untrusted-input boundaries before production data paths.
+- Complete the Sprint 5 threat-model, security, encryption, untrusted-input, lifecycle-enforcement, and receipt-integrity boundaries before production data paths.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
 - Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
@@ -104,18 +107,19 @@ pnpm check
 pnpm --filter @calypsos-promise/site dev
 ```
 
-Open `http://localhost:3000` to confirm the Sprint 1 site workspace is running.
+Open `http://localhost:3000` to run the public repository gateway locally.
 
-The current application is intentionally minimal. It proves the repository can be installed, validated, and run without credentials, production services, or real health data. `pnpm check` includes formatting, documentation-link validation, repository policy, content validation, linting, type checking, and tests.
+The current application remains bounded. It explains the project and links to the repository without providing accounts, private Chronicle storage, health-data intake, research enrollment, or production House of Keys behavior. `pnpm check` includes formatting, documentation-link validation, repository policy, content validation, linting, type checking, and tests.
 
 ## Repository surfaces
 
 ### Implemented now
 
-- [`apps/site`](apps/site) — minimal public-site workspace and contributor smoke test
+- [`apps/site`](apps/site) — bounded public repository gateway and purpose-limited signup adapter
 - [`packages/domain`](packages/domain) — shared repository invariants and contracts
 - [`packages/content-schema`](packages/content-schema) — content contracts, deterministic validators, graph contracts, and JSON Schema
 - [`packages/health-schema`](packages/health-schema) — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
+- [`packages/house-of-keys`](packages/house-of-keys) — Sprint 4 pre-stable permission contracts, deterministic validation and policy evaluation, receipts, and public synthetic fixtures; pending merge through PR #33
 - [`content`](content) — versioned canon, quests, dialogue, education, and safety examples
 - [`docs`](docs/README.md) — frozen foundations, architecture, decisions, governance, website briefs, policies, and sprint records
 - [`tools`](tools) — repository policy and documentation validation
@@ -126,6 +130,7 @@ The current application is intentionally minimal. It proves the repository can b
 - `apps/api` — planned modular TypeScript domain application
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
+- production House of Keys orchestration, identity, persistence, enforcement, receipts, and provider adapters
 - additional applications, services, packages, infrastructure, and production data paths described by the frozen architecture
 
 Planned surfaces should not be created as empty placeholders. A new module must have a bounded responsibility, current consumer, public contract, dependency direction, owner, tests, and synthetic evidence. See [Repository and Module Boundaries](docs/architecture/module-boundaries.md).

@@ -29,6 +29,8 @@ importers:
 
   packages/health-schema: {}
 
+  packages/house-of-keys: {}
+
 packages:
 
   '@turbo/darwin-64@2.10.6':
@@ -37,7 +39,7 @@ packages:
     os: [darwin]
 
   '@turbo/darwin-arm64@2.10.6':
-    resolution: {integrity: sha512-gnS8G78EjvJzDc1+tFES5BYXdlF+292n+h57G9G+5LJYelRh195f4Ed22RCo4EFIbI4Du9S5xfE9YjrqhoZaxQ==}
+    resolution: {integrity: sha512-gnS8G78EjvJzDc1+tFES5BYXdlF+292n+h57G9G+5JYelRh195f4Ed22RCo4EFIbI4Du9S5xfE9YjrqhoZaxQ==}
     cpu: [arm64]
     os: [darwin]
 
