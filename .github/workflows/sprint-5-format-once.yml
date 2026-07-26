@@ -1,0 +1,56 @@
+name: Sprint 5 format once
+
+on:
+  push:
+    branches:
+      - sprint/5-threat-model-security
+    paths:
+      - .github/workflows/sprint-5-format-once.yml
+      - docs/security/synthetic-abuse-case-and-tabletop-method.md
+      - docs/security/synthetic-evidence-gap-and-follow-up-register.md
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sprint-5-format-once
+  cancel-in-progress: false
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: sprint/5-threat-model-security
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Format identified files
+        run: |
+          pnpm exec prettier --write \
+            docs/security/synthetic-abuse-case-and-tabletop-method.md \
+            docs/security/synthetic-evidence-gap-and-follow-up-register.md
+      - name: Commit formatting when needed
+        run: |
+          if git diff --quiet -- \
+            docs/security/synthetic-abuse-case-and-tabletop-method.md \
+            docs/security/synthetic-evidence-gap-and-follow-up-register.md; then
+            echo 'No formatting changes remain.'
+            exit 0
+          fi
+          git config user.name 'finalboss-tom'
+          git config user.email '109227940+finalboss-tom@users.noreply.github.com'
+          git add \
+            docs/security/synthetic-abuse-case-and-tabletop-method.md \
+            docs/security/synthetic-evidence-gap-and-follow-up-register.md
+          git commit -m 'style: format Sprint 5 tabletop artifacts'
+          git push origin HEAD:sprint/5-threat-model-security
