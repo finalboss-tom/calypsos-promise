@@ -89,9 +89,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-access-receipt-audit-bounda
 
 The baseline defines distinct receipt event kinds for requests, allow, deny, indeterminate decisions, attempts, access completion, non-disclosure completion, partial outcomes, failures, stopped operations, lifecycle changes, and corrections; preserves correlation without collapsing claims; requires exact grant, policy, scope, actor, outcome, and timing references; minimizes duplicated health content; uses append-only correction rather than overwrite; treats missing or defective receipts as failures rather than proof of no access; separates player-facing receipts from protected operational audit records; and keeps cryptographic integrity, production logging, retention, delivery, and incident controls deferred.
 
-### 4.7 Permission explanations and comprehension evidence
+### 4.7 Permission explanations and comprehension evidence — complete at baseline level
 
 Define direct and accessible explanations covering purpose, recipient, categories, actions, duration, revocation, consequences, optionality, and uncertainty. Provide a synthetic comprehension prototype with narrative and direct-mode parity.
+
+Baseline artifact: [`docs/architecture/house-of-keys-explanation-comprehension-model.md`](../architecture/house-of-keys-explanation-comprehension-model.md)
+
+The baseline defines immutable explanation snapshots; layered direct presentation; strict narrative and direct-mode parity; plain-language, accessibility, assistance, and non-AI fallback boundaries; versioned comprehension-evidence records, concepts, statuses, and proportionate methods; separation of explanation, comprehension, confirmation, grant activation, policy evaluation, execution, and receipts; material-change re-presentation rules; non-punitive retry, deferral, and decline; and seven synthetic prototype scenarios covering personal export, optional public-good use, invalid blanket requests, narrative mismatch, accessible alternatives, stale evidence, and AI-summary conflict.
 
 ### 4.8 Deterministic policy evaluation
 
