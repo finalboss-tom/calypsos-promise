@@ -10,13 +10,13 @@
 
 This map identifies what Calypso’s Promise must protect before production accounts, health data, connectors, agents, research systems, or administrative services are introduced.
 
-It prevents three common architectural failures:
+It prevents three failures:
 
 1. treating all sensitive information as one undifferentiated database;
 2. treating network location or service ownership as proof of authority; and
 3. documenting a future flow without identifying purpose, recipient, retention, deletion, receipt, audit, and recovery consequences.
 
-The map is authoritative for Sprint 5 threat-model scope. It does not authorize any asset, flow, provider, or environment by describing it.
+The map defines Sprint 5 threat-model scope. It does not authorize any asset, flow, provider, or environment by describing it.
 
 ## Mapping rules
 
@@ -38,41 +38,23 @@ A service that can technically read an asset is not automatically authorized to 
 
 ## Information classifications
 
-This map uses the repository’s publication boundary and adds security handling context.
-
 ### PUBLIC
 
 Approved for public repository, documentation, website, issue, pull-request, CI, and synthetic-fixture use.
 
-Examples:
-
-- frozen foundations
-- public policies and decisions
-- public code
-- synthetic fixtures and table tops
-- reviewed public institutional derivatives
+Examples include frozen foundations, public policies, public code, synthetic fixtures, tabletop exercises, and reviewed public institutional derivatives.
 
 ### REVIEW
 
 Candidate public information requiring review before publication.
 
-Examples:
-
-- draft public security architecture
-- minimized incident summaries
-- provider comparisons without credentials or operational details
-- public control-status reports
+Examples include draft public security architecture, minimized incident summaries, provider comparisons without operational details, and public control-status reports.
 
 ### RESTRICTED
 
 Operational or organizational information limited to authorized roles.
 
-Examples:
-
-- internal architecture details that materially increase attack capability
-- private deployment configuration
-- non-secret administrative process records
-- unpublished risk assessments with sensitive operational context
+Examples include private architecture details, deployment configuration, internal process records, and unpublished risk assessments with sensitive operational context.
 
 ### PROTECTED PERSONAL
 
@@ -118,9 +100,9 @@ Execution must use a valid and fresh decision. It cannot create or broaden permi
 
 ### Protected audit authority
 
-Owns minimized operational evidence needed for security, integrity, incident response, accountability, and legal or policy obligations.
+Owns minimized operational evidence needed for security, integrity, incident response, accountability, and bounded obligations.
 
-Audit does not become a shadow Chronicle, permission system, product analytics warehouse, or unrestricted operator-search surface.
+Audit does not become a shadow Chronicle, permission system, analytics warehouse, or unrestricted operator-search surface.
 
 ### Product and story authority
 
@@ -130,7 +112,7 @@ It may consume explicit domain evidence but cannot create Chronicle truth or per
 
 ### AI and retrieval derivative authority
 
-Owns drafts, prompts, responses, embeddings, indexes, caches, and model interaction metadata within approved retention and purpose boundaries.
+Owns drafts, prompts, responses, embeddings, indexes, caches, and model-interaction metadata within approved purpose and retention boundaries.
 
 AI and retrieval artifacts are disposable derivatives unless a separate player-visible record is confirmed through the authoritative domain.
 
@@ -142,106 +124,163 @@ Institutional authority cannot access personal data or alter permission merely b
 
 ## Actor classes
 
-| Actor | Legitimate role | Must not become |
-| --- | --- | --- |
-| Controlling person | confirms records, grants or withdraws authority, inspects receipts, exports, corrects, deletes | a source of blanket or irrevocable consent |
-| Subject | person described by a record | automatically identical to account owner, author, requester, or confirmer |
-| Account actor | authenticated person or verified delegate acting through an account | caller-supplied Chronicle owner or universal authority |
-| Requester | asks for a bounded operation | self-authorizing recipient or performing actor |
-| Recipient | receives the bounded result | purpose owner, controller of unrelated use, or silent onward distributor |
-| Performing actor | executes an authorized action | independent permission authority or arbitrary data browser |
-| Receipt issuer | records person-visible access evidence | proof that permission existed or every downstream copy was deleted |
-| Operator | maintains an identified service | unrestricted researcher, support observer, or Chronicle authority |
-| Security responder | contains and investigates an incident | permanent emergency administrator or public publisher of raw evidence |
-| Connector | imports or synchronizes an external source | trusted confirmer or self-granting tool |
-| AI model or provider | drafts, extracts, classifies, explains, or summarizes | Chronicle authority, identity proof, permission authority, reward authority, or arbitrary tool caller |
-| MCP client | invokes bounded domain tools | database, filesystem, tenant-selection, or policy-bypass client |
-| Research actor | proposes or operates a separately approved study | recipient of generalized future-use authority |
-| Governance actor | makes bounded institutional decisions | personal-data controller or operator of unreviewable emergency power |
-| Dependency or build actor | provides code, package, action, image, artifact, or build step | implicitly trusted execution inside every environment |
+### Controlling person
+
+May confirm records, grant or withdraw authority, inspect receipts, export, correct, and delete.
+
+Must not be presented with blanket, irrevocable, bundled, or punitive permission choices.
+
+### Subject
+
+Is the person described by a record.
+
+Must not be assumed to be identical to the account owner, author, requester, recipient, or confirmer.
+
+### Account actor
+
+Is an authenticated person or verified delegate acting through an account.
+
+Must not select Chronicle ownership through a caller-supplied identifier.
+
+### Requester
+
+Asks for a bounded operation.
+
+Must not become a self-authorizing recipient or performing actor.
+
+### Recipient
+
+Receives a bounded result.
+
+Must not silently acquire unrelated purpose, onward-distribution, or retention authority.
+
+### Performing actor
+
+Executes an authorized action.
+
+Must not become independent permission authority or an arbitrary data browser.
+
+### Receipt issuer
+
+Records person-visible access evidence.
+
+Must not treat a receipt as proof that permission existed or that every downstream copy was deleted.
+
+### Operator and security responder
+
+Maintains or protects an identified service under bounded authority.
+
+Must not receive permanent, universal, founder-only, or unreviewable access.
+
+### Connector
+
+Imports or synchronizes an external source.
+
+Must remain untrusted as a confirmer, permission authority, and source of canonical truth.
+
+### AI model or provider
+
+May draft, extract, classify, explain, or summarize.
+
+Must not become Chronicle authority, identity proof, permission authority, reward authority, or arbitrary tool caller.
+
+### MCP client
+
+May invoke bounded domain tools.
+
+Must not become a database, filesystem, tenant-selection, or policy-bypass client.
+
+### Research actor
+
+May propose or operate a separately approved study.
+
+Must not receive generalized, future-use, or product-improvement authority.
+
+### Governance actor
+
+May make bounded institutional decisions.
+
+Must not become a personal-data controller or operator of unreviewable emergency power.
+
+### Dependency or build actor
+
+Provides code, packages, actions, images, artifacts, or build steps.
+
+Must not be implicitly trusted across every environment.
 
 ## Trust zones
 
-### Zone P0 — Public and synthetic surfaces
+### P0 — Public and synthetic surfaces
 
-Includes:
-
-- public repository
-- public issues and pull requests
-- public CI definitions and safe logs
-- public documentation and website
-- public campaign and governance ledgers
-- synthetic fixtures, scenarios, and table tops
+Includes the public repository, public issues and pull requests, public CI definitions and safe logs, public documentation and website, public institutional ledgers, and synthetic fixtures and table tops.
 
 Only PUBLIC information belongs here.
 
-### Zone P1 — Local contributor environment
+### P1 — Local contributor environment
 
 Includes public code and synthetic data. It must not require production credentials, private exports, real user information, or access to protected systems.
 
-Local compromise must not grant access to production or private source systems by default.
+### P2 — Public web delivery and interest intake
 
-### Zone P2 — Public web delivery and purpose-limited interest intake
+Includes the public site and separately configured signup-forwarding adapter.
 
-Includes the static or server-rendered public site and the separately configured signup-forwarding adapter.
+The current boundary accepts only a purpose-limited email-interest record. It is not an account, Chronicle, research, permission, or health-data system.
 
-The current boundary accepts an email-interest record only. It is not an account, Chronicle, research, permission, or health-data system.
+### S0 — Private edge and authenticated session boundary
 
-### Zone S0 — Private edge and authenticated session boundary
+Future boundary for authentication, session establishment, request validation, rate limiting, risk signals, and private routing.
 
-Future boundary for authentication, session establishment, request validation, rate limiting, device and risk signals, and private routing.
+Identity must come from authenticated context rather than caller-supplied ownership claims.
 
-It must derive identity from authenticated context and must not accept caller-supplied ownership authority.
+### S1 — Domain application boundary
 
-### Zone S1 — Domain application boundary
-
-Future modular application containing explicit domain services for identity, Chronicle, House of Keys, execution, quests, exports, deletion, and other bounded capabilities.
+Future modular application containing explicit services for identity, Chronicle, House of Keys, execution, quests, exports, deletion, and other bounded capabilities.
 
 Domain services enforce authority and invariants. They are not arbitrary data-access facades.
 
-### Zone S2 — Canonical structured-data boundary
+### S2 — Canonical structured-data boundary
 
-Future PostgreSQL or replaceable structured storage for authoritative domain records.
+Future private structured storage for authoritative domain records.
 
 No public exposure is required. Direct client, AI, MCP, or analytics access is prohibited.
 
-### Zone S3 — Raw-source and object-storage boundary
+### S3 — Raw-source and object-storage boundary
 
-Future encrypted storage for raw documents, images, source payloads, immutable versions, and derived representations.
+Future encrypted storage for raw documents, images, payloads, immutable versions, and derived representations.
 
-Object identifiers, signed access, metadata, malware state, and custody require explicit controls.
+Object identity, signed access, metadata, malware state, and custody require explicit controls.
 
-### Zone S4 — Queue and worker boundary
+### S4 — Queue and worker boundary
 
 Future durable background processing for imports, documents, exports, deletion, receipt delivery, notifications, and other bounded jobs.
 
 Queued work must preserve identity, purpose, authority revision, freshness, idempotency, cancellation, revocation, and receipt context.
 
-### Zone S5 — AI, retrieval, and document-processing boundary
+### S5 — AI, retrieval, and document-processing boundary
 
-Future isolated providers or services for extraction, generation, embeddings, retrieval, and document parsing.
+Future isolated services for extraction, generation, embeddings, retrieval, and document parsing.
 
-Inputs are minimized and authorized. Outputs are untrusted drafts. Provider egress, retention, model training, logging, and tool use require explicit policy.
+Inputs are minimized and authorized. Outputs remain untrusted drafts. Provider egress, retention, training, logging, and tool use require explicit policy.
 
-### Zone S6 — Analytics boundary
+### S6 — Analytics boundary
 
-Future isolated Python workers and analytical stores for approved personal calculations or separately authorized aggregate work.
+Future isolated analytical workers and stores for approved personal calculations or separately authorized aggregate work.
 
 Analytics cannot become a replica of all raw personal data or an alternate permission system.
 
-### Zone S7 — Administrative and security boundary
+### S7 — Administrative and security boundary
 
 Future private operator, incident, key, deployment, and observability surfaces.
 
-These surfaces require least privilege, separation of duties, short-lived access, logging, review, recovery, and no public origin.
+These require least privilege, separation of duties, short-lived access, logging, review, recovery, and no public origin.
 
-### Zone S8 — External recipient and connector boundary
+### S8 — External recipient and connector boundary
 
-External devices, health platforms, document sources, providers, study organizations, and other recipients.
+Includes external devices, health platforms, document sources, providers, study organizations, and other recipients.
 
 External status and contracts do not make an actor trusted. Inbound data is untrusted; outbound access is purpose-, recipient-, action-, scope-, and duration-specific.
 
-### Zone S9 — Backup, archive, and disaster-recovery boundary
+### S9 — Backup, archive, and disaster-recovery boundary
 
 Future isolated backups, replicas, snapshots, archives, and recovery systems.
 
@@ -255,274 +294,230 @@ Restore must preserve correction, revocation, deletion, and authority history. B
 - Queues carry references and minimized required facts rather than unnecessary full records.
 - Logs, traces, metrics, errors, prompts, and receipts minimize personal content.
 - Backups and replicas are separate trust boundaries with explicit deletion and restore behavior.
-- External recipients and providers are not trusted merely because they are contractually named.
-- Every boundary crossing can fail, duplicate, reorder, delay, broaden, leak, or become stale and must be modeled accordingly.
+- External recipients and providers are not trusted merely because they are named.
+- Every boundary crossing can fail, duplicate, reorder, delay, broaden, leak, or become stale.
 
 ## Asset register
 
 ### Public constitutional and institutional artifacts
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Institutional and repository governance |
-| Classification | PUBLIC |
-| Purpose | Explain and govern the project |
-| Current location | Public repository and website |
-| Primary threats | unauthorized change, provenance loss, status overclaim, misleading supersession, supply-chain or account compromise |
-| Required controls | branch and review controls, history, DCO, link and policy validation, correction and decision records, safe publication |
-| Status | Implemented public baseline; administrative branch evidence still pending |
+- **Authority:** institutional and repository governance
+- **Classification:** PUBLIC
+- **Purpose:** explain and govern the project
+- **Current location:** public repository and website
+- **Primary threats:** unauthorized change, provenance loss, status overclaim, misleading supersession, supply-chain or account compromise
+- **Required controls:** branch and review controls, history, DCO, link and policy validation, correction and decision records, safe publication
+- **Status:** implemented public baseline; administrative branch evidence remains pending
 
-### Synthetic fixtures and table tops
+### Synthetic fixtures and tabletop records
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Owning test or architecture domain |
-| Classification | PUBLIC synthetic only |
-| Purpose | Validation, contributor workflow, design exercises |
-| Current location | Public repository and CI |
-| Primary threats | accidental real data, re-identifiable imitation, false production claims, stale fixtures, hidden secrets |
-| Required controls | synthetic-only policy, repository scanning, review, explicit scenario limits, reproducibility |
-| Status | Implemented baseline; Sprint 5 expansion in progress |
+- **Authority:** owning test or architecture domain
+- **Classification:** PUBLIC synthetic only
+- **Purpose:** validation, contributor workflow, and design exercises
+- **Current location:** public repository and CI
+- **Primary threats:** accidental real data, re-identifiable imitation, false production claims, stale fixtures, hidden secrets
+- **Required controls:** synthetic-only policy, repository scanning, review, explicit limitations, reproducibility
+- **Status:** implemented baseline; Sprint 5 expansion in progress
 
 ### Public-site assets and content
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Public website and publication governance |
-| Classification | PUBLIC |
-| Purpose | Discovery, trust, lore, status, documentation, contribution |
-| Current location | `apps/site`, public deployment |
-| Primary threats | content injection, dependency compromise, misleading capability claims, asset tampering, accessibility failure |
-| Required controls | CSP and headers, build validation, status labeling, public-content review, deployment isolation |
-| Status | Live bounded gateway |
+- **Authority:** public website and publication governance
+- **Classification:** PUBLIC
+- **Purpose:** discovery, trust, lore, status, documentation, and contribution
+- **Current location:** `apps/site` and public deployment
+- **Primary threats:** content injection, dependency compromise, misleading capability claims, asset tampering, accessibility failure
+- **Required controls:** CSP and headers, build validation, status labeling, public-content review, deployment isolation
+- **Status:** live bounded gateway
 
 ### Founding Expedition interest records
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Purpose-limited signup process |
-| Classification | PROTECTED PERSONAL |
-| Purpose | Receive project-interest updates under the published notice |
-| Current flow | Browser → public site adapter → separately configured private webhook |
-| Primary threats | disclosure, overcollection, spam, webhook secret exposure, log retention, unauthorized reuse, inability to correct or unsubscribe |
-| Required controls | field minimization, consent, validation, rate limiting, HTTPS, secret isolation, private storage, retention and deletion process |
-| Status | Bounded live adapter; complete private lifecycle remains a gate |
+- **Authority:** purpose-limited signup process
+- **Classification:** PROTECTED PERSONAL
+- **Purpose:** receive project-interest updates under the published notice
+- **Current flow:** browser to public adapter to separately configured private webhook
+- **Primary threats:** disclosure, overcollection, spam, webhook-secret exposure, log retention, unauthorized reuse, inability to correct or unsubscribe
+- **Required controls:** field minimization, consent, validation, rate limiting, HTTPS, secret isolation, private storage, retention and deletion process
+- **Status:** bounded live adapter; complete private lifecycle remains a gate
 
-### Account identity and credentials
+### Account identity, credentials, sessions, and recovery evidence
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Future identity and account domain |
-| Classification | PROTECTED PERSONAL and SECRET OR SECURITY-SENSITIVE |
-| Purpose | Authentication, sessions, recovery, account lifecycle |
-| Expected zones | S0, S1, S2, S7 |
-| Primary threats | takeover, credential theft, recovery abuse, session fixation, enumeration, privilege escalation, account-to-Chronicle linkage exposure |
-| Required controls | provider-independent identity contract, MFA and recovery requirements, short-lived sessions, revocation, isolation, audit, emergency review |
-| Status | Required and undesigned in detail; no runtime |
+- **Authority:** future identity and account domain
+- **Classification:** PROTECTED PERSONAL and SECRET OR SECURITY-SENSITIVE
+- **Purpose:** authentication, sessions, recovery, verified delegation, and account lifecycle
+- **Expected zones:** S0, S1, S2, and S7
+- **Primary threats:** takeover, credential theft, recovery abuse, fixation, replay, enumeration, privilege escalation, identity-linkage exposure
+- **Required controls:** provider-independent identity contract, short-lived sessions, revocation, isolation, bounded recovery, audit, emergency review
+- **Status:** required and undesigned in detail; no runtime
 
 ### Account-to-Chronicle pseudonym mapping
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Identity domain with controlled Chronicle reference |
-| Classification | PROTECTED PERSONAL |
-| Purpose | Route authenticated authority to the correct controlled resource without exposing identity broadly |
-| Expected zones | S1 and S2 only |
-| Primary threats | cross-user leakage, tenant confusion, caller-supplied owner, re-identification, operator browsing |
-| Required controls | internal identifiers, authenticated derivation, strict service boundary, no arbitrary query, access evidence |
-| Status | Required architectural property; no runtime |
+- **Authority:** identity domain with controlled Chronicle reference
+- **Classification:** PROTECTED PERSONAL
+- **Purpose:** route authenticated authority to the correct controlled resource without broad identity exposure
+- **Expected zones:** S1 and S2 only
+- **Primary threats:** cross-user leakage, tenant confusion, caller-supplied owner, re-identification, operator browsing
+- **Required controls:** internal identifiers, authenticated derivation, strict service boundary, no arbitrary query, access evidence
+- **Status:** required architectural property; no runtime
 
 ### Confirmed Living Chronicle records
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Living Chronicle |
-| Classification | PROTECTED PERSONAL |
-| Purpose | Personal longitudinal record and approved derived use |
-| Expected zones | S1 and S2; minimized authorized derivatives elsewhere |
-| Primary threats | cross-user leakage, unauthorized change, false confirmation, conflict suppression, inference leakage, deletion overclaim |
-| Required controls | tenant and subject isolation, provenance, revision history, correction, policy enforcement, export and deletion procedures |
-| Status | Pre-stable contract and synthetic fixtures only |
+- **Authority:** Living Chronicle
+- **Classification:** PROTECTED PERSONAL
+- **Purpose:** personal longitudinal record and approved derived use
+- **Expected zones:** S1 and S2 with minimized authorized derivatives elsewhere
+- **Primary threats:** cross-user leakage, unauthorized change, false confirmation, conflict suppression, inference leakage, deletion overclaim
+- **Required controls:** tenant and subject isolation, provenance, revision history, correction, policy enforcement, export and deletion procedures
+- **Status:** pre-stable contract and synthetic fixtures only
 
 ### Raw sources, documents, images, and attachments
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Source and custody domain |
-| Classification | PROTECTED PERSONAL; may include SECRET OR SECURITY-SENSITIVE content |
-| Purpose | Preserve original source evidence and enable authorized processing |
-| Expected zones | S3, S4, S5, S9 |
-| Primary threats | malware, parser exploitation, decompression abuse, metadata exposure, source substitution, signed-link leakage, indefinite retention |
-| Required controls | untrusted-input isolation, immutable versions, integrity, malware controls, minimized locators, encrypted custody, retention and deletion |
-| Status | Pre-stable contracts only; no storage or processing runtime |
+- **Authority:** source and custody domain
+- **Classification:** PROTECTED PERSONAL and possibly SECRET OR SECURITY-SENSITIVE
+- **Purpose:** preserve original evidence and enable authorized processing
+- **Expected zones:** S3, S4, S5, and S9
+- **Primary threats:** malware, parser exploitation, decompression abuse, metadata exposure, source substitution, signed-link leakage, indefinite retention
+- **Required controls:** untrusted-input isolation, immutable versions, integrity, malware controls, minimized locators, encrypted custody, retention and deletion
+- **Status:** pre-stable contracts only; no storage or processing runtime
 
 ### Provenance, transformations, associations, and inferences
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Living Chronicle and approved analytical domain |
-| Classification | PROTECTED PERSONAL |
-| Purpose | Explain how records and interpretations were produced |
-| Expected zones | S1, S2, bounded S5 or S6 derivatives |
-| Primary threats | provenance tampering, unsupported claims, hidden source loss, inference leakage, stale derivation after correction |
-| Required controls | exact source references, versioned transformations, invalidation, uncertainty, structured authority, review and deletion propagation |
-| Status | Pre-stable contract baseline; no runtime |
+- **Authority:** Living Chronicle and approved analytical domain
+- **Classification:** PROTECTED PERSONAL
+- **Purpose:** explain how records and interpretations were produced
+- **Expected zones:** S1, S2, and bounded S5 or S6 derivatives
+- **Primary threats:** provenance tampering, unsupported claims, source loss, inference leakage, stale derivation after correction
+- **Required controls:** exact source references, versioned transformations, invalidation, uncertainty, structured authority, review and deletion propagation
+- **Status:** pre-stable contract baseline; no runtime
 
-### House of Keys definitions and grants
+### House of Keys definitions, grants, lifecycle, and evidence
 
-| Field | Boundary |
-| --- | --- |
-| Authority | House of Keys |
-| Classification | PROTECTED PERSONAL for person-specific grants; PUBLIC synthetic definitions and fixtures |
-| Purpose | Represent exact authority for bounded actions |
-| Expected zones | S1 and S2 |
-| Primary threats | self-grant, purpose laundering, category broadening, stale revisions, coercion, lifecycle tampering |
-| Required controls | controlling authority, exact revisions, atomic scope, lifecycle events, comprehension, confirmation, fail-closed validation |
-| Status | Pre-stable contract, validator, evaluator, and synthetic fixtures only |
+- **Authority:** House of Keys
+- **Classification:** PROTECTED PERSONAL for person-specific records and PUBLIC for synthetic fixtures
+- **Purpose:** represent exact authority for bounded actions
+- **Expected zones:** S1 and S2
+- **Primary threats:** self-grant, purpose laundering, category broadening, stale revisions, coercion, lifecycle tampering
+- **Required controls:** controlling authority, exact revisions, atomic scope, lifecycle events, comprehension, confirmation, fail-closed validation
+- **Status:** pre-stable contract, validator, evaluator, and synthetic fixtures only
 
 ### Policy requests and decisions
 
-| Field | Boundary |
-| --- | --- |
-| Authority | House of Keys policy evaluation |
-| Classification | PROTECTED PERSONAL and minimized security metadata |
-| Purpose | Determine allow, deny, or indeterminate for one bounded request |
-| Expected zones | S1; explicit facts from S2; consumed by S4 or performing service |
-| Primary threats | requester or recipient mismatch, stale facts, cache replay, partial-grant composition, `indeterminate` conversion |
-| Required controls | pure evaluator, caller-supplied decision IDs, reason codes, freshness, complete-grant matching, execution recheck |
-| Status | Pre-stable deterministic evaluator and synthetic evidence only |
+- **Authority:** House of Keys policy evaluation
+- **Classification:** PROTECTED PERSONAL and minimized security metadata
+- **Purpose:** determine allow, deny, or indeterminate for one bounded request
+- **Expected zones:** S1 with explicit facts from S2 and consumption by S4 or a performing service
+- **Primary threats:** requester or recipient mismatch, stale facts, cache replay, partial-grant composition, `indeterminate` conversion
+- **Required controls:** pure evaluator, caller-supplied decision identities, reason codes, freshness, complete-grant matching, execution recheck
+- **Status:** pre-stable deterministic evaluator and synthetic evidence only
 
 ### Execution and data-release state
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Performing domain service |
-| Classification | PROTECTED PERSONAL and security-sensitive operational metadata |
-| Purpose | Record attempts, releases, completion, failure, cancellation, and bounded-use consumption |
-| Expected zones | S1, S4, bounded S2 |
-| Primary threats | stale allow, duplicate release, queue replay, revocation race, partial failure, missing cancellation, hidden onward use |
-| Required controls | idempotency, freshness, transactional consumption, release boundary evidence, cancellation, correction, receipt emission |
-| Status | Required; no runtime |
+- **Authority:** performing domain service
+- **Classification:** PROTECTED PERSONAL and security-sensitive operational metadata
+- **Purpose:** record attempts, releases, completion, failure, cancellation, and bounded-use consumption
+- **Expected zones:** S1, S4, and bounded S2
+- **Primary threats:** stale allow, duplicate release, queue replay, revocation race, partial failure, missing cancellation, hidden onward use
+- **Required controls:** idempotency, freshness, transactional consumption, release-boundary evidence, cancellation, correction, receipt emission
+- **Status:** required; no runtime
 
 ### Person-visible access receipts
 
-| Field | Boundary |
-| --- | --- |
-| Authority | House of Keys receipt domain |
-| Classification | PROTECTED PERSONAL |
-| Purpose | Let the person inspect requests, decisions, attempts, releases, failures, lifecycle changes, and corrections |
-| Expected zones | S1 and S2; player-facing client |
-| Primary threats | omission, forgery, duplication, correction suppression, excessive health-content duplication, inaccessible presentation |
-| Required controls | exact references, append-only correction, minimized summaries, integrity, delivery, export, deletion boundary, accessibility |
-| Status | Pre-stable contract and one synthetic completed receipt only |
+- **Authority:** House of Keys receipt domain
+- **Classification:** PROTECTED PERSONAL
+- **Purpose:** let the person inspect requests, decisions, attempts, releases, failures, lifecycle changes, and corrections
+- **Expected zones:** S1, S2, and the player-facing client
+- **Primary threats:** omission, forgery, duplication, correction suppression, health-content overexposure, inaccessible presentation
+- **Required controls:** exact references, append-only correction, minimized summaries, integrity, delivery, export, deletion boundary, accessibility
+- **Status:** pre-stable contract and one synthetic completed receipt only
 
 ### Protected operational audit evidence
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Security and operational audit domain |
-| Classification | RESTRICTED, PROTECTED PERSONAL, and SECRET OR SECURITY-SENSITIVE |
-| Purpose | Detect, investigate, contain, restore, and prove bounded operational events |
-| Expected zones | S7 with minimized sources from S0–S6 |
-| Primary threats | shadow surveillance, operator curiosity, log injection, deletion obstruction, secret leakage, overretention |
-| Required controls | minimization, field allowlists, integrity, restricted access, retention schedule, correction, incident hold, safe derivatives |
-| Status | Required; no production design or runtime yet |
+- **Authority:** security and operational audit domain
+- **Classification:** RESTRICTED, PROTECTED PERSONAL, and SECRET OR SECURITY-SENSITIVE
+- **Purpose:** detect, investigate, contain, restore, and prove bounded operational events
+- **Expected zones:** S7 with minimized sources from S0 through S6
+- **Primary threats:** shadow surveillance, operator curiosity, log injection, deletion obstruction, secret leakage, overretention
+- **Required controls:** minimization, allowlisted fields, integrity, restricted access, retention schedule, correction, incident hold, safe public derivatives
+- **Status:** required; no production design or runtime yet
 
 ### AI prompts, responses, extraction drafts, and conversation derivatives
 
-| Field | Boundary |
-| --- | --- |
-| Authority | AI interaction and approved product-memory domains |
-| Classification | PROTECTED PERSONAL unless synthetic or public |
-| Purpose | Draft capture, explanation, clarification, retrieval, and narrative interaction |
-| Expected zones | S1 and S5; approved bounded storage only |
-| Primary threats | provider egress, training reuse, prompt injection, unsupported health claims, authority misrepresentation, hidden retention |
-| Required controls | minimization, purpose and provider policy, non-training requirement where applicable, isolation, structured outputs, player confirmation, retention classes |
-| Status | Frozen rule and future Sprint 6 boundary; no production AI runtime |
+- **Authority:** AI interaction and approved product-memory domains
+- **Classification:** PROTECTED PERSONAL unless synthetic or public
+- **Purpose:** draft capture, explanation, clarification, retrieval, and narrative interaction
+- **Expected zones:** S1 and S5 with bounded storage only
+- **Primary threats:** provider egress, training reuse, prompt injection, unsupported health claims, authority misrepresentation, hidden retention
+- **Required controls:** minimization, purpose and provider policy, isolation, structured outputs, player confirmation, retention classes
+- **Status:** frozen rule and future Sprint 6 boundary; no production AI runtime
 
 ### Embeddings, indexes, caches, and retrieval results
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Retrieval derivative domain |
-| Classification | Same or stricter than source information |
-| Purpose | Authorized semantic retrieval for notes, documents, opted-in conversations, lore, or education |
-| Expected zones | S5 and bounded S2 or S6 |
-| Primary threats | cross-tenant retrieval, poisoning, stale deletion, source loss, inference and membership leakage |
-| Required controls | tenant isolation, source references, disposable indexes, deletion rebuild, no structured-value authority, access policy |
-| Status | Architectural direction only |
+- **Authority:** retrieval derivative domain
+- **Classification:** same or stricter than source information
+- **Purpose:** authorized semantic retrieval for approved notes, documents, conversations, lore, or education
+- **Expected zones:** S5 and bounded S2 or S6
+- **Primary threats:** cross-tenant retrieval, poisoning, stale deletion, source loss, inference and membership leakage
+- **Required controls:** tenant isolation, source references, disposable indexes, deletion rebuild, no structured-value authority, access policy
+- **Status:** architectural direction only
 
 ### Quest, progression, restoration, and story state
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Product and story domains |
-| Classification | PROTECTED PERSONAL for player state; PUBLIC for schemas and synthetic examples |
-| Purpose | Deliver personal value and narrative progression |
-| Expected zones | S1 and S2; player client |
-| Primary threats | client-side trust, unauthorized completion, reward manipulation, permission-linked progression, disclosure pressure |
-| Required controls | deterministic evidence, server authority, no consent-derived rewards, correction effects, non-punitive refusal |
-| Status | Content contracts and synthetic examples; no product runtime |
+- **Authority:** product and story domains
+- **Classification:** PROTECTED PERSONAL for player state and PUBLIC for schemas and synthetic examples
+- **Purpose:** deliver personal value and narrative progression
+- **Expected zones:** S1, S2, and the player client
+- **Primary threats:** client-side trust, unauthorized completion, reward manipulation, permission-linked progression, disclosure pressure
+- **Required controls:** deterministic evidence, server authority, no permission-derived rewards, correction effects, non-punitive refusal
+- **Status:** content contracts and synthetic examples; no product runtime
 
 ### Connector credentials, cursors, and source payloads
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Connector and identity domains; imported facts remain source truth until confirmed or normalized |
-| Classification | SECRET OR SECURITY-SENSITIVE and PROTECTED PERSONAL |
-| Purpose | Separately authorized import and synchronization |
-| Expected zones | S1, S4, S8, S7 for secrets |
-| Primary threats | impersonation, token theft, overbroad scopes, replay, cursor corruption, future sync after revocation, source substitution |
-| Required controls | secret isolation, exact scopes, connector identity, revocation, cursor integrity, idempotency, receipts, source review |
-| Status | Deferred to Sprint 14; threat modeling in Sprint 5 |
+- **Authority:** connector and identity domains; imported facts remain source truth until accepted by the Chronicle domain
+- **Classification:** SECRET OR SECURITY-SENSITIVE and PROTECTED PERSONAL
+- **Purpose:** separately authorized import and synchronization
+- **Expected zones:** S1, S4, S8, and S7 for secrets
+- **Primary threats:** impersonation, token theft, overbroad scopes, replay, cursor corruption, future sync after revocation, source substitution
+- **Required controls:** secret isolation, exact scopes, connector identity, revocation, cursor integrity, idempotency, receipts, source review
+- **Status:** deferred to Sprint 14; threat modeling in Sprint 5
 
 ### Research proposals, enrollment, datasets, and outputs
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Future research-governance and House of Keys domains |
-| Classification | REVIEW or PUBLIC for protocols and aggregates; PROTECTED PERSONAL for enrollment and person-level data |
-| Purpose | Separately approved public-good research |
-| Expected zones | S1, S6, S8, isolated research environment |
-| Primary threats | purpose expansion, coercion, re-identification, uncontrolled linkage, retention drift, publication leakage, commercial reuse |
-| Required controls | study-specific authority, named recipient, minimization, governance review, isolation, output review, withdrawal and retention rules |
-| Status | Deferred; actor and boundary included in Sprint 5 model |
+- **Authority:** future research-governance and House of Keys domains
+- **Classification:** REVIEW or PUBLIC for protocols and aggregates; PROTECTED PERSONAL for enrollment and person-level data
+- **Purpose:** separately approved public-good research
+- **Expected zones:** S1, S6, S8, and an isolated research environment
+- **Primary threats:** purpose expansion, coercion, re-identification, uncontrolled linkage, retention drift, publication leakage, commercial reuse
+- **Required controls:** study-specific authority, named recipient, minimization, governance review, isolation, output review, withdrawal and retention rules
+- **Status:** deferred; actor and boundary included in Sprint 5
 
 ### Secrets, cryptographic keys, and certificates
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Security and environment-management domains |
-| Classification | SECRET OR SECURITY-SENSITIVE |
-| Purpose | Authenticate services, protect data, sign artifacts, and establish secure channels |
-| Expected zones | S7 and approved runtime injection paths |
-| Primary threats | repository or log exposure, excessive lifetime, shared environments, backup leakage, unrecoverable loss, insider misuse |
-| Required controls | purpose separation, least access, rotation, revocation, recovery, destruction, scanning, incident response, environment isolation |
-| Status | Sprint 5 design required; no production key custody |
+- **Authority:** security and environment-management domains
+- **Classification:** SECRET OR SECURITY-SENSITIVE
+- **Purpose:** authenticate services, protect data, sign artifacts, and establish secure channels
+- **Expected zones:** S7 and approved runtime-injection paths
+- **Primary threats:** repository or log exposure, excessive lifetime, shared environments, backup leakage, unrecoverable loss, insider misuse
+- **Required controls:** purpose separation, least access, rotation, revocation, recovery, destruction, scanning, incident response, environment isolation
+- **Status:** Sprint 5 design required; no production key custody
 
 ### Builds, dependencies, CI logs, previews, and artifacts
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Repository and build system |
-| Classification | PUBLIC by default; must never contain protected or secret information |
-| Purpose | Build, validate, preview, and publish public code and synthetic artifacts |
-| Current zones | P0 and external build providers |
-| Primary threats | dependency compromise, action compromise, malicious artifact, secret exfiltration, cache poisoning, unsafe preview, log disclosure |
-| Required controls | pinned and reviewed dependencies, minimal permissions, artifact policy, secret separation, provenance, branch controls, reproducible checks |
-| Status | CI baseline exists; integrated supply-chain threat model pending |
+- **Authority:** repository and build system
+- **Classification:** PUBLIC by default and prohibited from containing protected or secret information
+- **Purpose:** build, validate, preview, and publish public code and synthetic artifacts
+- **Current zones:** P0 and external build providers
+- **Primary threats:** dependency compromise, action compromise, malicious artifact, secret exfiltration, cache poisoning, unsafe preview, log disclosure
+- **Required controls:** reviewed dependencies, minimal permissions, artifact policy, secret separation, provenance, branch controls, reproducible checks
+- **Status:** CI baseline exists; integrated supply-chain threat model pending
 
 ### Backups, replicas, snapshots, archives, and recovery records
 
-| Field | Boundary |
-| --- | --- |
-| Authority | Owning domain plus disaster-recovery authority |
-| Classification | Same or stricter than source asset |
-| Purpose | Restore authorized and validated system state after loss or corruption |
-| Expected zones | S9 |
-| Primary threats | hidden retention, stale permissions, restoration of deleted data, ransomware reach, untested restore, key loss, cross-environment contamination |
-| Required controls | isolation, encryption, retention, restore tests, deletion-aware recovery, key management, inventory, access evidence |
-| Status | Sprint 5 design required; no production backup system |
+- **Authority:** owning domain plus disaster-recovery authority
+- **Classification:** same or stricter than the source asset
+- **Purpose:** restore authorized and validated system state after loss or corruption
+- **Expected zones:** S9
+- **Primary threats:** hidden retention, stale permissions, restoration of deleted data, ransomware reach, untested restore, key loss, cross-environment contamination
+- **Required controls:** isolation, encryption, retention, restore tests, deletion-aware recovery, key management, inventory, access evidence
+- **Status:** Sprint 5 design required; no production backup system
 
 ## Principal data flows
 
@@ -546,7 +541,7 @@ Required properties:
 
 - email and explicit purpose-limited consent only
 - no health, account, wallet, research, or clinical fields
-- webhook secret and endpoint isolation
+- webhook-secret and endpoint isolation
 - minimized logs
 - correction, unsubscribe, retention, and deletion process
 
@@ -606,7 +601,7 @@ Required properties:
 Required properties:
 
 - deletion status is explicit
-- retention exceptions narrow and inspectable
+- retention exceptions are narrow and inspectable
 - restoration cannot silently reintroduce deleted state
 - evidence does not falsely prove uncontrolled downstream erasure
 
@@ -616,8 +611,8 @@ Required properties:
 
 Required properties:
 
-- no arbitrary SQL, filesystem, tenant selection, or raw database tools
-- caller cannot supply Chronicle owner authority
+- no arbitrary SQL, filesystem, tenant selection, or raw-database tools
+- caller cannot supply Chronicle-owner authority
 - prompt injection cannot grant authority or invoke hidden tools
 - stale decisions are not reused
 - non-AI fallback remains available
@@ -638,16 +633,18 @@ Required properties:
 
 ## Current gaps and next artifacts
 
-This initial map establishes scope but does not complete workstream 5.1. Required follow-up includes:
+This map establishes the initial scope but does not complete workstream 5.1.
+
+Required follow-up includes:
 
 - assign stable asset and boundary IDs
-- produce a machine-checkable or structured companion register if justified
+- produce a structured companion register if justified
 - map exact trust-boundary crossings to threat records
 - define the identity and isolation matrix
 - define environment and origin diagrams
 - map control owners and evidence states
 - review public-site signup retention, correction, deletion, and unsubscribe ownership
-- reconcile all maps with the encryption, secrets, incident, audit, and deletion procedures
+- reconcile the map with encryption, secrets, incident, audit, and deletion procedures
 - obtain internal and later independent security review
 
 ## Review questions
