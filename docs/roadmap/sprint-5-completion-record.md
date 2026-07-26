@@ -286,20 +286,16 @@ Active Phase 0 work still includes:
 
 ## Validation evidence
 
-Validated review-branch head:
+The final validated branch head is recorded in issue #35 and PR #36 after all 5.10 documents and status corrections pass:
 
-`4f35de38fd43f81f10f782315b10b61d424182cb`
-
-- CI run `30223438779`, run number `436`: success
-- DCO Attestation run `30223438780`, run number `481`: success
-- formatting: success
-- documentation links: success
-- repository policy: success
-- content validation: success
-- lint: success
-- typecheck: success
-- tests: success
-- mergeability against current `main`: clean
+- formatting;
+- documentation links;
+- repository policy;
+- content validation;
+- lint;
+- typecheck;
+- tests; and
+- DCO attestation.
 
 ## Merge and closure decision
 
