@@ -18,6 +18,7 @@ This directory contains versioned architecture baselines that implement the froz
 10. [House of Keys Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md) — prospective revocation, explicit states and transitions, stale-decision handling, suspension, replacement, and non-punitive withdrawal
 11. [House of Keys Access Receipt and Audit Boundary](house-of-keys-access-receipt-audit-boundary.md) — player-inspectable receipt events, append-only correction, decision-to-operation linkage, minimization, and separation from production audit logs
 12. [House of Keys Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md) — direct and narrative parity, layered explanations, accessible evidence, confirmation separation, and synthetic comprehension prototypes
+13. [House of Keys Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md) — pure versioned evaluation, explicit facts, complete-grant matching, fail-closed outcomes, stable reasons, freshness, and execution separation
 
 ## Living Chronicle architecture
 
@@ -39,6 +40,7 @@ This directory contains versioned architecture baselines that implement the froz
 - [Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md)
 - [Access Receipt and Audit Boundary](house-of-keys-access-receipt-audit-boundary.md)
 - [Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md)
+- [Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md)
 
 The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
 
