@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 5 completion](docs/roadmap/sprint-5-completion-record.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -11,7 +11,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
 - **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
 - **Review the completed permission baseline:** [Sprint 4 Completion Record](docs/roadmap/sprint-4-completion-record.md) → [House of Keys Architecture](docs/architecture/README.md#house-of-keys-architecture)
-- **Prepare for Sprint 5:** [Pre-Sprint 5 Alignment Review](docs/roadmap/pre-sprint-5-alignment-review.md) → [Security Policy](SECURITY.md)
+- **Review Sprint 5:** [Sprint 5 Completion Record](docs/roadmap/sprint-5-completion-record.md) → [Security Architecture](docs/security/README.md) → [Sprint 5 Plan](docs/roadmap/sprint-5-plan.md) → [Security Policy](SECURITY.md)
 - **Build safely:** [Contributing](CONTRIBUTING.md) → [Module Boundaries](docs/architecture/module-boundaries.md) → [Development Policy](docs/policies/development.md)
 - **Explore the full repository:** [Documentation Home](docs/README.md)
 
@@ -19,7 +19,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–4 are complete and merged. **Sprint 5 — Threat model and security baseline is the next canonical sprint and has not started.**
+Sprints 0–4 are complete and merged. **Sprint 5 — Threat model and security baseline is complete on draft PR #36 for explicit founding-steward approval and merge; issue #35 remains open until merge.**
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -29,12 +29,14 @@ Sprints 0–4 are complete and merged. **Sprint 5 — Threat model and security 
 - Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable `0.1.0` Living Chronicle ontology, TypeScript contracts, deterministic validators, public synthetic fixtures, compatibility requirements, and cross-contract completion evidence.
 - [Decision 0007](docs/decisions/0007-institutional-immune-system.md) establishes the Institutional Immune System as the cross-cutting architecture for assumptions, outcomes, challenge, containment, reversibility, appeal, restoration, revalidation, and protection against institutional capture.
 - Sprint 4 merged through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`, establishing the pre-stable House of Keys purpose, grant, revocation, explanation, comprehension, receipt, and deterministic policy-evaluation boundary.
+- The pre-Sprint 5 reconciliation merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`, confirming mission and incentive alignment and defining the security handoff without changing Sprint 5 scope.
+- Sprint 5 is complete on draft PR #36 at the architecture, policy, procedure, risk, control, and founding-steward design-tabletop level. The [Sprint 5 Completion Record](docs/roadmap/sprint-5-completion-record.md) preserves all residual risks, specialist holdpoints, and non-production boundaries pending approval and merge.
 
 Sprint 4 defines purpose-specific authority without introducing blanket consent or production health-data flows. Permission truth remains separate from Chronicle truth, and consent state does not belong in `packages/health-schema`.
 
 The merged `@calypsos-promise/house-of-keys` package uses contract version `0.1.0-pre.1` and contains provider-independent contracts, deterministic validation and evaluation, seventeen public synthetic policy scenarios, one synthetic completed-access receipt, and twenty-nine Node tests. It is not a production consent system, legal approval, or authorization to process real health data.
 
-The [pre-Sprint 5 alignment review](docs/roadmap/pre-sprint-5-alignment-review.md) reconciles mission, vision, incentives, status, content references, Chronicle boundaries, House of Keys, AI, MCP, security hold points, and the unchanged Sprint 5 scope. The broader sprint program remains tracked in issue #2.
+Sprint 5 is complete on the review branch as an architecture, policy, procedure, public-synthetic-evidence, and founding-steward design-tabletop baseline. It does not authorize production accounts, providers, agents, connectors, encryption deployment, research, or real health-data processing. After merge, the next design-to-build boundary is Sprint 6 — Aster contracts and AI governance. The broader sprint program remains tracked in issue #2.
 
 ### Frozen foundations
 
@@ -51,13 +53,13 @@ The [pre-Sprint 5 alignment review](docs/roadmap/pre-sprint-5-alignment-review.m
 
 ### Current gates and unresolved work
 
-- Complete and merge the pre-Sprint 5 alignment review, then conduct a separate Sprint 5 entry decision without changing the accepted sprint scope.
+- Explicitly approve and merge the Sprint 5 completion record while preserving its residual risks, specialist holdpoints, and non-production boundary.
 - Complete an explicit Phase 0 exit review against [the institutional roadmap](ROADMAP.md).
 - Publish the initial key-person dependency, succession, and founder-reserved-power records required by Decision 0003.
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
-- Complete the Sprint 5 threat model, security, encryption, untrusted-input, lifecycle-enforcement, and receipt-integrity boundaries before production data paths.
+- Preserve the completed Sprint 5 threat, encryption, untrusted-input, lifecycle-enforcement, receipt-integrity, residual-risk, and specialist-holdpoint boundaries before any production data path.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
 - Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
@@ -122,6 +124,7 @@ The current application remains bounded. It explains the project and links to th
 - [`packages/health-schema`](packages/health-schema) — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
 - [`packages/house-of-keys`](packages/house-of-keys) — pre-stable permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures
 - [`content`](content) — versioned canon, quests, dialogue, education, and safety examples
+- [`docs/security`](docs/security/README.md) — completed Sprint 5 security architecture, control-status vocabulary, residual-risk registers, procedures, synthetic tabletops, reconciliation, and holdpoints
 - [`docs`](docs/README.md) — frozen foundations, architecture, decisions, governance, website briefs, policies, and sprint records
 - [`tools`](tools) — repository policy and documentation validation
 
