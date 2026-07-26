@@ -65,9 +65,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-data-category-taxonomy.md`]
 
 The baseline separates House of Keys permission categories from Chronicle coded values; establishes non-grantable families, grantable leaves, exact-category compatibility, explicit selector narrowing, lifecycle and mapping rules; and keeps Chronicle content, raw source artifacts, derived calculations, associations, inferences, and permission records independently scoped. Wildcards, family nodes, future descendants, provider labels, and “all health data” cannot silently broaden authority.
 
-### 4.4 Grant, recipient, action, scope, and duration model
+### 4.4 Grant, recipient, action, scope, and duration model — complete at baseline level
 
 Define versioned grants that bind authority, purpose, recipient, categories, actions, conditions, start, expiry, and explanation evidence. Reject blanket grants.
+
+Baseline artifact: [`docs/architecture/house-of-keys-grant-recipient-action-duration-model.md`](../architecture/house-of-keys-grant-recipient-action-duration-model.md)
+
+The baseline establishes semantically atomic grants; bounded and replaceable recipient identities; explicit performing-actor constraints; grantable action leaves; category-plus-selector scope intersections; separate data time and grant duration; fixed, delayed, single-use, bounded-count, session-bounded, and review-bounded duration shapes; structured conditions; conservative grant revision; and structural rejection of blanket, wildcard, indefinite, inferred, or bundled secondary-use authority.
 
 ### 4.5 Revocation and lifecycle behavior
 
