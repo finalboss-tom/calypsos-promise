@@ -56,29 +56,29 @@ A control that protects one property by silently weakening another is incomplete
 
 ## Information classifications
 
-| Classification | Public handling rule |
-| --- | --- |
-| **PUBLIC** | May appear in public repository, documentation, website, issues, pull requests, public-safe CI, fixtures, and tabletop records |
-| **REVIEW** | Candidate public information requiring publication review and minimization |
-| **RESTRICTED** | Operational or organizational information limited to authorized roles |
-| **PROTECTED PERSONAL** | Identifiable or linkable person, account, Chronicle, health source, correspondence, support, permission, receipt, research, or related metadata |
+| Classification                   | Public handling rule                                                                                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **PUBLIC**                       | May appear in public repository, documentation, website, issues, pull requests, public-safe CI, fixtures, and tabletop records                                            |
+| **REVIEW**                       | Candidate public information requiring publication review and minimization                                                                                                |
+| **RESTRICTED**                   | Operational or organizational information limited to authorized roles                                                                                                     |
+| **PROTECTED PERSONAL**           | Identifiable or linkable person, account, Chronicle, health source, correspondence, support, permission, receipt, research, or related metadata                           |
 | **SECRET OR SECURITY-SENSITIVE** | Credentials, keys, tokens, private endpoints, exploit details, security reports, incident evidence, administrative paths, anti-abuse details, and sensitive configuration |
 
 Classification is not authority. A protected record still requires a valid controlling authority, purpose, recipient, actor, and domain operation.
 
 ## Authority map
 
-| ID | Authority domain | Core rule |
-| --- | --- | --- |
-| `AUTH-ACCOUNT` | Account and identity | Authenticates and binds account actors; cannot create Chronicle or permission truth |
-| `AUTH-CHRONICLE` | Living Chronicle | Owns confirmed records and their provenance, correction, export, and deletion |
-| `AUTH-SOURCE` | Source and custody | Owns raw artifacts, versions, locators, integrity, and custody; source is not confirmed truth |
-| `AUTH-KEYS` | House of Keys | Owns exact permission definitions, grants, lifecycle, evaluation, and receipt contracts |
-| `AUTH-EXECUTION` | Execution and release | Owns attempts, releases, retries, cancellation, consumption, completion, and failure |
-| `AUTH-AUDIT` | Protected audit | Owns minimized operational evidence; cannot become a shadow Chronicle or permission system |
-| `AUTH-PRODUCT` | Product and story | Owns quests, progression, restoration, notifications, and story state |
-| `AUTH-AI` | AI and retrieval derivatives | Owns disposable drafts and indexes; cannot create identity, permission, Chronicle truth, or arbitrary tool authority |
-| `AUTH-INSTITUTION` | Institutional | Owns public decisions and governance; cannot use institutional authority as personal-data authority |
+| ID                 | Authority domain             | Core rule                                                                                                            |
+| ------------------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `AUTH-ACCOUNT`     | Account and identity         | Authenticates and binds account actors; cannot create Chronicle or permission truth                                  |
+| `AUTH-CHRONICLE`   | Living Chronicle             | Owns confirmed records and their provenance, correction, export, and deletion                                        |
+| `AUTH-SOURCE`      | Source and custody           | Owns raw artifacts, versions, locators, integrity, and custody; source is not confirmed truth                        |
+| `AUTH-KEYS`        | House of Keys                | Owns exact permission definitions, grants, lifecycle, evaluation, and receipt contracts                              |
+| `AUTH-EXECUTION`   | Execution and release        | Owns attempts, releases, retries, cancellation, consumption, completion, and failure                                 |
+| `AUTH-AUDIT`       | Protected audit              | Owns minimized operational evidence; cannot become a shadow Chronicle or permission system                           |
+| `AUTH-PRODUCT`     | Product and story            | Owns quests, progression, restoration, notifications, and story state                                                |
+| `AUTH-AI`          | AI and retrieval derivatives | Owns disposable drafts and indexes; cannot create identity, permission, Chronicle truth, or arbitrary tool authority |
+| `AUTH-INSTITUTION` | Institutional                | Owns public decisions and governance; cannot use institutional authority as personal-data authority                  |
 
 No service, database, provider, operator, model, client, or governance body owns all domains.
 
