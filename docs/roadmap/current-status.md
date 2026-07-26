@@ -4,7 +4,7 @@
 
 **Status date:** 2026-07-26  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0–4 complete and merged; Sprint 5 in progress on issue #35 and draft PR #36  
+**Design-to-build sequence:** Sprints 0–4 complete and merged; Sprint 5 complete on draft PR #36 pending explicit approval and merge  
 **Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, connector, research, or security-control runtime
 
 ## Executive status
@@ -20,7 +20,7 @@ Sprints 0–4 are complete and merged.
 - Sprint 4 merged through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`, establishing the pre-stable House of Keys architecture, contracts, validator, pure policy evaluator, receipts, synthetic evidence, compatibility boundaries, and completion record.
 - The pre-Sprint 5 reconciliation merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`, repairing post-merge drift and confirming the unchanged Sprint 5 handoff.
 
-Sprint 5 — Threat model and security baseline is now in progress. Issue #35 is the workstream and acceptance ledger. Draft PR #36 is the working review branch.
+Sprint 5 — Threat model and security baseline is complete on the review branch. Issue #35 remains the acceptance and closure ledger, and draft PR #36 remains pending explicit founding-steward approval and merge.
 
 Sprint 5 defines architecture, policy, procedures, public synthetic evidence, tabletop exercises, control status, and residual risk. It does not authorize production accounts, providers, agents, connectors, research, encryption deployment, operational key custody, security certification, or real health-data processing.
 
@@ -167,9 +167,9 @@ Established:
 
 This accepted implementation slice does not replace Sprint 8 or alter the Sprint 5 boundary.
 
-## Active Sprint 5 boundary
+## Sprint 5 completion boundary
 
-The [Sprint 5 Plan](sprint-5-plan.md) maps the accepted sprint into ten workstreams:
+The [Sprint 5 Plan](sprint-5-plan.md) was executed through ten workstreams on draft PR #36:
 
 1. security scope, assets, classifications, authorities, data flows, and trust boundaries
 2. identity, account, session, tenant, operator, recovery, and emergency-power boundaries
@@ -182,7 +182,9 @@ The [Sprint 5 Plan](sprint-5-plan.md) maps the accepted sprint into ten workstre
 9. public synthetic abuse cases and tabletop exercises
 10. cross-contract review, control-status truth, specialist hold points, and completion evidence
 
-Sprint 5 must preserve:
+All ten workstreams are complete for the accepted architecture, policy, procedure, risk, control, and founding-steward design-tabletop scope. The [Sprint 5 Completion Record](sprint-5-completion-record.md) is the canonical review-branch evidence. Completion does not imply implementation, deployment, operational verification, independent review, production readiness, or Phase 0 exit.
+
+Sprint 5 preserves:
 
 - useful personal value first
 - individual control and meaningful refusal
@@ -212,6 +214,10 @@ These statuses do not collapse into one maturity score. A documented or syntheti
 The canonical vocabulary is maintained in [`docs/security/control-status-and-risk-vocabulary.md`](../security/control-status-and-risk-vocabulary.md).
 
 The project currently has no named independent security reviewer. This must remain explicit until a qualified reviewer is recorded or a separately reviewed temporary exception is accepted.
+
+## Next design-to-build boundary
+
+After Sprint 5 is approved and merged, Sprint 6 — Aster contracts and AI governance is next. Sprint 6 must inherit the Sprint 5 threats, controls, provider-egress, prompt-injection, retrieval, memory, non-AI fallback, evidence-status, and specialist-holdpoint boundaries rather than creating a parallel AI security model.
 
 ## Institutional Phase 0 gate assessment
 

@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -12,8 +12,9 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint 5 Plan](sprint-5-plan.md)
+2. [Sprint 5 Completion Record](sprint-5-completion-record.md)
 3. [Security Architecture](../security/README.md)
+4. [Sprint 5 Plan](sprint-5-plan.md)
 4. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
 5. [Sprint 4 Completion Record](sprint-4-completion-record.md)
 6. [Sprint Sequence](sprints.md)
@@ -30,13 +31,14 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Sprint 4 Plan](sprint-4-plan.md) — complete and merged through PR #33
 - [Sprint 4 Completion Record](sprint-4-completion-record.md) — authoritative completion evidence
 - [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — complete and merged through PR #34
-- [Sprint 5 Plan](sprint-5-plan.md) — in progress on issue #35 and draft PR #36
+- [Sprint 5 Plan](sprint-5-plan.md) — complete on draft PR #36 pending approval and merge
+- [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative review-branch completion evidence
 
 ## Current sprint boundary
 
-Sprint 5 — Threat model and security baseline is in progress. Its accepted goal, deliverables, and acceptance criteria remain unchanged.
+Sprint 5 — Threat model and security baseline is complete on draft PR #36 for explicit founding-steward approval and merge. Its accepted goal, deliverables, and acceptance criteria remain unchanged.
 
-The sprint defines architecture, policies, procedures, public synthetic evidence, and tabletop exercises. It does not authorize accounts, providers, agents, connectors, real health data, production encryption, operational key custody, research, or production security claims.
+The completion record covers architecture, policies, procedures, public synthetic evidence, founding-steward design tabletops, control status, residual risk, and specialist holdpoints. It does not authorize accounts, providers, agents, connectors, real health data, production encryption, operational key custody, research, or production security claims. After merge, Sprint 6 — Aster contracts and AI governance is the next design-to-build boundary.
 
 ## Status rule
 

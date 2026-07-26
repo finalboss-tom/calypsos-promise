@@ -1,10 +1,11 @@
 # Sprint 5 Plan — Threat Model and Security Baseline
 
-**Status:** IN PROGRESS on issue #35  
+**Status:** COMPLETE ON REVIEW BRANCH — pending explicit founding-steward approval and merge  
 **Entry baseline:** `main` at `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`  
 **Canonical scope:** [`docs/roadmap/sprints.md`](sprints.md#sprint-5--threat-model-and-security-baseline)  
 **Entry review:** [`pre-sprint-5-alignment-review.md`](pre-sprint-5-alignment-review.md)  
-**Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)
+**Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
+**Completion record:** [Sprint 5 Completion Record](sprint-5-completion-record.md)
 
 ## Goal
 
@@ -253,6 +254,12 @@ Reconcile the complete security baseline against:
 - future Aster, MCP, connector, research, and production boundaries
 
 Create a completion record that maps every accepted deliverable and criterion to artifacts and evidence, records control status and residual risk, identifies unresolved specialist gates and owners, and prevents design documents from being represented as deployed controls.
+
+## Review-branch completion
+
+All ten workstreams are complete for the accepted design scope on draft PR #36. The [Sprint 5 Completion Record](sprint-5-completion-record.md) maps every deliverable and acceptance criterion to evidence, reconciles control status and residual risk, preserves all specialist holdpoints and exercise gaps, and confirms that no production capability is authorized.
+
+Issue #35 remains open and PR #36 remains draft until the founding steward explicitly approves and merges the baseline.
 
 ## Control-status vocabulary
 

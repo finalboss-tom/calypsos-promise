@@ -1,8 +1,8 @@
 # Security Architecture
 
-[Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
+[Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 completion](../roadmap/sprint-5-completion-record.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — workstreams 5.1–5.9 complete at the internal architecture and design-tabletop level; 5.10 next  
+**Status:** SPRINT 5 COMPLETE ON REVIEW BRANCH — workstreams 5.1–5.10 complete; explicit founding-steward approval and merge pending  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, recovery, incident-response, deletion-verification, or administrative runtime is authorized or represented as deployed  
 **Control baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, fourteen identity controls, twenty-eight Chronicle controls, thirty-six House of Keys controls, thirty-six untrusted-input controls, forty-nine encryption/key/secret/environment controls, and forty-five resilience/incident/audit/deletion controls are registered  
@@ -172,11 +172,15 @@ Each tabletop records assumptions, actual and simulated roles, ordered injects, 
 
 All fifteen exercises reached founding-steward design-tabletop evidence only. No exercise proves production control implementation, operational response time, provider behavior, multi-party readiness, accessibility effectiveness, legal sufficiency, independent review, or production readiness.
 
-## Remaining workstream
+### 5.10 — cross-contract review, control-status truth, specialist holdpoints, and completion record
 
-### 5.10 — cross-contract review, control-status truth, specialist holdpoints, and completion record — next
+- [Sprint 5 Cross-Contract Security Reconciliation](sprint-5-cross-contract-reconciliation.md)
+- [Sprint 5 Specialist Holdpoint and Evidence Register](sprint-5-specialist-holdpoint-and-evidence-register.md)
+- [Sprint 5 Completion Record](../roadmap/sprint-5-completion-record.md)
 
-Reconcile every accepted deliverable, acceptance criterion, control status, residual risk, exercise result, gap, specialist holdpoint, owner, revalidation trigger, and public capability claim. Create the Sprint 5 completion record without converting documentation or synthetic evidence into deployed-control claims.
+The final review maps every accepted deliverable and criterion to evidence, accepts the control-status vocabulary, reconciles all forty-six residual risks and exercise gaps, corrects stale website-status language, names twenty-four specialist and institutional holdpoints, and preserves the distinction between design completion, implementation, deployment, operational verification, and independent review.
+
+Sprint 5 is complete for its accepted architecture, policy, procedure, risk, control, public synthetic scenario, and founding-steward design-tabletop scope. No production capability is authorized.
 
 ## Artifact rules
 
@@ -259,6 +263,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Tabletop Records 1–8](tabletop-exercise-records-1.md)
 - [Tabletop Records 9–15](tabletop-exercise-records-2.md)
 - [Synthetic Evidence Gap Register](synthetic-evidence-gap-and-follow-up-register.md)
+- [Sprint 5 Cross-Contract Reconciliation](sprint-5-cross-contract-reconciliation.md)
+- [Sprint 5 Specialist Holdpoint Register](sprint-5-specialist-holdpoint-and-evidence-register.md)
+- [Sprint 5 Completion Record](../roadmap/sprint-5-completion-record.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)

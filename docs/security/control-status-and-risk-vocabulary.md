@@ -1,6 +1,6 @@
 # Security Control Status and Risk Vocabulary
 
-**Status:** PROPOSED SPRINT 5 BASELINE  
+**Status:** ACCEPTED SPRINT 5 BASELINE — accepted for architecture, procedure, evidence, and public-claim review; not deployment approval  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Scope:** truthful control status, evidence, residual risk, review, and public claims
 
