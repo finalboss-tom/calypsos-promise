@@ -89,7 +89,9 @@ export const syntheticAccessReceipt: AccessReceipt = {
   selector: baseGrant.selector,
   actionIds: baseGrant.actionIds,
   actionRevisions: baseGrant.actionRevisions,
-  grantReferences: [{ grantId: baseGrant.id, grantRevision: baseGrant.revision }],
+  grantReferences: [
+    { grantId: baseGrant.id, grantRevision: baseGrant.revision },
+  ],
   policyRequestId: "policy-request.personal-export.synthetic",
   policyRequestRevision: 1,
   policyDecisionId: "policy-decision.personal-export.synthetic",
@@ -450,214 +452,215 @@ function addGrantEvidence(
   ];
 }
 
-export const syntheticPolicyScenarios: ReadonlyArray<SyntheticPolicyScenario> = [
-  scenario(
-    "scenario.policy.allow-personal-export",
-    "A complete personal export request matches one active confirmed grant.",
-    () => {},
-    "allow",
-    ["allow.grant.exact-match"],
-  ),
-  scenario(
-    "scenario.policy.deny-blanket-category",
-    "A request uses an invalid blanket category.",
-    (input) => {
-      input.request.dataCategoryIds = ["data.chronicle.all"];
-      input.request.dataCategoryRevisions = { "data.chronicle.all": 1 };
-    },
-    "deny",
-    ["deny.request.blanket-scope"],
-  ),
-  scenario(
-    "scenario.policy.deny-recipient-mismatch",
-    "The request names a recipient not covered by the personal export grant.",
-    (input) => {
-      input.request.primaryRecipientId =
-        "recipient.organization.synthetic-study";
-    },
-    "deny",
-    ["deny.recipient.mismatch"],
-  ),
-  scenario(
-    "scenario.policy.deny-withdrawn-grant",
-    "A withdrawn grant cannot authorize future access.",
-    (input) => {
-      input.bundle.grants[0].lifecycleState = "withdrawn";
-    },
-    "deny",
-    ["deny.grant.withdrawn"],
-  ),
-  scenario(
-    "scenario.policy.deny-expired-grant",
-    "Evaluation after the duration ends is denied.",
-    (input) => {
-      input.evaluationTime = "2026-07-28T00:00:00Z";
-    },
-    "deny",
-    ["deny.grant.expired"],
-  ),
-  scenario(
-    "scenario.policy.deny-explicit-prohibition",
-    "An explicit applicable policy prohibition overrides grant coverage.",
-    (input) => {
-      input.bundle.policyBundle.prohibitedPurposeIds = [
-        input.request.purposeId,
-      ];
-    },
-    "deny",
-    ["deny.policy.prohibition"],
-  ),
-  scenario(
-    "scenario.policy.indeterminate-recipient",
-    "An unresolved recipient identity prevents a safe decision.",
-    (input) => {
-      input.request.primaryRecipientId = "recipient.unresolved.synthetic";
-    },
-    "indeterminate",
-    ["indeterminate.taxonomy.unresolved"],
-  ),
-  scenario(
-    "scenario.policy.indeterminate-category",
-    "An unknown category reference prevents a safe decision.",
-    (input) => {
-      input.request.dataCategoryIds = ["data.chronicle.unknown"];
-      input.request.dataCategoryRevisions = { "data.chronicle.unknown": 1 };
-    },
-    "indeterminate",
-    ["indeterminate.taxonomy.unresolved"],
-  ),
-  scenario(
-    "scenario.policy.indeterminate-stale-comprehension",
-    "Comprehension evidence bound to another explanation revision is stale.",
-    (input) => {
-      input.bundle.comprehensionEvidence[0].explanationRevision = 2;
-    },
-    "indeterminate",
-    ["indeterminate.comprehension.stale"],
-  ),
-  scenario(
-    "scenario.policy.deny-comprehension-not-satisfied",
-    "Explicitly not-satisfied comprehension evidence denies confirmation eligibility.",
-    (input) => {
-      input.bundle.comprehensionEvidence[0].status = "not-satisfied";
-    },
-    "deny",
-    ["deny.comprehension.not-satisfied"],
-  ),
-  scenario(
-    "scenario.policy.deny-action-mismatch",
-    "Transmission is not implied by export preparation and delivery.",
-    (input) => {
-      input.request.actionIds = ["action.transmit.to-recipient"];
-      input.request.actionRevisions = { "action.transmit.to-recipient": 1 };
-      input.request.operationBoundary = "transmit";
-    },
-    "deny",
-    ["deny.action.mismatch"],
-  ),
-  scenario(
-    "scenario.policy.deny-partial-grant-composition",
-    "Two partial grants cannot be combined to manufacture authority over a larger request.",
-    (input) => {
-      const symptomGrant = clone(input.bundle.grants[0]);
-      symptomGrant.id = "grant.partial.symptom";
-      symptomGrant.dataCategoryIds = ["data.chronicle.symptom"];
-      symptomGrant.dataCategoryRevisions = { "data.chronicle.symptom": 1 };
-      const labGrant = clone(input.bundle.grants[0]);
-      labGrant.id = "grant.partial.lab";
-      labGrant.dataCategoryIds = ["data.chronicle.laboratory-test"];
-      labGrant.dataCategoryRevisions = {
-        "data.chronicle.laboratory-test": 1,
-      };
-      input.bundle.grants = [];
-      addGrantEvidence(input.bundle, symptomGrant, "partial-symptom");
-      addGrantEvidence(input.bundle, labGrant, "partial-lab");
-    },
-    "deny",
-    ["deny.grant.partial-composition-prohibited"],
-  ),
-  scenario(
-    "scenario.policy.allow-multiple-independent-grants",
-    "Two grants independently cover the complete request and remain inspectable.",
-    (input) => {
-      const secondGrant = clone(input.bundle.grants[0]);
-      secondGrant.id = "grant.personal-export.synthetic-second";
-      addGrantEvidence(input.bundle, secondGrant, "synthetic-second");
-    },
-    "allow",
-    ["allow.multiple-independent-grants"],
-  ),
-  scenario(
-    "scenario.policy.indeterminate-capacity-conflict",
-    "Conflicting bounded-count capacity evidence prevents safe authorization.",
-    (input) => {
-      input.bundle.grants[0].duration = {
-        kind: "bounded-count",
-        startsAt: START,
-        endsAt: END,
-        maximumUses: 2,
-      };
-      input.bundle.explanations[0].duration = input.bundle.grants[0].duration;
-      input.bundle.explanations[0].durationSummary =
-        "At most two uses before 2026-07-27T00:00:00Z.";
-      input.capacitySnapshots = [
-        {
-          grantId: input.bundle.grants[0].id,
-          grantRevision: 1,
-          status: "conflicting",
-          recordedAt: NOW,
-        },
-      ];
-    },
-    "indeterminate",
-    ["indeterminate.capacity.conflict"],
-  ),
-  scenario(
-    "scenario.policy.allow-personal-core-independent-secondary-use",
-    "An unrelated malformed optional research grant cannot block an independently valid personal-core export.",
-    (input) => {
-      input.bundle.grants = [
-        ...input.bundle.grants,
-        {
-          ...clone(input.bundle.grants[0]),
-          id: "grant.research.unrelated.synthetic",
-          purposeId: "purpose.research.study-synthetic",
-          primaryRecipientId: "recipient.organization.synthetic-study",
-          permittedPerformingActorIds: ["actor.service.transmitter"],
-          dataCategoryIds: ["data.chronicle.symptom"],
-          dataCategoryRevisions: { "data.chronicle.symptom": 1 },
-          selector: { exactRecordIds: ["record.synthetic.symptom"] },
-          actionIds: ["action.transmit.to-recipient"],
-          actionRevisions: { "action.transmit.to-recipient": 1 },
-          optionality: "optional",
-          explanationSnapshotId: "explanation.missing.unrelated",
-          comprehensionEvidenceId: "comprehension.missing.unrelated",
-          confirmationEvidenceId: "confirmation.missing.unrelated",
-        },
-      ];
-    },
-    "allow",
-    ["allow.grant.exact-match"],
-  ),
-  scenario(
-    "scenario.policy.deny-omitted-selector-broadening",
-    "A request cannot omit the narrowing selector from a selector-bounded grant.",
-    (input) => {
-      input.request.selector = undefined;
-    },
-    "deny",
-    ["deny.scope.selector-conflict"],
-  ),
-  scenario(
-    "scenario.policy.indeterminate-stale-category-revision",
-    "A request bound to an unavailable category revision fails closed.",
-    (input) => {
-      input.request.dataCategoryRevisions = {
-        ...input.request.dataCategoryRevisions,
-        "data.chronicle.symptom": 2,
-      };
-    },
-    "indeterminate",
-    ["indeterminate.taxonomy.unresolved"],
-  ),
-];
+export const syntheticPolicyScenarios: ReadonlyArray<SyntheticPolicyScenario> =
+  [
+    scenario(
+      "scenario.policy.allow-personal-export",
+      "A complete personal export request matches one active confirmed grant.",
+      () => {},
+      "allow",
+      ["allow.grant.exact-match"],
+    ),
+    scenario(
+      "scenario.policy.deny-blanket-category",
+      "A request uses an invalid blanket category.",
+      (input) => {
+        input.request.dataCategoryIds = ["data.chronicle.all"];
+        input.request.dataCategoryRevisions = { "data.chronicle.all": 1 };
+      },
+      "deny",
+      ["deny.request.blanket-scope"],
+    ),
+    scenario(
+      "scenario.policy.deny-recipient-mismatch",
+      "The request names a recipient not covered by the personal export grant.",
+      (input) => {
+        input.request.primaryRecipientId =
+          "recipient.organization.synthetic-study";
+      },
+      "deny",
+      ["deny.recipient.mismatch"],
+    ),
+    scenario(
+      "scenario.policy.deny-withdrawn-grant",
+      "A withdrawn grant cannot authorize future access.",
+      (input) => {
+        input.bundle.grants[0].lifecycleState = "withdrawn";
+      },
+      "deny",
+      ["deny.grant.withdrawn"],
+    ),
+    scenario(
+      "scenario.policy.deny-expired-grant",
+      "Evaluation after the duration ends is denied.",
+      (input) => {
+        input.evaluationTime = "2026-07-28T00:00:00Z";
+      },
+      "deny",
+      ["deny.grant.expired"],
+    ),
+    scenario(
+      "scenario.policy.deny-explicit-prohibition",
+      "An explicit applicable policy prohibition overrides grant coverage.",
+      (input) => {
+        input.bundle.policyBundle.prohibitedPurposeIds = [
+          input.request.purposeId,
+        ];
+      },
+      "deny",
+      ["deny.policy.prohibition"],
+    ),
+    scenario(
+      "scenario.policy.indeterminate-recipient",
+      "An unresolved recipient identity prevents a safe decision.",
+      (input) => {
+        input.request.primaryRecipientId = "recipient.unresolved.synthetic";
+      },
+      "indeterminate",
+      ["indeterminate.taxonomy.unresolved"],
+    ),
+    scenario(
+      "scenario.policy.indeterminate-category",
+      "An unknown category reference prevents a safe decision.",
+      (input) => {
+        input.request.dataCategoryIds = ["data.chronicle.unknown"];
+        input.request.dataCategoryRevisions = { "data.chronicle.unknown": 1 };
+      },
+      "indeterminate",
+      ["indeterminate.taxonomy.unresolved"],
+    ),
+    scenario(
+      "scenario.policy.indeterminate-stale-comprehension",
+      "Comprehension evidence bound to another explanation revision is stale.",
+      (input) => {
+        input.bundle.comprehensionEvidence[0].explanationRevision = 2;
+      },
+      "indeterminate",
+      ["indeterminate.comprehension.stale"],
+    ),
+    scenario(
+      "scenario.policy.deny-comprehension-not-satisfied",
+      "Explicitly not-satisfied comprehension evidence denies confirmation eligibility.",
+      (input) => {
+        input.bundle.comprehensionEvidence[0].status = "not-satisfied";
+      },
+      "deny",
+      ["deny.comprehension.not-satisfied"],
+    ),
+    scenario(
+      "scenario.policy.deny-action-mismatch",
+      "Transmission is not implied by export preparation and delivery.",
+      (input) => {
+        input.request.actionIds = ["action.transmit.to-recipient"];
+        input.request.actionRevisions = { "action.transmit.to-recipient": 1 };
+        input.request.operationBoundary = "transmit";
+      },
+      "deny",
+      ["deny.action.mismatch"],
+    ),
+    scenario(
+      "scenario.policy.deny-partial-grant-composition",
+      "Two partial grants cannot be combined to manufacture authority over a larger request.",
+      (input) => {
+        const symptomGrant = clone(input.bundle.grants[0]);
+        symptomGrant.id = "grant.partial.symptom";
+        symptomGrant.dataCategoryIds = ["data.chronicle.symptom"];
+        symptomGrant.dataCategoryRevisions = { "data.chronicle.symptom": 1 };
+        const labGrant = clone(input.bundle.grants[0]);
+        labGrant.id = "grant.partial.lab";
+        labGrant.dataCategoryIds = ["data.chronicle.laboratory-test"];
+        labGrant.dataCategoryRevisions = {
+          "data.chronicle.laboratory-test": 1,
+        };
+        input.bundle.grants = [];
+        addGrantEvidence(input.bundle, symptomGrant, "partial-symptom");
+        addGrantEvidence(input.bundle, labGrant, "partial-lab");
+      },
+      "deny",
+      ["deny.grant.partial-composition-prohibited"],
+    ),
+    scenario(
+      "scenario.policy.allow-multiple-independent-grants",
+      "Two grants independently cover the complete request and remain inspectable.",
+      (input) => {
+        const secondGrant = clone(input.bundle.grants[0]);
+        secondGrant.id = "grant.personal-export.synthetic-second";
+        addGrantEvidence(input.bundle, secondGrant, "synthetic-second");
+      },
+      "allow",
+      ["allow.multiple-independent-grants"],
+    ),
+    scenario(
+      "scenario.policy.indeterminate-capacity-conflict",
+      "Conflicting bounded-count capacity evidence prevents safe authorization.",
+      (input) => {
+        input.bundle.grants[0].duration = {
+          kind: "bounded-count",
+          startsAt: START,
+          endsAt: END,
+          maximumUses: 2,
+        };
+        input.bundle.explanations[0].duration = input.bundle.grants[0].duration;
+        input.bundle.explanations[0].durationSummary =
+          "At most two uses before 2026-07-27T00:00:00Z.";
+        input.capacitySnapshots = [
+          {
+            grantId: input.bundle.grants[0].id,
+            grantRevision: 1,
+            status: "conflicting",
+            recordedAt: NOW,
+          },
+        ];
+      },
+      "indeterminate",
+      ["indeterminate.capacity.conflict"],
+    ),
+    scenario(
+      "scenario.policy.allow-personal-core-independent-secondary-use",
+      "An unrelated malformed optional research grant cannot block an independently valid personal-core export.",
+      (input) => {
+        input.bundle.grants = [
+          ...input.bundle.grants,
+          {
+            ...clone(input.bundle.grants[0]),
+            id: "grant.research.unrelated.synthetic",
+            purposeId: "purpose.research.study-synthetic",
+            primaryRecipientId: "recipient.organization.synthetic-study",
+            permittedPerformingActorIds: ["actor.service.transmitter"],
+            dataCategoryIds: ["data.chronicle.symptom"],
+            dataCategoryRevisions: { "data.chronicle.symptom": 1 },
+            selector: { exactRecordIds: ["record.synthetic.symptom"] },
+            actionIds: ["action.transmit.to-recipient"],
+            actionRevisions: { "action.transmit.to-recipient": 1 },
+            optionality: "optional",
+            explanationSnapshotId: "explanation.missing.unrelated",
+            comprehensionEvidenceId: "comprehension.missing.unrelated",
+            confirmationEvidenceId: "confirmation.missing.unrelated",
+          },
+        ];
+      },
+      "allow",
+      ["allow.grant.exact-match"],
+    ),
+    scenario(
+      "scenario.policy.deny-omitted-selector-broadening",
+      "A request cannot omit the narrowing selector from a selector-bounded grant.",
+      (input) => {
+        input.request.selector = undefined;
+      },
+      "deny",
+      ["deny.scope.selector-conflict"],
+    ),
+    scenario(
+      "scenario.policy.indeterminate-stale-category-revision",
+      "A request bound to an unavailable category revision fails closed.",
+      (input) => {
+        input.request.dataCategoryRevisions = {
+          ...input.request.dataCategoryRevisions,
+          "data.chronicle.symptom": 2,
+        };
+      },
+      "indeterminate",
+      ["indeterminate.taxonomy.unresolved"],
+    ),
+  ];
