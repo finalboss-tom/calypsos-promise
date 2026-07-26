@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Sprint 5 plan](sprint-5-plan.md) · [Security architecture](../security/README.md)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Sprint 5 plan](sprint-5-plan.md) · [Security architecture](../security/README.md)
 
 **Status date:** 2026-07-26  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
@@ -24,7 +24,7 @@ Sprint 5 — Threat model and security baseline is complete on the review branch
 
 Sprint 5 defines architecture, policy, procedures, public synthetic evidence, tabletop exercises, control status, and residual risk. It does not authorize production accounts, providers, agents, connectors, research, encryption deployment, operational key custody, security certification, or real health-data processing.
 
-Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Starting Sprint 5 does not declare the product runtime, security posture, clinical or legal review, research infrastructure, economics, governance transition, or Phase 0 complete.
+Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing Sprint 5 on the review branch does not declare the product runtime, deployed security posture, clinical or legal review, research infrastructure, economics, governance transition, or Phase 0 complete.
 
 ## Merged baseline
 

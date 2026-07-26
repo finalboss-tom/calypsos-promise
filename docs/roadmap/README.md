@@ -15,10 +15,10 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 2. [Sprint 5 Completion Record](sprint-5-completion-record.md)
 3. [Security Architecture](../security/README.md)
 4. [Sprint 5 Plan](sprint-5-plan.md)
-4. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
-5. [Sprint 4 Completion Record](sprint-4-completion-record.md)
-6. [Sprint Sequence](sprints.md)
-7. [Public Institutional Roadmap](../../ROADMAP.md)
+5. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+6. [Sprint 4 Completion Record](sprint-4-completion-record.md)
+7. [Sprint Sequence](sprints.md)
+8. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Completion records and plans
 

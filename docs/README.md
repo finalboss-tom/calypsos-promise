@@ -36,12 +36,12 @@ The application is the first operating surface of a long-lived public-benefit in
 2. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
 3. [Security Architecture](security/README.md)
 4. [Sprint 5 Plan](roadmap/sprint-5-plan.md)
-4. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
-5. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
-6. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
-7. [Sprint Roadmap](roadmap/sprints.md)
-8. [Repository and Module Boundaries](architecture/module-boundaries.md)
-9. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+5. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+6. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+7. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+8. [Sprint Roadmap](roadmap/sprints.md)
+9. [Repository and Module Boundaries](architecture/module-boundaries.md)
+10. [Minimum Viable Validation](policies/minimum-viable-validation.md)
 
 ### Understand the Living Chronicle and House of Keys
 
@@ -59,12 +59,12 @@ The application is the first operating surface of a long-lived public-benefit in
 4. [Specialist Holdpoint Register](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
 5. [Sprint 5 Plan](roadmap/sprint-5-plan.md)
 6. [Control Status and Risk Vocabulary](security/control-status-and-risk-vocabulary.md)
-4. [Security Policy](../SECURITY.md)
-5. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
-6. [Architecture Foundation](frozen/architecture.md)
-7. [Repository and Module Boundaries](architecture/module-boundaries.md)
-8. [Publication and Confidentiality](policies/publication-and-confidentiality.md)
-9. [Institutional Immune System](governance/institutional-immune-system.md)
+7. [Security Policy](../SECURITY.md)
+8. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+9. [Architecture Foundation](frozen/architecture.md)
+10. [Repository and Module Boundaries](architecture/module-boundaries.md)
+11. [Publication and Confidentiality](policies/publication-and-confidentiality.md)
+12. [Institutional Immune System](governance/institutional-immune-system.md)
 
 ### Contribute code, content, or documentation
 

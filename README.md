@@ -59,7 +59,7 @@ Sprint 5 is complete on the review branch as an architecture, policy, procedure,
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
-- Complete the Sprint 5 threat model, security, encryption, untrusted-input, lifecycle-enforcement, and receipt-integrity boundaries before production data paths.
+- Preserve the completed Sprint 5 threat, encryption, untrusted-input, lifecycle-enforcement, receipt-integrity, residual-risk, and specialist-holdpoint boundaries before any production data path.
 - Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, and connector details through their documented gates.
 - Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
 
