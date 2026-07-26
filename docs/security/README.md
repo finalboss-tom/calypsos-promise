@@ -5,7 +5,8 @@
 **Status:** Sprint 5 working area — workstreams 5.1–5.6 complete at the internal architecture level; 5.7 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
-**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, thirty-six House of Keys enforcement controls, and thirty-six untrusted-input controls are registered; production-facing risks remain blocking
+**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, thirty-six House of Keys enforcement controls, and thirty-six untrusted-input controls are registered; production-facing risks remain blocking  
+**Validated 5.6 head:** `b81517819ea32aed3ab86cef6a382c213cf090f9` — CI run 401 and DCO run 442 passed
 
 ## Purpose
 
