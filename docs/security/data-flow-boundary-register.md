@@ -16,21 +16,21 @@ Every boundary crossing is treated as capable of leaking, broadening, duplicatin
 
 ## Trust zones
 
-| ID | Zone | Capability and information boundary |
-| --- | --- | --- |
-| `TZ-P0` | Public and synthetic surfaces | Public repository, issues, pull requests, public-safe CI logs and artifacts, documentation, institutional ledgers, website content, synthetic fixtures, public tabletop records |
-| `TZ-P1` | Local contributor environment | Public code and synthetic data only; no production credentials, private exports, or protected systems |
-| `TZ-P2` | Public web delivery and interest intake | Public site and purpose-limited signup adapter; not an account, Chronicle, research, permission, or health-data system |
-| `TZ-S0` | Private edge and authenticated-session boundary | Future authentication, session establishment, request validation, rate limits, risk signals, and private routing |
-| `TZ-S1` | Domain application boundary | Future modular services for identity, Chronicle, House of Keys, execution, product state, export, deletion, and other bounded capabilities |
-| `TZ-S2` | Canonical structured-data boundary | Future private authoritative storage; no direct public, client, model, MCP, analytics, or arbitrary operator access |
-| `TZ-S3` | Raw-source and object-storage boundary | Future encrypted custody of documents, images, payloads, immutable versions, locators, and derived representations |
-| `TZ-S4` | Queue and worker boundary | Future durable background processing; jobs preserve identity, purpose, authority revision, freshness, idempotency, cancellation, and receipt context |
-| `TZ-S5` | AI, retrieval, and document-processing boundary | Future isolated extraction, generation, indexing, retrieval, and parsing; inputs minimized and outputs untrusted |
-| `TZ-S6` | Analytics and isolated research boundary | Future isolated personal analytics or separately authorized aggregate/research work; never an unrestricted replica of raw personal data |
-| `TZ-S7` | Administrative, security, deployment, and observability boundary | Future private operator, incident, key, deployment, and monitoring surfaces with least privilege and separation of duties |
-| `TZ-S8` | External recipient, connector, and provider boundary | Devices, health platforms, signup processors, storage or AI providers, study organizations, and other recipients; external status does not imply trust |
-| `TZ-S9` | Backup, archive, replica, and disaster-recovery boundary | Future isolated recovery systems whose restore behavior preserves correction, authority, withdrawal, and deletion history |
+| ID      | Zone                                                             | Capability and information boundary                                                                                                                                             |
+| ------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TZ-P0` | Public and synthetic surfaces                                    | Public repository, issues, pull requests, public-safe CI logs and artifacts, documentation, institutional ledgers, website content, synthetic fixtures, public tabletop records |
+| `TZ-P1` | Local contributor environment                                    | Public code and synthetic data only; no production credentials, private exports, or protected systems                                                                           |
+| `TZ-P2` | Public web delivery and interest intake                          | Public site and purpose-limited signup adapter; not an account, Chronicle, research, permission, or health-data system                                                          |
+| `TZ-S0` | Private edge and authenticated-session boundary                  | Future authentication, session establishment, request validation, rate limits, risk signals, and private routing                                                                |
+| `TZ-S1` | Domain application boundary                                      | Future modular services for identity, Chronicle, House of Keys, execution, product state, export, deletion, and other bounded capabilities                                      |
+| `TZ-S2` | Canonical structured-data boundary                               | Future private authoritative storage; no direct public, client, model, MCP, analytics, or arbitrary operator access                                                             |
+| `TZ-S3` | Raw-source and object-storage boundary                           | Future encrypted custody of documents, images, payloads, immutable versions, locators, and derived representations                                                              |
+| `TZ-S4` | Queue and worker boundary                                        | Future durable background processing; jobs preserve identity, purpose, authority revision, freshness, idempotency, cancellation, and receipt context                            |
+| `TZ-S5` | AI, retrieval, and document-processing boundary                  | Future isolated extraction, generation, indexing, retrieval, and parsing; inputs minimized and outputs untrusted                                                                |
+| `TZ-S6` | Analytics and isolated research boundary                         | Future isolated personal analytics or separately authorized aggregate/research work; never an unrestricted replica of raw personal data                                         |
+| `TZ-S7` | Administrative, security, deployment, and observability boundary | Future private operator, incident, key, deployment, and monitoring surfaces with least privilege and separation of duties                                                       |
+| `TZ-S8` | External recipient, connector, and provider boundary             | Devices, health platforms, signup processors, storage or AI providers, study organizations, and other recipients; external status does not imply trust                          |
+| `TZ-S9` | Backup, archive, replica, and disaster-recovery boundary         | Future isolated recovery systems whose restore behavior preserves correction, authority, withdrawal, and deletion history                                                       |
 
 ## Boundary crossings
 
