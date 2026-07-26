@@ -1,0 +1,61 @@
+schema_version: "0.1.0"
+registry_revision: 1
+status: phase-0-baseline
+information_class: PUBLIC
+last_reviewed: "2026-07-26"
+responsible_role: founding-steward
+source_policy: public-funding-ledger-policy.md
+operational_notice: >-
+  This registry contains no accepted funding relationships. It is a public
+  institutional register, not a bank ledger, tax ledger, payment system,
+  donor CRM, contract archive, payroll system, or private accounting source.
+identifier_format: "FND-YYYY-NNNN"
+allowed_statuses:
+  - proposed
+  - under-review
+  - conditionally-accepted
+  - accepted
+  - active
+  - paused
+  - completed
+  - expired
+  - declined
+  - withdrawn
+  - terminated
+  - refunded
+  - superseded
+  - disputed
+allowed_relationship_classes:
+  - individual-donation
+  - organizational-donation
+  - restricted-grant
+  - public-good-underwriting
+  - corporate-sponsorship
+  - in-kind-support
+  - matching-support
+  - pro-bono-specialist-review
+  - affiliate-or-referral-revenue
+  - research-funding
+  - investment-or-ownership-capital
+  - individual-compensation
+required_material_record_fields:
+  - id
+  - schema_version
+  - revision
+  - synthetic
+  - status
+  - relationship_class
+  - public_counterparty
+  - value
+  - purpose
+  - restrictions
+  - approved_benefits
+  - prohibited_benefits_confirmed
+  - conflicts
+  - authority
+  - work_linkage
+  - outcome
+  - dependency_and_exit
+  - public_information_review
+  - review_triggers
+records: []
