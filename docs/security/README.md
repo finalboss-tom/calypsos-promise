@@ -2,10 +2,10 @@
 
 [Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — workstreams 5.1–5.3 complete at the internal architecture level; 5.4 next  
+**Status:** Sprint 5 working area — workstreams 5.1–5.4 complete at the internal architecture level; 5.5 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
-**Threat baseline:** Forty-six threats, twenty-eight control objectives, and forty-six residual risks are registered; production-facing risks remain blocking
+**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, and twenty-eight Chronicle-specific controls are registered; production-facing risks remain blocking
 
 ## Purpose
 
@@ -94,13 +94,23 @@ Together they define stable `THR-*`, `CTL-TM-*`, and `RSK-*` records for forty-s
 
 The cross-user leakage and compromised-agent Sprint acceptance criterion is satisfied at the internal architecture level because the scenarios now have explicit preventive, limiting, detective, containment, recovery, and restorative control objectives. Implementation, independent review, and synthetic exercise evidence remain pending.
 
-### Living Chronicle source, provenance, inference, export, deletion, and custody security — 5.4 next
+### Living Chronicle source, provenance, inference, export, deletion, and custody security — 5.4 complete at internal baseline
 
-The next workstream will refine Chronicle and source-specific threats and controls without rewriting the integrated `THR-*`, `CTL-TM-*`, and `RSK-*` records.
+The completed internal 5.4 baseline consists of:
 
-### House of Keys enforcement security
+- the [Living Chronicle Security Model](living-chronicle-security-model.md);
+- the [Living Chronicle Security Control Register](living-chronicle-control-register.md); and
+- the [Living Chronicle Dependency and Lifecycle Security Register](living-chronicle-dependency-lifecycle-register.md).
 
-The permission model covers authority, scope, purpose, recipient, lifecycle, revocation freshness, capacity, execution, receipts, audit, and downstream invalidation.
+Together they refine `THR-011` through `THR-016` through twenty-eight stable `CTL-LC-*` controls and explicit dependency, source, custody, inference, export, deletion, and restoration outcomes.
+
+The baseline requires explicit human confirmation, immutable source versions, version-bound locators, source/custody separation, narrow integrity claims, transformation and derivation provenance, visible inference classification, relationship-first correction, conflict and merge preservation, export manifests and omissions, exact deletion scope, minimized exceptions and tombstones, derivative invalidation, deletion-aware restoration, provider replacement, and truthful completion limitations.
+
+No Chronicle persistence, source store, document processor, inference service, export service, deletion worker, custody migration, backup, restoration, or recipient-notification runtime is authorized or represented as deployed. Independent security, privacy, accessibility, clinical, legal, records-governance, and research review remains pending.
+
+### House of Keys enforcement, freshness, lifecycle, receipt, and audit security — 5.5 next
+
+The next workstream will refine permission, policy-decision, execution, release, bounded-use consumption, revocation freshness, receipt, and protected-audit threats without rewriting the integrated `THR-*`, `CTL-TM-*`, and `RSK-*` records.
 
 ### Untrusted input, AI, MCP, connectors, and supply chain
 
@@ -173,6 +183,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Integrated Security and Privacy Threat Model](integrated-threat-model.md)
 - [Threat Control Objective Register](threat-control-objective-register.md)
 - [Threat and Residual-Risk Register](threat-and-residual-risk-register.md)
+- [Living Chronicle Security Model](living-chronicle-security-model.md)
+- [Living Chronicle Security Control Register](living-chronicle-control-register.md)
+- [Living Chronicle Dependency and Lifecycle Security Register](living-chronicle-dependency-lifecycle-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
