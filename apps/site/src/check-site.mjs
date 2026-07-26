@@ -48,6 +48,7 @@ for (const phrase of [
   "AI proposes.",
   "The Software Is Open.",
   "Planned game",
+  "Content, Living Chronicle, and House of Keys contracts",
   "Do not submit personal health information.",
 ]) {
   if (!content.includes(phrase))
