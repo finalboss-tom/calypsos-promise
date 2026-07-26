@@ -2,7 +2,7 @@
 
 [Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — architecture, policy, procedure, public synthetic evidence, and tabletop records only  
+**Status:** Sprint 5 working area — workstreams 5.1–5.3 complete at the internal architecture level; 5.4 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed
 
@@ -81,13 +81,21 @@ The completed internal 5.2 baseline consists of:
 
 Together they define separate identity domains, account-access links, authority profiles, session lifecycle, server-derived controlled-resource context, layered isolation, delegation and capacity, bounded operator capabilities, recovery classes, restricted post-recovery access, emergency capabilities, founder-independent continuity, and fourteen required identity controls. Independent security, privacy, accessibility, and legal review remains pending.
 
-### Integrated threat and residual-risk model — 5.3 next
+### Integrated security, privacy, threat, control, and residual-risk model — 5.3 complete at internal baseline
 
-The next workstream will link actors, assets, zones, crossings, flows, identity controls, and recovery boundaries to explicit threats, control states, residual risk, ownership, and revalidation triggers.
+The completed internal 5.3 baseline consists of:
 
-### Living Chronicle security
+- the [Integrated Security and Privacy Threat Model](integrated-threat-model.md);
+- the [Threat Control Objective Register](threat-control-objective-register.md); and
+- the [Threat and Residual-Risk Register](threat-and-residual-risk-register.md).
 
-The Chronicle model covers sources, provenance, transformations, inferences, corrections, custody, export, deletion, backup, restoration, and cross-user isolation.
+Together they define stable `THR-*`, `CTL-TM-*`, and `RSK-*` records for forty-six threats, twenty-eight reusable control objectives, and forty-six residual risks across accounts, sessions, recovery, operators, emergencies, Chronicle, sources, House of Keys, execution, receipts, audit, uploads, AI, MCP, retrieval, connectors, secrets, environments, supply chain, queues, availability, backups, research, analytics, coercion, accessibility, public surfaces, institutional capture, and incorrect automation.
+
+The cross-user leakage and compromised-agent Sprint acceptance criterion is satisfied at the internal architecture level because the scenarios now have explicit preventive, limiting, detective, containment, recovery, and restorative control objectives. Implementation, independent review, and synthetic exercise evidence remain pending.
+
+### Living Chronicle source, provenance, inference, export, deletion, and custody security — 5.4 next
+
+The next workstream will refine Chronicle and source-specific threats and controls without rewriting the integrated `THR-*`, `CTL-TM-*`, and `RSK-*` records.
 
 ### House of Keys enforcement security
 
@@ -161,6 +169,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Identity, Account, Session, Tenant, and Authority Model](identity-account-session-tenant-model.md)
 - [Identity, Session, Isolation, and Authority Register](identity-and-authority-register.md)
 - [Account Recovery and Emergency Access Model](account-recovery-and-emergency-access-model.md)
+- [Integrated Security and Privacy Threat Model](integrated-threat-model.md)
+- [Threat Control Objective Register](threat-control-objective-register.md)
+- [Threat and Residual-Risk Register](threat-and-residual-risk-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
