@@ -2,10 +2,10 @@
 
 [Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — workstreams 5.1–5.4 complete at the internal architecture level; 5.5 next  
+**Status:** Sprint 5 working area — workstreams 5.1–5.5 complete at the internal architecture level; 5.6 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
-**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, and twenty-eight Chronicle-specific controls are registered; production-facing risks remain blocking
+**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, and thirty-six House of Keys enforcement controls are registered; production-facing risks remain blocking
 
 ## Purpose
 
@@ -108,13 +108,23 @@ The baseline requires explicit human confirmation, immutable source versions, ve
 
 No Chronicle persistence, source store, document processor, inference service, export service, deletion worker, custody migration, backup, restoration, or recipient-notification runtime is authorized or represented as deployed. Independent security, privacy, accessibility, clinical, legal, records-governance, and research review remains pending.
 
-### House of Keys enforcement, freshness, lifecycle, receipt, and audit security — 5.5 next
+### House of Keys enforcement, freshness, lifecycle, receipt, and audit security — 5.5 complete at internal baseline
 
-The next workstream will refine permission, policy-decision, execution, release, bounded-use consumption, revocation freshness, receipt, and protected-audit threats without rewriting the integrated `THR-*`, `CTL-TM-*`, and `RSK-*` records.
+The completed internal 5.5 baseline consists of:
 
-### Untrusted input, AI, MCP, connectors, and supply chain
+- the [House of Keys Enforcement, Freshness, Receipt, and Audit Security Model](house-of-keys-enforcement-security-model.md);
+- the [House of Keys Enforcement Control Register](house-of-keys-control-register.md); and
+- the [House of Keys Decision, Capacity, Execution, Receipt, and Audit Lifecycle Register](house-of-keys-decision-execution-lifecycle-register.md).
 
-All imported content and external output are untrusted. Content cannot grant itself identity, permission, Chronicle truth, tool authority, or database access.
+Together they refine `THR-017` through `THR-022` and `THR-031` through thirty-six stable `CTL-HK-*` controls plus separate decision, propagation, capacity, envelope, queue, operation, ordering, receipt, audit, and reconciliation states.
+
+The baseline establishes that a policy `allow` is immutable point-in-time evidence rather than a bearer token. A future operation requires one non-transferable envelope, shortest-bound freshness, final pre-release authority verification, one operation and idempotency identity, bounded capacity reservation and commitment, honest revocation-race ordering, safe retry and dead-letter rules, exact recipient verification, durable required-receipt intent, append-only correction, minimized protected audit, and explicit restoration or residual harm after anomalies.
+
+No lifecycle projection, capacity service, policy gateway, queue, performer, release service, receipt service, audit store, recipient integration, clock, transaction, or production operation is authorized or represented as deployed. Independent security, privacy, accessibility, legal, and records-governance review and public synthetic enforcement evidence remain pending.
+
+### Upload, connector, document, AI, MCP, dependency, and untrusted-input isolation — 5.6 next
+
+The next workstream will refine `THR-015` and `THR-023` through `THR-030` for untrusted content, parsers, prompts, tools, agents, providers, connectors, packages, builds, and supply-chain boundaries without weakening 5.1–5.5 authority and lifecycle controls.
 
 ### Encryption, secrets, and environments
 
@@ -186,6 +196,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Living Chronicle Security Model](living-chronicle-security-model.md)
 - [Living Chronicle Security Control Register](living-chronicle-control-register.md)
 - [Living Chronicle Dependency and Lifecycle Security Register](living-chronicle-dependency-lifecycle-register.md)
+- [House of Keys Enforcement Security Model](house-of-keys-enforcement-security-model.md)
+- [House of Keys Enforcement Control Register](house-of-keys-control-register.md)
+- [House of Keys Decision and Execution Lifecycle Register](house-of-keys-decision-execution-lifecycle-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
