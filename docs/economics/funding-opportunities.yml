@@ -1,0 +1,50 @@
+schema_version: "0.1.0"
+registry_revision: 1
+status: phase-0-baseline
+information_class: PUBLIC
+last_reviewed: "2026-07-26"
+responsible_role: founding-steward
+source_policy: public-good-underwriting-catalogue.md
+operational_notice: >-
+  No opportunity in this file is open for payment or sponsorship unless its
+  record explicitly has status open and links to an approved legal recipient,
+  custody route, privacy notice, accounting owner, refund behavior, and public
+  funding record. This baseline currently contains no live opportunity.
+identifier_format: "OPP-YYYY-NNNN"
+allowed_statuses:
+  - draft
+  - reviewable
+  - open
+  - partially-supported
+  - funded
+  - in-delivery
+  - completed
+  - outcome-review
+  - expired
+  - paused
+  - canceled
+  - superseded
+  - closed
+required_opportunity_fields:
+  - id
+  - schema_version
+  - revision
+  - synthetic
+  - status
+  - title
+  - public_need
+  - intended_outcome
+  - affected_groups
+  - requested_support
+  - partial_support_behavior
+  - acceptable_restrictions
+  - prohibited_restrictions
+  - planned_work_and_evidence
+  - responsible_role
+  - review_and_independence
+  - dependency_and_exit
+  - linked_work
+  - risks_and_uncertainty
+  - support_does_not_purchase
+  - expiration_and_review
+opportunities: []
