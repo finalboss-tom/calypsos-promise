@@ -1,190 +1,184 @@
 # Public Website Status and Readiness
 
-**Status date:** 2026-07-24  
+[Website documentation](README.md) · [Current project status](../roadmap/current-status.md) · [Information architecture](information-architecture.md) · [World experience](world-experience-framework.md) · [Security architecture](../security/README.md)
+
+**Status date:** 2026-07-26  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Website implementation status:** Minimal local workspace; no production public website  
-**Visual status:** Concept direction only; no approved product screens
+**Website implementation status:** LIVE BOUNDED PUBLIC REPOSITORY GATEWAY — not the private health product  
+**Implementation:** small Node.js HTTP application in `apps/site`; the planned Sprint 8 Next.js foundation is not implemented  
+**Visual status:** implemented public gateway direction; no approved private-product screens or complete Ogygia world experience
 
 ## Executive assessment
 
-The website is conceptually well-defined but technically almost unbuilt.
+The website now provides a deliberately bounded public entry point to Calypso’s Promise.
 
-The repository now contains enough product, lore, trust, governance, incentive, campaign, and publication doctrine to design the site coherently. The remaining problem is no longer “what should this website mean?” It is “which bounded website slice may be implemented now, and which capabilities must remain in later sprints?”
+It explains the project, introduces Ogygia and the planned game, links to the repository, distinguishes current and planned capability, provides a Founding Expedition interest form, and publishes a signup privacy route. It does not provide accounts, authentication, private Living Chronicles, health-data intake, research enrollment, production House of Keys behavior, production AI, MCP, connectors, analytics, compensation, or governance voting.
 
-The current `apps/site` workspace is a small Node HTTP server that proves the monorepo can run without credentials, cloud services, production data, or real health information. It is not a Next.js shell, design system, navigable Ogygia experience, campaign hub, trust center, or prologue.
+This implementation is the accepted Website Track 0A repository gateway. It does not complete the full Sprint 8 public website foundation or Sprint 9 fictional prologue.
+
+## Implemented bounded surface
+
+The current `apps/site` package provides:
+
+- a small Node.js HTTP server;
+- a public homepage assembled from repository-owned HTML fragments;
+- public static CSS, JavaScript, SVG, and image assets;
+- a `/privacy` route for the Founding Expedition signup flow;
+- a `/joined` confirmation route;
+- a bounded `/api/join` adapter;
+- explicit consent and email-shape validation;
+- a honeypot field;
+- request-body limits;
+- a small in-memory rate limit;
+- HTTPS enforcement for a non-loopback signup webhook;
+- optional bearer-token forwarding to the private processor;
+- generic public errors that do not print submitted email addresses; and
+- restrictive Content Security Policy, frame, content-type, referrer, opener, and permissions headers.
+
+The adapter forwards only:
+
+- normalized email address;
+- explicit consent;
+- policy version;
+- purpose;
+- source label; and
+- receipt time.
+
+It does not store a mailing list in the public repository or expose the private webhook URL or token to the browser.
 
 ## Readiness by layer
 
-| Layer                            | Status                   | Evidence                                                                          | Main gap                                                                                  |
-| -------------------------------- | ------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Product promise                  | BASELINE / FROZEN        | Product Constitution and incentive model                                          | translate into page-level copy and interactions                                           |
-| World and lore                   | FROZEN                   | Ogygia canon, zones, cast, Seven Laws, Seven Tides, Fourteen Lanterns             | produce approved map and visual language without inventing canon                          |
-| Website information architecture | BASELINE                 | public IA plus campaign, transparency, and disclosure supplements                 | reconcile the documents into one build sequence                                           |
-| Public campaign content          | BASELINE content exists  | founder essay, launch kit, strategy, campaign log, calendar                       | create truthful public rendering and source links                                         |
-| Public-domain direction          | ACCEPTED direction       | public-domain declaration and Decision 0004                                       | legal migration, file notices, contributor dedication, and rights audit remain incomplete |
-| Public-information boundary      | BASELINE                 | Decision 0005, publication policy, website controls                               | implement separate PUBLIC schemas and publishing controls                                 |
-| Visual direction                 | EXPLORATORY              | three website concept directions and the world-experience framework               | select and refine one canonical target; complete rights and accessibility review          |
-| Technical framework              | FROZEN direction         | Next.js for `apps/site`; pnpm/Turborepo monorepo                                  | replace the minimal Node server during an accepted website implementation slice           |
-| Design system                    | PLANNED                  | architecture reserves design-token and web-UI packages                            | tokens, typography, layout, icon, motion, and component rules do not exist                |
-| Production pages                 | NOT IMPLEMENTED          | none                                                                              | homepage, Promise, status, trust, commons, campaign, Forge, support, and press routes     |
-| Synthetic prologue               | PLANNED                  | IA and Sprint 9 flow                                                              | no browser interaction, fictional Chronicle, Aster draft, confirmation, or receipt UI     |
-| Analytics                        | DEFERRED pending rules   | minimal-measurement requirements documented                                       | retention, deletion, consent, vendor, and implementation not selected                     |
-| Accessibility and performance    | ACCEPTANCE CRITERIA ONLY | keyboard, reduced-motion, direct-mode, low-bandwidth, and no-scroll-jacking rules | no implementation or audit evidence                                                       |
-| Deployment and operations        | NOT SELECTED             | domains are directional; vendors remain unfrozen                                  | hosting, previews, release, caching, monitoring, and incident operations                  |
+| Layer | Status | Current evidence | Main remaining gate |
+| --- | --- | --- | --- |
+| Product promise | BASELINE / FROZEN | Product Constitution and incentive model | preserve truth and rights through later implementation |
+| World and lore | FROZEN | Ogygia canon, zones, cast, Seven Laws, Seven Tides, and Fourteen Lanterns | complete the canonical map and visual system without inventing canon |
+| Public repository gateway | IMPLEMENTED / LIVE BOUNDED FLOW | `apps/site`, tests, build check, deployment, current-status records | maintain truthful status, accessibility, supply-chain, and incident evidence |
+| Founding Expedition signup adapter | IMPLEMENTED / CURRENT BOUNDED FLOW | explicit consent, privacy route, bounded forwarding, rate limit, HTTPS requirement | name private-list owner; complete retention, unsubscribe, correction, deletion, monitoring, provider, and incident evidence |
+| Website information architecture | BASELINE | public IA, campaign, transparency, and disclosure documents | reconcile into the future Sprint 8 build sequence |
+| Visual direction | IMPLEMENTED CONCEPT DIRECTION / STILL REFINABLE | current illustrated gateway and world-experience framework | rights, accessibility, asset, and canonical visual review |
+| Technical framework | CURRENT NODE IMPLEMENTATION; NEXT.JS PLANNED | runnable public Node server and repository checks | migrate only through an accepted Sprint 8 implementation slice |
+| Design system | PLANNED | architectural package direction only | tokens, typography, layout, motion, icon, and component rules |
+| Full production pages | PARTIAL PUBLIC GATEWAY ONLY | homepage, privacy, and joined routes | Sprint 8 trust, Promise, laws, status, Forge, roadmap, and transparency surfaces |
+| Synthetic prologue | PLANNED | information architecture and Sprint 9 flow | fictional Chronicle, Aster draft, confirmation, rejection, and example receipt UI |
+| Private product | NOT IMPLEMENTED | none | later account, Chronicle, House of Keys, Aster, security, and product sprints |
+| Analytics | DEFERRED | no production analytics design selected | purpose, minimization, retention, deletion, vendor, consent, and implementation review |
+| Accessibility and performance | PARTIAL IMPLEMENTATION; AUDIT PENDING | semantic public pages and repository checks | keyboard, screen-reader, reduced-motion, contrast, cognitive, low-bandwidth, and performance evidence |
+| Deployment and operations | BOUNDED PUBLIC DEPLOYMENT | public deployment and repository validation | provenance, branch administration, monitoring, rollback, incident route, and provider-exit evidence |
 
-## What is already coherent
+## Public capability boundary
 
-### The website’s job
+### Live now
 
-The website has a clear role as the public gateway to:
+- public project explanation;
+- Ogygia and planned-game introduction;
+- repository and documentation links;
+- public capability-status language;
+- public static assets;
+- Founding Expedition project-interest signup forwarding; and
+- signup privacy and confirmation pages.
 
-- discovery and Ogygia
-- accurate product explanation
-- trust and capability status
-- public-domain and institutional commitments
-- open-source contribution
-- public campaign provenance
-- support and funding transparency
-- a fictional-data prologue
+### Planned and gated
 
-### The interaction model
+- accounts and authentication;
+- private Living Chronicle capture or storage;
+- health-data upload or connector import;
+- production House of Keys orchestration;
+- Aster, private AI context, retrieval, or memory;
+- MCP Chronicle tools;
+- research enrollment or person-level research processing;
+- compensation or marketplace flows;
+- analytics and behavioral tracking;
+- governance voting;
+- the complete Ogygia map and narrative/direct site modes; and
+- the public fictional-data prologue.
 
-The frozen direction supports an illustrated, map-based narrative experience rather than a 3D world or a generic dashboard with fantasy decoration.
+Any future capability must remain labeled planned, experimental, deferred, or long-horizon until its accepted implementation and validation gate is met.
 
-### The trust model
+## Trust and publication boundary
 
-The website must make narrative and direct modes equally available, label capabilities honestly, render only PUBLIC records, avoid private-system dependencies, and preserve a correction path.
+The website must:
 
-### The browser and mobile split
+- render only PUBLIC repository content or approved PUBLIC derivatives;
+- keep private people and public code separate;
+- avoid direct public access to private databases, queues, object stores, analytics, administration, or provider endpoints;
+- preserve direct, conventional navigation alongside narrative presentation;
+- keep current status and correction routes easy to reach;
+- state the purpose and recipient of every form;
+- avoid publishing form submissions;
+- minimize logs and errors;
+- preserve accessible non-narrative and low-bandwidth paths; and
+- never use the Promise, lore, urgency, rewards, or community belonging to coerce disclosure or broader permission.
 
-The browser is the correct first surface for public discovery, public documentation, and the fictional prologue. The later Expo application is the universal private playable client for web, iOS, and Android.
+## Current signup holdpoint
 
-## Reconciliation completed by the website framework
+The current signup flow may continue only as a narrow public-interest flow.
 
-The website world framework resolves several inconsistencies between the visual exploration and repository canon:
+Before it expands, the project must record:
 
-- Ogygia remains the world, the Odyssey remains the journey, and the Promise remains the constitutional contract.
-- Lantern Shore replaces a generic Harbor as the canonical arrival.
-- Mnemosyne’s Library replaces “Library of Threads.”
-- Athena’s Observatory and the Open Forge retain their canonical names.
-- The House of Keys owns permissions and privacy.
-- The House of Oaths owns institutional and governance commitments.
-- The Wayfinder Orb and Aster provide navigation; “The Compass” is not introduced as a new zone.
-- The First Light may function as a lighthouse-like visual motif without creating a new canonical location.
-- proposed role cards do not become permanent player classes.
+1. the named private-list owner and processor;
+2. the retention period;
+3. unsubscribe behavior;
+4. correction and deletion procedures;
+5. access control and operator roles;
+6. monitoring and failed-delivery handling;
+7. provider terms and replacement path;
+8. the private incident route;
+9. public-notice consistency; and
+10. safe teardown and data transfer behavior.
 
-## The current sequencing conflict
+The current absence of a known incident does not close these requirements.
 
-The design-to-build roadmap places the full public website foundation in Sprint 8 and the fictional prologue in Sprint 9.
+## Sprint 8 boundary
 
-PR #15 now establishes near-term public campaign routes, a founder-origin experience, a public-domain page, a health-data covenant, a canonical current-status page, campaign transparency surfaces, and a public disclosure page.
+Sprint 8 remains the accepted public website foundation. It may replace or evolve the current gateway through a bounded implementation that adds:
 
-That creates a real sequencing decision:
+- the canonical Ogygia map and visual system;
+- narrative and direct navigation modes;
+- complete homepage and Promise explanation;
+- Seven Laws;
+- Aster and AI explanation;
+- Trust Center shell;
+- Open Forge page;
+- roadmap and capability-status components;
+- donation transparency;
+- accessibility and performance evidence; and
+- release and operational evidence.
 
-1. keep all website implementation in Sprint 8 and publish only repository documents until then; or
-2. authorize a bounded Phase 0 public-information shell before Sprint 8.
+Track 0A should be evolved rather than misrepresented as Sprint 8 completion.
 
-The project should not silently choose option 2 by calling a full site build “campaign content.” It should also not publish campaign claims through an improvised surface that ignores the accepted website, accessibility, status, and confidentiality rules.
+## Sprint 9 boundary
 
-## Recommended sequencing
+Sprint 9 remains the accepted fictional-data prologue. It may implement:
 
-### Website Track 0 — Phase 0 public-information shell
-
-Authorize this only through an explicit roadmap issue or accepted planning record.
-
-Bounded scope:
-
-- migrate `apps/site` from the proof server to the selected Next.js baseline
-- implement repository-owned public content only
-- create the site shell, design tokens, direct navigation, status labels, and source links
-- publish `/voyage`, `/voyage/origin`, `/commons`, `/covenant`, `/current-status`, `/founding-expedition`, `/press`, and `/voyage/disclosure`
-- render campaign strategy, log, experiments, reports, costs, and corrections only from allowlisted PUBLIC records
-- provide conventional, accessible pages before immersive map work
-
-Explicit non-scope:
-
-- accounts or authentication
-- real health-data capture
-- private Living Chronicles
-- research enrollment
-- compensation or marketplace flows
-- governance voting
-- production AI interaction
-- private campaign-source integration
-- an interactive prologue represented as complete
-
-This track is a public publishing and trust surface, not a consumer health product release.
-
-### Website Track 1 — Sprint 8 public website foundation
-
-Complete the planned site foundation:
-
-- canonical Ogygia map and visual system
-- narrative and direct modes
-- homepage and core product explanation
-- Seven Laws
-- Aster and AI
-- Trust Center
-- Open Forge
-- roadmap and capability-status components
-- donation transparency
-- accessibility, performance, and release evidence
-
-Track 0 work should be designed to survive into Sprint 8 rather than become a disposable microsite.
-
-### Website Track 2 — Sprint 9 fictional prologue
-
-Implement the complete fictional-data path:
-
-- opening illustrated sequence
-- Lantern Shore
-- Aster introduction
-- fictional Chronicle
-- proposed draft
-- player confirmation or rejection
-- First Lantern completion
-- example House of Keys receipt
-- account-or-exit choice
+- an illustrated opening sequence;
+- Lantern Shore;
+- Aster introduction;
+- a fictional Chronicle;
+- a proposed draft;
+- player confirmation or rejection;
+- First Lantern completion;
+- an example House of Keys receipt; and
+- an account-or-exit choice.
 
 No real health information or account is required.
 
-## Immediate design decisions still needed
+## Minimum validation for the current bounded gateway
 
-Before implementation begins, record:
+The current surface remains acceptable only while:
 
-1. which visual direction becomes the canonical refinement target
-2. the initial map composition and visible zones
-3. the direct-navigation structure on desktop and mobile
-4. the design-token baseline
-5. the typography and asset-rights strategy
-6. the content-rendering source and schema
-7. the relationship between `calypsospromise.org`, `play`, and `forge` during the first deployment
-8. the exact Phase 0 Track 0 scope, if accepted
-9. hosting, preview, cache, and rollback requirements for PUBLIC content
-10. the form processor and retention model for the founding expedition
-
-Vendor selection can remain replaceable. The public/private boundary, accessibility, source provenance, and capability-status rules cannot.
-
-## Minimum viable website validation
-
-A first public shell is reviewable only when:
-
-- all routes render without credentials or private services
-- only PUBLIC repository content or allowlisted PUBLIC records enter the build
-- no protected fields appear in page source, logs, analytics, structured data, URLs, or artifacts
-- every future capability is labeled PLANNED, LONG-HORIZON, or DEFERRED
-- every concept image is labeled concept art
-- canonical zone and product terms pass vocabulary review
-- retired extraction-oriented terminology is absent from active copy
-- keyboard, screen-reader, reduced-motion, high-contrast, and low-bandwidth paths are tested
-- forms state purpose, recipients, publication status, retention expectation, and deletion or correction path
-- no form publishes directly
-- current status and correction routes remain one click away
-- source repository links and last-reviewed dates are visible
-- format, policy, lint, typecheck, test, and build checks pass
+- routes render without production health-data or private-product services;
+- public builds contain only PUBLIC or synthetic material;
+- protected fields do not enter source, logs, URLs, analytics, or artifacts;
+- planned capabilities remain labeled honestly;
+- forms state their purpose and privacy boundary;
+- no form publishes submissions directly;
+- security headers and bounded input controls remain intact;
+- current-status, repository, privacy, and correction paths remain available;
+- formatting, documentation links, repository policy, content validation, lint, typecheck, tests, and build checks pass; and
+- incidents, provider changes, purpose changes, new fields, or retention changes trigger revalidation.
 
 ## Current conclusion
 
-The website is ready for a disciplined design and publishing phase, not for claims of a working health product.
+The website is live as a bounded public repository gateway and project-interest signup surface.
 
-The strongest next move is to approve a bounded Phase 0 public-information shell that implements the campaign, commons, covenant, current-status, and disclosure surfaces without private data or product simulation. The full Ogygia homepage and fictional prologue can then mature through the existing Sprint 8 and Sprint 9 gates.
+It is not a working private health product, production House of Keys system, research platform, AI health assistant, complete Ogygia website, or security-certified service. The next full public-site implementation gate remains Sprint 8, after the design-to-build sequence reaches it.
