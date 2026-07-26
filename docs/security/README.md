@@ -61,9 +61,19 @@ No single database object, service, identity provider, model, operator, or audit
 
 ## Current workstreams
 
-### Scope, assets, actors, and trust boundaries
+### Scope, assets, actors, data flows, and trust boundaries — 5.1 complete at internal baseline
 
-The [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md) establishes the initial working scope across public surfaces, identity, Chronicle, sources, House of Keys, execution, receipts, audit, AI, MCP, connectors, research, environments, supply chain, and recovery.
+The completed internal 5.1 baseline consists of:
+
+- the [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md);
+- the [Security Asset, Authority, and Actor Register](asset-authority-register.md); and
+- the [Security Data-Flow and Trust-Boundary Crossing Register](data-flow-boundary-register.md).
+
+Together they define stable IDs and obligations for nine authority domains, fourteen actor classes, thirteen trust zones, twenty-three asset classes, eighteen boundary crossings, and twelve principal flows. Independent security review remains pending.
+
+### Identity, sessions, tenants, operators, recovery, and emergency authority — 5.2 next
+
+This workstream will define provider-independent identity and isolation requirements without selecting an identity vendor or implementing accounts.
 
 ### Integrated threat and residual-risk model
 
@@ -136,10 +146,12 @@ The project currently has no named independent security reviewer. Founding-stewa
 
 Until a qualified reviewer is named or a separately reviewed temporary exception is accepted, Sprint 5 artifacts must remain explicit that they are internal architecture and design baselines rather than production security certification.
 
-## Initial navigation
+## Navigation
 
 - [Sprint 5 Plan](../roadmap/sprint-5-plan.md)
 - [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md)
+- [Security Asset, Authority, and Actor Register](asset-authority-register.md)
+- [Security Data-Flow and Trust-Boundary Crossing Register](data-flow-boundary-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
