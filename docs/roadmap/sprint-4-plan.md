@@ -97,9 +97,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-explanation-comprehension-m
 
 The baseline defines immutable explanation snapshots; layered direct presentation; strict narrative and direct-mode parity; plain-language, accessibility, assistance, and non-AI fallback boundaries; versioned comprehension-evidence records, concepts, statuses, and proportionate methods; separation of explanation, comprehension, confirmation, grant activation, policy evaluation, execution, and receipts; material-change re-presentation rules; non-punitive retry, deferral, and decline; and seven synthetic prototype scenarios covering personal export, optional public-good use, invalid blanket requests, narrative mismatch, accessible alternatives, stale evidence, and AI-summary conflict.
 
-### 4.8 Deterministic policy evaluation
+### 4.8 Deterministic policy evaluation — complete at baseline level
 
 Define a pure, versioned evaluator that consumes explicit facts and returns `allow`, `deny`, or `indeterminate` with reasons and evidence references. Missing facts must never default to allow.
+
+Baseline artifact: [`docs/architecture/house-of-keys-policy-evaluation-model.md`](../architecture/house-of-keys-policy-evaluation-model.md)
+
+The baseline defines a side-effect-free evaluator with no hidden provider, clock, database, network, model, or session lookups; explicit atomic request, policy, registry, grant, lifecycle, explanation, comprehension, confirmation, condition, and capacity inputs; complete-grant matching without implicit partial-grant composition; ordered evaluation stages; stable reason-code families; point-in-time freshness; fail-closed `deny` and `indeterminate` semantics; multiple independent-grant handling; single-use and bounded-count boundaries; decision, execution, receipt, audit, and Chronicle separation; essential-use independence; mandatory-authority hold points; and fourteen synthetic decision scenarios for deterministic implementation in workstream 4.9.
 
 ### 4.9 TypeScript contracts, validators, tests, and public synthetic fixtures
 
