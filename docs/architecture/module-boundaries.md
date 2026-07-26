@@ -65,6 +65,9 @@ Current packages:
 - [`domain`](../../packages/domain) — repository-wide public and synthetic contributor invariants; keep this small and do not turn it into a miscellaneous utilities package
 - [`content-schema`](../../packages/content-schema) — story and product-content contracts, deterministic validation, and graph contracts
 - [`health-schema`](../../packages/health-schema) — Living Chronicle contracts, versioning, deterministic validation, and synthetic fixtures
+- [`house-of-keys`](../../packages/house-of-keys) — pre-stable purpose-specific permission contracts, lifecycle and explanation evidence, access receipts, deterministic structural validation, pure policy evaluation, and public synthetic fixtures; pending merge through PR #33
+
+The House of Keys package is the accepted refinement of the frozen planned `consent` capability name. This naming refinement does not change the domain boundary: permission truth remains separate from Chronicle truth and from future production orchestration, persistence, audit, identity, and provider adapters.
 
 ### `services/`
 
@@ -93,6 +96,8 @@ It does **not** own:
 - account authentication or identity proofing
 - purpose-specific consent grants
 - access-policy decisions
+- permission explanations or comprehension evidence
+- access receipts or operational audit records
 - research enrollment
 - compensation or marketplace behavior
 - quest progression
@@ -103,9 +108,27 @@ Those domains may reference Chronicle identifiers through explicit contracts; th
 
 ### House of Keys consent
 
-Sprint 4 should introduce purpose, grant, recipient, duration, revocation, access-receipt, comprehension, and policy-evaluation contracts as a separate bounded capability. Consent may authorize an operation over Chronicle data; it does not become Chronicle truth.
+The House of Keys owns provider-independent purpose, category, grant, recipient, action, selector, duration, lifecycle, explanation, comprehension, confirmation, access-receipt, and policy-evaluation contracts.
 
-A consent package must not import application, database, provider, or UI implementation details. Its deterministic policy evaluator should accept explicit facts and return an inspectable decision with reasons.
+Consent may authorize an operation over Chronicle data; it does not become Chronicle truth.
+
+The `@calypsos-promise/house-of-keys` package:
+
+- accepts explicit facts and returns inspectable `allow`, `deny`, or `indeterminate` decisions
+- exposes only deliberate public exports
+- has no database, provider, network, filesystem, UI, authenticated-session, or model dependency
+- does not authenticate actors, execute operations, mutate grants, consume authority, issue production receipts, or write Chronicle records
+- contains only public or synthetic fixtures
+
+Future applications and adapters may orchestrate identity, lifecycle projection, persistence, enforcement, execution, and receipt delivery, but they must do so through separately accepted boundaries and may not bypass the deterministic permission contract.
+
+### Access receipts and operational audit
+
+Player-visible access receipts and protected operational or security audit records remain related but distinct capabilities.
+
+The Sprint 4 package defines the provider-independent person-visible receipt contract and validation boundary. It does not implement production logging, signing, sequencing, retention, monitoring, incident response, or protected audit access.
+
+A technical log does not create permission or replace a missing receipt. A receipt does not prove a complete or tamper-resistant audit trail.
 
 ### Content and story
 
@@ -117,7 +140,7 @@ AI and MCP components are adapters and interaction layers.
 
 - AI may create drafts, explanations, retrieval requests, and structured proposals.
 - MCP may expose explicitly authorized domain capabilities.
-- Neither may write directly to canonical records, change permissions, bypass confirmation, or access a database outside domain and policy enforcement.
+- Neither may write directly to canonical records, change permissions, bypass confirmation, convert `indeterminate` into allow, or access a database outside domain and policy enforcement.
 
 The frozen transaction rule remains:
 
@@ -151,6 +174,8 @@ Create a package or deployable service only when all of the following are true:
 
 Do not create placeholder packages solely to make the repository resemble the frozen target topology.
 
+The House of Keys package met this gate through the accepted Sprint 4 deliverables, architecture, public contract, deterministic validator and evaluator, synthetic receipts and policy scenarios, tests, completion review, and explicit production non-scope.
+
 ## Decomposition triggers
 
 Split a file or internal module when one or more of these conditions appear:
@@ -170,15 +195,17 @@ Line count alone is not the rule, but very large contract and validator files ar
 
 The current implementation has a sound package-level baseline:
 
-- content and Living Chronicle contracts are separate
-- deterministic validators are separate from application composition
+- content, Living Chronicle, and House of Keys permission contracts are separate
+- deterministic validators and the policy evaluator are separate from application composition
 - tests use public synthetic fixtures
-- the site is a minimal runnable surface rather than a premature production application
-- provider and production-data choices remain deferred
+- the House of Keys evaluator has no hidden provider, network, database, clock, session, environment, random, or model lookup
+- grants, decisions, execution, receipts, audit, and Chronicle truth remain separate claims
+- the site is a bounded runnable surface rather than a premature production application
+- provider, identity, enforcement, and production-data choices remain deferred
 
-The next cleanup boundary is internal decomposition of [`packages/health-schema/src/types.ts`](../../packages/health-schema/src/types.ts) and [`packages/health-schema/src/validate.ts`](../../packages/health-schema/src/validate.ts). They are cohesive enough for the merged Sprint 3 baseline, but already span identity, time, values, provenance, correction, custody, export, deletion, and aggregate validation. Before materially extending those files, split them into internal modules by Chronicle concern while preserving the package’s single public entry point and contract version.
+The next cleanup boundary for the Chronicle remains internal decomposition of [`packages/health-schema/src/types.ts`](../../packages/health-schema/src/types.ts) and [`packages/health-schema/src/validate.ts`](../../packages/health-schema/src/validate.ts) before materially extending those files.
 
-Sprint 4 consent work must not be added to those files. It should arrive through a separate package and explicit integration contract.
+The House of Keys package now has internal `contract-utils`, `types`, `validate`, `evaluate`, and `fixtures` modules behind one public entry point. Future expansion should preserve that separation and split receipt, lifecycle, or taxonomy internals further if independent change pressure appears.
 
 The content package should expose its intended graph contracts through its public entry point and keep graph compilation or runtime evaluation separate from record validation.
 
@@ -194,4 +221,4 @@ A material implementation PR should answer:
 - Does AI, MCP, content, or infrastructure gain authority it should not have?
 - Are consent, access, audit, correction, export, deletion, and rollback effects explicit?
 - Does the change preserve synthetic-data-only public development?
-- What would cause the module to be split, replaced, or rolled back?
+- What would cause the module to be split, replaced, contained, or rolled back?
