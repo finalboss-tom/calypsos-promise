@@ -49,4 +49,24 @@ test("an allow result remains separate from execution and receipts", () => {
   assert.equal(decision.reEvaluationRequiredBeforeExecution, true);
   assert.equal(decision.receiptRequired, true);
   assert.ok(decision.renderingGrantId);
+  assert.equal(decision.decisionId, validPersonalExportInput.decisionId);
+  assert.equal(decision.correlationId, validPersonalExportInput.correlationId);
+});
+
+test("an unrestricted grant covers a request that supplies a narrowing selector", () => {
+  const input = clone(validPersonalExportInput);
+  input.bundle.grants[0].selector = undefined;
+  input.bundle.explanations[0].selector = undefined;
+
+  const decision = evaluateHouseOfKeysPolicy(input);
+  assert.equal(decision.outcome, "allow");
+});
+
+test("a required performing actor that is omitted fails closed", () => {
+  const input = clone(validPersonalExportInput);
+  delete input.request.performingActorId;
+
+  const decision = evaluateHouseOfKeysPolicy(input);
+  assert.equal(decision.outcome, "indeterminate");
+  assert.ok(decision.reasonCodes.includes("indeterminate.fact.missing"));
 });
