@@ -241,6 +241,60 @@ These records expose major project theories already implied by the repository. T
 - **Containment or fallback:** Narrow required process, replace captured bodies, suspend unsafe challenge surfaces, preserve direct issue and appeal paths, and redesign the architecture through a public decision record.
 - **Next review trigger:** After the first five material challenge records, the first emergency activation, the first rejected appeal, and every institutional phase-exit review.
 
+---
+
+### AS-0008 — Public-good underwriting can fund development without purchasing authority
+
+- **Category:** Economics, public-good funding, and institutional legitimacy
+- **Status:** Active
+- **Confidence:** WORKING HYPOTHESIS
+- **Statement:** Donations, grants, sponsorships, and in-kind support can fund bounded public-good work when benefits are limited to transparent attribution and outcome evidence, funded work follows ordinary governance, and money cannot purchase private information, product authority, research access, provider status, favorable findings, player progression, or governance power.
+- **Constitutional boundary:** Funding may never purchase the Promise, player rights, private-data access, broader permission, safety exceptions, constitutional control, or exemption from ordinary review. Weak evidence for underwriting requires narrowing or replacing the funding model, not selling those boundaries.
+- **Intended decision use:** Decision 0008, sponsor-benefit limits, public-good opportunities, grant restrictions, fellowship underwriting, provider-credit treatment, and support-page design.
+- **Evidence for:** The repository already separates decision classes, limits capital power, keeps Fellowship optional, requires public decisions and outcome review, and now defines explicit benefit, conflict, record, concentration, and termination rules. Comparable open-source projects demonstrate that adjacent institutions may fund useful public software when sponsor value is legible.
+- **Evidence against or missing:** Calypso’s Promise has no accepted sponsor, operating donation history, funded fellowship, real outcome report, independent financial review, public support runtime, or evidence that supporters will accept the constraints. Recognition may still distort attention or priorities informally.
+- **Affected groups:** Players, prospective players, contributors, maintainers, specialists, funders, vendors, public-interest partners, and future governance participants.
+- **Dependencies:** Legitimate entity or custodian, accounting and tax treatment, conflict review, public ledger, ordinary governed work, specialist review, outcome measurement, provider neutrality, concentration controls, and termination capacity.
+- **Invalidation or weakening conditions:** Material funding repeatedly changes roadmap priorities without evidence, buys preferred placement or access, suppresses findings, creates rights or safety exceptions, rewards payment or status, excludes unfunded contributors, or makes the project unable to refuse or lose a source.
+- **Containment or fallback:** Pause new benefits and obligations, preserve public history, terminate or narrow incompatible relationships, reduce scope, diversify, migrate critical dependencies, and return or redirect restricted value only through reviewed authority.
+- **Next review trigger:** First material relationship, first funded artifact or fellowship, first sponsor challenge, first suspension or termination, every concentration trigger, and each institutional phase-exit review.
+
+---
+
+### AS-0009 — Funding transparency can increase trust without exposing protected financial sources
+
+- **Category:** Transparency, privacy, and financial accountability
+- **Status:** Active
+- **Confidence:** WORKING HYPOTHESIS
+- **Statement:** Reviewed public derivatives can make material funding relationships, restrictions, benefits, conflicts, dependencies, work, outcomes, and corrections legible while raw donor, payment, banking, tax, contract, negotiation, compensation, and correspondence records remain protected in separate source systems.
+- **Constitutional boundary:** Transparency may not expose people, private financial records, privileged advice, credentials, or protected negotiations merely to appear radical. Confidentiality may not conceal paid relationships, material influence, related parties, conflicts, institutional spending, or public-reporting control.
+- **Intended decision use:** Public funding ledger, donor privacy, amount bands, website funding transparency, partner announcements, aggregate reports, and correction records.
+- **Evidence for:** Decision 0005 and the publication policy already distinguish public institutional facts from protected source records. The funding ledger now defines stable identifiers, material fields, amount bands, re-identification review, correction, and private-system separation.
+- **Evidence against or missing:** No real donor or sponsor records have been processed. Amount bands may be too coarse or too revealing, private-to-public mapping may fail, small groups may remain identifiable, and contracts or law may complicate publication.
+- **Affected groups:** Individual donors, organizational supporters, partners, contributors, staff, affected users, journalists, regulators, auditors, and future governance bodies.
+- **Dependencies:** Information classification, data minimization, lawful source systems, accounting accuracy, permission where names are used, re-identification review, contract authority, correction procedures, and secure separation of public and private records.
+- **Invalidation or weakening conditions:** Public derivatives repeatedly expose individuals, omit material conflicts or restrictions, cannot reconcile with private accounting, misstate pledged or available value, hide failed or terminated relationships, or create an unreviewable shadow financial system.
+- **Containment or fallback:** Withhold or generalize unsafe fields, correct public records, pause publication or intake, improve private reconciliation and review, and publish the institutional limitation rather than false precision.
+- **Next review trigger:** First live funding record, first individual-donor aggregate report, first contractual withholding, first correction or dispute, first financial incident, and every public funding report.
+
+---
+
+### AS-0010 — Diverse support can reduce founder dependence without creating donor dependence
+
+- **Category:** Economics, succession, and institutional continuity
+- **Status:** Active
+- **Confidence:** WORKING HYPOTHESIS
+- **Statement:** A diversified mix of unrestricted donations, grants, public-good underwriting, in-kind support, earned service value, and later sustainable economics can replace founder subsidy while concentration triggers, critical-function analysis, provider portability, public conflicts, and continuity plans prevent a new single point of capture.
+- **Constitutional boundary:** Founder independence remains binding. Failure of a particular funding mix cannot justify permanent founder control, donor control, surveillance, broader consent, speculative assets, or sacrifice of the meaningfully free product.
+- **Intended decision use:** Founder-subsidy register, concentration thresholds, provider and infrastructure credits, diversification plans, Phase 5 reserves and runway, succession, and source-loss exercises.
+- **Evidence for:** The institutional roadmap already requires operations without founder subsidy, bounded donor capture, replaceable vendors, distributed critical authority, and public financial controls. Decision 0008 now treats both financial share and critical-function dependency as concentration.
+- **Evidence against or missing:** No operating budget, funding history, revenue mix, reserve, treasury, independent financial review, entity, or source-loss exercise exists. Diversification may increase administrative burden, incompatible funders, or hidden correlation while founder labor remains difficult to replace.
+- **Affected groups:** Founder, maintainers, contributors, operators, players, donors, vendors, future employees or contractors, and successor institutions.
+- **Dependencies:** Founder-subsidy inventory, legal recipient, accounting, public reporting, multiple maintainers, portable infrastructure, reserves when authorized, source-loss plans, conflict controls, and willingness to narrow scope.
+- **Invalidation or weakening conditions:** The project repeatedly depends on one donor, sponsor, provider, founder-controlled entity, payment rail, or sector; diversification is nominal rather than practical; losing a source forces rights violations or mission abandonment; or funding replaces transparent founder dependence with hidden donor leverage.
+- **Containment or fallback:** Pause additional dependency, publish concentration, narrow commitments, reduce scope, diversify only into compatible support, migrate critical functions, establish time-bounded exceptions, and preserve the ability to continue or wind down legitimately.
+- **Next review trigger:** Initial founder-subsidy register, first operating budget, first material source, every 10%, 20%, or 33% trigger, every critical-function sponsorship, first source-loss exercise, and each Phase 2, Phase 3, Phase 5, and Phase 7 gate review.
+
 ## Review protocol
 
 A registry review should:
@@ -261,12 +315,12 @@ A review that only collects confirming evidence is incomplete.
 
 This registry contains only PUBLIC institutional claims and synthetic or public evidence.
 
-Do not place personal health information, account records, private correspondence, security details, conduct evidence, production payloads, legal advice, private negotiations, or identifying participant records here. Protected evidence must remain in an authorized private system. A public registry update may cite only a reviewed, minimized institutional derivative.
+Do not place personal health information, account records, private correspondence, security details, conduct evidence, production payloads, legal advice, private negotiations, donor lists, payment or banking records, contracts, compensation records, or identifying participant records here. Protected evidence must remain in an authorized private system. A public registry update may cite only a reviewed, minimized institutional derivative.
 
 ## Near-term work
 
 - normalize these seed records through repository review
-- connect relevant roadmap, governance, incentive, architecture, and Sprint 3 decisions to assumption identifiers
+- connect relevant roadmap, governance, incentive, architecture, security, and funding decisions to assumption identifiers
 - define a challenge record that can target an assumption
 - test the registry against synthetic contradictory evidence
 - add review-owner and independence records before any assumption is represented as validated
