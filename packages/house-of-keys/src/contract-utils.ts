@@ -1,8 +1,4 @@
-import type {
-  GrantDuration,
-  NamespacedId,
-  ScopeSelector,
-} from "./types.js";
+import type { GrantDuration, NamespacedId, ScopeSelector } from "./types.js";
 
 export const NAMESPACED_ID_PATTERN =
   /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)+$/;
@@ -68,7 +64,10 @@ export function selectorWithinGrant(
   if (requested === undefined) return false;
 
   if (
-    !selectorArrayWithinGrant(requested.exactRecordIds, permitted.exactRecordIds) ||
+    !selectorArrayWithinGrant(
+      requested.exactRecordIds,
+      permitted.exactRecordIds,
+    ) ||
     !selectorArrayWithinGrant(
       requested.exactVariableIds,
       permitted.exactVariableIds,
@@ -151,10 +150,7 @@ export function selectorsEqual(
       left.exactPermissionRecordIds,
       right.exactPermissionRecordIds,
     ) &&
-    sameOptionalSet(
-      left.recordLifecycleStates,
-      right.recordLifecycleStates,
-    ) &&
+    sameOptionalSet(left.recordLifecycleStates, right.recordLifecycleStates) &&
     left.representedFrom === right.representedFrom &&
     left.representedThrough === right.representedThrough &&
     left.requiresProvenanceClosure === right.requiresProvenanceClosure
