@@ -5,7 +5,20 @@ import {
   HOUSE_OF_KEYS_POLICY_ID,
   HOUSE_OF_KEYS_POLICY_REVISION,
 } from "./version.js";
+import {
+  durationUpperBoundary,
+  hasBlanketToken,
+  isIsoDateTime,
+  isSubset,
+  recordKeysMatchIds,
+  sameSet,
+  selectorWithinGrant,
+  selectorsEqual,
+  durationsEqual,
+  uniqueValues,
+} from "./contract-utils.js";
 import type {
+  ActionDefinition,
   CapacitySnapshot,
   ComprehensionEvidence,
   ConditionFact,
@@ -15,7 +28,6 @@ import type {
   PermissionGrant,
   PolicyDecision,
   PolicyEvaluationInput,
-  ScopeSelector,
 } from "./types.js";
 
 const REASON_ORDER = [
@@ -86,99 +98,218 @@ function isDenyReason(reason: string): boolean {
   return reason.startsWith("deny.");
 }
 
-function sameSet(
-  left: ReadonlyArray<string>,
-  right: ReadonlyArray<string>,
-): boolean {
-  if (left.length !== right.length) return false;
-  const rightSet = new Set(right);
-  return left.every((value) => rightSet.has(value));
+function requestStructureReasons(input: PolicyEvaluationInput): string[] {
+  const { request } = input;
+  const reasons: string[] = [];
+
+  if (
+    request.subjectIds.length === 0 ||
+    request.dataCategoryIds.length === 0 ||
+    request.actionIds.length === 0 ||
+    request.purposeId.length === 0 ||
+    request.primaryRecipientId.length === 0 ||
+    request.controlledResourceId.length === 0
+  ) {
+    reasons.push("indeterminate.fact.missing");
+  }
+
+  if (
+    request.dataCategoryIds.some(hasBlanketToken) ||
+    request.actionIds.some(hasBlanketToken) ||
+    hasBlanketToken(request.purposeId) ||
+    hasBlanketToken(request.primaryRecipientId)
+  ) {
+    reasons.push("deny.request.blanket-scope");
+  }
+
+  if (
+    !uniqueValues(request.subjectIds) ||
+    !uniqueValues(request.dataCategoryIds) ||
+    !uniqueValues(request.actionIds) ||
+    !uniqueValues(request.requestedConditionIds) ||
+    !recordKeysMatchIds(
+      request.dataCategoryRevisions,
+      request.dataCategoryIds,
+    ) ||
+    !recordKeysMatchIds(request.actionRevisions, request.actionIds)
+  ) {
+    reasons.push("deny.request.invalid-structure");
+  }
+
+  if (
+    !isIsoDateTime(request.requestedAt) ||
+    !isIsoDateTime(input.evaluationTime) ||
+    (input.executionWindowEndsAt !== undefined &&
+      !isIsoDateTime(input.executionWindowEndsAt))
+  ) {
+    reasons.push("indeterminate.time.ambiguous");
+  } else {
+    if (Date.parse(request.requestedAt) > Date.parse(input.evaluationTime)) {
+      reasons.push("indeterminate.time.ambiguous");
+    }
+    if (
+      input.executionWindowEndsAt !== undefined &&
+      Date.parse(input.executionWindowEndsAt) < Date.parse(input.evaluationTime)
+    ) {
+      reasons.push("deny.duration.outside-boundary");
+    }
+  }
+
+  return reasons;
 }
 
-function isSubset(
-  requested: ReadonlyArray<string>,
-  permitted: ReadonlyArray<string>,
+function actionFamilyMatchesBoundary(
+  action: ActionDefinition,
+  boundary: PolicyEvaluationInput["request"]["operationBoundary"],
 ): boolean {
-  const permittedSet = new Set(permitted);
-  return requested.every((value) => permittedSet.has(value));
+  switch (boundary) {
+    case "view":
+    case "retrieve":
+      return action.actionFamily === "read";
+    case "create":
+      return action.actionFamily === "create";
+    case "transform":
+      return (
+        action.actionFamily === "transform" || action.actionFamily === "derive"
+      );
+    case "transmit":
+      return action.actionFamily === "transmit";
+    case "export":
+      return action.actionFamily === "export";
+    case "maintain":
+      return (
+        action.actionFamily === "maintain" ||
+        action.actionFamily === "correct" ||
+        action.actionFamily === "delete"
+      );
+    case "permission-administration":
+      return action.actionFamily === "permission";
+  }
 }
 
-function hasBlanketToken(value: string): boolean {
-  return (
-    value.includes("*") ||
-    value.endsWith(".all") ||
-    value.endsWith(".any") ||
-    value.endsWith(".future") ||
-    value.includes("all-health-data")
+function definitionsReasons(input: PolicyEvaluationInput): string[] {
+  const { request } = input;
+  const policy = input.bundle.policyBundle;
+  const reasons: string[] = [];
+  const purpose = policy.purposes.find(
+    (value) => value.id === request.purposeId,
   );
+  const recipient = policy.recipients.find(
+    (value) => value.id === request.primaryRecipientId,
+  );
+
+  if (purpose === undefined) {
+    reasons.push("indeterminate.taxonomy.unresolved");
+  } else {
+    if (!purpose.grantable || purpose.status !== "active") {
+      reasons.push("deny.request.invalid-structure");
+    }
+    if (purpose.revision !== request.purposeRevision) {
+      reasons.push("indeterminate.taxonomy.unresolved");
+    }
+  }
+
+  if (recipient === undefined) {
+    reasons.push("indeterminate.taxonomy.unresolved");
+  } else {
+    if (!recipient.grantable || recipient.status !== "active") {
+      reasons.push("deny.request.invalid-structure");
+    }
+    if (recipient.revision !== request.primaryRecipientRevision) {
+      reasons.push("indeterminate.recipient-membership.unresolved");
+    }
+  }
+
+  for (const categoryId of request.dataCategoryIds) {
+    const category = policy.dataCategories.find(
+      (value) => value.id === categoryId,
+    );
+    if (category === undefined) {
+      reasons.push("indeterminate.taxonomy.unresolved");
+    } else {
+      if (!category.grantable || category.status !== "active") {
+        reasons.push("deny.request.invalid-structure");
+      }
+      if (request.dataCategoryRevisions[categoryId] !== category.revision) {
+        reasons.push("indeterminate.taxonomy.unresolved");
+      }
+    }
+  }
+
+  for (const actionId of request.actionIds) {
+    const action = policy.actions.find((value) => value.id === actionId);
+    if (action === undefined) {
+      reasons.push("indeterminate.taxonomy.unresolved");
+    } else {
+      if (!action.grantable || action.status !== "active") {
+        reasons.push("deny.request.invalid-structure");
+      }
+      if (request.actionRevisions[actionId] !== action.revision) {
+        reasons.push("indeterminate.taxonomy.unresolved");
+      }
+      if (!actionFamilyMatchesBoundary(action, request.operationBoundary)) {
+        reasons.push("deny.request.invalid-structure");
+      }
+    }
+  }
+
+  return reasons;
 }
 
-function selectorWithinGrant(
-  requested: ScopeSelector | undefined,
-  permitted: ScopeSelector | undefined,
-): boolean {
-  if (requested === undefined) return true;
-  if (permitted === undefined) {
-    return Object.values(requested).every(
-      (value) =>
-        value === undefined || (Array.isArray(value) && value.length === 0),
-    );
-  }
-
-  const arraysWithin = (
-    requestedValues: ReadonlyArray<string> | undefined,
-    permittedValues: ReadonlyArray<string> | undefined,
-  ) => {
-    if (requestedValues === undefined || requestedValues.length === 0)
-      return true;
-    if (permittedValues === undefined) return false;
-    return isSubset(requestedValues, permittedValues);
-  };
-
+function identityReasons(input: PolicyEvaluationInput): string[] {
+  const reasons: string[] = [];
+  const actorById = new Map(
+    input.bundle.actors.map((actor) => [actor.id, actor] as const),
+  );
+  const requester = actorById.get(input.request.requesterId);
   if (
-    !arraysWithin(requested.exactRecordIds, permitted.exactRecordIds) ||
-    !arraysWithin(requested.exactVariableIds, permitted.exactVariableIds) ||
-    !arraysWithin(
-      requested.exactSourceArtifactIds,
-      permitted.exactSourceArtifactIds,
-    ) ||
-    !arraysWithin(
-      requested.exactDocumentVersionIds,
-      permitted.exactDocumentVersionIds,
-    ) ||
-    !arraysWithin(requested.exactAttachmentIds, permitted.exactAttachmentIds)
+    requester === undefined ||
+    requester.kind !== input.request.requesterKind
   ) {
-    return false;
+    reasons.push("indeterminate.identity.unresolved");
   }
+  for (const actorId of [
+    input.request.performingActorId,
+    input.request.processorId,
+  ]) {
+    if (actorId !== undefined && !actorById.has(actorId)) {
+      reasons.push("indeterminate.identity.unresolved");
+    }
+  }
+  return reasons;
+}
 
-  if (
-    requested.representedFrom !== undefined &&
-    (permitted.representedFrom === undefined ||
-      Date.parse(requested.representedFrom) <
-        Date.parse(permitted.representedFrom))
-  ) {
-    return false;
+function lifecycleReasons(grant: PermissionGrant): string[] {
+  switch (grant.lifecycleState) {
+    case "active":
+      return [];
+    case "proposed":
+    case "pending-confirmation":
+    case "declined":
+      return ["deny.grant.lifecycle-non-applicable"];
+    case "suspended":
+      return ["deny.grant.suspended"];
+    case "expired":
+      return ["deny.grant.expired"];
+    case "exhausted":
+      return ["deny.grant.exhausted"];
+    case "withdrawn":
+      return ["deny.grant.withdrawn"];
+    case "superseded":
+      return ["deny.grant.superseded"];
+    case "invalidated":
+      return ["deny.grant.invalidated"];
   }
-  if (
-    requested.representedThrough !== undefined &&
-    (permitted.representedThrough === undefined ||
-      Date.parse(requested.representedThrough) >
-        Date.parse(permitted.representedThrough))
-  ) {
-    return false;
-  }
-
-  return true;
 }
 
 function durationReasons(
   grant: PermissionGrant,
-  evaluationTime: string,
+  input: PolicyEvaluationInput,
   conditionFacts: ReadonlyMap<string, ConditionFact>,
   capacity: CapacitySnapshot | undefined,
 ): string[] {
   const reasons: string[] = [];
-  const now = Date.parse(evaluationTime);
+  const now = Date.parse(input.evaluationTime);
 
   switch (grant.duration.kind) {
     case "fixed-interval":
@@ -197,9 +328,11 @@ function durationReasons(
       if (now >= Date.parse(grant.duration.endsAt)) {
         reasons.push("deny.grant.expired");
       }
-      if (capacity === undefined || capacity.status === "unknown") {
-        reasons.push("indeterminate.capacity.conflict");
-      } else if (capacity.status === "conflicting") {
+      if (
+        capacity === undefined ||
+        capacity.status === "unknown" ||
+        capacity.status === "conflicting"
+      ) {
         reasons.push("indeterminate.capacity.conflict");
       } else if (
         capacity.status === "exhausted" ||
@@ -241,31 +374,16 @@ function durationReasons(
       break;
   }
 
-  return reasons;
-}
-
-function lifecycleReasons(grant: PermissionGrant): string[] {
-  switch (grant.lifecycleState) {
-    case "active":
-      return [];
-    case "proposed":
-    case "pending-confirmation":
-      return ["deny.grant.lifecycle-non-applicable"];
-    case "suspended":
-      return ["deny.grant.suspended"];
-    case "expired":
-      return ["deny.grant.expired"];
-    case "exhausted":
-      return ["deny.grant.exhausted"];
-    case "withdrawn":
-      return ["deny.grant.withdrawn"];
-    case "declined":
-      return ["deny.grant.lifecycle-non-applicable"];
-    case "superseded":
-      return ["deny.grant.superseded"];
-    case "invalidated":
-      return ["deny.grant.invalidated"];
+  const upperBoundary = durationUpperBoundary(grant.duration);
+  if (
+    input.executionWindowEndsAt !== undefined &&
+    upperBoundary !== undefined &&
+    Date.parse(input.executionWindowEndsAt) > Date.parse(upperBoundary)
+  ) {
+    reasons.push("deny.duration.outside-boundary");
   }
+
+  return reasons;
 }
 
 function explanationReasons(
@@ -283,7 +401,26 @@ function explanationReasons(
     explanation.recipientId !== grant.primaryRecipientId ||
     explanation.recipientRevision !== grant.primaryRecipientRevision ||
     !sameSet(explanation.dataCategoryIds, grant.dataCategoryIds) ||
+    !recordKeysMatchIds(
+      explanation.dataCategoryRevisions,
+      explanation.dataCategoryIds,
+    ) ||
+    explanation.dataCategoryIds.some(
+      (id) =>
+        explanation.dataCategoryRevisions[id] !==
+        grant.dataCategoryRevisions[id],
+    ) ||
+    !selectorsEqual(explanation.selector, grant.selector) ||
     !sameSet(explanation.actionIds, grant.actionIds) ||
+    !recordKeysMatchIds(explanation.actionRevisions, explanation.actionIds) ||
+    explanation.actionIds.some(
+      (id) => explanation.actionRevisions[id] !== grant.actionRevisions[id],
+    ) ||
+    !sameSet(
+      explanation.conditionIds,
+      grant.conditions.map((condition) => condition.id),
+    ) ||
+    !durationsEqual(explanation.duration, grant.duration) ||
     explanation.optionality !== grant.optionality ||
     !explanation.materiallyEquivalent
   ) {
@@ -305,19 +442,17 @@ function comprehensionReasons(
     evidence.grantId !== grant.id ||
     evidence.grantRevision !== grant.revision ||
     evidence.explanationSnapshotId !== explanation.id ||
-    evidence.explanationRevision !== explanation.revision
+    evidence.explanationRevision !== explanation.revision ||
+    evidence.requiredConceptIds.length === 0
   ) {
     return ["indeterminate.comprehension.stale"];
   }
   if (evidence.status === "satisfied") {
-    if (
-      evidence.requiredConceptIds.every((concept) =>
-        evidence.satisfiedConceptIds.includes(concept),
-      )
-    ) {
-      return [];
-    }
-    return ["indeterminate.comprehension.stale"];
+    return evidence.requiredConceptIds.every((concept) =>
+      evidence.satisfiedConceptIds.includes(concept),
+    )
+      ? []
+      : ["indeterminate.comprehension.stale"];
   }
   if (evidence.status === "not-satisfied" || evidence.status === "declined") {
     return ["deny.comprehension.not-satisfied"];
@@ -338,7 +473,11 @@ function conditionReasons(
       fact.status === "conflicting"
     ) {
       reasons.push("indeterminate.condition.unknown");
-    } else if (fact.status === "false") {
+    } else if (
+      fact.status === "false" ||
+      (fact.actualValue !== undefined &&
+        fact.actualValue !== condition.expectedValue)
+    ) {
       reasons.push("deny.condition.false");
     }
   }
@@ -349,7 +488,7 @@ function grantCoverageReasons(
   grant: PermissionGrant,
   input: PolicyEvaluationInput,
 ): string[] {
-  const request = input.request;
+  const { request } = input;
   const reasons: string[] = [];
 
   if (
@@ -373,28 +512,48 @@ function grantCoverageReasons(
   if (!isSubset(request.dataCategoryIds, grant.dataCategoryIds)) {
     reasons.push("deny.scope.category-mismatch");
   }
+  for (const id of request.dataCategoryIds) {
+    if (request.dataCategoryRevisions[id] !== grant.dataCategoryRevisions[id]) {
+      reasons.push("deny.scope.category-mismatch");
+    }
+  }
   if (!selectorWithinGrant(request.selector, grant.selector)) {
     reasons.push("deny.scope.selector-conflict");
   }
   if (!isSubset(request.actionIds, grant.actionIds)) {
     reasons.push("deny.action.mismatch");
   }
+  for (const id of request.actionIds) {
+    if (request.actionRevisions[id] !== grant.actionRevisions[id]) {
+      reasons.push("deny.action.mismatch");
+    }
+  }
+
   if (
-    request.performingActorId !== undefined &&
     grant.permittedPerformingActorIds !== undefined &&
-    !grant.permittedPerformingActorIds.includes(request.performingActorId)
+    grant.permittedPerformingActorIds.length > 0
   ) {
-    reasons.push("deny.performing-actor.mismatch");
+    if (request.performingActorId === undefined) {
+      reasons.push("indeterminate.fact.missing");
+    } else if (
+      !grant.permittedPerformingActorIds.includes(request.performingActorId)
+    ) {
+      reasons.push("deny.performing-actor.mismatch");
+    }
   }
   if (
-    request.processorId !== undefined &&
     grant.permittedProcessorIds !== undefined &&
-    !grant.permittedProcessorIds.includes(request.processorId)
+    grant.permittedProcessorIds.length > 0
   ) {
-    reasons.push("deny.performing-actor.mismatch");
+    if (request.processorId === undefined) {
+      reasons.push("indeterminate.fact.missing");
+    } else if (!grant.permittedProcessorIds.includes(request.processorId)) {
+      reasons.push("deny.performing-actor.mismatch");
+    }
   }
+
   if (
-    !isSubset(
+    !sameSet(
       request.requestedConditionIds,
       grant.conditions.map((condition) => condition.id),
     )
@@ -402,105 +561,44 @@ function grantCoverageReasons(
     reasons.push("deny.condition.false");
   }
 
+  if (
+    grant.conditions.some(
+      (condition) => condition.kind === "player-visible-receipt-required",
+    ) &&
+    !request.receiptRequired
+  ) {
+    reasons.push("deny.condition.false");
+  }
+
   return reasons;
 }
 
-function requestStructureReasons(input: PolicyEvaluationInput): string[] {
-  const request = input.request;
-  const reasons: string[] = [];
-  if (
-    request.subjectIds.length === 0 ||
-    request.dataCategoryIds.length === 0 ||
-    request.actionIds.length === 0 ||
-    request.purposeId.length === 0 ||
-    request.primaryRecipientId.length === 0 ||
-    request.controlledResourceId.length === 0
-  ) {
-    reasons.push("indeterminate.fact.missing");
-  }
-  if (
-    request.dataCategoryIds.some(hasBlanketToken) ||
-    request.actionIds.some(hasBlanketToken) ||
-    hasBlanketToken(request.purposeId) ||
-    hasBlanketToken(request.primaryRecipientId)
-  ) {
-    reasons.push("deny.request.blanket-scope");
-  }
-  if (
-    new Set(request.dataCategoryIds).size !== request.dataCategoryIds.length ||
-    new Set(request.actionIds).size !== request.actionIds.length
-  ) {
-    reasons.push("deny.request.invalid-structure");
-  }
-  return reasons;
-}
-
-function definitionsReasons(input: PolicyEvaluationInput): string[] {
-  const request = input.request;
-  const policy = input.bundle.policyBundle;
-  const reasons: string[] = [];
-  const purpose = policy.purposes.find(
-    (value) => value.id === request.purposeId,
+function authorityReasons(
+  grant: PermissionGrant,
+  input: PolicyEvaluationInput,
+): string[] {
+  const actor = input.bundle.actors.find(
+    (candidate) => candidate.id === grant.grantingAuthorityId,
   );
-  const recipient = policy.recipients.find(
-    (value) => value.id === request.primaryRecipientId,
-  );
-
-  if (purpose === undefined || recipient === undefined) {
-    reasons.push("indeterminate.taxonomy.unresolved");
-  } else {
-    if (!purpose.grantable || purpose.status !== "active") {
-      reasons.push("deny.request.invalid-structure");
-    }
-    if (!recipient.grantable || recipient.status !== "active") {
-      reasons.push("deny.request.invalid-structure");
-    }
-    if (purpose.revision !== request.purposeRevision) {
-      reasons.push("indeterminate.taxonomy.unresolved");
-    }
-    if (recipient.revision !== request.primaryRecipientRevision) {
-      reasons.push("indeterminate.recipient-membership.unresolved");
-    }
+  if (actor === undefined) return ["indeterminate.identity.unresolved"];
+  if (actor.kind !== "controlling-person") {
+    return ["deny.authority.self-grant"];
   }
-
-  for (const categoryId of request.dataCategoryIds) {
-    const category = policy.dataCategories.find(
-      (value) => value.id === categoryId,
-    );
-    if (category === undefined) {
-      reasons.push("indeterminate.taxonomy.unresolved");
-    } else if (!category.grantable || category.status !== "active") {
-      reasons.push("deny.request.invalid-structure");
-    }
-  }
-  for (const actionId of request.actionIds) {
-    const action = policy.actions.find((value) => value.id === actionId);
-    if (action === undefined) {
-      reasons.push("indeterminate.taxonomy.unresolved");
-    } else if (!action.grantable || action.status !== "active") {
-      reasons.push("deny.request.invalid-structure");
-    }
-  }
-  return reasons;
-}
-
-function isSecondaryPurpose(input: PolicyEvaluationInput): boolean {
-  const purpose = input.bundle.policyBundle.purposes.find(
-    (candidate) => candidate.id === input.request.purposeId,
-  );
-  return purpose?.purposeClass.startsWith("secondary-") ?? false;
+  return [];
 }
 
 function partialCompositionDetected(
   grants: ReadonlyArray<PermissionGrant>,
   input: PolicyEvaluationInput,
 ): boolean {
-  const request = input.request;
+  const { request } = input;
   const relevant = grants.filter(
     (grant) =>
       grant.lifecycleState === "active" &&
       grant.purposeId === request.purposeId &&
+      grant.purposeRevision === request.purposeRevision &&
       grant.primaryRecipientId === request.primaryRecipientId &&
+      grant.primaryRecipientRevision === request.primaryRecipientRevision &&
       grant.controlledResourceId === request.controlledResourceId &&
       isSubset(request.subjectIds, grant.subjectIds),
   );
@@ -526,7 +624,6 @@ export function evaluateHouseOfKeysPolicy(
   input: PolicyEvaluationInput,
 ): PolicyDecision {
   const globalReasons: string[] = [];
-  const missingOrConflictingFacts: string[] = [];
 
   if (
     input.contractVersion !== HOUSE_OF_KEYS_CONTRACT_VERSION ||
@@ -551,18 +648,7 @@ export function evaluateHouseOfKeysPolicy(
 
   globalReasons.push(...requestStructureReasons(input));
   globalReasons.push(...definitionsReasons(input));
-
-  if (
-    input.request.requesterId === input.bundle.grants[0]?.grantingAuthorityId &&
-    input.request.requesterKind === "requester"
-  ) {
-    const actor = input.bundle.actors.find(
-      (candidate) => candidate.id === input.request.requesterId,
-    );
-    if (actor?.kind !== "controlling-person") {
-      globalReasons.push("deny.authority.self-grant");
-    }
-  }
+  globalReasons.push(...identityReasons(input));
 
   if (
     input.bundle.policyBundle.prohibitedPurposeIds.includes(
@@ -575,36 +661,40 @@ export function evaluateHouseOfKeysPolicy(
     globalReasons.push("deny.policy.prohibition");
   }
 
-  const purpose = input.bundle.policyBundle.purposes.find(
-    (candidate) => candidate.id === input.request.purposeId,
-  );
-  if (purpose?.purposeClass === "personal-core" && isSecondaryPurpose(input)) {
-    globalReasons.push("indeterminate.policy.constitution-conflict");
-  }
-
   const conditionFacts = new Map(
-    input.conditionFacts.map((fact) => [fact.conditionId, fact]),
+    input.conditionFacts.map((fact) => [fact.conditionId, fact] as const),
   );
   const capacities = new Map(
-    input.capacitySnapshots.map((snapshot) => [
-      `${snapshot.grantId}@${snapshot.grantRevision}`,
-      snapshot,
-    ]),
+    input.capacitySnapshots.map(
+      (snapshot) =>
+        [`${snapshot.grantId}@${snapshot.grantRevision}`, snapshot] as const,
+    ),
   );
   const explanationById = new Map(
-    input.bundle.explanations.map((value) => [value.id, value]),
+    input.bundle.explanations.map((value) => [value.id, value] as const),
   );
   const comprehensionById = new Map(
-    input.bundle.comprehensionEvidence.map((value) => [value.id, value]),
+    input.bundle.comprehensionEvidence.map(
+      (value) => [value.id, value] as const,
+    ),
   );
   const confirmationById = new Map(
-    input.bundle.confirmations.map((value) => [value.id, value]),
+    input.bundle.confirmations.map((value) => [value.id, value] as const),
   );
 
   const candidateIdSet =
     input.candidateGrantIds === undefined
       ? undefined
       : new Set(input.candidateGrantIds);
+  if (
+    candidateIdSet !== undefined &&
+    [...candidateIdSet].some(
+      (id) => !input.bundle.grants.some((grant) => grant.id === id),
+    )
+  ) {
+    globalReasons.push("indeterminate.fact.missing");
+  }
+
   const candidates = input.bundle.grants
     .filter(
       (grant) => candidateIdSet === undefined || candidateIdSet.has(grant.id),
@@ -617,15 +707,17 @@ export function evaluateHouseOfKeysPolicy(
 
   const findings: GrantEvaluationFinding[] = [];
   const authorizingGrantIds: NamespacedId[] = [];
+  const authorizingGrants: PermissionGrant[] = [];
 
   for (const grant of candidates) {
     const reasons: string[] = [];
+    reasons.push(...authorityReasons(grant, input));
     reasons.push(...grantCoverageReasons(grant, input));
     reasons.push(...lifecycleReasons(grant));
     reasons.push(
       ...durationReasons(
         grant,
-        input.evaluationTime,
+        input,
         conditionFacts,
         capacities.get(`${grant.id}@${grant.revision}`),
       ),
@@ -659,6 +751,7 @@ export function evaluateHouseOfKeysPolicy(
     const independentlyAuthorizes = orderedReasons.length === 0;
     if (independentlyAuthorizes) {
       authorizingGrantIds.push(grant.id);
+      authorizingGrants.push(grant);
     }
     findings.push({
       grantId: grant.id,
@@ -676,49 +769,68 @@ export function evaluateHouseOfKeysPolicy(
   }
 
   const orderedGlobalReasons = sortReasons(globalReasons);
-  const candidateReasons = findings.flatMap((finding) => finding.reasonCodes);
-  const allReasons = sortReasons([
-    ...orderedGlobalReasons,
-    ...candidateReasons,
-  ]);
-
-  for (const reason of allReasons) {
-    if (isIndeterminateReason(reason)) {
-      missingOrConflictingFacts.push(reason);
-    }
-  }
-
   const explicitGlobalDenial = orderedGlobalReasons.some(isDenyReason);
-  const materialIndeterminate = allReasons.some(isIndeterminateReason);
+  const globalIndeterminate = orderedGlobalReasons.some(isIndeterminateReason);
+  const potentiallyAuthorizingIndeterminate = findings.some((finding) => {
+    const hasDeny = finding.reasonCodes.some(isDenyReason);
+    const hasIndeterminate = finding.reasonCodes.some(isIndeterminateReason);
+    return !hasDeny && hasIndeterminate;
+  });
+
   let outcome: PolicyDecision["outcome"];
   let decisionReasons: string[];
 
   if (explicitGlobalDenial) {
     outcome = "deny";
     decisionReasons = orderedGlobalReasons.filter(isDenyReason);
-  } else if (authorizingGrantIds.length > 0 && !materialIndeterminate) {
+  } else if (
+    authorizingGrantIds.length > 0 &&
+    !globalIndeterminate &&
+    !potentiallyAuthorizingIndeterminate
+  ) {
     outcome = "allow";
     decisionReasons = [
       authorizingGrantIds.length > 1
         ? "allow.multiple-independent-grants"
         : "allow.grant.exact-match",
     ];
-  } else if (materialIndeterminate) {
+  } else if (globalIndeterminate || potentiallyAuthorizingIndeterminate) {
     outcome = "indeterminate";
-    decisionReasons = allReasons.filter(isIndeterminateReason);
+    decisionReasons = sortReasons([
+      ...orderedGlobalReasons.filter(isIndeterminateReason),
+      ...findings.flatMap((finding) =>
+        finding.reasonCodes.some(isDenyReason)
+          ? []
+          : finding.reasonCodes.filter(isIndeterminateReason),
+      ),
+    ]);
   } else {
     outcome = "deny";
     decisionReasons = sortReasons([
-      ...allReasons.filter(isDenyReason),
+      ...orderedGlobalReasons.filter(isDenyReason),
+      ...findings.flatMap((finding) =>
+        finding.reasonCodes.filter(isDenyReason),
+      ),
       "deny.no-applicable-grant",
     ]);
   }
 
-  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort(
-    (left, right) => left.localeCompare(right),
+  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort((left, right) =>
+    left.localeCompare(right),
   );
+  const receiptRequiredByGrant = authorizingGrants.some((grant) =>
+    grant.conditions.some(
+      (condition) => condition.kind === "player-visible-receipt-required",
+    ),
+  );
+  const missingOrConflictingFacts =
+    outcome === "indeterminate"
+      ? decisionReasons.filter(isIndeterminateReason)
+      : [];
 
   return {
+    decisionId: input.decisionId,
+    correlationId: input.correlationId,
     outcome,
     contractVersion: HOUSE_OF_KEYS_CONTRACT_VERSION,
     evaluatorId: HOUSE_OF_KEYS_EVALUATOR_ID,
@@ -734,6 +846,6 @@ export function evaluateHouseOfKeysPolicy(
     reasonCodes: sortReasons(decisionReasons),
     missingOrConflictingFacts: sortReasons(missingOrConflictingFacts),
     reEvaluationRequiredBeforeExecution: true,
-    receiptRequired: input.request.receiptRequired,
+    receiptRequired: input.request.receiptRequired || receiptRequiredByGrant,
   };
 }
