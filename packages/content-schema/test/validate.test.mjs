@@ -58,8 +58,8 @@ const validQuest = {
       description: "Complete the reflection without voice or animation.",
     },
   ],
-  dataCategories: ["self-reported-observation"],
-  permissionPurposeIds: ["purpose.core-chronicle"],
+  dataCategories: ["data.chronicle.reflection-note"],
+  permissionPurposeIds: ["purpose.personal.chronicle-capture"],
   safetyClassification: "general",
   feedback: "Your Chronicle now contains one confirmed observation.",
   narrativeConsequence: "The first page of the Chronicle becomes visible.",
@@ -211,6 +211,16 @@ test("rejects bare identifiers without a dotted namespace", () => {
 
   assert.equal(result.ok, false);
   assert.match(messages(result), /dotted namespace/);
+});
+
+test("rejects quest data-category references without a dotted namespace", () => {
+  const result = validateContent({
+    ...validQuest,
+    dataCategories: ["self-reported-observation"],
+  });
+
+  assert.equal(result.ok, false);
+  assert.match(messages(result), /dataCategories.*dotted namespace/);
 });
 
 test("rejects scenes without a defer, refusal, or exit route", () => {

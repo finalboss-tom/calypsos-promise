@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Repository review](repository-reconciliation-2026-07-24.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Pre-Sprint 5 review](roadmap/pre-sprint-5-alignment-review.md)
 
 This is the canonical entry point for repository documentation. It is designed to answer four questions quickly:
 
@@ -33,11 +33,12 @@ The application is the first operating surface of a long-lived public-benefit in
 ### Understand what exists now
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
-3. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
-4. [Sprint Roadmap](roadmap/sprints.md)
-5. [Repository and Module Boundaries](architecture/module-boundaries.md)
-6. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+2. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+3. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+4. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+5. [Sprint Roadmap](roadmap/sprints.md)
+6. [Repository and Module Boundaries](architecture/module-boundaries.md)
+7. [Minimum Viable Validation](policies/minimum-viable-validation.md)
 
 ### Understand the Living Chronicle and House of Keys
 
@@ -46,6 +47,15 @@ The application is the first operating surface of a long-lived public-benefit in
 3. [House of Keys Architecture](architecture/README.md#house-of-keys-architecture)
 4. [House of Keys Contract and Validation Baseline](product/house-of-keys-contract-baseline.md)
 5. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+
+### Prepare threat-model or security work
+
+1. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+2. [Security Policy](../SECURITY.md)
+3. [Architecture Foundation](frozen/architecture.md)
+4. [Repository and Module Boundaries](architecture/module-boundaries.md)
+5. [Publication and Confidentiality](policies/publication-and-confidentiality.md)
+6. [Institutional Immune System](governance/institutional-immune-system.md)
 
 ### Contribute code, content, or documentation
 
@@ -89,7 +99,7 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 | -------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------- |
 | Frozen foundations   | Constitutional and canonical constraints                             | [Frozen Foundations](frozen/README.md)                      |
 | Decisions            | Material architectural and institutional choices                     | [Decision Records](decisions/README.md)                     |
-| Architecture         | System, data, consent, AI, story, and module boundaries              | [Architecture Documentation](architecture/README.md)        |
+| Architecture         | System, data, consent, security, AI, story, and module boundaries    | [Architecture Documentation](architecture/README.md)        |
 | Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts  | [Product Documentation](product/README.md)                  |
 | Governance           | Contribution, content, feedback, challenge, and correction systems   | [Governance Documentation](governance/README.md)            |
 | Roadmap              | Current status, sprint sequence, evidence, and completion records    | [Roadmap Documentation](roadmap/README.md)                  |
@@ -105,13 +115,13 @@ The current codebase is intentionally smaller than the frozen target topology.
 - [`packages/domain`](../packages/domain) — small shared invariant package for public and synthetic contributor data
 - [`packages/content-schema`](../packages/content-schema) — pre-stable content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../packages/health-schema) — pre-stable Living Chronicle contracts, deterministic cross-reference validation, and public synthetic fixtures
-- [`packages/house-of-keys`](../packages/house-of-keys) — pre-stable purpose-specific permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures; pending merge through PR #33
+- [`packages/house-of-keys`](../packages/house-of-keys) — pre-stable purpose-specific permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures
 - [`content`](../content) — versioned, review-gated public content examples
 - [`tools`](../tools) — repository policy and documentation validation
 
 The House of Keys package remains separate from the Living Chronicle package. It may reference controlled Chronicle resources, but permission truth, grant state, decisions, receipts, and comprehension evidence do not become Chronicle truth.
 
-Planned applications, services, packages, infrastructure, production orchestration, and real-data paths remain design targets until a sprint creates them with an owner, public contract, tests, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
+Planned applications, services, packages, infrastructure, production orchestration, security controls, and real-data paths remain design targets until a sprint creates them with an owner, public contract, tests, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
 
 ## Navigation and maintenance rules
 
