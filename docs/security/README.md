@@ -63,7 +63,7 @@ No single database object, service, identity provider, model, operator, or audit
 
 ### Scope, assets, actors, and trust boundaries
 
-The first workstream maps assets, classifications, authorities, purposes, recipients, actors, data flows, environment boundaries, retention, deletion, backup, logging, and receipts.
+The [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md) establishes the initial working scope across public surfaces, identity, Chronicle, sources, House of Keys, execution, receipts, audit, AI, MCP, connectors, research, environments, supply chain, and recovery.
 
 ### Integrated threat and residual-risk model
 
@@ -139,6 +139,7 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 ## Initial navigation
 
 - [Sprint 5 Plan](../roadmap/sprint-5-plan.md)
+- [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
