@@ -48,22 +48,22 @@ It does not store a mailing list in the public repository or expose the private 
 
 ## Readiness by layer
 
-| Layer | Status | Current evidence | Main remaining gate |
-| --- | --- | --- | --- |
-| Product promise | BASELINE / FROZEN | Product Constitution and incentive model | preserve truth and rights through later implementation |
-| World and lore | FROZEN | Ogygia canon, zones, cast, Seven Laws, Seven Tides, and Fourteen Lanterns | complete the canonical map and visual system without inventing canon |
-| Public repository gateway | IMPLEMENTED / LIVE BOUNDED FLOW | `apps/site`, tests, build check, deployment, current-status records | maintain truthful status, accessibility, supply-chain, and incident evidence |
-| Founding Expedition signup adapter | IMPLEMENTED / CURRENT BOUNDED FLOW | explicit consent, privacy route, bounded forwarding, rate limit, HTTPS requirement | name private-list owner; complete retention, unsubscribe, correction, deletion, monitoring, provider, and incident evidence |
-| Website information architecture | BASELINE | public IA, campaign, transparency, and disclosure documents | reconcile into the future Sprint 8 build sequence |
-| Visual direction | IMPLEMENTED CONCEPT DIRECTION / STILL REFINABLE | current illustrated gateway and world-experience framework | rights, accessibility, asset, and canonical visual review |
-| Technical framework | CURRENT NODE IMPLEMENTATION; NEXT.JS PLANNED | runnable public Node server and repository checks | migrate only through an accepted Sprint 8 implementation slice |
-| Design system | PLANNED | architectural package direction only | tokens, typography, layout, motion, icon, and component rules |
-| Full production pages | PARTIAL PUBLIC GATEWAY ONLY | homepage, privacy, and joined routes | Sprint 8 trust, Promise, laws, status, Forge, roadmap, and transparency surfaces |
-| Synthetic prologue | PLANNED | information architecture and Sprint 9 flow | fictional Chronicle, Aster draft, confirmation, rejection, and example receipt UI |
-| Private product | NOT IMPLEMENTED | none | later account, Chronicle, House of Keys, Aster, security, and product sprints |
-| Analytics | DEFERRED | no production analytics design selected | purpose, minimization, retention, deletion, vendor, consent, and implementation review |
-| Accessibility and performance | PARTIAL IMPLEMENTATION; AUDIT PENDING | semantic public pages and repository checks | keyboard, screen-reader, reduced-motion, contrast, cognitive, low-bandwidth, and performance evidence |
-| Deployment and operations | BOUNDED PUBLIC DEPLOYMENT | public deployment and repository validation | provenance, branch administration, monitoring, rollback, incident route, and provider-exit evidence |
+| Layer                              | Status                                          | Current evidence                                                                   | Main remaining gate                                                                                                         |
+| ---------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Product promise                    | BASELINE / FROZEN                               | Product Constitution and incentive model                                           | preserve truth and rights through later implementation                                                                      |
+| World and lore                     | FROZEN                                          | Ogygia canon, zones, cast, Seven Laws, Seven Tides, and Fourteen Lanterns          | complete the canonical map and visual system without inventing canon                                                        |
+| Public repository gateway          | IMPLEMENTED / LIVE BOUNDED FLOW                 | `apps/site`, tests, build check, deployment, current-status records                | maintain truthful status, accessibility, supply-chain, and incident evidence                                                |
+| Founding Expedition signup adapter | IMPLEMENTED / CURRENT BOUNDED FLOW              | explicit consent, privacy route, bounded forwarding, rate limit, HTTPS requirement | name private-list owner; complete retention, unsubscribe, correction, deletion, monitoring, provider, and incident evidence |
+| Website information architecture   | BASELINE                                        | public IA, campaign, transparency, and disclosure documents                        | reconcile into the future Sprint 8 build sequence                                                                           |
+| Visual direction                   | IMPLEMENTED CONCEPT DIRECTION / STILL REFINABLE | current illustrated gateway and world-experience framework                         | rights, accessibility, asset, and canonical visual review                                                                   |
+| Technical framework                | CURRENT NODE IMPLEMENTATION; NEXT.JS PLANNED    | runnable public Node server and repository checks                                  | migrate only through an accepted Sprint 8 implementation slice                                                              |
+| Design system                      | PLANNED                                         | architectural package direction only                                               | tokens, typography, layout, motion, icon, and component rules                                                               |
+| Full production pages              | PARTIAL PUBLIC GATEWAY ONLY                     | homepage, privacy, and joined routes                                               | Sprint 8 trust, Promise, laws, status, Forge, roadmap, and transparency surfaces                                            |
+| Synthetic prologue                 | PLANNED                                         | information architecture and Sprint 9 flow                                         | fictional Chronicle, Aster draft, confirmation, rejection, and example receipt UI                                           |
+| Private product                    | NOT IMPLEMENTED                                 | none                                                                               | later account, Chronicle, House of Keys, Aster, security, and product sprints                                               |
+| Analytics                          | DEFERRED                                        | no production analytics design selected                                            | purpose, minimization, retention, deletion, vendor, consent, and implementation review                                      |
+| Accessibility and performance      | PARTIAL IMPLEMENTATION; AUDIT PENDING           | semantic public pages and repository checks                                        | keyboard, screen-reader, reduced-motion, contrast, cognitive, low-bandwidth, and performance evidence                       |
+| Deployment and operations          | BOUNDED PUBLIC DEPLOYMENT                       | public deployment and repository validation                                        | provenance, branch administration, monitoring, rollback, incident route, and provider-exit evidence                         |
 
 ## Public capability boundary
 
