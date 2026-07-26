@@ -57,9 +57,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-purpose-taxonomy.md`](../ar
 
 The baseline establishes non-grantable family nodes, grantable leaf purposes, essential-use and secondary-use classifications, conservative compatibility, lifecycle states, semantic-change rules, direct explanations, and explicit rejection of vague labels such as “improve the product,” “partners,” or “future uses.”
 
-### 4.3 Data-category taxonomy
+### 4.3 Data-category taxonomy — complete at baseline level
 
 Define stable data categories and selectors without embedding provider identifiers, source custody, or clinical conclusions into permission authority.
+
+Baseline artifact: [`docs/architecture/house-of-keys-data-category-taxonomy.md`](../architecture/house-of-keys-data-category-taxonomy.md)
+
+The baseline separates House of Keys permission categories from Chronicle coded values; establishes non-grantable families, grantable leaves, exact-category compatibility, explicit selector narrowing, lifecycle and mapping rules; and keeps Chronicle content, raw source artifacts, derived calculations, associations, inferences, and permission records independently scoped. Wildcards, family nodes, future descendants, provider labels, and “all health data” cannot silently broaden authority.
 
 ### 4.4 Grant, recipient, action, scope, and duration model
 
