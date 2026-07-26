@@ -39,15 +39,15 @@ For this revision:
 
 The exercise status vocabulary is:
 
-| Status | Meaning |
-| --- | --- |
+| Status                     | Meaning                                                                                                        |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `DESIGN-TABLETOP-COMPLETE` | The synthetic scenario was walked through against the current architecture and produced an accountable record. |
-| `CONTROL-DESIGN-SUPPORTED` | The architecture contains an explicit control or response path for the inject. |
-| `CONTROL-EVIDENCE-MISSING` | The design exists, but implementation or effectiveness evidence does not. |
-| `DESIGN-GAP` | The current architecture lacks sufficient detail or produces conflicting obligations. |
-| `SPECIALIST-HOLDPOINT` | Qualified external or independent judgment is required before implementation or production use. |
-| `PRODUCTION-BLOCKING` | Production or pilot use remains prohibited until the named gaps are resolved and evidenced. |
-| `REVALIDATION-REQUIRED` | The scenario must be rerun after a named contract, provider, implementation, incident, or governance change. |
+| `CONTROL-DESIGN-SUPPORTED` | The architecture contains an explicit control or response path for the inject.                                 |
+| `CONTROL-EVIDENCE-MISSING` | The design exists, but implementation or effectiveness evidence does not.                                      |
+| `DESIGN-GAP`               | The current architecture lacks sufficient detail or produces conflicting obligations.                          |
+| `SPECIALIST-HOLDPOINT`     | Qualified external or independent judgment is required before implementation or production use.                |
+| `PRODUCTION-BLOCKING`      | Production or pilot use remains prohibited until the named gaps are resolved and evidenced.                    |
+| `REVALIDATION-REQUIRED`    | The scenario must be rerun after a named contract, provider, implementation, incident, or governance change.   |
 
 ## Public and synthetic-only rules
 
@@ -222,23 +222,23 @@ A design tabletop passes this workstream only when:
 
 The required scenario set is:
 
-| Abuse case | Tabletop | Scenario class |
-| --- | --- | --- |
-| `SYN-001` | `TTX-001` | Cross-user Chronicle leakage |
-| `SYN-002` | `TTX-002` | Compromised agent or MCP client |
-| `SYN-003` | `TTX-003` | Stolen session and abusive account recovery |
-| `SYN-004` | `TTX-004` | Malicious upload and prompt injection |
-| `SYN-005` | `TTX-005` | Purpose laundering and stale permission decision |
-| `SYN-006` | `TTX-006` | Revocation during queued or in-flight execution |
-| `SYN-007` | `TTX-007` | Receipt omission, duplication, or forgery |
-| `SYN-008` | `TTX-008` | Insider curiosity and emergency-power abuse |
-| `SYN-009` | `TTX-009` | Secret exposure in CI or preview logs |
-| `SYN-010` | `TTX-010` | Dependency, build, or release compromise |
-| `SYN-011` | `TTX-011` | Ransomware and backup restoration |
-| `SYN-012` | `TTX-012` | Deletion verification with backups and external recipients |
-| `SYN-013` | `TTX-013` | Provider outage and regional failure |
-| `SYN-014` | `TTX-014` | Public-site signup disclosure or retention incident |
-| `SYN-015` | `TTX-015` | Research actor attempting scope expansion |
+| Abuse case | Tabletop  | Scenario class                                             |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `SYN-001`  | `TTX-001` | Cross-user Chronicle leakage                               |
+| `SYN-002`  | `TTX-002` | Compromised agent or MCP client                            |
+| `SYN-003`  | `TTX-003` | Stolen session and abusive account recovery                |
+| `SYN-004`  | `TTX-004` | Malicious upload and prompt injection                      |
+| `SYN-005`  | `TTX-005` | Purpose laundering and stale permission decision           |
+| `SYN-006`  | `TTX-006` | Revocation during queued or in-flight execution            |
+| `SYN-007`  | `TTX-007` | Receipt omission, duplication, or forgery                  |
+| `SYN-008`  | `TTX-008` | Insider curiosity and emergency-power abuse                |
+| `SYN-009`  | `TTX-009` | Secret exposure in CI or preview logs                      |
+| `SYN-010`  | `TTX-010` | Dependency, build, or release compromise                   |
+| `SYN-011`  | `TTX-011` | Ransomware and backup restoration                          |
+| `SYN-012`  | `TTX-012` | Deletion verification with backups and external recipients |
+| `SYN-013`  | `TTX-013` | Provider outage and regional failure                       |
+| `SYN-014`  | `TTX-014` | Public-site signup disclosure or retention incident        |
+| `SYN-015`  | `TTX-015` | Research actor attempting scope expansion                  |
 
 ## Evidence hierarchy
 
