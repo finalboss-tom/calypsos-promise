@@ -71,13 +71,19 @@ The completed internal 5.1 baseline consists of:
 
 Together they define stable IDs and obligations for nine authority domains, fourteen actor classes, thirteen trust zones, twenty-three asset classes, eighteen boundary crossings, and twelve principal flows. Independent security review remains pending.
 
-### Identity, sessions, tenants, operators, recovery, and emergency authority — 5.2 next
+### Identity, accounts, sessions, tenants, operators, recovery, and emergency authority — 5.2 complete at internal baseline
 
-This workstream will define provider-independent identity and isolation requirements without selecting an identity vendor or implementing accounts.
+The completed internal 5.2 baseline consists of:
 
-### Integrated threat and residual-risk model
+- the [Identity, Account, Session, Tenant, and Authority Model](identity-account-session-tenant-model.md);
+- the [Identity, Session, Isolation, and Authority Register](identity-and-authority-register.md); and
+- the [Account Recovery and Emergency Access Model](account-recovery-and-emergency-access-model.md).
 
-Threat records cover malicious action, accidental failure, coercion, inference, re-identification, insiders, provider failure, compromised clients, supply chain, institutional capture, and incorrect automation.
+Together they define separate identity domains, account-access links, authority profiles, session lifecycle, server-derived controlled-resource context, layered isolation, delegation and capacity, bounded operator capabilities, recovery classes, restricted post-recovery access, emergency capabilities, founder-independent continuity, and fourteen required identity controls. Independent security, privacy, accessibility, and legal review remains pending.
+
+### Integrated threat and residual-risk model — 5.3 next
+
+The next workstream will link actors, assets, zones, crossings, flows, identity controls, and recovery boundaries to explicit threats, control states, residual risk, ownership, and revalidation triggers.
 
 ### Living Chronicle security
 
@@ -152,6 +158,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [Asset, Authority, Data-Flow, and Trust-Boundary Map](asset-and-trust-boundary-map.md)
 - [Security Asset, Authority, and Actor Register](asset-authority-register.md)
 - [Security Data-Flow and Trust-Boundary Crossing Register](data-flow-boundary-register.md)
+- [Identity, Account, Session, Tenant, and Authority Model](identity-account-session-tenant-model.md)
+- [Identity, Session, Isolation, and Authority Register](identity-and-authority-register.md)
+- [Account Recovery and Emergency Access Model](account-recovery-and-emergency-access-model.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
