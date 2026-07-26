@@ -12,6 +12,7 @@ Decision records preserve why a material product, architecture, governance, lice
 - [0005 — Principled Confidentiality](0005-principled-confidentiality.md)
 - [0006 — Feedback to Governed Work](0006-feedback-to-governed-work.md)
 - [0007 — Institutional Immune System](0007-institutional-immune-system.md)
+- [0008 — Funding and Sponsorship Baseline](0008-funding-and-sponsorship-baseline.md)
 
 Use [0000 — Decision Template](0000-template.md) for a new record. Preserve numbering once assigned; a missing number does not justify renumbering historical decisions.
 
