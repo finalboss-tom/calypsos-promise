@@ -73,9 +73,13 @@ Baseline artifact: [`docs/architecture/house-of-keys-grant-recipient-action-dura
 
 The baseline establishes semantically atomic grants; bounded and replaceable recipient identities; explicit performing-actor constraints; grantable action leaves; category-plus-selector scope intersections; separate data time and grant duration; fixed, delayed, single-use, bounded-count, session-bounded, and review-bounded duration shapes; structured conditions; conservative grant revision; and structural rejection of blanket, wildcard, indefinite, inferred, or bundled secondary-use authority.
 
-### 4.5 Revocation and lifecycle behavior
+### 4.5 Revocation and lifecycle behavior — complete at baseline level
 
 Define withdrawal, expiration, suspension, supersession, invalidation, replacement, and review. Revocation must deny future access without falsely claiming retroactive erasure.
+
+Baseline artifact: [`docs/architecture/house-of-keys-revocation-lifecycle-model.md`](../architecture/house-of-keys-revocation-lifecycle-model.md)
+
+The baseline defines proposed, pending-confirmation, active, suspended, expired, exhausted, withdrawn, declined, superseded, and invalidated states; immutable lifecycle events; closed-state transitions; complete-grant revocation with narrower successors instead of hidden mutation; effective-time and decision-freshness rules; prospective denial of future access; explicit in-flight-operation races; review-bounded renewal; narrow and expiring suspension; successor confirmation; retention and downstream-use hold points; and non-punitive refusal and withdrawal.
 
 ### 4.6 Access receipt format and audit boundary
 
