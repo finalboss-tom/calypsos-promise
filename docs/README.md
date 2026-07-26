@@ -125,7 +125,7 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 | Decisions            | Material architectural and institutional choices                     | [Decision Records](decisions/README.md)                     |
 | Architecture         | System, data, consent, AI, story, and module boundaries              | [Architecture Documentation](architecture/README.md)        |
 | Security             | Threats, controls, evidence, residual risk, and tabletop exercises   | [Security Architecture](security/README.md)                 |
-| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, exit  | [Economics and Public-Good Funding](economics/README.md)    |
+| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, exit   | [Economics and Public-Good Funding](economics/README.md)    |
 | Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts  | [Product Documentation](product/README.md)                  |
 | Governance           | Contribution, content, feedback, challenge, and correction systems   | [Governance Documentation](governance/README.md)            |
 | Roadmap              | Current status, sprint sequence, evidence, and completion records    | [Roadmap Documentation](roadmap/README.md)                  |
