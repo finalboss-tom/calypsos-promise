@@ -1,13 +1,13 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Sprint 5 completion](roadmap/sprint-5-completion-record.md) · [Sprint 5 plan](roadmap/sprint-5-plan.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Funding baseline](economics/README.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Sprint 5 completion](roadmap/sprint-5-completion-record.md)
 
 This is the canonical entry point for repository documentation. It is designed to answer four questions quickly:
 
 1. What is Calypso’s Promise ultimately trying to accomplish?
 2. Which documents are authoritative for the decision I am making?
 3. What is implemented now, planned next, or intentionally deferred?
-4. Where should a contributor make a change without crossing a product, privacy, safety, canon, consent, security, or governance boundary?
+4. Where should a contributor make a change without crossing a product, privacy, safety, canon, consent, security, funding, or governance boundary?
 
 ## Primary directive
 
@@ -35,13 +35,13 @@ The application is the first operating surface of a long-lived public-benefit in
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
 3. [Security Architecture](security/README.md)
-4. [Sprint 5 Plan](roadmap/sprint-5-plan.md)
-5. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
-6. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
-7. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
-8. [Sprint Roadmap](roadmap/sprints.md)
-9. [Repository and Module Boundaries](architecture/module-boundaries.md)
-10. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+4. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+5. [Sprint Roadmap](roadmap/sprints.md)
+6. [Repository and Module Boundaries](architecture/module-boundaries.md)
+7. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+8. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+9. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+10. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
 
 ### Understand the Living Chronicle and House of Keys
 
@@ -66,6 +66,19 @@ The application is the first operating surface of a long-lived public-benefit in
 11. [Publication and Confidentiality](policies/publication-and-confidentiality.md)
 12. [Institutional Immune System](governance/institutional-immune-system.md)
 
+### Work on funding, sponsorship, or institutional economics
+
+1. [Economics and Public-Good Funding](economics/README.md)
+2. [Decision 0008 — Funding and Sponsorship Baseline](decisions/0008-funding-and-sponsorship-baseline.md)
+3. [Funding and Sponsorship Operating Baseline](economics/funding-and-sponsorship-baseline.md)
+4. [Sponsor Benefit and Recognition Policy](economics/sponsor-benefit-and-recognition-policy.md)
+5. [Funding Conflict and Acceptance Policy](economics/funding-conflict-and-acceptance-policy.md)
+6. [Public Funding Ledger Policy](economics/public-funding-ledger-policy.md)
+7. [Public-Good Underwriting Catalogue](economics/public-good-underwriting-catalogue.md)
+8. [Infrastructure Sponsorship and Exit Policy](economics/infrastructure-sponsorship-and-exit-policy.md)
+9. [Funding Concentration and Continuity Policy](economics/funding-concentration-and-continuity-policy.md)
+10. [Synthetic Funding Scenarios and Table Exercises](economics/funding-synthetic-scenarios-and-tabletops.md)
+
 ### Contribute code, content, or documentation
 
 1. [Contributing](../CONTRIBUTING.md)
@@ -81,6 +94,7 @@ The application is the first operating surface of a long-lived public-benefit in
 3. [Manual Feedback Triage Protocol](governance/feedback-triage-operating-protocol.md)
 4. [Institutional Immune System](governance/institutional-immune-system.md)
 5. [Assumption Registry](governance/assumption-registry.md)
+6. [Funding and Sponsorship Baseline](economics/README.md)
 
 ### Work on the public website or campaign
 
@@ -88,6 +102,7 @@ The application is the first operating surface of a long-lived public-benefit in
 2. [Public Narrative and Campaign Documents](public/README.md)
 3. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
 4. [Public-Domain Commons](../PUBLIC_DOMAIN.md)
+5. [Funding and Sponsorship Baseline](economics/README.md)
 
 ## Authority and conflict order
 
@@ -95,7 +110,7 @@ When documents appear to conflict, use this order and open a decision record rat
 
 1. Frozen product, architecture, world, gameplay, and institutional commitments
 2. Accepted decision records
-3. Governance, public roadmap, security, publication, and other cross-cutting policies
+3. Governance, public roadmap, security, publication, economics, and other cross-cutting policies
 4. Versioned architecture, product, data, content, and operating baselines
 5. Sprint plans, completion records, implementation notes, and current-status records
 6. Public campaign materials and time-sensitive experiments
@@ -110,6 +125,7 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 | Decisions            | Material architectural and institutional choices                     | [Decision Records](decisions/README.md)                     |
 | Architecture         | System, data, consent, AI, story, and module boundaries              | [Architecture Documentation](architecture/README.md)        |
 | Security             | Threats, controls, evidence, residual risk, and tabletop exercises   | [Security Architecture](security/README.md)                 |
+| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, exit  | [Economics and Public-Good Funding](economics/README.md)    |
 | Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts  | [Product Documentation](product/README.md)                  |
 | Governance           | Contribution, content, feedback, challenge, and correction systems   | [Governance Documentation](governance/README.md)            |
 | Roadmap              | Current status, sprint sequence, evidence, and completion records    | [Roadmap Documentation](roadmap/README.md)                  |
@@ -128,11 +144,12 @@ The current codebase is intentionally smaller than the frozen target topology.
 - [`packages/house-of-keys`](../packages/house-of-keys) — pre-stable purpose-specific permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures
 - [`content`](../content) — versioned, review-gated public content examples
 - [`security`](security/README.md) — completed Sprint 5 architecture, procedures, controls, residual risk, synthetic tabletop evidence, reconciliation, and specialist holdpoints
+- [`economics`](economics/README.md) — Phase 0 funding and sponsorship doctrine, public register structures, synthetic examples, and design table exercises; no operating treasury or fundraising runtime
 - [`tools`](../tools) — repository policy and documentation validation
 
 The House of Keys package remains separate from the Living Chronicle package. It may reference controlled Chronicle resources, but permission truth, grant state, decisions, receipts, and comprehension evidence do not become Chronicle truth.
 
-Planned applications, services, packages, infrastructure, production orchestration, security controls, and real-data paths remain design targets until a sprint creates them with an owner, public contract, tests, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
+Planned applications, services, packages, infrastructure, production orchestration, security controls, financial systems, and real-data paths remain design targets until an accepted workstream creates them with an owner, public contract, tests or evidence, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
 
 ## Navigation and maintenance rules
 
