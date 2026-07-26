@@ -286,16 +286,20 @@ Active Phase 0 work still includes:
 
 ## Validation evidence
 
-The final validated branch head and workflow evidence must be recorded in issue #35 and PR #36 after all 5.10 documents and status corrections pass:
+Validated review-branch head:
 
-- formatting;
-- documentation links;
-- repository policy;
-- content validation;
-- lint;
-- typecheck;
-- tests; and
-- DCO attestation.
+`4f35de38fd43f81f10f782315b10b61d424182cb`
+
+- CI run `30223438779`, run number `436`: success
+- DCO Attestation run `30223438780`, run number `481`: success
+- formatting: success
+- documentation links: success
+- repository policy: success
+- content validation: success
+- lint: success
+- typecheck: success
+- tests: success
+- mergeability against current `main`: clean
 
 ## Merge and closure decision
 
