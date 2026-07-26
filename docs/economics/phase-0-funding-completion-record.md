@@ -243,22 +243,22 @@ Result:
 
 ## Acceptance criteria mapping
 
-| Criterion | Evidence | Status |
-| --- | --- | --- |
-| Money cannot purchase data, research access, product authority, health influence, roadmap control, governance power, game progression, favorable findings, or safety exceptions | Decision 0008; recognition policy; operating baseline | Met at doctrine level |
-| Funding classes are distinct | Operating baseline; public register vocabulary | Met |
-| Permitted and prohibited benefits are inspectable | Recognition policy | Met |
-| Material organizational, restricted, related-party, vendor-linked, and in-kind relationships require public records | Ledger and conflict policies | Met |
-| Raw private financial source records remain outside public GitHub systems | Decision 0008; ledger policy | Met |
-| Funded work remains under ordinary governance and outcome reporting | Operating baseline; underwriting catalogue | Met |
-| Sponsors and implementers cannot independently evaluate themselves | Conflict policy; synthetic exercises | Met at doctrine level |
-| Infrastructure support requires replacement and exit behavior | Infrastructure policy | Met at design level |
-| Concentration and critical dependency triggers are defined | Concentration policy | Met as provisional baseline |
-| Relationships can decline, pause, correct, terminate, refund, expire, or supersede | Operating, conflict, recognition, and ledger policies | Met |
-| Public records connect support to delivery, outcomes, variance, and obligations | Ledger policy and synthetic records | Met at contract level |
-| Capture, data, provider, exclusivity, related-party, concentration, source-loss, and outcome-failure scenarios are exercised | Sixteen design tabletops | Met at founding-steward design-tabletop level |
-| No legal, charitable, tax, treasury, accounting, or operating financial status is overstated | All status and non-scope records | Met |
-| Accepted doctrine remains distinct from implementation | Decision, indexes, current status, and this record | Met |
+| Criterion                                                                                                                                                                       | Evidence                                              | Status                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------- |
+| Money cannot purchase data, research access, product authority, health influence, roadmap control, governance power, game progression, favorable findings, or safety exceptions | Decision 0008; recognition policy; operating baseline | Met at doctrine level                         |
+| Funding classes are distinct                                                                                                                                                    | Operating baseline; public register vocabulary        | Met                                           |
+| Permitted and prohibited benefits are inspectable                                                                                                                               | Recognition policy                                    | Met                                           |
+| Material organizational, restricted, related-party, vendor-linked, and in-kind relationships require public records                                                             | Ledger and conflict policies                          | Met                                           |
+| Raw private financial source records remain outside public GitHub systems                                                                                                       | Decision 0008; ledger policy                          | Met                                           |
+| Funded work remains under ordinary governance and outcome reporting                                                                                                             | Operating baseline; underwriting catalogue            | Met                                           |
+| Sponsors and implementers cannot independently evaluate themselves                                                                                                              | Conflict policy; synthetic exercises                  | Met at doctrine level                         |
+| Infrastructure support requires replacement and exit behavior                                                                                                                   | Infrastructure policy                                 | Met at design level                           |
+| Concentration and critical dependency triggers are defined                                                                                                                      | Concentration policy                                  | Met as provisional baseline                   |
+| Relationships can decline, pause, correct, terminate, refund, expire, or supersede                                                                                              | Operating, conflict, recognition, and ledger policies | Met                                           |
+| Public records connect support to delivery, outcomes, variance, and obligations                                                                                                 | Ledger policy and synthetic records                   | Met at contract level                         |
+| Capture, data, provider, exclusivity, related-party, concentration, source-loss, and outcome-failure scenarios are exercised                                                    | Sixteen design tabletops                              | Met at founding-steward design-tabletop level |
+| No legal, charitable, tax, treasury, accounting, or operating financial status is overstated                                                                                    | All status and non-scope records                      | Met                                           |
+| Accepted doctrine remains distinct from implementation                                                                                                                          | Decision, indexes, current status, and this record    | Met                                           |
 
 ## Cross-contract result
 

@@ -25,24 +25,24 @@ All organizations, offers, amounts, providers, people, incidents, and outcomes a
 
 ## Scenario index
 
-| ID | Scenario | Primary result |
-| --- | --- | --- |
-| TTX-FND-001 | AI provider offers credits for default placement | Decline placement; evaluate credits separately |
-| TTX-FND-002 | Pharmaceutical company funds health content | Decline sponsor-controlled product content; independent review required |
-| TTX-FND-003 | Cloud sponsor ends credits in thirty days | Activate migration, degrade safely, update status and concentration |
-| TTX-FND-004 | Donor requests a governance seat | Decline purchased authority |
-| TTX-FND-005 | Sponsor requests signup emails | Decline and review relationship for termination |
-| TTX-FND-006 | Funder asks to delay negative findings | Contain, preserve publication independence, terminate if unresolved |
-| TTX-FND-007 | Restricted grant cannot complete as proposed | Pause, disclose variance, return or review redirection |
-| TTX-FND-008 | Sponsor demands exclusivity | Decline or terminate unless narrow noncritical exception is separately accepted |
-| TTX-FND-009 | Founder-related company offers paid services | Related-party review, alternatives, recusal, no sole approval |
-| TTX-FND-010 | Material anonymous institutional donation | Disclose reviewed category and effect; identity withholding requires justification |
-| TTX-FND-011 | Security sponsor wants to review its own audit | Sponsor may fund, not independently certify itself |
-| TTX-FND-012 | Sponsor becomes implicated in harmful conduct | Pause recognition and new obligations; conduct mission and affected-party review |
-| TTX-FND-013 | Infrastructure sponsor is acquired | Revalidate terms, data, continuity, conflicts, and exit |
-| TTX-FND-014 | Referral partner offers health-product commission | Defer and decline under current authority |
-| TTX-FND-015 | One sponsor crosses concentration trigger | Mitigation and continuity plan; pause added dependency at 33% |
-| TTX-FND-016 | Funded feature ships but creates no public benefit | Report delivery separately from outcome; correct, narrow, or stop |
+| ID          | Scenario                                           | Primary result                                                                     |
+| ----------- | -------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| TTX-FND-001 | AI provider offers credits for default placement   | Decline placement; evaluate credits separately                                     |
+| TTX-FND-002 | Pharmaceutical company funds health content        | Decline sponsor-controlled product content; independent review required            |
+| TTX-FND-003 | Cloud sponsor ends credits in thirty days          | Activate migration, degrade safely, update status and concentration                |
+| TTX-FND-004 | Donor requests a governance seat                   | Decline purchased authority                                                        |
+| TTX-FND-005 | Sponsor requests signup emails                     | Decline and review relationship for termination                                    |
+| TTX-FND-006 | Funder asks to delay negative findings             | Contain, preserve publication independence, terminate if unresolved                |
+| TTX-FND-007 | Restricted grant cannot complete as proposed       | Pause, disclose variance, return or review redirection                             |
+| TTX-FND-008 | Sponsor demands exclusivity                        | Decline or terminate unless narrow noncritical exception is separately accepted    |
+| TTX-FND-009 | Founder-related company offers paid services       | Related-party review, alternatives, recusal, no sole approval                      |
+| TTX-FND-010 | Material anonymous institutional donation          | Disclose reviewed category and effect; identity withholding requires justification |
+| TTX-FND-011 | Security sponsor wants to review its own audit     | Sponsor may fund, not independently certify itself                                 |
+| TTX-FND-012 | Sponsor becomes implicated in harmful conduct      | Pause recognition and new obligations; conduct mission and affected-party review   |
+| TTX-FND-013 | Infrastructure sponsor is acquired                 | Revalidate terms, data, continuity, conflicts, and exit                            |
+| TTX-FND-014 | Referral partner offers health-product commission  | Defer and decline under current authority                                          |
+| TTX-FND-015 | One sponsor crosses concentration trigger          | Mitigation and continuity plan; pause added dependency at 33%                      |
+| TTX-FND-016 | Funded feature ships but creates no public benefit | Report delivery separately from outcome; correct, narrow, or stop                  |
 
 ---
 
