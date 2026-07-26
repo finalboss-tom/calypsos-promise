@@ -1,8 +1,8 @@
 # Sprint 4 Plan — House of Keys Consent Architecture
 
-**Status:** COMPLETE ON PR #33 — pending steward approval and merge  
+**Status:** COMPLETE AND MERGED through PR #33  
 **Tracking issue:** #32  
-**Branch:** `sprint/4-house-of-keys-consent`  
+**Squash commit:** `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`  
 **Canonical scope:** [`docs/roadmap/sprints.md`](sprints.md#sprint-4--house-of-keys-consent-architecture)  
 **Completion record:** [`sprint-4-completion-record.md`](sprint-4-completion-record.md)
 
@@ -115,7 +115,7 @@ Package: [`packages/house-of-keys`](../../packages/house-of-keys)
 
 The baseline introduces `@calypsos-promise/house-of-keys` with contract version `0.1.0-pre.1`; explicit TypeScript contracts for authority-bearing definitions, grants, lifecycle events and state, explanations, comprehension, confirmations, requests, decisions, and access receipts; deterministic bundle validation; a pure `allow`, `deny`, or `indeterminate` evaluator; ordered reason codes and per-grant findings; seventeen public synthetic decision scenarios; one public synthetic completed-access receipt; and twenty-nine Node tests. The package remains separate from `@calypsos-promise/health-schema` and introduces no production consent infrastructure.
 
-### 4.10 Cross-contract review and completion record — complete on review branch
+### 4.10 Cross-contract review and completion record — complete
 
 Review consistency across frozen rights, vocabulary, Chronicle boundaries, incentives, architecture, contracts, evaluator, receipts, explanations, fixtures, and tests. Record acceptance evidence, compatibility requirements, specialist hold points, and unresolved questions.
 
@@ -164,6 +164,4 @@ Stop and seek a reviewed decision if work would:
 
 ## Completion result
 
-Every accepted Sprint 4 deliverable has a repository artifact. Every acceptance criterion has deterministic evidence. Cross-contract consistency, compatibility requirements, specialist hold points, and unresolved questions are recorded in the [Sprint 4 Completion Record](sprint-4-completion-record.md). CI and DCO pass on the reviewed implementation head.
-
-Sprint 4 is complete on PR #33 but remains unmerged until explicit founding-steward approval.
+Every accepted Sprint 4 deliverable has a repository artifact. Every acceptance criterion has deterministic evidence. Cross-contract consistency, compatibility requirements, specialist hold points, and unresolved questions are recorded in the [Sprint 4 Completion Record](sprint-4-completion-record.md). CI and DCO passed on the reviewed head, and the complete baseline was squash-merged through PR #33 as `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`.
