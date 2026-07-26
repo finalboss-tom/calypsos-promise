@@ -27,7 +27,7 @@ It did identify correctable repository drift after the Sprint 4 merge and one ma
 - the public website still described House of Keys architecture as wholly planned;
 - House of Keys package documentation understated the merged receipt and synthetic-test surface;
 - the Sprint 2 content example still used pre-Sprint-4 placeholder purpose and data-category identifiers;
-- the canonical sprint sequence needed a truthful execution clarification for the merged Sprint 3 boundary; and
+- the integrated status needed a truthful execution clarification for the merged Sprint 3 boundary; and
 - Sprint 5 needed an explicit handoff from the Chronicle and House of Keys threat surfaces without changing its accepted scope.
 
 This reconciliation repairs those inconsistencies and records the remaining gates explicitly rather than pretending they are complete.
@@ -67,19 +67,19 @@ The review tested consistency across language, authority, dependency direction, 
 
 ## Mission-to-implementation traceability
 
-| Protected directive | Canonical source | Current repository expression | Result |
-| --- | --- | --- | --- |
-| Build a useful longitudinal account | Product Constitution; Architecture Foundation | Living Chronicle ontology, `@calypsos-promise/health-schema`, provenance, correction, export, deletion, synthetic fixtures | Consistent |
-| Improve health and understanding without false authority | Product Constitution; Gameplay Foundation; controlled vocabulary | descriptive and uncertain claim language, player-chosen actions, AI drafts, clinical and causal hold points | Consistent at the pre-runtime boundary |
-| Keep the key and preserve personal control | Product Constitution; House of Keys architecture | purpose-specific grants, exact scope, revocation, comprehension, receipts, fail-closed evaluation | Consistent |
-| Return personal value before secondary use | Vision; incentive model; roadmap | first two loops remain independently valuable; research and commerce are optional and separately authorized | Consistent |
-| Make refusal meaningful and non-punitive | Product Constitution; gameplay; incentive model | quest decline and defer requirements, shame-free return, revocation, no consent-derived rewards | Consistent |
-| Keep authority deterministic | Architecture Foundation; incentive model | structured Chronicle confirmation, quest completion, reward rules, House of Keys evaluator, stable reason codes | Consistent |
-| Keep AI useful but non-authoritative | Architecture Foundation; gameplay; House of Keys | AI proposes, explains, and drafts; it cannot confirm Chronicle truth, grant permission, decide rewards, or convert `indeterminate` to allow | Consistent |
-| Keep open code separate from private people | Product Constitution; Security; publication policy | synthetic-only contributor workflows, repository policy, private signup adapter, no production health-data runtime | Consistent |
-| Enable public benefit without extraction | Vision; roadmap; House of Keys | study-specific and offer-specific authority remains gated; no research or commercial runtime exists | Consistent |
-| Progress toward founder-independent stewardship | Vision; Governance; Roadmap | public decisions, issue ledger, phase gates, succession and founder-power work explicitly outstanding | Consistent but incomplete by design |
-| Remain corrigible and challengeable | Decision 0007 | assumptions, challenge intake, containment, rollback, restoration, revalidation, explicit unresolved registers | Consistent at the documentation and test layer |
+| Protected directive                                      | Canonical source                                                 | Current repository expression                                                                                                               | Result                                         |
+| -------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Build a useful longitudinal account                      | Product Constitution; Architecture Foundation                    | Living Chronicle ontology, `@calypsos-promise/health-schema`, provenance, correction, export, deletion, synthetic fixtures                  | Consistent                                     |
+| Improve health and understanding without false authority | Product Constitution; Gameplay Foundation; controlled vocabulary | descriptive and uncertain claim language, player-chosen actions, AI drafts, clinical and causal hold points                                 | Consistent at the pre-runtime boundary         |
+| Keep the key and preserve personal control               | Product Constitution; House of Keys architecture                 | purpose-specific grants, exact scope, revocation, comprehension, receipts, fail-closed evaluation                                           | Consistent                                     |
+| Return personal value before secondary use               | Vision; incentive model; roadmap                                 | first two loops remain independently valuable; research and commerce are optional and separately authorized                                 | Consistent                                     |
+| Make refusal meaningful and non-punitive                 | Product Constitution; gameplay; incentive model                  | quest decline and defer requirements, shame-free return, revocation, no consent-derived rewards                                             | Consistent                                     |
+| Keep authority deterministic                             | Architecture Foundation; incentive model                         | structured Chronicle confirmation, quest completion, reward rules, House of Keys evaluator, stable reason codes                             | Consistent                                     |
+| Keep AI useful but non-authoritative                     | Architecture Foundation; gameplay; House of Keys                 | AI proposes, explains, and drafts; it cannot confirm Chronicle truth, grant permission, decide rewards, or convert `indeterminate` to allow | Consistent                                     |
+| Keep open code separate from private people              | Product Constitution; Security; publication policy               | synthetic-only contributor workflows, repository policy, private signup adapter, no production health-data runtime                          | Consistent                                     |
+| Enable public benefit without extraction                 | Vision; roadmap; House of Keys                                   | study-specific and offer-specific authority remains gated; no research or commercial runtime exists                                         | Consistent                                     |
+| Progress toward founder-independent stewardship          | Vision; Governance; Roadmap                                      | public decisions, issue ledger, phase gates, succession and founder-power work explicitly outstanding                                       | Consistent but incomplete by design            |
+| Remain corrigible and challengeable                      | Decision 0007                                                    | assumptions, challenge intake, containment, rollback, restoration, revalidation, explicit unresolved registers                              | Consistent at the documentation and test layer |
 
 ## Incentive alignment findings
 
@@ -128,7 +128,7 @@ The content validator now requires quest data-category identifiers to use the sa
 
 The original Sprint 3 list mentioned story, quest, permission, receipt, and Aster-memory entities and database migrations. The merged Sprint 3 completion decision intentionally kept those domains outside Chronicle truth and delivered compatibility and migration requirements without executable production migrations.
 
-The sprint sequence now records that execution clarification without rewriting the historical accepted list.
+The integrated current-status record now preserves that execution clarification without rewriting the historical accepted list.
 
 ### House of Keys implementation description
 
@@ -164,6 +164,21 @@ Accepted acceptance criteria:
 - the security-disclosure workflow is published.
 
 This review maps existing boundaries into that scope. It does not add deliverables or authorize production implementation.
+
+### Required Sprint 5 execution-plan adjustments
+
+The canonical scope is broad enough, but the Sprint 5 issue and execution plan should make the following workstreams explicit before implementation begins:
+
+1. **Security and privacy threat analysis:** evaluate confidentiality, integrity, availability, misuse, coercion, inference, re-identification, and purpose-expansion risks rather than treating security as intrusion prevention alone.
+2. **Data-flow and authority map:** bind every material flow to its asset classification, controlling authority, purpose, recipient, trust boundary, retention, deletion, backup, logging, and receipt expectations.
+3. **Identity and isolation matrix:** cover authentication, sessions, account-to-Chronicle pseudonyms, tenant isolation, delegation and capacity boundaries, recovery, operator access, and emergency powers.
+4. **Enforcement and freshness path:** trace policy decisions through execution, revocation, caches, queues, retries, single-use consumption, receipt creation, correction chains, and downstream invalidation.
+5. **Untrusted-input and agent isolation:** include documents, images, connectors, prompts, tool results, model output, MCP clients, and dependency artifacts as untrusted inputs that cannot create authority.
+6. **Availability and recoverability:** include backup and restore, ransomware, destructive operators, regional or provider failure, queue replay, disaster recovery, and the difference between account recovery, data recovery, and authority recovery.
+7. **Control-status and residual-risk register:** label each control as required, designed, tested with synthetic evidence, independently reviewed, deployed, or deferred so documentation cannot be mistaken for an operating safeguard.
+8. **Evidence and review gates:** require cross-contract synthetic abuse scenarios, tabletop records, unresolved-risk ownership, revalidation triggers, and a named security-review gate or an explicit statement that independent review remains absent.
+
+These are execution clarifications under the accepted asset map, threat model, recovery, audit, incident-response, deletion-verification, and tabletop deliverables. They do not authorize production systems or silently expand the sprint into provider implementation.
 
 ## Sprint 4-to-5 security handoff
 
@@ -254,7 +269,7 @@ The following remain important but do not change the Sprint 5 canonical scope:
 
 ## Sprint 5 entry recommendation
 
-**Recommendation:** GREENLIGHT SPRINT 5 AFTER THIS RECONCILIATION MERGES.
+**Recommendation:** GREENLIGHT SPRINT 5 AFTER THIS RECONCILIATION MERGES, WITH THE EXECUTION-PLAN ADJUSTMENTS ABOVE.**
 
 The repository is conceptually aligned and has the required Chronicle, permission, public-information, incentive, AI, MCP, governance, and corrigibility boundaries needed to begin the accepted threat-model and security-baseline work.
 
