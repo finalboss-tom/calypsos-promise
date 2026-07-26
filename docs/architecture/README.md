@@ -15,6 +15,7 @@ This directory contains versioned architecture baselines that implement the froz
 7. [House of Keys Purpose Taxonomy](house-of-keys-purpose-taxonomy.md) — stable, versioned purposes, lifecycle, compatibility, and anti-substitution rules
 8. [House of Keys Data-Category Taxonomy](house-of-keys-data-category-taxonomy.md) — semantic permission scope, selectors, mappings, lifecycle, and anti-broadening rules
 9. [House of Keys Grant, Recipient, Action, Scope, and Duration Model](house-of-keys-grant-recipient-action-duration-model.md) — atomic grants, bounded recipients, explicit actions, narrowing selectors, conditions, and reviewable duration
+10. [House of Keys Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md) — prospective revocation, explicit states and transitions, stale-decision handling, suspension, replacement, and non-punitive withdrawal
 
 ## Living Chronicle architecture
 
@@ -33,6 +34,7 @@ This directory contains versioned architecture baselines that implement the froz
 - [Purpose Taxonomy](house-of-keys-purpose-taxonomy.md)
 - [Data-Category Taxonomy](house-of-keys-data-category-taxonomy.md)
 - [Grant, Recipient, Action, Scope, and Duration Model](house-of-keys-grant-recipient-action-duration-model.md)
+- [Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md)
 
 The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
 
