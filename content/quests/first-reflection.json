@@ -1,7 +1,7 @@
 {
   "id": "quest.first-reflection",
   "schemaVersion": "0.1.0",
-  "revision": 1,
+  "revision": 2,
   "reviewState": "specialist-review",
   "capabilityStatus": "planned",
   "kind": "quest",
@@ -30,7 +30,7 @@
     "aiTools": ["ChatGPT"]
   },
   "createdAt": "2026-07-24T00:00:00Z",
-  "updatedAt": "2026-07-24T00:00:00Z",
+  "updatedAt": "2026-07-26T00:00:00Z",
   "publicTitle": "Record one observation",
   "inWorldTitle": "The First Reflection",
   "zoneId": "zone.lantern-shore",
@@ -73,8 +73,8 @@
       "description": "Complete the reflection without voice, animation, or timed interaction."
     }
   ],
-  "dataCategories": ["player-chosen-observation"],
-  "permissionPurposeIds": ["purpose.core-chronicle"],
+  "dataCategories": ["data.chronicle.reflection-note"],
+  "permissionPurposeIds": ["purpose.personal.chronicle-capture"],
   "safetyClassification": "general",
   "feedback": "Show the confirmed observation, its source, and what changed in the Chronicle.",
   "narrativeConsequence": "The first page of the Living Chronicle becomes visible at Lantern Shore.",
