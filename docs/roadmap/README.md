@@ -12,10 +12,12 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
-3. [Sprint 4 Completion Record](sprint-4-completion-record.md)
-4. [Sprint Sequence](sprints.md)
-5. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 5 Plan](sprint-5-plan.md)
+3. [Security Architecture](../security/README.md)
+4. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+5. [Sprint 4 Completion Record](sprint-4-completion-record.md)
+6. [Sprint Sequence](sprints.md)
+7. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Completion records and plans
 
@@ -27,13 +29,14 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Sprint 3 Completion Record](sprint-3-completion-record.md)
 - [Sprint 4 Plan](sprint-4-plan.md) — complete and merged through PR #33
 - [Sprint 4 Completion Record](sprint-4-completion-record.md) — authoritative completion evidence
-- [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — mission, incentive, status, cross-contract, and security-handoff reconciliation
+- [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — complete and merged through PR #34
+- [Sprint 5 Plan](sprint-5-plan.md) — in progress on issue #35 and draft PR #36
 
-## Next sprint boundary
+## Current sprint boundary
 
-Sprint 5 — Threat model and security baseline is the next canonical sprint. It begins only after the pre-Sprint 5 alignment reconciliation is accepted and a separate entry decision greenlights the existing Sprint 5 goal, deliverables, acceptance criteria, and non-scope.
+Sprint 5 — Threat model and security baseline is in progress. Its accepted goal, deliverables, and acceptance criteria remain unchanged.
 
-Beginning Sprint 5 will not declare institutional Phase 0 complete or authorize accounts, providers, agents, real health data, research, or production security claims.
+The sprint defines architecture, policies, procedures, public synthetic evidence, and tabletop exercises. It does not authorize accounts, providers, agents, connectors, real health data, production encryption, operational key custody, research, or production security claims.
 
 ## Status rule
 
