@@ -86,7 +86,10 @@ function isDenyReason(reason: string): boolean {
   return reason.startsWith("deny.");
 }
 
-function sameSet(left: ReadonlyArray<string>, right: ReadonlyArray<string>): boolean {
+function sameSet(
+  left: ReadonlyArray<string>,
+  right: ReadonlyArray<string>,
+): boolean {
   if (left.length !== right.length) return false;
   const rightSet = new Set(right);
   return left.every((value) => rightSet.has(value));
@@ -117,7 +120,8 @@ function selectorWithinGrant(
   if (requested === undefined) return true;
   if (permitted === undefined) {
     return Object.values(requested).every(
-      (value) => value === undefined || (Array.isArray(value) && value.length === 0),
+      (value) =>
+        value === undefined || (Array.isArray(value) && value.length === 0),
     );
   }
 
@@ -125,7 +129,8 @@ function selectorWithinGrant(
     requestedValues: ReadonlyArray<string> | undefined,
     permittedValues: ReadonlyArray<string> | undefined,
   ) => {
-    if (requestedValues === undefined || requestedValues.length === 0) return true;
+    if (requestedValues === undefined || requestedValues.length === 0)
+      return true;
     if (permittedValues === undefined) return false;
     return isSubset(requestedValues, permittedValues);
   };
@@ -149,7 +154,8 @@ function selectorWithinGrant(
   if (
     requested.representedFrom !== undefined &&
     (permitted.representedFrom === undefined ||
-      Date.parse(requested.representedFrom) < Date.parse(permitted.representedFrom))
+      Date.parse(requested.representedFrom) <
+        Date.parse(permitted.representedFrom))
   ) {
     return false;
   }
@@ -214,7 +220,11 @@ function durationReasons(
       break;
     case "delayed-activation": {
       const fact = conditionFacts.get(grant.duration.activationConditionId);
-      if (fact === undefined || fact.status === "unknown" || fact.status === "conflicting") {
+      if (
+        fact === undefined ||
+        fact.status === "unknown" ||
+        fact.status === "conflicting"
+      ) {
         reasons.push("indeterminate.condition.unknown");
       } else if (fact.status === "false") {
         reasons.push("deny.grant.not-started");
@@ -322,7 +332,11 @@ function conditionReasons(
   const reasons: string[] = [];
   for (const condition of grant.conditions) {
     const fact = conditionFacts.get(condition.id);
-    if (fact === undefined || fact.status === "unknown" || fact.status === "conflicting") {
+    if (
+      fact === undefined ||
+      fact.status === "unknown" ||
+      fact.status === "conflicting"
+    ) {
       reasons.push("indeterminate.condition.unknown");
     } else if (fact.status === "false") {
       reasons.push("deny.condition.false");
@@ -338,7 +352,10 @@ function grantCoverageReasons(
   const request = input.request;
   const reasons: string[] = [];
 
-  if (grant.purposeId !== request.purposeId || grant.purposeRevision !== request.purposeRevision) {
+  if (
+    grant.purposeId !== request.purposeId ||
+    grant.purposeRevision !== request.purposeRevision
+  ) {
     reasons.push("deny.purpose.mismatch");
   }
   if (
@@ -376,7 +393,12 @@ function grantCoverageReasons(
   ) {
     reasons.push("deny.performing-actor.mismatch");
   }
-  if (!isSubset(request.requestedConditionIds, grant.conditions.map((condition) => condition.id))) {
+  if (
+    !isSubset(
+      request.requestedConditionIds,
+      grant.conditions.map((condition) => condition.id),
+    )
+  ) {
     reasons.push("deny.condition.false");
   }
 
@@ -417,7 +439,9 @@ function definitionsReasons(input: PolicyEvaluationInput): string[] {
   const request = input.request;
   const policy = input.bundle.policyBundle;
   const reasons: string[] = [];
-  const purpose = policy.purposes.find((value) => value.id === request.purposeId);
+  const purpose = policy.purposes.find(
+    (value) => value.id === request.purposeId,
+  );
   const recipient = policy.recipients.find(
     (value) => value.id === request.primaryRecipientId,
   );
@@ -440,7 +464,9 @@ function definitionsReasons(input: PolicyEvaluationInput): string[] {
   }
 
   for (const categoryId of request.dataCategoryIds) {
-    const category = policy.dataCategories.find((value) => value.id === categoryId);
+    const category = policy.dataCategories.find(
+      (value) => value.id === categoryId,
+    );
     if (category === undefined) {
       reasons.push("indeterminate.taxonomy.unresolved");
     } else if (!category.grantable || category.status !== "active") {
@@ -526,7 +552,10 @@ export function evaluateHouseOfKeysPolicy(
   globalReasons.push(...requestStructureReasons(input));
   globalReasons.push(...definitionsReasons(input));
 
-  if (input.request.requesterId === input.bundle.grants[0]?.grantingAuthorityId && input.request.requesterKind === "requester") {
+  if (
+    input.request.requesterId === input.bundle.grants[0]?.grantingAuthorityId &&
+    input.request.requesterKind === "requester"
+  ) {
     const actor = input.bundle.actors.find(
       (candidate) => candidate.id === input.request.requesterId,
     );
@@ -549,10 +578,7 @@ export function evaluateHouseOfKeysPolicy(
   const purpose = input.bundle.policyBundle.purposes.find(
     (candidate) => candidate.id === input.request.purposeId,
   );
-  if (
-    purpose?.purposeClass === "personal-core" &&
-    isSecondaryPurpose(input)
-  ) {
+  if (purpose?.purposeClass === "personal-core" && isSecondaryPurpose(input)) {
     globalReasons.push("indeterminate.policy.constitution-conflict");
   }
 
@@ -580,10 +606,13 @@ export function evaluateHouseOfKeysPolicy(
       ? undefined
       : new Set(input.candidateGrantIds);
   const candidates = input.bundle.grants
-    .filter((grant) => candidateIdSet === undefined || candidateIdSet.has(grant.id))
+    .filter(
+      (grant) => candidateIdSet === undefined || candidateIdSet.has(grant.id),
+    )
     .slice()
-    .sort((left, right) =>
-      left.id.localeCompare(right.id) || left.revision - right.revision,
+    .sort(
+      (left, right) =>
+        left.id.localeCompare(right.id) || left.revision - right.revision,
     );
 
   const findings: GrantEvaluationFinding[] = [];
@@ -648,7 +677,10 @@ export function evaluateHouseOfKeysPolicy(
 
   const orderedGlobalReasons = sortReasons(globalReasons);
   const candidateReasons = findings.flatMap((finding) => finding.reasonCodes);
-  const allReasons = sortReasons([...orderedGlobalReasons, ...candidateReasons]);
+  const allReasons = sortReasons([
+    ...orderedGlobalReasons,
+    ...candidateReasons,
+  ]);
 
   for (const reason of allReasons) {
     if (isIndeterminateReason(reason)) {
@@ -682,8 +714,8 @@ export function evaluateHouseOfKeysPolicy(
     ]);
   }
 
-  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort((left, right) =>
-    left.localeCompare(right),
+  const sortedAuthorizingGrantIds = [...authorizingGrantIds].sort(
+    (left, right) => left.localeCompare(right),
   );
 
   return {
