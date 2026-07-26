@@ -6,7 +6,7 @@
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
 **Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, thirty-six House of Keys enforcement controls, and thirty-six untrusted-input controls are registered; production-facing risks remain blocking  
-**Validated 5.6 head:** `b81517819ea32aed3ab86cef6a382c213cf090f9` — CI run 401 and DCO run 442 passed
+**Validated 5.6 head:** `e255b3f954ce83090db496ed5ed93c14f84be823` — CI run 402 and DCO run 443 passed
 
 ## Purpose
 
