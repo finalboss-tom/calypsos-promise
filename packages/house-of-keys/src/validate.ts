@@ -369,7 +369,11 @@ function validateGrant(
     );
   }
 
-  validateId(grant.controlledResourceId, `${path}.controlledResourceId`, issues);
+  validateId(
+    grant.controlledResourceId,
+    `${path}.controlledResourceId`,
+    issues,
+  );
   validateStringArray(grant.subjectIds, `${path}.subjectIds`, issues, {
     requireNonEmpty: true,
     namespaced: true,
@@ -558,10 +562,7 @@ function validateGrant(
         "A personal-core purpose must remain classified as essential personal use.",
       );
     }
-    if (
-      purposeClass !== "personal-core" &&
-      grant.optionality !== "optional"
-    ) {
+    if (purposeClass !== "personal-core" && grant.optionality !== "optional") {
       addIssue(
         issues,
         "ESSENTIAL_USE_CLASSIFICATION_INVALID",
@@ -626,7 +627,11 @@ function validateReceipt(
     );
   }
   validateId(receipt.correlationId, `${path}.correlationId`, issues);
-  validateId(receipt.controlledResourceId, `${path}.controlledResourceId`, issues);
+  validateId(
+    receipt.controlledResourceId,
+    `${path}.controlledResourceId`,
+    issues,
+  );
   validateStringArray(receipt.subjectIds, `${path}.subjectIds`, issues, {
     requireNonEmpty: true,
     namespaced: true,
@@ -907,7 +912,10 @@ export function validateHouseOfKeysSchemaBundle(
     purposes.set(purpose.id, purpose);
   }
   const categories = new Map<string, DefinitionRevision>();
-  for (const [index, category] of bundle.policyBundle.dataCategories.entries()) {
+  for (const [
+    index,
+    category,
+  ] of bundle.policyBundle.dataCategories.entries()) {
     validateDefinition(
       category,
       `policyBundle.dataCategories[${index}]`,
@@ -1003,10 +1011,7 @@ export function validateHouseOfKeysSchemaBundle(
       ) ||
       !selectorsEqual(grant.selector, explanation.selector) ||
       !sameSet(grant.actionIds, explanation.actionIds) ||
-      !recordKeysMatchIds(
-        explanation.actionRevisions,
-        explanation.actionIds,
-      ) ||
+      !recordKeysMatchIds(explanation.actionRevisions, explanation.actionIds) ||
       explanation.actionIds.some(
         (id) => explanation.actionRevisions[id] !== grant.actionRevisions[id],
       ) ||
