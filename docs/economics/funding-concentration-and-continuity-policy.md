@@ -50,11 +50,11 @@ Before meaningful funding history exists, every organizational and material in-k
 
 After a trailing-twelve-month funding base exists, use these provisional triggers:
 
-| Share from one source or related group | Baseline response |
-| --- | --- |
-| 10% or more | Publish concentration watch and review restrictions, influence, dependency, and replacement |
-| 20% or more | Require written diversification, mitigation, replacement, and continuity plan |
-| 33% or more | Presumptively pause additional dependency unless independent review accepts a narrow, time-bounded exception |
+| Share from one source or related group | Baseline response                                                                                            |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| 10% or more                            | Publish concentration watch and review restrictions, influence, dependency, and replacement                  |
+| 20% or more                            | Require written diversification, mitigation, replacement, and continuity plan                                |
+| 33% or more                            | Presumptively pause additional dependency unless independent review accepts a narrow, time-bounded exception |
 
 These are review triggers, not safety guarantees or automatic misconduct findings.
 
