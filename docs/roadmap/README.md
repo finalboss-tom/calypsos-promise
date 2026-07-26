@@ -12,8 +12,8 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint 4 Completion Record](sprint-4-completion-record.md)
-3. [Sprint 4 Plan](sprint-4-plan.md)
+2. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+3. [Sprint 4 Completion Record](sprint-4-completion-record.md)
 4. [Sprint Sequence](sprints.md)
 5. [Public Institutional Roadmap](../../ROADMAP.md)
 
@@ -25,8 +25,15 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Sprint 2 Consistency Cleanup](sprint-2-consistency-cleanup.md)
 - [Sprint 3 Plan](sprint-3-plan.md)
 - [Sprint 3 Completion Record](sprint-3-completion-record.md)
-- [Sprint 4 Plan](sprint-4-plan.md) — complete on PR #33; pending merge
-- [Sprint 4 Completion Record](sprint-4-completion-record.md) — review and acceptance evidence
+- [Sprint 4 Plan](sprint-4-plan.md) — complete and merged through PR #33
+- [Sprint 4 Completion Record](sprint-4-completion-record.md) — authoritative completion evidence
+- [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — mission, incentive, status, cross-contract, and security-handoff reconciliation
+
+## Next sprint boundary
+
+Sprint 5 — Threat model and security baseline is the next canonical sprint. It begins only after the pre-Sprint 5 alignment reconciliation is accepted and a separate entry decision greenlights the existing Sprint 5 goal, deliverables, acceptance criteria, and non-scope.
+
+Beginning Sprint 5 will not declare institutional Phase 0 complete or authorize accounts, providers, agents, real health data, research, or production security claims.
 
 ## Status rule
 
