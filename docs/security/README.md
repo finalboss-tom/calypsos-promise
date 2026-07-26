@@ -2,10 +2,10 @@
 
 [Repository home](../../README.md) · [Security policy](../../SECURITY.md) · [Current status](../roadmap/current-status.md) · [Sprint 5 plan](../roadmap/sprint-5-plan.md) · [Publication and confidentiality](../policies/publication-and-confidentiality.md)
 
-**Status:** Sprint 5 working area — workstreams 5.1–5.5 complete at the internal architecture level; 5.6 next  
+**Status:** Sprint 5 working area — workstreams 5.1–5.6 complete at the internal architecture level; 5.7 next  
 **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
 **Production boundary:** No production health-data, account, agent, connector, research, encryption, key-custody, monitoring, or administrative runtime is authorized or represented as deployed  
-**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, and thirty-six House of Keys enforcement controls are registered; production-facing risks remain blocking
+**Threat baseline:** Forty-six threats, twenty-eight integrated control objectives, forty-six residual risks, twenty-eight Chronicle controls, thirty-six House of Keys enforcement controls, and thirty-six untrusted-input controls are registered; production-facing risks remain blocking
 
 ## Purpose
 
@@ -122,13 +122,25 @@ The baseline establishes that a policy `allow` is immutable point-in-time eviden
 
 No lifecycle projection, capacity service, policy gateway, queue, performer, release service, receipt service, audit store, recipient integration, clock, transaction, or production operation is authorized or represented as deployed. Independent security, privacy, accessibility, legal, and records-governance review and public synthetic enforcement evidence remain pending.
 
-### Upload, connector, document, AI, MCP, dependency, and untrusted-input isolation — 5.6 next
+### Upload, connector, document, AI, MCP, dependency, and untrusted-input isolation — 5.6 complete at internal baseline
 
-The next workstream will refine `THR-015` and `THR-023` through `THR-030` for untrusted content, parsers, prompts, tools, agents, providers, connectors, packages, builds, and supply-chain boundaries without weakening 5.1–5.5 authority and lifecycle controls.
+The completed internal 5.6 baseline consists of:
 
-### Encryption, secrets, and environments
+- the [Untrusted Input, Connector, AI, MCP, and Supply-Chain Isolation Model](untrusted-input-and-agent-isolation-model.md);
+- the [Untrusted Input, Connector, AI, MCP, and Supply-Chain Control Register](untrusted-input-control-register.md); and
+- the [Untrusted Input and External Execution Processing-State Register](untrusted-input-processing-state-register.md).
 
-The baseline defines provider-independent encryption, key, secret, network, origin, and environment-isolation requirements without selecting or deploying a vendor.
+Together they refine `THR-015` and `THR-023` through `THR-031` through thirty-six stable `CTL-UT-*` controls, explicit intake, content, connector, AI, retrieval, MCP, tool, build, trust-claim, and terminal-disposition states, plus cross-control implementation and revalidation requirements.
+
+The baseline treats every upload, archive, document, image, media object, connector payload, retrieved chunk, citation, prompt, model result, tool result, MCP client, dependency, build action, cache, and artifact as untrusted. Successful parsing, scanning, schema validation, synchronization, retrieval, generation, tool execution, build, or testing may create bounded evidence claims, but cannot create identity, permission, Chronicle truth, recipient authority, clinical truth, tool authority, or production approval.
+
+The model requires server-derived resource context, type and resource bounds, quarantine, ephemeral least-capability processing, safe decoding, proposal-only transformations, connector scope and cursor integrity, revocation propagation, prompt and data separation, external model authority enforcement, provider-egress records, retrieval isolation and lifecycle invalidation, server-owned MCP tool registries, bounded invocation envelopes, agent-compromise containment, dependency and build provenance, synthetic-only untrusted contribution flows, indirect secret-path review, truthful failure behavior, and accessible non-AI fallback.
+
+No upload, scanner, parser, sandbox, connector, model, retrieval, MCP, agent, dependency, build, CI, or release provider or production runtime is selected, authorized, or represented as deployed. Independent security, privacy, AI-safety, accessibility, legal, clinical, and supply-chain review and public synthetic adversarial evidence remain pending.
+
+### Encryption, key management, secrets, and environment isolation — 5.7 next
+
+The next workstream will define provider-independent encryption, key hierarchy, secret lifecycle, environment separation, private-origin, network, service-identity, and evidence requirements without selecting or deploying a vendor.
 
 ### Recovery, incidents, audit, and deletion verification
 
@@ -199,6 +211,9 @@ Until a qualified reviewer is named or a separately reviewed temporary exception
 - [House of Keys Enforcement Security Model](house-of-keys-enforcement-security-model.md)
 - [House of Keys Enforcement Control Register](house-of-keys-control-register.md)
 - [House of Keys Decision and Execution Lifecycle Register](house-of-keys-decision-execution-lifecycle-register.md)
+- [Untrusted Input and Agent Isolation Model](untrusted-input-and-agent-isolation-model.md)
+- [Untrusted Input Control Register](untrusted-input-control-register.md)
+- [Untrusted Input Processing-State Register](untrusted-input-processing-state-register.md)
 - [Control Status and Risk Vocabulary](control-status-and-risk-vocabulary.md)
 - [Security Policy](../../SECURITY.md)
 - [Pre-Sprint 5 Alignment Review](../roadmap/pre-sprint-5-alignment-review.md)
