@@ -105,9 +105,14 @@ Baseline artifact: [`docs/architecture/house-of-keys-policy-evaluation-model.md`
 
 The baseline defines a side-effect-free evaluator with no hidden provider, clock, database, network, model, or session lookups; explicit atomic request, policy, registry, grant, lifecycle, explanation, comprehension, confirmation, condition, and capacity inputs; complete-grant matching without implicit partial-grant composition; ordered evaluation stages; stable reason-code families; point-in-time freshness; fail-closed `deny` and `indeterminate` semantics; multiple independent-grant handling; single-use and bounded-count boundaries; decision, execution, receipt, audit, and Chronicle separation; essential-use independence; mandatory-authority hold points; and fourteen synthetic decision scenarios for deterministic implementation in workstream 4.9.
 
-### 4.9 TypeScript contracts, validators, tests, and public synthetic fixtures
+### 4.9 TypeScript contracts, validators, tests, and public synthetic fixtures — complete at baseline level
 
 Create a separate House of Keys package with an independent pre-stable contract version, deliberate public exports, deterministic validation, Node tests, and JSON-serializable synthetic fixtures.
+
+Baseline artifact: [`docs/product/house-of-keys-contract-baseline.md`](../product/house-of-keys-contract-baseline.md)  
+Package: [`packages/house-of-keys`](../../packages/house-of-keys)
+
+The baseline introduces `@calypsos-promise/house-of-keys` with contract version `0.1.0-pre.1`; explicit TypeScript contracts for authority-bearing definitions and evidence; deterministic bundle validation; a pure `allow`, `deny`, or `indeterminate` evaluator; ordered reason codes and grant findings; fourteen public synthetic decision scenarios; and Node tests for validation, fail-closed outcomes, deterministic bytes, non-mutation, JSON serialization, revocation, blanket requests, stale evidence, partial-grant composition, and multiple independent grants. The package remains separate from `@calypsos-promise/health-schema` and introduces no production consent infrastructure.
 
 ### 4.10 Cross-contract review and completion record
 
