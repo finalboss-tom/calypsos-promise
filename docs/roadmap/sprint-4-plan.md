@@ -1,9 +1,10 @@
 # Sprint 4 Plan — House of Keys Consent Architecture
 
-**Status:** IN PROGRESS  
+**Status:** COMPLETE ON PR #33 — pending steward approval and merge  
 **Tracking issue:** #32  
 **Branch:** `sprint/4-house-of-keys-consent`  
-**Canonical scope:** [`docs/roadmap/sprints.md`](sprints.md#sprint-4--house-of-keys-consent-architecture)
+**Canonical scope:** [`docs/roadmap/sprints.md`](sprints.md#sprint-4--house-of-keys-consent-architecture)  
+**Completion record:** [`sprint-4-completion-record.md`](sprint-4-completion-record.md)
 
 ## Goal
 
@@ -103,7 +104,7 @@ Define a pure, versioned evaluator that consumes explicit facts and returns `all
 
 Baseline artifact: [`docs/architecture/house-of-keys-policy-evaluation-model.md`](../architecture/house-of-keys-policy-evaluation-model.md)
 
-The baseline defines a side-effect-free evaluator with no hidden provider, clock, database, network, model, or session lookups; explicit atomic request, policy, registry, grant, lifecycle, explanation, comprehension, confirmation, condition, and capacity inputs; complete-grant matching without implicit partial-grant composition; ordered evaluation stages; stable reason-code families; point-in-time freshness; fail-closed `deny` and `indeterminate` semantics; multiple independent-grant handling; single-use and bounded-count boundaries; decision, execution, receipt, audit, and Chronicle separation; essential-use independence; mandatory-authority hold points; and fourteen synthetic decision scenarios for deterministic implementation in workstream 4.9.
+The baseline defines a side-effect-free evaluator with no hidden provider, clock, database, network, model, random, environment, or session lookups; explicit atomic request, policy, registry, grant, lifecycle, explanation, comprehension, confirmation, condition, and capacity inputs; complete-grant matching without implicit partial-grant composition; ordered evaluation stages; stable reason-code families; point-in-time freshness; fail-closed `deny` and `indeterminate` semantics; multiple independent-grant handling; single-use and bounded-count boundaries; decision, execution, receipt, audit, and Chronicle separation; essential-use independence; mandatory-authority hold points; and deterministic synthetic decision evidence.
 
 ### 4.9 TypeScript contracts, validators, tests, and public synthetic fixtures — complete at baseline level
 
@@ -112,28 +113,33 @@ Create a separate House of Keys package with an independent pre-stable contract 
 Baseline artifact: [`docs/product/house-of-keys-contract-baseline.md`](../product/house-of-keys-contract-baseline.md)  
 Package: [`packages/house-of-keys`](../../packages/house-of-keys)
 
-The baseline introduces `@calypsos-promise/house-of-keys` with contract version `0.1.0-pre.1`; explicit TypeScript contracts for authority-bearing definitions and evidence; deterministic bundle validation; a pure `allow`, `deny`, or `indeterminate` evaluator; ordered reason codes and grant findings; fourteen public synthetic decision scenarios; and Node tests for validation, fail-closed outcomes, deterministic bytes, non-mutation, JSON serialization, revocation, blanket requests, stale evidence, partial-grant composition, and multiple independent grants. The package remains separate from `@calypsos-promise/health-schema` and introduces no production consent infrastructure.
+The baseline introduces `@calypsos-promise/house-of-keys` with contract version `0.1.0-pre.1`; explicit TypeScript contracts for authority-bearing definitions, grants, lifecycle events and state, explanations, comprehension, confirmations, requests, decisions, and access receipts; deterministic bundle validation; a pure `allow`, `deny`, or `indeterminate` evaluator; ordered reason codes and per-grant findings; seventeen public synthetic decision scenarios; one public synthetic completed-access receipt; and twenty-nine Node tests. The package remains separate from `@calypsos-promise/health-schema` and introduces no production consent infrastructure.
 
-### 4.10 Cross-contract review and completion record
+### 4.10 Cross-contract review and completion record — complete on review branch
 
 Review consistency across frozen rights, vocabulary, Chronicle boundaries, incentives, architecture, contracts, evaluator, receipts, explanations, fixtures, and tests. Record acceptance evidence, compatibility requirements, specialist hold points, and unresolved questions.
 
+Completion artifact: [`sprint-4-completion-record.md`](sprint-4-completion-record.md)
+
+The review repaired exact revision snapshots, selector narrowing, explanation parity, controlling-person grant authority, lifecycle transition evidence, receipt contracts and validation, decision correlation, required performing-actor handling, personal-core independence, and synthetic adversarial coverage. It records the event-to-state, security, identity, legal, accessibility, distributed-enforcement, and production boundaries that remain deferred.
+
 ## Adversarial evidence within the accepted scope
 
-The grant, revocation, receipt, explanation, comprehension, and evaluation work should cover:
+The grant, revocation, receipt, explanation, comprehension, and evaluation work covers:
 
 - stale or expired grants
-- purpose laundering
-- confused-deputy requests
-- requester and recipient mismatch
-- overbroad recipient classes
-- implicit category expansion
+- purpose and category broadening
+- confused-deputy and actor-boundary requests
+- requester, recipient, and performing-actor mismatch
+- overbroad or omitted selectors
 - unsupported actions
-- omitted or mismatched receipts
-- revocation races and stale decisions
-- coercive or inaccessible explanations
-- failed comprehension evidence
-- AI-generated permission misrepresentation
+- omitted or mismatched receipts and evidence
+- revocation, expiry, stale decisions, and conflicting capacity
+- coercive or inaccessible explanations at the architecture boundary
+- failed or stale comprehension evidence
+- partial-grant composition
+- optional secondary-use independence
+- AI-generated permission misrepresentation at the architecture boundary
 
 These are test cases for existing deliverables, not additional Sprint 4 deliverables.
 
@@ -141,7 +147,7 @@ These are test cases for existing deliverables, not additional Sprint 4 delivera
 
 Sprint 4 does not select or implement production accounts, identity proofing, databases, APIs, queues, providers, connectors, real recipients, real-data flows, research enrollment, compensation, marketplaces, legal conclusions, encryption, key management, incident response, clinical behavior, AI providers, remote MCP authorization, treasury, ownership, tokens, blockchain, NFTs, or on-chain governance.
 
-The complete integrated threat model remains Sprint 5. Sprint 4 still preserves consent-specific adversarial evidence and explicit security hold points.
+The complete integrated threat model remains Sprint 5. Sprint 4 preserves consent-specific adversarial evidence and explicit security hold points without claiming production approval.
 
 ## Stop conditions
 
@@ -151,11 +157,13 @@ Stop and seek a reviewed decision if work would:
 - weaken private-by-default behavior, refusal, inspectability, revocation, or essential-use independence
 - place consent state inside Chronicle truth
 - let an AI, requester, recipient, provider, operator, or governance body create permission independently
-- reward permission breadth, disclosure, retention, research, commerce, or receipt volume
+- reward permission breadth, disclosure, retention, research, commerce, receipt volume, or comprehension success
 - default ambiguous or missing facts to allow
 - claim production, privacy, legal, accessibility, security, clinical, or research approval
 - introduce protected source material into public repository workflows
 
-## Completion rule
+## Completion result
 
-Sprint 4 closes only when every accepted deliverable has a repository artifact, every acceptance criterion has deterministic evidence, cross-contract consistency is reviewed, unresolved questions remain explicit, CI and DCO pass, and no material decision remains only in chat.
+Every accepted Sprint 4 deliverable has a repository artifact. Every acceptance criterion has deterministic evidence. Cross-contract consistency, compatibility requirements, specialist hold points, and unresolved questions are recorded in the [Sprint 4 Completion Record](sprint-4-completion-record.md). CI and DCO pass on the reviewed implementation head.
+
+Sprint 4 is complete on PR #33 but remains unmerged until explicit founding-steward approval.
