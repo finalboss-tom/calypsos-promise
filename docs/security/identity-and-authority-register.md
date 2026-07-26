@@ -29,112 +29,112 @@ An ID is a design reference. It does not establish identity, authority, control,
 
 ## Identity domains
 
-| ID | Identity domain | Authority boundary |
-| --- | --- | --- |
-| `IDN-PERSON` | Protected human person | Rights-bearing human; not required to equal a legal name, provider subject, wallet, or public identity |
-| `IDN-ACCOUNT` | Authentication account | Authenticates an account actor; does not own Chronicle truth or permission |
-| `IDN-ACCOUNT-LINK` | Account-access link | Relates an account actor to a controlled resource under one explicit authority profile |
-| `IDN-CHRONICLE` | Chronicle pseudonym | Stable controlled-resource identity independent from login providers and direct identifiers |
-| `IDN-SUBJECT` | Chronicle subject | Identifies who or what an assertion concerns; does not grant control |
-| `IDN-ACTOR` | Human or system actor | Attributes an action; naming does not authorize |
-| `IDN-SESSION` | Session context | Time-bounded authenticated context; not a person, Chronicle, or grant |
-| `IDN-SERVICE` | Internal service identity | Authenticates one bounded machine capability; no discretionary data authority |
-| `IDN-DEVICE` | Device or client reference | Risk, possession, notification, or revocation input; not person or Chronicle proof |
-| `IDN-RECIPIENT` | Recipient identity | Identifies a bounded recipient; does not become account or operator identity |
-| `IDN-OPERATOR` | Operator identity | Authenticates a bounded administrative actor; no ordinary personal-data authority |
-| `IDN-ORGANIZATION` | External or institutional organization | Bounded organization reference; no inherent data, research, or governance authority |
-| `IDN-RECOVERY-CASE` | Recovery case identity | Tracks one constrained recovery procedure; cannot become permanent identity |
-| `IDN-EMERGENCY` | Emergency declaration identity | Tracks one expiring containment authority; cannot become permanent policy |
+| ID                  | Identity domain                        | Authority boundary                                                                                     |
+| ------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `IDN-PERSON`        | Protected human person                 | Rights-bearing human; not required to equal a legal name, provider subject, wallet, or public identity |
+| `IDN-ACCOUNT`       | Authentication account                 | Authenticates an account actor; does not own Chronicle truth or permission                             |
+| `IDN-ACCOUNT-LINK`  | Account-access link                    | Relates an account actor to a controlled resource under one explicit authority profile                 |
+| `IDN-CHRONICLE`     | Chronicle pseudonym                    | Stable controlled-resource identity independent from login providers and direct identifiers            |
+| `IDN-SUBJECT`       | Chronicle subject                      | Identifies who or what an assertion concerns; does not grant control                                   |
+| `IDN-ACTOR`         | Human or system actor                  | Attributes an action; naming does not authorize                                                        |
+| `IDN-SESSION`       | Session context                        | Time-bounded authenticated context; not a person, Chronicle, or grant                                  |
+| `IDN-SERVICE`       | Internal service identity              | Authenticates one bounded machine capability; no discretionary data authority                          |
+| `IDN-DEVICE`        | Device or client reference             | Risk, possession, notification, or revocation input; not person or Chronicle proof                     |
+| `IDN-RECIPIENT`     | Recipient identity                     | Identifies a bounded recipient; does not become account or operator identity                           |
+| `IDN-OPERATOR`      | Operator identity                      | Authenticates a bounded administrative actor; no ordinary personal-data authority                      |
+| `IDN-ORGANIZATION`  | External or institutional organization | Bounded organization reference; no inherent data, research, or governance authority                    |
+| `IDN-RECOVERY-CASE` | Recovery case identity                 | Tracks one constrained recovery procedure; cannot become permanent identity                            |
+| `IDN-EMERGENCY`     | Emergency declaration identity         | Tracks one expiring containment authority; cannot become permanent policy                              |
 
 ## Account-authority profile classes
 
 These profiles describe the kind of account-access relationship that later evidence may authorize. They are not automatically active and do not replace House of Keys grants.
 
-| ID | Profile | Permitted boundary | Explicit prohibitions |
-| --- | --- | --- | --- |
-| `IAP-SELF-CONTROL` | Initial controlling-person access | Route a verified controlling person to one controlled Chronicle | No blanket permission; high-consequence actions still require exact policy and step-up controls |
-| `IAP-DELEGATED-CAPTURE` | Bounded human capture assistance | Propose or record draft information for defined subjects and duration | No confirmation, correction, export, deletion, permission, or onward delegation unless separately authorized |
-| `IAP-DELEGATED-REVIEW` | Bounded review assistance | Inspect or comment on a defined record set for one purpose | No canonical write, permission change, or unrelated browsing |
-| `IAP-REPRESENTATIVE-CONTROL` | Future guardian, caregiver, dependent, estate, or legal representative | Only actions supported by explicit evidence, capacity, scope, and jurisdictional review | No universal or perpetual control; no inference from relationship alone |
-| `IAP-RECOVERY-RESTRICTED` | Temporary post-recovery access | Safe low-risk account and recovery review functions | No export, deletion, connector, external sharing, new delegates, permission expansion, or new agent credentials until release conditions are met |
-| `IAP-SUPPORT-LIMITED` | Bounded support capability | Diagnose or correct named account or system state through minimized interfaces | No silent impersonation, raw database browsing, Chronicle truth change, or permission change |
-| `IAP-SECURITY-CONTAINMENT` | Security-response capability | Revoke sessions, isolate services, disable flows, quarantine uploads, preserve bounded evidence | No unrelated personal-data use or permanent policy change |
-| `IAP-MIGRATION-REPAIR` | Bounded deterministic repair or migration | Perform a versioned, reversible, reviewed repair over a defined scope | No discretionary record meaning change, permission expansion, or operator browsing |
-| `IAP-RECEIPT-ISSUER` | Receipt issuance service | Record exact person-visible claims for one decision or execution event | Cannot create permission or rewrite operational history |
-| `IAP-NONE` | Authenticated without controlled-resource authority | Public or account-only functions | No private Chronicle, source, permission, export, or deletion access |
+| ID                           | Profile                                                                | Permitted boundary                                                                              | Explicit prohibitions                                                                                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `IAP-SELF-CONTROL`           | Initial controlling-person access                                      | Route a verified controlling person to one controlled Chronicle                                 | No blanket permission; high-consequence actions still require exact policy and step-up controls                                                  |
+| `IAP-DELEGATED-CAPTURE`      | Bounded human capture assistance                                       | Propose or record draft information for defined subjects and duration                           | No confirmation, correction, export, deletion, permission, or onward delegation unless separately authorized                                     |
+| `IAP-DELEGATED-REVIEW`       | Bounded review assistance                                              | Inspect or comment on a defined record set for one purpose                                      | No canonical write, permission change, or unrelated browsing                                                                                     |
+| `IAP-REPRESENTATIVE-CONTROL` | Future guardian, caregiver, dependent, estate, or legal representative | Only actions supported by explicit evidence, capacity, scope, and jurisdictional review         | No universal or perpetual control; no inference from relationship alone                                                                          |
+| `IAP-RECOVERY-RESTRICTED`    | Temporary post-recovery access                                         | Safe low-risk account and recovery review functions                                             | No export, deletion, connector, external sharing, new delegates, permission expansion, or new agent credentials until release conditions are met |
+| `IAP-SUPPORT-LIMITED`        | Bounded support capability                                             | Diagnose or correct named account or system state through minimized interfaces                  | No silent impersonation, raw database browsing, Chronicle truth change, or permission change                                                     |
+| `IAP-SECURITY-CONTAINMENT`   | Security-response capability                                           | Revoke sessions, isolate services, disable flows, quarantine uploads, preserve bounded evidence | No unrelated personal-data use or permanent policy change                                                                                        |
+| `IAP-MIGRATION-REPAIR`       | Bounded deterministic repair or migration                              | Perform a versioned, reversible, reviewed repair over a defined scope                           | No discretionary record meaning change, permission expansion, or operator browsing                                                               |
+| `IAP-RECEIPT-ISSUER`         | Receipt issuance service                                               | Record exact person-visible claims for one decision or execution event                          | Cannot create permission or rewrite operational history                                                                                          |
+| `IAP-NONE`                   | Authenticated without controlled-resource authority                    | Public or account-only functions                                                                | No private Chronicle, source, permission, export, or deletion access                                                                             |
 
 ## Session classes
 
-| ID | Session class | Purpose | Restrictions |
-| --- | --- | --- | --- |
-| `SES-PUBLIC` | Unauthenticated public context | Public website and public documentation | PUBLIC information only |
-| `SES-ORDINARY` | Ordinary authenticated session | Evaluate low- and medium-consequence account and product actions | No authority beyond active server-resolved profiles and policy |
-| `SES-STEP-UP` | Fresh elevated session | One high-consequence action or narrow time window | Action, audience, environment, resource, and expiry bound |
-| `SES-RECOVERY` | Restricted recovery session | Review and complete bounded recovery | High-consequence actions blocked until release conditions |
-| `SES-DELEGATE` | Delegated actor session | Exercise one active delegation profile | Cannot expand delegation or impersonate controlling person |
-| `SES-OPERATOR` | Restricted operator session | Use named administrative capabilities | Separate operator identity, private origin, short expiry, protected audit |
-| `SES-EMERGENCY` | Emergency containment session | Use one active break-glass capability | Narrow purpose, automatic expiry, post-action review, no permanent authority |
-| `SES-SERVICE` | Service-to-service session | Invoke one bounded internal capability | Audience, environment, method, and capability bound; no user-selected tenant |
-| `SES-SUSPENDED` | Suspended context | Preserve state while blocking operation | No private actions |
-| `SES-COMPROMISED` | Known or suspected compromised context | Containment and investigation only | Rejected for ordinary operation and dependent credentials invalidated |
+| ID                | Session class                          | Purpose                                                          | Restrictions                                                                 |
+| ----------------- | -------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `SES-PUBLIC`      | Unauthenticated public context         | Public website and public documentation                          | PUBLIC information only                                                      |
+| `SES-ORDINARY`    | Ordinary authenticated session         | Evaluate low- and medium-consequence account and product actions | No authority beyond active server-resolved profiles and policy               |
+| `SES-STEP-UP`     | Fresh elevated session                 | One high-consequence action or narrow time window                | Action, audience, environment, resource, and expiry bound                    |
+| `SES-RECOVERY`    | Restricted recovery session            | Review and complete bounded recovery                             | High-consequence actions blocked until release conditions                    |
+| `SES-DELEGATE`    | Delegated actor session                | Exercise one active delegation profile                           | Cannot expand delegation or impersonate controlling person                   |
+| `SES-OPERATOR`    | Restricted operator session            | Use named administrative capabilities                            | Separate operator identity, private origin, short expiry, protected audit    |
+| `SES-EMERGENCY`   | Emergency containment session          | Use one active break-glass capability                            | Narrow purpose, automatic expiry, post-action review, no permanent authority |
+| `SES-SERVICE`     | Service-to-service session             | Invoke one bounded internal capability                           | Audience, environment, method, and capability bound; no user-selected tenant |
+| `SES-SUSPENDED`   | Suspended context                      | Preserve state while blocking operation                          | No private actions                                                           |
+| `SES-COMPROMISED` | Known or suspected compromised context | Containment and investigation only                               | Rejected for ordinary operation and dependent credentials invalidated        |
 
 ## Isolation layers
 
-| ID | Layer | Required invariant |
-| --- | --- | --- |
-| `ISO-EDGE` | Edge and request routing | Authenticated context and environment are derived before private routing; no caller-selected tenant authority |
-| `ISO-DOMAIN` | Domain commands and queries | Every action receives exact controlled resource, subject, actor, purpose, and authority context |
-| `ISO-STRUCTURED` | Structured repositories and database access | Repository methods are partition-scoped; no arbitrary cross-tenant query interfaces |
-| `ISO-OBJECT` | Raw source and object access | Object references are resource-bound, short-lived, purpose-specific, and non-enumerable |
-| `ISO-QUEUE` | Queues and workers | Jobs carry immutable authority references, freshness, cancellation, idempotency, and resource scope |
-| `ISO-CACHE` | Cache and rate-limit state | Keys include environment and controlled-resource context; invalidation follows authority change |
-| `ISO-RETRIEVAL` | Search, embeddings, and indexes | Tenant isolation, source references, disposable derivatives, deletion and rebuild behavior |
-| `ISO-AI` | AI, parsing, and document processing | Minimized authorized context; outputs untrusted; no model-selected resource or tool authority |
-| `ISO-EXPORT` | Exports and temporary artifacts | Exact snapshot, delivery identity, short retention, integrity, and deletion of temporary copies |
-| `ISO-RECEIPT` | Person-visible receipts | Person and resource partitioning, exact references, minimized content, correction chain |
-| `ISO-AUDIT` | Protected logs, traces, and audit | Field allowlists, restricted search, retention, integrity, no shadow Chronicle or identity graph |
-| `ISO-ADMIN` | Administrative capability | Private origin, separate identity, least-capability interface, no arbitrary SQL or impersonation |
-| `ISO-BACKUP` | Backup and restoration | Same or stricter partitioning, deletion-aware restoration, no cross-environment contamination |
-| `ISO-ANALYTICS` | Analytics and research | Isolated purpose-specific datasets, output review, no alternate permission system or full raw replica |
+| ID               | Layer                                       | Required invariant                                                                                            |
+| ---------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ISO-EDGE`       | Edge and request routing                    | Authenticated context and environment are derived before private routing; no caller-selected tenant authority |
+| `ISO-DOMAIN`     | Domain commands and queries                 | Every action receives exact controlled resource, subject, actor, purpose, and authority context               |
+| `ISO-STRUCTURED` | Structured repositories and database access | Repository methods are partition-scoped; no arbitrary cross-tenant query interfaces                           |
+| `ISO-OBJECT`     | Raw source and object access                | Object references are resource-bound, short-lived, purpose-specific, and non-enumerable                       |
+| `ISO-QUEUE`      | Queues and workers                          | Jobs carry immutable authority references, freshness, cancellation, idempotency, and resource scope           |
+| `ISO-CACHE`      | Cache and rate-limit state                  | Keys include environment and controlled-resource context; invalidation follows authority change               |
+| `ISO-RETRIEVAL`  | Search, embeddings, and indexes             | Tenant isolation, source references, disposable derivatives, deletion and rebuild behavior                    |
+| `ISO-AI`         | AI, parsing, and document processing        | Minimized authorized context; outputs untrusted; no model-selected resource or tool authority                 |
+| `ISO-EXPORT`     | Exports and temporary artifacts             | Exact snapshot, delivery identity, short retention, integrity, and deletion of temporary copies               |
+| `ISO-RECEIPT`    | Person-visible receipts                     | Person and resource partitioning, exact references, minimized content, correction chain                       |
+| `ISO-AUDIT`      | Protected logs, traces, and audit           | Field allowlists, restricted search, retention, integrity, no shadow Chronicle or identity graph              |
+| `ISO-ADMIN`      | Administrative capability                   | Private origin, separate identity, least-capability interface, no arbitrary SQL or impersonation              |
+| `ISO-BACKUP`     | Backup and restoration                      | Same or stricter partitioning, deletion-aware restoration, no cross-environment contamination                 |
+| `ISO-ANALYTICS`  | Analytics and research                      | Isolated purpose-specific datasets, output review, no alternate permission system or full raw replica         |
 
 ## Recovery classes
 
-| ID | Recovery class | Restores | Does not restore or create |
-| --- | --- | --- | --- |
-| `RCV-CREDENTIAL` | Credential replacement | Ability to authenticate an existing account after verified recovery | Chronicle control, removed account links, withdrawn permission |
-| `RCV-ACCOUNT` | Account access recovery | Bounded account access and recovery review | Automatic high-consequence access or secondary-use authority |
-| `RCV-CONTROL` | Contested Chronicle-control recovery | A reviewed controlling-authority relationship when evidence supports it | Universal legal authority or silent override of another claimant |
-| `RCV-DELEGATE` | Delegate access recovery | One active delegation profile | Expanded scope or renewed expired delegation |
-| `RCV-OPERATOR` | Operator access recovery | Bounded operator role after organizational verification | Personal-data access outside named capabilities |
-| `RCV-SERVICE` | Service identity recovery | One service capability after key or credential replacement | Cross-service or cross-environment authority |
-| `RCV-KEY` | Cryptographic key recovery | Authorized decryption or signing capability under the later key hierarchy | Data authority, permission, or operator discretion |
-| `RCV-INSTITUTION` | Institutional continuity | Legitimate continuity of releases, infrastructure, archives, and governance operations | Founder permanence or personal Chronicle authority |
+| ID                | Recovery class                       | Restores                                                                               | Does not restore or create                                       |
+| ----------------- | ------------------------------------ | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `RCV-CREDENTIAL`  | Credential replacement               | Ability to authenticate an existing account after verified recovery                    | Chronicle control, removed account links, withdrawn permission   |
+| `RCV-ACCOUNT`     | Account access recovery              | Bounded account access and recovery review                                             | Automatic high-consequence access or secondary-use authority     |
+| `RCV-CONTROL`     | Contested Chronicle-control recovery | A reviewed controlling-authority relationship when evidence supports it                | Universal legal authority or silent override of another claimant |
+| `RCV-DELEGATE`    | Delegate access recovery             | One active delegation profile                                                          | Expanded scope or renewed expired delegation                     |
+| `RCV-OPERATOR`    | Operator access recovery             | Bounded operator role after organizational verification                                | Personal-data access outside named capabilities                  |
+| `RCV-SERVICE`     | Service identity recovery            | One service capability after key or credential replacement                             | Cross-service or cross-environment authority                     |
+| `RCV-KEY`         | Cryptographic key recovery           | Authorized decryption or signing capability under the later key hierarchy              | Data authority, permission, or operator discretion               |
+| `RCV-INSTITUTION` | Institutional continuity             | Legitimate continuity of releases, infrastructure, archives, and governance operations | Founder permanence or personal Chronicle authority               |
 
 ## Operator capability classes
 
-| ID | Capability | Allowed actions | Prohibited actions |
-| --- | --- | --- | --- |
-| `OPR-DEPLOY` | Deployment operator | Deploy, roll back, inspect safe deployment health | No personal-record browsing or permission change |
-| `OPR-SUPPORT` | Support operator | Use minimized account and workflow diagnostics | No silent impersonation, raw Chronicle access, or unrelated search |
-| `OPR-SECURITY` | Security responder | Contain incidents, revoke sessions, isolate services, preserve bounded evidence | No unrelated use, permanent policy change, or suppression of person rights |
-| `OPR-AUDIT` | Audit reviewer | Review allowlisted evidence for an approved purpose | No shadow analytics or raw data exploration |
-| `OPR-DATA-REPAIR` | Deterministic repair operator | Execute an approved repair or migration plan | No discretionary clinical, historical, or permission edits |
-| `OPR-KEY` | Key-management operator | Perform bounded key lifecycle actions under separation-of-duty rules | No application-data use or sole irreversible authority |
-| `OPR-RECOVERY` | Recovery reviewer | Review recovery evidence and issue bounded outcomes | No self-approval, permanent authority, or health-history proofing |
-| `OPR-INCIDENT-COMMS` | Incident communications | Notify affected parties and publish safe derivatives | No access to more personal or security detail than necessary |
+| ID                   | Capability                    | Allowed actions                                                                 | Prohibited actions                                                         |
+| -------------------- | ----------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `OPR-DEPLOY`         | Deployment operator           | Deploy, roll back, inspect safe deployment health                               | No personal-record browsing or permission change                           |
+| `OPR-SUPPORT`        | Support operator              | Use minimized account and workflow diagnostics                                  | No silent impersonation, raw Chronicle access, or unrelated search         |
+| `OPR-SECURITY`       | Security responder            | Contain incidents, revoke sessions, isolate services, preserve bounded evidence | No unrelated use, permanent policy change, or suppression of person rights |
+| `OPR-AUDIT`          | Audit reviewer                | Review allowlisted evidence for an approved purpose                             | No shadow analytics or raw data exploration                                |
+| `OPR-DATA-REPAIR`    | Deterministic repair operator | Execute an approved repair or migration plan                                    | No discretionary clinical, historical, or permission edits                 |
+| `OPR-KEY`            | Key-management operator       | Perform bounded key lifecycle actions under separation-of-duty rules            | No application-data use or sole irreversible authority                     |
+| `OPR-RECOVERY`       | Recovery reviewer             | Review recovery evidence and issue bounded outcomes                             | No self-approval, permanent authority, or health-history proofing          |
+| `OPR-INCIDENT-COMMS` | Incident communications       | Notify affected parties and publish safe derivatives                            | No access to more personal or security detail than necessary               |
 
 ## Emergency capability classes
 
-| ID | Emergency capability | Permitted containment | Prohibited expansion |
-| --- | --- | --- | --- |
-| `EMG-SESSION-REVOKE` | Revoke active sessions and derived credentials | Suspected takeover or session compromise | No new account or Chronicle authority |
-| `EMG-FLOW-STOP` | Stop or pause a service, queue, connector, export, or release flow | Active leakage, stale authority, or integrity failure | No permanent policy redesign |
-| `EMG-SERVICE-ISOLATE` | Remove a service or environment from traffic | Compromise, corruption, unsafe dependency | No unrelated data inspection |
-| `EMG-UPLOAD-QUARANTINE` | Quarantine an upload, document, or source artifact | Malware or parser risk | No automatic Chronicle confirmation or indefinite retention |
-| `EMG-SECRET-ROTATE` | Rotate or revoke a secret, key, or certificate | Exposure or suspected compromise | No discretionary data access |
-| `EMG-READ-ONLY` | Place a bounded domain into read-only mode | Integrity or destructive-action risk | No silent denial of export or correction beyond the expiring containment window |
-| `EMG-EVIDENCE-HOLD` | Preserve minimized incident evidence | Active investigation or legal holdpoint | No broad surveillance or indefinite retention without review |
-| `EMG-RECOVERY-FREEZE` | Freeze high-consequence actions during contested recovery | Account takeover or authority dispute | No permanent deprivation or unreviewable founder control |
+| ID                      | Emergency capability                                               | Permitted containment                                 | Prohibited expansion                                                            |
+| ----------------------- | ------------------------------------------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `EMG-SESSION-REVOKE`    | Revoke active sessions and derived credentials                     | Suspected takeover or session compromise              | No new account or Chronicle authority                                           |
+| `EMG-FLOW-STOP`         | Stop or pause a service, queue, connector, export, or release flow | Active leakage, stale authority, or integrity failure | No permanent policy redesign                                                    |
+| `EMG-SERVICE-ISOLATE`   | Remove a service or environment from traffic                       | Compromise, corruption, unsafe dependency             | No unrelated data inspection                                                    |
+| `EMG-UPLOAD-QUARANTINE` | Quarantine an upload, document, or source artifact                 | Malware or parser risk                                | No automatic Chronicle confirmation or indefinite retention                     |
+| `EMG-SECRET-ROTATE`     | Rotate or revoke a secret, key, or certificate                     | Exposure or suspected compromise                      | No discretionary data access                                                    |
+| `EMG-READ-ONLY`         | Place a bounded domain into read-only mode                         | Integrity or destructive-action risk                  | No silent denial of export or correction beyond the expiring containment window |
+| `EMG-EVIDENCE-HOLD`     | Preserve minimized incident evidence                               | Active investigation or legal holdpoint               | No broad surveillance or indefinite retention without review                    |
+| `EMG-RECOVERY-FREEZE`   | Freeze high-consequence actions during contested recovery          | Account takeover or authority dispute                 | No permanent deprivation or unreviewable founder control                        |
 
 ## Required control register
 
