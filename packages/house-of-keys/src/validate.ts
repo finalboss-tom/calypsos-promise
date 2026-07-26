@@ -274,7 +274,11 @@ function validateGrant(
     `${path}.grantingAuthorityId`,
     issues,
   );
-  validateId(grant.controlledResourceId, `${path}.controlledResourceId`, issues);
+  validateId(
+    grant.controlledResourceId,
+    `${path}.controlledResourceId`,
+    issues,
+  );
   if (grant.subjectIds.length === 0) {
     addIssue(
       issues,
@@ -461,7 +465,8 @@ export function validateHouseOfKeysSchemaBundle(
   if (
     bundle.policyBundle.contractVersion !== HOUSE_OF_KEYS_CONTRACT_VERSION ||
     bundle.policyBundle.evaluatorId !== HOUSE_OF_KEYS_EVALUATOR_ID ||
-    bundle.policyBundle.evaluatorRevision !== HOUSE_OF_KEYS_EVALUATOR_REVISION ||
+    bundle.policyBundle.evaluatorRevision !==
+      HOUSE_OF_KEYS_EVALUATOR_REVISION ||
     bundle.policyBundle.policyId !== HOUSE_OF_KEYS_POLICY_ID ||
     bundle.policyBundle.policyRevision !== HOUSE_OF_KEYS_POLICY_REVISION
   ) {
@@ -491,7 +496,10 @@ export function validateHouseOfKeysSchemaBundle(
     purposes.set(purpose.id, purpose);
   }
   const categories = new Map<string, DefinitionRevision>();
-  for (const [index, category] of bundle.policyBundle.dataCategories.entries()) {
+  for (const [
+    index,
+    category,
+  ] of bundle.policyBundle.dataCategories.entries()) {
     validateDefinition(
       category,
       `policyBundle.dataCategories[${index}]`,
