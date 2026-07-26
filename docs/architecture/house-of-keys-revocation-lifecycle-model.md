@@ -52,21 +52,18 @@ Every material lifecycle change should be represented by an immutable event cont
 
 - stable namespaced event identity
 - House of Keys contract version
-- target grant identity and target grant revision
-- previous lifecycle state
-- next lifecycle state
+- target grant identity and grant revision
+- previous and next lifecycle states
 - transition kind
 - actor requesting or causing the transition
-- authority basis for the transition
-- event reason code
-- optional person-provided reason, which is never required for ordinary revocation
-- requested time
-- effective time
-- recorded time
+- authority basis
+- reason code
+- optional person-provided reason, never required for ordinary revocation
+- requested, effective, and recorded times
 - policy or rule revision used
 - explanation or notice reference where applicable
 - evidence references
-- related successor, predecessor, revocation, review, or containment event identities
+- related successor, predecessor, revocation, review, or containment events
 - affected policy-decision or operation references known at recording time
 - uncertainty, conflicts, failures, or unresolved propagation state
 
@@ -76,21 +73,19 @@ A lifecycle event records a claim about permission state. It does not rewrite th
 
 ### `proposed`
 
-A grant draft exists but has not been explicitly confirmed by the granting authority.
-
-A proposed grant is non-applicable and cannot produce `allow`.
+A grant draft exists but has not been explicitly confirmed by the granting authority. It is non-applicable and cannot produce `allow`.
 
 ### `pending-confirmation`
 
-The grant has a complete proposal and explanation but still awaits valid granting-authority confirmation or required comprehension evidence.
+The proposal and explanation are complete, but valid granting-authority confirmation or required comprehension evidence is still missing.
 
-Pending confirmation is non-applicable. Continued product use, silence, inactivity, account creation, payment, prior disclosure, or recipient action cannot activate it.
+Continued product use, silence, inactivity, account creation, payment, prior disclosure, or recipient action cannot activate it.
 
 ### `active`
 
 The grant has valid confirmation and is within its start, duration, scope, and review conditions.
 
-`active` is necessary but not sufficient for an `allow` decision. The policy request must still match the purpose, recipient, categories, selectors, actions, conditions, time, and all other explicit facts.
+`active` is necessary but not sufficient for an `allow` decision. The request must still match every purpose, recipient, category, selector, action, condition, and time fact.
 
 ### `suspended`
 
@@ -99,9 +94,9 @@ The grant is temporarily non-applicable because a defined containment, conflict,
 Suspension:
 
 - denies future authorization while effective
-- must identify who may suspend, why, and under which rule
-- must identify a review time or automatic expiry
-- must remain challengeable and independently reviewable in proportion to consequence
+- identifies who may suspend, why, and under which rule
+- identifies a review time or automatic expiry
+- remains challengeable and independently reviewable in proportion to consequence
 - cannot silently become permanent revocation or constitutional redesign
 - does not erase prior access or receipts
 
@@ -111,13 +106,11 @@ A recipient, requester, processor, AI system, or infrastructure provider cannot 
 
 The grant is non-applicable because its fixed, delayed, session, bounded-count, single-use, or review-bounded duration no longer permits future use.
 
-Expiration is determined from explicit duration facts. It does not depend on a recipient deciding that the grant is no longer useful.
-
 ### `exhausted`
 
 The grant is non-applicable because its authorized single-use or bounded-count capacity has been consumed under an accepted counting rule.
 
-Missing, ambiguous, duplicated, delayed, or conflicting consumption evidence must not create additional authority. Exact idempotency and race handling remain production hold points.
+Missing, ambiguous, duplicated, delayed, or conflicting consumption evidence must not create additional authority.
 
 ### `withdrawn`
 
@@ -126,48 +119,39 @@ The granting authority has revoked future authority and the revocation is effect
 A withdrawn grant:
 
 - cannot authorize future requests
-- remains inspectable with its prior revisions and lifecycle events
+- remains inspectable with prior revisions and lifecycle events
 - does not erase prior decisions, attempts, outcomes, or receipts
-- does not imply that copies already delivered to recipients were deleted
-- does not imply that every retention question is resolved
+- does not imply that copies already delivered were deleted
+- does not silently resolve retention questions
 - does not punish the person or weaken unrelated core rights
 
 ### `declined`
 
-The granting authority explicitly refused the proposed grant before activation.
-
-Decline remains inspectable as an outcome of the proposal process but creates no authority. A new proposal requires a new proposal identity or revision and cannot treat the prior decline as a temporary obstacle to bypass.
+The granting authority explicitly refused the proposed grant before activation. A later request is a new proposal, not activation of the declined record.
 
 ### `superseded`
 
-A successor grant or revision has replaced this grant for future evaluation under an explicit transition.
+A successor grant has replaced this grant for future evaluation under an explicit transition.
 
-Supersession does not transfer authority automatically. The successor must have its own valid confirmation and applicable lifecycle state. The prior grant becomes non-applicable at its recorded effective time unless a separately reviewed overlap rule is explicit.
+The successor must have its own valid confirmation and applicable lifecycle state. Authority does not transfer merely because the records are related.
 
 ### `invalidated`
 
 The grant is non-applicable because it was defective, misleading, unauthorized, internally inconsistent, based on invalid authority, or otherwise unsuitable for continued use.
 
-Invalidation must identify the responsible authority, evidence, affected period, containment behavior, review path, and restoration or correction obligations. It cannot silently alter prior historical records.
+Invalidation must identify the responsible authority, evidence, affected period, containment behavior, review path, and restoration or correction obligations.
 
 ## State-transition rules
 
 The initial deterministic transition boundary is:
 
-| From | Allowed next states | Notes |
-| --- | --- | --- |
-| `proposed` | `pending-confirmation`, `declined`, `invalidated` | Proposal alone never activates authority. |
-| `pending-confirmation` | `active`, `declined`, `invalidated` | Activation requires explicit valid confirmation. |
-| `active` | `suspended`, `expired`, `exhausted`, `withdrawn`, `superseded`, `invalidated` | Every transition has an explicit effective time and cause. |
-| `suspended` | `active`, `expired`, `exhausted`, `withdrawn`, `superseded`, `invalidated` | Restoration to `active` requires an accepted review result; it is not automatic unless the suspension rule explicitly defines safe automatic expiry. |
-| `expired` | none | Renewal requires a new grant or successor confirmation. |
-| `exhausted` | none | Additional use requires new authority. |
-| `withdrawn` | none | Re-granting requires a new grant; withdrawal is not undone in place. |
-| `declined` | none | A later request is a new proposal, not activation of the declined record. |
-| `superseded` | none | The successor is evaluated independently. |
-| `invalidated` | none | Correction or replacement requires a new grant and explicit review. |
+- `proposed` may become `pending-confirmation`, `declined`, or `invalidated`.
+- `pending-confirmation` may become `active`, `declined`, or `invalidated`.
+- `active` may become `suspended`, `expired`, `exhausted`, `withdrawn`, `superseded`, or `invalidated`.
+- `suspended` may return to `active` only through an accepted review result, or may become `expired`, `exhausted`, `withdrawn`, `superseded`, or `invalidated`.
+- `expired`, `exhausted`, `withdrawn`, `declined`, `superseded`, and `invalidated` are closed states.
 
-Closed states remain closed. The system must not reactivate a closed grant by editing its state, extending its time, replacing its recipient, or interpreting continued engagement as renewed permission.
+Closed grants are not reactivated by editing their state, extending their time, replacing their recipient, or interpreting continued engagement as renewed permission. Renewal or replacement requires a new grant or successor confirmation.
 
 ## Revocation instruction
 
@@ -177,7 +161,6 @@ A revocation instruction should contain:
 - target grant identity and revision
 - revoking authority identity and authority basis
 - exact revocation scope
-- requested effective behavior
 - request time
 - effective time or explicit pending state
 - optional reason
@@ -187,34 +170,34 @@ A revocation instruction should contain:
 - resulting lifecycle event reference
 - failure, conflict, or appeal information
 
-A person is not required to justify ordinary revocation. A user interface may ask for optional feedback only after making clear that feedback is not required and does not delay or condition revocation.
+A person is not required to justify ordinary revocation. Optional feedback cannot delay or condition it.
 
-Revocation may require proportionate confirmation that the actor holds the relevant authority, but it must not require payment, additional health disclosure, secondary-use consent, research participation, completion of a survey, contact with the recipient, or acceptance of a replacement grant.
+Revocation may require proportionate confirmation that the actor holds the relevant authority, but it must not require payment, additional health disclosure, secondary-use consent, research participation, survey completion, recipient contact, or acceptance of a replacement grant.
 
 ## Revocation scope
 
 The initial baseline favors revoking a complete grant revision.
 
-A request to remove only part of an active grant is represented as:
+Removing only part of an active grant is represented as:
 
 1. withdrawal of the broader grant for future use; and
-2. a separately proposed and confirmed narrower successor grant, when the person chooses one.
+2. a separately proposed and confirmed narrower successor, when the person chooses one.
 
-This preserves inspectability and prevents in-place mutation from hiding what authority previously existed.
+This prevents hidden in-place mutation from concealing what authority previously existed.
 
-Revocation of one grant does not automatically revoke another independently valid grant. A policy decision must identify every grant relied upon. If another grant still authorizes the same operation, the explanation must not misleadingly imply that the operation is blocked merely because one grant was withdrawn.
+Revocation of one grant does not automatically revoke another independently valid grant. Every policy decision must identify all grants it relies upon.
 
 ## Effective-time rule
 
-A lifecycle change has both a recorded time and an effective time.
+A lifecycle event has both recorded and effective times.
 
-- The effective time determines applicability for policy evaluation.
-- The recorded time describes when the system recorded the event.
-- Backdating must never be used to fabricate that prior access was unauthorized, erased, or never occurred.
-- A future-effective withdrawal remains active only until the stated effective time and only if every other condition still matches.
+- Effective time controls applicability.
+- Recorded time states when the event was recorded.
+- Backdating cannot fabricate that prior access never occurred.
+- A future-effective withdrawal remains active only until its effective time and only while every other condition matches.
 - Missing, ambiguous, conflicting, or untrusted effective-time facts produce `deny` or `indeterminate`, never implicit continued authority.
 
-Clock source, synchronization, distributed ordering, offline behavior, and authoritative timestamping remain Sprint 5 or production implementation hold points.
+Clock source, synchronization, distributed ordering, offline behavior, and authoritative timestamping remain implementation hold points.
 
 ## Policy-decision freshness
 
@@ -222,16 +205,14 @@ A policy decision is valid only for its recorded request facts, policy revision,
 
 An earlier `allow` decision cannot be reused after:
 
-- the relied-upon grant is withdrawn, suspended, expired, exhausted, superseded, or invalidated
+- a relied-upon grant becomes suspended, expired, exhausted, withdrawn, superseded, or invalidated
 - a relevant purpose, category, recipient, action, selector, condition, or policy revision becomes non-applicable
-- the decision’s own freshness or execution window ends
-- the requester, recipient, performing actor, controlled resource, or other material fact changes
+- the decision freshness or execution window ends
+- the requester, recipient, performing actor, controlled resource, or another material fact changes
 
-A cached decision is not authority independent of the grant. Production cache invalidation remains deferred, but the contract requires stale decisions to fail closed rather than survive a known lifecycle change.
+A cached decision is not authority independent of the grant. Stale decisions must fail closed rather than survive a known lifecycle change.
 
 ## Revocation and in-flight operations
-
-Revocation affects future authority, but operation timing must remain explicit.
 
 The lifecycle and receipt contracts must distinguish:
 
@@ -242,33 +223,25 @@ The lifecycle and receipt contracts must distinguish:
 5. operation completion or failure time
 6. revocation request and effective times
 
-Initial boundary rules:
+Initial rules:
 
 - An operation not yet started at the revocation effective time must not start under the withdrawn grant.
-- An operation that has started but has not released data or crossed an irreversible boundary must stop or re-evaluate when the architecture can do so safely.
-- An operation completed before revocation remains historical access and must remain visible through its decision and receipt records.
-- An operation that races with revocation must record the ordering evidence, outcome, uncertainty, and any required containment or restoration action.
-- A missing or ambiguous ordering must not be represented as confidently authorized.
+- An operation started but not past its data-release or irreversible boundary must stop or re-evaluate when this can be done safely.
+- An operation completed before revocation remains historical access and stays visible through decisions and receipts.
+- A race must record ordering evidence, outcome, uncertainty, and any containment or restoration action.
+- Missing or ambiguous ordering must not be represented as confidently authorized.
 
-Exact transaction isolation, cancellation guarantees, distributed enforcement, and recipient-side interruption are deferred implementation questions.
+Exact transaction isolation, cancellation guarantees, distributed enforcement, and recipient-side interruption remain deferred.
 
-## Expiration, exhaustion, and review
+## Expiration, exhaustion, and renewal
 
-### Expiration
-
-Expiration follows the accepted duration model and is not discretionary. Future use after expiry requires new authority.
-
-### Exhaustion
+Expiration follows the accepted duration model. Future use after expiry requires new authority.
 
 Single-use and bounded-count grants require explicit consumption evidence. Retries, duplicate delivery, idempotency, partial failure, and concurrent requests must not silently increase the permitted count.
 
-### Review-bounded authority
+A review-bounded grant becomes non-applicable at its deadline unless an accepted renewal or successor is explicitly confirmed. Internal review delay cannot extend authority by default.
 
-A review-bounded grant becomes non-applicable at its review deadline unless an accepted renewal or successor is explicitly confirmed. Internal review delay cannot extend authority by default.
-
-### Renewal
-
-Renewal is not a state reset. It creates a new grant or successor confirmation with a new duration, explanation, comprehension evidence where required, and inspectable relationship to the prior grant.
+Renewal is not a state reset. It creates a new grant or successor confirmation with a new duration, explanation, comprehension evidence where required, and an inspectable relationship to the prior grant.
 
 ## Suspension and containment
 
@@ -279,32 +252,28 @@ A suspension rule should define:
 - triggering condition
 - actor permitted to trigger it
 - affected grant or grant class
-- effective time
-- maximum duration
-- review authority
-- evidence threshold
+- effective time and maximum duration
+- review authority and evidence threshold
 - notice and challenge behavior
 - restoration conditions
-- automatic expiry or escalation behavior
+- automatic expiry or escalation
 - audit and receipt expectations
 
-Emergency or automated suspension may pause future access when a defined threat is detected, but it must be narrow, logged, expiring, reviewable, and incapable of permanently redesigning the permission model.
+Emergency or automated suspension may pause future access when a defined threat is detected, but it must be narrow, logged, expiring, reviewable, and unable to permanently redesign the permission model.
 
 ## Supersession and replacement
-
-A successor grant may narrow, replace, or otherwise change future authority. It must not inherit authority merely because it references the prior grant.
 
 Supersession requires:
 
 - explicit predecessor and successor identities
 - reason for replacement
-- effective time for each grant
+- effective times
 - comparison of purpose, recipient, categories, actions, selectors, conditions, and duration
 - confirmation evidence for the successor
 - explanation of any overlap or gap
 - rollback or containment behavior if the successor is invalid
 
-A broader successor always requires new authority. A narrower successor also requires explicit confirmation; it cannot be silently substituted for the prior grant.
+A broader successor always requires new authority. A narrower successor also requires explicit confirmation and cannot be silently substituted.
 
 ## Retention and downstream use after revocation
 
@@ -314,43 +283,43 @@ Revocation removes future authority supplied by the withdrawn grant. It does not
 - whether a recipient retains a permitted copy
 - whether a derived output remains usable
 - whether a legal or safety retention exception applies
-- whether an external recipient actually honored the instruction
+- whether an external recipient honored the instruction
 - whether a downstream recipient exists
 
-Any continued retention, downstream use, or deletion obligation requires a separate, explicit authority and lifecycle record. Silence, technical possession, or inability to delete does not become continued permission.
+Continued retention, downstream use, or deletion obligations require separate explicit authority and lifecycle records. Silence, technical possession, or inability to delete does not become permission.
 
 Sprint 4 records this boundary without claiming legal validity or production enforcement.
 
-## Inspectability and explanation
+## Inspectability
 
 A person should be able to inspect:
 
 - current lifecycle state
-- the exact grant revision affected
+- exact grant revision affected
 - when and why the state changed
 - who requested and recorded the change
 - whether future access is blocked
 - whether an operation was already completed
-- whether propagation, downstream deletion, or retention remains unresolved
+- unresolved propagation, downstream deletion, or retention
 - successor or replacement grants
 - challenge and appeal path
 
-The interface must not use “revoked” to imply that prior access was erased or that every copy was deleted. Detailed explanation templates remain workstream 4.7, and receipt structure remains workstream 4.6.
+The interface must not use “revoked” to imply that prior access was erased or every copy was deleted. Detailed explanations remain workstream 4.7, and receipt structure remains workstream 4.6.
 
 ## Non-punitive refusal and revocation
 
 The system must not:
 
-- remove core Chronicle capture, inspection, correction, export, deletion, or permission-history rights because optional authority was refused or withdrawn
+- remove core Chronicle capture, inspection, correction, export, deletion, or permission-history rights
 - reduce progression, restoration, return behavior, or governance standing
 - withhold earned non-consent-dependent value
 - require a new grant before honoring revocation
-- introduce shame, fear, fake urgency, or misleading loss language
-- repeatedly re-prompt in a way that defeats the person’s stated refusal
+- use shame, fear, fake urgency, or misleading loss language
+- repeatedly re-prompt in a way that defeats stated refusal
 - treat revocation as a negative health, trust, loyalty, risk, or engagement signal
-- reward a person for keeping broader or longer authority active
+- reward keeping broader or longer authority active
 
-A later request may be presented only as a new, distinguishable proposal with a clear reason and a meaningful decline path.
+A later request must be a new, distinguishable proposal with a clear reason and meaningful decline path.
 
 ## Adversarial review cases
 
@@ -358,21 +327,21 @@ This model must support deterministic or reviewable evidence for:
 
 - future access attempted after effective revocation
 - stale cached `allow` decisions
-- revocation racing with a data release or irreversible action
+- revocation racing with data release or an irreversible action
 - a recipient or processor ignoring a lifecycle change
 - a withdrawn grant silently reactivated
-- a partial revocation implemented as hidden in-place mutation
-- one revoked grant masking another still-active grant
+- partial revocation implemented as hidden mutation
+- one revoked grant masking another active grant
 - a review deadline extended because internal review was late
-- single-use or bounded-count reuse after exhaustion
+- reuse after single-use or bounded-count exhaustion
 - suspension without authority, expiry, review, or challenge
 - suspension used as permanent revocation
-- successor grants inheriting authority without confirmation
+- successor authority inherited without confirmation
 - prior receipts treated as continued authority
 - retention or technical possession treated as permission
 - revocation conditioned on payment, explanation, survey completion, or replacement consent
 - revocation reducing progression, service quality, or core rights
-- AI-generated claims that revocation completed, propagated, or erased data without evidence
+- AI claims that revocation propagated or erased data without evidence
 
 These become contract fixtures and deterministic tests in workstreams 4.8 and 4.9.
 
@@ -381,17 +350,17 @@ These become contract fixtures and deterministic tests in workstreams 4.8 and 4.
 - production authentication and proof that the revoking actor holds authority
 - multi-person, delegated, caregiver, dependent, estate, emergency, minor, and shared-control revocation
 - transaction isolation and exact ordering between revocation and data release
-- distributed clocks, offline operation, stale policy caches, and propagation guarantees
+- distributed clocks, offline operation, stale caches, and propagation guarantees
 - single-use and bounded-count idempotency, retry, and consumption rules
 - recipient and subprocessor notification, acknowledgment, deletion, and downstream propagation
 - retention exceptions and jurisdiction-specific withdrawal obligations
 - restoration and remedy after unauthorized post-revocation access
 - service levels for revocation processing and propagation
-- cryptographic integrity and non-repudiation of lifecycle events
+- cryptographic integrity of lifecycle events
 - specialist privacy, legal, accessibility, security, clinical, and research approval
 
 These are explicit hold points, not authority granted by omission.
 
 ## Success condition
 
-The lifecycle boundary is sound when a person can revoke future authority without punishment; every grant state and transition is inspectable; stale, suspended, expired, exhausted, withdrawn, superseded, invalidated, or ambiguous authority fails closed; prior access remains honestly visible; replacement requires new confirmation; and the system never confuses prospective revocation with retroactive erasure, downstream deletion, or resolved retention.
+The lifecycle boundary is sound when a person can revoke future authority without punishment; every state and transition is inspectable; stale, suspended, expired, exhausted, withdrawn, superseded, invalidated, or ambiguous authority fails closed; prior access remains honestly visible; replacement requires new confirmation; and the system never confuses prospective revocation with retroactive erasure, downstream deletion, or resolved retention.
