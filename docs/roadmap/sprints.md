@@ -146,6 +146,48 @@ Acceptance:
 - No private origin, database, or administrative service requires public exposure
 - Security disclosure workflow is published
 
+## Phase 0 Institutional Workstream — Funding and Sponsorship Baseline
+
+**Goal:** Establish what mission-aligned support may fund and what money or in-kind value can never purchase before any donation, sponsorship, grant, affiliate, provider-credit, compensation, investment, research-funding, treasury, payment, or accounting surface activates.
+
+Decision and evidence:
+
+- Decision 0008 — Funding and Sponsorship Baseline
+- Canonical economics policies and public register contracts
+- Empty real funding and opportunity registers
+- Explicitly fictional funding records
+- Sponsor-capture, dependency, concentration, and source-loss design table exercises
+- Completion record distinguishing accepted doctrine from operational implementation
+
+Acceptance:
+
+- A decision record accepts the funding doctrine and identifies unresolved legal, accounting, tax, entity, custody, and payment-rail questions
+- Funding cannot purchase data, research access, product authority, health influence, roadmap control, governance power, favorable findings, safety exceptions, or game progression
+- Donations, grants, sponsorships, public-good underwriting, in-kind support, affiliate arrangements, investments, compensation, and research funding are distinctly classified
+- Permitted and prohibited sponsor benefits are inspectable
+- Organizational, restricted, related-party, vendor-linked, and material in-kind relationships require public institutional records
+- Raw donor, contract, payment, tax, negotiation, banking, compensation, and accounting source information remains outside the public repository
+- Funded work remains subject to ordinary issue, pull-request, review, testing, acceptance, correction, and outcome rules
+- Sponsors, funded implementers, and sponsor-funded evaluators cannot independently certify their own work
+- Infrastructure sponsorships require provider-neutral evaluation, replacement, migration, and exit plans
+- Concentration and critical-dependency triggers are defined without pretending they prove safety or misconduct
+- A relationship can be declined, paused, suspended, terminated, corrected, refunded, expired, or superseded
+- Funding records link money or in-kind value to work, delivery, expenditure where applicable, outcomes, variance, unspent obligations, and residual risk
+- Synthetic scenarios exercise capture, data access, provider influence, exclusivity, related parties, concentration, dependency, sponsor exit, source loss, and failed public benefit
+- The public website cannot activate a donation or sponsorship transaction surface before this baseline and a legitimate recipient, custody, accounting, tax, privacy, refund, and payment route are accepted
+- No charitable, tax-deductible, nonprofit, public-benefit, treasury, payment, accounting, or financial-control status is claimed without evidence
+- The completion record distinguishes policy acceptance from actual fundraising, treasury, accounting, payment, expenditure-reporting, or operational implementation
+
+Handoff:
+
+- This is a non-numbered institutional workstream between Sprints 5 and 6; it does not renumber or replace the design-to-build sequence
+- Sprint 6 inherits sponsor and provider-conflict boundaries before AI-provider governance matures
+- Sprint 7 inherits the same public-data, synthetic-only, tool-risk, and conflict boundaries for sponsor-funded developer tooling
+- Sprint 8 implements public support and funding transparency from canonical economics records rather than inventing sponsor logic
+- Sprints 17 and 18 carry specialist-independence and operational-evidence gates when relevant
+- Sprint 19 makes funding transparency launch-grade rather than designing it for the first time
+- Phase 2 implements actual financial controls and independently reviewable records; Phase 5 matures sustainable economics, treasury, reserves, compensation, and participatory budgeting
+
 ## Sprint 6 — Aster contracts and AI governance
 
 **Goal:** Convert Aster from a concept into enforceable interfaces.
@@ -162,6 +204,7 @@ Deliverables:
 - Confidence and clarification rules
 - AI memory classes and retention rules
 - Provider-egress policy
+- Provider-neutral evaluation and funding-conflict rules for model credits, sponsored benchmarks, affiliate incentives, egress partners, infrastructure support, and related parties
 - Prompt-injection isolation rules
 - Non-AI fallback behavior
 
@@ -171,6 +214,8 @@ Acceptance:
 - Every recalled health statement can reference authoritative records
 - Material memories are visible, editable, exportable, and deletable
 - AI unavailability does not block core capture or permissions
+- Funding, credits, sponsorship, affiliate terms, or related-party interests cannot determine provider defaults, ranking, egress policy, benchmark conclusions, or publication
+- Sprint 6 defines provider-governance requirements but does not select or endorse a production AI provider
 
 ## Sprint 7 — Forge MCP and agent safety
 
@@ -185,6 +230,7 @@ Deliverables:
 - Architecture and decision search
 - Synthetic-data generation
 - Tool scopes, rate limits, receipts, and error formats
+- Sponsor-funded tool, service-credit, and infrastructure conflict review
 - Agent security test suite
 
 Acceptance:
@@ -192,6 +238,7 @@ Acceptance:
 - Forge MCP operates entirely on public documentation and synthetic data
 - Retrieved content cannot grant itself tool authority
 - Tool contracts are versioned and testable
+- Sponsor-funded tools remain subject to the same public-data, synthetic-only, tool-risk, provider-neutrality, review, and publication boundaries as unfunded tools
 
 ## Sprint 8 — Public website foundation
 
@@ -210,13 +257,17 @@ Deliverables:
 - Trust Center shell
 - Open Forge page
 - Roadmap and capability-status components
-- Donation transparency shell
+- Support and funding-transparency surface generated from canonical economics records
+- Public views of who supported the project, what they funded, approved benefits, prohibited or absent benefits, relationship status, delivery, outcomes, conflicts, concentration, corrections, and challenge routes
+- Disabled transaction handoff until legitimate recipient, custody, accounting, tax, privacy, refund, and payment-rail gates are accepted
 
 Acceptance:
 
 - Live, experimental, planned, and long-horizon claims are visually distinct
 - All essential information is accessible without animation or story traversal
 - Core pages pass accessibility and performance baselines
+- Funding displays derive from canonical public economics records rather than an independent website sponsor model
+- No donation, sponsorship, checkout, payment, charitable, tax-deductible, nonprofit, or public-benefit transaction claim activates without accepted operational evidence
 
 ## Sprint 9 — Public synthetic prologue
 
@@ -408,6 +459,7 @@ Deliverables:
 - Clinical content review workflow
 - Adverse-event process
 - Accessibility conformance review
+- Sponsor, grantor, vendor, and related-party conflict and independence rules for clinical, medication, safety, and accessibility content or review
 - Moderation and support escalation
 
 Acceptance:
@@ -415,6 +467,7 @@ Acceptance:
 - High-risk prompts route predictably
 - Disclaimers are not used as substitutes for controls
 - Accessibility acceptance criteria are part of release gates
+- No funder, sponsor, vendor, or related party controls clinical or safety conclusions, product-specific health placement, specialist approval, adverse-event handling, or publication
 
 ## Sprint 18 — Beta evidence and release gate
 
@@ -431,6 +484,7 @@ Deliverables:
 - Export and deletion reliability results
 - AI latency and cost model
 - Seven-day and thirty-day meaningful-retention measures
+- Operational funding evidence when any real relationship exists: ledger integrity, restrictions, approved benefits, conflicts, concentration, continuity, source-loss response, expenditure linkage where applicable, funded outcomes, corrections, and residual obligations
 - Release readiness review
 
 Acceptance:
@@ -438,6 +492,7 @@ Acceptance:
 - Quantitative thresholds are approved before recruitment
 - Known safety or privacy blockers prevent release
 - Findings create a prioritized evidence-based backlog
+- A real funding relationship cannot be treated as operationally ready merely because the Phase 0 doctrine exists; applicable legal, accounting, tax, custody, privacy, conflict, continuity, and reporting evidence is required
 
 ## Sprint 19 — Open-source public launch
 
@@ -453,13 +508,43 @@ Deliverables:
 - Good-first-issue pathways
 - Maintainer and security processes
 - Public roadmap
-- Funding transparency
+- Launch-grade funding, sponsorship, expenditure, concentration, conflict, correction, and public-good outcome reporting derived from canonical economics records
+- Deliberate manual release and deployment controls with attributable authorization
 
 Acceptance:
 
 - A clean machine can run the project from documentation
 - At least one external contributor can complete a small change
 - No production data or secret is required
+- Funding transparency is already governed before launch, and every active material relationship can be traced through support, restrictions, benefits, work, expenditure where applicable, outcomes, conflicts, concentration, corrections, and residual obligations
+- Production releases and deployments occur only through an explicit, attributable release decision rather than every repository commit
+
+## Future Institutional Workstream — Funding Operations and Financial Controls
+
+**Entry condition:** Begin only before accepting or operating real funding, not merely because the Phase 0 doctrine is merged.
+
+**Goal:** Operationalize Decision 0008 through legally and financially competent systems without weakening its constitutional, anti-capture, public-ledger, provider-neutrality, conflict, or private-source boundaries.
+
+Expected deliverables:
+
+- Legal recipient, entity, or fiscal-sponsor decision
+- Authority to receive, hold, restrict, return, and spend funds
+- Banking, payment, custody, reconciliation, fraud, sanctions, chargeback, and refund controls
+- Accounting, tax, record-retention, contract-signature, and reporting responsibilities
+- Donor and partner privacy notices, access roles, correction, deletion, and incident handling
+- Expenditure, procurement, reimbursement, compensation, payroll, contractor, and related-party controls
+- Treasury access, separation of duties, recovery, budget, reserves, runway, and continuity controls
+- Public funding and expenditure reporting generated from reviewed institutional derivatives
+- Multi-party exercises covering source loss, financial incidents, unauthorized spending, account recovery, concentration, and termination
+
+Acceptance:
+
+- A qualified legal and financial review identifies the lawful recipient, duties, authority, and unresolved risks
+- No one person controls receipt, custody, spending, reporting, and recovery for a material operating fund
+- Public records reconcile support and expenditure without exposing protected financial source information
+- Refund, restriction, correction, suspension, termination, incident, continuity, and recovery behavior is operationally testable
+- Compensation, procurement, or related-party payment cannot purchase constitutional or unrelated governance authority
+- Operational funding claims remain distinct from Phase 0 doctrine and from mature Phase 5 treasury governance
 
 ## Deferred sprint families
 
@@ -469,7 +554,7 @@ These remain designed directions, not committed release work:
 - Commons MCP
 - Study matching and recruitment
 - Compensated opportunities and the House of Oaths
-- Public-good funding mechanisms
+- Research and public-good funding programs after applicable governance and participant-protection gates
 - Commercial hosted-service economics
 - Caregiver and legacy stewardship
 - Community and social systems
