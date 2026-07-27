@@ -381,8 +381,7 @@ export function validateAsterLocalSyntheticAdapter(
     : [];
   for (const fallbackId of ASTER_CORE_NON_AI_PATH_IDS) {
     const fallback = coreFallbacks.find(
-      (candidate) =>
-        isRecord(candidate) && candidate.fallbackId === fallbackId,
+      (candidate) => isRecord(candidate) && candidate.fallbackId === fallbackId,
     );
     if (!isRecord(fallback)) {
       addIssue(

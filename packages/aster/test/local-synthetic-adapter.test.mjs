@@ -129,8 +129,7 @@ test("validation rejects runtime, fallback, role, and authority escalation", () 
   const adapter = clone(ASTER_LOCAL_SYNTHETIC_ADAPTER);
   adapter.runtime.providerUsed = true;
   adapter.authority.canWriteCanonicalRecords = true;
-  adapter.scenarios[0].operationId =
-    "librarian.prepare-source-linked-recall";
+  adapter.scenarios[0].operationId = "librarian.prepare-source-linked-recall";
   adapter.scenarios.find(
     (scenario) => scenario.scenarioId === "timeout",
   ).fallbackId = null;

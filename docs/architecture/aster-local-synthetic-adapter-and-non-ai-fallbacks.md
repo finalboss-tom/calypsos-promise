@@ -39,25 +39,25 @@ Repeated execution of the same scenario identifier returns the same serialized r
 
 The public catalogue contains one versioned fixture for each required path:
 
-| Scenario | Contract evidence |
-| --- | --- |
-| `scribe-structured-draft` | synthetic structured capture draft requiring later player review |
-| `librarian-source-linked-recall` | recall linked to an exact synthetic Chronicle record revision |
-| `wayfinder-navigation` | inspectable route proposal to permission review |
-| `interpreter-source-aware-explanation` | non-clinical explanation preserving source and uncertainty |
+| Scenario                                   | Contract evidence                                                  |
+| ------------------------------------------ | ------------------------------------------------------------------ |
+| `scribe-structured-draft`                  | synthetic structured capture draft requiring later player review   |
+| `librarian-source-linked-recall`           | recall linked to an exact synthetic Chronicle record revision      |
+| `wayfinder-navigation`                     | inspectable route proposal to permission review                    |
+| `interpreter-source-aware-explanation`     | non-clinical explanation preserving source and uncertainty         |
 | `storykeeper-confirmed-event-presentation` | presentation proposal linked to a synthetic confirmed domain event |
-| `unknown-intent` | direct clarification instead of action selection |
-| `ambiguous-intent` | multiple consequential candidates require explicit player choice |
-| `clarification-resolved` | explicit player choice permits a bounded proposal |
-| `low-confidence` | low qualitative confidence requires clarification |
-| `unsupported-refusal` | clinical or otherwise unsupported authority is refused |
-| `prompt-injection` | embedded instructions remain data-only and contained |
-| `timeout` | timeout remains explicit and activates deterministic fallback |
-| `provider-unavailable` | provider absence does not block direct source inspection |
-| `stale-work` | stale output cannot replace current work |
-| `superseded-work` | superseded output cannot replace its successor |
-| `manual-capture` | structured capture remains available without AI |
-| `permission-review` | deterministic House of Keys review remains available without AI |
+| `unknown-intent`                           | direct clarification instead of action selection                   |
+| `ambiguous-intent`                         | multiple consequential candidates require explicit player choice   |
+| `clarification-resolved`                   | explicit player choice permits a bounded proposal                  |
+| `low-confidence`                           | low qualitative confidence requires clarification                  |
+| `unsupported-refusal`                      | clinical or otherwise unsupported authority is refused             |
+| `prompt-injection`                         | embedded instructions remain data-only and contained               |
+| `timeout`                                  | timeout remains explicit and activates deterministic fallback      |
+| `provider-unavailable`                     | provider absence does not block direct source inspection           |
+| `stale-work`                               | stale output cannot replace current work                           |
+| `superseded-work`                          | superseded output cannot replace its successor                     |
+| `manual-capture`                           | structured capture remains available without AI                    |
+| `permission-review`                        | deterministic House of Keys review remains available without AI    |
 
 Every scenario carries:
 
@@ -87,15 +87,15 @@ A narrative name creates no technical authority. Local fixtures must use the exa
 
 The complete personal-value loop retains these visible provider-independent paths:
 
-| Fallback | Deterministic owner | Protected capability |
-| --- | --- | --- |
-| `manual-capture` | Living Chronicle | enter and review a structured draft |
-| `structured-record-recall` | Living Chronicle | query and inspect exact records |
-| `permission-review` | House of Keys | inspect current permission facts |
-| `correction` | Living Chronicle | submit correction through the canonical workflow |
-| `export` | Living Chronicle | request and inspect export state |
-| `deletion` | Living Chronicle | request deletion and inspect lifecycle evidence |
-| `ordinary-play` | gameplay | continue authored deterministic play |
+| Fallback                   | Deterministic owner | Protected capability                             |
+| -------------------------- | ------------------- | ------------------------------------------------ |
+| `manual-capture`           | Living Chronicle    | enter and review a structured draft              |
+| `structured-record-recall` | Living Chronicle    | query and inspect exact records                  |
+| `permission-review`        | House of Keys       | inspect current permission facts                 |
+| `correction`               | Living Chronicle    | submit correction through the canonical workflow |
+| `export`                   | Living Chronicle    | request and inspect export state                 |
+| `deletion`                 | Living Chronicle    | request deletion and inspect lifecycle evidence  |
+| `ordinary-play`            | gameplay            | continue authored deterministic play             |
 
 Every fallback is:
 

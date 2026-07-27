@@ -65,23 +65,17 @@ export const ASTER_CORE_NON_AI_PATH_IDS = [
   "deletion",
   "ordinary-play",
 ] as const;
-export type AsterCoreNonAiPathId =
-  (typeof ASTER_CORE_NON_AI_PATH_IDS)[number];
+export type AsterCoreNonAiPathId = (typeof ASTER_CORE_NON_AI_PATH_IDS)[number];
 
 export const ASTER_LOCAL_SOURCE_CLASSES = [
   "synthetic-chronicle-record",
   "public-educational-material",
   "synthetic-confirmed-domain-event",
 ] as const;
-export type AsterLocalSourceClass =
-  (typeof ASTER_LOCAL_SOURCE_CLASSES)[number];
+export type AsterLocalSourceClass = (typeof ASTER_LOCAL_SOURCE_CLASSES)[number];
 
 export type AsterLocalPayloadValue =
-  | string
-  | number
-  | boolean
-  | null
-  | readonly string[];
+  string | number | boolean | null | readonly string[];
 
 export interface AsterLocalSourceReference {
   readonly sourceClass: AsterLocalSourceClass;
@@ -348,7 +342,8 @@ export const ASTER_LOCAL_SYNTHETIC_SCENARIOS = [
     operationId: "librarian.prepare-source-linked-recall",
     outcome: "source-linked-recall",
     confidence: "high",
-    directMessage: "The synthetic recall is linked to an exact record revision.",
+    directMessage:
+      "The synthetic recall is linked to an exact record revision.",
     payload: {
       statement: "The synthetic resting heart rate was 62 beats per minute.",
     },
@@ -480,7 +475,8 @@ export const ASTER_LOCAL_SYNTHETIC_SCENARIOS = [
     operationId: null,
     outcome: "refused",
     confidence: "not-applicable",
-    directMessage: "The requested clinical decision is outside Aster's authority.",
+    directMessage:
+      "The requested clinical decision is outside Aster's authority.",
     refusalReason: "diagnosis-or-treatment-request",
   }),
   scenario({
@@ -579,7 +575,9 @@ export function runAsterLocalSyntheticScenario(
     (candidate) => candidate.scenarioId === scenarioId,
   );
   if (!selected) {
-    throw new RangeError(`Unknown Aster local synthetic scenario: ${scenarioId}`);
+    throw new RangeError(
+      `Unknown Aster local synthetic scenario: ${scenarioId}`,
+    );
   }
   return {
     schemaId: "aster.local.synthetic-run",
