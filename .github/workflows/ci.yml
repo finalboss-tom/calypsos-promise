@@ -37,7 +37,10 @@ jobs:
       - name: Apply final funding audit
         id: funding-audit
         continue-on-error: true
-        run: node tools/one-time-funding-final-audit-v2.mjs > funding-audit.log 2>&1
+        run: |
+          node tools/patch-funding-final-audit-v2.mjs
+          node tools/one-time-funding-final-audit-v2.mjs > funding-audit.log 2>&1
+          rm -f tools/patch-funding-final-audit-v2.mjs
       - name: Upload funding audit log
         if: steps.funding-audit.outcome == 'failure'
         uses: actions/upload-artifact@v7
