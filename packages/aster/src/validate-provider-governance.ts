@@ -84,9 +84,7 @@ const SAFE_FIELDS = new Set<string>(
 const REQUIRED_PROHIBITED = new Set<string>(
   ASTER_PROVIDER_MANDATORY_PROHIBITED_FIELDS,
 );
-const REQUIRED_CRITERIA = new Set<string>(
-  ASTER_PROVIDER_EVALUATION_CRITERIA,
-);
+const REQUIRED_CRITERIA = new Set<string>(ASTER_PROVIDER_EVALUATION_CRITERIA);
 const HOLDPOINTS = new Set([
   "security",
   "privacy",
@@ -168,9 +166,7 @@ export function validateAsterProviderGovernance(
     !task.operationIds.every((value) => OPERATIONS.has(value)) ||
     !unique(task.informationClasses) ||
     task.informationClasses.length === 0 ||
-    !task.informationClasses.every((value) =>
-      INFORMATION_CLASSES.has(value),
-    ) ||
+    !task.informationClasses.every((value) => INFORMATION_CLASSES.has(value)) ||
     !text(task.purpose) ||
     !text(task.outputContractId) ||
     !revision(task.outputContractRevision)
@@ -227,10 +223,7 @@ export function validateAsterProviderGovernance(
       "Synthetic evaluation is public or synthetic only.",
     );
   }
-  if (
-    policy.state !== "synthetic-evaluation-only" &&
-    egress.mayTransmit
-  ) {
+  if (policy.state !== "synthetic-evaluation-only" && egress.mayTransmit) {
     add(
       "aster.provider.invalid-egress",
       "egress",
@@ -376,11 +369,7 @@ export function validateAsterProviderGovernance(
   const materialSupport =
     funding.providerCreditsPresent || funding.sponsorBenefitsPresent;
   if (funding.relationshipState === "unknown" || !funding.conflictsDisclosed) {
-    add(
-      "aster.provider.invalid-funding",
-      "funding",
-      "Funding is unresolved.",
-    );
+    add("aster.provider.invalid-funding", "funding", "Funding is unresolved.");
   }
   if (
     (funding.relationshipState === "public-record-linked" &&
