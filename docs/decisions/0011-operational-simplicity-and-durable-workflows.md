@@ -2,9 +2,11 @@
 
 [Decision index](README.md) · [Operational architecture](../architecture/operational-simplicity-and-durable-workflows.md) · [Mission traceability](../architecture/mission-to-runtime-traceability.md) · [Cross-phase workstream](../roadmap/operational-simplicity-workstream.md) · [Tracking issue #43](https://github.com/finalboss-tom/calypsos-promise/issues/43)
 
-- **Status:** PROPOSED
+- **Status:** BASELINE — accepted through PR #44
 - **Decision class:** Architecture, product operations, developer experience, institutional continuity, and economics
-- **Authority required for acceptance:** Founding steward under the current Phase 0 governance baseline
+- **Acceptance authority:** Founding steward under the current Phase 0 governance baseline
+- **Pull request:** [#44](https://github.com/finalboss-tom/calypsos-promise/pull/44)
+- **Squash commit:** `43fb01894639e7484ab1553428e1381a0f51b32c`
 - **Runtime effect:** None; documentation and future-work constraints only
 - **Sequence effect:** Does not renumber or delay Sprint 6
 
@@ -257,17 +259,3 @@ This decision does not select:
 - service-level objectives;
 - numeric performance budgets before baseline measurement;
 - or provider-specific retry and retention behavior.
-
-## Non-scope
-
-No production runtime, health-data path, account, queue, event store, scheduler, cloud, AI provider, connector, analytics system, notification system, database migration, encryption control, or operational dashboard is authorized by this decision.
-
-## Acceptance record
-
-Acceptance, revision, or rejection should record:
-
-- the reviewed branch and commit;
-- relationship to Decisions 0003, 0007, 0008, and 0010;
-- unresolved specialist and production holdpoints;
-- validation available at review time;
-- and the explicit effect on Sprint 6 and institutional Phase 0.

@@ -1,10 +1,12 @@
 # Decision 0010 — Consumer-First, Provider-Independent Product Boundary
 
-- **Status:** PROPOSED BASELINE
+- **Status:** BASELINE — accepted through PR #42
 - **Date:** 2026-07-27
 - **Decision class:** Product, architecture, strategy, economics, and institutional resilience
-- **Proposed authority:** Founding steward under the Phase 0 governance baseline
+- **Acceptance authority:** Founding steward under the Phase 0 governance baseline
 - **Tracking issue:** [#41](https://github.com/finalboss-tom/calypsos-promise/issues/41)
+- **Pull request:** [#42](https://github.com/finalboss-tom/calypsos-promise/pull/42)
+- **Squash commit:** `188a6409de9bfc967fdb0f46bc08eb35ddfd6f9c`
 - **Entry baseline:** Phase 0 Funding and Sponsorship Baseline squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`
 - **Independent review:** Not yet obtained; clinical informatics, interoperability, health-system operations, privacy, security, accessibility, regulatory, procurement, and economic review remain pending
 
@@ -203,4 +205,4 @@ If an institutional relationship begins to distort product authority, evidence, 
 
 ## Freeze impact
 
-If accepted, this decision clarifies the frozen consumer-first product thesis and provider-independent architecture. It does not change the player promise, prohibit future institutional collaboration, select a standard or provider, authorize clinical use, activate a connector, accept funding, or change Sprint 6 order.
+This accepted decision clarifies the frozen consumer-first product thesis and provider-independent architecture. It does not change the player promise, prohibit future institutional collaboration, select a standard or provider, authorize clinical use, activate a connector, accept funding, or change Sprint 6 order.

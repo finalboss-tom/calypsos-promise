@@ -3,10 +3,13 @@
 [Assumption Registry](assumption-registry.md) · [Decision 0011](../decisions/0011-operational-simplicity-and-durable-workflows.md) · [Operational architecture](../architecture/operational-simplicity-and-durable-workflows.md) · [Cross-phase workstream](../roadmap/operational-simplicity-workstream.md)
 
 - **Category:** Architecture, product operations, contributor experience, economics, and institutional continuity
-- **Status:** PROPOSED
+- **Status:** ACTIVE
 - **Confidence:** WORKING HYPOTHESIS
+- **Created:** 2026-07-27
+- **Last reviewed:** 2026-07-27 through the pre-Sprint 6 reconciliation
 - **Public information classification:** PUBLIC
 - **Review owner:** Founding steward until a qualified architecture and operations ownership model is established
+- **Acceptance link:** Decision 0011 accepted through [PR #44](https://github.com/finalboss-tom/calypsos-promise/pull/44)
 
 ## Statement
 
@@ -16,7 +19,7 @@ A modular, locally simulatable, batch-oriented core with a small responsive path
 
 Operational simplicity is a strategy for fulfilling the Promise, not a right that overrides it.
 
-Weak evidence for the proposed architecture may require:
+Weak evidence for the baseline architecture may require:
 
 - a different persistence model;
 - a new service or runtime boundary;
@@ -249,7 +252,7 @@ Do not compensate for weak architecture by coercing broader consent, retaining m
 
 Review this assumption:
 
-- before Sprint 6 acceptance;
+- during Sprint 6 completion review;
 - at the Sprint 11 vertical-slice review;
 - before any service extraction;
 - before a production queue, workflow engine, event store, or mandatory hosted development service is selected;
@@ -263,3 +266,12 @@ Review this assumption:
 The founding steward proposed the direction and currently controls roadmap acceptance. Repository consistency and founding-steward review are not independent architecture, security, accessibility, operations, or product validation.
 
 Future evidence should include review by affected maintainers, operators, players, and relevant specialists rather than treating implementation authors as their own independent evaluators.
+
+## Linked work
+
+- [Issue #43](https://github.com/finalboss-tom/calypsos-promise/issues/43)
+- [PR #44](https://github.com/finalboss-tom/calypsos-promise/pull/44)
+- [Decision 0011](../decisions/0011-operational-simplicity-and-durable-workflows.md)
+- [Operational architecture](../architecture/operational-simplicity-and-durable-workflows.md)
+- [Cross-phase workstream](../roadmap/operational-simplicity-workstream.md)
+- [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md)

@@ -194,7 +194,7 @@ Handoff:
 
 Decision and evidence:
 
-- Proposed Decision 0010 — Consumer-First, Provider-Independent Product Boundary
+- Decision 0010 — Consumer-First, Provider-Independent Product Boundary — accepted through PR #42
 - Source-backed architecture and historical rationale
 - AS-0012 — Consumer-First Continuity Can Create Durable Personal Value
 - Repository reconciliation against mission, vision, incentives, architecture, governance, funding, website, sprints, and institutional phases
@@ -226,6 +226,45 @@ Handoff:
 - A separate future Clinical and Enterprise Interoperability Partnerships workstream begins before material institutional operation
 
 The detailed inheritance is maintained in [`consumer-first-provider-independent-workstream.md`](consumer-first-provider-independent-workstream.md).
+
+## Phase 0 Institutional Workstream — Operational Simplicity and Durable Workflows
+
+**Goal:** Make the smallest trustworthy, correctable, provider-replaceable, and successor-operable architecture an accepted constraint before implementation pressure selects hidden infrastructure or premature services.
+
+Decision and evidence:
+
+- Decision 0011 — Operational Simplicity and Durable Workflows — accepted through PR #44
+- Operational architecture separating responsive work, deferred work, commands, events, projections, jobs, schedules, authoritative state, and derivatives
+- Mission-to-runtime traceability
+- Developer Experience and Operability Policy
+- AS-0013 — Operational Simplicity Can Support Durable Personal Value
+- Cross-phase implementation workstream and repository reconciliation
+
+Acceptance:
+
+- The modular monolith remains the default deployment posture
+- A separate service requires evidence of a distinct trust, scale, failure, runtime, ownership, legal, or release boundary
+- Schedules trigger bounded operations and do not own domain truth
+- Retryable or delayed work has stable identity, timeout, cancellation, duplicate, failure, replay, correction, supersession, and owner behavior proportionate to consequence
+- Responsive, deferred, pending, failed, stale, corrected, superseded, and provider-unavailable states remain explicit
+- Manual and non-AI personal-core paths remain complete
+- Public and provider-independent development remains credential-free and locally or synthetically reproducible where practical
+- Provider, queue, scheduler, model, storage, analytics, observability, and infrastructure choices remain replaceable adapters rather than domain authority
+- Event-informed architecture is not represented as universal event sourcing
+- Offline-tolerant direction is not represented as a completed local-first security or synchronization design
+- Performance and complexity gates use measured evidence rather than architectural preference
+
+Handoff:
+
+- This is a non-numbered institutional workstream; Sprint 6 remains next
+- Sprint 6 inherits responsive, deferred, stale-result, provider-unavailable, local-simulation, and non-AI-fallback contracts
+- Sprint 7 inherits bounded long-running operation and synthetic tool behavior
+- Sprint 11 provides the first complete synthetic durable-work reference journey
+- Sprints 12–16 exercise clocks, routes, indexes, connectors, analytics, and MCP operation semantics
+- Sprints 17–18 add specialist and operational evidence gates
+- Sprint 19 publishes install, validation, provider, workflow, replacement, and release evidence without overstating production maturity
+
+The detailed inheritance is maintained in [`operational-simplicity-workstream.md`](operational-simplicity-workstream.md).
 
 ## Sprint 6 — Aster contracts and AI governance
 
