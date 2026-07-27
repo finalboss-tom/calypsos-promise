@@ -19,15 +19,15 @@ Memory is a separate product claim. It is not Living Chronicle truth, House of K
 
 ## Public memory classes
 
-| Memory class | Owner | Retained | Product memory | Required fallback |
-| --- | --- | --- | --- | --- |
-| `transient-context` | request context | no | no | continue without memory |
-| `retained-preference` | product memory | yes | yes | ask the player |
-| `accessibility-context` | product memory | yes | yes | use an accessible default |
-| `retained-conversation` | product memory | yes | yes | continue without memory |
-| `derived-record-linked-memory` | product memory | yes | yes | recompute from authoritative records |
-| `narrative-presentation-state` | gameplay presentation | yes | yes | use deterministic presentation |
-| `provider-operational-metadata` | provider operations | yes | no | continue provider-independent operation |
+| Memory class                    | Owner                 | Retained | Product memory | Required fallback                       |
+| ------------------------------- | --------------------- | -------- | -------------- | --------------------------------------- |
+| `transient-context`             | request context       | no       | no             | continue without memory                 |
+| `retained-preference`           | product memory        | yes      | yes            | ask the player                          |
+| `accessibility-context`         | product memory        | yes      | yes            | use an accessible default               |
+| `retained-conversation`         | product memory        | yes      | yes            | continue without memory                 |
+| `derived-record-linked-memory`  | product memory        | yes      | yes            | recompute from authoritative records    |
+| `narrative-presentation-state`  | gameplay presentation | yes      | yes            | use deterministic presentation          |
+| `provider-operational-metadata` | provider operations   | yes      | no             | continue provider-independent operation |
 
 The class name does not create storage authority. Applications still require a separately governed persistence implementation and must preserve the public class policy.
 
