@@ -3,10 +3,13 @@
 [Assumption Registry](assumption-registry.md) · [Decision 0010](../decisions/0010-consumer-first-provider-independent-boundary.md) · [Architecture](../architecture/consumer-first-provider-independent-boundary.md) · [Roadmap workstream](../roadmap/consumer-first-provider-independent-workstream.md)
 
 - **Category:** Product sequencing, interoperability, economics, and institutional strategy
-- **Status:** Proposed
+- **Status:** ACTIVE
 - **Confidence:** WORKING HYPOTHESIS
 - **Created:** 2026-07-27
+- **Last reviewed:** 2026-07-27 through the pre-Sprint 6 reconciliation
+- **Review owner:** Founding steward until a qualified product and interoperability review structure exists
 - **Tracking issue:** [#41](https://github.com/finalboss-tom/calypsos-promise/issues/41)
+- **Acceptance link:** Decision 0010 accepted through [PR #42](https://github.com/finalboss-tom/calypsos-promise/pull/42)
 - **Public information classification:** PUBLIC institutional hypothesis and public-source evidence only
 
 ## Statement
@@ -190,9 +193,11 @@ A provider, sponsor, funded connector implementer, or enterprise counterparty ca
 ## Linked work
 
 - [Issue #41](https://github.com/finalboss-tom/calypsos-promise/issues/41)
+- [PR #42](https://github.com/finalboss-tom/calypsos-promise/pull/42)
 - [Decision 0010](../decisions/0010-consumer-first-provider-independent-boundary.md)
 - [Consumer-First and Provider-Independent Architecture](../architecture/consumer-first-provider-independent-boundary.md)
 - [Consumer-First and Institutional Interoperability Workstream](../roadmap/consumer-first-provider-independent-workstream.md)
+- [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md)
 
 ## Public-information boundary
 
