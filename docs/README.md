@@ -153,19 +153,19 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 ## Documentation map
 
-| Area                 | Purpose                                                                                         | Entry point                                                 |
-| -------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Frozen foundations   | Constitutional and canonical constraints                                                        | [Frozen Foundations](frozen/README.md)                      |
-| Decisions            | Material architectural and institutional choices                                                | [Decision Records](decisions/README.md)                     |
-| Architecture         | System, data, consent, AI, provider, interoperability, story, succession, and module boundaries | [Architecture Documentation](architecture/README.md)        |
-| Security             | Threats, controls, evidence, residual risk, and tabletop exercises                              | [Security Architecture](security/README.md)                 |
-| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, provider neutrality, and exit     | [Economics and Public-Good Funding](economics/README.md)    |
-| Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts                             | [Product Documentation](product/README.md)                  |
-| Governance           | Contribution, content, feedback, challenge, correction, assumptions, and authority              | [Governance Documentation](governance/README.md)            |
+| Area                 | Purpose                                                                                          | Entry point                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| Frozen foundations   | Constitutional and canonical constraints                                                         | [Frozen Foundations](frozen/README.md)                      |
+| Decisions            | Material architectural and institutional choices                                                 | [Decision Records](decisions/README.md)                     |
+| Architecture         | System, data, consent, AI, provider, interoperability, story, succession, and module boundaries  | [Architecture Documentation](architecture/README.md)        |
+| Security             | Threats, controls, evidence, residual risk, and tabletop exercises                               | [Security Architecture](security/README.md)                 |
+| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, provider neutrality, and exit      | [Economics and Public-Good Funding](economics/README.md)    |
+| Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts                              | [Product Documentation](product/README.md)                  |
+| Governance           | Contribution, content, feedback, challenge, correction, assumptions, and authority               | [Governance Documentation](governance/README.md)            |
 | Roadmap              | Current status, sprint sequence, future workstreams, evidence, and completion records            | [Roadmap Documentation](roadmap/README.md)                  |
-| Policies             | Development, validation, publication, and information handling                                  | [Policy Documentation](policies/README.md)                  |
+| Policies             | Development, validation, publication, and information handling                                   | [Policy Documentation](policies/README.md)                  |
 | Website              | Public discovery, trust, lore, consumer-first explanation, documentation, and synthetic prologue | [Website Documentation](website/README.md)                  |
-| Public communication | Campaign strategy, provenance, launch material, and public ledger                               | [Public Narrative and Campaign Documents](public/README.md) |
+| Public communication | Campaign strategy, provenance, launch material, and public ledger                                | [Public Narrative and Campaign Documents](public/README.md) |
 
 ## Implemented repository surfaces
 
