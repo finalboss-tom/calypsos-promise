@@ -1,8 +1,8 @@
 # Product Documentation
 
-[Documentation home](../README.md) · [Product Constitution](../frozen/product-constitution.md) · [Architecture](../architecture/README.md) · [Current status](../roadmap/current-status.md)
+[Documentation home](../README.md) · [Product Constitution](../frozen/product-constitution.md) · [Architecture](../architecture/README.md) · [Consumer-first boundary](../decisions/0010-consumer-first-provider-independent-boundary.md) · [Current status](../roadmap/current-status.md)
 
-This directory contains gameplay, vocabulary, incentive, content, Living Chronicle, and House of Keys product contracts. The [Product Constitution](../frozen/product-constitution.md) remains authoritative when a baseline, example, or implementation detail appears to conflict with the player promise or non-negotiable rights.
+This directory contains gameplay, vocabulary, incentive, content, Living Chronicle, and House of Keys product contracts. The [Product Constitution](../frozen/product-constitution.md) remains authoritative when a baseline, example, integration, provider request, sponsor request, or implementation detail appears to conflict with the player promise or non-negotiable rights.
 
 ## Product foundations
 
@@ -10,6 +10,7 @@ This directory contains gameplay, vocabulary, incentive, content, Living Chronic
 2. [Controlled Vocabulary](controlled-vocabulary.md)
 3. [Retired Terminology](retired-terminology.md)
 4. [Incentive Model](incentive-model.md)
+5. [Consumer-First and Provider-Independent Architecture](../architecture/consumer-first-provider-independent-boundary.md)
 
 ## Story and content contracts
 
@@ -32,6 +33,8 @@ Related architecture and governance:
 
 For the underlying domain models, use the [Living Chronicle architecture index](../architecture/README.md#living-chronicle-architecture).
 
+External clinical, claims, laboratory, pharmacy, device, EHR, payer, and research records remain source-attributed inputs mapped through future versioned adapters. A source schema, implementation guide, provider relationship, sponsor, or enterprise contract does not silently become Chronicle truth.
+
 ## House of Keys contracts
 
 1. [House of Keys Contract and Validation Baseline](house-of-keys-contract-baseline.md)
@@ -40,4 +43,6 @@ For the underlying permission models, use the [House of Keys architecture index]
 
 ## Product rule
 
-A schema, quest, reward, notification, narrative flow, permission request, policy decision, or receipt must preserve personal value first, meaningful refusal, non-punitive return, purpose-specific permission, visible uncertainty, accessibility, and the separation between authoritative records and AI-generated proposals.
+A schema, mapping, connector, provider integration, quest, reward, notification, narrative flow, permission request, policy decision, or receipt must preserve personal value first, meaningful refusal, non-punitive return, purpose-specific permission, visible uncertainty, accessibility, source provenance, provider replaceability, and the separation between authoritative records and AI-generated proposals.
+
+No reward, progression, core capability, or governance privilege may depend on selecting a preferred provider, sponsor, EHR, connector, enterprise partner, or broader institutional permission.
