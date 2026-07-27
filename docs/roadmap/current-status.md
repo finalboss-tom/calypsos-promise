@@ -1,13 +1,15 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Pre-Sprint 6 review](pre-sprint-6-alignment-review.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint 6 execution plan](sprint-6-execution-plan.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
-- **Design-to-build position:** Sprints 0–5 complete and merged; Sprint 6 next after the pre-Sprint 6 reconciliation merges
-- **Reviewed baseline:** `main` at `43fb01894639e7484ab1553428e1381a0f51b32c`
+- **Design-to-build position:** Sprints 0–5 complete and merged; Sprint 6 complete on draft PR #48 and pending explicit founding-steward acceptance and merge
+- **Merged baseline:** `main` at `4dfd39e7aa02ffe1ef3f5ba296378b29bd078047`
+- **Active review surface:** issue #47 and draft PR #48 on `agent/sprint-6-aster-contracts`
 - **Runtime status:** bounded public repository gateway only
 - **Production health-data status:** none
-- **Independent specialist review:** not established for the principal product, security, privacy, clinical, accessibility, interoperability, legal, operations, financial, or research boundaries
+- **Production AI status:** none
+- **Independent specialist review:** not established for the principal product, AI, security, privacy, clinical, accessibility, interoperability, legal, operations, financial, or research boundaries
 - **Phase 0 status:** active; exit review not yet completed
 
 ## Primary directive
@@ -22,42 +24,55 @@ Every implementation, provider, sponsor, institution, workflow, contributor prac
 
 ## Current position
 
-The repository has completed the foundation, open-source operating model, controlled vocabulary and content schemas, canonical Living Chronicle model, House of Keys permission architecture, and threat-model and security baseline.
+The repository has completed and merged:
 
-It has also accepted three non-numbered Phase 0 institutional and architectural baselines:
+- the frozen product, architecture, gameplay, lore, and governance foundations;
+- the open-source operating model;
+- controlled vocabulary, content schemas, and deterministic incentive boundaries;
+- the pre-stable Living Chronicle contract baseline;
+- the pre-stable House of Keys permission baseline;
+- the threat-model and security design baseline;
+- the funding and sponsorship doctrine;
+- the consumer-first and provider-independent boundary;
+- the operational-simplicity and durable-workflow boundary; and
+- the pre-Sprint 6 repository reconciliation.
 
-- funding and sponsorship doctrine through Decision 0008;
-- consumer-first and provider-independent product architecture through Decision 0010; and
-- operational simplicity and durable workflows through Decision 0011.
+Sprint 6 — Aster Contracts and AI Governance is complete on its review branch for public provider-independent contracts, deterministic validators, public synthetic fixtures, provider governance, compatibility, migration, control mapping, specialist holdpoints, unresolved-work records, and completion evidence.
 
-A proposed health-data legacy and post-mortem stewardship boundary remains under review through Decision 0009. It does not alter Sprint 6 order or authorize a production succession, estate, fiduciary, archive, or post-mortem access system.
+Sprint 6 is not yet accepted or merged. The founding steward must explicitly approve PR #48. That approval will accept the design sprint only; it will not activate production AI, private health data, provider calls, retrieval, memory storage, durable execution, agents, connectors, clinical behavior, deployment, or specialist certification.
 
-The [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md) confirms that the repository remains internally aligned and recommends beginning Sprint 6 after the reconciliation merges. It also defines the required Aster contract, authority, security, provider, memory, delayed-work, local-simulation, and non-AI-fallback handoff.
+A proposed health-data legacy and post-mortem stewardship boundary remains under review through Decision 0009. It does not authorize a production succession, estate, fiduciary, archive, research-release, or post-mortem access system.
 
 ## Accepted and merged baselines
 
-| Baseline                                                              | Merge evidence                                     | What it establishes                                                                                                                                                                                                       | What it does not establish                                                                                                                       |
-| --------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Sprint 0 — Warehouse and governance                                   | repository foundation                              | frozen product, architecture, gameplay, lore, status, decisions, sources, assumptions, and documentation hierarchy                                                                                                        | production product or institution                                                                                                                |
-| Sprint 1 — Open-source operating model                                | merged repository scaffold                         | monorepo, contribution, conduct, security, DCO, licensing, synthetic-only development, CI baseline                                                                                                                        | mature multi-maintainer governance or production operations                                                                                      |
-| Sprint 2 — Controlled vocabulary and content schemas                  | PR #9                                              | versioned content contracts, canon validation, deterministic incentive boundaries, examples, minimum validation                                                                                                           | live game engine or generated canon authority                                                                                                    |
-| Decision 0003 — Progressive Decentralization                          | PR #10                                             | founder independence, evidence-gated authority transfer, hundred-year institutional objective                                                                                                                             | a selected DAO, token, identity, voting, legal, or treasury mechanism                                                                            |
-| Sprint 3 — Canonical Data Model v1                                    | PR #14; `19c1045a24679246dae209e13c62038362c69cc1` | pre-stable Living Chronicle ontology, contracts, validation, provenance, correction, conflict, export, deletion, public synthetic fixtures                                                                                | accounts, production persistence, connectors, consent enforcement, real-data ingestion, or clinical use                                          |
-| Decision 0006 — Feedback to Governed Work                             | merged decision and operating protocol             | public-safe issue ledger, typed signals, evidence, deterministic prioritization direction, contribution and outcome loop                                                                                                  | binding community authority during Phase 0                                                                                                       |
-| Decision 0007 — Institutional Immune System                           | PR #19                                             | assumptions, challenge, containment, reversibility, appeal, restoration, revalidation, capture resistance                                                                                                                 | automated or independent institutional oversight                                                                                                 |
-| Sprint 4 — House of Keys Consent Architecture                         | PR #33; `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1` | purpose and data-category taxonomies, grants, lifecycle, revocation, explanations, comprehension evidence, receipts, pure policy evaluation, public synthetic fixtures                                                    | production identity, enforcement, persistence, legal validity, or real-recipient operation                                                       |
-| Pre-Sprint 5 alignment review                                         | PR #34; `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d` | mission and incentive reconciliation, cross-contract security handoff                                                                                                                                                     | independent security or production-readiness certification                                                                                       |
-| Sprint 5 — Threat Model and Security Baseline                         | PR #36; `4d09e8fc5b81f354c4568f97794fd9533ec68048` | threats, control objectives, residual risks, encryption and key boundaries, identity and recovery design, isolation, incident, audit, deletion procedures, synthetic abuse cases, design tabletops, specialist holdpoints | implemented, deployed, operationally verified, or independently reviewed production controls                                                     |
-| Decision 0008 — Funding and Sponsorship Baseline                      | PR #38; `32ac27bfb35ed64f34c64108a5d54c375d429593` | funding taxonomy, prohibited purchases of authority, sponsor benefits, conflicts, public register shapes, private-source boundaries, concentration, infrastructure replacement and exit                                   | entity, recipient, banking, payment, accounting, tax, treasury, compensation, investment, affiliate, or operating fundraising system             |
-| Decision 0010 — Consumer-First, Provider-Independent Product Boundary | PR #42; `188a6409de9bfc967fdb0f46bc08eb35ddfd6f9c` | person-centered continuity, provider-independent Chronicle, standards-at-the-edges mappings, institutional partnership gates, provider and sponsor neutrality                                                             | connector runtime, standards certification, provider contract, clinical workflow, enterprise product, or validated market result                 |
-| Decision 0011 — Operational Simplicity and Durable Workflows          | PR #44; `43fb01894639e7484ab1553428e1381a0f51b32c` | modular-monolith default, responsive and deferred paths, durable-work semantics, local simulation, provider isolation, operability and evidence-gated complexity                                                          | production queue, scheduler, event store, workflow engine, service topology, observability provider, local-first system, or measured performance |
+| Baseline | Merge evidence | What it establishes | What it does not establish |
+| --- | --- | --- | --- |
+| Sprint 0 — Warehouse and Governance | repository foundation | frozen product, architecture, gameplay, lore, status, decisions, sources, assumptions, and documentation hierarchy | production product or institution |
+| Sprint 1 — Open-Source Operating Model | merged repository scaffold | monorepo, contribution, conduct, security, DCO, licensing, synthetic-only development, and CI baseline | mature multi-maintainer governance or production operations |
+| Sprint 2 — Controlled Vocabulary and Content Schemas | PR #9 | versioned content contracts, canon validation, deterministic incentive boundaries, examples, and minimum validation | live game engine or generated canon authority |
+| Decision 0003 — Progressive Decentralization | PR #10 | founder independence, evidence-gated authority transfer, and hundred-year institutional objective | selected DAO, token, identity, voting, legal, or treasury mechanism |
+| Sprint 3 — Canonical Data Model v1 | PR #14; `19c1045a24679246dae209e13c62038362c69cc1` | pre-stable Living Chronicle ontology, contracts, validation, provenance, correction, conflict, export, deletion, and public synthetic fixtures | accounts, production persistence, connectors, permission enforcement, real-data ingestion, or clinical use |
+| Decision 0006 — Feedback to Governed Work | merged decision and operating protocol | public-safe issue ledger, typed signals, evidence, deterministic prioritization direction, contribution, outcome, and learning loop | binding community authority during Phase 0 |
+| Decision 0007 — Institutional Immune System | PR #19 | assumptions, challenge, containment, reversibility, appeal, restoration, revalidation, and capture resistance | automated or independent institutional oversight |
+| Sprint 4 — House of Keys Consent Architecture | PR #33; `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1` | purpose and data-category taxonomies, grants, lifecycle, revocation, explanations, comprehension evidence, receipts, pure evaluation, and public synthetic fixtures | production identity, enforcement, persistence, legal validity, or real-recipient operation |
+| Sprint 5 — Threat Model and Security Baseline | PR #36; `4d09e8fc5b81f354c4568f97794fd9533ec68048` | threats, control objectives, residual risks, encryption and key boundaries, identity and recovery design, isolation, incident, audit, deletion procedures, synthetic abuse cases, design tabletops, and specialist holdpoints | implemented, deployed, operationally verified, or independently reviewed production controls |
+| Decision 0008 — Funding and Sponsorship Baseline | PR #38; `32ac27bfb35ed64f34c64108a5d54c375d429593` | funding taxonomy, prohibited purchases of authority, sponsor benefits, conflicts, public record shapes, concentration, replacement, and exit | entity, recipient, banking, payment, accounting, tax, treasury, compensation, investment, affiliate, or operating fundraising system |
+| Decision 0010 — Consumer-First, Provider-Independent Boundary | PR #42; `188a6409de9bfc967fdb0f46bc08eb35ddfd6f9c` | person-centered continuity, provider-independent Chronicle, standards-at-the-edges mappings, partnership gates, and provider and sponsor neutrality | connector runtime, standards certification, provider contract, clinical workflow, enterprise product, or validated market result |
+| Decision 0011 — Operational Simplicity and Durable Workflows | PR #44; `43fb01894639e7484ab1553428e1381a0f51b32c` | modular-monolith default, responsive and deferred paths, durable-work semantics, local simulation, provider isolation, operability, and evidence-gated complexity | production queue, scheduler, event store, workflow engine, service topology, observability provider, local-first system, or measured performance |
+| Pre-Sprint 6 Alignment Review | PR #46; `4dfd39e7aa02ffe1ef3f5ba296378b29bd078047` | repository-wide mission, incentive, architecture, provider, funding, workflow, and Aster handoff reconciliation | Sprint 6 implementation, production readiness, or specialist review |
+
+## Active review-branch baseline
+
+| Baseline | Review evidence | What it establishes | What it does not establish |
+| --- | --- | --- | --- |
+| Sprint 6 — Aster Contracts and AI Governance | issue #47; draft PR #48; [completion record](sprint-6-completion-record.md) | pre-stable `@calypsos-promise/aster` authority, role, proposal, extraction, intent, source-recall, memory, untrusted-input, work, provider, local-fixture, compatibility, migration, validator, test, control, holdpoint, and completion baseline | production AI, private egress, provider approval, identity, persistence, retrieval, memory storage, durable runtime, tools, connectors, clinical use, deployment, or independent review |
 
 ## Active and proposed assumptions
 
 ### Active working hypotheses
 
-- [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](../governance/assumption-AS-0012-consumer-first-continuity-value.md) is **ACTIVE** because it informs accepted Decision 0010 and future product and connector sequencing. Its confidence remains **WORKING HYPOTHESIS**; no real product, retention, connector, clinical, or market evidence exists.
-- [AS-0013 — Operational Simplicity Can Support Durable Personal Value](../governance/assumption-AS-0013-operational-simplicity-durable-value.md) is **ACTIVE** because it informs accepted Decision 0011 and the implementation sequence. Its confidence remains **WORKING HYPOTHESIS**; no representative private runtime or operational evidence exists.
+- [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](../governance/assumption-AS-0012-consumer-first-continuity-value.md) remains **ACTIVE** and **WORKING HYPOTHESIS**. No real product, retention, connector, clinical, or market evidence exists.
+- [AS-0013 — Operational Simplicity Can Support Durable Personal Value](../governance/assumption-AS-0013-operational-simplicity-durable-value.md) remains **ACTIVE** and **WORKING HYPOTHESIS**. No representative private runtime or operational evidence exists.
 
 Active means the assumption currently influences design. It does not mean supported, independently reviewed, or validated.
 
@@ -79,11 +94,15 @@ The public site does not provide accounts, health-data capture, a private Chroni
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
 - [`packages/house-of-keys`](../../packages/house-of-keys) — pre-stable permission contracts, structural validation, pure policy evaluation, access receipts, and public synthetic fixtures
+- [`packages/aster`](../../packages/aster) — pre-stable provider-independent Aster contracts, validators, public synthetic fixtures, compatibility, and migration evidence on draft PR #48
+
+`packages/aster` has no production provider, network, database, credential, UI, queue, scheduler, workflow, event-store, or vector-database dependency.
 
 ### Documentation and validation
 
-- [`docs/security`](../security/README.md) — merged Sprint 5 architecture, controls, residual risk, procedures, synthetic scenarios, table exercises, reconciliation, and specialist holdpoints
-- [`docs/economics`](../economics/README.md) — merged funding and sponsorship doctrine, public record contracts, fictional examples, validation, and design table exercises
+- [`docs/security`](../security/README.md) — merged Sprint 5 architecture, controls, residual risk, procedures, synthetic scenarios, design tabletops, reconciliation, and specialist holdpoints
+- [`docs/architecture`](../architecture/README.md) — merged architecture plus the active Aster contract and completion review surface
+- [`docs/economics`](../economics/README.md) — merged funding and sponsorship doctrine, public record contracts, fictional examples, validation, and design tabletops
 - [`tools`](../../tools) — documentation-link, repository-policy, funding-register, and content validation
 - `pnpm check` — formatting, documentation links, repository policy, economics, content, lint, type checking, and tests
 - GitHub Actions — independent formatting and validation jobs with read-only repository content permissions in the main CI workflow
@@ -92,16 +111,15 @@ The public site does not provide accounts, health-data capture, a private Chroni
 
 Planned surfaces are not empty placeholders and should not be created until the module-creation gate is met.
 
-- a bounded Aster contract capability for Sprint 6
 - `apps/game` for the future universal Expo experience
 - `apps/api` for future modular application composition
 - `apps/mcp-forge` for public documentation and synthetic contributor tools
 - `apps/mcp-chronicle` for future private, user-scoped tools
 - production identity, accounts, sessions, recovery, delegation, capacity, and representative authority
-- production Chronicle persistence, source custody, attachments, exports, deletion, and backups
+- production Chronicle persistence, source custody, attachments, exports, deletion, backups, and migrations
 - production House of Keys orchestration, enforcement, receipts, and protected audit
 - command, event, job, projection, queue, scheduler, replay, observability, and workflow runtime
-- AI provider, model gateway, retrieval, vector indexing, and production memory systems
+- production AI provider, model gateway, retrieval, vector indexing, memory storage, media processing, and provider administration
 - standards registries, mappings, connectors, provider, EHR, payer, laboratory, pharmacy, device, exchange, clinical, and enterprise systems
 - analytics and research environments
 - notifications and communication systems
@@ -114,17 +132,7 @@ Planned surfaces are not empty placeholders and should not be created until the 
 
 The Living Chronicle owns longitudinal records, values, temporal assertions, source provenance, correction, conflict, supersession, source artifacts, export, and deletion contracts.
 
-It does not own:
-
-- account authentication or identity proofing;
-- purpose-specific permission grants;
-- access-policy decisions;
-- access receipts or protected operational audit;
-- quest progression or narrative state;
-- research enrollment or compensation;
-- provider selection;
-- AI-provider behavior, prompts, conversational memory, or model logs; or
-- delayed-work orchestration.
+It does not own authentication, permission, receipts, gameplay, research enrollment, provider selection, AI behavior, model logs, retrieval indexes, product memory, or delayed-work orchestration.
 
 ### House of Keys
 
@@ -134,45 +142,49 @@ It does not authenticate actors, execute operations, mutate grants, create Chron
 
 ### Aster
 
-Aster remains an interaction layer.
+Aster owns public proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, local-fixture, compatibility, and migration contracts.
 
-Aster may draft, clarify, retrieve authorized information, explain provenance and uncertainty, route, and phrase approved narrative behavior.
+Aster may draft, clarify, recall source-linked information, explain provenance and uncertainty, route, and prepare narrative presentation.
 
 Aster may not:
 
-- write directly to canonical records;
-- change permissions;
-- complete quests without deterministic domain evidence;
-- delete records;
-- enroll a person in research;
-- transfer money;
-- query a database through arbitrary SQL;
-- invent clinical conclusions;
-- grant tool authority;
-- or treat provider, retrieval, or conversational output as canonical truth.
+- write canonical records;
+- create or expand permission;
+- confirm its own output;
+- invoke authoritative actions;
+- complete quests or grant rewards;
+- diagnose, prescribe, or direct emergency care;
+- retain hidden material memory;
+- let untrusted content choose subjects, tools, resources, policy, or authority;
+- retry unknown outcomes automatically;
+- let providers or funding control authority, defaults, ranking, findings, publication, compatibility, or governance; or
+- treat model, provider, retrieval, memory, fixture, compatibility, migration, or CI output as truth.
 
 The frozen transaction rule remains:
 
 > AI proposes. The player confirms. The domain service validates and stores.
 
-## Security control and evidence status
+## Aster evidence and holdpoint status
 
-Sprint 5 distinguishes:
+Sprint 6 establishes:
 
-- required controls;
-- designed controls;
-- controls with public synthetic evidence;
-- independently reviewed controls;
-- implemented controls;
-- deployed controls;
-- operationally verified controls; and
-- deferred, rejected, retired, or not-applicable controls.
+- required and designed Aster controls;
+- deterministic public validators;
+- public synthetic scenario and fixture evidence;
+- exact role, operation, proposal-kind, source, fallback, component, provider-state, compatibility, and migration bindings;
+- stable control and unresolved-work identities; and
+- final cross-contract and acceptance-criterion mapping.
 
-These statuses do not collapse into one score. A designed or synthetically tested control is not deployed. Founding-steward review is not independent specialist review.
+Sprint 6 does not establish:
 
-The repository currently has no named independent security reviewer. This remains an explicit holdpoint.
+- production implementation, deployment, or operational verification;
+- model or provider quality;
+- representative prompt-injection, latency, reliability, accessibility, clinical, cost, or benefit measurements;
+- private-data egress;
+- production identity, permission orchestration, persistence, retrieval, memory, tools, queues, schedules, workflows, connectors, or incidents; or
+- independent specialist review.
 
-Security cannot become a reason to pressure people into broader collection, longer retention, wider access, optional analytics, model training, research participation, public visibility, or surrender of correction, export, deletion, refusal, accessibility, or non-AI fallback.
+The controlling follow-up record is the [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md).
 
 ## Funding and institutional relationship status
 
@@ -186,10 +198,10 @@ The project currently has no accepted repository record establishing:
 - a bank or payment processor;
 - accounting or treasury operation;
 - compensation or investment instruments;
-- active sponsor, grant, provider, connector, affiliate, research-funding, or enterprise relationships; or
+- an active sponsor, grant, provider, connector, affiliate, research-funding, or enterprise relationship; or
 - production financial controls.
 
-Funding cannot purchase data, private access, research authority, health influence, product authority, source rank, provider defaults, connector placement, roadmap control, governance power, favorable findings, safety exceptions, game progression, or publication control.
+Funding cannot purchase data, private access, research authority, health influence, product authority, source rank, provider defaults, connector placement, roadmap control, governance power, favorable findings, safety exceptions, compatibility outcomes, game progression, or publication control.
 
 ## Open-source operating assessment
 
@@ -198,17 +210,16 @@ Funding cannot purchase data, private access, research authority, health influen
 The repository has:
 
 - a canonical documentation entry point and authority order;
-- frozen foundations and decision records;
+- frozen foundations and accepted decision records;
 - synthetic-only public development;
 - public issue intake and private security, privacy, and conduct routes;
 - DCO certification;
 - pull-request review and squash-merge policy;
-- a comprehensive contribution guide and pull-request template;
 - explicit module ownership, public API, dependency direction, and decomposition criteria;
 - pinned Node and pnpm expectations and a committed lockfile;
 - credential-free ordinary development;
 - independent CI checks;
-- dependency, service, provider, funding, replacement, rollback, and publication review rules;
+- dependency, service, provider, funding, replacement, rollback, compatibility, migration, and publication rules;
 - an assumption registry and challenge mechanism; and
 - progressive authority-transfer and founder-exit constraints.
 
@@ -221,63 +232,41 @@ The repository does not yet evidence:
 - distributed code ownership backed by qualified second owners;
 - signed releases;
 - clean-machine and second-operator setup;
-- accepted install, startup, focused-test, package-test, and full-validation budgets;
-- implemented production incident, observability, backup, recovery, deletion, migration, or provider-replacement operation;
-- or mature multi-maintainer release and succession capacity.
+- accepted installation, startup, focused-test, package-test, and full-validation budgets;
+- implemented production incident, observability, backup, recovery, deletion, migration, provider-replacement, AI, or workflow operation; or
+- mature multi-maintainer release and succession capacity.
 
 An owner-only CODEOWNERS file would not reduce key-person dependency. Code-owner enforcement should begin when a qualified second owner or bounded specialist group can actually provide review.
 
 ## Next design-to-build boundary
 
-### Sprint 6 — Aster contracts and AI governance
+### Sprint 6 acceptance
 
-Sprint 6 remains next.
+Before Sprint 7 begins:
 
-**Goal:** Convert Aster from a concept into enforceable interfaces.
+1. the final Sprint 6 branch must pass formatting, documentation links, content validation, repository policy, economics validation, lint, typecheck, tests, and DCO;
+2. issue #47 and PR #48 must record the exact reviewed head and final validation evidence;
+3. the founding steward must explicitly accept the Sprint 6 completion package; and
+4. PR #48 must be squash merged without weakening production or specialist gates.
 
-It must inherit:
+### Sprint 7 — Forge MCP and Agent Safety
 
-- the Product Constitution, frozen Aster transaction rule, controlled vocabulary, and gameplay boundaries;
-- Living Chronicle source, provenance, uncertainty, correction, conflict, export, deletion, and authoritative-record rules;
-- House of Keys purpose, scope, freshness, confirmation, revocation, receipt, and fail-closed rules;
-- Sprint 5 prompt-injection, untrusted-input, retrieval, memory, provider-egress, non-AI-fallback, evidence-status, residual-risk, and specialist-holdpoint boundaries;
-- Decision 0008 model-credit, sponsor, affiliate, related-party, provider-neutrality, benchmark, publication, replacement, and conflict rules;
-- Decision 0010 source-class, implementation-guide, mapping, provenance, institutional-source, provider-neutrality, and non-canonical external-schema rules; and
-- Decision 0011 responsive-versus-deferred, timeout, cancellation, retry, duplicate, stale-output, provider-unavailable, local-simulation, and complete manual-fallback rules.
+After Sprint 6 acceptance and merge, Sprint 7 becomes next.
 
-The [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md) adds execution-plan clarifications for:
+**Goal:** Provide useful agent tooling without private health-data risk.
 
-- a bounded pre-stable Aster contract package rather than expansion of Chronicle truth;
-- Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper authority matrices;
-- a structured proposal envelope;
-- exact confirmation and domain-validation stages;
-- intent, confidence, clarification, ambiguity, and refusal;
-- source-linked recall and retrieval freshness;
-- visible, editable, exportable, deletable memory classes;
-- prompt-injection and untrusted-input isolation;
-- responsive and deferred result classification;
-- stable delayed-operation identity, timeout, cancellation, retry, duplicate, supersession, and stale-result behavior;
-- a deterministic local or synthetic adapter;
-- complete non-AI and manual core paths;
-- provider-egress and funding-conflict governance;
-- compatibility and migration requirements;
-- public synthetic fixtures and tests;
-- security-control and specialist-holdpoint mapping; and
-- a completion record that separates contract evidence from implementation, deployment, independent review, and production readiness.
+Sprint 7 inherits:
 
-Sprint 6 does not select or endorse a production AI provider, EHR, connector, clinical partner, queue, scheduler, workflow engine, event store, vector database, model gateway, cloud, or enterprise relationship.
+- public documentation and synthetic data only;
+- server-owned tool authority and exact resource binding;
+- data-only treatment of retrieved content;
+- versioned tool contracts, scopes, failures, receipts, and rate limits;
+- deterministic validation and draft-only generated mappings;
+- provider, funding, sponsor, and publication independence;
+- non-AI repository contribution paths; and
+- every open production, identity, private-data, provider, clinical, legal, accessibility, security, and operational holdpoint.
 
-## Sprint 6 entry conditions
-
-Before implementation begins:
-
-1. merge the pre-Sprint 6 reconciliation;
-2. open a dedicated Sprint 6 issue with workstreams and acceptance evidence;
-3. publish a Sprint 6 execution plan linked to the accepted roadmap and this status record;
-4. create a focused branch and draft pull request;
-5. use public or synthetic information only;
-6. keep production and specialist-review holdpoints explicit; and
-7. preserve all accepted non-scope and rollback boundaries.
+Sprint 7 does not authorize private Chronicle tools, production providers, protected mappings, credentials, real health data, or consequential domain actions.
 
 ## Institutional Phase 0 gate assessment
 
@@ -285,7 +274,7 @@ Before implementation begins:
 
 **Status:** baseline met, subject to future evidence and specialist review.
 
-The Product Constitution, Vision, Architecture Foundation, Gameplay Foundation, Living Chronicle, House of Keys, security baseline, funding baseline, consumer-first boundary, operational-simplicity boundary, progressive-decentralization mandate, and Institutional Immune System are internally compatible.
+The Product Constitution, Vision, Architecture Foundation, Gameplay Foundation, Living Chronicle, House of Keys, security baseline, funding baseline, consumer-first boundary, operational-simplicity boundary, progressive-decentralization mandate, Institutional Immune System, and Sprint 6 Aster contracts are internally compatible.
 
 ### Repository controls meet minimum viable validation
 
@@ -299,7 +288,7 @@ Branch-protection evidence, commit-level DCO, clean-machine measurements, accept
 
 **Status:** substantially met.
 
-Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, consumer-first, provider-independent, operational-simplicity, and legacy-succession intent are committed in repository records.
+Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, consumer-first, provider-independent, operational-simplicity, Aster, and legacy-succession intent are committed in repository records.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance sources still need recovery, classification, and reviewed migration.
 
@@ -323,7 +312,7 @@ Before institutional Phase 0 is declared complete, the project must publish and 
 8. baseline measurements for clean installation, current local startup, focused validation, package tests, and full validation before numeric operability gates are accepted;
 9. an ownership and review plan for CODEOWNERS or equivalent distributed responsibility when qualified second maintainers and specialist groups exist;
 10. explicit review, revision, acceptance, or decline of proposed Decision 0009 and its companion records when appropriate;
-11. a named specialist-review strategy and truthful interim holdpoints across security, privacy, accessibility, clinical, interoperability, legal, operations, financial, and research domains; and
+11. a named specialist-review strategy across security, privacy, AI safety, accessibility, clinical, interoperability, legal, operations, financial, and research domains; and
 12. an explicit Phase 0 exit review identifying unresolved risks, owners, conflicts, dependencies, evidence, containment, rollback, and revalidation conditions.
 
 These are governance, resilience, evidence, and ownership requirements. They do not require a token, treasury, identity system, broad vote, legal wrapper, payment rail, production queue, production provider, enterprise contract, or production estate workflow prematurely.
@@ -340,9 +329,9 @@ The repository does not currently select or implement:
 - real health-data ingestion or real connector rollout;
 - real recipients, research enrollment, compensation, affiliate, investment, donation, sponsorship, treasury, payment, or financial operation;
 - production Legacy Directives, post-mortem access, research release, archive publication, or deletion execution; or
-- production AI memory, model training, arbitrary agent access, or clinical decision support.
+- production AI memory, model training, private retrieval, arbitrary agent access, or clinical decision support.
 
-Documentation, contracts, synthetic fixtures, design tabletops, and CI passing do not activate those capabilities.
+Documentation, contracts, synthetic fixtures, design tabletops, completion records, and CI passing do not activate those capabilities.
 
 ## Status rule
 
@@ -357,4 +346,4 @@ A capability or control must remain labeled according to evidence:
 - **BASELINE** for accepted Phase 0 direction; and
 - **PROPOSED** for reviewable direction not yet accepted.
 
-A merged document may still describe a proposed future capability. An accepted doctrine may still have no runtime. A completed sprint may still have no independent review. Status must describe what the evidence proves, not what the project hopes to build.
+A completed review branch may still be unaccepted and unmerged. A merged document may still describe a proposed future capability. An accepted doctrine may still have no runtime. A completed sprint may still have no independent review. Status must describe what the evidence proves, not what the project hopes to build.
