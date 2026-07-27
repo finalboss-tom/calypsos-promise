@@ -228,35 +228,38 @@ export interface AsterUntrustedInputIsolationEnvelope {
   readonly effects: AsterUntrustedInputEffectBoundary;
 }
 
-export const ASTER_UNTRUSTED_INPUT_AUTHORITY_BOUNDARY: AsterUntrustedInputAuthorityBoundary = {
-  canChangePolicy: false,
-  canModifyToolRegistry: false,
-  canChooseControllingSubject: false,
-  canCreateOrExpandPermission: false,
-  canExpandActionScope: false,
-  canBypassConfirmation: false,
-  canInvokeArbitraryResource: false,
-  canCrossSubjectBoundary: false,
-  canPersistItselfAsMemory: false,
-  canSuppressSources: false,
-  canSuppressUncertainty: false,
-  canRevealSecrets: false,
-  canWriteCanonicalRecords: false,
-  canCreateClinicalAuthority: false,
-};
+export const ASTER_UNTRUSTED_INPUT_AUTHORITY_BOUNDARY: AsterUntrustedInputAuthorityBoundary =
+  {
+    canChangePolicy: false,
+    canModifyToolRegistry: false,
+    canChooseControllingSubject: false,
+    canCreateOrExpandPermission: false,
+    canExpandActionScope: false,
+    canBypassConfirmation: false,
+    canInvokeArbitraryResource: false,
+    canCrossSubjectBoundary: false,
+    canPersistItselfAsMemory: false,
+    canSuppressSources: false,
+    canSuppressUncertainty: false,
+    canRevealSecrets: false,
+    canWriteCanonicalRecords: false,
+    canCreateClinicalAuthority: false,
+  };
 
-export const ASTER_UNTRUSTED_INPUT_EFFECT_BOUNDARY: AsterUntrustedInputEffectBoundary = {
-  toolInvoked: false,
-  resourceAccessed: false,
-  memoryPersisted: false,
-  canonicalWriteAttempted: false,
-};
+export const ASTER_UNTRUSTED_INPUT_EFFECT_BOUNDARY: AsterUntrustedInputEffectBoundary =
+  {
+    toolInvoked: false,
+    resourceAccessed: false,
+    memoryPersisted: false,
+    canonicalWriteAttempted: false,
+  };
 
-export const ASTER_UNTRUSTED_INPUT_VISIBILITY_BOUNDARY: AsterUntrustedInputVisibilityBoundary = {
-  sourcesPreserved: true,
-  uncertaintyPreserved: true,
-  conflictsPreserved: true,
-};
+export const ASTER_UNTRUSTED_INPUT_VISIBILITY_BOUNDARY: AsterUntrustedInputVisibilityBoundary =
+  {
+    sourcesPreserved: true,
+    uncertaintyPreserved: true,
+    conflictsPreserved: true,
+  };
 
 export function isAsterUntrustedInputClass(
   value: unknown,
