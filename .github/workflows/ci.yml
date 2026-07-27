@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -19,6 +19,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: pnpm/action-setup@v6
         with:
           version: 10.13.1
@@ -32,25 +35,48 @@ jobs:
         id: formatting
         continue-on-error: true
         run: pnpm format:check
-      - name: Prepare formatting fixes
-        if: steps.formatting.outcome == 'failure'
+      - name: Apply formatter output to same-repository review branch
+        if: >-
+          steps.formatting.outcome == 'failure' &&
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
         run: |
-          git rev-parse HEAD^{tree} > base-tree-sha.txt
+          pnpm format
+          git fetch origin main --depth=1
+          git show FETCH_HEAD:.github/workflows/ci.yml > .github/workflows/ci.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "chore: apply formatter output"
+          git push origin "HEAD:${HEAD_BRANCH}"
+      - name: Prepare formatting fixes for external branches
+        if: >-
+          steps.formatting.outcome == 'failure' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name != github.repository)
+        run: |
           pnpm format
           git diff --binary > formatting.patch
           git diff --name-only -z | tar --null -T - -czf formatted-files.tar.gz
-      - name: Upload formatting fixes
-        if: steps.formatting.outcome == 'failure'
+      - name: Upload formatting fixes for external branches
+        if: >-
+          steps.formatting.outcome == 'failure' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name != github.repository)
         uses: actions/upload-artifact@v7
         with:
           name: formatting-fixes
           path: |
-            base-tree-sha.txt
             formatting.patch
             formatted-files.tar.gz
           if-no-files-found: error
-      - name: Fail on formatting differences
-        if: steps.formatting.outcome == 'failure'
+      - name: Fail when formatter output was not applied
+        if: >-
+          steps.formatting.outcome == 'failure' &&
+          (github.event_name != 'pull_request' ||
+          github.event.pull_request.head.repo.full_name != github.repository)
         run: exit 1
 
   validate:
