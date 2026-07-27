@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 6 review](../roadmap/pre-sprint-6-alignment-review.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -34,7 +34,10 @@ This directory contains versioned architecture baselines that implement the froz
 26. [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md) — synthetic-only evaluation, minimum-necessary egress, handling, deletion, credentials, evaluation independence, funding conflicts, concentration, replacement, migration, teardown, incidents, and public-claim boundaries
 27. [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md) — deterministic scenario catalogue, five role fallbacks, seven core paths, runtime exclusions, prompt-injection, degraded states, and non-authority
 28. [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md) — twelve-component manifest, public fixtures, role bindings, change classifications, migration rules, complete coverage, and fail-closed non-authority
-29. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+29. [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md) — final mission, domain, security, funding, provider, workflow, publication, status, and Sprint 7 handoff review
+30. [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md) — stable Aster control objectives, acceptance mapping, evidence status, Sprint 5 inheritance, and revalidation triggers
+31. [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md) — production, pilot, specialist, institutional, implementation, measurement, and human-acceptance gates
+32. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -95,8 +98,12 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
 - [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
 - [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md)
+- [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md)
+- [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
+- [Sprint 6 Specialist Holdpoints and Unresolved Work](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
+- [Sprint 6 Completion Record](../roadmap/sprint-6-completion-record.md)
 
 Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, deterministic local-fixture, and compatibility-contract capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, bounded delayed work, public or synthetic provider evaluation, and repeatable public scenario evidence. The compatibility manifest binds every public component to a revision, validator, synthetic fixture, migration rule, and non-authority boundary. Aster does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority.
 
@@ -110,9 +117,11 @@ Aster is a bounded proposal, explanation, player-controlled memory, untrusted-in
 
 Legacy and succession are proposed future capabilities, not extensions of login recovery or Chronicle truth. A directive expresses person intent; external authority evidence supports a role; the House of Keys evaluates a bounded operation; execution and receipts record what occurred. Death, incapacity, inactivity, custody, family relationship, or scientific value cannot collapse those domains.
 
-## Sprint 6 handoff
+## Sprint 6 completion boundary
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, role contracts, proposal and extraction boundary, intent and refusal contracts, source-linked recall, player-controlled memory lifecycle, untrusted-input isolation, responsive and deferred work semantics, provider governance, a deterministic local synthetic adapter, complete non-AI fallback evidence, and compatibility and migration contracts. Completion evidence, unresolved-work records, specialist holdpoints, and explicit founding-steward acceptance remain open.
+Sprint 6 is complete on draft PR #48 for its accepted public contract, deterministic validation, public synthetic fixture, provider-governance, compatibility, migration, control-mapping, holdpoint, and documentation scope. The [completion record](../roadmap/sprint-6-completion-record.md) and final reconciliation preserve every production and specialist gate.
+
+Explicit founding-steward acceptance and merge remain pending. After acceptance, Sprint 7 may begin only within its public-documentation and synthetic-data Forge MCP boundary.
 
 ## Boundary rule
 
