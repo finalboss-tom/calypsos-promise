@@ -18,29 +18,36 @@ The core package intentionally has no database, network, provider, model SDK, UI
 ## Current public surface
 
 - `authority.ts` defines the five roles, direct accessible names, allowed input and output classes, authority-source classes, deterministic action owners, execution classes, confirmation rules, mandatory prohibitions, and the authority matrix.
-- `role-contracts.ts` defines the bounded operation, evidence requirements, clarification triggers, qualitative confidence and uncertainty rules, failure codes, source-link rules, retention limits, provider-egress limits, manual fallback, and role-specific prohibitions for each role.
-- `proposal.ts` defines proposal kinds, subject, request, producer, source, transformation, confidence, uncertainty, clarification, intended-action, review, authority, domain-outcome, payload, and structured-extraction contracts.
-- `intent.ts` defines bindable and safe meta intents, consequence classes, dispositions, ambiguity and refusal taxonomies, clarification lifecycle, intent candidates, and non-authoritative intent decisions.
-- `source-recall.ts` defines exact Chronicle and public-education source references, locators, lifecycle, mapping, implementation-guide, retrieval-freshness, structured-query fallback, source-linked statements, uncertainty, and non-authority contracts.
-- `validate.ts` deterministically validates the authority matrix.
-- `validate-role-contracts.ts` deterministically validates detailed role contracts against the authority matrix and shared safety boundaries.
-- `validate-proposal.ts` deterministically validates proposal envelopes and structured extraction candidates against role, source, review, provenance, non-authority, and domain-handoff boundaries.
-- `validate-intent.ts` deterministically validates intent binding, qualitative confidence, clarification, refusal, safe proposal preparation, and non-authority.
-- `validate-source-recall.ts` deterministically validates exact source revisions, personal versus public statements, lifecycle and mapping visibility, semantic-retrieval fallback, uncertainty, clinical limits, and non-authority.
+- `role-contracts.ts` defines bounded operations, evidence, clarification, qualitative confidence and uncertainty, failure, source-link, retention, provider-egress, manual fallback, and role-specific prohibitions.
+- `proposal.ts` defines proposal kinds, subject, request, producer, source, transformation, confidence, uncertainty, clarification, intended action, review, authority, domain outcome, payload, and structured extraction.
+- `intent.ts` defines bindable and safe meta intents, consequence classes, dispositions, ambiguity and refusal taxonomies, clarification lifecycle, candidates, and non-authoritative intent decisions.
+- `source-recall.ts` defines exact Chronicle and public-education references, locators, lifecycle, mapping, implementation-guide, retrieval freshness, structured-query fallback, source-linked statements, uncertainty, and non-authority.
+- `memory.ts` defines transient context, retained preferences, accessibility context, separately retained conversation, record-linked derived memory, narrative presentation state, provider operational metadata, retention, lifecycle, player controls, egress, secondary-use boundaries, and missing-memory fallback.
+- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, and `validate-memory.ts` deterministically validate the corresponding public contracts.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
 
+## Memory guarantees
+
+- Material product memory is separately chosen, player-visible, editable through inspectable revision, exportable, and deletable.
+- Transient context is request-bounded and cannot silently become retained memory.
+- Record-linked derived memory requires exact Chronicle record and revision evidence and falls back to recomputation or direct record inspection.
+- Correction and supersession preserve prior memory revisions rather than silently overwriting them.
+- Deleted, expired, or unavailable memory does not retain the prior value in the active contract object.
+- Provider operational metadata remains outside product memory; the core carries only a bounded external reference, policy, and expiry rather than raw provider content.
+- Memory does not authorize provider training, research, commerce, secondary use, canonical writes, permission, proposal confirmation, progression, or rewards.
+- Missing memory cannot block core capture, permission review, correction, export, deletion, or ordinary play.
+
 ## Recall and explanation guarantees
 
-- Every person-specific health statement requires at least one exact Chronicle record and revision reference.
+- Every person-specific health statement requires an exact Chronicle record and revision reference.
 - Public educational material remains clearly labeled and cannot establish a person-specific fact.
 - Source references preserve source-version identity, locator, lifecycle, correction, conflict, deletion, mapping, and implementation-guide state where applicable.
 - Partial, lossy, conflicting, or unsupported mapping requires a direct loss description.
 - Standards or implementation-guide conformance cannot prove clinical completeness, semantic equivalence, safety, or endorsement.
 - Stale, unavailable, or unknown semantic retrieval must use the structured-query fallback before returning statements.
 - Required uncertainty remains visible for correction, conflict, mapping loss, implementation-guide limits, deleted sources, and public education.
-- Recall cannot diagnose, prescribe, direct emergency care, write canonical records, create permission, or treat provider rank, retrieval score, recency, or standards profile as truth.
 
 ## Intent guarantees
 
@@ -49,16 +56,13 @@ Tests import only `dist/index.js` so private file layout does not become the con
 - Unsupported intent requires an inspectable refusal, explanation, and safe manual fallback.
 - Confidence is qualitative, explained, and explicitly non-authoritative; numeric probabilities, scores, and percentages are rejected.
 - A bound intent requires explicit player choice and may prepare only a non-authoritative proposal.
-- Intent classification cannot invoke actions, create or expand permission, confirm proposals, or claim domain completion.
 
 ## Proposal guarantees
 
 - Proposal identity, role, operation, kind, subject, request, producer, source references, transformation provenance, intended action, and review revision are inspectable.
 - Confirmation binds the exact proposal revision and must identify the player as the confirming actor.
-- Source references remain minimum-necessary identifiers; proposal envelopes do not copy source records.
 - Proposal payloads are non-canonical and cannot claim permission, domain invocation, validation, storage, execution, progression, or rewards.
 - Structured extraction produces candidates, not Chronicle values. Candidates are explicitly unconfirmed, non-canonical, and not domain-accepted.
-- Unparsed material remains visible with a source reference and reason rather than being silently discarded.
 
 ## Role guarantees
 
@@ -68,6 +72,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 - The Interpreter preserves source and mapping limitations and cannot diagnose, prescribe, or imply standards-based completeness or safety.
 - The Storykeeper presents confirmed events without inventing canon, progression, or rewards.
 
-All request context is transient by default. Roles own no hidden retained memory. Any retained memory requires a separate visible player choice. Future provider egress remains policy-gated and minimum necessary; no provider is approved by this package.
-
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
