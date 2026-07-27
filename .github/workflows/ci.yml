@@ -35,7 +35,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Apply final funding audit
-        run: node tools/one-time-funding-final-audit.mjs
+        id: funding-audit
+        continue-on-error: true
+        run: node tools/one-time-funding-final-audit.mjs > funding-audit.log 2>&1
+      - name: Upload funding audit log
+        if: steps.funding-audit.outcome == 'failure'
+        uses: actions/upload-artifact@v7
+        with:
+          name: funding-final-audit-log
+          path: funding-audit.log
+          if-no-files-found: error
+      - name: Fail on funding audit error
+        if: steps.funding-audit.outcome == 'failure'
+        run: exit 1
       - name: Format reconciled files
         run: pnpm format
       - name: Validate funding records
