@@ -1,12 +1,12 @@
 # Current Project Status
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Funding baseline](../economics/README.md) · [Consumer-first boundary](../decisions/0010-consumer-first-provider-independent-boundary.md) · [Legacy stewardship proposal](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Operational simplicity proposal](../decisions/0011-operational-simplicity-and-durable-workflows.md) · [Funding baseline](../economics/README.md) · [Consumer-first boundary](../decisions/0010-consumer-first-provider-independent-boundary.md) · [Legacy stewardship proposal](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md)
 
 **Status date:** 2026-07-27  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
 **Design-to-build sequence:** Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged; Sprint 6 — Aster contracts and AI governance is next  
-**Proposed institutional design:** Decision 0009 and Decision 0010, with their companion legacy, consumer-first, provider-independent, interoperability, assumption, website, and cross-phase workstream records, are under review; neither changes Sprint 6 order or authorizes production  
-**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, provider, EHR, connector, clinical, research, enterprise, financial, legacy-directive, estate, successor, private Chronicle, encryption, monitoring, or deployed security-control runtime
+**Proposed institutional design:** Decisions 0009, 0010, and 0011, with their companion legacy, consumer-first, provider-independent, interoperability, operational-simplicity, assumption, policy, reconciliation, and cross-phase workstream records, remain proposal-level where stated; none changes Sprint 6 order or authorizes production  
+**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, provider, EHR, connector, workflow, queue, scheduler, clinical, research, enterprise, financial, legacy-directive, estate, successor, private Chronicle, encryption, monitoring, or deployed security-control runtime
 
 ## Executive status
 
@@ -22,16 +22,20 @@ Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and 
 - The pre-Sprint 5 reconciliation merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`, repairing post-merge drift and confirming the unchanged Sprint 5 handoff.
 - Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the security architecture, policies, procedures, public synthetic evidence, founding-steward design tabletops, residual-risk records, reconciliation, and specialist holdpoints.
 - The Phase 0 Funding and Sponsorship Baseline merged through PR #38 as squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`, establishing Decision 0008, doctrine, public register contracts, fictional relationship and opportunity examples, lightweight validation, and founding-steward design tabletop evidence.
+- The health-data legacy and succession documentation merged through PR #40. Its Decision 0009, architecture, workstream, and AS-0011 remain proposal-level and do not activate a legal or production capability.
+- The consumer-first and provider-independent documentation merged through PR #42 as squash commit `188a6409de9bfc967fdb0f46bc08eb35ddfd6f9c`. Its Decision 0010, architecture, workstream, reconciliation, website explanation, and AS-0012 remain proposal-level where stated and do not activate a provider or enterprise capability.
 
 The funding baseline does not authorize a legal recipient, donations, grants, sponsors, providers, affiliates, research funding, compensation, investment, payment rails, accounting, treasury, charitable status, tax deductibility, procurement, contracting, enterprise revenue, or financial operations.
 
 Issue #39 tracks proposed Decision 0009, a health-data legacy and succession architecture, a future institutional workstream, and a falsifiable assumption record. This proposed documentation gives explicit form to the frozen Vision’s legacy wishes, abandoned-account stewardship, intergenerational succession, and durable-archive commitments. It does not create a universal will, property classification, executor override, estate-planning service, post-mortem research release, public archive, or successor-access runtime.
 
-Issue #41 tracks proposed Decision 0010, a consumer-first and provider-independent architecture, AS-0012, a repository reconciliation, a public website explanation, sprint and phase inheritance, and a future Clinical and Enterprise Interoperability Partnerships workstream. The proposed boundary treats providers, EHRs, payers, laboratories, pharmacies, devices, exchanges, research institutions, and other institutional systems as important sources, destinations, and potential partners connected through versioned adapters. It does not select a standard, activate a connector, prohibit future institutional collaboration, authorize clinical use, establish an enterprise product, or represent consumer-first sequencing as validated.
+Issue #41 and merged PR #42 track proposed Decision 0010, a consumer-first and provider-independent architecture, AS-0012, a repository reconciliation, a public website explanation, sprint and phase inheritance, and a future Clinical and Enterprise Interoperability Partnerships workstream. The proposed boundary treats providers, EHRs, payers, laboratories, pharmacies, devices, exchanges, research institutions, and other institutional systems as important sources, destinations, and potential partners connected through versioned adapters. It does not select a standard, activate a connector, prohibit future institutional collaboration, authorize clinical use, establish an enterprise product, or represent consumer-first sequencing as validated.
 
-The repository review found no mission-level contradiction requiring a frozen player-promise rewrite. The material gap was that the consumer-first and provider-independent strategy remained implicit rather than being stated, funded, tested, and carried through future connector and partnership gates.
+Issue #43 tracks proposed Decision 0011, an operational-simplicity and durable-workflow architecture, mission-to-runtime traceability, a developer experience and operability policy, AS-0013, a repository reconciliation, and sprint and phase inheritance. The proposed boundary treats a modular monolith, a small responsive path, durable deferred work, local simulation, provider-independent adapters, and evidence-gated service extraction as implementation constraints rather than informal preferences. It does not select a queue, scheduler, event store, persistence topology, workflow engine, observability provider, offline synchronization model, or performance guarantee.
 
-Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing a design sprint, funding doctrine, or proposed legacy or interoperability baseline does not declare the product runtime, financial operations, deployed security posture, clinical or legal review, provider integration, research infrastructure, governance transition, succession operations, or Phase 0 complete.
+The repository review found no mission-level contradiction requiring a frozen player-promise rewrite. The material gaps were that the consumer-first, provider-independent, and operational-simplicity strategies remained implicit rather than being stated, funded, tested, and carried through future connector, workflow, service, and partnership gates.
+
+Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing a design sprint, funding doctrine, or proposed legacy, interoperability, or workflow baseline does not declare the product runtime, financial operations, deployed security posture, clinical or legal review, provider integration, workflow operations, research infrastructure, governance transition, succession operations, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -213,11 +217,45 @@ Established at doctrine, public-register-contract, fictional-example, lightweigh
 
 The proposed Decision 0010 extension makes funded provider, EHR, payer, laboratory, pharmacy, device, exchange, connector, mapping, distribution, and enterprise support explicit economic and product conflicts. Support may fund an integration; it may not purchase Chronicle meaning, source rank, connector priority, provider placement, roadmap control, private access, clinical endorsement, or favorable findings.
 
+The proposed Decision 0011 extension makes funded cloud, queue, scheduler, workflow, database, model, observability, local-development, and service infrastructure explicit architecture and operability conflicts. Support may fund infrastructure; it may not purchase architecture authority, provider defaults, favorable performance findings, hidden dependency, or removal of an exit path.
+
 The baseline does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, processor, accounting system, tax status, treasury, compensation system, provider, affiliate program, investment instrument, research-funding program, nonprofit status, charitable status, tax deductibility, procurement, contracting, or enterprise revenue.
+
+## Proposed operational simplicity and durable workflows boundary
+
+Tracked by issue #43 and intentionally separate from the merged historical sprint records.
+
+The proposed set includes:
+
+- Decision 0011 — Operational Simplicity and Durable Workflows;
+- a responsive-path, deferred-work, command, event, projection, job, scheduling, replay, correction, and failure architecture;
+- mission-to-runtime traceability;
+- a Developer Experience and Operability Policy;
+- AS-0013, a proposed assumption that a modular, locally simulatable, batch-oriented core can support durable personal value;
+- a repository reconciliation; and
+- a cross-phase workstream carrying additions across Sprints 6–19 and institutional Phases 0–8.
+
+The proposed design establishes:
+
+- a modular monolith as the default deployment posture;
+- service extraction only with evidence of a distinct security, scale, failure, language, release, ownership, or legal boundary;
+- a small responsive path separated from optional deferred enrichment;
+- schedules as triggers rather than owners of domain logic;
+- stable operation identities and duplicate-safe semantics for retryable work;
+- explicit retry, quarantine, replay, correction, cancellation, and supersession behavior;
+- commands, domain events, projections, jobs, receipts, audit, and authoritative state as distinct concepts;
+- deterministic local or synthetic adapters where practical for ordinary public development;
+- complete manual and non-AI core paths;
+- measured rather than assumed build, test, startup, latency, cost, and operator budgets;
+- and architecture exceptions with evidence, ownership, rollback, and revalidation.
+
+It expressly does not select universal event sourcing, a production queue, scheduler, workflow engine, event store, database topology, observability provider, offline synchronization protocol, service topology, or numeric performance guarantee.
+
+This set remains proposed. It does not establish specialist approval, implementation, deployment, operational verification, production readiness, measured scalability, or product utility.
 
 ## Proposed consumer-first and provider-independent boundary
 
-Tracked by issue #41 and intentionally separate from the merged historical sprint records.
+Tracked by issue #41, merged through PR #42, and intentionally separate from the merged historical sprint records.
 
 The proposed set includes:
 
@@ -237,7 +275,7 @@ The proposed design establishes:
 - explicit mapping loss, ambiguity, conflict, provenance, correction, replacement, migration, and teardown behavior;
 - no reward or product-right dependency tied to provider, sponsor, connector, or enterprise selection;
 - no purchased schema authority, source ranking, connector priority, provider placement, roadmap control, private access, or favorable findings; and
-- a separate future workstream before material provider-facing, institutional, B2B, B2B2C, or enterprise operation.
+- a separate future workstream before material provider-facing, institutional, B2B, B2C, or enterprise operation.
 
 It expressly does not claim that healthcare lacks standards, that providers oppose interoperability, that all B2B health technology fails, or that Calypso’s Promise replaces an EHR or clinical care.
 
@@ -245,7 +283,7 @@ This set remains proposed. It does not establish specialist approval, standards 
 
 ## Proposed health-data legacy and succession baseline
 
-Tracked by issue #39 and intentionally separate from the merged historical sprint records.
+Tracked by issue #39, merged through PR #40, and intentionally separate from the merged historical sprint records.
 
 The proposed set includes:
 
@@ -294,12 +332,15 @@ The project currently has no named independent security reviewer. This must rema
 Sprint 6 — Aster contracts and AI governance is next. Sprint 6 must inherit:
 
 - Sprint 5 threats, controls, provider-egress, prompt-injection, retrieval, memory, non-AI fallback, evidence-status, and specialist-holdpoint boundaries;
-- Decision 0008 provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries; and
-- if accepted, Decision 0010 source-class, institutional provenance, mapping, uncertainty, provider-neutrality, non-canonical external-schema, and sponsor-independent evaluation boundaries.
+- Decision 0008 provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries;
+- if accepted, Decision 0010 source-class, institutional provenance, mapping, uncertainty, provider-neutrality, non-canonical external-schema, and sponsor-independent evaluation boundaries; and
+- if accepted, Decision 0011 responsive-versus-deferred result classification, durable-work requests, timeout, cancellation, retry, stale-output, provider-unavailable, local-simulation, and complete manual-fallback boundaries.
 
-Sprint 6 defines AI-provider governance requirements. It does not select or endorse a production AI provider, EHR, connector, clinical partner, or enterprise relationship.
+Sprint 6 defines AI-provider governance requirements. It does not select or endorse a production AI provider, EHR, connector, clinical partner, queue, scheduler, workflow engine, or enterprise relationship.
 
-The proposed consumer-first documentation does not alter this sequence. Its primary connector implementation inheritance begins in Sprint 14, while its future institutional partnership workstream begins before any material provider-facing, clinical, institutional, B2B, B2B2C, or enterprise capability becomes operational.
+The proposed operational-simplicity documentation does not alter this sequence. Sprint 6 receives contract inheritance, Sprint 7 receives synthetic work and clock tools, and Sprint 11 becomes the first complete durable-work architectural proof. The detailed inheritance is maintained in [`operational-simplicity-workstream.md`](operational-simplicity-workstream.md).
+
+The proposed consumer-first documentation does not alter this sequence. Its primary connector implementation inheritance begins in Sprint 14, while its future institutional partnership workstream begins before any material provider-facing, clinical, institutional, B2B, B2C, or enterprise capability becomes operational.
 
 The proposed legacy documentation likewise does not alter this sequence. Its implementation entry condition occurs later, before any Legacy Directive, incapacity, death, fiduciary, estate, successor, research, archive, or post-mortem deletion capability is represented as LIVE.
 
@@ -311,6 +352,8 @@ The proposed legacy documentation likewise does not alter this sequence. Its imp
 
 The Product Constitution, Vision, architecture, incentives, progressive decentralization, Institutional Immune System, Living Chronicle, House of Keys, security baseline, publication policy, public-domain commitment, and funding baseline are internally compatible.
 
+The proposed Decision 0011 set appears consistent with those foundations by implementing the frozen modular-monolith and worker direction through explicit responsive and deferred paths, provider-independent adapters, local simulation, operability, and evidence-gated complexity. It is not part of the accepted baseline until repository review accepts it.
+
 The proposed Decision 0010 set appears consistent with those foundations by making the consumer application and provider-independent Chronicle the product center while preserving institutional interoperability, standards, clinical evidence, funding safeguards, and future partnership pathways. It is not part of the accepted baseline until repository review accepts it.
 
 The proposed Decision 0009 set appears consistent with those foundations by extending person control into incapacity and post-mortem design while keeping legal authority, permission, Chronicle truth, execution, and receipts separate. It is not part of the accepted baseline until repository review accepts it.
@@ -321,13 +364,15 @@ The proposed Decision 0009 set appears consistent with those foundations by exte
 
 The repository provides `pnpm check`, synthetic-data-only contribution rules, independent CI checks, documentation-link validation, funding-register validation, content and model validation, tests, and transitional DCO certification.
 
+The proposed operability policy adds validation tiers and candidate timing targets, but current install, startup, focused-check, package-test, and full-validation measurements have not yet been recorded as accepted budgets.
+
 Administrative branch-protection settings and commit-level DCO enforcement still require verification or implementation before external contribution volume grows.
 
 ### Material decisions no longer live only in private notes or chat
 
 **Status:** Partially met.
 
-Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, proposed provider and interoperability, and proposed legacy-succession decisions are committed in repository artifacts.
+Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, proposed provider and interoperability, proposed operational simplicity, and proposed legacy-succession decisions are committed in repository artifacts.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes still need recovery, cataloguing, classification, and reviewed migration.
 
@@ -348,34 +393,38 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 5. evidence that required GitHub branch protections and administrative controls are configured;
 6. a decision on when transitional PR-level DCO is replaced by commit-level enforcement;
 7. an initial founder-subsidy and economic-dependency register using public-safe categories, responsible owners, replacement conditions, and private-source boundaries;
-8. explicit review, revision, acceptance, or decline of proposed Decision 0010 and its companion records;
-9. explicit review, revision, acceptance, or decline of proposed Decision 0009 and its companion records; and
-10. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, conflicts, dependencies, and rollback conditions.
+8. explicit review, revision, acceptance, or decline of proposed Decision 0011 and its companion records;
+9. explicit review, revision, acceptance, or decline of proposed Decision 0010 and its companion records;
+10. explicit review, revision, acceptance, or decline of proposed Decision 0009 and its companion records;
+11. baseline measurement of current install, startup, focused validation, package tests, and full validation before accepting numeric operability gates; and
+12. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, conflicts, dependencies, and rollback conditions.
 
-Review of proposed Decisions 0009 and 0010 is useful institutional design work but does not activate production legacy, provider, connector, clinical, or enterprise systems and does not replace the separate institutional succession ownership map above.
+Review of proposed Decisions 0009, 0010, and 0011 is useful institutional design work but does not activate production legacy, provider, connector, clinical, enterprise, queue, workflow, or service systems and does not replace the separate institutional succession ownership map above.
 
-These are governance, economic-boundary, and resilience requirements. They do not require a token, treasury, identity system, legal wrapper, payment rail, broad vote, operating sponsor program, provider contract, enterprise revenue, or production estate workflow prematurely.
+These are governance, economic-boundary, and resilience requirements. They do not require a token, treasury, identity system, legal wrapper, payment rail, broad vote, operating sponsor program, provider contract, production queue, enterprise revenue, or production estate workflow prematurely.
 
 ## Deferred implementation boundary
 
 The current repository does not select or implement:
 
-- a production database topology, event model, or migration runner;
+- a production database topology, event model, event store, queue, scheduler, workflow engine, consistency model, or migration runner;
 - production accounts, authentication, identity proofing, delegation, recovery, incapacity, estate, fiduciary, or successor authority;
-- cloud, storage, queue, analytics, document-processing, connector, archive, verification, AI, EHR, payer, laboratory, pharmacy, device, exchange, terminology, mapping, or institutional providers;
+- cloud, storage, queue, analytics, document-processing, connector, archive, verification, AI, observability, EHR, payer, laboratory, pharmacy, device, exchange, terminology, mapping, or institutional providers;
 - exact FHIR, US Core, USCDI, SMART, bulk-data, clinical-document, terminology, imaging, claims, or proprietary implementation choices;
-- provider-facing summaries, care collaboration, clinical workflows, enterprise tenancy, procurement, contracting, B2B, or B2B2C operation;
+- provider-facing summaries, care collaboration, clinical workflows, enterprise tenancy, procurement, contracting, B2B, or B2C operation;
 - real health-data ingestion or connector rollout;
 - real recipients, research enrollment, compensation, marketplaces, data sales, family-health derivatives, historical archives, or post-mortem release;
 - clinical terminology, diagnosis, treatment, decision support, or causal inference;
 - production encryption, key management, escrow, malware controls, audit, monitoring, secure deletion, or long-term preservation;
-- distributed revocation, receipt delivery, connector synchronization, succession-case, or lifecycle orchestration;
-- story, quest, progression, notification, or Aster-memory persistence;
+- distributed revocation, receipt delivery, connector synchronization, durable-job execution, replay, succession-case, or lifecycle orchestration;
+- offline-first synchronization, multi-device conflict resolution, or local key custody;
+- story, quest, progression, notification, projection, or Aster-memory persistence;
 - identity or anti-Sybil systems;
+- accepted numeric service, latency, build, validation, cost, or reliability targets;
 - a legal entity, fiscal sponsor, donation rail, grant recipient, accounting system, treasury, budget, reserve, compensation, ownership, affiliate, research-funding, provider-placement, connector-ranking, estate-planning, archival, or successor-custody mechanism; or
 - token, blockchain, NFT, or on-chain DAO infrastructure.
 
-Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, connector, provider, or future legacy-domain input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
+Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, connector, provider, job, event, projection, or future legacy-domain input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
 
 ## Publication and release status
 
@@ -383,18 +432,19 @@ Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, co
 - Sprint 3 Living Chronicle and Sprint 4 House of Keys contracts are merged, pre-stable, and synthetic-only.
 - Sprint 5 is a merged architecture and design baseline, not deployed security or independent certification.
 - The Phase 0 funding workstream is merged doctrine, public register structure, synthetic examples, and design-tabletop evidence, not operating finance.
+- Decision 0011, its architecture, traceability record, policy, AS-0013, reconciliation, and future workstream remain proposed documentation, not a production workflow system, local-first product, or measured operability result.
 - Decision 0010, its architecture, AS-0012, reconciliation, website brief, and future workstream remain proposed documentation, not a production provider, connector, clinical, enterprise, or standards-certification capability.
 - Decision 0009, the legacy architecture, future workstream, and AS-0011 remain proposed documentation, not a legal service or production capability.
-- The current website is a live bounded public repository gateway, not the private health product, provider portal, connector runtime, fundraising runtime, or legacy-planning interface.
-- No claim should imply Phase 1’s useful private product, Phase 2’s trust evidence, Research Commons, sustainable economics, clinical or enterprise integration, constitutional governance, post-mortem stewardship, or founder independence has been achieved.
+- The current website is a live bounded public repository gateway, not the private health product, provider portal, connector runtime, workflow runtime, fundraising runtime, or legacy-planning interface.
+- No claim should imply Phase 1’s useful private product, Phase 2’s trust evidence, Research Commons, sustainable economics, clinical or enterprise integration, operational maturity, constitutional governance, post-mortem stewardship, or founder independence has been achieved.
 
 ## Status update rule
 
 Update this record when:
 
-- a funding, provider, connector, enterprise, legacy, succession, or other institutional baseline changes proposal, review, acceptance, or merge status;
+- a funding, provider, connector, enterprise, workflow, service, legacy, succession, or other institutional baseline changes proposal, review, acceptance, or merge status;
 - a sprint starts, closes, merges, pauses, or changes scope through accepted authority;
 - an institutional phase gate is accepted, rejected, paused, or rolled back;
-- a frozen or accepted decision changes product, incentive, governance, security, economics, interoperability, succession, or founder-independence boundaries;
+- a frozen or accepted decision changes product, incentive, governance, security, economics, interoperability, operational architecture, succession, or founder-independence boundaries;
 - a material unresolved gate gains an owner or evidence; or
-- a capability, control, financial relationship, provider relationship, connector, mapping, succession authority, or institutional status begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.
+- a capability, control, financial relationship, provider relationship, connector, mapping, job, workflow, queue, scheduler, succession authority, or institutional status begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.
