@@ -14,6 +14,10 @@ Decision records preserve why a material product, architecture, governance, lice
 - [0007 — Institutional Immune System](0007-institutional-immune-system.md)
 - [0008 — Funding and Sponsorship Baseline](0008-funding-and-sponsorship-baseline.md)
 
+## Proposed records
+
+- [0009 — Health Data Legacy and Post-Mortem Stewardship](0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed person-level legacy, incapacity, estate, fiduciary, post-mortem, family-health, research, archive, deletion, and institutional-continuity baseline; no production or universal legal claim
+
 Use [0000 — Decision Template](0000-template.md) for a new record. Preserve numbering once assigned; a missing number does not justify renumbering historical decisions.
 
 ## A decision record is required when a change materially affects

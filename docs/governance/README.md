@@ -19,8 +19,11 @@ GitHub issues are the current public-safe work ledger. Community signals are adv
 1. [Institutional Immune System](institutional-immune-system.md)
 2. [Assumption Registry](assumption-registry.md)
 3. [Decision 0007](../decisions/0007-institutional-immune-system.md)
+4. [AS-0011 — A provenance-rich Living Chronicle can retain legitimate value after death](assumption-AS-0011-health-data-legacy-value.md) — proposed companion record for Decision 0009 and the future legacy workstream
 
 The immune-system metaphor applies to harmful conditions and mechanisms, never to people or groups.
+
+The AS-0011 companion record makes post-mortem value a falsifiable hypothesis rather than a reason to preserve, disclose, research, archive, or monetize every Chronicle. It becomes canonical only through ordinary review and Assumption Registry integration.
 
 ## Content stewardship
 

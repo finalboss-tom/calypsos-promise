@@ -14,13 +14,16 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 1. [Current Project Status](current-status.md)
 2. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
 3. [Funding Completion Record](../economics/phase-0-funding-completion-record.md)
-4. [Sprint 5 Completion Record](sprint-5-completion-record.md)
-5. [Security Architecture](../security/README.md)
-6. [Sprint Sequence](sprints.md)
-7. [Public Institutional Roadmap](../../ROADMAP.md)
-8. [Sprint 5 Plan](sprint-5-plan.md)
-9. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
-10. [Sprint 4 Completion Record](sprint-4-completion-record.md)
+4. [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md)
+5. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md)
+6. [Health Data Legacy and Succession Architecture](../architecture/health-data-legacy-and-succession.md)
+7. [Sprint 5 Completion Record](sprint-5-completion-record.md)
+8. [Security Architecture](../security/README.md)
+9. [Sprint Sequence](sprints.md)
+10. [Public Institutional Roadmap](../../ROADMAP.md)
+11. [Sprint 5 Plan](sprint-5-plan.md)
+12. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+13. [Sprint 4 Completion Record](sprint-4-completion-record.md)
 
 ## Completion records and plans
 
@@ -35,16 +38,19 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — complete and merged through PR #34
 - [Sprint 5 Plan](sprint-5-plan.md) — complete and merged through PR #36
 - [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative merged evidence
-- [Phase 0 Funding and Sponsorship Baseline](../economics/README.md) — complete on draft PR #38 pending explicit approval and merge
-- [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md) — authoritative review-branch evidence and original-plan reconciliation
+- [Phase 0 Funding and Sponsorship Baseline](../economics/README.md) — complete and merged through PR #38
+- [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md) — authoritative completion evidence and original-plan reconciliation
+- [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md) — future cross-phase capability tracked by issue #39; does not change Sprint 6 order or authorize production
 
 ## Current boundary
 
-The Phase 0 Funding and Sponsorship Baseline is complete on draft PR #38 for explicit founding-steward approval and merge. It establishes Decision 0008, economics policies, canonical empty live registers, five fictional relationship records, six fictional opportunity records, sixteen fictional design tabletops, and funding-register validation.
+The Phase 0 Funding and Sponsorship Baseline merged through PR #38 as squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`. It establishes Decision 0008, economics policies, canonical empty live registers, five fictional relationship records, six fictional opportunity records, sixteen fictional design tabletops, and funding-register validation.
 
-The workstream does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, payment processor, accounting system, tax or charitable status, treasury, compensation system, affiliate program, investment instrument, research-funding program, provider, or production financial control.
+The funding workstream does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, payment processor, accounting system, tax or charitable status, treasury, compensation system, affiliate program, investment instrument, research-funding program, provider, or production financial control.
 
-After merge, Sprint 6 — Aster contracts and AI governance is the next numbered design-to-build boundary. Sprint 6 inherits both the merged Sprint 5 security constraints and Decision 0008’s provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
+Sprint 6 — Aster contracts and AI governance is the next numbered design-to-build boundary. Sprint 6 inherits both the merged Sprint 5 security constraints and Decision 0008’s provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
+
+Issue #39 and the proposed legacy documentation define a later institutional capability for a person’s revocable Legacy Directive, incapacity and post-mortem stewardship, contested authority, family-health derivatives, research, archives, deletion, and platform succession. They do not activate the capability, change Sprint 6, or represent a universal will, property right, executor override, or legal conclusion.
 
 The remaining institutional Phase 0 work includes key-person dependency, succession and emergency ownership, founder-reserved powers, historical governance-source recovery, branch-protection evidence, commit-level DCO transition, the factual founder-subsidy and economic-dependency register, and the explicit Phase 0 exit review.
 
