@@ -1,10 +1,11 @@
 # Sprint 6 Execution Plan — Aster Contracts and AI Governance
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 6 review](pre-sprint-6-alignment-review.md) · [Tracking issue #47](https://github.com/finalboss-tom/calypsos-promise/issues/47)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 6 review](pre-sprint-6-alignment-review.md) · [Tracking issue #47](https://github.com/finalboss-tom/calypsos-promise/issues/47) · [Draft PR #48](https://github.com/finalboss-tom/calypsos-promise/pull/48)
 
 - **Status:** ACTIVE
 - **Entry baseline:** `main` at `4dfd39e7aa02ffe1ef3f5ba296378b29bd078047`
 - **Branch:** `agent/sprint-6-aster-contracts`
+- **Draft pull request:** #48
 - **Started:** 2026-07-27
 - **Information boundary:** public repository records and public synthetic evidence only
 - **Certification boundary:** contract, governance, deterministic validation, and synthetic evidence; not production AI, clinical, privacy, security, accessibility, legal, interoperability, procurement, financial, or operational certification
@@ -23,9 +24,9 @@ A provider response, model output, conversational acknowledgement, queued reques
 
 Sprint 6 implements the accepted deliverables and acceptance criteria in [`sprints.md`](sprints.md) without changing their meaning or order.
 
-The implementation will establish one bounded pre-stable package, `@calypsos-promise/aster`, with deliberate public exports, independently versioned serialized contracts, stable issue and refusal codes, deterministic validators, public synthetic fixtures, and tests that import only the package public surface.
+The implementation establishes one bounded pre-stable package, `@calypsos-promise/aster`, with deliberate public exports, independently versioned serialized contracts, stable issue and refusal codes, deterministic validators, public synthetic fixtures, and tests that import only the package public surface.
 
-The core contract will have no database, network, model SDK, provider, UI, filesystem, environment, session, secret, wall-clock, queue, scheduler, workflow-engine, event-store, or vector-database dependency.
+The core contract has no database, network, model SDK, provider, UI, filesystem, environment, session, secret, wall-clock, queue, scheduler, workflow-engine, event-store, or vector-database dependency.
 
 ## Non-scope
 
@@ -60,6 +61,8 @@ The package may reference external identifiers and revisions through narrow seri
 
 ### 6.1 Bounded capability and authority matrix
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; final Sprint 6 validation and acceptance remain pending.
+
 - create `@calypsos-promise/aster` as one dependency-free pre-stable package;
 - define package owner, reason to change, public exports, contract version, role identifiers, accessible role names, authority-source classes, action-owner classes, execution classifications, mandatory prohibited actions, and stable validation issues;
 - publish an explicit role authority matrix for Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper;
@@ -70,7 +73,13 @@ The package may reference external identifiers and revisions through narrow seri
 
 ### 6.2 Role contracts
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; final Sprint 6 validation and acceptance remain pending.
+
 Define allowed inputs, outputs, prohibited actions, required evidence, clarification, confidence, failure, retention, egress, responsive/deferred/manual classification, and deterministic domain ownership for Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper.
+
+**Current evidence:** stable role-specific contract and operation identifiers; authority-aligned input, output, execution, confirmation, and owner fields; structured evidence requirements; clarification triggers; qualitative confidence and uncertainty rules; stable failure codes; source-link behavior; explicit player-review requirements; non-canonical and non-invoking result flags; transient-by-default context; no role-owned memory; separate player choice before retention; policy-gated minimum-necessary future egress; complete manual or deterministic fallback; role-specific prohibitions; deterministic validation; architecture documentation; and public-surface Node tests.
+
+**Exit evidence:** every detailed role contract validates against the authority matrix; every role preserves mandatory non-authority; every health-related Librarian recall requires source links; the Interpreter cannot imply clinical or standards authority; the Storykeeper accepts only confirmed events for presentation; and tests reject canonical-result, authoritative-invocation, hidden-memory, and unrestricted-egress escalation.
 
 ### 6.3 Proposal and extraction contracts
 
@@ -129,7 +138,7 @@ Every workstream must preserve:
 
 ## Validation strategy
 
-Each workstream should add focused deterministic tests. Before Sprint 6 is represented as ready for acceptance:
+Each workstream adds focused deterministic tests. Before Sprint 6 is represented as ready for acceptance:
 
 - package tests must exercise only the public package surface;
 - `pnpm --filter @calypsos-promise/aster test` must pass;
