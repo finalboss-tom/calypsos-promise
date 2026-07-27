@@ -1,5 +1,6 @@
 import {
   ASTER_AUTHORITATIVE_ACTION_OWNERS,
+  ASTER_ROLE_AUTHORITY_MATRIX,
   ASTER_ROLES,
   type AsterRole,
 } from "./authority.js";
@@ -479,7 +480,7 @@ export function validateAsterProposalEnvelope(
 
     if (
       role !== null &&
-      !ASTER_ROLE_CONTRACTS[role].authoritativeSources.includes(
+      !ASTER_ROLE_AUTHORITY_MATRIX[role].authoritativeSources.includes(
         source.sourceClass as never,
       )
     ) {
@@ -487,7 +488,7 @@ export function validateAsterProposalEnvelope(
         issues,
         "aster.proposal.disallowed-source-class",
         `${path}.sourceClass`,
-        "Source class must be permitted by the role contract.",
+        "Source class must be permitted by the role authority contract.",
       );
     }
   }
