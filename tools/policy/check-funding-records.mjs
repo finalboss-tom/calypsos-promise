@@ -19,18 +19,19 @@ function requireText(path, content, expected) {
 function recordBlocks(content, kind) {
   const prefix = kind === "funding" ? "FND" : "OPP";
   const pattern = new RegExp(
-    "^  - id: (" +
-      prefix +
-      "-\\d{4}-\\d{4})\\n([\\s\\S]*?)(?=^  - id: " +
-      prefix +
-      "-\\d{4}-\\d{4}\\n|\\s*$)",
+    "^  - id: (" + prefix + "-\\d{4}-\\d{4})$",
     "gm",
   );
+  const matches = [...content.matchAll(pattern)];
 
-  return [...content.matchAll(pattern)].map((match) => ({
-    id: match[1],
-    body: match[2],
-  }));
+  return matches.map((match, index) => {
+    const bodyStart = match.index + match[0].length + 1;
+    const bodyEnd = matches[index + 1]?.index ?? content.length;
+    return {
+      id: match[1],
+      body: content.slice(bodyStart, bodyEnd),
+    };
+  });
 }
 
 function requireBlockFields(path, records, fields) {
