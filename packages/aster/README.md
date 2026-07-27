@@ -1,6 +1,6 @@
 # `@calypsos-promise/aster`
 
-Pre-stable, provider-independent public contracts for Aster roles, proposals, AI governance, memory, provider egress, untrusted-input isolation, delayed results, deterministic local substitution, and non-AI fallback.
+Pre-stable, provider-independent public contracts for Aster roles, proposals, AI governance, memory, provider egress, untrusted-input isolation, responsive and deferred work, deterministic local substitution, and non-AI fallback.
 
 ## Owner and reason to change
 
@@ -11,7 +11,7 @@ Pre-stable, provider-independent public contracts for Aster roles, proposals, AI
 
 Aster proposes. The player confirms. Deterministic domain services validate and store.
 
-This package does not own Living Chronicle truth, House of Keys permission truth, gameplay completion, rewards, application state, protected audit, provider logs, retrieval indexes, delayed-work state, or institutional authority.
+This package does not own Living Chronicle truth, House of Keys permission truth, gameplay completion, rewards, application state, protected audit, provider logs, retrieval indexes, delayed-work execution state, or institutional authority.
 
 The core package intentionally has no database, network, provider, model SDK, UI, filesystem, environment, session, secret, wall-clock, queue, scheduler, workflow-engine, event-store, or vector-database dependency.
 
@@ -24,10 +24,24 @@ The core package intentionally has no database, network, provider, model SDK, UI
 - `source-recall.ts` defines exact Chronicle and public-education references, locators, lifecycle, mapping, implementation-guide, retrieval freshness, structured-query fallback, source-linked statements, uncertainty, and non-authority.
 - `memory.ts` defines transient context, retained preferences, accessibility context, separately retained conversation, record-linked derived memory, narrative presentation state, provider operational metadata, retention, lifecycle, player controls, egress, secondary-use boundaries, and missing-memory fallback.
 - `untrusted-input.ts` defines public untrusted input classes and uses, server-resolved context, server-owned tool references, input and finding contracts, dispositions, visibility, authority, and no-effect boundaries.
-- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, `validate-memory.ts`, and `validate-untrusted-input.ts` deterministically validate the corresponding public contracts.
+- `work-lifecycle.ts` defines responsive, deferred, and manual-fallback work identity, revision snapshots, attempts, retry, idempotency, dependency, fallback, result, acknowledgement, cancellation, correction, supersession, replay, and non-authority contracts.
+- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, `validate-memory.ts`, `validate-untrusted-input.ts`, and `validate-work-lifecycle.ts` deterministically validate the corresponding public contracts.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
+
+## Responsive and deferred work guarantees
+
+- Responsive, deferred, and manual-fallback work must match the execution classes allowed by the selected role contract.
+- Deferred acceptance means accepted for later processing, not complete.
+- Work binds exact request, subject, source, authority, and policy revisions at input and compares them with a current snapshot.
+- Only current, successfully attempted work may publish a complete or partial proposal-only result.
+- Retry policy is versioned, bounded, freshness-preserving, and independent of provider defaults.
+- Domain duplicate safety cannot rely only on transport de-duplication.
+- Timeout and cancellation remain explicit and cannot claim completion or reversal of external effects.
+- Provider unavailability activates a manual, deterministic, or structured-query fallback without blocking core rights.
+- Stale, superseded, corrected, quarantined, or unknown-outcome work cannot overwrite newer results or retry automatically under stale authority.
+- Replay creates a new work identity and preserves prior results.
 
 ## Untrusted-input guarantees
 
@@ -84,4 +98,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 - The Interpreter preserves source and mapping limitations and cannot diagnose, prescribe, or imply standards-based completeness or safety.
 - The Storykeeper presents confirmed events without inventing canon, progression, or rewards.
 
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/architecture/aster-untrusted-input-isolation-contracts.md`](../../docs/architecture/aster-untrusted-input-isolation-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/architecture/aster-untrusted-input-isolation-contracts.md`](../../docs/architecture/aster-untrusted-input-isolation-contracts.md), [`docs/architecture/aster-responsive-and-deferred-work-contracts.md`](../../docs/architecture/aster-responsive-and-deferred-work-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
