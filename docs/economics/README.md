@@ -65,6 +65,7 @@ A donation form, sponsor page, contract, payment processor, private negotiation,
 - **Donation or sponsorship runtime:** not implemented
 - **Independent legal, accounting, tax, nonprofit, and financial-control review:** pending
 - **Treasury and sustainable-economics governance:** deferred to later gates
+- **Founder-subsidy and economic-dependency inventory:** still required as a separate factual Phase 0 closure artifact
 
 ## Core rules
 
