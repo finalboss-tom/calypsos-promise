@@ -584,7 +584,8 @@ export function validateAsterMemoryEntry(
     !(
       isPositiveInteger(lifecycle.supersededByMemoryRevision) &&
       isPositiveInteger(value.memoryRevision) &&
-      Number(lifecycle.supersededByMemoryRevision) > Number(value.memoryRevision)
+      Number(lifecycle.supersededByMemoryRevision) >
+        Number(value.memoryRevision)
     )
   ) {
     addEntryIssue(
@@ -660,10 +661,7 @@ export function validateAsterMemoryEntry(
     );
   }
 
-  if (
-    memoryClass === "provider-operational-metadata" &&
-    value.value !== null
-  ) {
+  if (memoryClass === "provider-operational-metadata" && value.value !== null) {
     addEntryIssue(
       issues,
       "aster.memory.provider-metadata-content",
@@ -707,10 +705,7 @@ export function validateAsterMemoryEntry(
   }
 
   if (
-    !includesString(
-      ASTER_MEMORY_MISSING_FALLBACKS,
-      value.missingMemoryFallback,
-    )
+    !includesString(ASTER_MEMORY_MISSING_FALLBACKS, value.missingMemoryFallback)
   ) {
     addEntryIssue(
       issues,
