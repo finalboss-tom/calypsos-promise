@@ -129,7 +129,10 @@ export function validateAsterIntentDecision(
     return issues;
   }
 
-  if (value.schemaId !== "aster.intent.decision" || value.schemaRevision !== 1) {
+  if (
+    value.schemaId !== "aster.intent.decision" ||
+    value.schemaRevision !== 1
+  ) {
     addIssue(
       issues,
       "aster.intent.invalid-schema",
@@ -270,7 +273,9 @@ export function validateAsterIntentDecision(
     );
   }
 
-  if (!includesString(ASTER_INTENT_CONSEQUENCE_CLASSES, value.consequenceClass)) {
+  if (
+    !includesString(ASTER_INTENT_CONSEQUENCE_CLASSES, value.consequenceClass)
+  ) {
     addIssue(
       issues,
       "aster.intent.consequence-mismatch",
@@ -307,10 +312,7 @@ export function validateAsterIntentDecision(
         clarification.ambiguityCode,
       ) ||
       !isNonEmptyString(clarification.question) ||
-      !includesString(
-        ASTER_INTENT_CLARIFICATION_STATUSES,
-        clarification.status,
-      )
+      !includesString(ASTER_INTENT_CLARIFICATION_STATUSES, clarification.status)
     ) {
       addIssue(
         issues,
