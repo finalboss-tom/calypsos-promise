@@ -18,7 +18,7 @@ This sprint makes Aster useful and inspectable without making it authoritative. 
 
 > AI proposes; the player confirms; deterministic domain services validate and store.
 
-A provider response, model output, conversational acknowledgement, queued request, deferred acceptance, retry, retrieval score, transport success, Aster role name, retained memory, or untrusted input is never proof of permission, canonical storage, quest completion, reward, or domain success.
+A provider response, model output, conversational acknowledgement, queued request, deferred acceptance, retry, retrieval score, transport success, Aster role name, retained memory, untrusted input, provider account, credit, sponsorship, or benchmark is never proof of permission, canonical storage, quest completion, reward, provider approval, or domain success.
 
 ## Accepted scope
 
@@ -33,15 +33,16 @@ The core contract has no database, network, model SDK, provider, UI, filesystem,
 Sprint 6 does not:
 
 - select, endorse, procure, or integrate a production AI provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, sandbox, or enterprise relationship;
+- authorize private-data provider egress, production credentials, provider placement, connector ranking, affiliate revenue, procurement, or a provider funding relationship;
 - process production health data or create a real-data contributor path;
 - implement accounts, production identity, production consent enforcement, production persistence, remote retrieval, provider credentials, clinical decision support, diagnosis, treatment, emergency response, or research enrollment;
 - place Aster roles, prompt state, provider metadata, memory, retrieval indexes, or delayed-work execution state inside Living Chronicle truth;
-- allow Aster, untrusted input, queue state, retry state, or deferred work to create or expand permission, confirm a proposal, write canonical records, invoke arbitrary resources, complete quests, grant rewards, or determine institutional authority; or
-- represent synthetic contract evidence as model quality, clinical safety, privacy, security, accessibility, interoperability, legal sufficiency, production reliability, exactly-once delivery, latency, prompt-injection detection quality, or conformance evidence.
+- allow Aster, untrusted input, queue state, retry state, deferred work, provider evaluation, or funding to create or expand permission, confirm a proposal, write canonical records, invoke arbitrary resources, determine provider defaults or source rank, complete quests, grant rewards, or determine institutional authority; or
+- represent synthetic contract evidence as model quality, clinical safety, privacy, security, accessibility, interoperability, legal sufficiency, production reliability, exactly-once delivery, latency, prompt-injection detection quality, provider suitability, deletion completeness, or conformance evidence.
 
 ## Authority and package boundary
 
-`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, source-linked recall and explanation, memory lifecycle, provider egress, untrusted-input isolation, responsive and deferred work, deterministic local substitution, and non-AI fallback.
+`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, source-linked recall and explanation, memory lifecycle, provider governance and egress, untrusted-input isolation, responsive and deferred work, deterministic local substitution, and non-AI fallback.
 
 It does not own:
 
@@ -50,6 +51,7 @@ It does not own:
 - quest completion, rewards, progression, or narrative canon;
 - application navigation state;
 - provider request or response logs;
+- provider selection, procurement, credentials, contracts, funding records, or operational approval;
 - retrieval indexes or caches;
 - delayed-work execution state;
 - protected audit; or
@@ -123,7 +125,7 @@ Separate transient context, player-visible retained preferences or accessibility
 
 ### 6.7 Prompt injection and untrusted input
 
-**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head evidence is recorded in issue #47 and PR #48; final Sprint 6 acceptance remains pending.
+**Implementation status:** IMPLEMENTED AND VALIDATED ON DRAFT PR #48; exact-head evidence is recorded in issue #47 and PR #48; final Sprint 6 acceptance remains pending.
 
 Treat documents, images, imported records, web content, retrieved passages, provider responses, tool results, model output, and prior conversation content as untrusted. Prove they cannot grant authority, change permission, expand action scope, choose the controlling person, bypass confirmation, suppress sources or uncertainty, cross user boundaries, invoke arbitrary resources, or persist themselves as memory.
 
@@ -133,7 +135,7 @@ Treat documents, images, imported records, web content, retrieved passages, prov
 
 ### 6.8 Responsive and deferred behavior
 
-**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head evidence is recorded in issue #47 and PR #48 after validation; final Sprint 6 acceptance remains pending.
+**Implementation status:** IMPLEMENTED AND VALIDATED ON DRAFT PR #48; exact-head evidence is recorded in issue #47 and PR #48; final Sprint 6 acceptance remains pending.
 
 Define responsive, deferred, and manual-replaceable work. Where delayed work is represented, define stable identity, input and authority revisions, pending, completion, timeout, cancellation, retry safety, duplicate behavior, failure, provider unavailability, supersession, stale-result rejection, correction, and replay without selecting an execution engine.
 
@@ -143,7 +145,13 @@ Define responsive, deferred, and manual-replaceable work. Where delayed work is 
 
 ### 6.9 Provider governance and egress
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head evidence will be recorded in issue #47 and PR #48 after validation; final Sprint 6 acceptance remains pending.
+
 Define minimum-necessary egress, prohibited authority-bearing context, region, retention, logging, training, human review, subcontractor, deletion, revision attribution, credential boundaries, specialist holdpoints, fallback, replacement, migration, teardown, cost, concentration, incidents, corrections, public claims, provider-neutral evaluation, and funding-conflict rules.
+
+**Current evidence:** public service, information, governance-state, egress-mode, field, retention, logging, use, subprocessor, deletion-evidence, evaluation-criteria, evaluator-funding, independence, funding-relationship, concentration, criticality, and specialist-holdpoint taxonomies; stable serialized provider-governance envelope; exact provider, adapter, operation, purpose, information-class, and output-contract revisions; synthetic-only minimum-necessary allowlist and mandatory prohibited fields; declared region, retention, logging, training, model-improvement, human-review, abuse-monitoring, and subprocessor behavior; deletion evidence and downstream-copy uncertainty; secret-free credential boundary; provider-neutral criteria and evaluation independence; public funding-record linkage and anti-capture rules; provider-independent fallback, replacement, migration, and teardown plans; concentration and criticality state; incident, suspension, correction, terms-change, and acquisition review; public-claim limits; literal non-authority for canonical writes, permission, confirmation, provider default, source rank, connector rank, production approval, benchmark conclusion, publication, progression, and rewards; deterministic validation; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** a public-and-synthetic minimum-necessary provider evaluation validates without production approval; private and authority-bearing egress is rejected; training, model improvement, and provider human review are prohibited; provider-funded evaluation cannot claim independence or control findings and publication; credits and sponsor benefits require an exact public funding record and cannot control defaults or evaluation; critical dependencies require replacement, migration, and teardown; unknown handling and concentration require specialist holds; provider claims cannot prove production approval, preference, source authority, clinical suitability, standards safety, zero retention, or complete deletion; and tests reject provider and funding authority escalation. Exact-head CI and DCO evidence is recorded in issue #47 and PR #48 so this file does not create a self-referential head update.
 
 ### 6.10 Local substitute and non-AI fallback
 
@@ -161,15 +169,15 @@ Publish a completion record, unresolved-work register, control mapping, speciali
 
 Every workstream must preserve:
 
-1. Aster output is a proposal, explanation, navigation aid, presentation proposal, bounded player-controlled memory, or bounded work result—not canonical truth.
-2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, prior permission, retained memory, embedded content instructions, queue acceptance, or retry state.
+1. Aster output is a proposal, explanation, navigation aid, presentation proposal, bounded player-controlled memory, bounded work result, or provider-evaluation derivative—not canonical truth.
+2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, provider credits, prior permission, retained memory, embedded content instructions, queue acceptance, or retry state.
 3. House of Keys evaluation remains fail-closed; `indeterminate` never becomes allow.
 4. Domain validation and authoritative storage remain separate observable steps after confirmation.
-5. Chronicle truth, permission truth, source assertions, Aster proposals, memory, untrusted inputs, work lifecycle, receipts, audit, product state, retrieval derivatives, provider logs, and delayed-work execution state remain distinct claims.
-6. Broader data collection, retention, permission, provider use, research, commerce, sponsorship, or premium compute cannot buy progression, rewards, core rights, source rank, defaults, placement, favorable findings, or governance authority.
-7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths and cannot be blocked by missing memory, unsafe input, delayed work, or provider unavailability.
-8. Stale, superseded, canceled, failed, timed-out, provider-unavailable, deleted, expired, unavailable, quarantined, blocked, corrected, or invalidated output, memory, input, or work cannot overwrite newer confirmed truth or act under stale authority.
-9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, retrieval score, remembered context, successful scan, schema validation, tool result, citation, queue acknowledgement, retry, or transport de-duplication cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, permission, completion, or conformance.
+5. Chronicle truth, permission truth, source assertions, Aster proposals, memory, untrusted inputs, work lifecycle, provider governance, funding records, receipts, audit, product state, retrieval derivatives, provider logs, and delayed-work execution state remain distinct claims.
+6. Broader data collection, retention, permission, provider use, research, commerce, sponsorship, credits, affiliate terms, or premium compute cannot buy progression, rewards, core rights, source rank, defaults, placement, favorable findings, benchmark conclusions, publication control, or governance authority.
+7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths and cannot be blocked by missing memory, unsafe input, delayed work, provider unavailability, funding loss, or provider retirement.
+8. Stale, superseded, canceled, failed, timed-out, provider-unavailable, deleted, expired, unavailable, quarantined, blocked, corrected, retired, or invalidated output, memory, input, work, or provider policy cannot overwrite newer confirmed truth or act under stale authority.
+9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, retrieval score, remembered context, successful scan, schema validation, tool result, citation, queue acknowledgement, retry, transport de-duplication, provider promise, benchmark, credit, or deletion label cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, permission, completion, provider suitability, deletion, independence, or conformance.
 10. Public development remains credential-free and uses only public or synthetic information.
 
 ## Validation strategy
@@ -185,4 +193,4 @@ Each workstream adds focused deterministic tests. Before Sprint 6 is represented
 
 ## Acceptance authority
 
-Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, retained memory, untrusted input, queued work, retry state, deferred acceptance, nor synthetic evidence grants production or specialist-review status.
+Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, retained memory, untrusted input, queued work, retry state, deferred acceptance, provider evaluation, credits, sponsorship, nor synthetic evidence grants production or specialist-review status.
