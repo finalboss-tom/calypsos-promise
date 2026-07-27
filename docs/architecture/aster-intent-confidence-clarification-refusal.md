@@ -45,18 +45,18 @@ Unknown, mixed, and conflicting intent require clarification. Unsupported intent
 
 Intent and consequence remain explicit:
 
-| Intent                                                     | Consequence class             |
-| ---------------------------------------------------------- | ----------------------------- |
-| capture                                                    | canonical-change preparation  |
-| recall                                                     | informational                 |
-| explanation                                                | informational                 |
-| navigation                                                 | navigation                    |
-| permission review                                          | permission review             |
-| correction                                                 | canonical-change preparation  |
-| export                                                     | data rights                   |
-| deletion preparation                                       | data rights                   |
-| support routing                                            | support                       |
-| non-actionable, unknown, mixed, conflicting, unsupported  | none                          |
+| Intent                                                   | Consequence class            |
+| -------------------------------------------------------- | ---------------------------- |
+| capture                                                  | canonical-change preparation |
+| recall                                                   | informational                |
+| explanation                                              | informational                |
+| navigation                                               | navigation                   |
+| permission review                                        | permission review            |
+| correction                                               | canonical-change preparation |
+| export                                                   | data rights                  |
+| deletion preparation                                     | data rights                  |
+| support routing                                          | support                      |
+| non-actionable, unknown, mixed, conflicting, unsupported | none                         |
 
 A consequence class describes what later bounded work might be prepared. It is not proof of authority, permission, confirmation, validation, storage, execution, or completion.
 
