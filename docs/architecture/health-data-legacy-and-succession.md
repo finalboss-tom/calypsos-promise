@@ -61,22 +61,22 @@ It does not select a jurisdiction, provider, court interface, estate-document fo
 
 ## Domain separation
 
-| Domain | Authoritative claim | Must not silently become |
-| --- | --- | --- |
-| Living Chronicle | Health and lived-experience assertions, sources, provenance, correction, conflict, export, and deletion state | Permission, legal authority, estate record, or succession case |
-| Legacy Directive | The person’s versioned platform instructions and known restrictions | A universal will, court order, or automatic grant |
-| External authority evidence | A protected reference to a court, estate, incapacity, fiduciary, or other authority record | Chronicle truth or public repository content |
-| Event evidence | Evidence relevant to a claimed incapacity, death, restoration, or abandonment condition | Proof of claimant authority |
-| Succession case | Review and lifecycle state for one event, claimant, controlled scope, and requested outcome | A bearer credential or blanket control |
-| House of Keys | Purpose-specific permission and deterministic evaluation | Legal conclusion, Chronicle truth, or execution proof |
-| Policy decision | `allow`, `deny`, `indeterminate`, or protective-hold result over explicit facts | Proof that an operation occurred |
-| Execution state | Whether an authorized operation was queued, attempted, completed, failed, reversed, or left uncertain | Permission or legal sufficiency |
-| Legacy receipt | Person-, steward-, or fiduciary-visible claim about the decision and operation | Mutable case notes or unrestricted audit evidence |
-| Protected operational audit | Minimized evidence for security, dispute, compliance, restoration, and accountability | Public history or general analytics |
-| Source restrictions | Rights, licenses, duties, or limitations attached to imported or third-party materials | Ownership of the entire Chronicle |
-| Third-party subject rights | Constraints protecting identifiable or inferable living people | A veto over every accurate record or a license for unrestricted disclosure |
-| Research governance | Study-specific approval, participant or representative authority, security, retention, publication, and outcome rules | General legacy authority |
-| Archive governance | Identifiability, embargo, access, publication, living-person protection, and preservation terms | Automatic public release |
+| Domain                      | Authoritative claim                                                                                                   | Must not silently become                                                   |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Living Chronicle            | Health and lived-experience assertions, sources, provenance, correction, conflict, export, and deletion state         | Permission, legal authority, estate record, or succession case             |
+| Legacy Directive            | The person’s versioned platform instructions and known restrictions                                                   | A universal will, court order, or automatic grant                          |
+| External authority evidence | A protected reference to a court, estate, incapacity, fiduciary, or other authority record                            | Chronicle truth or public repository content                               |
+| Event evidence              | Evidence relevant to a claimed incapacity, death, restoration, or abandonment condition                               | Proof of claimant authority                                                |
+| Succession case             | Review and lifecycle state for one event, claimant, controlled scope, and requested outcome                           | A bearer credential or blanket control                                     |
+| House of Keys               | Purpose-specific permission and deterministic evaluation                                                              | Legal conclusion, Chronicle truth, or execution proof                      |
+| Policy decision             | `allow`, `deny`, `indeterminate`, or protective-hold result over explicit facts                                       | Proof that an operation occurred                                           |
+| Execution state             | Whether an authorized operation was queued, attempted, completed, failed, reversed, or left uncertain                 | Permission or legal sufficiency                                            |
+| Legacy receipt              | Person-, steward-, or fiduciary-visible claim about the decision and operation                                        | Mutable case notes or unrestricted audit evidence                          |
+| Protected operational audit | Minimized evidence for security, dispute, compliance, restoration, and accountability                                 | Public history or general analytics                                        |
+| Source restrictions         | Rights, licenses, duties, or limitations attached to imported or third-party materials                                | Ownership of the entire Chronicle                                          |
+| Third-party subject rights  | Constraints protecting identifiable or inferable living people                                                        | A veto over every accurate record or a license for unrestricted disclosure |
+| Research governance         | Study-specific approval, participant or representative authority, security, retention, publication, and outcome rules | General legacy authority                                                   |
+| Archive governance          | Identifiability, embargo, access, publication, living-person protection, and preservation terms                       | Automatic public release                                                   |
 
 Composition may present these domains together. It may not merge their authority.
 
@@ -379,20 +379,20 @@ Missing or stale material facts never default to allow.
 
 ## Capability matrix
 
-| Capability | Ordinary delegate | Incapacity steward | Post-mortem steward or fiduciary | Custodian/operator | Researcher or archive |
-| --- | --- | --- | --- | --- | --- |
-| Inspect directive | Only if explicitly delegated | Bounded administrative view | Bounded administrative view | Operational metadata only | No, unless required approved summary |
-| Inspect complete Chronicle | Only by explicit active grant | Only if necessary and approved | Only if necessary and approved | No discretionary access | Only approved representation |
-| Preserve protected custody | No | May request | May request | May execute | No |
-| Export full Chronicle | Explicit grant and confirmation | High-consequence reviewed operation | High-consequence reviewed operation | Execute only | Receive only if named and approved |
-| Receive family-health derivative | Only if named recipient | May request for approved purpose | May request for approved purpose | Execute only | Not implied |
-| Correct a record | Submit attributed request where allowed | Submit attributed representative request | Submit attributed representative request | Repair mechanics only | Submit source-linked challenge only |
-| Become original confirmer | Never | Never | Never | Never | Never |
-| Delete Chronicle | Explicit current authority | Only within exact lawful scope and review | Only within exact lawful scope and review | Execute only | No |
-| Authorize research | No unless explicitly granted | Only if directive and applicable authority permit | Only if directive and applicable authority permit | No | Cannot self-authorize |
-| Authorize public archive | No unless explicitly granted | Presumptively blocked pending exact review | Only with explicit conditions and exact authority | No | Cannot self-authorize |
-| Create AI impersonation | Never | Never | Never | Never | Never |
-| Broaden own authority | Never | Never | Never | Never | Never |
+| Capability                       | Ordinary delegate                       | Incapacity steward                                | Post-mortem steward or fiduciary                  | Custodian/operator        | Researcher or archive                |
+| -------------------------------- | --------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------- | ------------------------------------ |
+| Inspect directive                | Only if explicitly delegated            | Bounded administrative view                       | Bounded administrative view                       | Operational metadata only | No, unless required approved summary |
+| Inspect complete Chronicle       | Only by explicit active grant           | Only if necessary and approved                    | Only if necessary and approved                    | No discretionary access   | Only approved representation         |
+| Preserve protected custody       | No                                      | May request                                       | May request                                       | May execute               | No                                   |
+| Export full Chronicle            | Explicit grant and confirmation         | High-consequence reviewed operation               | High-consequence reviewed operation               | Execute only              | Receive only if named and approved   |
+| Receive family-health derivative | Only if named recipient                 | May request for approved purpose                  | May request for approved purpose                  | Execute only              | Not implied                          |
+| Correct a record                 | Submit attributed request where allowed | Submit attributed representative request          | Submit attributed representative request          | Repair mechanics only     | Submit source-linked challenge only  |
+| Become original confirmer        | Never                                   | Never                                             | Never                                             | Never                     | Never                                |
+| Delete Chronicle                 | Explicit current authority              | Only within exact lawful scope and review         | Only within exact lawful scope and review         | Execute only              | No                                   |
+| Authorize research               | No unless explicitly granted            | Only if directive and applicable authority permit | Only if directive and applicable authority permit | No                        | Cannot self-authorize                |
+| Authorize public archive         | No unless explicitly granted            | Presumptively blocked pending exact review        | Only with explicit conditions and exact authority | No                        | Cannot self-authorize                |
+| Create AI impersonation          | Never                                   | Never                                             | Never                                             | Never                     | Never                                |
+| Broaden own authority            | Never                                   | Never                                             | Never                                             | Never                     | Never                                |
 
 This matrix is a default architecture boundary, not a jurisdiction-specific legal conclusion.
 
