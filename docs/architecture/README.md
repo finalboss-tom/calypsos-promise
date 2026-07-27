@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 6 review](../roadmap/pre-sprint-6-alignment-review.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -8,12 +8,12 @@ This directory contains versioned architecture baselines that implement the froz
 
 1. [Repository and Module Boundaries](module-boundaries.md) — dependency direction, package responsibilities, public APIs, module creation criteria, and decomposition triggers
 2. [Calypso Engine](calypso-engine.md) — narrative and deterministic gameplay engine boundaries
-3. [Operational Simplicity and Durable Workflows](operational-simplicity-and-durable-workflows.md) — proposed responsive and deferred paths, commands, events, jobs, projections, scheduling, replay, correction, local simulation, and evidence-gated decomposition
-4. [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md) — proposed mapping from protected commitments to owning capabilities, evidence, user-visible outcomes, guardrails, and revalidation triggers
+3. [Operational Simplicity and Durable Workflows](operational-simplicity-and-durable-workflows.md) — accepted responsive and deferred paths, commands, events, jobs, projections, scheduling, replay, correction, local simulation, and evidence-gated decomposition
+4. [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md) — accepted mapping from protected commitments to owning capabilities, evidence, user-visible outcomes, guardrails, and revalidation triggers
 5. [Story Content Ontology](story-content-ontology.md) — content entities and relationships
 6. [Story Studio](story-studio.md) — planned authoring, review, validation, and publication surface
 7. [Living Chronicle Ontology](living-chronicle-ontology.md) — canonical data-model overview
-8. [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md) — person-centered continuity, standards-at-the-edges mappings, institutional partnership boundaries, historical evidence, incentives, funding conflicts, and falsifiable outcomes
+8. [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md) — accepted person-centered continuity, standards-at-the-edges mappings, institutional partnership boundaries, historical evidence, incentives, funding conflicts, and falsifiable outcomes
 9. [House of Keys Ontology and Authority Boundary](house-of-keys-ontology.md) — purpose-specific permission truth, actors, authority, grants, decisions, and receipts
 10. [House of Keys Purpose Taxonomy](house-of-keys-purpose-taxonomy.md) — stable, versioned purposes, lifecycle, compatibility, and anti-substitution rules
 11. [House of Keys Data-Category Taxonomy](house-of-keys-data-category-taxonomy.md) — semantic permission scope, selectors, mappings, lifecycle, and anti-broadening rules
@@ -34,7 +34,7 @@ This directory contains versioned architecture baselines that implement the froz
 - [Operational Simplicity Workstream](../roadmap/operational-simplicity-workstream.md)
 - [AS-0013 — Operational Simplicity Can Support Durable Personal Value](../governance/assumption-AS-0013-operational-simplicity-durable-value.md)
 
-The modular monolith remains the default deployment posture. Responsive work, deferred jobs, schedules, domain events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first security or synchronization design.
+Decision 0011 is an accepted Phase 0 baseline. The modular monolith remains the default deployment posture. Responsive work, deferred jobs, schedules, domain events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first security or synchronization design.
 
 ## Consumer-first and provider-independent architecture
 
@@ -44,7 +44,7 @@ The modular monolith remains the default deployment posture. Responsive work, de
 - [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](../governance/assumption-AS-0012-consumer-first-continuity-value.md)
 - [Infrastructure Sponsorship and Exit Policy](../economics/infrastructure-sponsorship-and-exit-policy.md)
 
-The Living Chronicle remains the provider-independent longitudinal product model. External standards, EHRs, clinics, payers, laboratories, devices, exchanges, and research systems are important sources, destinations, and potential partners connected through versioned adapters. They do not silently become Chronicle truth, product authority, or a prerequisite for the complete personal-value loop.
+Decision 0010 is an accepted Phase 0 baseline. The Living Chronicle remains the provider-independent longitudinal product model. External standards, EHRs, clinics, payers, laboratories, devices, exchanges, and research systems are important sources, destinations, and potential partners connected through versioned adapters. They do not silently become Chronicle truth, product authority, or a prerequisite for the complete personal-value loop.
 
 ## Living Chronicle architecture
 
@@ -80,6 +80,10 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Account Recovery and Emergency Access Model](../security/account-recovery-and-emergency-access-model.md)
 
 Legacy and succession are proposed future capabilities, not extensions of login recovery or Chronicle truth. A directive expresses person intent; external authority evidence supports a role; the House of Keys evaluates a bounded operation; execution and receipts record what occurred. Death, incapacity, inactivity, custody, family relationship, or scientific value cannot collapse those domains.
+
+## Sprint 6 handoff
+
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommends a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. Aster contracts must preserve source-linked proposals, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and a complete manual or non-AI path.
 
 ## Boundary rule
 
