@@ -1,4 +1,5 @@
 export * from "./authority.js";
+export * from "./compatibility.js";
 export * from "./intent.js";
 export * from "./local-synthetic-adapter.js";
 export * from "./memory.js";
@@ -8,6 +9,7 @@ export * from "./role-contracts.js";
 export * from "./source-recall.js";
 export * from "./untrusted-input.js";
 export * from "./work-lifecycle.js";
+export * from "./validate-compatibility.js";
 export * from "./validate-intent.js";
 export * from "./validate-local-synthetic-adapter.js";
 export * from "./validate-memory.js";
