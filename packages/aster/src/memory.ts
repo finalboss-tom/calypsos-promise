@@ -23,8 +23,7 @@ export const ASTER_MEMORY_OWNER_CLASSES = [
   "provider-operations",
 ] as const;
 
-export type AsterMemoryOwnerClass =
-  (typeof ASTER_MEMORY_OWNER_CLASSES)[number];
+export type AsterMemoryOwnerClass = (typeof ASTER_MEMORY_OWNER_CLASSES)[number];
 
 export const ASTER_MEMORY_RETENTION_MODES = [
   "request-bounded",
@@ -51,8 +50,7 @@ export const ASTER_MEMORY_EGRESS_MODES = [
   "provider-operations-only",
 ] as const;
 
-export type AsterMemoryEgressMode =
-  (typeof ASTER_MEMORY_EGRESS_MODES)[number];
+export type AsterMemoryEgressMode = (typeof ASTER_MEMORY_EGRESS_MODES)[number];
 
 export const ASTER_MEMORY_MISSING_FALLBACKS = [
   "continue-without-memory",
@@ -373,13 +371,14 @@ export interface AsterMemoryEntry {
   readonly authority: AsterMemoryAuthorityBoundary;
 }
 
-export const ASTER_MEMORY_SECONDARY_USE_BOUNDARY: AsterMemorySecondaryUseContract = {
-  allowed: false,
-  providerTrainingAllowed: false,
-  researchUseAllowed: false,
-  commercialUseAllowed: false,
-  separateAuthorizationRequired: true,
-};
+export const ASTER_MEMORY_SECONDARY_USE_BOUNDARY: AsterMemorySecondaryUseContract =
+  {
+    allowed: false,
+    providerTrainingAllowed: false,
+    researchUseAllowed: false,
+    commercialUseAllowed: false,
+    separateAuthorizationRequired: true,
+  };
 
 export const ASTER_MEMORY_AUTHORITY_BOUNDARY: AsterMemoryAuthorityBoundary = {
   canWriteCanonicalRecords: false,
