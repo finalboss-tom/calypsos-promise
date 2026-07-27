@@ -18,7 +18,7 @@ This sprint makes Aster useful and inspectable without making it authoritative. 
 
 > AI proposes; the player confirms; deterministic domain services validate and store.
 
-A provider response, model output, conversational acknowledgement, queued request, retrieval score, transport success, Aster role name, or retained memory is never proof of permission, canonical storage, quest completion, reward, or domain success.
+A provider response, model output, conversational acknowledgement, queued request, retrieval score, transport success, Aster role name, retained memory, or untrusted input is never proof of permission, canonical storage, quest completion, reward, or domain success.
 
 ## Accepted scope
 
@@ -32,12 +32,12 @@ The core contract has no database, network, model SDK, provider, UI, filesystem,
 
 Sprint 6 does not:
 
-- select, endorse, procure, or integrate a production AI provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, or enterprise relationship;
+- select, endorse, procure, or integrate a production AI provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, sandbox, or enterprise relationship;
 - process production health data or create a real-data contributor path;
 - implement accounts, production identity, production consent enforcement, production persistence, remote retrieval, provider credentials, clinical decision support, diagnosis, treatment, emergency response, or research enrollment;
 - place Aster roles, prompt state, provider metadata, memory, retrieval indexes, or delayed-work state inside Living Chronicle truth;
-- allow Aster to create or expand permission, confirm its own proposal, write canonical records, complete quests, grant rewards, or determine institutional authority; or
-- represent synthetic contract evidence as model quality, clinical safety, privacy, security, accessibility, interoperability, legal sufficiency, production reliability, latency, or conformance evidence.
+- allow Aster or untrusted input to create or expand permission, confirm a proposal, write canonical records, invoke arbitrary resources, complete quests, grant rewards, or determine institutional authority; or
+- represent synthetic contract evidence as model quality, clinical safety, privacy, security, accessibility, interoperability, legal sufficiency, production reliability, latency, prompt-injection detection quality, or conformance evidence.
 
 ## Authority and package boundary
 
@@ -123,7 +123,13 @@ Separate transient context, player-visible retained preferences or accessibility
 
 ### 6.7 Prompt injection and untrusted input
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head evidence is recorded in issue #47 and PR #48; final Sprint 6 acceptance remains pending.
+
 Treat documents, images, imported records, web content, retrieved passages, provider responses, tool results, model output, and prior conversation content as untrusted. Prove they cannot grant authority, change permission, expand action scope, choose the controlling person, bypass confirmation, suppress sources or uncertainty, cross user boundaries, invoke arbitrary resources, or persist themselves as memory.
+
+**Current evidence:** public untrusted-input class and allowed-use taxonomies; versioned class-policy matrix; deterministic server-context, subject, authority-revision, allowed-resource, and server-owned-tool references; stable input, finding, disposition, visibility, authority, and no-effect contracts; data-only and embedded-instruction data handling; explicit untrusted, subject-claim-rejected, and authority-claim-rejected flags; findings for policy override, tool-registry mutation, subject and permission authority, action expansion, confirmation bypass, source and uncertainty suppression, cross-subject access, arbitrary resources, memory persistence, hidden-instruction requests, canonical claims, and clinical claims; deterministic validation; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** every public input class validates as data-only; benign retrieved content may prepare only a non-authoritative proposal; material findings require blocking or manual fallback; cross-subject claims require containment; untrusted tool and resource requests cannot invoke capabilities; sources, uncertainty, and conflicts remain visible; prior conversation and model output cannot persist themselves as memory; and tests reject policy, permission, confirmation, subject, resource, memory, canonical, secret, and clinical authority escalation.
 
 ### 6.8 Responsive and deferred behavior
 
@@ -150,14 +156,14 @@ Publish a completion record, unresolved-work register, control mapping, speciali
 Every workstream must preserve:
 
 1. Aster output is a proposal, explanation, navigation aid, presentation proposal, or bounded player-controlled memory—not canonical truth.
-2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, prior permission, or retained memory.
+2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, prior permission, retained memory, or embedded content instructions.
 3. House of Keys evaluation remains fail-closed; `indeterminate` never becomes allow.
 4. Domain validation and authoritative storage remain separate observable steps after confirmation.
-5. Chronicle truth, permission truth, source assertions, Aster proposals, memory, receipts, audit, product state, retrieval derivatives, provider logs, and delayed-work state remain distinct claims.
+5. Chronicle truth, permission truth, source assertions, Aster proposals, memory, untrusted inputs, receipts, audit, product state, retrieval derivatives, provider logs, and delayed-work state remain distinct claims.
 6. Broader data collection, retention, permission, provider use, research, commerce, sponsorship, or premium compute cannot buy progression, rewards, core rights, source rank, defaults, placement, favorable findings, or governance authority.
-7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths and cannot be blocked by missing memory.
-8. Stale, superseded, canceled, failed, provider-unavailable, deleted, expired, or unavailable output or memory cannot overwrite newer confirmed truth or act under stale authority.
-9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, retrieval score, or remembered context cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, or conformance.
+7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths and cannot be blocked by missing memory or unsafe input.
+8. Stale, superseded, canceled, failed, provider-unavailable, deleted, expired, unavailable, quarantined, blocked, or invalidated output, memory, or input cannot overwrite newer confirmed truth or act under stale authority.
+9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, retrieval score, remembered context, successful scan, schema validation, tool result, or citation cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, permission, or conformance.
 10. Public development remains credential-free and uses only public or synthetic information.
 
 ## Validation strategy
@@ -173,4 +179,4 @@ Each workstream adds focused deterministic tests. Before Sprint 6 is represented
 
 ## Acceptance authority
 
-Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, retained memory, nor synthetic evidence grants production or specialist-review status.
+Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, retained memory, untrusted input, nor synthetic evidence grants production or specialist-review status.
