@@ -113,13 +113,13 @@ Require health-related recall to reference authoritative Chronicle records or cl
 
 ### 6.6 Memory classes and lifecycle
 
-**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+**Implementation status:** IMPLEMENTED AND VALIDATED ON DRAFT PR #48; final Sprint 6 acceptance remains pending.
 
 Separate transient context, player-visible retained preferences or accessibility context, separately chosen retained conversation, derived record-linked memory, narrative presentation state, and provider-side operational metadata. Define visibility, editability, export, deletion, retention, expiry, correction, supersession, egress, secondary-use boundaries, and missing-memory fallback.
 
 **Current evidence:** public memory-class, owner, retention, correction, egress, source, lifecycle, and fallback taxonomies; versioned memory-class policy matrix; stable serialized memory-entry contract; separate player-choice, source, subject, retention, lifecycle, controls, egress, secondary-use, fallback, and authority fields; material product-memory visibility, editability, exportability, and deletability; exact Chronicle source revisions for record-linked memory; append-revision correction and supersession; explicit deletion-request, deletion, expiry, and unavailability semantics; provider operational metadata kept outside product memory with only a bounded external reference and expiry; literal rejection of secondary use, training, research, commerce, canonical writes, permission, confirmation, progression, rewards, and core-path blocking; deterministic validation; architecture and product documentation; and public-surface Node tests.
 
-**Exit evidence:** every public memory class validates; all material product-memory classes require separate player choice and full player controls; a retained preference validates while remaining non-authoritative; hidden retained memory and missing choice are rejected; record-linked memory requires exact Chronicle evidence and can recompute; provider operational metadata cannot carry raw product-memory content; deletion removes the active value while retaining lifecycle evidence; and tests reject secondary-use, canonical, permission, progression, reward, and core-blocking escalation.
+**Exit evidence:** every public memory class validates; all material product-memory classes require separate player choice and full player controls; a retained preference validates while remaining non-authoritative; hidden retained memory and missing choice are rejected; record-linked memory requires exact Chronicle evidence and can recompute; provider operational metadata cannot carry raw product-memory content; deletion removes the active value while retaining lifecycle evidence; tests reject secondary-use, canonical, permission, progression, reward, and core-blocking escalation; CI run 578 passes; and DCO Attestation run 632 passes on head `8ecb354fe459b2c1eefa212278aa2f8276e77828`.
 
 ### 6.7 Prompt injection and untrusted input
 
