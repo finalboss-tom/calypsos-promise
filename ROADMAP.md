@@ -110,7 +110,8 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Formal maintainer and specialist-review criteria
 - Conflict disclosures
 - Incident transparency rules
-- Public funding and expenditure reporting
+- Public funding and expenditure reporting implementing Decision 0008 when funding is active
+- Financial conflict, concentration, continuity, source-loss, correction, and funded-outcome controls
 - Contributor onboarding and removal procedures
 
 **Governance unlock**
@@ -129,6 +130,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Representative player participation
 - Council charters, term limits, recusals, and removal procedures
 - Public financial controls and an independently reviewable treasury record
+- Active funding relationships, if any, reconcile support, restrictions, approved benefits, work, expenditure where applicable, outcomes, conflicts, concentration, correction, and residual obligations
 - At least one bounded feedback-prioritization pilot has published participation, concentration, decisions, outcomes, failures, and corrections
 
 ## Phase 3 — Community stewardship
@@ -208,9 +210,12 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 
 **Purpose:** Sustain the institution and compensate legitimate value creation without making surveillance or speculation the business model.
 
+Phase 5 operationalizes and matures Decision 0008. It does not originate or weaken the rights, anti-capture, conflict, public-ledger, provider-neutrality, private-source, correction, termination, or concentration rules accepted in Phase 0.
+
 **Product and economics**
 
 - Transparent hosted-service and donation economics
+- Mature implementation of Decision 0008 across funding, expenditure, provider, affiliate, compensation, and public-good relationships
 - Separately authorized compensated opportunities
 - Clear fee, subsidy, and public-good funding policies
 - Financial reserves and runway targets
