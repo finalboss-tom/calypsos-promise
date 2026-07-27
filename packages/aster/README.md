@@ -1,11 +1,11 @@
 # `@calypsos-promise/aster`
 
-Pre-stable, provider-independent public contracts for Aster roles, proposals, AI governance, memory, provider egress, untrusted-input isolation, responsive and deferred work, deterministic local substitution, and non-AI fallback.
+Pre-stable, provider-independent public contracts for Aster roles, proposals, AI governance, memory, provider egress, untrusted-input isolation, responsive and deferred work, deterministic local substitution, compatibility, migration, and non-AI fallback.
 
 ## Owner and reason to change
 
 - **Owner:** Aster contract capability
-- **Primary reason to change:** the public meaning, authority, lifecycle, safety, provider, or fallback contract for Aster proposals changes
+- **Primary reason to change:** the public meaning, authority, lifecycle, safety, provider, compatibility, migration, or fallback contract for Aster proposals changes
 
 ## Authority boundary
 
@@ -27,10 +27,24 @@ The core package intentionally has no database, network, provider, model SDK, UI
 - `work-lifecycle.ts` defines responsive, deferred, and manual-fallback work identity, revision snapshots, attempts, retry, idempotency, dependency, fallback, result, acknowledgement, cancellation, correction, supersession, replay, and non-authority contracts.
 - `provider-governance.ts` defines provider candidates, synthetic-only evaluation states, minimum-necessary egress, handling, deletion, credential, evaluation, funding-conflict, concentration, replacement, migration, teardown, incident, public-claim, specialist-holdpoint, and non-authority contracts.
 - `local-synthetic-adapter.ts` defines a deterministic provider-free scenario catalogue, pure runner, five role fallbacks, seven core non-AI paths, runtime exclusions, synthetic source references, degraded behavior, and literal non-authority.
-- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, `validate-memory.ts`, `validate-untrusted-input.ts`, `validate-work-lifecycle.ts`, `validate-provider-governance.ts`, and `validate-local-synthetic-adapter.ts` deterministically validate the corresponding public contracts.
+- `compatibility.ts` defines the twelve-component public manifest, public synthetic fixture catalogue, role cross-contract bindings, compatibility classifications, migration policy and plan, and compatibility non-authority boundary.
+- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, `validate-memory.ts`, `validate-untrusted-input.ts`, `validate-work-lifecycle.ts`, `validate-provider-governance.ts`, `validate-local-synthetic-adapter.ts`, and `validate-compatibility.ts` deterministically validate the corresponding public contracts.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
+
+## Compatibility, fixtures, and migration guarantees
+
+- Twelve public component entries bind current schema, revision, validator, fixture, compatibility, migration, and non-authority state.
+- Every public component has a synthetic, public-safe, credential-free, non-authoritative fixture entry bound to one or more deterministic local scenarios.
+- Five role bindings preserve exact role, operation, primary proposal kind, success fixture, and provider-independent fallback alignment.
+- The manifest contains the exact seventeen local scenarios and seven core non-AI paths.
+- The provider-state taxonomy remains exact and cannot add a production-approved state.
+- Optional additive changes may remain compatible; required additions, enum expansion, field removal, semantic changes, and revision rebases require migration evidence.
+- Authority-boundary changes are incompatible with ordinary migration and require a new governing decision.
+- Unknown compatibility fails closed.
+- Migration preserves source artifacts and prior revisions, creates a new revision, declares rollback or forward-only behavior, and cites public synthetic fixtures.
+- Compatibility and migration cannot write canonical records, create permission, confirm proposals, select provider defaults, set source rank, control publication, complete quests, or grant rewards.
 
 ## Local synthetic adapter and non-AI guarantees
 
@@ -126,4 +140,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 - The Interpreter preserves source and mapping limitations and cannot diagnose, prescribe, or imply standards-based completeness or safety.
 - The Storykeeper presents confirmed events without inventing canon, progression, or rewards.
 
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/architecture/aster-untrusted-input-isolation-contracts.md`](../../docs/architecture/aster-untrusted-input-isolation-contracts.md), [`docs/architecture/aster-responsive-and-deferred-work-contracts.md`](../../docs/architecture/aster-responsive-and-deferred-work-contracts.md), [`docs/architecture/aster-provider-governance-and-egress-contracts.md`](../../docs/architecture/aster-provider-governance-and-egress-contracts.md), [`docs/architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md`](../../docs/architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/architecture/aster-untrusted-input-isolation-contracts.md`](../../docs/architecture/aster-untrusted-input-isolation-contracts.md), [`docs/architecture/aster-responsive-and-deferred-work-contracts.md`](../../docs/architecture/aster-responsive-and-deferred-work-contracts.md), [`docs/architecture/aster-provider-governance-and-egress-contracts.md`](../../docs/architecture/aster-provider-governance-and-egress-contracts.md), [`docs/architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md`](../../docs/architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md), [`docs/architecture/aster-compatibility-migration-and-cross-contract-evidence.md`](../../docs/architecture/aster-compatibility-migration-and-cross-contract-evidence.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
