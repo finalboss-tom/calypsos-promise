@@ -27,7 +27,8 @@ This directory contains versioned architecture baselines that implement the froz
 19. [Aster Role Contracts](aster-role-contracts.md) — detailed Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper evidence, clarification, failure, retention, egress, source-link, and fallback rules
 20. [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md) — proposal identity, source and transformation provenance, exact-revision review, non-canonical payloads, extraction candidates, and domain-handoff separation
 21. [Aster Intent, Confidence, Clarification, and Refusal Contracts](aster-intent-confidence-clarification-refusal.md) — bindable and safe meta intents, consequence classes, qualitative confidence, direct clarification, refusal, fallback, and non-authority
-22. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+22. [Aster Source-Linked Recall and Explanation Contracts](aster-source-linked-recall-and-explanation-contracts.md) — exact Chronicle and public-education sources, provenance, lifecycle, mapping, implementation-guide, retrieval-freshness, structured-query fallback, and uncertainty rules
+23. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -81,10 +82,11 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Aster Role Contracts](aster-role-contracts.md)
 - [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md)
 - [Aster Intent, Confidence, Clarification, and Refusal Contracts](aster-intent-confidence-clarification-refusal.md)
+- [Aster Source-Linked Recall and Explanation Contracts](aster-source-linked-recall-and-explanation-contracts.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
 
-Aster is a bounded proposal and explanation capability. It may classify a request, prepare drafts, recall, routes, explanations, and narrative presentation, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, memory, provider logs, retrieval indexes, delayed-work state, protected audit, or institutional authority. Intent decisions, role contracts, and proposal envelopes remain locally testable and provider-independent. Unknown, mixed, conflicting, and unsupported intent cannot silently become action. Extraction candidates are explicitly non-canonical, unconfirmed, and not domain-accepted.
+Aster is a bounded proposal and explanation capability. It may classify a request, prepare drafts, recall, routes, explanations, and narrative presentation, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, memory, provider logs, retrieval indexes, delayed-work state, protected audit, or institutional authority. Intent decisions, role contracts, proposal envelopes, and source-linked recall remain locally testable and provider-independent. Unknown, mixed, conflicting, and unsupported intent cannot silently become action. Every personal-health statement requires exact Chronicle evidence; public education remains clearly labeled and non-personal. Extraction candidates and recalled prose remain explicitly non-canonical.
 
 ## Legacy and succession architecture
 
@@ -98,7 +100,7 @@ Legacy and succession are proposed future capabilities, not extensions of login 
 
 ## Sprint 6 handoff
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, detailed role contracts, proposal and structured-extraction boundary, and intent, confidence, clarification, and refusal contracts while preserving source-linked recall, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, detailed role contracts, proposal and structured-extraction boundary, intent, confidence, clarification and refusal contracts, and source-linked recall and explanation contracts while preserving player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
 
 ## Boundary rule
 
