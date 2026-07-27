@@ -119,7 +119,7 @@ Separate transient context, player-visible retained preferences or accessibility
 
 **Current evidence:** public memory-class, owner, retention, correction, egress, source, lifecycle, and fallback taxonomies; versioned memory-class policy matrix; stable serialized memory-entry contract; separate player-choice, source, subject, retention, lifecycle, controls, egress, secondary-use, fallback, and authority fields; material product-memory visibility, editability, exportability, and deletability; exact Chronicle source revisions for record-linked memory; append-revision correction and supersession; explicit deletion-request, deletion, expiry, and unavailability semantics; provider operational metadata kept outside product memory with only a bounded external reference and expiry; literal rejection of secondary use, training, research, commerce, canonical writes, permission, confirmation, progression, rewards, and core-path blocking; deterministic validation; architecture and product documentation; and public-surface Node tests.
 
-**Exit evidence:** every public memory class validates; all material product-memory classes require separate player choice and full player controls; a retained preference validates while remaining non-authoritative; hidden retained memory and missing choice are rejected; record-linked memory requires exact Chronicle evidence and can recompute; provider operational metadata cannot carry raw product-memory content; deletion removes the active value while retaining lifecycle evidence; tests reject secondary-use, canonical, permission, progression, reward, and core-blocking escalation; CI run 579 passes; and DCO Attestation run 633 passes on head `e431c6db8b720d8246d1fb45afdeb88639d0730b`.
+**Exit evidence:** every public memory class validates; all material product-memory classes require separate player choice and full player controls; a retained preference validates while remaining non-authoritative; hidden retained memory and missing choice are rejected; record-linked memory requires exact Chronicle evidence and can recompute; provider operational metadata cannot carry raw product-memory content; deletion removes the active value while retaining lifecycle evidence; tests reject secondary-use, canonical, permission, progression, reward, and core-blocking escalation; CI run 580 passes; and DCO Attestation run 634 passes on final head `814098c51536e50039d107230abdc1bdd869bc9e`.
 
 ### 6.7 Prompt injection and untrusted input
 
@@ -169,7 +169,7 @@ Each workstream adds focused deterministic tests. Before Sprint 6 is represented
 - `pnpm check` must pass;
 - GitHub Actions CI and DCO Attestation must pass on the final reviewed head;
 - documentation, issue status, roadmap status, completion evidence, and contract versions must agree; and
-- residual risks, deferred production work, unavailable specialist review, and revalidation triggers must remain explicit.
+- residual risks, deferred production work, unavailable specialist review, and revalidation triggers remain explicit.
 
 ## Acceptance authority
 
