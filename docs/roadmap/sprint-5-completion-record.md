@@ -183,18 +183,18 @@ A dedicated security address and production incident organization remain future 
 
 ## Workstream completion mapping
 
-| Workstream | Completion evidence | Status |
-| --- | --- | --- |
-| 5.1 | Asset, authority, actor, zone, crossing, and flow records | Complete internally |
-| 5.2 | Identity, session, tenant, operator, recovery, and emergency models | Complete internally |
-| 5.3 | Integrated threats, controls, residual risks, and current dispositions | Complete internally |
-| 5.4 | Chronicle source, provenance, inference, export, deletion, custody, and restore controls | Complete internally |
-| 5.5 | House of Keys freshness, execution, capacity, receipt, audit, and reconciliation controls | Complete internally |
-| 5.6 | Upload, connector, AI, retrieval, MCP, dependency, and untrusted-input isolation | Complete internally |
-| 5.7 | Encryption, keys, secrets, environments, private origins, and evidence rules | Complete internally |
-| 5.8 | Availability, backups, restoration, incidents, audit retention, and deletion verification | Complete internally |
-| 5.9 | Fifteen synthetic abuse cases, fifteen design tabletops, and stable gap records | Complete at founding-steward design-tabletop level |
-| 5.10 | Cross-contract review, status truth, public-claim remediation, holdpoints, and this record | Complete and merged |
+| Workstream | Completion evidence                                                                        | Status                                             |
+| ---------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| 5.1        | Asset, authority, actor, zone, crossing, and flow records                                  | Complete internally                                |
+| 5.2        | Identity, session, tenant, operator, recovery, and emergency models                        | Complete internally                                |
+| 5.3        | Integrated threats, controls, residual risks, and current dispositions                     | Complete internally                                |
+| 5.4        | Chronicle source, provenance, inference, export, deletion, custody, and restore controls   | Complete internally                                |
+| 5.5        | House of Keys freshness, execution, capacity, receipt, audit, and reconciliation controls  | Complete internally                                |
+| 5.6        | Upload, connector, AI, retrieval, MCP, dependency, and untrusted-input isolation           | Complete internally                                |
+| 5.7        | Encryption, keys, secrets, environments, private origins, and evidence rules               | Complete internally                                |
+| 5.8        | Availability, backups, restoration, incidents, audit retention, and deletion verification  | Complete internally                                |
+| 5.9        | Fifteen synthetic abuse cases, fifteen design tabletops, and stable gap records            | Complete at founding-steward design-tabletop level |
+| 5.10       | Cross-contract review, status truth, public-claim remediation, holdpoints, and this record | Complete and merged                                |
 
 ## Control and evidence status
 
