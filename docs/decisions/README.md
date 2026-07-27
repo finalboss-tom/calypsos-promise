@@ -18,6 +18,7 @@ Decision records preserve why a material product, architecture, governance, lice
 
 - [0009 — Health Data Legacy and Post-Mortem Stewardship](0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed person-level legacy, incapacity, estate, fiduciary, post-mortem, family-health, research, archive, deletion, and institutional-continuity baseline; no production or universal legal claim
 - [0010 — Consumer-First, Provider-Independent Product Boundary](0010-consumer-first-provider-independent-boundary.md) — proposed strategic and architectural boundary treating providers and institutional systems as important sources, destinations, and future partners without making enterprise adoption, sponsorship, or an external schema the canonical product center
+- [0011 — Operational Simplicity and Durable Workflows](0011-operational-simplicity-and-durable-workflows.md) — proposed modular-monolith, responsive-path, durable-work, local-simulation, operability, and evidence-gated complexity baseline; no production orchestration or measured performance claim
 
 Use [0000 — Decision Template](0000-template.md) for a new record. Preserve numbering once assigned; a missing number does not justify renumbering historical decisions.
 
@@ -25,7 +26,7 @@ Use [0000 — Decision Template](0000-template.md) for a new record. Preserve nu
 
 - the player promise, rights, prohibitions, or meaningfully-free boundary
 - frozen canon, terminology, or application boundaries
-- data, consent, security, AI, MCP, research, provider, connector, interoperability, or production architecture
+- data, consent, security, AI, MCP, research, provider, connector, interoperability, workflow, service, or production architecture
 - public information, confidentiality, licensing, trademarks, or provenance
 - governance, authority transfer, economics, succession, or founder independence
 - meaningful challenge, appeal, containment, rollback, restoration, or revalidation
