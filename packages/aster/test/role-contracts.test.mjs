@@ -97,9 +97,7 @@ test("the Storykeeper presents only confirmed events", () => {
     contract.prohibitedActions.includes("invent-canon-or-confirmed-events"),
   );
   assert.ok(
-    contract.prohibitedActions.includes(
-      "change-progression-from-presentation",
-    ),
+    contract.prohibitedActions.includes("change-progression-from-presentation"),
   );
 });
 
