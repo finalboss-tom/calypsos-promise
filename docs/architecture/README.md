@@ -33,7 +33,8 @@ This directory contains versioned architecture baselines that implement the froz
 25. [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md) — truthful acceptance, attempts, retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, correction, replay, and non-authority
 26. [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md) — synthetic-only evaluation, minimum-necessary egress, handling, deletion, credentials, evaluation independence, funding conflicts, concentration, replacement, migration, teardown, incidents, and public-claim boundaries
 27. [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md) — deterministic scenario catalogue, five role fallbacks, seven core paths, runtime exclusions, prompt-injection, degraded states, and non-authority
-28. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+28. [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md) — twelve-component manifest, public fixtures, role bindings, change classifications, migration rules, complete coverage, and fail-closed non-authority
+29. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -93,10 +94,11 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md)
 - [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
 - [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
+- [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
 
-Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, and deterministic local-fixture capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, bounded delayed work, public or synthetic provider evaluation, and repeatable public scenario evidence. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority. The local adapter calls no provider or network and preserves visible non-AI paths for manual capture, structured recall, permission review, correction, export, deletion, and ordinary play.
+Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, deterministic local-fixture, and compatibility-contract capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, bounded delayed work, public or synthetic provider evaluation, and repeatable public scenario evidence. The compatibility manifest binds every public component to a revision, validator, synthetic fixture, migration rule, and non-authority boundary. Aster does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority.
 
 ## Legacy and succession architecture
 
@@ -110,8 +112,8 @@ Legacy and succession are proposed future capabilities, not extensions of login 
 
 ## Sprint 6 handoff
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, role contracts, proposal and extraction boundary, intent and refusal contracts, source-linked recall, player-controlled memory lifecycle, untrusted-input isolation, responsive and deferred work semantics, provider governance, a deterministic local synthetic adapter, and complete non-AI fallback evidence. Compatibility, cross-contract completion evidence, the completion record, specialist holdpoints, and explicit founding-steward acceptance remain open.
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, role contracts, proposal and extraction boundary, intent and refusal contracts, source-linked recall, player-controlled memory lifecycle, untrusted-input isolation, responsive and deferred work semantics, provider governance, a deterministic local synthetic adapter, complete non-AI fallback evidence, and compatibility and migration contracts. Completion evidence, unresolved-work records, specialist holdpoints, and explicit founding-steward acceptance remain open.
 
 ## Boundary rule
 
-Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, consent enforcement, connector rollout, clinical behavior, enterprise integration, offline synchronization, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
+Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, consent enforcement, connector rollout, clinical behavior, enterprise integration, offline synchronization, production migrations, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
