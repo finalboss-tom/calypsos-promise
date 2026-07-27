@@ -41,7 +41,7 @@ Sprint 6 does not:
 
 ## Authority and package boundary
 
-`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, memory, provider egress, untrusted-input isolation, delayed-result handling, deterministic local substitution, and non-AI fallback.
+`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, source-linked recall and explanation, memory, provider egress, untrusted-input isolation, delayed-result handling, deterministic local substitution, and non-AI fallback.
 
 It does not own:
 
@@ -103,7 +103,13 @@ Define capture, recall, explanation, navigation, permission review, correction, 
 
 ### 6.5 Source-linked recall and explanation
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+
 Require health-related recall to reference authoritative Chronicle records or clearly labeled public educational material. Preserve record and revision identifiers, source class, provenance, mapping revision, implementation-guide revision, correction state, conflict, deletion, index freshness, and uncertainty.
+
+**Current evidence:** versioned Librarian recall and Interpreter explanation envelope; exact request, intent-decision, subject, Chronicle record, Chronicle record revision, Chronicle schema, source-version, locator, mapping, implementation-guide, and public-material references; record, correction, conflict, deletion, and source-availability taxonomies; direct, structured-query, semantic-index, and public-material retrieval methods; freshness and structured-query fallback contracts; personal-health and public-education statement classes; qualitative confidence and explicit uncertainty codes; source, lifecycle, mapping, alternatives, and conflict visibility; literal non-authority for canonical writes, permission, clinical action, provider rank, retrieval score, recency, and standards profile; deterministic validation; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** an exact Chronicle-linked personal recall validates; public education remains clearly labeled and non-personal; personal statements cannot rely only on public material; stale semantic retrieval cannot return statements without versioned structured-query fallback; mapped records preserve exact mapping and implementation-guide revisions; mapping loss, conflict, correction, deletion, and unavailable sources require visible uncertainty; and tests reject canonical, clinical, provider, retrieval, recency, and standards authority escalation.
 
 ### 6.6 Memory classes and lifecycle
 
