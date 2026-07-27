@@ -158,7 +158,10 @@ export function validateAsterStructuredExtraction(
     return issues;
   }
 
-  if (value.schemaId !== "aster.extraction.structured" || value.schemaRevision !== 1) {
+  if (
+    value.schemaId !== "aster.extraction.structured" ||
+    value.schemaRevision !== 1
+  ) {
     addExtractionIssue(
       issues,
       "aster.extraction.invalid-schema",
@@ -324,7 +327,10 @@ export function validateAsterProposalEnvelope(
     return issues;
   }
 
-  if (value.schemaId !== "aster.proposal.envelope" || value.schemaRevision !== 1) {
+  if (
+    value.schemaId !== "aster.proposal.envelope" ||
+    value.schemaRevision !== 1
+  ) {
     addProposalIssue(
       issues,
       "aster.proposal.invalid-schema",
@@ -666,7 +672,9 @@ export function validateAsterProposalEnvelope(
     }
   }
 
-  const domainOutcome = isRecord(value.domainOutcome) ? value.domainOutcome : {};
+  const domainOutcome = isRecord(value.domainOutcome)
+    ? value.domainOutcome
+    : {};
   if (
     domainOutcome.invoked !== false ||
     domainOutcome.accepted !== false ||
