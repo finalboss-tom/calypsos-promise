@@ -188,6 +188,45 @@ Handoff:
 - Sprint 19 makes funding transparency launch-grade rather than designing it for the first time
 - Phase 2 implements actual financial controls and independently reviewable records; Phase 5 matures sustainable economics, treasury, reserves, compensation, and participatory budgeting
 
+## Phase 0 Institutional Workstream — Consumer-First and Provider-Independent Boundary
+
+**Goal:** Make institutional interoperability additive to personal utility rather than allowing a provider, EHR, payer, laboratory, device, exchange, sponsor, enterprise contract, or external schema to become the canonical product center by default.
+
+Decision and evidence:
+
+- Proposed Decision 0010 — Consumer-First, Provider-Independent Product Boundary
+- Source-backed architecture and historical rationale
+- AS-0012 — Consumer-First Continuity Can Create Durable Personal Value
+- Repository reconciliation against mission, vision, incentives, architecture, governance, funding, website, sprints, and institutional phases
+- Cross-phase implementation and future partnership workstream
+- Public website explanation baseline
+
+Acceptance:
+
+- Healthcare standards are described as substantial and evolving rather than absent
+- The Living Chronicle remains the provider-independent longitudinal product model
+- External systems remain source-attributed, versioned, mapped, purpose-specific, and replaceable
+- No provider, EHR, implementation guide, funder, sponsor, enterprise buyer, or integration contract purchases Chronicle schema authority, source rank, connector priority, provider placement, roadmap control, private access, favorable findings, or an exception to the Promise
+- Personal-core value does not require enterprise enrollment
+- Future institutional collaboration remains possible through separate product, clinical, interoperability, privacy, security, accessibility, legal, procurement, economic, and governance gates
+- Historical Google Health, HealthVault, Amalga, and Caradigm claims remain within their evidence
+- The doctrine remains falsifiable through AS-0012 and does not represent a provider runtime or validated market outcome
+
+Handoff:
+
+- This is a non-numbered institutional workstream; Sprint 6 remains next
+- Sprint 6 inherits institutional-source attribution, AI-provider neutrality, and sponsored-evaluation boundaries
+- Sprint 8 implements the public consumer-first explanation without representing connectors or partnerships as live
+- Sprint 11 proves the complete personal-value loop without enterprise enrollment
+- Sprint 13 preserves source class, mapping, conflict, and uncertainty in recall
+- Sprint 14 becomes the primary versioned standards, connector, mapping, replacement, and provider-neutrality implementation point
+- Sprint 17 adds clinical-informatics and institutional-partner review boundaries
+- Sprint 18 tests AS-0012 and measures funded-integration distortion, connector cost, and personal value
+- Sprint 19 publishes connector and institutional-relationship status, limitations, conflicts, and corrections
+- A separate future Clinical and Enterprise Interoperability Partnerships workstream begins before material institutional operation
+
+The detailed inheritance is maintained in [`consumer-first-provider-independent-workstream.md`](consumer-first-provider-independent-workstream.md).
+
 ## Sprint 6 — Aster contracts and AI governance
 
 **Goal:** Convert Aster from a concept into enforceable interfaces.
@@ -204,7 +243,8 @@ Deliverables:
 - Confidence and clarification rules
 - AI memory classes and retention rules
 - Provider-egress policy
-- Provider-neutral evaluation and funding-conflict rules for model credits, sponsored benchmarks, affiliate incentives, egress partners, infrastructure support, and related parties
+- Provider-neutral evaluation and funding-conflict rules for model credits, sponsored benchmarks, affiliate incentives, egress partners, infrastructure support, related parties, and institutional data sources
+- Source-class, implementation-guide, mapping, provenance, and uncertainty explanation rules for clinical, claims, device, laboratory, pharmacy, EHR, and other imported information
 - Prompt-injection isolation rules
 - Non-AI fallback behavior
 
@@ -214,8 +254,9 @@ Acceptance:
 - Every recalled health statement can reference authoritative records
 - Material memories are visible, editable, exportable, and deletable
 - AI unavailability does not block core capture or permissions
-- Funding, credits, sponsorship, affiliate terms, or related-party interests cannot determine provider defaults, ranking, egress policy, benchmark conclusions, or publication
-- Sprint 6 defines provider-governance requirements but does not select or endorse a production AI provider
+- Funding, credits, sponsorship, affiliate terms, related-party interests, provider relationships, or enterprise distribution cannot determine source authority, provider defaults, connector ranking, egress policy, benchmark conclusions, or publication
+- Aster cannot imply that standards conformance proves clinical completeness, semantic equivalence, safety, or endorsement
+- Sprint 6 defines provider-governance requirements but does not select or endorse a production AI provider, EHR, connector, or clinical partner
 
 ## Sprint 7 — Forge MCP and agent safety
 
@@ -229,8 +270,9 @@ Deliverables:
 - Quest-schema tools
 - Architecture and decision search
 - Synthetic-data generation
+- Public standards, mapping, and synthetic connector-fixture search and validation tools where appropriate
 - Tool scopes, rate limits, receipts, and error formats
-- Sponsor-funded tool, service-credit, and infrastructure conflict review
+- Sponsor-funded tool, service-credit, connector, mapping, and infrastructure conflict review
 - Agent security test suite
 
 Acceptance:
@@ -238,7 +280,9 @@ Acceptance:
 - Forge MCP operates entirely on public documentation and synthetic data
 - Retrieved content cannot grant itself tool authority
 - Tool contracts are versioned and testable
+- Generated mappings remain drafts requiring deterministic validation and human review
 - Sponsor-funded tools remain subject to the same public-data, synthetic-only, tool-risk, provider-neutrality, review, and publication boundaries as unfunded tools
+- Forge tools cannot access private provider negotiations, contracts, credentials, production endpoints, proprietary mappings, or protected interoperability findings
 
 ## Sprint 8 — Public website foundation
 
@@ -253,12 +297,14 @@ Deliverables:
 - The Promise
 - Seven Laws
 - How It Works
+- Plain-language consumer-first and provider-independent explanation
 - Aster and AI
 - Trust Center shell
 - Open Forge page
 - Roadmap and capability-status components
 - Support and funding-transparency surface generated from canonical economics records
 - Public views of who supported the project, what they funded, approved benefits, prohibited or absent benefits, relationship status, delivery, outcomes, conflicts, concentration, corrections, and challenge routes
+- Clear distinction between standards support, planned connectors, active institutional relationships, and production exchange
 - Disabled transaction handoff until legitimate recipient, custody, accounting, tax, privacy, refund, and payment-rail gates are accepted
 
 Acceptance:
@@ -267,6 +313,8 @@ Acceptance:
 - All essential information is accessible without animation or story traversal
 - Core pages pass accessibility and performance baselines
 - Funding displays derive from canonical public economics records rather than an independent website sponsor model
+- The consumer-first explanation does not claim healthcare lacks standards, disparage providers, overstate Google or Microsoft history, or represent a provider, EHR, connector, clinical, or enterprise capability as live
+- Sponsor and partner recognition remains separate from provider recommendation, connector ranking, clinical endorsement, permission, safety, and health guidance
 - No donation, sponsorship, checkout, payment, charitable, tax-deductible, nonprofit, or public-benefit transaction claim activates without accepted operational evidence
 
 ## Sprint 9 — Public synthetic prologue
@@ -330,6 +378,7 @@ Deliverables:
 - Restore one landmark
 - Inspect one access receipt
 - Export and delete the account
+- Exercise a complete manual path without a provider, EHR, payer, employer, researcher, or enterprise enrollment
 
 Acceptance:
 
@@ -337,6 +386,7 @@ Acceptance:
 - Export contains the stored record, provenance, permission, receipt, and quest result
 - Deletion behavior is verifiable
 - No model call is required to complete a manual fallback path
+- The complete private value loop does not require an institutional connector or enterprise relationship
 
 ## Sprint 12 — Fourteen Lanterns content and routing
 
@@ -369,6 +419,7 @@ Deliverables:
 - Structured timeline queries
 - Semantic retrieval for notes and opted-in conversations
 - Record-linked recall responses
+- Source-class, provider, standards, implementation-guide, mapping, and provenance display for imported records
 - Memory Chamber
 - Preference, goal, story, and session-memory separation
 - Correction and removal flows
@@ -379,28 +430,46 @@ Acceptance:
 - Recall benchmark measures source accuracy and unsupported statements
 - Structured values never depend on vector retrieval
 - All material retained memory is visible to the player
+- A provider record, claim, device observation, person-confirmed record, recollection, calculation, association, and inference remain distinguishable
+- Recall does not elevate a sponsor, provider, newest source, or mapped value into automatic Chronicle truth
 
 ## Sprint 14 — Connector foundation
 
-**Goal:** Add external data without sacrificing provenance or control.
+**Goal:** Add external data without sacrificing provenance, personal control, or provider independence.
 
 Deliverables:
 
 - Connector SDK
 - Authorization, synchronization, cursor, revocation, and deletion contracts
+- Version-aware standards, implementation-guide, terminology, and source-capability registry
+- Versioned source-to-Chronicle and Chronicle-to-destination mappings
+- Mapping loss, ambiguity, unsupported-field, conflict, and local-extension behavior
+- Provider-specific and proprietary behavior isolated behind adapters
 - CSV import
 - Document import
 - HealthKit adapter
 - Health Connect adapter
+- Standards-based clinical, laboratory, pharmacy, claims, payer, EHR, exchange, or other adapters selected through evidence and review rather than assumed universally
 - Source review and duplicate detection
+- Raw or faithful source, transformation, conformance, and mapping preservation
 - Connector access receipts
+- Provider-neutral prioritization criteria tied to affected-person value, reach, feasibility, risk, maintenance cost, and evidence
+- Connector sponsor, vendor, related-party, evaluator-independence, concentration, portability, replacement, migration, and teardown records
+- Synthetic fixtures covering multiple versions, partial conformance, local variation, conflicting sources, mapping loss, and inaccessible endpoints
 
 Acceptance:
 
-- Imported records preserve raw source references and normalization history
+- Imported records preserve raw source references, standards and mapping versions, and normalization history
 - Revocation stops future synchronization
 - Conflicting sources remain distinguishable
 - Connector failures do not corrupt the Chronicle
+- No external schema, implementation guide, vendor model, provider relationship, or sponsor becomes Chronicle authority
+- Every normalized value can trace to its source and mapping behavior
+- Unsupported or lossy mappings remain explicit rather than being silently dropped or promoted
+- A provider-specific integration can be disabled or replaced without rewriting the core Chronicle contract
+- Connector priority, ranking, certification, or acceptance cannot be purchased through funding, data access, distribution, or enterprise opportunity
+- One enterprise contract is not required to complete personal import, manual capture, export, correction, or deletion paths
+- Material clinical-informatics and interoperability claims receive named specialist review or an explicit pending holdpoint
 
 ## Sprint 15 — Athena’s Observatory
 
@@ -413,6 +482,7 @@ Deliverables:
 - Data-quality explanations
 - Descriptive associations
 - Evidence and uncertainty display
+- Source-class, provider, mapping, conflict, and semantic-loss display where relevant
 - Claim taxonomy enforcement
 - Personal-question builder
 - Safe experiment framework proposal
@@ -422,6 +492,7 @@ Acceptance:
 - Associations are never phrased as diagnosis or proven causality
 - Every insight exposes its source records and limitations
 - Clinical and safety review approves public language
+- Standards conformance, provider source, sponsor status, or connector availability does not determine insight selection, confidence, or wording without evidence
 
 ## Sprint 16 — Chronicle MCP through the Veil
 
@@ -457,9 +528,11 @@ Deliverables:
 - Medication, pregnancy, injury, eating-disorder, and other high-risk boundaries
 - Minor and caregiver policy proposal
 - Clinical content review workflow
+- Clinical-informatics and interoperability review workflow for mappings, provider summaries, source conflicts, and standards-versus-safety claims
+- Boundaries for provider-facing summaries, correction requests, and care collaboration
 - Adverse-event process
 - Accessibility conformance review
-- Sponsor, grantor, vendor, and related-party conflict and independence rules for clinical, medication, safety, and accessibility content or review
+- Sponsor, grantor, vendor, provider, EHR, payer, laboratory, device, exchange, enterprise, and related-party conflict and independence rules for clinical, medication, safety, accessibility, interoperability, mapping, and provider-facing content or review
 - Moderation and support escalation
 
 Acceptance:
@@ -467,7 +540,9 @@ Acceptance:
 - High-risk prompts route predictably
 - Disclaimers are not used as substitutes for controls
 - Accessibility acceptance criteria are part of release gates
-- No funder, sponsor, vendor, or related party controls clinical or safety conclusions, product-specific health placement, specialist approval, adverse-event handling, or publication
+- Standards conformance is not represented as proof of clinical safety, semantic completeness, or usable care workflow
+- No funder, sponsor, vendor, provider, EHR, enterprise partner, or related party controls clinical conclusions, mappings, source conflict treatment, product-specific health placement, specialist approval, adverse-event handling, negative findings, or publication
+- Direct personal use remains available without institutional enrollment
 
 ## Sprint 18 — Beta evidence and release gate
 
@@ -484,6 +559,8 @@ Deliverables:
 - Export and deletion reliability results
 - AI latency and cost model
 - Seven-day and thirty-day meaningful-retention measures
+- AS-0012 evidence: personal utility without enterprise enrollment, import success, mapping coverage and loss, source and uncertainty comprehension, correction and reconciliation, provider-summary usefulness where tested, connector maintenance and replacement cost, and provider or sponsor concentration
+- Analysis of whether funded integrations receive disproportionate roadmap attention relative to affected-person value and evidence
 - Operational funding evidence when any real relationship exists: ledger integrity, restrictions, approved benefits, conflicts, concentration, continuity, source-loss response, expenditure linkage where applicable, funded outcomes, corrections, and residual obligations
 - Release readiness review
 
@@ -492,7 +569,11 @@ Acceptance:
 - Quantitative thresholds are approved before recruitment
 - Known safety or privacy blockers prevent release
 - Findings create a prioritized evidence-based backlog
-- A real funding relationship cannot be treated as operationally ready merely because the Phase 0 doctrine exists; applicable legal, accounting, tax, custody, privacy, conflict, continuity, and reporting evidence is required
+- Consumer-first is not represented as validated merely because the architecture is coherent
+- An enterprise pilot does not prove general provider interoperability
+- A standards-conformant exchange does not prove semantic completeness, clinical safety, or personal value
+- Evidence may narrow or weaken market sequencing without weakening the player-rights floor
+- A real funding or provider relationship cannot be treated as operationally ready merely because Phase 0 doctrine exists; applicable legal, accounting, tax, custody, privacy, clinical, interoperability, procurement, conflict, continuity, and reporting evidence is required
 
 ## Sprint 19 — Open-source public launch
 
@@ -509,6 +590,9 @@ Deliverables:
 - Maintainer and security processes
 - Public roadmap
 - Launch-grade funding, sponsorship, expenditure, concentration, conflict, correction, and public-good outcome reporting derived from canonical economics records
+- Public consumer-first and provider-independent explanation
+- Connector capability, standards, mapping, compatibility, provider-dependency, limitation, and correction status
+- Public material provider, EHR, connector, enterprise, and institutional relationship records linked to purpose, funding, work, findings, replacement, and outcomes
 - Deliberate manual release and deployment controls with attributable authorization
 
 Acceptance:
@@ -517,7 +601,42 @@ Acceptance:
 - At least one external contributor can complete a small change
 - No production data or secret is required
 - Funding transparency is already governed before launch, and every active material relationship can be traced through support, restrictions, benefits, work, expenditure where applicable, outcomes, conflicts, concentration, corrections, and residual obligations
+- No sponsor or partner is presented as a preferred health provider, EHR, connector, clinical authority, standards authority, or product owner merely because it supported the project
 - Production releases and deployments occur only through an explicit, attributable release decision rather than every repository commit
+
+## Future Institutional Workstream — Clinical and Enterprise Interoperability Partnerships
+
+**Entry condition:** Begin before a material provider-facing workflow, institutional integration, enterprise contract, B2B/B2B2C operating model, or provider-dependent distribution path becomes necessary—not merely because an institution expresses interest.
+
+**Goal:** Add legitimate clinical and institutional value without converting Calypso’s Promise into a provider-owned record, procurement-driven product, sponsor-ranked marketplace, or enterprise prerequisite for personal value.
+
+Expected deliverables:
+
+- Institutional relationship taxonomy and authority model
+- Provider, EHR, payer, laboratory, pharmacy, device, exchange, employer, public-health, and research boundaries
+- Person-authorized provider summaries, collaboration, correction, referral, and result-return contracts
+- Implementation-guide, terminology, mapping, conformance, and source-authority governance
+- Clinical, interoperability, privacy, security, accessibility, legal, regulatory, procurement, contract, and information-blocking review
+- Provider and sponsor conflicts, recusals, evaluator independence, negative-finding publication, and correction rules
+- Enterprise isolation, tenant, operator, support, audit, incident, deletion, retention, and downstream obligations
+- Hosted-service, pricing, subsidy, support, and meaningfully free boundaries
+- Provider, connector, source, distribution, revenue, and critical-function concentration controls
+- Portability, replacement, migration, termination, and teardown
+- Pilot evidence tied to personal or public value rather than integration output alone
+- Public institutional relationship records linked to work, findings, limitations, incidents, and outcomes
+
+Acceptance:
+
+- The person’s purpose-specific authority and rights remain controlling for the proposed flow
+- No institutional contract makes personal-core use contingent on the partner
+- No partner receives Chronicle schema authority, preferred source truth, provider ranking, connector default, health placement, or roadmap control
+- Operational, clinical, and legal responsibility are explicit rather than implied by data exchange
+- Negative findings and incidents remain publishable through reviewed processes
+- The partner, funded implementer, and sponsor-funded evaluator cannot independently certify the relationship
+- Export, migration, replacement, and termination are operationally testable
+- The pilot demonstrates measurable personal or public benefit rather than connection success alone
+
+The detailed proposed entry and phase inheritance are maintained in [`consumer-first-provider-independent-workstream.md`](consumer-first-provider-independent-workstream.md).
 
 ## Future Institutional Workstream — Funding Operations and Financial Controls
 
@@ -556,9 +675,10 @@ These remain designed directions, not committed release work:
 - Compensated opportunities and the House of Oaths
 - Research and public-good funding programs after applicable governance and participant-protection gates
 - Commercial hosted-service economics
+- Clinical and enterprise interoperability capabilities beyond the bounded future workstream
 - Caregiver and legacy stewardship
 - Community and social systems
 - Hundred-Year Watch expansion
 - Blockchain, token, NFT, or DAO mechanisms
 
-Each deferred family requires its own constitutional, legal, safety, economic, and evidence gate before implementation.
+Each deferred family requires its own constitutional, legal, safety, economic, interoperability, procurement, and evidence gate before implementation.
