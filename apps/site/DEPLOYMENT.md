@@ -13,4 +13,4 @@ Deploy only when a reviewed site release needs an explicit preview or production
 - current capability and privacy claims; and
 - who is responsible for verifying and, if needed, rolling back the release.
 
-Documentation-only, governance, security, economics, and other non-site changes do not justify a deployment.
+Documentation-only, governance, security, economics, roadmap, and other non-site changes do not justify a deployment. A funding-policy or sprint-backlog update never authorizes a site build by itself.
