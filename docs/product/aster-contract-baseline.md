@@ -1,32 +1,49 @@
 # Aster Contract Baseline
 
-[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation contracts](../architecture/aster-untrusted-input-isolation-contracts.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation contracts](../architecture/aster-untrusted-input-isolation-contracts.md) · [Responsive and deferred work contracts](../architecture/aster-responsive-and-deferred-work-contracts.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
 - **Contract version:** `0.1.0-pre.1`
 
-Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, memory-lifecycle, and untrusted-input isolation baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, isolation, lifecycle, source, retention, player-control, egress, secondary-use, uncertainty, finding, failure, and validation contracts with public-surface tests.
+Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, memory-lifecycle, untrusted-input isolation, and responsive/deferred work baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, isolation, work, lifecycle, attempt, retry, idempotency, fallback, source, retention, player-control, egress, secondary-use, uncertainty, finding, failure, and validation contracts with public-surface tests.
 
 ## Current guarantees
 
-Every Aster authority, role, proposal, extraction, intent, recall, memory, and untrusted-input contract states that Aster cannot:
+Every Aster authority, role, proposal, extraction, intent, recall, memory, untrusted-input, and work contract states that Aster cannot:
 
 - write canonical records;
 - create or expand permission;
 - confirm its own output;
 - complete quests;
 - grant rewards;
-- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, memory, document, retrieval result, tool result, provider response, model output, or prior conversation into canonical truth;
+- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, memory, document, retrieval result, tool result, provider response, model output, prior conversation, queued request, retry, or deferred result into canonical truth;
 - invoke an authoritative domain action;
+- claim that acceptance for processing proves completion;
 - claim that domain validation, storage, execution, progression, or reward occurred;
 - diagnose, prescribe, or direct emergency care;
 - retain hidden material product memory;
 - treat provider operational metadata as product memory;
-- let untrusted content modify policy, tools, subject, permission, action scope, confirmation, memory, sources, uncertainty, or conflicts; or
-- treat authority-bearing context, provider rank, retrieval score, source recency, standards profile, remembered context, or successful processing as truth.
+- let untrusted content modify policy, tools, subject, permission, action scope, confirmation, memory, sources, uncertainty, or conflicts;
+- retry unknown external outcomes automatically;
+- use stale authority or overwrite newer results; or
+- treat authority-bearing context, provider rank, retrieval score, source recency, standards profile, remembered context, successful processing, or transport acknowledgement as truth.
 
 Provider egress remains future policy-gated, minimum necessary, locally replaceable, and unapproved for production.
+
+## Responsive and deferred work guarantees
+
+- Responsive, deferred, and manual-fallback work must match the selected role's public execution classes.
+- Stable work identity, revision, request, subject, authority, source, and policy snapshots remain inspectable.
+- Current applicability requires exact input and current revision snapshots; stale applicability requires a visible difference.
+- Deferred `accepted` state means accepted for later processing and cannot include an execution attempt or completion claim.
+- Only current `succeeded` work with a successful attempt may expose a complete or partial proposal-only result.
+- Retry policy is explicit, versioned, bounded, freshness-preserving, and independent of provider defaults.
+- Idempotency prevents duplicate authoritative effects and cannot rely only on transport de-duplication.
+- Timeout and cancellation preserve direct state and cannot claim completion or universal reversal.
+- Provider unavailability activates a manual, deterministic, or structured-query fallback without blocking core rights.
+- Stale, superseded, corrected, quarantined, or unknown-outcome work cannot replace current results or retry automatically under stale authority.
+- Replay creates a new work identity, identifies the source work revision, and preserves prior results.
 
 ## Prompt-injection and untrusted-input guarantees
 
@@ -91,15 +108,15 @@ Provider egress remains future policy-gated, minimum necessary, locally replacea
 ## Current evidence
 
 - public authority and detailed role-contract matrices;
-- versioned proposal, extraction, intent, recall, memory, and untrusted-input contracts;
+- versioned proposal, extraction, intent, recall, memory, untrusted-input, and work-lifecycle contracts;
 - public memory and untrusted-input class-policy matrices;
-- serialized memory lifecycle and untrusted-input isolation envelopes;
-- stable authority, role, proposal, extraction, intent, recall, memory, and untrusted-input validation issue codes;
-- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, missing-memory fallback, prompt-injection containment, cross-subject isolation, arbitrary resource rejection, visibility preservation, and memory self-persistence rejection; and
-- architecture and execution documentation that keeps Chronicle, House of Keys, gameplay, application, memory, provider, retrieval, delayed-work, audit, and institutional authority separate.
+- serialized memory lifecycle, untrusted-input isolation, and responsive/deferred work envelopes;
+- stable authority, role, proposal, extraction, intent, recall, memory, untrusted-input, and work validation issue codes;
+- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, missing-memory fallback, prompt-injection containment, cross-subject isolation, arbitrary resource rejection, visibility preservation, memory self-persistence rejection, responsive success, truthful deferred acceptance, bounded retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, replay, correction relationships, unknown external outcomes, and work authority escalation; and
+- architecture and execution documentation that keeps Chronicle, House of Keys, gameplay, application, memory, provider, retrieval, work, audit, and institutional authority separate.
 
 ## Current limits
 
-This baseline does not yet complete provider-egress policy, delayed-result contracts, deterministic synthetic adapter, non-AI fallback fixtures, compatibility review, cross-contract completion evidence, production sandboxing, production persistence, secure deletion, or the Sprint 6 acceptance record. Those remain tracked in issue #47 and the Sprint 6 execution plan.
+This baseline does not yet complete provider-egress policy, deterministic synthetic adapter, non-AI fallback fixtures, compatibility review, cross-contract completion evidence, production queueing, scheduling, workflow execution, sandboxing, persistence, secure deletion, or the Sprint 6 acceptance record. Those remain tracked in issue #47 and the Sprint 6 execution plan.
 
 No production provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, account system, real-data path, sandbox, or enterprise relationship is selected or approved by this contract baseline.
