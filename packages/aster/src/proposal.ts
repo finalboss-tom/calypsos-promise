@@ -270,14 +270,15 @@ export interface AsterStructuredExtraction {
   readonly canonicalRecord: false;
 }
 
-export const ASTER_PROPOSAL_AUTHORITY_BOUNDARY: AsterProposalAuthorityBoundary = {
-  canWriteCanonicalRecords: false,
-  canCreateOrExpandPermission: false,
-  canSelfConfirm: false,
-  canInvokeAuthoritativeAction: false,
-  canCompleteQuest: false,
-  canGrantReward: false,
-};
+export const ASTER_PROPOSAL_AUTHORITY_BOUNDARY: AsterProposalAuthorityBoundary =
+  {
+    canWriteCanonicalRecords: false,
+    canCreateOrExpandPermission: false,
+    canSelfConfirm: false,
+    canInvokeAuthoritativeAction: false,
+    canCompleteQuest: false,
+    canGrantReward: false,
+  };
 
 export const ASTER_PROPOSAL_DOMAIN_OUTCOME: AsterProposalDomainOutcome = {
   invoked: false,
@@ -285,11 +286,15 @@ export const ASTER_PROPOSAL_DOMAIN_OUTCOME: AsterProposalDomainOutcome = {
   storedOrExecuted: false,
 };
 
-export function getAsterPrimaryProposalKind(role: AsterRole): AsterProposalKind {
+export function getAsterPrimaryProposalKind(
+  role: AsterRole,
+): AsterProposalKind {
   return ASTER_PRIMARY_PROPOSAL_KIND_BY_ROLE[role];
 }
 
-export function getAsterProposalOperation(role: AsterRole): AsterRoleOperationId {
+export function getAsterProposalOperation(
+  role: AsterRole,
+): AsterRoleOperationId {
   return ASTER_ROLE_OPERATION_BY_ROLE[role];
 }
 
@@ -299,15 +304,21 @@ export function getAsterProposalActionOwner(
   return ASTER_ROLE_CONTRACTS[role].deterministicActionOwner;
 }
 
-export function asterProposalRequiresExactConfirmation(role: AsterRole): boolean {
+export function asterProposalRequiresExactConfirmation(
+  role: AsterRole,
+): boolean {
   return (
     ASTER_ROLE_CONTRACTS[role].confirmationRule ===
     "required-before-domain-action"
   );
 }
 
-export function isAsterProposalKind(value: unknown): value is AsterProposalKind {
-  return typeof value === "string" && ASTER_PROPOSAL_KINDS.includes(value as never);
+export function isAsterProposalKind(
+  value: unknown,
+): value is AsterProposalKind {
+  return (
+    typeof value === "string" && ASTER_PROPOSAL_KINDS.includes(value as never)
+  );
 }
 
 export function isAsterAuthoritySourceClass(
