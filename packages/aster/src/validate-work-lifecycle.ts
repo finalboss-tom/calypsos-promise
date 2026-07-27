@@ -213,7 +213,11 @@ export function validateAsterWorkLifecycle(
       work.request.intentDecisionId,
       work.request.intentDecisionRevision,
     ],
-    ["request.proposal", work.request.proposalId, work.request.proposalRevision],
+    [
+      "request.proposal",
+      work.request.proposalId,
+      work.request.proposalRevision,
+    ],
   ] as const) {
     if (!hasPair(id, revision) && !hasNoPair(id, revision)) {
       issue(
@@ -364,10 +368,7 @@ export function validateAsterWorkLifecycle(
 
   if (
     !nonEmpty(work.idempotency.operationIdentity) ||
-    !member(
-      ASTER_WORK_IDEMPOTENCY_STRATEGIES,
-      work.idempotency.strategy,
-    ) ||
+    !member(ASTER_WORK_IDEMPOTENCY_STRATEGIES, work.idempotency.strategy) ||
     !member(
       ASTER_WORK_DUPLICATE_DISPOSITIONS,
       work.idempotency.duplicateDisposition,
@@ -446,7 +447,8 @@ export function validateAsterWorkLifecycle(
     (["complete", "partial"].includes(work.result.state)
       ? !resultHasIdentity ||
         work.result.producedAgainstWorkRevision !== work.workRevision
-      : !resultHasNoIdentity || work.result.producedAgainstWorkRevision !== null)
+      : !resultHasNoIdentity ||
+        work.result.producedAgainstWorkRevision !== null)
   ) {
     issue(
       "aster.work.invalid-result",
@@ -456,10 +458,7 @@ export function validateAsterWorkLifecycle(
   }
 
   if (
-    !member(
-      ASTER_WORK_ACKNOWLEDGEMENT_STATES,
-      work.acknowledgement.state,
-    ) ||
+    !member(ASTER_WORK_ACKNOWLEDGEMENT_STATES, work.acknowledgement.state) ||
     !nonEmpty(work.acknowledgement.message) ||
     typeof work.acknowledgement.claimsAcceptedForProcessing !== "boolean" ||
     typeof work.acknowledgement.claimsComplete !== "boolean" ||
