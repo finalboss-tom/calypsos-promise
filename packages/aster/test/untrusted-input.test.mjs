@@ -243,9 +243,7 @@ test("prior conversation and model output cannot persist themselves or gain auth
   const unsafe = validateAsterUntrustedInputIsolation(envelope);
   assert.equal(unsafe.valid, false);
   assert.ok(
-    issueCodes(unsafe).includes(
-      "aster.untrusted-input.authority-escalation",
-    ),
+    issueCodes(unsafe).includes("aster.untrusted-input.authority-escalation"),
   );
   assert.ok(
     issueCodes(unsafe).includes("aster.untrusted-input.effect-escalation"),
