@@ -1,31 +1,43 @@
 # Aster Contract Baseline
 
-[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation contracts](../architecture/aster-untrusted-input-isolation-contracts.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
 - **Contract version:** `0.1.0-pre.1`
 
-Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, and memory-lifecycle baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, lifecycle, source, retention, player-control, egress, secondary-use, uncertainty, failure, and validation contracts with public-surface tests.
+Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, memory-lifecycle, and untrusted-input isolation baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, isolation, lifecycle, source, retention, player-control, egress, secondary-use, uncertainty, finding, failure, and validation contracts with public-surface tests.
 
 ## Current guarantees
 
-Every Aster authority, role, proposal, extraction, intent, recall, and memory contract states that Aster cannot:
+Every Aster authority, role, proposal, extraction, intent, recall, memory, and untrusted-input contract states that Aster cannot:
 
 - write canonical records;
 - create or expand permission;
 - confirm its own output;
 - complete quests;
 - grant rewards;
-- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, or memory into canonical truth;
+- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, memory, document, retrieval result, tool result, provider response, model output, or prior conversation into canonical truth;
 - invoke an authoritative domain action;
 - claim that domain validation, storage, execution, progression, or reward occurred;
 - diagnose, prescribe, or direct emergency care;
 - retain hidden material product memory;
-- treat provider operational metadata as product memory; or
-- treat authority-bearing context, provider rank, retrieval score, source recency, standards profile, or remembered context as truth.
+- treat provider operational metadata as product memory;
+- let untrusted content modify policy, tools, subject, permission, action scope, confirmation, memory, sources, uncertainty, or conflicts; or
+- treat authority-bearing context, provider rank, retrieval score, source recency, standards profile, remembered context, or successful processing as truth.
 
 Provider egress remains future policy-gated, minimum necessary, locally replaceable, and unapproved for production.
+
+## Prompt-injection and untrusted-input guarantees
+
+- The public classes cover documents, images, imported records, web content, retrieved passages, provider responses, tool results, model output, and prior conversation.
+- Every class treats content and embedded instructions as data-only.
+- The deterministic application supplies the exact subject, purpose, authority revisions, allowed resources, and server-owned tool revisions.
+- Input-supplied subject, permission, resource, tool, policy, confirmation, canonical, clinical, and memory claims are not accepted as authority.
+- Cross-subject claims and untrusted resource or tool requests require explicit findings and containment.
+- Material prompt-injection findings require blocking or a manual fallback and cannot prepare a proposal.
+- Source, uncertainty, and conflict visibility remain literal and inspectable.
+- Isolation evaluation itself cannot invoke tools, access resources, persist memory, or attempt canonical writes.
 
 ## Memory lifecycle guarantees
 
@@ -79,14 +91,15 @@ Provider egress remains future policy-gated, minimum necessary, locally replacea
 ## Current evidence
 
 - public authority and detailed role-contract matrices;
-- versioned proposal, extraction, intent, recall, and memory contracts;
-- public memory class-policy matrix and serialized memory-entry lifecycle;
-- stable authority, role, proposal, extraction, intent, recall, memory-policy, and memory-entry validation issue codes;
-- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, and missing-memory fallback; and
+- versioned proposal, extraction, intent, recall, memory, and untrusted-input contracts;
+- public memory and untrusted-input class-policy matrices;
+- serialized memory lifecycle and untrusted-input isolation envelopes;
+- stable authority, role, proposal, extraction, intent, recall, memory, and untrusted-input validation issue codes;
+- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, missing-memory fallback, prompt-injection containment, cross-subject isolation, arbitrary resource rejection, visibility preservation, and memory self-persistence rejection; and
 - architecture and execution documentation that keeps Chronicle, House of Keys, gameplay, application, memory, provider, retrieval, delayed-work, audit, and institutional authority separate.
 
 ## Current limits
 
-This baseline does not yet complete provider-egress policy, prompt-injection isolation evidence, delayed-result contracts, deterministic synthetic adapter, non-AI fallback fixtures, compatibility review, cross-contract completion evidence, production persistence, secure deletion, or the Sprint 6 acceptance record. Those remain tracked in issue #47 and the Sprint 6 execution plan.
+This baseline does not yet complete provider-egress policy, delayed-result contracts, deterministic synthetic adapter, non-AI fallback fixtures, compatibility review, cross-contract completion evidence, production sandboxing, production persistence, secure deletion, or the Sprint 6 acceptance record. Those remain tracked in issue #47 and the Sprint 6 execution plan.
 
-No production provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, account system, real-data path, or enterprise relationship is selected or approved by this contract baseline.
+No production provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, account system, real-data path, sandbox, or enterprise relationship is selected or approved by this contract baseline.
