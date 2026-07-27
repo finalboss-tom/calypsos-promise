@@ -32,20 +32,20 @@ A compatibility label, fixture, migration plan, validator result, package versio
 
 The current manifest covers twelve public components:
 
-| Component | Public responsibility |
-| --- | --- |
-| `authority` | role authority matrix and mandatory prohibitions |
-| `role-contracts` | detailed role operations, evidence, failure, retention, egress, and fallback |
-| `proposal` | proposal identity, provenance, review, authority, and domain-outcome separation |
-| `structured-extraction` | non-canonical extraction candidates and unsupported material |
-| `intent` | intent, confidence, clarification, ambiguity, and refusal |
-| `source-recall` | source-linked recall, explanation, provenance, mapping, lifecycle, and uncertainty |
-| `memory` | player-controlled memory classes and lifecycle |
-| `untrusted-input` | prompt-injection and untrusted-input isolation |
-| `work-lifecycle` | responsive, deferred, retry, duplicate, cancellation, stale, correction, and replay behavior |
-| `provider-governance` | synthetic-only provider evaluation, egress, funding conflicts, concentration, and exit |
-| `local-synthetic-adapter` | deterministic scenarios and complete non-AI fallback evidence |
-| `package-public-surface` | current compatibility, fixture, validator, and migration evidence |
+| Component                 | Public responsibility                                                                        |
+| ------------------------- | -------------------------------------------------------------------------------------------- |
+| `authority`               | role authority matrix and mandatory prohibitions                                             |
+| `role-contracts`          | detailed role operations, evidence, failure, retention, egress, and fallback                 |
+| `proposal`                | proposal identity, provenance, review, authority, and domain-outcome separation              |
+| `structured-extraction`   | non-canonical extraction candidates and unsupported material                                 |
+| `intent`                  | intent, confidence, clarification, ambiguity, and refusal                                    |
+| `source-recall`           | source-linked recall, explanation, provenance, mapping, lifecycle, and uncertainty           |
+| `memory`                  | player-controlled memory classes and lifecycle                                               |
+| `untrusted-input`         | prompt-injection and untrusted-input isolation                                               |
+| `work-lifecycle`          | responsive, deferred, retry, duplicate, cancellation, stale, correction, and replay behavior |
+| `provider-governance`     | synthetic-only provider evaluation, egress, funding conflicts, concentration, and exit       |
+| `local-synthetic-adapter` | deterministic scenarios and complete non-AI fallback evidence                                |
+| `package-public-surface`  | current compatibility, fixture, validator, and migration evidence                            |
 
 Every component entry declares:
 
@@ -79,13 +79,13 @@ A fixture is evidence that the declared contract behaves as tested. It is not pr
 
 Each role binds four public facts:
 
-| Role | Operation | Primary proposal kind | Success fixture |
-| --- | --- | --- | --- |
-| Scribe | `scribe.prepare-structured-capture` | `structured-capture` | `scribe-structured-draft` |
-| Librarian | `librarian.prepare-source-linked-recall` | `source-linked-recall` | `librarian-source-linked-recall` |
-| Wayfinder | `wayfinder.propose-product-route` | `product-route` | `wayfinder-navigation` |
-| Interpreter | `interpreter.prepare-source-aware-explanation` | `source-aware-explanation` | `interpreter-source-aware-explanation` |
-| Storykeeper | `storykeeper.prepare-narrative-presentation` | `narrative-presentation` | `storykeeper-confirmed-event-presentation` |
+| Role        | Operation                                      | Primary proposal kind      | Success fixture                            |
+| ----------- | ---------------------------------------------- | -------------------------- | ------------------------------------------ |
+| Scribe      | `scribe.prepare-structured-capture`            | `structured-capture`       | `scribe-structured-draft`                  |
+| Librarian   | `librarian.prepare-source-linked-recall`       | `source-linked-recall`     | `librarian-source-linked-recall`           |
+| Wayfinder   | `wayfinder.propose-product-route`              | `product-route`            | `wayfinder-navigation`                     |
+| Interpreter | `interpreter.prepare-source-aware-explanation` | `source-aware-explanation` | `interpreter-source-aware-explanation`     |
+| Storykeeper | `storykeeper.prepare-narrative-presentation`   | `narrative-presentation`   | `storykeeper-confirmed-event-presentation` |
 
 Validation rejects:
 
