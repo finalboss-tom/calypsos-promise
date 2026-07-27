@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Legacy stewardship proposal](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](docs/roadmap/sprint-5-completion-record.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Pre-Sprint 6 review](docs/roadmap/pre-sprint-6-alignment-review.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Legacy stewardship proposal](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](docs/roadmap/sprint-5-completion-record.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,9 +9,9 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
-- **Review the operational-simplicity proposal:** [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) → [Operational Architecture](docs/architecture/operational-simplicity-and-durable-workflows.md) → [Mission Traceability](docs/architecture/mission-to-runtime-traceability.md) → [Cross-Phase Workstream](docs/roadmap/operational-simplicity-workstream.md)
-- **Review the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md) → [Repository Reconciliation](docs/roadmap/consumer-first-provider-independent-reconciliation.md) → [Cross-Phase Workstream](docs/roadmap/consumer-first-provider-independent-workstream.md)
+- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Pre-Sprint 6 Alignment Review](docs/roadmap/pre-sprint-6-alignment-review.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Apply the operational-simplicity baseline:** [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) → [Operational Architecture](docs/architecture/operational-simplicity-and-durable-workflows.md) → [Mission Traceability](docs/architecture/mission-to-runtime-traceability.md) → [Cross-Phase Workstream](docs/roadmap/operational-simplicity-workstream.md)
+- **Apply the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md) → [Repository Reconciliation](docs/roadmap/consumer-first-provider-independent-reconciliation.md) → [Cross-Phase Workstream](docs/roadmap/consumer-first-provider-independent-workstream.md)
 - **Review the completed permission baseline:** [Sprint 4 Completion Record](docs/roadmap/sprint-4-completion-record.md) → [House of Keys Architecture](docs/architecture/README.md#house-of-keys-architecture)
 - **Review the merged security baseline:** [Sprint 5 Completion Record](docs/roadmap/sprint-5-completion-record.md) → [Security Architecture](docs/security/README.md) → [Security Policy](SECURITY.md)
 - **Review the funding boundary:** [Decision 0008](docs/decisions/0008-funding-and-sponsorship-baseline.md) → [Economics and Public-Good Funding](docs/economics/README.md) → [Funding Completion Record](docs/economics/phase-0-funding-completion-record.md)
@@ -23,7 +23,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged. **Sprint 6 — Aster contracts and AI governance is the next numbered sprint.** Decisions 0009, 0010, and 0011 are proposed institutional constraints under review. None activates a production runtime or changes Sprint 6 order.
+Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged. Decisions 0010 and 0011 are accepted Phase 0 baselines. Decision 0009 remains a proposed future institutional boundary. **Sprint 6 — Aster contracts and AI governance is the next numbered sprint after the pre-Sprint 6 reconciliation merges.** None of these documentation baselines activates a production runtime.
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -37,10 +37,11 @@ Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and 
 - Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the threat, security, privacy, isolation, encryption, recovery, incident, audit, residual-risk, tabletop, and specialist-holdpoint baseline.
 - [Decision 0008](docs/decisions/0008-funding-and-sponsorship-baseline.md) and `docs/economics` merged through PR #38 as squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`, establishing the Phase 0 funding and sponsorship doctrine, public register contracts, fictional relationship and opportunity records, validation, conflict and concentration controls, public-good underwriting, infrastructure exit requirements, and future operational gates.
 - Proposed [Decision 0009](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) and its architecture make a person’s revocable Legacy Directive, incapacity and post-mortem stewardship, contested authority, family and third-party privacy, research, archive, deletion, and institutional succession explicit future design work rather than an account-recovery shortcut.
-- Proposed [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) and its architecture make the person the provider-independent continuity layer while treating clinics, EHRs, payers, laboratories, devices, exchanges, and other institutions as important sources, destinations, and future partners connected through versioned adapters rather than automatic owners of Chronicle meaning or product authority.
-- Proposed [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) and its architecture make the modular monolith, small responsive path, durable deferred work, local simulation, provider-independent adapters, and evidence-gated decomposition explicit future implementation constraints rather than informal developer preferences.
+- Accepted [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) makes the person the provider-independent continuity layer while treating clinics, EHRs, payers, laboratories, devices, exchanges, and other institutions as important sources, destinations, and future partners connected through versioned adapters rather than automatic owners of Chronicle meaning or product authority.
+- Accepted [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) makes the modular monolith, small responsive path, durable deferred work, local simulation, provider-independent adapters, and evidence-gated decomposition explicit implementation constraints rather than informal developer preferences.
+- The [Pre-Sprint 6 Alignment Review](docs/roadmap/pre-sprint-6-alignment-review.md) reconciles those accepted boundaries with mission, incentives, security, open-source operations, Phase 0 gates, and the Aster contract handoff.
 
-The merged House of Keys and security work remain design and synthetic-evidence baselines rather than production permission or security systems. Decision 0008 is likewise doctrine and repository-contract evidence rather than authority to accept or operate money. Proposed Decisions 0009, 0010, and 0011 do not establish legal sufficiency, a production succession system, a provider connector, clinical use, an enterprise product, a workflow runtime, measured performance, or validated product evidence.
+The merged House of Keys and security work remain design and synthetic-evidence baselines rather than production permission or security systems. Decision 0008 is likewise doctrine and repository-contract evidence rather than authority to accept or operate money. Decisions 0010 and 0011 are accepted constraints but do not establish a provider connector, clinical use, an enterprise product, a workflow runtime, measured performance, or validated product evidence. Proposed Decision 0009 does not establish legal sufficiency or a production succession system.
 
 ### Frozen foundations
 
@@ -57,14 +58,14 @@ The merged House of Keys and security work remain design and synthetic-evidence 
 
 ### Current gates and unresolved work
 
-- Begin Sprint 6 through its own issue, execution plan, branch, draft pull request, evidence, and explicit founding-steward acceptance while inheriting the merged Sprint 5 and Decision 0008 boundaries and any accepted Decision 0010 and Decision 0011 constraints.
-- Review, revise, accept, or decline proposed Decision 0011, its architecture, mission traceability, developer-operability policy, AS-0013, reconciliation, and cross-phase workstream without representing a queue, scheduler, event store, service topology, local-first system, or measured performance as live.
-- Review, revise, accept, or decline proposed Decision 0010, its architecture, AS-0012, cross-phase workstream, and public explanation without representing a provider, EHR, connector, clinical, or enterprise capability as live.
+- Merge the [Pre-Sprint 6 Alignment Review](docs/roadmap/pre-sprint-6-alignment-review.md), then begin Sprint 6 through its own issue, execution plan, branch, draft pull request, evidence, completion record, and explicit founding-steward acceptance.
+- Apply Decisions 0010 and 0011 to Sprint 6 without representing a provider, EHR, connector, clinical, enterprise, queue, scheduler, event store, service topology, local-first system, or measured performance as live.
 - Review, revise, accept, or decline proposed Decision 0009 and its companion architecture, workstream, and assumption record without representing them as a live legal or product capability.
 - Complete an explicit Phase 0 exit review against [the institutional roadmap](ROADMAP.md).
 - Publish the initial key-person dependency, succession, founder-reserved-power, and founder-subsidy/economic-dependency records required by the institutional decisions and roadmap.
 - Recover and catalogue the historical HealthDAO, CureDAO, and Calypso’s Promise governance notes.
-- Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
+- Verify administrative branch protections and required checks, decide the commit-level DCO transition, and add distributed code ownership only when qualified second owners can provide real review.
+- Measure clean installation, startup, focused validation, package tests, and full validation before accepting numeric operability budgets.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
 - Preserve the completed Sprint 5 threat, encryption, untrusted-input, lifecycle-enforcement, receipt-integrity, residual-risk, and specialist-holdpoint boundaries before any production data path.
 - Select clinical, interoperability, regulatory, privacy, research-governance, infrastructure, workflow, queue, scheduler, event, observability, vendor, provider, EHR, connector, legal, trademark, hosted-service, entity, custody, accounting, tax, payment, estate, fiduciary, succession, archive, and financial-control details through their documented gates.
@@ -80,8 +81,8 @@ Calypso’s Promise is designed to earn trust through personal utility, help peo
 - Read the [Public Institutional Roadmap](ROADMAP.md) for product, evidence, economics, governance, and founder-exit gates.
 - Read the [Governance Baseline](GOVERNANCE.md) for current authority and progressive-decentralization rules.
 - Read [Decision 0003](docs/decisions/0003-progressive-decentralization.md) for the accepted architectural decision.
-- Read proposed [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) for the boundary between necessary complexity and operational architecture that remains understandable, testable, replaceable, and corrigible.
-- Read proposed [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) for the boundary between institutional interoperability and canonical product authority.
+- Read [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) for the boundary between necessary complexity and operational architecture that remains understandable, testable, replaceable, and corrigible.
+- Read [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) for the boundary between institutional interoperability and canonical product authority.
 - Read proposed [Decision 0009](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) for the distinction between preserving a Chronicle’s possible value and granting post-mortem access.
 
 Token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred. Founder independence, provider replaceability, operational continuity, and accountable collective stewardship do not.
@@ -104,8 +105,8 @@ The immune-system metaphor applies to harmful conditions and mechanisms—not pe
 
 - Read the [Institutional Immune System](docs/governance/institutional-immune-system.md) for the canonical architecture.
 - Read the [Assumption Registry](docs/governance/assumption-registry.md) for the seeded causal, product, incentive, governance, architecture, funding, and corrigibility hypotheses.
-- Review proposed [AS-0013](docs/governance/assumption-AS-0013-operational-simplicity-durable-value.md), which treats a modular, batch-oriented, locally simulatable core as a falsifiable implementation hypothesis rather than an identity claim or ban on justified services.
-- Review proposed [AS-0012](docs/governance/assumption-AS-0012-consumer-first-continuity-value.md), which treats consumer-first market and product sequencing as a falsifiable hypothesis rather than an ideology or permanent ban on institutional collaboration.
+- Review active [AS-0013](docs/governance/assumption-AS-0013-operational-simplicity-durable-value.md), which treats a modular, batch-oriented, locally simulatable core as a falsifiable implementation hypothesis rather than an identity claim or ban on justified services.
+- Review active [AS-0012](docs/governance/assumption-AS-0012-consumer-first-continuity-value.md), which treats consumer-first market and product sequencing as a falsifiable hypothesis rather than an ideology or permanent ban on institutional collaboration.
 - Review proposed [AS-0011](docs/governance/assumption-AS-0011-health-data-legacy-value.md), which treats post-mortem Chronicle value as a falsifiable hypothesis rather than a license for default retention or disclosure.
 - Use the **System challenge or revalidation request** issue form to challenge a public assumption, metric, incentive, policy, architecture, decision, or institutional mechanism using public-safe evidence.
 
@@ -148,6 +149,7 @@ The current application remains bounded. It explains the project and links to th
 - `apps/api` — planned modular TypeScript domain application
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
+- a bounded Aster contract capability for Sprint 6; no production model or provider runtime
 - production House of Keys orchestration, identity, persistence, enforcement, receipts, and provider adapters
 - production command, event, job, projection, queue, scheduler, replay, observability, and workflow behavior
 - standards registries, versioned mappings, provider, EHR, payer, laboratory, pharmacy, device, exchange, clinical, and enterprise connector systems
