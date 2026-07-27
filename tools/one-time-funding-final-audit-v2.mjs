@@ -136,8 +136,8 @@ replaceOnce(
 );
 replaceOnce(
   "docs/economics/phase-0-funding-completion-record.md",
-  "- [`Current status`](../roadmap/current-status.md)\n- [`Public Institutional Roadmap`](../../ROADMAP.md)\n- [`Assumption Registry`](../governance/assumption-registry.md)",
-  "- [`Current status`](../roadmap/current-status.md)\n- [`Sprint plan`](../roadmap/sprints.md)\n- [`Public Institutional Roadmap`](../../ROADMAP.md)\n- [`Governance Baseline`](../../GOVERNANCE.md)\n- [`Website Information Architecture`](../website/information-architecture.md)\n- [`Assumption Registry`](../governance/assumption-registry.md)",
+  "- [`Current status`](../roadmap/current-status.md)\n- [`Design-to-Build Sprint Plan`](../roadmap/sprints.md)\n- [`Public Institutional Roadmap`](../../ROADMAP.md)\n- [`Assumption Registry`](../governance/assumption-registry.md)",
+  "- [`Current status`](../roadmap/current-status.md)\n- [`Design-to-Build Sprint Plan`](../roadmap/sprints.md)\n- [`Public Institutional Roadmap`](../../ROADMAP.md)\n- [`Governance Baseline`](../../GOVERNANCE.md)\n- [`Website Information Architecture`](../website/information-architecture.md)\n- [`Assumption Registry`](../governance/assumption-registry.md)",
 );
 replaceOnce(
   "docs/economics/phase-0-funding-completion-record.md",
