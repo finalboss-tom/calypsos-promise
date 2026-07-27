@@ -23,7 +23,9 @@ This directory contains versioned architecture baselines that implement the froz
 15. [House of Keys Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md) — direct and narrative parity, layered explanations, accessible evidence, confirmation separation, and synthetic comprehension prototypes
 16. [House of Keys Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md) — pure versioned evaluation, explicit facts, complete-grant matching, fail-closed outcomes, stable reasons, freshness, and execution separation
 17. [House of Keys Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md) — pre-stable TypeScript contracts, deterministic validation, pure evaluation, public synthetic fixtures, and Node tests
-18. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+18. [Aster Contract Boundary](aster-contract-boundary.md) — bounded package ownership, authority separation, provider independence, and non-production scope
+19. [Aster Role Contracts](aster-role-contracts.md) — detailed Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper evidence, clarification, failure, retention, egress, source-link, and fallback rules
+20. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -71,6 +73,15 @@ Decision 0010 is an accepted Phase 0 baseline. The Living Chronicle remains the 
 
 The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
 
+## Aster architecture
+
+- [Aster Contract Boundary](aster-contract-boundary.md)
+- [Aster Role Contracts](aster-role-contracts.md)
+- [Aster Contract Baseline](../product/aster-contract-baseline.md)
+- [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
+
+Aster is a bounded proposal and explanation capability. It may prepare drafts, recall, routes, explanations, and narrative presentation, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, memory, provider logs, retrieval indexes, delayed-work state, protected audit, or institutional authority. Role contracts remain locally testable and provider-independent.
+
 ## Legacy and succession architecture
 
 - [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md)
@@ -83,7 +94,7 @@ Legacy and succession are proposed future capabilities, not extensions of login 
 
 ## Sprint 6 handoff
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommends a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. Aster contracts must preserve source-linked proposals, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and a complete manual or non-AI path.
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, and detailed role contracts while preserving source-linked proposals, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
 
 ## Boundary rule
 
