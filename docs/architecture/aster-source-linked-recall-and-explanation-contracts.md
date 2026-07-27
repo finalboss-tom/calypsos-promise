@@ -1,6 +1,6 @@
 # Aster Source-Linked Recall and Explanation Contracts
 
-[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Proposal and extraction contracts](aster-proposal-and-extraction-contracts.md) · [Intent contracts](aster-intent-confidence-clarification-refusal-contracts.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Proposal and extraction contracts](aster-proposal-and-extraction-contracts.md) · [Intent contracts](aster-intent-confidence-clarification-refusal.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
