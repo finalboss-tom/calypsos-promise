@@ -228,8 +228,6 @@ test("proposal role, operation, and kind cannot drift", () => {
     issues.some((issue) => issue.code === "aster.proposal.invalid-operation"),
   );
   assert.ok(
-    issues.some(
-      (issue) => issue.code === "aster.proposal.role-kind-mismatch",
-    ),
+    issues.some((issue) => issue.code === "aster.proposal.role-kind-mismatch"),
   );
 });
