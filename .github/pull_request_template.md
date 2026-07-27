@@ -80,7 +80,7 @@ Read `docs/policies/publication-and-confidentiality.md` before publishing materi
 
 - [ ] `pnpm check` passes
 - [ ] Tests cover the behavior or the change is documentation-only with a stated reason
-- [ ] Documentation, status records, and migration notes are updated
+- [ ] Documentation, status records, roadmap records, issue ledgers, completion records, and migration notes agree
 - [ ] Synthetic or public data only
 - [ ] Tests exercise the package public surface rather than private deep imports where applicable
 
