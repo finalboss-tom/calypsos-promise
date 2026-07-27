@@ -53,13 +53,13 @@ Confirmation remains evidence about the exact proposal only. It does not prove t
 
 The public proposal kinds are:
 
-| Role | Primary proposal kind |
-| --- | --- |
-| Scribe | `structured-capture` |
-| Librarian | `source-linked-recall` |
-| Wayfinder | `product-route` |
+| Role        | Primary proposal kind      |
+| ----------- | -------------------------- |
+| Scribe      | `structured-capture`       |
+| Librarian   | `source-linked-recall`     |
+| Wayfinder   | `product-route`            |
 | Interpreter | `source-aware-explanation` |
-| Storykeeper | `narrative-presentation` |
+| Storykeeper | `narrative-presentation`   |
 
 Any role may instead produce a `clarification-request` when its role contract requires clarification. Validators reject a proposal whose role, bounded operation, primary kind, deterministic owner, or confirmation rule drifts from the role contracts.
 
