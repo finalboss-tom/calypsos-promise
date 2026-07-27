@@ -18,7 +18,7 @@ This sprint makes Aster useful and inspectable without making it authoritative. 
 
 > AI proposes; the player confirms; deterministic domain services validate and store.
 
-A provider response, model output, conversational acknowledgement, queued request, retrieval score, transport success, or Aster role name is never proof of permission, canonical storage, quest completion, reward, or domain success.
+A provider response, model output, conversational acknowledgement, queued request, retrieval score, transport success, Aster role name, or retained memory is never proof of permission, canonical storage, quest completion, reward, or domain success.
 
 ## Accepted scope
 
@@ -41,7 +41,7 @@ Sprint 6 does not:
 
 ## Authority and package boundary
 
-`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, source-linked recall and explanation, memory, provider egress, untrusted-input isolation, delayed-result handling, deterministic local substitution, and non-AI fallback.
+`@calypsos-promise/aster` owns the pre-stable contracts that describe Aster proposals, role behavior, intent, clarification, confidence, source-linked recall and explanation, memory lifecycle, provider egress, untrusted-input isolation, delayed-result handling, deterministic local substitution, and non-AI fallback.
 
 It does not own:
 
@@ -103,7 +103,7 @@ Define capture, recall, explanation, navigation, permission review, correction, 
 
 ### 6.5 Source-linked recall and explanation
 
-**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; final Sprint 6 validation and acceptance remain pending.
 
 Require health-related recall to reference authoritative Chronicle records or clearly labeled public educational material. Preserve record and revision identifiers, source class, provenance, mapping revision, implementation-guide revision, correction state, conflict, deletion, index freshness, and uncertainty.
 
@@ -113,7 +113,13 @@ Require health-related recall to reference authoritative Chronicle records or cl
 
 ### 6.6 Memory classes and lifecycle
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+
 Separate transient context, player-visible retained preferences or accessibility context, separately chosen retained conversation, derived record-linked memory, narrative presentation state, and provider-side operational metadata. Define visibility, editability, export, deletion, retention, expiry, correction, supersession, egress, secondary-use boundaries, and missing-memory fallback.
+
+**Current evidence:** public memory-class, owner, retention, correction, egress, source, lifecycle, and fallback taxonomies; versioned memory-class policy matrix; stable serialized memory-entry contract; separate player-choice, source, subject, retention, lifecycle, controls, egress, secondary-use, fallback, and authority fields; material product-memory visibility, editability, exportability, and deletability; exact Chronicle source revisions for record-linked memory; append-revision correction and supersession; explicit deletion-request, deletion, expiry, and unavailability semantics; provider operational metadata kept outside product memory with only a bounded external reference and expiry; literal rejection of secondary use, training, research, commerce, canonical writes, permission, confirmation, progression, rewards, and core-path blocking; deterministic validation; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** every public memory class validates; all material product-memory classes require separate player choice and full player controls; a retained preference validates while remaining non-authoritative; hidden retained memory and missing choice are rejected; record-linked memory requires exact Chronicle evidence and can recompute; provider operational metadata cannot carry raw product-memory content; deletion removes the active value while retaining lifecycle evidence; and tests reject secondary-use, canonical, permission, progression, reward, and core-blocking escalation.
 
 ### 6.7 Prompt injection and untrusted input
 
@@ -143,15 +149,15 @@ Publish a completion record, unresolved-work register, control mapping, speciali
 
 Every workstream must preserve:
 
-1. Aster output is a proposal, explanation, navigation aid, or presentation proposal—not canonical truth.
-2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, or prior permission.
+1. Aster output is a proposal, explanation, navigation aid, presentation proposal, or bounded player-controlled memory—not canonical truth.
+2. Exact player confirmation applies only to the exact proposal and cannot be inferred from engagement, silence, conversational acknowledgement, provider terms, prior permission, or retained memory.
 3. House of Keys evaluation remains fail-closed; `indeterminate` never becomes allow.
 4. Domain validation and authoritative storage remain separate observable steps after confirmation.
 5. Chronicle truth, permission truth, source assertions, Aster proposals, memory, receipts, audit, product state, retrieval derivatives, provider logs, and delayed-work state remain distinct claims.
 6. Broader data collection, retention, permission, provider use, research, commerce, sponsorship, or premium compute cannot buy progression, rewards, core rights, source rank, defaults, placement, favorable findings, or governance authority.
-7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths.
-8. Stale, superseded, canceled, failed, or provider-unavailable output cannot overwrite newer confirmed truth or act under stale permission, intent, source, policy, or subject state.
-9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, or retrieval score cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, or conformance.
+7. Core capture, permission review, correction, export, deletion, and ordinary play retain complete manual and non-AI paths and cannot be blocked by missing memory.
+8. Stale, superseded, canceled, failed, provider-unavailable, deleted, expired, or unavailable output or memory cannot overwrite newer confirmed truth or act under stale authority.
+9. A standard, implementation guide, mapping, provider, sponsor, newest source, model, retrieval score, or remembered context cannot become automatic truth or proof of completeness, equivalence, safety, endorsement, or conformance.
 10. Public development remains credential-free and uses only public or synthetic information.
 
 ## Validation strategy
@@ -167,4 +173,4 @@ Each workstream adds focused deterministic tests. Before Sprint 6 is represented
 
 ## Acceptance authority
 
-Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, nor synthetic evidence grants production or specialist-review status.
+Passing tests proves only that the checked public contracts and deterministic fixtures behave as asserted. Sprint 6 closes only after explicit founding-steward review and merge. Neither branch existence, a draft pull request, CI success, model output, retained memory, nor synthetic evidence grants production or specialist-review status.
