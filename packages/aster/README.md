@@ -21,13 +21,26 @@ The core package intentionally has no database, network, provider, model SDK, UI
 - `role-contracts.ts` defines the bounded operation, evidence requirements, clarification triggers, qualitative confidence and uncertainty rules, failure codes, source-link rules, retention limits, provider-egress limits, manual fallback, and role-specific prohibitions for each role.
 - `proposal.ts` defines proposal kinds, subject, request, producer, source, transformation, confidence, uncertainty, clarification, intended-action, review, authority, domain-outcome, payload, and structured-extraction contracts.
 - `intent.ts` defines bindable and safe meta intents, consequence classes, dispositions, ambiguity and refusal taxonomies, clarification lifecycle, intent candidates, and non-authoritative intent decisions.
+- `source-recall.ts` defines exact Chronicle and public-education source references, locators, lifecycle, mapping, implementation-guide, retrieval-freshness, structured-query fallback, source-linked statements, uncertainty, and non-authority contracts.
 - `validate.ts` deterministically validates the authority matrix.
 - `validate-role-contracts.ts` deterministically validates detailed role contracts against the authority matrix and shared safety boundaries.
 - `validate-proposal.ts` deterministically validates proposal envelopes and structured extraction candidates against role, source, review, provenance, non-authority, and domain-handoff boundaries.
 - `validate-intent.ts` deterministically validates intent binding, qualitative confidence, clarification, refusal, safe proposal preparation, and non-authority.
+- `validate-source-recall.ts` deterministically validates exact source revisions, personal versus public statements, lifecycle and mapping visibility, semantic-retrieval fallback, uncertainty, clinical limits, and non-authority.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
+
+## Recall and explanation guarantees
+
+- Every person-specific health statement requires at least one exact Chronicle record and revision reference.
+- Public educational material remains clearly labeled and cannot establish a person-specific fact.
+- Source references preserve source-version identity, locator, lifecycle, correction, conflict, deletion, mapping, and implementation-guide state where applicable.
+- Partial, lossy, conflicting, or unsupported mapping requires a direct loss description.
+- Standards or implementation-guide conformance cannot prove clinical completeness, semantic equivalence, safety, or endorsement.
+- Stale, unavailable, or unknown semantic retrieval must use the structured-query fallback before returning statements.
+- Required uncertainty remains visible for correction, conflict, mapping loss, implementation-guide limits, deleted sources, and public education.
+- Recall cannot diagnose, prescribe, direct emergency care, write canonical records, create permission, or treat provider rank, retrieval score, recency, or standards profile as truth.
 
 ## Intent guarantees
 
@@ -57,4 +70,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 
 All request context is transient by default. Roles own no hidden retained memory. Any retained memory requires a separate visible player choice. Future provider egress remains policy-gated and minimum necessary; no provider is approved by this package.
 
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
