@@ -248,7 +248,11 @@ export function validateAsterProviderGovernance(
     handling.abuseMonitoringUse === "unknown" ||
     handling.subprocessorState === "unknown";
   if (unknownHandling) {
-    add("aster.provider.unknown-handling", "handling", "Handling is unresolved.");
+    add(
+      "aster.provider.unknown-handling",
+      "handling",
+      "Handling is unresolved.",
+    );
   }
   if (
     handling.contentLogging ||
@@ -258,7 +262,11 @@ export function validateAsterProviderGovernance(
       (!Number.isInteger(handling.maxRetentionDays) ||
         Number(handling.maxRetentionDays) < 0))
   ) {
-    add("aster.provider.invalid-handling", "handling", "Invalid handling terms.");
+    add(
+      "aster.provider.invalid-handling",
+      "handling",
+      "Invalid handling terms.",
+    );
   }
   if (
     handling.trainingUse !== "prohibited" ||
@@ -367,10 +375,7 @@ export function validateAsterProviderGovernance(
   const funding = policy.funding;
   const materialSupport =
     funding.providerCreditsPresent || funding.sponsorBenefitsPresent;
-  if (
-    funding.relationshipState === "unknown" ||
-    !funding.conflictsDisclosed
-  ) {
+  if (funding.relationshipState === "unknown" || !funding.conflictsDisclosed) {
     add(
       "aster.provider.invalid-funding",
       "funding",
@@ -381,8 +386,7 @@ export function validateAsterProviderGovernance(
     (funding.relationshipState === "public-record-linked" &&
       (!funding.publicFundingRecord ||
         !reference(funding.publicFundingRecord))) ||
-    (materialSupport &&
-      funding.relationshipState !== "public-record-linked")
+    (materialSupport && funding.relationshipState !== "public-record-linked")
   ) {
     add(
       "aster.provider.missing-public-funding-record",
