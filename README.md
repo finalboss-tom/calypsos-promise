@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Funding baseline](docs/economics/README.md) · [Legacy stewardship proposal](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](docs/roadmap/sprint-5-completion-record.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Legacy stewardship proposal](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](docs/roadmap/sprint-5-completion-record.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -10,6 +10,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
 - **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Review the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md) → [Repository Reconciliation](docs/roadmap/consumer-first-provider-independent-reconciliation.md) → [Cross-Phase Workstream](docs/roadmap/consumer-first-provider-independent-workstream.md)
 - **Review the completed permission baseline:** [Sprint 4 Completion Record](docs/roadmap/sprint-4-completion-record.md) → [House of Keys Architecture](docs/architecture/README.md#house-of-keys-architecture)
 - **Review the merged security baseline:** [Sprint 5 Completion Record](docs/roadmap/sprint-5-completion-record.md) → [Security Architecture](docs/security/README.md) → [Security Policy](SECURITY.md)
 - **Review the funding boundary:** [Decision 0008](docs/decisions/0008-funding-and-sponsorship-baseline.md) → [Economics and Public-Good Funding](docs/economics/README.md) → [Funding Completion Record](docs/economics/phase-0-funding-completion-record.md)
@@ -21,7 +22,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged. **Sprint 6 — Aster contracts and AI governance is the next numbered sprint.** Decision 0009 and its companion legacy documentation are proposed future institutional constraints under review; they do not activate an estate, incapacity, post-mortem, research, archive, or successor-access runtime and do not change Sprint 6 order.
+Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged. **Sprint 6 — Aster contracts and AI governance is the next numbered sprint.** Decision 0009 and Decision 0010 are proposed future institutional constraints under review. Neither activates a production runtime or changes Sprint 6 order.
 
 - Sprint 0 established the frozen product, architecture, gameplay, lore, and repository-governance foundations.
 - Sprint 1 established the runnable monorepo and open-source operating baseline.
@@ -35,8 +36,9 @@ Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and 
 - Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the threat, security, privacy, isolation, encryption, recovery, incident, audit, residual-risk, tabletop, and specialist-holdpoint baseline.
 - [Decision 0008](docs/decisions/0008-funding-and-sponsorship-baseline.md) and `docs/economics` merged through PR #38 as squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`, establishing the Phase 0 funding and sponsorship doctrine, public register contracts, fictional relationship and opportunity records, validation, conflict and concentration controls, public-good underwriting, infrastructure exit requirements, and future operational gates.
 - Proposed [Decision 0009](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) and its architecture make a person’s revocable Legacy Directive, incapacity and post-mortem stewardship, contested authority, family and third-party privacy, research, archive, deletion, and institutional succession explicit future design work rather than an account-recovery shortcut.
+- Proposed [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) and its architecture make the person the provider-independent continuity layer while treating clinics, EHRs, payers, laboratories, devices, exchanges, and other institutions as important sources, destinations, and future partners connected through versioned adapters rather than automatic owners of Chronicle meaning or product authority.
 
-The merged House of Keys and security work remain design and synthetic-evidence baselines rather than production permission or security systems. Decision 0008 is likewise doctrine and repository-contract evidence rather than authority to accept or operate money. Decision 0009 remains proposed documentation and cannot establish legal sufficiency or production succession authority.
+The merged House of Keys and security work remain design and synthetic-evidence baselines rather than production permission or security systems. Decision 0008 is likewise doctrine and repository-contract evidence rather than authority to accept or operate money. Proposed Decisions 0009 and 0010 do not establish legal sufficiency, a production succession system, a provider connector, clinical use, an enterprise product, or validated market evidence.
 
 ### Frozen foundations
 
@@ -53,7 +55,8 @@ The merged House of Keys and security work remain design and synthetic-evidence 
 
 ### Current gates and unresolved work
 
-- Begin Sprint 6 through its own issue, execution plan, branch, draft pull request, evidence, and explicit founding-steward acceptance while inheriting the merged Sprint 5 and Decision 0008 boundaries.
+- Begin Sprint 6 through its own issue, execution plan, branch, draft pull request, evidence, and explicit founding-steward acceptance while inheriting the merged Sprint 5 and Decision 0008 boundaries and any accepted Decision 0010 source-attribution and provider-neutrality constraints.
+- Review, revise, accept, or decline proposed Decision 0010, its architecture, AS-0012, cross-phase workstream, and public explanation without representing a provider, EHR, connector, clinical, or enterprise capability as live.
 - Review, revise, accept, or decline proposed Decision 0009 and its companion architecture, workstream, and assumption record without representing them as a live legal or product capability.
 - Complete an explicit Phase 0 exit review against [the institutional roadmap](ROADMAP.md).
 - Publish the initial key-person dependency, succession, founder-reserved-power, and founder-subsidy/economic-dependency records required by the institutional decisions and roadmap.
@@ -61,28 +64,29 @@ The merged House of Keys and security work remain design and synthetic-evidence 
 - Verify administrative branch protections and replace transitional PR-level DCO certification before external contribution volume grows.
 - Obtain named specialist review before canonical examples or sensitive content are represented as approved or published.
 - Preserve the completed Sprint 5 threat, encryption, untrusted-input, lifecycle-enforcement, receipt-integrity, residual-risk, and specialist-holdpoint boundaries before any production data path.
-- Select clinical, regulatory, privacy, research-governance, infrastructure, vendor, legal, trademark, hosted-service, connector, entity, custody, accounting, tax, payment, estate, fiduciary, succession, archive, and financial-control details through their documented gates.
-- Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, and on-chain mechanisms unresolved until evidence supports a specific design.
+- Select clinical, interoperability, regulatory, privacy, research-governance, infrastructure, vendor, provider, EHR, connector, legal, trademark, hosted-service, entity, custody, accounting, tax, payment, estate, fiduciary, succession, archive, and financial-control details through their documented gates.
+- Keep priority weights, typed-signal identity, weighted governance, treasury, ownership, token, blockchain, on-chain mechanisms, provider placement, connector ranking, affiliate referrals, and enterprise economics unresolved until evidence supports a specific design.
 
 ## Long-horizon mandate
 
 The consumer application is the beginning, not the final institutional form.
 
-Calypso’s Promise is designed to earn trust through personal utility, help people build longitudinal health records under their control, enable separately authorized collective benefit, preserve person-directed legacy choices, and progressively transfer stewardship as evidence and organizational capacity mature.
+Calypso’s Promise is designed to earn trust through personal utility, help people build longitudinal health records under their control, interoperate with institutional healthcare through inspectable and replaceable boundaries, enable separately authorized collective benefit, preserve person-directed legacy choices, and progressively transfer stewardship as evidence and organizational capacity mature.
 
 - Read the [Vision](VISION.md) for the institutional purpose and hundred-year objective.
 - Read the [Public Institutional Roadmap](ROADMAP.md) for product, evidence, economics, governance, and founder-exit gates.
 - Read the [Governance Baseline](GOVERNANCE.md) for current authority and progressive-decentralization rules.
 - Read [Decision 0003](docs/decisions/0003-progressive-decentralization.md) for the accepted architectural decision.
+- Read proposed [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) for the boundary between institutional interoperability and canonical product authority.
 - Read proposed [Decision 0009](docs/decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) for the distinction between preserving a Chronicle’s possible value and granting post-mortem access.
 
-Token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred. Founder independence and accountable collective stewardship do not.
+Token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred. Founder independence, provider replaceability, and accountable collective stewardship do not.
 
 ## Public feedback and governed work
 
 GitHub issues are the current canonical ledger for public-safe product and contributor work. They should connect a problem or proposal to evidence, prioritization, decision, implementation, validation, release, measured outcome, correction, and institutional learning.
 
-Public issues must never contain real health information, account-specific support, private correspondence, security reports, conduct evidence, production data, protected estate or fiduciary records, protected financial source records, or other protected material. Use synthetic or explicitly public examples.
+Public issues must never contain real health information, account-specific support, private correspondence, security reports, conduct evidence, production data, protected provider or interoperability records, private contracts or negotiations, protected estate or fiduciary records, protected financial source records, or other protected material. Use synthetic or explicitly public examples.
 
 Community reactions and comments are advisory during Phase 0. Decision 0006 defines the path toward typed signals, deterministic and explainable priority assessments, bounded delegated pilots, and later community control over eligible roadmap capacity without bypassing maintainers, specialists, safety controls, or constitutional rights.
 
@@ -96,6 +100,7 @@ The immune-system metaphor applies to harmful conditions and mechanisms—not pe
 
 - Read the [Institutional Immune System](docs/governance/institutional-immune-system.md) for the canonical architecture.
 - Read the [Assumption Registry](docs/governance/assumption-registry.md) for the seeded causal, product, incentive, governance, architecture, funding, and corrigibility hypotheses.
+- Review proposed [AS-0012](docs/governance/assumption-AS-0012-consumer-first-continuity-value.md), which treats consumer-first market and product sequencing as a falsifiable hypothesis rather than an ideology or permanent ban on institutional collaboration.
 - Review proposed [AS-0011](docs/governance/assumption-AS-0011-health-data-legacy-value.md), which treats post-mortem Chronicle value as a falsifiable hypothesis rather than a license for default retention or disclosure.
 - Use the **System challenge or revalidation request** issue form to challenge a public assumption, metric, incentive, policy, architecture, decision, or institutional mechanism using public-safe evidence.
 
@@ -115,7 +120,7 @@ pnpm --filter @calypsos-promise/site dev
 
 Open `http://localhost:3000` to run the public repository gateway locally.
 
-The current application remains bounded. It explains the project and links to the repository without providing accounts, private Chronicle storage, health-data intake, research enrollment, production House of Keys behavior, Legacy Directives, estate or successor access, donation checkout, sponsor intake, or financial operations. `pnpm check` includes formatting, documentation-link validation, repository policy, funding-register validation, content validation, linting, type checking, and tests.
+The current application remains bounded. It explains the project and links to the repository without providing accounts, private Chronicle storage, health-data intake, research enrollment, production House of Keys behavior, provider or EHR connections, clinical workflows, enterprise services, Legacy Directives, estate or successor access, donation checkout, sponsor intake, or financial operations. `pnpm check` includes formatting, documentation-link validation, repository policy, funding-register validation, content validation, linting, type checking, and tests.
 
 ## Repository surfaces
 
@@ -128,7 +133,7 @@ The current application remains bounded. It explains the project and links to th
 - [`packages/house-of-keys`](packages/house-of-keys) — pre-stable permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures
 - [`content`](content) — versioned canon, quests, dialogue, education, and safety examples
 - [`docs/security`](docs/security/README.md) — merged Sprint 5 security architecture, control-status vocabulary, residual-risk registers, procedures, synthetic tabletops, reconciliation, and holdpoints
-- [`docs/economics`](docs/economics/README.md) — merged Phase 0 funding and sponsorship doctrine, public register contracts, fictional examples, validation, and design tabletops; no operating finance
+- [`docs/economics`](docs/economics/README.md) — merged Phase 0 funding and sponsorship doctrine, public register contracts, fictional examples, validation, and design tabletops; no operating finance, provider, connector, or enterprise relationship
 - [`docs`](docs/README.md) — frozen foundations, architecture, decisions, governance, website briefs, policies, and sprint records
 - [`tools`](tools) — repository policy, documentation, funding-register, and content validation
 
@@ -139,8 +144,9 @@ The current application remains bounded. It explains the project and links to th
 - `apps/mcp-chronicle` — planned private, policy-controlled agent tools
 - `apps/mcp-forge` — planned contributor and documentation tools using synthetic data
 - production House of Keys orchestration, identity, persistence, enforcement, receipts, and provider adapters
+- standards registries, versioned mappings, provider, EHR, payer, laboratory, pharmacy, device, exchange, clinical, and enterprise connector systems
 - Legacy Directive, incapacity, death, estate, fiduciary, successor, family-health derivative, research, archive, protected custody, and post-mortem deletion systems
-- funding receipt, payment, banking, accounting, expenditure, treasury, compensation, and financial-reporting operations
+- funding receipt, payment, banking, accounting, expenditure, treasury, compensation, contracting, procurement, and financial-reporting operations
 - additional applications, services, packages, infrastructure, and production data paths described by the frozen architecture
 
 Planned surfaces should not be created as empty placeholders. A new module must have a bounded responsibility, current consumer, public contract, dependency direction, owner, tests, and synthetic evidence. See [Repository and Module Boundaries](docs/architecture/module-boundaries.md).
@@ -149,7 +155,7 @@ Planned surfaces should not be created as empty placeholders. A new module must 
 
 > The software is open. The person’s health data is private.
 
-Death, incapacity, account inactivity, institutional transition, or potential scientific value does not alter that rule.
+A provider, EHR, sponsor, enterprise contract, death, incapacity, account inactivity, institutional transition, or potential scientific value does not alter that rule.
 
 No contributor workflow, public demo, test environment, or open-source agent may require production health data. Synthetic fixtures are the default development material.
 
