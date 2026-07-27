@@ -1,6 +1,6 @@
 # Aster Memory Classes and Lifecycle Contracts
 
-[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Proposal and extraction contracts](aster-proposal-and-extraction-contracts.md) · [Intent contracts](aster-intent-confidence-clarification-refusal.md) · [Source-linked recall contracts](aster-source-linked-recall-and-explanation.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Proposal and extraction contracts](aster-proposal-and-extraction-contracts.md) · [Intent contracts](aster-intent-confidence-clarification-refusal.md) · [Source-linked recall contracts](aster-source-linked-recall-and-explanation-contracts.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
