@@ -1,64 +1,67 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
 ## Read in this order
 
-1. [Repository and Module Boundaries](module-boundaries.md) — dependency direction, package responsibilities, public APIs, module creation criteria, and decomposition triggers
-2. [Calypso Engine](calypso-engine.md) — narrative and deterministic gameplay engine boundaries
-3. [Operational Simplicity and Durable Workflows](operational-simplicity-and-durable-workflows.md) — accepted responsive and deferred paths, commands, events, jobs, projections, scheduling, replay, correction, local simulation, and evidence-gated decomposition
-4. [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md) — accepted mapping from protected commitments to owning capabilities, evidence, user-visible outcomes, guardrails, and revalidation triggers
-5. [Story Content Ontology](story-content-ontology.md) — content entities and relationships
-6. [Story Studio](story-studio.md) — planned authoring, review, validation, and publication surface
-7. [Living Chronicle Ontology](living-chronicle-ontology.md) — canonical data-model overview
-8. [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md) — accepted person-centered continuity, standards-at-the-edges mappings, institutional partnership boundaries, historical evidence, incentives, funding conflicts, and falsifiable outcomes
-9. [House of Keys Ontology and Authority Boundary](house-of-keys-ontology.md) — purpose-specific permission truth, actors, authority, grants, decisions, and receipts
-10. [House of Keys Purpose Taxonomy](house-of-keys-purpose-taxonomy.md) — stable, versioned purposes, lifecycle, compatibility, and anti-substitution rules
-11. [House of Keys Data-Category Taxonomy](house-of-keys-data-category-taxonomy.md) — semantic permission scope, selectors, mappings, lifecycle, and anti-broadening rules
-12. [House of Keys Grant, Recipient, Action, Scope, and Duration Model](house-of-keys-grant-recipient-action-duration-model.md) — atomic grants, bounded recipients, explicit actions, narrowing selectors, conditions, and reviewable duration
-13. [House of Keys Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md) — prospective revocation, explicit states and transitions, stale-decision handling, suspension, replacement, and non-punitive withdrawal
-14. [House of Keys Access Receipt and Audit Boundary](house-of-keys-access-receipt-audit-boundary.md) — player-inspectable receipt events, append-only correction, decision-to-operation linkage, minimization, and separation from production audit logs
-15. [House of Keys Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md) — direct and narrative parity, layered explanations, accessible evidence, confirmation separation, and synthetic comprehension prototypes
-16. [House of Keys Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md) — pure versioned evaluation, explicit facts, complete-grant matching, fail-closed outcomes, stable reasons, freshness, and execution separation
-17. [House of Keys Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md) — pre-stable TypeScript contracts, deterministic validation, pure evaluation, public synthetic fixtures, and Node tests
-18. [Aster Contract Boundary](aster-contract-boundary.md) — bounded package ownership, authority separation, provider independence, and non-production scope
-19. [Aster Role Contracts](aster-role-contracts.md) — detailed Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper evidence, clarification, failure, retention, egress, source-link, and fallback rules
-20. [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md) — proposal identity, source and transformation provenance, exact-revision review, non-canonical payloads, extraction candidates, and domain-handoff separation
-21. [Aster Intent, Confidence, Clarification, and Refusal Contracts](aster-intent-confidence-clarification-refusal.md) — bindable and safe meta intents, consequence classes, qualitative confidence, direct clarification, refusal, fallback, and non-authority
-22. [Aster Source-Linked Recall and Explanation Contracts](aster-source-linked-recall-and-explanation-contracts.md) — exact Chronicle and public-education sources, provenance, lifecycle, mapping, implementation-guide, retrieval-freshness, structured-query fallback, and uncertainty rules
-23. [Aster Memory Classes and Lifecycle Contracts](aster-memory-lifecycle-contracts.md) — transient and retained classes, player controls, retention, correction, supersession, export, deletion, provider metadata separation, egress, secondary-use boundaries, and missing-memory fallback
-24. [Aster Prompt-Injection and Untrusted-Input Isolation Contracts](aster-untrusted-input-isolation-contracts.md) — data-only input classes, deterministic context, server-owned tools, findings, containment, source and uncertainty preservation, memory separation, and non-authority
-25. [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md) — truthful acceptance, attempts, retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, correction, replay, and non-authority
-26. [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md) — synthetic-only evaluation, minimum-necessary egress, handling, deletion, credentials, evaluation independence, funding conflicts, concentration, replacement, migration, teardown, incidents, and public-claim boundaries
-27. [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md) — deterministic scenario catalogue, five role fallbacks, seven core paths, runtime exclusions, prompt-injection, degraded states, and non-authority
-28. [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md) — twelve-component manifest, public fixtures, role bindings, change classifications, migration rules, complete coverage, and fail-closed non-authority
-29. [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md) — final mission, domain, security, funding, provider, workflow, publication, status, and Sprint 7 handoff review
-30. [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md) — stable Aster control objectives, acceptance mapping, evidence status, Sprint 5 inheritance, and revalidation triggers
-31. [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md) — production, pilot, specialist, institutional, implementation, measurement, and human-acceptance gates
-32. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+1. [Repository and Module Boundaries](module-boundaries.md)
+2. [Calypso Engine](calypso-engine.md)
+3. [Operational Simplicity and Durable Workflows](operational-simplicity-and-durable-workflows.md)
+4. [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md)
+5. [Story Content Ontology](story-content-ontology.md)
+6. [Story Studio](story-studio.md)
+7. [Living Chronicle Ontology](living-chronicle-ontology.md)
+8. [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md)
+9. [House of Keys Ontology and Authority Boundary](house-of-keys-ontology.md)
+10. [House of Keys Purpose Taxonomy](house-of-keys-purpose-taxonomy.md)
+11. [House of Keys Data-Category Taxonomy](house-of-keys-data-category-taxonomy.md)
+12. [House of Keys Grant, Recipient, Action, Scope, and Duration Model](house-of-keys-grant-recipient-action-duration-model.md)
+13. [House of Keys Revocation and Lifecycle Model](house-of-keys-revocation-lifecycle-model.md)
+14. [House of Keys Access Receipt and Audit Boundary](house-of-keys-access-receipt-audit-boundary.md)
+15. [House of Keys Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md)
+16. [House of Keys Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md)
+17. [House of Keys Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md)
+18. [Aster Contract Boundary](aster-contract-boundary.md)
+19. [Aster Role Contracts](aster-role-contracts.md)
+20. [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md)
+21. [Aster Intent, Confidence, Clarification, and Refusal Contracts](aster-intent-confidence-clarification-refusal.md)
+22. [Aster Source-Linked Recall and Explanation Contracts](aster-source-linked-recall-and-explanation-contracts.md)
+23. [Aster Memory Classes and Lifecycle Contracts](aster-memory-lifecycle-contracts.md)
+24. [Aster Prompt-Injection and Untrusted-Input Isolation Contracts](aster-untrusted-input-isolation-contracts.md)
+25. [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md)
+26. [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
+27. [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
+28. [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md)
+29. [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md)
+30. [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
+31. [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+32. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+33. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
-- [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
+- [Decision 0011](../decisions/0011-operational-simplicity-and-durable-workflows.md)
 - [Operational Architecture](operational-simplicity-and-durable-workflows.md)
 - [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md)
 - [Developer Experience and Operability Policy](../policies/developer-experience-and-operability.md)
 - [Operational Simplicity Workstream](../roadmap/operational-simplicity-workstream.md)
-- [AS-0013 — Operational Simplicity Can Support Durable Personal Value](../governance/assumption-AS-0013-operational-simplicity-durable-value.md)
+- [AS-0013 — Operational Simplicity](../governance/assumption-AS-0013-operational-simplicity-durable-value.md)
 
-Decision 0011 is an accepted Phase 0 baseline. The modular monolith remains the default deployment posture. Responsive work, deferred jobs, schedules, domain events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first security or synchronization design.
+Decision 0011 is accepted. The modular monolith remains the default. Responsive work, deferred jobs, schedules, events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first design.
+
+Sprint 7 therefore begins as one local `stdio` Forge application, not a remote service, database, queue, vector index, or provider platform.
 
 ## Consumer-first and provider-independent architecture
 
-- [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
+- [Decision 0010](../decisions/0010-consumer-first-provider-independent-boundary.md)
 - [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md)
 - [Consumer-First and Institutional Interoperability Workstream](../roadmap/consumer-first-provider-independent-workstream.md)
-- [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](../governance/assumption-AS-0012-consumer-first-continuity-value.md)
+- [AS-0012 — Consumer-First Continuity](../governance/assumption-AS-0012-consumer-first-continuity-value.md)
 - [Infrastructure Sponsorship and Exit Policy](../economics/infrastructure-sponsorship-and-exit-policy.md)
 
-Decision 0010 is an accepted Phase 0 baseline. The Living Chronicle remains the provider-independent longitudinal product model. External standards, EHRs, clinics, payers, laboratories, devices, exchanges, and research systems are important sources, destinations, and potential partners connected through versioned adapters. They do not silently become Chronicle truth, product authority, or a prerequisite for the complete personal-value loop.
+The Living Chronicle remains the provider-independent longitudinal product model. External standards, EHRs, clinics, payers, laboratories, devices, exchanges, and research systems are sources, destinations, and potential partners connected through versioned adapters. They do not silently become Chronicle truth, product authority, or a prerequisite for personal value.
 
 ## Living Chronicle architecture
 
@@ -102,27 +105,32 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
 - [Sprint 6 Specialist Holdpoints and Unresolved Work](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
-- [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
 - [Sprint 6 Completion Record](../roadmap/sprint-6-completion-record.md)
 
-Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, deterministic local-fixture, and compatibility-contract capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, bounded delayed work, public or synthetic provider evaluation, and repeatable public scenario evidence. The compatibility manifest binds every public component to a revision, validator, synthetic fixture, migration rule, and non-authority boundary. Aster does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority.
+Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, deterministic local-fixture, compatibility, and migration capability. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, protected audit, or institutional authority.
+
+Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`. Every production and specialist holdpoint remains open unless later evidence closes it.
+
+## Forge MCP handoff
+
+The [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md) is the controlling Forge boundary.
+
+Sprint 7 may create one local `apps/mcp-forge` application for public documentation and synthetic contributor tools. Forge must use explicit source allowlists, server-owned tool contracts and risk classes, deterministic validation, source-linked results, draft-only generation, bounded receipts and errors, compatibility, migration, and funding neutrality.
+
+Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, production provider gateway, connector runtime, or institutional authority.
+
+Retrieved and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, or governance authority.
 
 ## Legacy and succession architecture
 
-- [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md)
+- [Decision 0009](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md)
 - [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 - [Future Health Data Legacy Workstream](../roadmap/health-data-legacy-workstream.md)
 - [AS-0011 — Post-Mortem Chronicle Value](../governance/assumption-AS-0011-health-data-legacy-value.md)
 - [Account Recovery and Emergency Access Model](../security/account-recovery-and-emergency-access-model.md)
 
-Legacy and succession are proposed future capabilities, not extensions of login recovery or Chronicle truth. A directive expresses person intent; external authority evidence supports a role; the House of Keys evaluates a bounded operation; execution and receipts record what occurred. Death, incapacity, inactivity, custody, family relationship, or scientific value cannot collapse those domains.
-
-## Sprint 6 completion boundary
-
-Sprint 6 is complete on draft PR #48 for its accepted public contract, deterministic validation, public synthetic fixture, provider-governance, compatibility, migration, control-mapping, holdpoint, and documentation scope. The [completion record](../roadmap/sprint-6-completion-record.md) and final reconciliation preserve every production and specialist gate.
-
-Explicit founding-steward acceptance and merge remain pending. After acceptance, Sprint 7 may begin only within its public-documentation and synthetic-data Forge MCP boundary.
+Legacy and succession remain proposed future capabilities, not extensions of login recovery or Chronicle truth.
 
 ## Boundary rule
 
-Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, consent enforcement, connector rollout, clinical behavior, enterprise integration, offline synchronization, production migrations, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
+Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, permission enforcement, connector rollout, clinical behavior, enterprise integration, offline synchronization, production migrations, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
