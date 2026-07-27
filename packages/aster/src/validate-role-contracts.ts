@@ -162,7 +162,10 @@ export function validateAsterRoleContracts(
     const authorityMatches =
       contract.accessibleName === authority.accessibleName &&
       contract.purpose === authority.primaryPurpose &&
-      arraysEqual(contract.allowedInputClasses, authority.allowedInputClasses) &&
+      arraysEqual(
+        contract.allowedInputClasses,
+        authority.allowedInputClasses,
+      ) &&
       arraysEqual(
         contract.allowedOutputClasses,
         authority.allowedOutputClasses,
@@ -188,7 +191,10 @@ export function validateAsterRoleContracts(
         "Every role contract must declare authority or source evidence requirements.",
       );
     } else {
-      for (const [index, requirement] of contract.evidenceRequirements.entries()) {
+      for (const [
+        index,
+        requirement,
+      ] of contract.evidenceRequirements.entries()) {
         const requirementPath = `${path}.evidenceRequirements[${index}]`;
         if (
           !isRecord(requirement) ||
