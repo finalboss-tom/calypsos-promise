@@ -80,7 +80,10 @@ function add(
   issues.push({ code, path, message });
 }
 
-function exactSet(actual: readonly string[], expected: readonly string[]): boolean {
+function exactSet(
+  actual: readonly string[],
+  expected: readonly string[],
+): boolean {
   return (
     actual.length === expected.length &&
     expected.every((value) => actual.includes(value))
@@ -190,7 +193,9 @@ export function validateAsterCompatibilityManifest(
     .filter(isRecord)
     .map((component) => String(component.componentId));
   for (const componentId of ASTER_PUBLIC_COMPONENT_IDS) {
-    const matches = componentIds.filter((candidate) => candidate === componentId);
+    const matches = componentIds.filter(
+      (candidate) => candidate === componentId,
+    );
     if (matches.length === 0) {
       add(
         issues,
@@ -246,7 +251,10 @@ export function validateAsterCompatibilityManifest(
         "Every public component must bind a stable validator identifier and revision.",
       );
     }
-    if (!Array.isArray(component.fixtureIds) || component.fixtureIds.length === 0) {
+    if (
+      !Array.isArray(component.fixtureIds) ||
+      component.fixtureIds.length === 0
+    ) {
       add(
         issues,
         "aster.compatibility.missing-public-fixture",
@@ -333,7 +341,9 @@ export function validateAsterCompatibilityManifest(
     }
   }
 
-  const roleBindings = Array.isArray(value.roleBindings) ? value.roleBindings : [];
+  const roleBindings = Array.isArray(value.roleBindings)
+    ? value.roleBindings
+    : [];
   for (const role of ASTER_ROLES) {
     const binding = roleBindings.find(
       (candidate) => isRecord(candidate) && candidate.role === role,
@@ -393,8 +403,8 @@ export function validateAsterCompatibilityManifest(
   }
 
   const localScenarioIds = Array.isArray(value.localScenarioIds)
-    ? value.localScenarioIds.filter((candidate): candidate is string =>
-        typeof candidate === "string",
+    ? value.localScenarioIds.filter(
+        (candidate): candidate is string => typeof candidate === "string",
       )
     : [];
   if (!exactSet(localScenarioIds, ASTER_LOCAL_SCENARIO_IDS)) {
@@ -406,8 +416,8 @@ export function validateAsterCompatibilityManifest(
     );
   }
   const coreNonAiPathIds = Array.isArray(value.coreNonAiPathIds)
-    ? value.coreNonAiPathIds.filter((candidate): candidate is string =>
-        typeof candidate === "string",
+    ? value.coreNonAiPathIds.filter(
+        (candidate): candidate is string => typeof candidate === "string",
       )
     : [];
   if (!exactSet(coreNonAiPathIds, ASTER_CORE_NON_AI_PATH_IDS)) {
@@ -420,8 +430,8 @@ export function validateAsterCompatibilityManifest(
   }
 
   const providerStates = Array.isArray(value.providerGovernanceStates)
-    ? value.providerGovernanceStates.filter((candidate): candidate is string =>
-        typeof candidate === "string",
+    ? value.providerGovernanceStates.filter(
+        (candidate): candidate is string => typeof candidate === "string",
       )
     : [];
   if (!exactSet(providerStates, ASTER_PROVIDER_GOVERNANCE_STATES)) {
