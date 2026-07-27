@@ -25,7 +25,8 @@ This directory contains versioned architecture baselines that implement the froz
 17. [House of Keys Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md) — pre-stable TypeScript contracts, deterministic validation, pure evaluation, public synthetic fixtures, and Node tests
 18. [Aster Contract Boundary](aster-contract-boundary.md) — bounded package ownership, authority separation, provider independence, and non-production scope
 19. [Aster Role Contracts](aster-role-contracts.md) — detailed Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper evidence, clarification, failure, retention, egress, source-link, and fallback rules
-20. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+20. [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md) — proposal identity, source and transformation provenance, exact-revision review, non-canonical payloads, extraction candidates, and domain-handoff separation
+21. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -77,10 +78,11 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 
 - [Aster Contract Boundary](aster-contract-boundary.md)
 - [Aster Role Contracts](aster-role-contracts.md)
+- [Aster Proposal and Structured Extraction Contracts](aster-proposal-and-extraction-contracts.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
 
-Aster is a bounded proposal and explanation capability. It may prepare drafts, recall, routes, explanations, and narrative presentation, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, memory, provider logs, retrieval indexes, delayed-work state, protected audit, or institutional authority. Role contracts remain locally testable and provider-independent.
+Aster is a bounded proposal and explanation capability. It may prepare drafts, recall, routes, explanations, and narrative presentation, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, memory, provider logs, retrieval indexes, delayed-work state, protected audit, or institutional authority. Role contracts and proposal envelopes remain locally testable and provider-independent. Extraction candidates are explicitly non-canonical, unconfirmed, and not domain-accepted.
 
 ## Legacy and succession architecture
 
@@ -94,7 +96,7 @@ Legacy and succession are proposed future capabilities, not extensions of login 
 
 ## Sprint 6 handoff
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, and detailed role contracts while preserving source-linked proposals, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, detailed role contracts, and proposal and structured-extraction boundary while preserving source-linked recall, player confirmation, deterministic domain validation, prompt-injection isolation, provider neutrality, visible and controllable memory, responsive and deferred result semantics, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
 
 ## Boundary rule
 
