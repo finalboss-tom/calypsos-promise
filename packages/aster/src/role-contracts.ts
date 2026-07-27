@@ -63,8 +63,7 @@ export const ASTER_UNCERTAINTY_RULES = [
   "do-not-infer-authority-from-confidence",
 ] as const;
 
-export type AsterUncertaintyRule =
-  (typeof ASTER_UNCERTAINTY_RULES)[number];
+export type AsterUncertaintyRule = (typeof ASTER_UNCERTAINTY_RULES)[number];
 
 export const ASTER_SOURCE_LINK_RULES = [
   "every-health-statement",
@@ -153,8 +152,7 @@ export interface AsterRoleContract {
   readonly providerEgress: AsterRoleEgressContract;
   readonly manualFallback: string;
   readonly prohibitedActions: readonly (
-    | AsterMandatoryProhibitedAction
-    | AsterRoleSpecificProhibitedAction
+    AsterMandatoryProhibitedAction | AsterRoleSpecificProhibitedAction
   )[];
 }
 
@@ -189,8 +187,7 @@ export const ASTER_ROLE_CONTRACTS = {
     operationId: "scribe.prepare-structured-capture",
     accessibleName: ASTER_ROLE_AUTHORITY_MATRIX.scribe.accessibleName,
     purpose: ASTER_ROLE_AUTHORITY_MATRIX.scribe.primaryPurpose,
-    allowedInputClasses:
-      ASTER_ROLE_AUTHORITY_MATRIX.scribe.allowedInputClasses,
+    allowedInputClasses: ASTER_ROLE_AUTHORITY_MATRIX.scribe.allowedInputClasses,
     allowedOutputClasses:
       ASTER_ROLE_AUTHORITY_MATRIX.scribe.allowedOutputClasses,
     evidenceRequirements: [
@@ -215,7 +212,10 @@ export const ASTER_ROLE_CONTRACTS = {
       "do-not-convert-confidence-to-truth",
       "do-not-infer-authority-from-confidence",
     ],
-    failureCodes: [...COMMON_FAILURE_CODES, "aster.role.permission-indeterminate"],
+    failureCodes: [
+      ...COMMON_FAILURE_CODES,
+      "aster.role.permission-indeterminate",
+    ],
     executionClasses: ASTER_ROLE_AUTHORITY_MATRIX.scribe.executionClasses,
     confirmationRule: ASTER_ROLE_AUTHORITY_MATRIX.scribe.confirmationRule,
     deterministicActionOwner:
@@ -256,7 +256,8 @@ export const ASTER_ROLE_CONTRACTS = {
       {
         requirementId: "source-provenance",
         anyOf: ["source-provenance", "public-educational-material"],
-        purpose: "Preserve an inspectable source path for every recalled claim.",
+        purpose:
+          "Preserve an inspectable source path for every recalled claim.",
       },
     ],
     clarificationTriggers: [
@@ -329,7 +330,10 @@ export const ASTER_ROLE_CONTRACTS = {
       "do-not-convert-confidence-to-truth",
       "do-not-infer-authority-from-confidence",
     ],
-    failureCodes: [...COMMON_FAILURE_CODES, "aster.role.permission-indeterminate"],
+    failureCodes: [
+      ...COMMON_FAILURE_CODES,
+      "aster.role.permission-indeterminate",
+    ],
     executionClasses: ASTER_ROLE_AUTHORITY_MATRIX.wayfinder.executionClasses,
     confirmationRule: ASTER_ROLE_AUTHORITY_MATRIX.wayfinder.confirmationRule,
     deterministicActionOwner:
