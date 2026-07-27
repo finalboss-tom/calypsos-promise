@@ -8,7 +8,7 @@ This directory is the source of truth for Calypso’s Promise’s Phase 0 fundin
 
 It defines how donations, grants, sponsorships, public-good underwriting, in-kind support, provider credits, and related economic relationships may be evaluated without allowing money to purchase private information, product authority, health influence, research access, governance control, player progression, favorable findings, or exemption from ordinary review.
 
-The current implementation is documentation, public registers, and synthetic exercises only.
+The current implementation is documentation, public registers, synthetic exercises, and lightweight repository validation only.
 
 No file in this directory establishes:
 
@@ -37,7 +37,12 @@ Machine-readable public records:
 
 - [`funding-records.yml`](funding-records.yml) — material relationship register
 - [`funding-opportunities.yml`](funding-opportunities.yml) — public-good funding opportunities
-- [`synthetic-funding-records.yml`](synthetic-funding-records.yml) — fictional examples for validation and review
+- [`synthetic-funding-records.yml`](synthetic-funding-records.yml) — fictional relationship examples for validation and review
+- [`synthetic-funding-opportunities.yml`](synthetic-funding-opportunities.yml) — fictional public-good opportunity examples
+
+## Validation
+
+Run `pnpm economics:check` to verify that the canonical live registers remain empty, synthetic records are explicitly fictional, stable identifiers are unique, and required relationship and opportunity sections are present. This lightweight validation checks repository contracts; it is not accounting reconciliation, legal review, or operational financial assurance.
 
 ## Authority
 

@@ -30,7 +30,9 @@ The review branch establishes:
 - public-good underwriting categories and opportunity design rules;
 - infrastructure-credit, provider-neutrality, portability, critical-dependency, migration, and teardown requirements;
 - provisional concentration triggers and founder-subsidy treatment;
-- five synthetic funding records;
+- five synthetic funding relationship records;
+- six synthetic funding opportunity records;
+- lightweight validation for canonical and synthetic funding registers;
 - sixteen founding-steward design tabletop scenarios; and
 - three explicit funding and continuity assumptions in the Assumption Registry.
 
@@ -124,6 +126,7 @@ Result:
 Artifact:
 
 - [`Public-Good Underwriting Catalogue`](public-good-underwriting-catalogue.md)
+- [`synthetic-funding-opportunities.yml`](synthetic-funding-opportunities.yml)
 
 Result:
 
@@ -230,6 +233,8 @@ Reconciled surfaces:
 - [`Current status`](../roadmap/current-status.md)
 - [`Design-to-Build Sprint Plan`](../roadmap/sprints.md)
 - [`Public Institutional Roadmap`](../../ROADMAP.md)
+- [`Governance Baseline`](../../GOVERNANCE.md)
+- [`Website Information Architecture`](../website/information-architecture.md)
 - [`Assumption Registry`](../governance/assumption-registry.md)
 - roadmap issue #2
 - tracking issue #37
@@ -239,7 +244,10 @@ Result:
 - Sprint 5 is represented as merged;
 - the funding baseline is the active bounded institutional workstream;
 - Sprint 6 remains next after this baseline;
-- no donation, sponsor, nonprofit, charitable, tax-deductible, payment, treasury, accounting, compensation, affiliate, investment, research-funding, provider, or financial runtime is represented as live; and
+- no donation, sponsor, nonprofit, charitable, tax-deductible, payment, treasury, accounting, compensation, affiliate, investment, research-funding, provider, or financial runtime is represented as live;
+- Governance explicitly inherits Decision 0008;
+- the Website Information Architecture derives support and funding transparency from canonical economics records and preserves the transaction activation gate;
+- the sprint plan carries the baseline into Sprints 6, 7, 8, 17, 18, and 19 and defines a future Funding Operations and Financial Controls workstream; and
 - the funding baseline is an explicit Phase 0 closure requirement without prematurely implementing Phase 5 economics.
 
 ## Acceptance criteria mapping
@@ -261,6 +269,7 @@ Result:
 | Capture, data, provider, exclusivity, related-party, concentration, source-loss, and outcome-failure scenarios are exercised                                                    | Sixteen design tabletops                                        | Met at founding-steward design-tabletop level |
 | The public website cannot activate donation or sponsorship transactions before a legitimate recipient, custody, accounting, tax, privacy, refund, and payment route is accepted | Decision 0008; operating baseline; sprint-plan handoff          | Met at doctrine and roadmap level             |
 | No legal, charitable, tax, treasury, accounting, or operating financial status is overstated                                                                                    | All status and non-scope records                                | Met                                           |
+| Canonical live registers remain empty and synthetic relationship and opportunity records pass lightweight structural validation                                                 | `pnpm economics:check`; canonical and synthetic YAML registers  | Met at repository-contract level              |
 | Accepted doctrine remains distinct from implementation                                                                                                                          | Decision, indexes, current status, sprint plan, and this record | Met                                           |
 
 ## Cross-contract result
@@ -269,6 +278,8 @@ The review found no conflict requiring a change to:
 
 - the Product Constitution;
 - the Vision and institutional mandate;
+- the Governance Baseline, which now explicitly links Decision 0008;
+- the Website Information Architecture, which now inherits canonical funding records and activation gates;
 - the Architecture Foundation;
 - the Living Chronicle or House of Keys contracts;
 - the deterministic incentive model;
@@ -355,9 +366,20 @@ The workstream is not independently reviewed and does not resolve:
 - provider selection and production infrastructure;
 - affiliate, referral, investment, ownership, debt, research-funding, or compensated-opportunity programs;
 - multi-party conflict, source-loss, migration, or financial-incident exercises; or
+- an initial public-safe founder-subsidy and economic-dependency inventory; or
 - actual evidence that the funding model creates public benefit without capture.
 
 Each remains a gate rather than an implied capability.
+
+## Original-plan artifact reconciliation
+
+The first-pass artifact proposal is fully represented with deliberate consolidations:
+
+- taxonomy and ordinary acceptance rules live in the operating baseline, while conflicts, recusals, and approval authority live in the conflict and acceptance policy;
+- the synthetic relationship examples and synthetic opportunity examples remain separate files at the economics root for direct navigation;
+- concentration is a field of every material relationship plus aggregate reporting rather than a duplicate standalone relationship register;
+- the founder-subsidy inventory remains an explicit Phase 0 closure item because the funding doctrine cannot invent personal financial values or privately held dependencies; and
+- `.github/FUNDING.yml` remains intentionally absent until a legitimate approved destination exists.
 
 ## Repository and information boundary
 
@@ -367,7 +389,7 @@ The canonical relationship and opportunity registers contain no real records. Sy
 
 ## Validation boundary
 
-Repository CI must validate formatting, documentation links, repository policy, content validation, lint, type checking, tests, and DCO after the final reconciliation commit.
+Repository CI validates formatting, documentation links, repository policy, funding-register contracts through `pnpm economics:check`, content validation, lint, type checking, tests, and DCO.
 
 Passing repository CI establishes repository consistency only. It does not establish legal, accounting, tax, nonprofit, financial-control, security, privacy, accessibility, clinical, research, provider, operational, or public-benefit approval.
 

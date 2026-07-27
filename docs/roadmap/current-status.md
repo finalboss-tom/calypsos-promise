@@ -179,7 +179,7 @@ The Product Constitution, Vision, architecture, incentives, progressive decentra
 
 **Status:** Baseline met.
 
-The repository provides `pnpm check`, synthetic-data-only contribution rules, independent CI checks, documentation-link validation, content and model validation, tests, and transitional DCO certification.
+The repository provides `pnpm check`, synthetic-data-only contribution rules, independent CI checks, documentation-link validation, funding-register validation, content and model validation, tests, and transitional DCO certification.
 
 Administrative branch-protection settings and commit-level DCO enforcement still require verification or implementation before external contribution volume grows.
 
@@ -207,8 +207,9 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 4. the recovered historical governance-source catalogue;
 5. evidence that required GitHub branch protections and administrative controls are configured;
 6. a decision on when transitional PR-level DCO is replaced by commit-level enforcement;
-7. the accepted Funding and Sponsorship Baseline, with unresolved entity, custody, accounting, tax, compensation, treasury, and operational gates explicit; and
-8. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, and rollback conditions.
+7. the accepted Funding and Sponsorship Baseline, with unresolved entity, custody, accounting, tax, compensation, treasury, and operational gates explicit;
+8. an initial founder-subsidy and economic-dependency register using public-safe categories, responsible owners, replacement conditions, and private-source boundaries; and
+9. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, and rollback conditions.
 
 These are governance, economic-boundary, and resilience requirements. They do not require a token, treasury, identity system, legal wrapper, payment rail, broad vote, or operating sponsor program prematurely.
 

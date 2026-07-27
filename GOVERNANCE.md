@@ -2,7 +2,8 @@
 
 **Status:** BASELINE  
 **Long-horizon mandate:** FROZEN through `VISION.md` and Decision 0003  
-**Operational feedback baseline:** Decision 0006
+**Operational feedback baseline:** Decision 0006  
+**Economic funding baseline:** Decision 0008
 
 Calypso’s Promise begins with maintainer-led governance because early execution requires coherent responsibility. It is designed to progressively transfer authority as the product, evidence, contributor community, safeguards, and institution mature.
 
@@ -97,6 +98,21 @@ These require relevant specialist review and cannot be bypassed solely by popula
 Examples include roadmap priorities, major partnerships, treasury policy, business models, public-good allocations, and compensation frameworks.
 
 These require transparent conflicts, financial evidence, stakeholder impact analysis, and governance appropriate to the amount and reversibility of risk.
+
+## Funding and sponsorship governance
+
+Decision 0008 governs donations, grants, sponsorships, public-good underwriting, in-kind support, provider credits, affiliate proposals, research funding, investments, compensation, and related-party economic relationships.
+
+During Phase 0:
+
+- material organizational, restricted, related-party, vendor-linked, and in-kind relationships require reviewed public institutional records;
+- raw donor, payment, banking, tax, contract, negotiation, compensation, and accounting source records remain outside public GitHub systems;
+- funding cannot purchase private information, product or research authority, health influence, roadmap control, governance power, player progression, favorable findings, provider defaults, or safety exceptions;
+- sponsors, funded implementers, and sponsor-funded evaluators cannot independently certify their own work;
+- infrastructure support requires provider-neutral evaluation, concentration review, portability, replacement, migration, and exit behavior; and
+- no support, donation, sponsorship, affiliate, payment, treasury, charitable, nonprofit, or tax-deductible surface becomes operational merely because the Phase 0 doctrine exists.
+
+The canonical operating policies and public record contracts are maintained in [`docs/economics`](docs/economics/README.md). Actual receipt, custody, expenditure, compensation, and treasury operation require separately accepted legal and financial controls.
 
 ### Technical and operational decisions
 
@@ -221,7 +237,8 @@ The project should publish, subject to privacy and security limits:
 - governance charters
 - meeting outcomes and vote records
 - conflicts and recusals
-- treasury policy and reports
+- material funding relationships, restrictions, approved benefits, dependencies, concentration, corrections, and funded outcomes
+- treasury policy, funding and expenditure reports, and independently reviewable records when those systems become active
 - authority maps
 - active emergency powers
 - governance experiments and failures

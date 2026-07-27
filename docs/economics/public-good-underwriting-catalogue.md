@@ -262,7 +262,7 @@ Before publishing an opportunity, confirm:
 
 ## Founding catalogue examples
 
-The synthetic opportunity register demonstrates possible records for:
+The [`synthetic funding opportunity register`](synthetic-funding-opportunities.yml) demonstrates fictional records for:
 
 - an independent security review;
 - an accessibility audit and remediation cycle;

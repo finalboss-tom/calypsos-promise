@@ -1,6 +1,6 @@
 # Public Website Information Architecture — BASELINE
 
-**Status date:** 2026-07-24
+**Status date:** 2026-07-27
 
 ## Purpose
 
@@ -30,6 +30,7 @@ A visitor must never be forced through the story to understand what the project 
 5. The public website renders only PUBLIC information.
 6. Concept art and planned capabilities never appear to be live product screens.
 7. The website may invite attention; it may not manufacture urgency around health information, consent, research, money, authority, or account creation.
+8. Support, donation, sponsorship, grant, and funding views render only approved PUBLIC economics records and cannot activate transactions without accepted recipient, custody, accounting, tax, privacy, refund, and payment-rail gates.
 
 ## Product-surface architecture
 
@@ -77,7 +78,7 @@ The main navigation should remain understandable without lore knowledge.
 4. **Trust Center** — privacy, security, AI behavior, data lifecycle, access receipts, incidents, accessibility, and subprocessors when selected
 5. **The Commons** — public-domain direction, progressive decentralization, governance, provenance, and current institutional status
 6. **The Open Forge** — repository, architecture, roadmap, contributor paths, synthetic data, and public decisions
-7. **Support** — founding expedition, donations, sponsorship, and transparent use of funds
+7. **Support** — public-good opportunities, funding relationships, approved and prohibited benefits, outcomes, conflicts, concentration, corrections, and transparent use of funds
 8. **Play** — fictional prologue or later account entry
 
 Utility navigation:
@@ -399,7 +400,8 @@ Institution and public project:
 - `/roadmap`
 - `/governance`
 - `/research-status`
-- `/donate`
+- `/support`
+- `/donate` — DEFERRED transaction route until the accepted operational funding gates are satisfied
 - `/press`
 - `/press/corrections`
 
@@ -454,6 +456,27 @@ Every form states:
 
 No public form publishes directly to a public page, campaign record, testimonial, issue, directory, dashboard, or structured-data feed.
 
+## Support and funding transparency
+
+The `/support` surface is an institutional transparency and public-good opportunity view before it is a transaction surface. It must render approved PUBLIC fields from `docs/economics` rather than maintain an independent sponsor database or website-only benefit model.
+
+For each material relationship, show as applicable:
+
+- who supported the project or the reviewed withholding label;
+- relationship class and status;
+- what was funded and which public work is linked;
+- value or approved public amount band;
+- restrictions and explicitly rejected restrictions;
+- approved benefits and benefits that were not granted;
+- conflicts, recusals, reviewer independence limitations, and responsible authority;
+- concentration, critical dependency, portability, and exit status;
+- delivery, expenditure where applicable, outcome, variance, unspent obligations, correction, and residual risk; and
+- public and protected challenge routes.
+
+A public opportunity may be displayed only from the canonical opportunity register. `draft` and `reviewable` opportunities are not open for money. An `open` status additionally requires a legitimate recipient, authority to receive and return funds, custody and accounting ownership, privacy notice, fraud and refund behavior, and truthful payment capability.
+
+The website must not claim charitable, tax-deductible, nonprofit, public-benefit, independently audited, or financially controlled status without the corresponding evidence. Sponsor recognition remains visually distinct from health, product, provider, permission, safety, accessibility, and governance recommendations.
+
 ## Trust requirements
 
 The website must disclose:
@@ -466,7 +489,7 @@ The website must disclose:
 - whether a statement is lore, product behavior, scientific hypothesis, institutional direction, commercial hypothesis, or historical artifact
 - how to report a vulnerability or accidental disclosure
 - how corrections and publication-removal reviews work
-- how donations and public-good funds are used
+- who supports the project, what they fund, what benefits they receive and do not receive, how funds are used, conflicts, concentration, outcomes, corrections, and challenge routes
 - the project’s relationship to third-party mythology sources and modern adaptations
 
 The public renderer must never query or serialize private campaign-source, contact, signup, moderation, incident, security, health, account, correspondence, or legal records.
@@ -553,7 +576,7 @@ Baseline public pages:
 - The Commons
 - Open Forge
 - Roadmap and Current Status
-- Donation transparency
+- Support and funding transparency from canonical economics records
 - Accessibility
 - Public prologue script
 
@@ -588,4 +611,6 @@ The public website architecture is ready for implementation when:
 - core routes have keyboard, screen-reader, reduced-motion, high-contrast, and low-bandwidth designs
 - no modern adaptation assets or affiliation cues appear
 - no unavailable capability is represented as live
+- support and funding views derive from canonical approved PUBLIC economics records
+- no donation, sponsorship, grant-intake, affiliate, checkout, payment, charitable, tax-deductible, nonprofit, or public-benefit transaction claim activates before its operational gates are accepted
 - every major claim has a source, owner, reviewed date, status, or correction path appropriate to the claim

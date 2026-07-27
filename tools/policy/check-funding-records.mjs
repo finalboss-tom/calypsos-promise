@@ -18,10 +18,7 @@ function requireText(path, content, expected) {
 
 function recordBlocks(content, kind) {
   const prefix = kind === "funding" ? "FND" : "OPP";
-  const pattern = new RegExp(
-    "^  - id: (" + prefix + "-\\d{4}-\\d{4})$",
-    "gm",
-  );
+  const pattern = new RegExp("^  - id: (" + prefix + "-\\d{4}-\\d{4})$", "gm");
   const matches = [...content.matchAll(pattern)];
 
   return matches.map((match, index) => {
@@ -66,11 +63,7 @@ for (const [path, content] of [
 }
 
 requireText(fundingRegistryPath, fundingRegistry, "records: []");
-requireText(
-  opportunityRegistryPath,
-  opportunityRegistry,
-  "opportunities: []",
-);
+requireText(opportunityRegistryPath, opportunityRegistry, "opportunities: []");
 requireText(
   opportunityRegistryPath,
   opportunityRegistry,
@@ -106,7 +99,10 @@ for (const record of fundingRecords) {
   }
   if (!/^    public_counterparty: Fictional /m.test(record.body)) {
     fail(
-      syntheticFundingPath + ": " + record.id + " counterparty is not fictional",
+      syntheticFundingPath +
+        ": " +
+        record.id +
+        " counterparty is not fictional",
     );
   }
 }

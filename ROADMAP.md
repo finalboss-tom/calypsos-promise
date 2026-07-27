@@ -31,6 +31,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Public pull requests, decision records, contribution policy, and review requirements
 - Named specialist-review domains
 - Initial succession and key-person-risk register
+- Initial founder-subsidy and economic-dependency register using reviewed public categories without exposing private financial source records
 - A public feedback-to-governed-work baseline linking issues, prioritization, implementation, validation, and outcome review
 - A funding and sponsorship baseline defining acceptable support, prohibited benefits, conflicts, public reporting, concentration, dependency, correction, termination, and unresolved operating gates before a fundraising surface becomes live
 
@@ -52,6 +53,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Funding cannot purchase player rights, private-data access, product or research authority, governance power, favorable findings, or exemption from ordinary review
 - Material funding, sponsor, vendor-credit, related-party, concentration, and dependency relationships have a public institutional record shape and explicit private-source boundary
 - Any unresolved entity, custody, accounting, tax, compensation, treasury, payment, and operational financial gates are named rather than implied to be complete
+- Founder-provided labor, accounts, services, guarantees, and critical economic dependencies have an initial public-safe inventory and replacement owner
 
 ## Phase 1 — Useful private product
 
