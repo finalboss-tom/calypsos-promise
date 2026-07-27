@@ -37,8 +37,7 @@ export const ASTER_WORK_ATTEMPT_STATES = [
   "provider-unavailable",
   "outcome-unknown",
 ] as const;
-export type AsterWorkAttemptState =
-  (typeof ASTER_WORK_ATTEMPT_STATES)[number];
+export type AsterWorkAttemptState = (typeof ASTER_WORK_ATTEMPT_STATES)[number];
 
 export const ASTER_WORK_RESULT_STATES = [
   "none",
@@ -52,8 +51,7 @@ export const ASTER_WORK_RESULT_STATES = [
   "corrected",
   "quarantined",
 ] as const;
-export type AsterWorkResultState =
-  (typeof ASTER_WORK_RESULT_STATES)[number];
+export type AsterWorkResultState = (typeof ASTER_WORK_RESULT_STATES)[number];
 
 export const ASTER_WORK_APPLICABILITY_STATES = [
   "current",
@@ -138,8 +136,7 @@ export const ASTER_WORK_FALLBACK_MODES = [
   "deterministic",
   "structured-query",
 ] as const;
-export type AsterWorkFallbackMode =
-  (typeof ASTER_WORK_FALLBACK_MODES)[number];
+export type AsterWorkFallbackMode = (typeof ASTER_WORK_FALLBACK_MODES)[number];
 
 export const ASTER_WORK_REPLAY_MODES = [
   "not-replay",
@@ -311,7 +308,8 @@ export function isAsterExecutionClass(
   value: unknown,
 ): value is AsterExecutionClass {
   return (
-    typeof value === "string" && ASTER_EXECUTION_CLASSES.includes(value as never)
+    typeof value === "string" &&
+    ASTER_EXECUTION_CLASSES.includes(value as never)
   );
 }
 
