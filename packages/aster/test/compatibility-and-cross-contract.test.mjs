@@ -128,10 +128,14 @@ test("authority-boundary changes remain incompatible with ordinary migration", (
   });
   assert.equal(result.ok, false);
   assert.ok(
-    codes(result).includes("aster.compatibility.incompatible-without-migration"),
+    codes(result).includes(
+      "aster.compatibility.incompatible-without-migration",
+    ),
   );
   assert.ok(
-    codes(result).includes("aster.compatibility.migration-authority-escalation"),
+    codes(result).includes(
+      "aster.compatibility.migration-authority-escalation",
+    ),
   );
 });
 
@@ -143,7 +147,9 @@ test("missing components and non-synthetic fixtures are rejected", () => {
   const result = validateAsterCompatibilityManifest(manifest);
   assert.equal(result.ok, false);
   assert.ok(codes(result).includes("aster.compatibility.missing-component"));
-  assert.ok(codes(result).includes("aster.compatibility.fixture-not-synthetic"));
+  assert.ok(
+    codes(result).includes("aster.compatibility.fixture-not-synthetic"),
+  );
   assert.ok(
     codes(result).includes("aster.compatibility.fixture-authority-escalation"),
   );
@@ -185,9 +191,7 @@ test("scenario, core fallback, provider-state, and authority coverage fails clos
   assert.ok(
     codes(result).includes("aster.compatibility.fallback-coverage-gap"),
   );
-  assert.ok(
-    codes(result).includes("aster.compatibility.provider-state-drift"),
-  );
+  assert.ok(codes(result).includes("aster.compatibility.provider-state-drift"));
   assert.ok(
     codes(result).includes("aster.compatibility.production-provider-state"),
   );
@@ -212,12 +216,17 @@ test("migration plans cannot gain canonical, permission, provider, or publicatio
   });
   assert.equal(result.ok, false);
   assert.ok(
-    codes(result).includes("aster.compatibility.migration-authority-escalation"),
+    codes(result).includes(
+      "aster.compatibility.migration-authority-escalation",
+    ),
   );
 });
 
 test("the manifest retains all roles and exact package version", () => {
-  assert.equal(ASTER_COMPATIBILITY_MANIFEST.contractVersion, ASTER_CONTRACT_VERSION);
+  assert.equal(
+    ASTER_COMPATIBILITY_MANIFEST.contractVersion,
+    ASTER_CONTRACT_VERSION,
+  );
   assert.deepEqual(
     ASTER_COMPATIBILITY_MANIFEST.roleBindings.map((entry) => entry.role),
     ASTER_ROLES,
