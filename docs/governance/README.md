@@ -21,12 +21,15 @@ GitHub issues are the current public-safe work ledger. Community signals are adv
 3. [Decision 0007](../decisions/0007-institutional-immune-system.md)
 4. [AS-0011 — A provenance-rich Living Chronicle can retain legitimate value after death](assumption-AS-0011-health-data-legacy-value.md) — proposed companion record for Decision 0009 and the future legacy workstream
 5. [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](assumption-AS-0012-consumer-first-continuity-value.md) — proposed companion record for Decision 0010, Sprint 14 connector inheritance, institutional partnership gates, and market-sequencing revalidation
+6. [AS-0013 — Operational Simplicity Can Support Durable Personal Value](assumption-AS-0013-operational-simplicity-durable-value.md) — proposed companion record for Decision 0011, responsive and deferred workflow design, local simulation, operability, service-extraction gates, and complexity revalidation
 
 The immune-system metaphor applies to harmful conditions and mechanisms, never to people or groups.
 
 The AS-0011 companion record makes post-mortem value a falsifiable hypothesis rather than a reason to preserve, disclose, research, archive, or monetize every Chronicle. It becomes canonical only through ordinary review and Assumption Registry integration.
 
 AS-0012 makes consumer-first and provider-independent sequencing falsifiable rather than ideological. Weak evidence may narrow or replace the implementation strategy, but it cannot permit enterprise, sponsor, or provider capture of the Promise or player rights.
+
+AS-0013 makes a modular, batch-oriented, locally simulatable architecture a testable implementation hypothesis rather than an identity claim. Evidence may justify a bounded service or stronger runtime boundary, but complexity cannot become a substitute for product value, rights, security, accessibility, or institutional continuity.
 
 ## Content stewardship
 
@@ -36,4 +39,4 @@ AS-0012 makes consumer-first and provider-independent sequencing falsifiable rat
 
 ## Governance rule
 
-Authority must be explicit, bounded, reviewable, replaceable, and proportionate to consequence. Proposal, execution, monitoring, review, appeal, and emergency authority should not remain permanently concentrated in one person or body. Providers, enterprise partners, sponsors, and funders are affected constituencies and possible contributors; data, money, infrastructure, distribution, or market access does not grant universal product or governance authority.
+Authority must be explicit, bounded, reviewable, replaceable, and proportionate to consequence. Proposal, execution, monitoring, review, appeal, and emergency authority should not remain permanently concentrated in one person or body. Providers, enterprise partners, sponsors, funders, workflow engines, queues, and infrastructure vendors are affected constituencies and possible contributors; data, money, infrastructure, distribution, operational convenience, or market access does not grant universal product or governance authority.
