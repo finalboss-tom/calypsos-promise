@@ -365,8 +365,8 @@ The workstream is not independently reviewed and does not resolve:
 - insurance and liability;
 - provider selection and production infrastructure;
 - affiliate, referral, investment, ownership, debt, research-funding, or compensated-opportunity programs;
-- multi-party conflict, source-loss, migration, or financial-incident exercises; or
-- an initial public-safe founder-subsidy and economic-dependency inventory; or
+- multi-party conflict, source-loss, migration, or financial-incident exercises;
+- an initial public-safe founder-subsidy and economic-dependency inventory; and
 - actual evidence that the funding model creates public benefit without capture.
 
 Each remains a gate rather than an implied capability.
