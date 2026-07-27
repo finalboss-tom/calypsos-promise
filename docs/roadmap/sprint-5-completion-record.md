@@ -2,23 +2,24 @@
 
 [Current status](current-status.md) · [Sprint 5 plan](sprint-5-plan.md) · [Security architecture](../security/README.md) · [Cross-contract reconciliation](../security/sprint-5-cross-contract-reconciliation.md) · [Specialist holdpoints](../security/sprint-5-specialist-holdpoint-and-evidence-register.md)
 
-**Status:** COMPLETE ON REVIEW BRANCH — pending explicit founding-steward approval and merge  
-**Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)  
-**Pull request:** [#36](https://github.com/finalboss-tom/calypsos-promise/pull/36)  
-**Entry baseline:** `main` at `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`  
-**Scope:** architecture, policy, procedures, public synthetic scenarios, founding-steward design tabletops, control status, residual risk, holdpoints, and documentation only
+- **Status:** COMPLETE AND MERGED — accepted through PR #36 and present on `main`
+- **Tracking issue:** [#35](https://github.com/finalboss-tom/calypsos-promise/issues/35)
+- **Pull request:** [#36](https://github.com/finalboss-tom/calypsos-promise/pull/36)
+- **Squash commit:** `4d09e8fc5b81f354c4568f97794fd9533ec68048`
+- **Entry baseline:** `main` at `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`
+- **Scope:** architecture, policy, procedures, public synthetic scenarios, founding-steward design tabletops, control status, residual risk, holdpoints, and documentation only
 
 ## Completion decision
 
-Sprint 5 has produced a coherent threat-model and security baseline for the accepted goal:
+Sprint 5 produced and merged a coherent threat-model and security baseline for the accepted goal:
 
 > Define defenses before connecting real health data or agents.
 
-The accepted architecture, policy, procedure, risk, control, and synthetic exercise scope is complete for review on branch `sprint/5-threat-model-security`.
+The accepted architecture, policy, procedure, risk, control, and synthetic exercise scope is complete and present on `main` through PR #36.
 
 This record does not claim production readiness, security certification, implementation or deployment of private-data controls, legal approval, privacy certification, clinical approval, research approval, accessibility certification, operational readiness, or independent specialist review.
 
-Issue #35 remains open until this branch is explicitly accepted and merged. PR #36 remains draft pending that approval.
+The tracking issue and pull request are closed through the accepted squash merge. Closure records completion of the design sprint; it does not promote designed controls to implemented, deployed, independently reviewed, or operationally verified status.
 
 ## Review authority and precedence
 
@@ -182,18 +183,18 @@ A dedicated security address and production incident organization remain future 
 
 ## Workstream completion mapping
 
-| Workstream | Completion evidence                                                                        | Status                                             |
-| ---------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------- |
-| 5.1        | Asset, authority, actor, zone, crossing, and flow records                                  | Complete internally                                |
-| 5.2        | Identity, session, tenant, operator, recovery, and emergency models                        | Complete internally                                |
-| 5.3        | Integrated threats, controls, residual risks, and current dispositions                     | Complete internally                                |
-| 5.4        | Chronicle source, provenance, inference, export, deletion, custody, and restore controls   | Complete internally                                |
-| 5.5        | House of Keys freshness, execution, capacity, receipt, audit, and reconciliation controls  | Complete internally                                |
-| 5.6        | Upload, connector, AI, retrieval, MCP, dependency, and untrusted-input isolation           | Complete internally                                |
-| 5.7        | Encryption, keys, secrets, environments, private origins, and evidence rules               | Complete internally                                |
-| 5.8        | Availability, backups, restoration, incidents, audit retention, and deletion verification  | Complete internally                                |
-| 5.9        | Fifteen synthetic abuse cases, fifteen design tabletops, and stable gap records            | Complete at founding-steward design-tabletop level |
-| 5.10       | Cross-contract review, status truth, public-claim remediation, holdpoints, and this record | Complete on review branch                          |
+| Workstream | Completion evidence | Status |
+| --- | --- | --- |
+| 5.1 | Asset, authority, actor, zone, crossing, and flow records | Complete internally |
+| 5.2 | Identity, session, tenant, operator, recovery, and emergency models | Complete internally |
+| 5.3 | Integrated threats, controls, residual risks, and current dispositions | Complete internally |
+| 5.4 | Chronicle source, provenance, inference, export, deletion, custody, and restore controls | Complete internally |
+| 5.5 | House of Keys freshness, execution, capacity, receipt, audit, and reconciliation controls | Complete internally |
+| 5.6 | Upload, connector, AI, retrieval, MCP, dependency, and untrusted-input isolation | Complete internally |
+| 5.7 | Encryption, keys, secrets, environments, private origins, and evidence rules | Complete internally |
+| 5.8 | Availability, backups, restoration, incidents, audit retention, and deletion verification | Complete internally |
+| 5.9 | Fifteen synthetic abuse cases, fifteen design tabletops, and stable gap records | Complete at founding-steward design-tabletop level |
+| 5.10 | Cross-contract review, status truth, public-claim remediation, holdpoints, and this record | Complete and merged |
 
 ## Control and evidence status
 
@@ -217,96 +218,3 @@ The truthful status is:
 - **limited current public implementation evidence:** present only for the bounded repository checks, public site, restrictive public-site headers, purpose-limited signup adapter, repository ignore rules, and published disclosure workflow in their stated public scope.
 
 A control is not promoted to a higher status because CI passes, a vendor supports a feature, a design is comprehensive, or a founding-steward tabletop selected a coherent response.
-
-## Residual-risk and gap disposition
-
-All forty-six `RSK-*` residual risks remain open and reviewable.
-
-- Production-facing risks remain mitigation-required and production-blocking.
-- Pilot, institutional, and specialist holdpoints remain explicit.
-- The current public repository gateway and purpose-limited signup flow retain only bounded current-flow dispositions.
-- No risk is closed by this completion record.
-
-All `GAP-TTX-*` exercise findings remain open until their named implementation, evidence, reviewer, residual-risk, and rerun requirements are satisfied.
-
-The [specialist holdpoint register](../security/sprint-5-specialist-holdpoint-and-evidence-register.md) defines twenty-four stable holdpoints. All remain open except that the current signup flow is recorded as a bounded flow requiring remediation and monitoring rather than authorization to expand.
-
-## Cross-contract findings
-
-The [cross-contract reconciliation](../security/sprint-5-cross-contract-reconciliation.md) found the baseline consistent with:
-
-- Product Constitution and frozen rights;
-- Architecture Foundation and dependency direction;
-- Living Chronicle and House of Keys contracts;
-- deterministic incentives and non-punitive refusal;
-- publication and confidentiality policy;
-- `SECURITY.md`;
-- the Institutional Immune System;
-- contributor and repository policies;
-- the current bounded public website; and
-- future Aster, MCP, connector, recipient, research, and production gates.
-
-One stale website-status artifact was corrected during 5.10. No constitutional, incentive, or domain-contract change was required.
-
-## Public capability conclusion
-
-After 5.10, public project surfaces must say:
-
-- Sprint 5 is complete on the review branch and pending approval and merge;
-- the security baseline is architecture, policy, procedures, risk, controls, and public synthetic design evidence;
-- no production private-data, identity, agent, connector, recipient, research, encryption, backup, monitoring, incident, audit, or deletion-verification runtime is authorized or represented as live;
-- the implemented website is a bounded public repository gateway and purpose-limited signup adapter, not the health product; and
-- the next design-to-build sprint after merge is Sprint 6 — Aster contracts and AI governance.
-
-## Deferred implementation and specialist boundary
-
-Sprint 5 does not select or implement:
-
-- production accounts, identity proofing, delegation, recovery, or representative authority;
-- Chronicle or House of Keys persistence and distributed execution;
-- real uploads, documents, connectors, recipients, AI, retrieval, MCP, agents, analytics, or research;
-- production encryption, operational key custody, secret management, private origins, or protected environments;
-- production monitoring, backups, restoration, incident response, protected audit, retention automation, or deletion verification;
-- clinical behavior, legal or privacy compliance certification, research enrollment, compensation, treasury, ownership, tokens, blockchain, NFTs, or on-chain governance.
-
-These boundaries remain governed by the holdpoint and residual-risk registers.
-
-## Institutional Phase 0 boundary
-
-Sprint 5 completion does not complete institutional Phase 0.
-
-Active Phase 0 work still includes:
-
-- key-person dependency and succession records;
-- founder-reserved-power scope and sunset conditions;
-- historical governance-source recovery and classification;
-- verified branch-protection and repository administration evidence;
-- the commit-level DCO transition decision; and
-- an explicit Phase 0 exit review.
-
-## Validation evidence
-
-The final validated branch head is recorded in issue #35 and PR #36 after all 5.10 documents and status corrections pass:
-
-- formatting;
-- documentation links;
-- repository policy;
-- content validation;
-- lint;
-- typecheck;
-- tests; and
-- DCO attestation.
-
-## Merge and closure decision
-
-The completed Sprint 5 baseline is ready for explicit founding-steward review.
-
-Recommended disposition after approval:
-
-1. keep PR #36 draft until the founding steward explicitly approves this completion record;
-2. squash merge PR #36 into `main`;
-3. close issue #35 through the merged PR;
-4. update `main` status surfaces to record the merge commit; and
-5. begin Sprint 6 only after confirming that the merged Sprint 5 boundaries remain unchanged.
-
-No production capability is authorized by merge.
