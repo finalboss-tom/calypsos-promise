@@ -13,12 +13,12 @@ Decision records preserve why a material product, architecture, governance, lice
 - [0006 — Feedback to Governed Work](0006-feedback-to-governed-work.md)
 - [0007 — Institutional Immune System](0007-institutional-immune-system.md)
 - [0008 — Funding and Sponsorship Baseline](0008-funding-and-sponsorship-baseline.md)
+- [0010 — Consumer-First, Provider-Independent Product Boundary](0010-consumer-first-provider-independent-boundary.md) — accepted strategic and architectural boundary treating providers and institutional systems as important sources, destinations, and future partners without making enterprise adoption, sponsorship, or an external schema the canonical product center
+- [0011 — Operational Simplicity and Durable Workflows](0011-operational-simplicity-and-durable-workflows.md) — accepted modular-monolith, responsive-path, durable-work, local-simulation, operability, and evidence-gated complexity baseline; no production orchestration or measured-performance claim
 
 ## Proposed records
 
 - [0009 — Health Data Legacy and Post-Mortem Stewardship](0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed person-level legacy, incapacity, estate, fiduciary, post-mortem, family-health, research, archive, deletion, and institutional-continuity baseline; no production or universal legal claim
-- [0010 — Consumer-First, Provider-Independent Product Boundary](0010-consumer-first-provider-independent-boundary.md) — proposed strategic and architectural boundary treating providers and institutional systems as important sources, destinations, and future partners without making enterprise adoption, sponsorship, or an external schema the canonical product center
-- [0011 — Operational Simplicity and Durable Workflows](0011-operational-simplicity-and-durable-workflows.md) — proposed modular-monolith, responsive-path, durable-work, local-simulation, operability, and evidence-gated complexity baseline; no production orchestration or measured performance claim
 
 Use [0000 — Decision Template](0000-template.md) for a new record. Preserve numbering once assigned; a missing number does not justify renumbering historical decisions.
 
