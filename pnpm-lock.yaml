@@ -23,6 +23,8 @@ importers:
 
   apps/site: {}
 
+  packages/aster: {}
+
   packages/content-schema: {}
 
   packages/domain: {}

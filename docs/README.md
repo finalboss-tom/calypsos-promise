@@ -1,12 +1,12 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Pre-Sprint 6 review](roadmap/pre-sprint-6-alignment-review.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 6 completion](roadmap/sprint-6-completion-record.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
 1. What is Calypso’s Promise ultimately trying to accomplish?
 2. Which documents are authoritative for the decision being made?
-3. What is implemented now, accepted but planned, proposed for review, or intentionally deferred?
+3. What is implemented now, complete on a review branch, accepted but planned, proposed for review, or intentionally deferred?
 4. Where should a contributor make a change without crossing a product, privacy, safety, canon, permission, security, funding, provider, interoperability, workflow, operability, succession, or governance boundary?
 
 ## Primary directive
@@ -22,17 +22,23 @@ The application is the first operating surface of a long-lived public-benefit in
 ## Current orientation
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Pre-Sprint 6 Repository Alignment Review](roadmap/pre-sprint-6-alignment-review.md)
-3. [Sprint Roadmap](roadmap/sprints.md)
-4. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
-5. [Security Architecture](security/README.md)
-6. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-7. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-8. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-9. [Repository and Module Boundaries](architecture/module-boundaries.md)
-10. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-11. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-12. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+2. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+3. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)
+4. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)
+5. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+6. [Aster Contract Baseline](product/aster-contract-baseline.md)
+7. [Sprint 6 Execution Plan](roadmap/sprint-6-execution-plan.md)
+8. [Sprint Roadmap](roadmap/sprints.md)
+9. [Pre-Sprint 6 Repository Alignment Review](roadmap/pre-sprint-6-alignment-review.md)
+10. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
+11. [Security Architecture](security/README.md)
+12. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+13. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+14. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+15. [Repository and Module Boundaries](architecture/module-boundaries.md)
+16. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+17. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+18. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -62,6 +68,16 @@ When documents appear to conflict, use this order and open a decision record rat
 A proposed decision or architecture establishes reviewable intent and future constraints. It does not override an accepted record until accepted through the repository’s ordinary authority process.
 
 A lower layer may implement or explain a higher layer. It may not quietly override it.
+
+## Current project boundary
+
+Sprints 0–5, the Phase 0 Funding and Sponsorship Baseline, Decisions 0010 and 0011, and the pre-Sprint 6 alignment review are complete and merged.
+
+Sprint 6 — Aster Contracts and AI Governance is complete on draft PR #48 for its accepted public contract, deterministic validation, public synthetic fixture, provider-governance, compatibility, migration, control-mapping, holdpoint, unresolved-work, and documentation scope.
+
+Explicit founding-steward acceptance and squash merge remain pending. Sprint 6 completion does not activate production AI, private health-data processing, provider calls, retrieval, memory storage, identity, permission orchestration, persistence, durable workflows, agents, connectors, clinical behavior, deployment, or independent specialist review.
+
+After Sprint 6 is explicitly accepted and merged, Sprint 7 — Forge MCP and Agent Safety becomes the next numbered boundary and remains limited to public documentation and synthetic data.
 
 ## Current accepted strategic and architectural baselines
 
@@ -103,7 +119,7 @@ AS-0013 is active because it informs design, but it remains an unvalidated worki
 
 The funding doctrine is accepted and merged. It does not accept money or establish an entity, fiscal sponsor, bank, payment rail, accounting system, tax status, treasury, compensation system, affiliate program, investment instrument, research-funding program, provider, connector, or production financial control.
 
-Funding cannot purchase private data, product authority, health influence, source rank, provider defaults, connector placement, research authority, roadmap control, governance power, favorable findings, safety exceptions, game progression, or publication control.
+Funding cannot purchase private data, product authority, health influence, source rank, provider defaults, connector placement, research authority, roadmap control, governance power, favorable findings, safety exceptions, compatibility outcomes, game progression, or publication control.
 
 ## Living Chronicle and House of Keys
 
@@ -126,11 +142,11 @@ External clinical, claims, laboratory, pharmacy, device, EHR, payer, and researc
 
 Permission truth remains separate from Chronicle truth. A grant may authorize an operation; it does not create the underlying record, authenticate an actor, execute the operation, or become a reward condition.
 
-## Sprint 6 — Aster contracts and AI governance
+## Sprint 6 — Aster Contracts and AI Governance
 
-The [Pre-Sprint 6 Alignment Review](roadmap/pre-sprint-6-alignment-review.md) is the controlling handoff.
+The [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md) is the controlling completion review. The [Pre-Sprint 6 Alignment Review](roadmap/pre-sprint-6-alignment-review.md) remains the historical entry handoff.
 
-Sprint 6 should define one bounded pre-stable Aster contract capability rather than extending Chronicle truth or selecting a provider runtime. It must cover:
+Sprint 6 establishes one bounded pre-stable Aster contract capability rather than extending Chronicle truth or selecting a provider runtime. It covers:
 
 - Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper role contracts;
 - intent, extraction, clarification, confidence, uncertainty, refusal, and fallback;
@@ -140,10 +156,14 @@ Sprint 6 should define one bounded pre-stable Aster contract capability rather t
 - provider egress, retention, training, conflicts, replacement, and teardown;
 - prompt-injection and untrusted-input isolation;
 - responsive, deferred, failed, stale, corrected, superseded, and provider-unavailable result contracts;
-- a deterministic local or synthetic adapter;
-- a complete manual and non-AI path;
-- public synthetic fixtures and tests; and
-- compatibility, security-control, specialist-holdpoint, and completion evidence.
+- a deterministic local synthetic adapter;
+- complete manual and non-AI paths;
+- public synthetic fixtures and public-surface tests;
+- compatibility and evidence-preserving migration requirements;
+- a twenty-four-control evidence map;
+- nineteen specialist and production holdpoints;
+- nineteen explicit unresolved-work records; and
+- a completion record separating contract evidence from implementation, deployment, independent review, and production readiness.
 
 The frozen transaction rule remains:
 
@@ -155,10 +175,11 @@ Sprint 6 does not select or endorse a production AI provider, EHR, connector, cl
 
 1. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
 2. [Security Architecture](security/README.md)
-3. [Cross-Contract Reconciliation](security/sprint-5-cross-contract-reconciliation.md)
-4. [Specialist Holdpoint Register](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
-5. [Security Policy](../SECURITY.md)
-6. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
+3. [Sprint 5 Cross-Contract Reconciliation](security/sprint-5-cross-contract-reconciliation.md)
+4. [Sprint 5 Specialist Holdpoint Register](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
+5. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+6. [Security Policy](../SECURITY.md)
+7. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
 
 No production health data, credentials, private exports, raw campaign submissions, contact lists, private correspondence, conduct evidence, security reports, protected provider or interoperability records, private contracts or negotiations, estate records, financial source records, or protected operational information belong in public project systems.
 
@@ -178,55 +199,10 @@ These documents remain proposed future capability only. They do not create a pro
 
 1. [Contributing](../CONTRIBUTING.md)
 2. [Development Policy](policies/development.md)
-3. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-4. [Repository and Module Boundaries](architecture/module-boundaries.md)
-5. [Content Governance](governance/content-governance.md)
-6. [Decision Records](decisions/README.md)
-7. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+3. [Repository and Module Boundaries](architecture/module-boundaries.md)
+4. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+5. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
+6. [Security Policy](../SECURITY.md)
+7. [Governance Baseline](../GOVERNANCE.md)
 
-A new module requires a bounded responsibility, current consumer, public contract, dependency direction, owner, tests, synthetic evidence, and proportionate operational justification. Do not create empty topology placeholders.
-
-## Feedback, governance, and institutional resilience
-
-1. [Governance Baseline](../GOVERNANCE.md)
-2. [Feedback to Governed Work](governance/feedback-to-governed-work.md)
-3. [Manual Feedback Triage Protocol](governance/feedback-triage-operating-protocol.md)
-4. [Institutional Immune System](governance/institutional-immune-system.md)
-5. [Assumption Registry](governance/assumption-registry.md)
-6. [Public Institutional Roadmap](../ROADMAP.md)
-
-The project remains maintainer-led during Phase 0. Community signals are advisory. Broader authority is earned through published evidence, safeguards, competence, representation, conflicts, reversibility, and phase gates—not fundraising, user count, token issuance, provider status, enterprise revenue, or contribution volume alone.
-
-## Documentation map
-
-| Area                 | Purpose                                                                                                      | Entry point                                                 |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| Frozen foundations   | Constitutional and canonical constraints                                                                     | [Frozen Foundations](frozen/README.md)                      |
-| Decisions            | Material architectural and institutional choices                                                             | [Decision Records](decisions/README.md)                     |
-| Architecture         | System, workflow, data, permission, AI, provider, interoperability, story, succession, and module boundaries | [Architecture Documentation](architecture/README.md)        |
-| Security             | Threats, controls, evidence, residual risk, and tabletop exercises                                           | [Security Architecture](security/README.md)                 |
-| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, provider neutrality, and exit                  | [Economics and Public-Good Funding](economics/README.md)    |
-| Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts                                          | [Product Documentation](product/README.md)                  |
-| Governance           | Contribution, content, feedback, challenge, correction, assumptions, and authority                           | [Governance Documentation](governance/README.md)            |
-| Roadmap              | Current status, sprint sequence, future workstreams, evidence, and completion records                        | [Roadmap Documentation](roadmap/README.md)                  |
-| Policies             | Development, operability, validation, publication, and information handling                                  | [Policy Documentation](policies/README.md)                  |
-| Website              | Public discovery, trust, lore, consumer-first explanation, documentation, and synthetic prologue             | [Website Documentation](website/README.md)                  |
-| Public communication | Campaign strategy, provenance, launch material, and public ledger                                            | [Public Narrative and Campaign Documents](public/README.md) |
-
-## Implemented repository surfaces
-
-The current codebase is intentionally smaller than the frozen target topology.
-
-- [`apps/site`](../apps/site) — bounded public repository gateway
-- [`packages/domain`](../packages/domain) — shared public and synthetic invariants
-- [`packages/content-schema`](../packages/content-schema) — content contracts and deterministic validation
-- [`packages/health-schema`](../packages/health-schema) — Living Chronicle contracts and public synthetic fixtures
-- [`packages/house-of-keys`](../packages/house-of-keys) — House of Keys contracts, pure policy evaluation, receipts, and public synthetic fixtures
-- [`content`](../content) — versioned public and synthetic content
-- [`tools`](../tools) — repository, documentation, funding, and content validation
-
-No production health-data, account, House of Keys enforcement, agent, connector, research, financial, legacy, estate, successor, workflow, or deployed security-control runtime exists.
-
-## Status rule
-
-Use [Current Project Status](roadmap/current-status.md) as the canonical integrated status record. A merged document can still define a proposed future capability. An accepted doctrine can still have no runtime. A completed sprint can still lack independent review. Never convert design, synthetic evidence, CI success, vendor capability, or founder acceptance into a stronger status than the evidence supports.
+Ordinary public development must remain credential-free and use public or explicitly synthetic information. A passing test, complete contract, accepted sprint, provider claim, or sponsor relationship cannot bypass the repository’s authority, safety, review, publication, and information-handling gates.
