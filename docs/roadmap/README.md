@@ -1,24 +1,26 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Funding baseline](../economics/README.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
 - the root [Public Institutional Roadmap](../../ROADMAP.md) defines evidence-gated product, organizational, economic, governance, and founder-independence phases
-- [Sprints](sprints.md) defines the near-term design-to-build sequence
+- [Sprints](sprints.md) defines the near-term design-to-build sequence and its non-numbered institutional constraints
 
-Advancement is gate-based rather than calendar-based. A completed design sprint does not imply that a production capability, institutional phase, or public claim is live.
+Advancement is gate-based rather than calendar-based. A completed design sprint or institutional doctrine does not imply that a production capability, financial system, institutional phase, or public claim is live.
 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint 5 Completion Record](sprint-5-completion-record.md)
-3. [Security Architecture](../security/README.md)
-4. [Sprint 5 Plan](sprint-5-plan.md)
-5. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
-6. [Sprint 4 Completion Record](sprint-4-completion-record.md)
-7. [Sprint Sequence](sprints.md)
-8. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
+3. [Funding Completion Record](../economics/phase-0-funding-completion-record.md)
+4. [Sprint 5 Completion Record](sprint-5-completion-record.md)
+5. [Security Architecture](../security/README.md)
+6. [Sprint Sequence](sprints.md)
+7. [Public Institutional Roadmap](../../ROADMAP.md)
+8. [Sprint 5 Plan](sprint-5-plan.md)
+9. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+10. [Sprint 4 Completion Record](sprint-4-completion-record.md)
 
 ## Completion records and plans
 
@@ -31,15 +33,21 @@ Advancement is gate-based rather than calendar-based. A completed design sprint 
 - [Sprint 4 Plan](sprint-4-plan.md) — complete and merged through PR #33
 - [Sprint 4 Completion Record](sprint-4-completion-record.md) — authoritative completion evidence
 - [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — complete and merged through PR #34
-- [Sprint 5 Plan](sprint-5-plan.md) — complete on draft PR #36 pending approval and merge
-- [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative review-branch completion evidence
+- [Sprint 5 Plan](sprint-5-plan.md) — complete and merged through PR #36
+- [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative merged evidence
+- [Phase 0 Funding and Sponsorship Baseline](../economics/README.md) — complete on draft PR #38 pending explicit approval and merge
+- [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md) — authoritative review-branch evidence and original-plan reconciliation
 
-## Current sprint boundary
+## Current boundary
 
-Sprint 5 — Threat model and security baseline is complete on draft PR #36 for explicit founding-steward approval and merge. Its accepted goal, deliverables, and acceptance criteria remain unchanged.
+The Phase 0 Funding and Sponsorship Baseline is complete on draft PR #38 for explicit founding-steward approval and merge. It establishes Decision 0008, economics policies, canonical empty live registers, five fictional relationship records, six fictional opportunity records, sixteen fictional design tabletops, and funding-register validation.
 
-The completion record covers architecture, policies, procedures, public synthetic evidence, founding-steward design tabletops, control status, residual risk, and specialist holdpoints. It does not authorize accounts, providers, agents, connectors, real health data, production encryption, operational key custody, research, or production security claims. After merge, Sprint 6 — Aster contracts and AI governance is the next design-to-build boundary.
+The workstream does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, payment processor, accounting system, tax or charitable status, treasury, compensation system, affiliate program, investment instrument, research-funding program, provider, or production financial control.
+
+After merge, Sprint 6 — Aster contracts and AI governance is the next numbered design-to-build boundary. Sprint 6 inherits both the merged Sprint 5 security constraints and Decision 0008’s provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
+
+The remaining institutional Phase 0 work includes key-person dependency, succession and emergency ownership, founder-reserved powers, historical governance-source recovery, branch-protection evidence, commit-level DCO transition, the factual founder-subsidy and economic-dependency register, and the explicit Phase 0 exit review.
 
 ## Status rule
 
-The [Current Project Status](current-status.md) is the canonical integrated status record. Update it when a sprint closes or changes status, a phase gate changes, a frozen decision alters the system, a material gate gains evidence or an owner, or a capability begins being represented as experimental or live.
+The [Current Project Status](current-status.md) is the canonical integrated status record. Update it when a sprint or institutional workstream closes or changes status, a phase gate changes, a frozen or accepted decision alters the system, a material gate gains evidence or an owner, or a capability begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.

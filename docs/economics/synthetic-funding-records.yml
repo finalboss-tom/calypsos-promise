@@ -1,0 +1,435 @@
+schema_version: "0.1.0"
+registry_revision: 1
+status: synthetic-examples
+information_class: PUBLIC
+last_reviewed: "2026-07-26"
+responsible_role: founding-steward
+notice: >-
+  Every record in this file is fictional and exists only to exercise the Phase 0
+  funding contracts. No named organization, person, amount, service, grant,
+  sponsor, payment, opportunity, or relationship is real.
+records:
+  - id: FND-2026-0001
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: conditionally-accepted
+    relationship_class: public-good-underwriting
+    public_counterparty: Fictional Harbor Foundation
+    source_category: foundation
+    related_party: none-known
+    value:
+      form: cash
+      currency: USD
+      public_amount: 25000
+      public_amount_band: "$25,000–$99,999"
+      pledged: 25000
+      received: 0
+      available: 0
+      consumed: 0
+      refunded: 0
+      restricted: true
+    purpose:
+      summary: Fund an independent accessibility audit and remediation cycle.
+      intended_outcome: Improve keyboard, screen-reader, reduced-motion, cognitive-accessibility, and low-bandwidth behavior without weakening meaningfully free access.
+      affected_groups:
+        - disabled-players
+        - low-bandwidth-users
+        - contributors
+    restrictions:
+      accepted:
+        - Use only for the named accessibility review, remediation, and retest.
+        - Publish delivery, limitations, unresolved findings, and outcome evidence.
+      rejected:
+        - Funder selects the sole evaluator.
+        - Funder approves findings before publication.
+    requested_benefits:
+      - recognition-on-accessibility-report
+      - logo-on-support-page
+    approved_benefits:
+      - neutral-name-and-logo-attribution
+      - link-to-public-funding-record
+      - acknowledgment-on-final-report
+    prohibited_benefits_confirmed:
+      - no-product-authority
+      - no-private-data-access
+      - no-governance-power
+      - no-control-over-findings
+      - no-player-progression
+    conflicts:
+      disclosed: []
+      independence_limitations:
+        - Evaluator not yet selected; condition remains open.
+      recusals: []
+    authority:
+      acceptance_role: founding-steward
+      acceptance_state: conditional
+      conditions:
+        - Select an evaluator independent of the funder and direct implementer.
+        - Establish a lawful recipient, custody, accounting, and refund route.
+    work_linkage:
+      issues: []
+      pull_requests: []
+      planned_deliverables:
+        - accessibility-audit
+        - remediation-plan
+        - remediation-pull-requests
+        - independent-retest
+    outcome:
+      delivery_status: not-started
+      observed_outcome: none
+      missing_evidence:
+        - accepted-funds
+        - evaluator
+        - audit
+        - remediation
+        - retest
+        - participant-evidence
+    dependency_and_exit:
+      critical_function: false
+      concentration_state: material-first-relationship-review
+      termination_triggers:
+        - funder-controls-findings
+        - lawful-recipient-unavailable
+        - evaluator-independence-unavailable
+      unspent_value_behavior: return-or-reviewed-redirection
+    public_information_review:
+      source_records_private: true
+      reidentification_review: not-applicable-synthetic
+      last_reviewed: "2026-07-26"
+    review_triggers:
+      - before-acceptance
+      - evaluator-selection
+      - material-scope-change
+      - completion
+      - outcome-review
+
+  - id: FND-2026-0002
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: under-review
+    relationship_class: in-kind-support
+    public_counterparty: Fictional Cloud Cooperative
+    source_category: infrastructure-provider
+    related_party: none-known
+    value:
+      form: service-credit
+      currency: USD
+      nominal_value: 100000
+      public_amount_band: "$100,000–$499,999"
+      received: 0
+      available: 0
+      consumed: 0
+      restricted: true
+      valuation_method: nominal-provider-list-value-plus-expected-replacement-cost
+      valuation_limitations:
+        - Credits expire after twelve months.
+        - Actual consumed value may be substantially lower.
+        - The project has not selected the service.
+    purpose:
+      summary: Provide hosting and CI credits for public documentation and synthetic fixtures.
+      intended_outcome: Reduce public infrastructure cost while preserving provider neutrality and replacement.
+      affected_groups:
+        - contributors
+        - public-documentation-users
+    restrictions:
+      accepted:
+        - Public and synthetic workloads only during the bounded pilot.
+      rejected:
+        - Default provider placement in product documentation.
+        - Access to signup or usage data.
+        - Exclusivity.
+    requested_benefits:
+      - logo-on-root-readme
+      - preferred-provider-label
+      - public-case-study
+    approved_benefits:
+      - neutral-infrastructure-credit-attribution
+      - link-to-public-funding-record
+      - factual-case-study-only-after-outcome-review
+    prohibited_benefits_confirmed:
+      - no-default-provider-status
+      - no-private-data-access
+      - no-exclusive-placement
+      - no-product-endorsement
+    conflicts:
+      disclosed:
+        - Provider is a candidate infrastructure vendor.
+      independence_limitations:
+        - Performance evidence supplied by provider is not independent.
+      recusals: []
+    authority:
+      acceptance_role: founding-steward
+      acceptance_state: pending
+      conditions:
+        - Complete provider-neutral technical and security evaluation.
+        - Document export, migration, expiration, and teardown.
+        - Reject preferred-provider and root-README prominence requests.
+    work_linkage:
+      issues: []
+      pull_requests: []
+      planned_deliverables:
+        - public-documentation-hosting-pilot
+        - consumed-value-report
+        - provider-exit-tabletop
+    outcome:
+      delivery_status: not-started
+      observed_outcome: none
+      missing_evidence:
+        - provider-selection-authority
+        - security-review
+        - data-flow-review
+        - migration-test
+        - actual-consumption
+    dependency_and_exit:
+      critical_function: potentially
+      concentration_state: critical-function-review-required
+      expiration_behavior: migrate-or-return-to-approved-fallback-before-credit-end
+      termination_triggers:
+        - prohibited-placement-request
+        - data-access-request
+        - export-or-deletion-failure
+        - material-terms-change
+    public_information_review:
+      source_records_private: true
+      reidentification_review: not-applicable-synthetic
+      last_reviewed: "2026-07-26"
+    review_triggers:
+      - before-provider-selection
+      - before-credit-activation
+      - ninety-days-before-expiration
+      - provider-terms-change
+      - acquisition
+      - source-loss
+
+  - id: FND-2026-0003
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: declined
+    relationship_class: corporate-sponsorship
+    public_counterparty: Fictional Wellness Products Company
+    source_category: commercial-health-company
+    related_party: none-known
+    value:
+      form: cash
+      currency: USD
+      public_amount: 75000
+      public_amount_band: "$25,000–$99,999"
+      received: 0
+      available: 0
+      consumed: 0
+      restricted: true
+    purpose:
+      summary: Sponsor a nutrition quest and receive product placement.
+      intended_outcome: Sponsor-defined marketing exposure.
+      affected_groups:
+        - players
+    restrictions:
+      accepted: []
+      rejected:
+        - Product appears inside a health quest.
+        - Sponsor approves health language.
+        - Sponsor receives engagement analytics.
+        - Sponsor receives category exclusivity.
+    requested_benefits:
+      - in-product-health-placement
+      - content-approval
+      - player-engagement-analytics
+      - category-exclusivity
+    approved_benefits: []
+    prohibited_benefits_confirmed:
+      - no-health-recommendation-placement
+      - no-control-over-content
+      - no-private-or-person-level-analytics
+      - no-exclusivity
+    conflicts:
+      disclosed:
+        - Sponsor sells the product proposed for placement.
+      independence_limitations: []
+      recusals: []
+    authority:
+      acceptance_role: founding-steward
+      acceptance_state: declined
+      decision_reason: Requested consideration conflicts with product, health, privacy, and provider-neutrality boundaries.
+    work_linkage:
+      issues: []
+      pull_requests: []
+      planned_deliverables: []
+    outcome:
+      delivery_status: not-applicable
+      observed_outcome: Relationship declined before acceptance.
+      missing_evidence: []
+    dependency_and_exit:
+      critical_function: false
+      concentration_state: not-applicable
+      termination_triggers: []
+    public_information_review:
+      source_records_private: true
+      publication_reason: Synthetic example demonstrates a prohibited sponsorship.
+      last_reviewed: "2026-07-26"
+    review_triggers:
+      - if-a-materially-different-offer-is-received
+
+  - id: FND-2026-0004
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: disputed
+    relationship_class: restricted-grant
+    public_counterparty: Fictional Evidence Trust
+    source_category: grantmaker
+    related_party: none-known
+    value:
+      form: cash
+      currency: USD
+      public_amount: 50000
+      public_amount_band: "$25,000–$99,999"
+      received: 50000
+      available: 18000
+      consumed: 32000
+      restricted: true
+    purpose:
+      summary: Fund a public synthetic benchmark and report.
+      intended_outcome: Improve reproducible evaluation of source-linked recall.
+      affected_groups:
+        - players
+        - researchers
+        - contributors
+    restrictions:
+      accepted:
+        - Funds limited to benchmark design, synthetic data, implementation, and reporting.
+      rejected:
+        - None at acceptance.
+    requested_benefits:
+      - report-attribution
+    approved_benefits:
+      - neutral-report-attribution
+      - link-to-public-funding-record
+    prohibited_benefits_confirmed:
+      - no-control-over-findings
+      - no-private-data-access
+      - no-governance-power
+    conflicts:
+      disclosed: []
+      independence_limitations:
+        - Founding steward accepted the grant; no independent financial review.
+      recusals: []
+    authority:
+      acceptance_role: founding-steward
+      acceptance_state: accepted
+      dispute_reason: Funder requested delay of publication after unfavorable benchmark results.
+    work_linkage:
+      issues:
+        - synthetic-issue-benchmark
+      pull_requests:
+        - synthetic-pr-benchmark
+      planned_deliverables:
+        - benchmark-contract
+        - synthetic-dataset
+        - public-report
+    outcome:
+      delivery_status: paused
+      observed_outcome: Initial benchmark underperformed the stated target.
+      missing_evidence:
+        - independent-method-review
+        - completed-correction
+      variance:
+        - publication-delay-requested-by-funder
+      residual_obligations:
+        - publish-results-or-terminate-under-reviewed-terms
+        - determine-unspent-fund-treatment
+    dependency_and_exit:
+      critical_function: false
+      concentration_state: 20-percent-mitigation-trigger
+      termination_triggers:
+        - continued-publication-interference
+      unspent_value_behavior: return-or-complete-with-independent-publication
+    public_information_review:
+      source_records_private: true
+      public_derivative_required: true
+      last_reviewed: "2026-07-26"
+    review_triggers:
+      - immediate-conflict-review
+      - publication-decision
+      - termination-or-restoration
+
+  - id: FND-2026-0005
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: completed
+    relationship_class: pro-bono-specialist-review
+    public_counterparty: Fictional Security Collective
+    source_category: specialist-organization
+    related_party: none-known
+    value:
+      form: professional-service
+      currency: USD
+      public_amount_band: "$5,000–$24,999"
+      received: 1
+      available: 0
+      consumed: 1
+      restricted: true
+      valuation_method: comparable-scope-market-range
+      valuation_limitations:
+        - Public amount band is an estimate.
+    purpose:
+      summary: Review a public threat-model module using synthetic evidence.
+      intended_outcome: Identify design gaps before implementation.
+      affected_groups:
+        - future-players
+        - maintainers
+        - security-reviewers
+    restrictions:
+      accepted:
+        - Public and synthetic materials only.
+        - Findings may be published after vulnerability-safe review.
+      rejected: []
+    requested_benefits:
+      - report-attribution
+    approved_benefits:
+      - pro-bono-review-attribution
+      - link-to-public-funding-record
+    prohibited_benefits_confirmed:
+      - no-claim-of-production-certification
+      - no-product-endorsement
+      - no-private-data-access
+    conflicts:
+      disclosed:
+        - Collective offers commercial implementation services not used in the review.
+      independence_limitations:
+        - Commercial interest disclosed; review classified as external specialist review, not certification.
+      recusals: []
+    authority:
+      acceptance_role: founding-steward
+      acceptance_state: accepted
+    work_linkage:
+      issues:
+        - synthetic-threat-review
+      pull_requests: []
+      planned_deliverables:
+        - public-safe-review-report
+        - remediation-issue-set
+    outcome:
+      delivery_status: completed
+      observed_outcome: Five design gaps identified and recorded; implementation remains pending.
+      missing_evidence:
+        - remediation
+        - retest
+        - production-verification
+      residual_obligations:
+        - address-findings-through-governed-work
+    dependency_and_exit:
+      critical_function: false
+      concentration_state: below-financial-trigger-commercial-conflict-remains
+      termination_triggers: []
+    public_information_review:
+      source_records_private: true
+      vulnerability_safe_review: complete-synthetic
+      last_reviewed: "2026-07-26"
+    review_triggers:
+      - remediation-completion
+      - retest
+      - before-any-certification-claim

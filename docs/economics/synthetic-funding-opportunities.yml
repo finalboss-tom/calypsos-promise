@@ -1,0 +1,353 @@
+schema_version: "0.1.0"
+registry_revision: 1
+status: synthetic-examples
+information_class: PUBLIC
+last_reviewed: "2026-07-27"
+responsible_role: founding-steward
+notice: >-
+  Every opportunity in this file is fictional and exists only to exercise the
+  Phase 0 funding opportunity contract. No opportunity is open for money,
+  sponsorship, grant intake, or in-kind support.
+opportunities:
+  - id: OPP-2026-0001
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Independent security architecture review
+    public_need: Review the merged security architecture and public-safe threat evidence without creating a certification claim.
+    intended_outcome: Identify design gaps, prioritize governed remediation, and publish limitations and residual risk.
+    affected_groups:
+      - future-players
+      - contributors
+      - operators
+    requested_support:
+      classes:
+        - public-good-underwriting
+        - pro-bono-specialist-review
+      public_amount_band: "$25,000–$99,999"
+      in_kind_alternatives:
+        - qualified-independent-review-time
+    partial_support_behavior: Partial support may fund one bounded review domain only when scope and independence remain explicit.
+    acceptable_restrictions:
+      - Use support only for the accepted review, public-safe report, and governed remediation planning.
+    prohibited_restrictions:
+      - Sponsor controls findings or publication.
+      - Sponsor or implementer independently certifies its own work.
+    planned_work_and_evidence:
+      - reviewer-conflict-and-qualification-record
+      - public-safe-review-report
+      - remediation-issue-set
+      - outcome-and-residual-risk-review
+    responsible_role: founding-steward
+    review_and_independence:
+      required: qualified-reviewer-independent-of-sponsor-and-direct-implementation
+      current_status: not-obtained
+    dependency_and_exit:
+      critical_function: false
+      replacement: select-another-qualified-reviewer-or-defer
+      cancellation: publish-no-approval-claim-and-close-the-opportunity
+    linked_work:
+      roadmap:
+        - sprint-5-specialist-holdpoints
+      issues: []
+    risks_and_uncertainty:
+      - reviewer-market-and-cost-unknown
+      - review-may-find-material-remediation-work
+    support_does_not_purchase:
+      - favorable-findings
+      - certification
+      - roadmap-control
+      - private-vulnerability-access-beyond-authorized-review
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - qualified-reviewer-available
+        - material-security-architecture-change
+
+  - id: OPP-2026-0002
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Accessibility audit and remediation cycle
+    public_need: Test direct and narrative experiences with assistive technology and affected-user participation.
+    intended_outcome: Improve keyboard, screen-reader, reduced-motion, cognitive-accessibility, and low-bandwidth behavior while preserving meaningfully free access.
+    affected_groups:
+      - disabled-players
+      - low-bandwidth-users
+      - contributors
+    requested_support:
+      classes:
+        - public-good-underwriting
+        - pro-bono-specialist-review
+      public_amount_band: "$25,000–$99,999"
+      in_kind_alternatives:
+        - qualified-accessibility-review
+        - assistive-technology-testing
+    partial_support_behavior: Partial support may fund a defined audit domain, but remediation and retest remain separately visible.
+    acceptable_restrictions:
+      - Use support for independent review, remediation, affected-user testing, and retest.
+    prohibited_restrictions:
+      - Sponsor selects the sole evaluator.
+      - Findings are reduced to sponsor-controlled checklist compliance.
+    planned_work_and_evidence:
+      - review-plan
+      - audit-report
+      - remediation-pull-requests
+      - independent-retest
+      - unresolved-limitations-report
+    responsible_role: founding-steward
+    review_and_independence:
+      required: affected-user-and-qualified-review-participation
+      current_status: not-obtained
+    dependency_and_exit:
+      critical_function: false
+      replacement: narrow-scope-or-select-alternate-reviewers
+      cancellation: preserve-accessibility-backlog-and-report-unmet-scope
+    linked_work:
+      roadmap:
+        - sprint-8-public-website-foundation
+        - sprint-17-clinical-safety-accessibility-governance
+      issues: []
+    risks_and_uncertainty:
+      - participant-recruitment-and-compensation-not-authorized
+      - remediation-effort-unknown
+    support_does_not_purchase:
+      - accessibility-approval
+      - product-placement
+      - player-data
+      - control-over-findings
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - first-bounded-accessibility-review
+        - material-interface-redesign
+
+  - id: OPP-2026-0003
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Synthetic fixture and benchmark expansion
+    public_need: Expand fictional Living Chronicle, House of Keys, Aster, accessibility, temporal, provenance, and correction scenarios.
+    intended_outcome: Improve reproducible validation without using private production health information.
+    affected_groups:
+      - contributors
+      - reviewers
+      - future-players
+    requested_support:
+      classes:
+        - public-good-underwriting
+        - in-kind-support
+      public_amount_band: "$5,000–$24,999"
+      in_kind_alternatives:
+        - public-dataset-hosting
+        - synthetic-generation-infrastructure
+    partial_support_behavior: Partial support may fund one bounded fixture family with independent limitations reporting.
+    acceptable_restrictions:
+      - All records remain fictional or explicitly public and rights-cleared.
+    prohibited_restrictions:
+      - Sponsor branding becomes data authority.
+      - Real private records are used as public fixtures.
+    planned_work_and_evidence:
+      - dataset-card
+      - fixture-packages
+      - deterministic-validation
+      - limitations-and-coverage-report
+    responsible_role: founding-steward
+    review_and_independence:
+      required: schema-owner-and-public-information-review
+      current_status: internal-only
+    dependency_and_exit:
+      critical_function: false
+      replacement: portable-public-files-and-provider-independent-hosting
+      cancellation: retain-accepted-fixtures-and-close-unfunded-scope
+    linked_work:
+      roadmap:
+        - sprint-7-forge-mcp-agent-safety
+        - sprint-18-beta-evidence-release-gate
+      issues: []
+    risks_and_uncertainty:
+      - representativeness-claims-may-exceed-evidence
+      - hosting-support-may-create-dependency
+    support_does_not_purchase:
+      - schema-authority
+      - benchmark-results
+      - private-data-access
+      - provider-defaults
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - schema-version-change
+        - first-public-benchmark-use
+
+  - id: OPP-2026-0004
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Public-domain legal migration review
+    public_need: Review dedication instruments, contributor provenance, third-party materials, trademarks, and institutional asset boundaries.
+    intended_outcome: Advance the public-domain constitutional direction without overstating legal completion or exposing privileged advice.
+    affected_groups:
+      - contributors
+      - downstream-reusers
+      - future-stewards
+    requested_support:
+      classes:
+        - public-good-underwriting
+        - pro-bono-specialist-review
+      public_amount_band: "$25,000–$99,999"
+      in_kind_alternatives:
+        - qualified-legal-review
+    partial_support_behavior: Partial support may answer one bounded legal question while all remaining instruments stay explicitly unresolved.
+    acceptable_restrictions:
+      - Privileged advice remains private while material institutional decisions receive reviewed public derivatives.
+    prohibited_restrictions:
+      - Funder controls the legal conclusion.
+      - Support creates ownership of public-domain foundations.
+    planned_work_and_evidence:
+      - legal-question-register
+      - instrument-and-provenance-review
+      - public-decision-derivatives
+      - unresolved-risk-register
+    responsible_role: founding-steward
+    review_and_independence:
+      required: qualified-legal-review-with-conflicts-disclosed
+      current_status: not-obtained
+    dependency_and_exit:
+      critical_function: false
+      replacement: engage-another-qualified-reviewer-or-defer-migration
+      cancellation: preserve-current-status-and-no-completion-claim
+    linked_work:
+      roadmap:
+        - phase-0-legal-migration
+      issues: []
+    risks_and_uncertainty:
+      - jurisdiction-and-instrument-fit-unknown
+      - public-domain-goal-may-require-multiple-instruments
+    support_does_not_purchase:
+      - legal-conclusion
+      - trademark-rights
+      - project-ownership
+      - governance-authority
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - entity-selection
+        - first-external-contributor-volume-gate
+
+  - id: OPP-2026-0005
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Contributor fellowship pilot cohort
+    public_need: Fund bounded documentation, accessibility, synthetic-data, localization, maintenance, or governance-archive work.
+    intended_outcome: Increase maintainership capacity and useful public artifacts without purchasing contribution credit or governance authority.
+    affected_groups:
+      - contributors
+      - maintainers
+      - users-of-public-documentation
+    requested_support:
+      classes:
+        - public-good-underwriting
+      public_amount_band: "$25,000–$99,999"
+      in_kind_alternatives: []
+    partial_support_behavior: Cohort size or scope may narrow only through published selection, compensation, and outcome rules.
+    acceptable_restrictions:
+      - Support is limited to independently scoped fellowship work and public reporting.
+    prohibited_restrictions:
+      - Sponsor unilaterally selects recipients.
+      - Donation creates Fellowship, Laurels, or governance weight.
+    planned_work_and_evidence:
+      - compensation-and-selection-policy
+      - public-scope-and-conflict-records
+      - ordinary-pull-request-review
+      - cohort-outcome-report
+    responsible_role: founding-steward
+    review_and_independence:
+      required: compensation-authority-and-unconflicted-selection-review
+      current_status: not-authorized
+    dependency_and_exit:
+      critical_function: false
+      replacement: reduce-cohort-or-close-before-selection
+      cancellation: no-compensation-commitment-before-authorized-funding
+    linked_work:
+      roadmap:
+        - future-funding-operations-financial-controls
+      issues: []
+    risks_and_uncertainty:
+      - compensation-and-tax-framework-not-selected
+      - selection-could-reproduce-sponsor-or-founder-bias
+    support_does_not_purchase:
+      - recipient-selection
+      - contribution-credit
+      - governance-power
+      - roadmap-control
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - compensation-policy-accepted
+        - first-fellowship-proposal
+
+  - id: OPP-2026-0006
+    schema_version: "0.1.0"
+    revision: 1
+    synthetic: true
+    status: reviewable
+    title: Replaceable public documentation infrastructure
+    public_need: Support documentation hosting, build capacity, artifact storage, status reporting, and accessibility testing without creating vendor lock-in.
+    intended_outcome: Keep public project information available through a portable, provider-neutral, and manually released operating path.
+    affected_groups:
+      - public-visitors
+      - contributors
+      - maintainers
+    requested_support:
+      classes:
+        - in-kind-support
+        - public-good-underwriting
+      public_amount_band: "$5,000–$24,999"
+      in_kind_alternatives:
+        - hosting-credits
+        - build-minutes
+        - artifact-storage
+    partial_support_behavior: Optional preview or testing capacity may narrow before canonical documentation availability.
+    acceptable_restrictions:
+      - Support remains nonexclusive and portable.
+    prohibited_restrictions:
+      - Default provider placement is exchanged for credits.
+      - Public comparison, migration, or incident reporting is restricted.
+    planned_work_and_evidence:
+      - provider-neutral-evaluation
+      - consumption-and-replacement-cost-record
+      - export-and-migration-plan
+      - source-loss-exercise
+      - manual-release-evidence
+    responsible_role: founding-steward
+    review_and_independence:
+      required: infrastructure-security-privacy-and-conflict-review
+      current_status: not-obtained
+    dependency_and_exit:
+      critical_function: true
+      replacement: static-or-alternate-hosting-with-documented-cutover
+      cancellation: preserve-repository-documentation-and-disable-optional-previews
+    linked_work:
+      roadmap:
+        - sprint-8-public-website-foundation
+        - sprint-19-open-source-public-launch
+      issues: []
+    risks_and_uncertainty:
+      - credit-expiration-and-replacement-cost
+      - domain-release-and-deployment-access-concentration
+    support_does_not_purchase:
+      - provider-defaults
+      - analytics-access
+      - exclusive-hosting
+      - control-over-release-or-reporting
+    expiration_and_review:
+      expires: "2027-01-31"
+      triggers:
+        - first-material-infrastructure-offer
+        - provider-terms-or-ownership-change

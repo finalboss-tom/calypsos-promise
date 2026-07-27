@@ -63,6 +63,8 @@ jobs:
             command: pnpm docs:check
           - name: repository-policy
             command: pnpm policy:check
+          - name: economics-validation
+            command: pnpm economics:check
           - name: content-validation
             command: pnpm content:check
           - name: lint

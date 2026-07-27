@@ -31,7 +31,9 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Public pull requests, decision records, contribution policy, and review requirements
 - Named specialist-review domains
 - Initial succession and key-person-risk register
+- Initial founder-subsidy and economic-dependency register using reviewed public categories without exposing private financial source records
 - A public feedback-to-governed-work baseline linking issues, prioritization, implementation, validation, and outcome review
+- A funding and sponsorship baseline defining acceptable support, prohibited benefits, conflicts, public reporting, concentration, dependency, correction, termination, and unresolved operating gates before a fundraising surface becomes live
 
 **Governance unlock**
 
@@ -39,6 +41,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Contributor proposal and review rights
 - Structured public-safe issue intake and an inspectable work ledger
 - Non-binding community signals with maintainer rationale
+- Public visibility into material funding relationships and conflicts without exposing protected financial source records
 - No broad community control over safety-critical or constitutional systems yet
 
 **Exit gate**
@@ -47,6 +50,10 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Repository controls meet minimum viable validation
 - Material decisions no longer live only in private notes or chat
 - The progressive-decentralization mandate is accepted as an architectural constraint
+- Funding cannot purchase player rights, private-data access, product or research authority, governance power, favorable findings, or exemption from ordinary review
+- Material funding, sponsor, vendor-credit, related-party, concentration, and dependency relationships have a public institutional record shape and explicit private-source boundary
+- Any unresolved entity, custody, accounting, tax, compensation, treasury, payment, and operational financial gates are named rather than implied to be complete
+- Founder-provided labor, accounts, services, guarantees, and critical economic dependencies have an initial public-safe inventory and replacement owner
 
 ## Phase 1 — Useful private product
 
@@ -66,6 +73,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Transparent roadmap ownership
 - Documented release, incident, and escalation authority
 - At least two people capable of maintaining every critical repository and release function
+- Material operating support and provider relationships remain publicly attributable, conflict-reviewed, and replaceable
 
 **Governance unlock**
 
@@ -85,6 +93,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - No unresolved critical safety or security blocker
 - No founder-only operational credential or undocumented recovery path
 - Public feedback can be routed without exposing protected health, account, security, conduct, or third-party information
+- No operating sponsor, grant, or provider relationship can silently weaken core rights, product evidence, publication independence, or provider replacement
 
 ## Phase 2 — Evidence and trust
 
@@ -103,7 +112,8 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Formal maintainer and specialist-review criteria
 - Conflict disclosures
 - Incident transparency rules
-- Public funding and expenditure reporting
+- Public funding and expenditure reporting implementing Decision 0008 when funding is active
+- Financial conflict, concentration, continuity, source-loss, correction, and funded-outcome controls
 - Contributor onboarding and removal procedures
 
 **Governance unlock**
@@ -122,6 +132,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Representative player participation
 - Council charters, term limits, recusals, and removal procedures
 - Public financial controls and an independently reviewable treasury record
+- Active funding relationships, if any, reconcile support, restrictions, approved benefits, work, expenditure where applicable, outcomes, conflicts, concentration, correction, and residual obligations
 - At least one bounded feedback-prioritization pilot has published participation, concentration, decisions, outcomes, failures, and corrections
 
 ## Phase 3 — Community stewardship
@@ -201,9 +212,12 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 
 **Purpose:** Sustain the institution and compensate legitimate value creation without making surveillance or speculation the business model.
 
+Phase 5 operationalizes and matures Decision 0008. It does not originate or weaken the rights, anti-capture, conflict, public-ledger, provider-neutrality, private-source, correction, termination, or concentration rules accepted in Phase 0.
+
 **Product and economics**
 
 - Transparent hosted-service and donation economics
+- Mature implementation of Decision 0008 across funding, expenditure, provider, affiliate, compensation, and public-good relationships
 - Separately authorized compensated opportunities
 - Clear fee, subsidy, and public-good funding policies
 - Financial reserves and runway targets
@@ -324,7 +338,7 @@ The path is intentionally asymmetric:
 - success in one decision class does not grant authority over every other class
 - every mechanism remains subject to outcome review, appeal, sunset, and rollback
 
-This allows ordinary product refinement to teach and test governance without making user support a pretext for premature DAO control.
+This allows ordinary product refinement to teach and test governance without making user support or funding a pretext for premature DAO control.
 
 ## Governance-model research backlog
 
