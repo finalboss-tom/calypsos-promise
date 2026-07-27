@@ -35,6 +35,7 @@ jobs:
       - name: Prepare formatting fixes
         if: steps.formatting.outcome == 'failure'
         run: |
+          git rev-parse HEAD^{tree} > base-tree-sha.txt
           pnpm format
           git diff --binary > formatting.patch
           git diff --name-only -z | tar --null -T - -czf formatted-files.tar.gz
@@ -44,6 +45,7 @@ jobs:
         with:
           name: formatting-fixes
           path: |
+            base-tree-sha.txt
             formatting.patch
             formatted-files.tar.gz
           if-no-files-found: error
