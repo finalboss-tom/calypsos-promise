@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Decision template](0000-template.md) · [Contributing](../../CONTRIBUTING.md) · [Governance](../../GOVERNANCE.md)
 
-Decision records preserve why a material product, architecture, governance, licensing, publication, or institutional choice was accepted. They prevent implementation details, private chat, or later summaries from silently replacing the reasoning and constraints behind a decision.
+Decision records preserve why a material product, architecture, governance, licensing, publication, economic, or institutional choice was accepted. They prevent implementation details, private chat, or later summaries from silently replacing the reasoning and constraints behind a decision.
 
 ## Accepted records
 
