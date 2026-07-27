@@ -73,34 +73,34 @@ The package may reference external identifiers and revisions through narrow seri
 
 ## Execution workstreams
 
-| Workstream | Result | Review-branch status |
-| --- | --- | --- |
-| 6.1 Bounded capability and authority matrix | dependency-free package, version, roles, owners, prohibitions, authority matrix, and public exports | implemented and validated |
-| 6.2 Role contracts | Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper operations, evidence, failure, retention, egress, and fallback | implemented and validated |
-| 6.3 Proposal and extraction contracts | proposal identity, provenance, exact-revision review, non-canonical payload, and extraction candidates | implemented and validated |
-| 6.4 Intent, confidence, clarification, and refusal | bindable and safe meta intents, consequences, qualitative confidence, ambiguity, clarification, refusal, and fallback | implemented and validated |
-| 6.5 Source-linked recall and explanation | exact Chronicle and public-education sources, provenance, mapping, lifecycle, freshness, fallback, and uncertainty | implemented and validated |
-| 6.6 Memory classes and lifecycle | transient and retained classes, separate player choice, visibility, revision, export, deletion, egress, and missing-memory fallback | implemented and validated |
-| 6.7 Prompt injection and untrusted input | data-only input classes, deterministic context, server-owned tools, findings, containment, and no-effect boundaries | implemented and validated |
-| 6.8 Responsive and deferred behavior | identity, attempts, retry, duplicate safety, cancellation, timeout, fallback, stale rejection, correction, supersession, and replay | implemented and validated |
-| 6.9 Provider governance and egress | synthetic-only evaluation, minimum-necessary egress, handling, deletion uncertainty, conflicts, concentration, replacement, migration, teardown, and public-claim limits | implemented and validated |
-| 6.10 Local substitute and non-AI fallback | seventeen deterministic scenarios, five role fallbacks, and seven complete core non-AI paths | implemented and validated |
-| 6.11 Validation, fixtures, compatibility, and cross-contract checks | twelve-component manifest, twelve public fixtures, exact role and scenario bindings, fail-closed compatibility, and evidence-preserving migration | implemented and validated |
-| 6.12 Completion and acceptance | completion record, reconciliation, control map, specialist holdpoints, unresolved-work register, status reconciliation, and validation evidence | completion package implemented; explicit founding-steward acceptance and merge pending |
+| Workstream                                                          | Result                                                                                                                                                                   | Review-branch status                                                                   |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| 6.1 Bounded capability and authority matrix                         | dependency-free package, version, roles, owners, prohibitions, authority matrix, and public exports                                                                      | implemented and validated                                                              |
+| 6.2 Role contracts                                                  | Scribe, Librarian, Wayfinder, Interpreter, and Storykeeper operations, evidence, failure, retention, egress, and fallback                                                | implemented and validated                                                              |
+| 6.3 Proposal and extraction contracts                               | proposal identity, provenance, exact-revision review, non-canonical payload, and extraction candidates                                                                   | implemented and validated                                                              |
+| 6.4 Intent, confidence, clarification, and refusal                  | bindable and safe meta intents, consequences, qualitative confidence, ambiguity, clarification, refusal, and fallback                                                    | implemented and validated                                                              |
+| 6.5 Source-linked recall and explanation                            | exact Chronicle and public-education sources, provenance, mapping, lifecycle, freshness, fallback, and uncertainty                                                       | implemented and validated                                                              |
+| 6.6 Memory classes and lifecycle                                    | transient and retained classes, separate player choice, visibility, revision, export, deletion, egress, and missing-memory fallback                                      | implemented and validated                                                              |
+| 6.7 Prompt injection and untrusted input                            | data-only input classes, deterministic context, server-owned tools, findings, containment, and no-effect boundaries                                                      | implemented and validated                                                              |
+| 6.8 Responsive and deferred behavior                                | identity, attempts, retry, duplicate safety, cancellation, timeout, fallback, stale rejection, correction, supersession, and replay                                      | implemented and validated                                                              |
+| 6.9 Provider governance and egress                                  | synthetic-only evaluation, minimum-necessary egress, handling, deletion uncertainty, conflicts, concentration, replacement, migration, teardown, and public-claim limits | implemented and validated                                                              |
+| 6.10 Local substitute and non-AI fallback                           | seventeen deterministic scenarios, five role fallbacks, and seven complete core non-AI paths                                                                             | implemented and validated                                                              |
+| 6.11 Validation, fixtures, compatibility, and cross-contract checks | twelve-component manifest, twelve public fixtures, exact role and scenario bindings, fail-closed compatibility, and evidence-preserving migration                        | implemented and validated                                                              |
+| 6.12 Completion and acceptance                                      | completion record, reconciliation, control map, specialist holdpoints, unresolved-work register, status reconciliation, and validation evidence                          | completion package implemented; explicit founding-steward acceptance and merge pending |
 
 Detailed evidence is preserved in the [Aster Contract Baseline](../product/aster-contract-baseline.md), [Completion Record](sprint-6-completion-record.md), [Cross-Contract Reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md), [Control and Evidence Map](../architecture/aster-sprint-6-control-and-evidence-map.md), and [Specialist Holdpoint and Unresolved-Work Register](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md).
 
 ## Accepted acceptance-criterion result
 
-| Acceptance criterion | Review-branch conclusion |
-| --- | --- |
-| Aster cannot write directly to canonical records | met at contract, validator, and public-synthetic-test level |
-| Every recalled health statement can reference authoritative records | met at contract, validator, and public-synthetic-test level |
-| Material memories are visible, editable, exportable, and deletable | met at contract, validator, and public-synthetic-test level |
-| AI unavailability does not block core capture or permissions | met at deterministic local-fixture and public-test level |
+| Acceptance criterion                                                                                                                   | Review-branch conclusion                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Aster cannot write directly to canonical records                                                                                       | met at contract, validator, and public-synthetic-test level                                      |
+| Every recalled health statement can reference authoritative records                                                                    | met at contract, validator, and public-synthetic-test level                                      |
+| Material memories are visible, editable, exportable, and deletable                                                                     | met at contract, validator, and public-synthetic-test level                                      |
+| AI unavailability does not block core capture or permissions                                                                           | met at deterministic local-fixture and public-test level                                         |
 | Funding and provider relationships cannot determine authority, defaults, connector rank, egress, benchmark conclusions, or publication | met at governance-contract, compatibility, migration, validator, and public-synthetic-test level |
-| Aster cannot imply standards conformance proves clinical completeness, semantic equivalence, safety, or endorsement | met at role, source, validator, and public-synthetic-test level |
-| Provider-governance requirements are defined without selecting or endorsing a production provider, EHR, connector, or clinical partner | met at provider-independent contract and documentation level |
+| Aster cannot imply standards conformance proves clinical completeness, semantic equivalence, safety, or endorsement                    | met at role, source, validator, and public-synthetic-test level                                  |
+| Provider-governance requirements are defined without selecting or endorsing a production provider, EHR, connector, or clinical partner | met at provider-independent contract and documentation level                                     |
 
 These conclusions establish the accepted Sprint 6 design and public-synthetic evidence scope. They do not establish a production implementation or specialist approval.
 
