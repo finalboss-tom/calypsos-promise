@@ -1,27 +1,26 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Funding baseline](../economics/README.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Funding baseline](../economics/README.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
 - the root [Public Institutional Roadmap](../../ROADMAP.md) defines evidence-gated product, organizational, economic, governance, and founder-independence phases
-- [Sprints](sprints.md) defines the near-term design-to-build sequence
+- [Sprints](sprints.md) defines the near-term design-to-build sequence and its non-numbered institutional constraints
 
-Advancement is gate-based rather than calendar-based. A completed design sprint does not imply that a production capability, institutional phase, or public claim is live.
-
-Institutional Phase 0 closure work may proceed as bounded, non-numbered workstreams between design sprints when it establishes cross-cutting rules that future implementation must not define by accident.
+Advancement is gate-based rather than calendar-based. A completed design sprint or institutional doctrine does not imply that a production capability, financial system, institutional phase, or public claim is live.
 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint 5 Completion Record](sprint-5-completion-record.md)
-3. [Security Architecture](../security/README.md)
-4. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
-5. [Sprint Sequence](sprints.md)
-6. [Public Institutional Roadmap](../../ROADMAP.md)
-7. [Sprint 5 Plan](sprint-5-plan.md)
-8. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
-9. [Sprint 4 Completion Record](sprint-4-completion-record.md)
+2. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
+3. [Funding Completion Record](../economics/phase-0-funding-completion-record.md)
+4. [Sprint 5 Completion Record](sprint-5-completion-record.md)
+5. [Security Architecture](../security/README.md)
+6. [Sprint Sequence](sprints.md)
+7. [Public Institutional Roadmap](../../ROADMAP.md)
+8. [Sprint 5 Plan](sprint-5-plan.md)
+9. [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
+10. [Sprint 4 Completion Record](sprint-4-completion-record.md)
 
 ## Completion records and plans
 
@@ -35,17 +34,20 @@ Institutional Phase 0 closure work may proceed as bounded, non-numbered workstre
 - [Sprint 4 Completion Record](sprint-4-completion-record.md) — authoritative completion evidence
 - [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md) — complete and merged through PR #34
 - [Sprint 5 Plan](sprint-5-plan.md) — complete and merged through PR #36
-- [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative merged completion evidence
-- [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md) — working completion evidence for issue #37
+- [Sprint 5 Completion Record](sprint-5-completion-record.md) — authoritative merged evidence
+- [Phase 0 Funding and Sponsorship Baseline](../economics/README.md) — complete on draft PR #38 pending explicit approval and merge
+- [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md) — authoritative review-branch evidence and original-plan reconciliation
 
 ## Current boundary
 
-Sprint 5 — Threat model and security baseline merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`.
+The Phase 0 Funding and Sponsorship Baseline is complete on draft PR #38 for explicit founding-steward approval and merge. It establishes Decision 0008, economics policies, canonical empty live registers, five fictional relationship records, six fictional opportunity records, sixteen fictional design tabletops, and funding-register validation.
 
-The active institutional workstream is [Phase 0 — Funding and Sponsorship Baseline](../economics/README.md), tracked in [issue #37](https://github.com/finalboss-tom/calypsos-promise/issues/37). It defines doctrine, public register structures, synthetic examples, and table exercises without accepting funds or implementing a treasury, payment rail, legal entity, affiliate program, compensation system, research funding, or provider selection.
+The workstream does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, payment processor, accounting system, tax or charitable status, treasury, compensation system, affiliate program, investment instrument, research-funding program, provider, or production financial control.
 
-After this bounded institutional baseline is accepted and merged, Sprint 6 — Aster contracts and AI governance remains the next numbered design-to-build sprint.
+After merge, Sprint 6 — Aster contracts and AI governance is the next numbered design-to-build boundary. Sprint 6 inherits both the merged Sprint 5 security constraints and Decision 0008’s provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
+
+The remaining institutional Phase 0 work includes key-person dependency, succession and emergency ownership, founder-reserved powers, historical governance-source recovery, branch-protection evidence, commit-level DCO transition, the factual founder-subsidy and economic-dependency register, and the explicit Phase 0 exit review.
 
 ## Status rule
 
-The [Current Project Status](current-status.md) is the canonical integrated status record. Update it when a sprint closes or changes status, a phase gate changes, a frozen decision alters the system, a material gate gains evidence or an owner, or a capability begins being represented as experimental or live.
+The [Current Project Status](current-status.md) is the canonical integrated status record. Update it when a sprint or institutional workstream closes or changes status, a phase gate changes, a frozen or accepted decision alters the system, a material gate gains evidence or an owner, or a capability begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.
