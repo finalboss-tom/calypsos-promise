@@ -23,10 +23,22 @@ The core package intentionally has no database, network, provider, model SDK, UI
 - `intent.ts` defines bindable and safe meta intents, consequence classes, dispositions, ambiguity and refusal taxonomies, clarification lifecycle, candidates, and non-authoritative intent decisions.
 - `source-recall.ts` defines exact Chronicle and public-education references, locators, lifecycle, mapping, implementation-guide, retrieval freshness, structured-query fallback, source-linked statements, uncertainty, and non-authority.
 - `memory.ts` defines transient context, retained preferences, accessibility context, separately retained conversation, record-linked derived memory, narrative presentation state, provider operational metadata, retention, lifecycle, player controls, egress, secondary-use boundaries, and missing-memory fallback.
-- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, and `validate-memory.ts` deterministically validate the corresponding public contracts.
+- `untrusted-input.ts` defines public untrusted input classes and uses, server-resolved context, server-owned tool references, input and finding contracts, dispositions, visibility, authority, and no-effect boundaries.
+- `validate.ts`, `validate-role-contracts.ts`, `validate-proposal.ts`, `validate-intent.ts`, `validate-source-recall.ts`, `validate-memory.ts`, and `validate-untrusted-input.ts` deterministically validate the corresponding public contracts.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
+
+## Untrusted-input guarantees
+
+- Documents, images, imported records, web content, retrieved passages, provider responses, tool results, model output, and prior conversation remain untrusted data.
+- Embedded instructions cannot set policy, modify the tool registry, choose the controlling subject, create permission, expand action scope, bypass confirmation, invoke arbitrary resources, or persist themselves as memory.
+- Subject, resource, purpose, authority, and allowed-tool context come from the deterministic application rather than the content.
+- Allowed tools require exact revisions from the server-owned registry.
+- Cross-subject claims and arbitrary tool or resource requests require explicit findings and containment.
+- Material prompt-injection findings block proposal preparation or use a manual fallback.
+- Sources, uncertainty, and conflicts remain visible.
+- Isolation evaluation cannot itself invoke tools, access resources, persist memory, or attempt a canonical write.
 
 ## Memory guarantees
 
@@ -72,4 +84,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 - The Interpreter preserves source and mapping limitations and cannot diagnose, prescribe, or imply standards-based completeness or safety.
 - The Storykeeper presents confirmed events without inventing canon, progression, or rewards.
 
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/architecture/aster-source-linked-recall-and-explanation-contracts.md`](../../docs/architecture/aster-source-linked-recall-and-explanation-contracts.md), [`docs/architecture/aster-memory-lifecycle-contracts.md`](../../docs/architecture/aster-memory-lifecycle-contracts.md), [`docs/architecture/aster-untrusted-input-isolation-contracts.md`](../../docs/architecture/aster-untrusted-input-isolation-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
