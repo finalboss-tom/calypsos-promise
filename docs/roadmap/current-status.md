@@ -1,12 +1,12 @@
 # Current Project Status
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Funding baseline](../economics/README.md) · [Legacy stewardship proposal](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Funding baseline](../economics/README.md) · [Consumer-first boundary](../decisions/0010-consumer-first-provider-independent-boundary.md) · [Legacy stewardship proposal](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md)
 
 **Status date:** 2026-07-27  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
 **Design-to-build sequence:** Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and merged; Sprint 6 — Aster contracts and AI governance is next  
-**Proposed institutional design:** Decision 0009 and companion health-data legacy, incapacity, estate, post-mortem, research, archive, deletion, and successor-stewardship documentation are under review; they do not change Sprint 6 order or authorize production  
-**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, connector, research, financial, legacy-directive, estate, successor, private Chronicle, encryption, monitoring, or deployed security-control runtime
+**Proposed institutional design:** Decision 0009 and Decision 0010, with their companion legacy, consumer-first, provider-independent, interoperability, assumption, website, and cross-phase workstream records, are under review; neither changes Sprint 6 order or authorizes production  
+**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, provider, EHR, connector, clinical, research, enterprise, financial, legacy-directive, estate, successor, private Chronicle, encryption, monitoring, or deployed security-control runtime
 
 ## Executive status
 
@@ -23,11 +23,15 @@ Sprints 0–5 and the Phase 0 Funding and Sponsorship Baseline are complete and 
 - Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the security architecture, policies, procedures, public synthetic evidence, founding-steward design tabletops, residual-risk records, reconciliation, and specialist holdpoints.
 - The Phase 0 Funding and Sponsorship Baseline merged through PR #38 as squash commit `32ac27bfb35ed64f34c64108a5d54c375d429593`, establishing Decision 0008, doctrine, public register contracts, fictional relationship and opportunity examples, lightweight validation, and founding-steward design tabletop evidence.
 
-The funding baseline does not authorize a legal recipient, donations, grants, sponsors, providers, affiliates, research funding, compensation, investment, payment rails, accounting, treasury, charitable status, tax deductibility, or financial operations.
+The funding baseline does not authorize a legal recipient, donations, grants, sponsors, providers, affiliates, research funding, compensation, investment, payment rails, accounting, treasury, charitable status, tax deductibility, procurement, contracting, enterprise revenue, or financial operations.
 
-Issue #39 now tracks proposed Decision 0009, a health-data legacy and succession architecture, a future institutional workstream, and a falsifiable assumption record. This proposed documentation gives explicit form to the frozen Vision’s legacy wishes, abandoned-account stewardship, intergenerational succession, and durable-archive commitments. It does not create a universal will, property classification, executor override, estate-planning service, post-mortem research release, public archive, or successor-access runtime.
+Issue #39 tracks proposed Decision 0009, a health-data legacy and succession architecture, a future institutional workstream, and a falsifiable assumption record. This proposed documentation gives explicit form to the frozen Vision’s legacy wishes, abandoned-account stewardship, intergenerational succession, and durable-archive commitments. It does not create a universal will, property classification, executor override, estate-planning service, post-mortem research release, public archive, or successor-access runtime.
 
-Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing a design sprint, funding doctrine, or proposed legacy baseline does not declare the product runtime, financial operations, deployed security posture, clinical or legal review, research infrastructure, governance transition, succession operations, or Phase 0 complete.
+Issue #41 tracks proposed Decision 0010, a consumer-first and provider-independent architecture, AS-0012, a repository reconciliation, a public website explanation, sprint and phase inheritance, and a future Clinical and Enterprise Interoperability Partnerships workstream. The proposed boundary treats providers, EHRs, payers, laboratories, pharmacies, devices, exchanges, research institutions, and other institutional systems as important sources, destinations, and potential partners connected through versioned adapters. It does not select a standard, activate a connector, prohibit future institutional collaboration, authorize clinical use, establish an enterprise product, or represent consumer-first sequencing as validated.
+
+The repository review found no mission-level contradiction requiring a frozen player-promise rewrite. The material gap was that the consumer-first and provider-independent strategy remained implicit rather than being stated, funded, tested, and carried through future connector and partnership gates.
+
+Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing a design sprint, funding doctrine, or proposed legacy or interoperability baseline does not declare the product runtime, financial operations, deployed security posture, clinical or legal review, provider integration, research infrastructure, governance transition, succession operations, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -71,7 +75,7 @@ Established:
 - content review, replacement, publication, recall, and rollback governance
 - canonical examples that remain honestly marked `specialist-review`
 
-The Sprint 2 incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader permission or unnecessary intimate disclosure.
+The Sprint 2 incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader permission, unnecessary intimate disclosure, provider choice, sponsor selection, connector selection, or enterprise enrollment.
 
 ### Progressive-decentralization mandate
 
@@ -207,7 +211,37 @@ Established at doctrine, public-register-contract, fictional-example, lightweigh
 - funding-register validation through `pnpm economics:check`
 - explicit inheritance into Governance, Website Information Architecture, Sprints 6, 7, 8, 17, 18, and 19, Phase 2, Phase 5, and a future Funding Operations and Financial Controls workstream
 
-The baseline does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, processor, accounting system, tax status, treasury, compensation system, provider, affiliate program, investment instrument, research-funding program, nonprofit status, charitable status, or tax deductibility.
+The proposed Decision 0010 extension makes funded provider, EHR, payer, laboratory, pharmacy, device, exchange, connector, mapping, distribution, and enterprise support explicit economic and product conflicts. Support may fund an integration; it may not purchase Chronicle meaning, source rank, connector priority, provider placement, roadmap control, private access, clinical endorsement, or favorable findings.
+
+The baseline does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, processor, accounting system, tax status, treasury, compensation system, provider, affiliate program, investment instrument, research-funding program, nonprofit status, charitable status, tax deductibility, procurement, contracting, or enterprise revenue.
+
+## Proposed consumer-first and provider-independent boundary
+
+Tracked by issue #41 and intentionally separate from the merged historical sprint records.
+
+The proposed set includes:
+
+- Decision 0010 — Consumer-First, Provider-Independent Product Boundary;
+- a source-backed consumer-first and provider-independent architecture;
+- AS-0012, a proposed assumption that a provider-independent Living Chronicle can create enough recurring personal value to justify beginning without institutional adoption as a prerequisite;
+- a repository reconciliation across mission, vision, incentives, architecture, governance, funding, website, sprints, and institutional phases;
+- a cross-phase workstream with Sprint 14 connector inheritance and future Clinical and Enterprise Interoperability Partnership gates; and
+- a public website explanation baseline.
+
+The proposed design establishes:
+
+- the person as the continuity layer across providers, payers, devices, applications, geography, and life stages;
+- the Living Chronicle as the provider-independent canonical longitudinal product model;
+- institutional systems as important source-attributed inputs, destinations, and potential partners;
+- standards, profiles, implementation guides, terminologies, mappings, and exports as versioned adapter concerns rather than unquestioned Chronicle authority;
+- explicit mapping loss, ambiguity, conflict, provenance, correction, replacement, migration, and teardown behavior;
+- no reward or product-right dependency tied to provider, sponsor, connector, or enterprise selection;
+- no purchased schema authority, source ranking, connector priority, provider placement, roadmap control, private access, or favorable findings; and
+- a separate future workstream before material provider-facing, institutional, B2B, B2B2C, or enterprise operation.
+
+It expressly does not claim that healthcare lacks standards, that providers oppose interoperability, that all B2B health technology fails, or that Calypso’s Promise replaces an EHR or clinical care.
+
+This set remains proposed. It does not establish specialist approval, standards selection, a connector SDK, provider contracting, implementation, deployment, clinical use, production readiness, or validated consumer demand.
 
 ## Proposed health-data legacy and succession baseline
 
@@ -257,14 +291,17 @@ The project currently has no named independent security reviewer. This must rema
 
 ## Next design-to-build boundary
 
-Sprint 6 — Aster contracts and AI governance is next. Sprint 6 must inherit both:
+Sprint 6 — Aster contracts and AI governance is next. Sprint 6 must inherit:
 
-- Sprint 5 threats, controls, provider-egress, prompt-injection, retrieval, memory, non-AI fallback, evidence-status, and specialist-holdpoint boundaries; and
-- Decision 0008 provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
+- Sprint 5 threats, controls, provider-egress, prompt-injection, retrieval, memory, non-AI fallback, evidence-status, and specialist-holdpoint boundaries;
+- Decision 0008 provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries; and
+- if accepted, Decision 0010 source-class, institutional provenance, mapping, uncertainty, provider-neutrality, non-canonical external-schema, and sponsor-independent evaluation boundaries.
 
-Sprint 6 defines provider-governance requirements. It does not select or endorse a production provider.
+Sprint 6 defines AI-provider governance requirements. It does not select or endorse a production AI provider, EHR, connector, clinical partner, or enterprise relationship.
 
-The proposed legacy documentation does not alter this sequence. Its implementation entry condition occurs later, before any Legacy Directive, incapacity, death, fiduciary, estate, successor, research, archive, or post-mortem deletion capability is represented as LIVE.
+The proposed consumer-first documentation does not alter this sequence. Its primary connector implementation inheritance begins in Sprint 14, while its future institutional partnership workstream begins before any material provider-facing, clinical, institutional, B2B, B2B2C, or enterprise capability becomes operational.
+
+The proposed legacy documentation likewise does not alter this sequence. Its implementation entry condition occurs later, before any Legacy Directive, incapacity, death, fiduciary, estate, successor, research, archive, or post-mortem deletion capability is represented as LIVE.
 
 ## Institutional Phase 0 gate assessment
 
@@ -273,6 +310,8 @@ The proposed legacy documentation does not alter this sequence. Its implementati
 **Status:** Baseline met, subject to future evidence and specialist review.
 
 The Product Constitution, Vision, architecture, incentives, progressive decentralization, Institutional Immune System, Living Chronicle, House of Keys, security baseline, publication policy, public-domain commitment, and funding baseline are internally compatible.
+
+The proposed Decision 0010 set appears consistent with those foundations by making the consumer application and provider-independent Chronicle the product center while preserving institutional interoperability, standards, clinical evidence, funding safeguards, and future partnership pathways. It is not part of the accepted baseline until repository review accepts it.
 
 The proposed Decision 0009 set appears consistent with those foundations by extending person control into incapacity and post-mortem design while keeping legal authority, permission, Chronicle truth, execution, and receipts separate. It is not part of the accepted baseline until repository review accepts it.
 
@@ -288,7 +327,7 @@ Administrative branch-protection settings and commit-level DCO enforcement still
 
 **Status:** Partially met.
 
-Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, and proposed legacy-succession decisions are committed in repository artifacts.
+Principal product, architecture, incentive, governance, security, publication, public-domain, Chronicle, House of Keys, funding, proposed provider and interoperability, and proposed legacy-succession decisions are committed in repository artifacts.
 
 Historical HealthDAO, CureDAO, and earlier Calypso’s Promise governance notes still need recovery, cataloguing, classification, and reviewed migration.
 
@@ -308,12 +347,14 @@ Before declaring institutional Phase 0 complete, the project should publish and 
 4. the recovered historical governance-source catalogue;
 5. evidence that required GitHub branch protections and administrative controls are configured;
 6. a decision on when transitional PR-level DCO is replaced by commit-level enforcement;
-7. an initial founder-subsidy and economic-dependency register using public-safe categories, responsible owners, replacement conditions, and private-source boundaries; and
-8. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, and rollback conditions.
+7. an initial founder-subsidy and economic-dependency register using public-safe categories, responsible owners, replacement conditions, and private-source boundaries;
+8. explicit review, revision, acceptance, or decline of proposed Decision 0010 and its companion records;
+9. explicit review, revision, acceptance, or decline of proposed Decision 0009 and its companion records; and
+10. an explicit Phase 0 exit review identifying unresolved risks, responsible stewards, conflicts, dependencies, and rollback conditions.
 
-Review of proposed Decision 0009 is useful institutional design work but is not required to activate a production legacy system in Phase 0 and does not replace the separate institutional succession ownership map above.
+Review of proposed Decisions 0009 and 0010 is useful institutional design work but does not activate production legacy, provider, connector, clinical, or enterprise systems and does not replace the separate institutional succession ownership map above.
 
-These are governance, economic-boundary, and resilience requirements. They do not require a token, treasury, identity system, legal wrapper, payment rail, broad vote, operating sponsor program, or production estate workflow prematurely.
+These are governance, economic-boundary, and resilience requirements. They do not require a token, treasury, identity system, legal wrapper, payment rail, broad vote, operating sponsor program, provider contract, enterprise revenue, or production estate workflow prematurely.
 
 ## Deferred implementation boundary
 
@@ -321,18 +362,20 @@ The current repository does not select or implement:
 
 - a production database topology, event model, or migration runner;
 - production accounts, authentication, identity proofing, delegation, recovery, incapacity, estate, fiduciary, or successor authority;
-- cloud, storage, queue, analytics, document-processing, connector, archive, verification, or AI providers;
+- cloud, storage, queue, analytics, document-processing, connector, archive, verification, AI, EHR, payer, laboratory, pharmacy, device, exchange, terminology, mapping, or institutional providers;
+- exact FHIR, US Core, USCDI, SMART, bulk-data, clinical-document, terminology, imaging, claims, or proprietary implementation choices;
+- provider-facing summaries, care collaboration, clinical workflows, enterprise tenancy, procurement, contracting, B2B, or B2B2C operation;
 - real health-data ingestion or connector rollout;
 - real recipients, research enrollment, compensation, marketplaces, data sales, family-health derivatives, historical archives, or post-mortem release;
 - clinical terminology, diagnosis, treatment, decision support, or causal inference;
 - production encryption, key management, escrow, malware controls, audit, monitoring, secure deletion, or long-term preservation;
-- distributed revocation, receipt delivery, succession-case, or lifecycle orchestration;
+- distributed revocation, receipt delivery, connector synchronization, succession-case, or lifecycle orchestration;
 - story, quest, progression, notification, or Aster-memory persistence;
 - identity or anti-Sybil systems;
-- a legal entity, fiscal sponsor, donation rail, grant recipient, accounting system, treasury, budget, reserve, compensation, ownership, affiliate, research-funding, estate-planning, archival, or successor-custody mechanism; or
+- a legal entity, fiscal sponsor, donation rail, grant recipient, accounting system, treasury, budget, reserve, compensation, ownership, affiliate, research-funding, provider-placement, connector-ranking, estate-planning, archival, or successor-custody mechanism; or
 - token, blockchain, NFT, or on-chain DAO infrastructure.
 
-Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, or future legacy-domain input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
+Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, connector, provider, or future legacy-domain input also remain deferred. The accepted boundaries are strict TypeScript contracts, deterministic validators and evaluators, and JSON-serializable synthetic interchange evidence.
 
 ## Publication and release status
 
@@ -340,17 +383,18 @@ Complete JSON Schema and safe decoding from unknown Chronicle, House of Keys, or
 - Sprint 3 Living Chronicle and Sprint 4 House of Keys contracts are merged, pre-stable, and synthetic-only.
 - Sprint 5 is a merged architecture and design baseline, not deployed security or independent certification.
 - The Phase 0 funding workstream is merged doctrine, public register structure, synthetic examples, and design-tabletop evidence, not operating finance.
+- Decision 0010, its architecture, AS-0012, reconciliation, website brief, and future workstream remain proposed documentation, not a production provider, connector, clinical, enterprise, or standards-certification capability.
 - Decision 0009, the legacy architecture, future workstream, and AS-0011 remain proposed documentation, not a legal service or production capability.
-- The current website is a live bounded public repository gateway, not the private health product, fundraising runtime, or legacy-planning interface.
-- No claim should imply Phase 1’s useful private product, Phase 2’s trust evidence, Research Commons, sustainable economics, constitutional governance, post-mortem stewardship, or founder independence has been achieved.
+- The current website is a live bounded public repository gateway, not the private health product, provider portal, connector runtime, fundraising runtime, or legacy-planning interface.
+- No claim should imply Phase 1’s useful private product, Phase 2’s trust evidence, Research Commons, sustainable economics, clinical or enterprise integration, constitutional governance, post-mortem stewardship, or founder independence has been achieved.
 
 ## Status update rule
 
 Update this record when:
 
-- a funding, legacy, succession, or other institutional baseline changes proposal, review, acceptance, or merge status;
+- a funding, provider, connector, enterprise, legacy, succession, or other institutional baseline changes proposal, review, acceptance, or merge status;
 - a sprint starts, closes, merges, pauses, or changes scope through accepted authority;
 - an institutional phase gate is accepted, rejected, paused, or rolled back;
-- a frozen or accepted decision changes product, incentive, governance, security, economics, succession, or founder-independence boundaries;
+- a frozen or accepted decision changes product, incentive, governance, security, economics, interoperability, succession, or founder-independence boundaries;
 - a material unresolved gate gains an owner or evidence; or
-- a capability, control, financial relationship, succession authority, or institutional status begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.
+- a capability, control, financial relationship, provider relationship, connector, mapping, succession authority, or institutional status begins being represented as experimental, implemented, deployed, operating, independently reviewed, or live.
