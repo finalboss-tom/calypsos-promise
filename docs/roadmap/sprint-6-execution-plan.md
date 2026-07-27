@@ -83,7 +83,7 @@ Define allowed inputs, outputs, prohibited actions, required evidence, clarifica
 
 ### 6.3 Proposal and extraction contracts
 
-**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; final Sprint 6 validation and acceptance remain pending.
 
 Define a structured Aster proposal envelope and extraction schemas separate from Chronicle records, House of Keys facts, memory, receipts, provider logs, retrieval indexes, product state, and delayed-work state.
 
@@ -93,7 +93,13 @@ Define a structured Aster proposal envelope and extraction schemas separate from
 
 ### 6.4 Intent, confidence, clarification, and refusal
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; final Sprint 6 validation and acceptance remain pending.
+
 Define capture, recall, explanation, navigation, permission review, correction, export, deletion preparation, support routing, non-actionable conversation, unknown, mixed, conflicting, and unsupported intent. Consequential ambiguity must fail safely and require clarification.
+
+**Current evidence:** public bindable and meta-intent taxonomies; explicit consequence classes and dispositions; versioned intent-decision, request, subject, candidate, clarification, and refusal contracts; qualitative confidence with written basis and `notAuthority: true`; numeric-confidence rejection; ambiguity codes; direct clarification questions and lifecycle; stable refusal reasons and safe manual fallback; explicit player-choice and proposal-preparation flags; literal non-authority for action invocation, permission changes, and proposal confirmation; deterministic validation; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** a safely bound capture intent validates while remaining non-authoritative; unknown, mixed, conflicting, and multiply plausible bindable intent require clarification; unsupported intent requires refusal and fallback; non-actionable conversation cannot become proposal work; consequence classes cannot drift; numeric confidence is rejected; and tests reject action, permission, and confirmation authority.
 
 ### 6.5 Source-linked recall and explanation
 
