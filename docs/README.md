@@ -1,13 +1,13 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Funding baseline](economics/README.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Sprint 5 completion](roadmap/sprint-5-completion-record.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Funding baseline](economics/README.md) · [Consumer-first boundary](decisions/0010-consumer-first-provider-independent-boundary.md) · [Contributing](../CONTRIBUTING.md) · [Current status](roadmap/current-status.md) · [Sprint 5 completion](roadmap/sprint-5-completion-record.md)
 
 This is the canonical entry point for repository documentation. It is designed to answer four questions quickly:
 
 1. What is Calypso’s Promise ultimately trying to accomplish?
 2. Which documents are authoritative for the decision I am making?
-3. What is implemented now, planned next, or intentionally deferred?
-4. Where should a contributor make a change without crossing a product, privacy, safety, canon, consent, security, funding, succession, or governance boundary?
+3. What is implemented now, planned next, proposed for review, or intentionally deferred?
+4. Where should a contributor make a change without crossing a product, privacy, safety, canon, consent, security, funding, provider, interoperability, succession, or governance boundary?
 
 ## Primary directive
 
@@ -17,7 +17,7 @@ The directive is constrained by the player promise:
 
 > **Build your Living Chronicle. Improve your health. Keep the key.**
 
-The application is the first operating surface of a long-lived public-benefit institution. Product utility, individual control, transparent contribution, sustainable economics, founder independence, and person-directed long-horizon stewardship must mature together rather than being treated as unrelated workstreams.
+The application is the first operating surface of a long-lived public-benefit institution. Product utility, individual control, provider-independent continuity, transparent contribution, sustainable economics, founder independence, and person-directed long-horizon stewardship must mature together rather than being treated as unrelated workstreams.
 
 ## Start with the right reading path
 
@@ -36,12 +36,27 @@ The application is the first operating surface of a long-lived public-benefit in
 2. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
 3. [Security Architecture](security/README.md)
 4. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-5. [Sprint Roadmap](roadmap/sprints.md)
-6. [Repository and Module Boundaries](architecture/module-boundaries.md)
-7. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-8. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
-9. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
-10. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+5. [Proposed Consumer-First Repository Reconciliation](roadmap/consumer-first-provider-independent-reconciliation.md)
+6. [Proposed Consumer-First and Institutional Interoperability Workstream](roadmap/consumer-first-provider-independent-workstream.md)
+7. [Sprint Roadmap](roadmap/sprints.md)
+8. [Repository and Module Boundaries](architecture/module-boundaries.md)
+9. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+10. [Pre-Sprint 5 Alignment Review](roadmap/pre-sprint-5-alignment-review.md)
+11. [Sprint 4 Completion Record](roadmap/sprint-4-completion-record.md)
+12. [Repository Reconciliation](repository-reconciliation-2026-07-24.md)
+
+### Work on provider, EHR, connector, or institutional interoperability
+
+1. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+2. [Consumer-First and Provider-Independent Architecture](architecture/consumer-first-provider-independent-boundary.md)
+3. [Consumer-First and Institutional Interoperability Workstream](roadmap/consumer-first-provider-independent-workstream.md)
+4. [Consumer-First Repository Reconciliation](roadmap/consumer-first-provider-independent-reconciliation.md)
+5. [AS-0012 — Consumer-First Continuity Can Create Durable Personal Value](governance/assumption-AS-0012-consumer-first-continuity-value.md)
+6. [Infrastructure Sponsorship and Exit Policy](economics/infrastructure-sponsorship-and-exit-policy.md)
+7. [Funding Conflict and Acceptance Policy](economics/funding-conflict-and-acceptance-policy.md)
+8. [Why Calypso’s Promise Is Consumer-First](website/why-consumer-first.md)
+
+These documents do not establish a production connector, provider partnership, clinical workflow, standards certification, enterprise product, or EHR replacement. They define a proposed boundary: institutional systems are important sources, destinations, and potential partners connected through versioned adapters; they do not become the automatic owner of Chronicle truth, product authority, roadmap, permissions, or governance.
 
 ### Understand the Living Chronicle and House of Keys
 
@@ -91,6 +106,7 @@ These documents define a proposed future capability only. They do not create a p
 8. [Infrastructure Sponsorship and Exit Policy](economics/infrastructure-sponsorship-and-exit-policy.md)
 9. [Funding Concentration and Continuity Policy](economics/funding-concentration-and-continuity-policy.md)
 10. [Synthetic Funding Scenarios and Table Exercises](economics/funding-synthetic-scenarios-and-tabletops.md)
+11. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
 
 ### Contribute code, content, or documentation
 
@@ -108,15 +124,17 @@ These documents define a proposed future capability only. They do not create a p
 4. [Institutional Immune System](governance/institutional-immune-system.md)
 5. [Assumption Registry](governance/assumption-registry.md)
 6. [Funding and Sponsorship Baseline](economics/README.md)
-7. [Health Data Legacy Value Assumption](governance/assumption-AS-0011-health-data-legacy-value.md)
+7. [Consumer-First Continuity Assumption](governance/assumption-AS-0012-consumer-first-continuity-value.md)
+8. [Health Data Legacy Value Assumption](governance/assumption-AS-0011-health-data-legacy-value.md)
 
 ### Work on the public website or campaign
 
 1. [Website Documentation](website/README.md)
-2. [Public Narrative and Campaign Documents](public/README.md)
-3. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
-4. [Public-Domain Commons](../PUBLIC_DOMAIN.md)
-5. [Funding and Sponsorship Baseline](economics/README.md)
+2. [Why Calypso’s Promise Is Consumer-First](website/why-consumer-first.md)
+3. [Public Narrative and Campaign Documents](public/README.md)
+4. [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
+5. [Public-Domain Commons](../PUBLIC_DOMAIN.md)
+6. [Funding and Sponsorship Baseline](economics/README.md)
 
 ## Authority and conflict order
 
@@ -126,7 +144,7 @@ When documents appear to conflict, use this order and open a decision record rat
 2. Accepted decision records
 3. Governance, public roadmap, security, publication, economics, and other cross-cutting policies
 4. Versioned architecture, product, data, content, and operating baselines
-5. Sprint plans, completion records, implementation notes, and current-status records
+5. Sprint plans, workstreams, completion records, implementation notes, and current-status records
 6. Public campaign materials and time-sensitive experiments
 
 A proposed decision or architecture establishes reviewable intent and future constraints. It does not override an accepted record until accepted through the repository’s ordinary authority process.
@@ -135,19 +153,19 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 ## Documentation map
 
-| Area                 | Purpose                                                                               | Entry point                                                 |
-| -------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Frozen foundations   | Constitutional and canonical constraints                                              | [Frozen Foundations](frozen/README.md)                      |
-| Decisions            | Material architectural and institutional choices                                      | [Decision Records](decisions/README.md)                     |
-| Architecture         | System, data, consent, AI, story, succession, and module boundaries                   | [Architecture Documentation](architecture/README.md)        |
-| Security             | Threats, controls, evidence, residual risk, and tabletop exercises                    | [Security Architecture](security/README.md)                 |
-| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, exit                    | [Economics and Public-Good Funding](economics/README.md)    |
-| Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts                   | [Product Documentation](product/README.md)                  |
-| Governance           | Contribution, content, feedback, challenge, correction, assumptions, and authority    | [Governance Documentation](governance/README.md)            |
-| Roadmap              | Current status, sprint sequence, future workstreams, evidence, and completion records | [Roadmap Documentation](roadmap/README.md)                  |
-| Policies             | Development, validation, publication, and information handling                        | [Policy Documentation](policies/README.md)                  |
-| Website              | Public discovery, trust, lore, documentation, and synthetic prologue                  | [Website Documentation](website/README.md)                  |
-| Public communication | Campaign strategy, provenance, launch material, and public ledger                     | [Public Narrative and Campaign Documents](public/README.md) |
+| Area                 | Purpose                                                                                         | Entry point                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Frozen foundations   | Constitutional and canonical constraints                                                        | [Frozen Foundations](frozen/README.md)                      |
+| Decisions            | Material architectural and institutional choices                                                | [Decision Records](decisions/README.md)                     |
+| Architecture         | System, data, consent, AI, provider, interoperability, story, succession, and module boundaries | [Architecture Documentation](architecture/README.md)        |
+| Security             | Threats, controls, evidence, residual risk, and tabletop exercises                              | [Security Architecture](security/README.md)                 |
+| Economics            | Funding, sponsorship, underwriting, conflicts, concentration, provider neutrality, and exit     | [Economics and Public-Good Funding](economics/README.md)    |
+| Product              | Gameplay, incentives, vocabulary, schemas, and validation contracts                             | [Product Documentation](product/README.md)                  |
+| Governance           | Contribution, content, feedback, challenge, correction, assumptions, and authority              | [Governance Documentation](governance/README.md)            |
+| Roadmap              | Current status, sprint sequence, future workstreams, evidence, and completion records            | [Roadmap Documentation](roadmap/README.md)                  |
+| Policies             | Development, validation, publication, and information handling                                  | [Policy Documentation](policies/README.md)                  |
+| Website              | Public discovery, trust, lore, consumer-first explanation, documentation, and synthetic prologue | [Website Documentation](website/README.md)                  |
+| Public communication | Campaign strategy, provenance, launch material, and public ledger                               | [Public Narrative and Campaign Documents](public/README.md) |
 
 ## Implemented repository surfaces
 
@@ -160,12 +178,12 @@ The current codebase is intentionally smaller than the frozen target topology.
 - [`packages/house-of-keys`](../packages/house-of-keys) — pre-stable purpose-specific permission contracts, deterministic validation and policy evaluation, access receipts, and public synthetic fixtures
 - [`content`](../content) — versioned, review-gated public content examples
 - [`security`](security/README.md) — completed Sprint 5 architecture, procedures, controls, residual risk, synthetic tabletop evidence, reconciliation, and specialist holdpoints
-- [`economics`](economics/README.md) — merged Phase 0 funding and sponsorship doctrine, public register structures, synthetic examples, and design table exercises; no operating treasury or fundraising runtime
-- [`tools`](../tools) — repository policy and documentation validation
+- [`economics`](economics/README.md) — merged Phase 0 funding and sponsorship doctrine, public register structures, synthetic examples, and design table exercises; no operating treasury, provider, connector, or enterprise relationship
+- [`tools`](../tools) — repository policy, documentation, funding-register, and content validation
 
-The House of Keys package remains separate from the Living Chronicle package. It may reference controlled Chronicle resources, but permission truth, grant state, decisions, receipts, comprehension evidence, Legacy Directives, authority claims, succession cases, and estate evidence do not become Chronicle truth.
+The House of Keys package remains separate from the Living Chronicle package. It may reference controlled Chronicle resources, but permission truth, grant state, decisions, receipts, comprehension evidence, Legacy Directives, authority claims, succession cases, estate evidence, provider relationships, standards mappings, and enterprise contracts do not become Chronicle truth.
 
-Planned applications, services, packages, infrastructure, production orchestration, security controls, financial systems, legacy and succession systems, and real-data paths remain design targets until an accepted workstream creates them with an owner, public contract, tests or evidence, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
+Planned applications, services, packages, infrastructure, production orchestration, security controls, financial systems, provider and connector integrations, clinical and enterprise systems, legacy and succession systems, and real-data paths remain design targets until an accepted workstream creates them with an owner, public contract, tests or evidence, and a justified dependency boundary. Do not add empty packages merely to mirror the frozen topology.
 
 ## Navigation and maintenance rules
 
@@ -179,4 +197,4 @@ Every new documentation area should have one index that explains:
 
 Use relative Markdown links for navigational references rather than presenting repository paths only as inline code. Run `pnpm docs:check` or the full `pnpm check` before opening a pull request.
 
-Update this index when a new top-level documentation area, canonical baseline, accepted decision, implemented package, or major reading path is added.
+Update this index when a new top-level documentation area, canonical baseline, accepted or proposed decision, implemented package, or major reading path is added.
