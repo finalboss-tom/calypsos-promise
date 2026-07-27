@@ -1,23 +1,23 @@
 # Aster Contract Baseline
 
-[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation contracts](../architecture/aster-untrusted-input-isolation-contracts.md) · [Responsive and deferred work contracts](../architecture/aster-responsive-and-deferred-work-contracts.md) · [Provider governance and egress contracts](../architecture/aster-provider-governance-and-egress-contracts.md) · [Local synthetic adapter and non-AI fallbacks](../architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Documentation home](../README.md) · [Architecture boundary](../architecture/aster-contract-boundary.md) · [Role contracts](../architecture/aster-role-contracts.md) · [Proposal and extraction contracts](../architecture/aster-proposal-and-extraction-contracts.md) · [Intent, confidence, clarification, and refusal contracts](../architecture/aster-intent-confidence-clarification-refusal.md) · [Source-linked recall and explanation contracts](../architecture/aster-source-linked-recall-and-explanation-contracts.md) · [Memory lifecycle contracts](../architecture/aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation contracts](../architecture/aster-untrusted-input-isolation-contracts.md) · [Responsive and deferred work contracts](../architecture/aster-responsive-and-deferred-work-contracts.md) · [Provider governance and egress contracts](../architecture/aster-provider-governance-and-egress-contracts.md) · [Local synthetic adapter and non-AI fallbacks](../architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md) · [Compatibility, migration, and cross-contract evidence](../architecture/aster-compatibility-migration-and-cross-contract-evidence.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
 - **Contract version:** `0.1.0-pre.1`
 
-Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, memory-lifecycle, untrusted-input isolation, responsive/deferred work, provider-governance, deterministic-local-adapter, and non-AI-fallback baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, isolation, work, provider, local scenario, lifecycle, attempt, retry, idempotency, fallback, source, retention, player-control, egress, handling, deletion, evaluation, funding-conflict, concentration, replacement, migration, teardown, uncertainty, finding, failure, and validation contracts with public-surface tests.
+Sprint 6 establishes a public, dependency-free authority, role, proposal, structured-extraction, intent-decision, source-linked recall, memory-lifecycle, untrusted-input isolation, responsive/deferred work, provider-governance, deterministic-local-adapter, compatibility, migration, and non-AI-fallback baseline for Aster's five narrative roles. The package exposes stable role, proposal, intent, recall, memory, isolation, work, provider, local scenario, compatibility, component, fixture, migration, lifecycle, attempt, retry, idempotency, fallback, source, retention, player-control, egress, handling, deletion, evaluation, funding-conflict, concentration, replacement, teardown, uncertainty, finding, failure, and validation contracts with public-surface tests.
 
 ## Current guarantees
 
-Every Aster authority, role, proposal, extraction, intent, recall, memory, untrusted-input, work, provider-governance, and local-adapter contract states that Aster cannot:
+Every Aster authority, role, proposal, extraction, intent, recall, memory, untrusted-input, work, provider-governance, local-adapter, compatibility, and migration contract states that Aster cannot:
 
 - write canonical records;
 - create or expand permission;
 - confirm its own output;
 - complete quests;
 - grant rewards;
-- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, memory, document, retrieval result, tool result, provider response, model output, prior conversation, queued request, retry, deferred result, provider account, sponsorship, credit, benchmark, or local synthetic fixture into canonical truth;
+- turn a role result, proposal payload, extraction candidate, intent interpretation, recalled statement, memory, document, retrieval result, tool result, provider response, model output, prior conversation, queued request, retry, deferred result, provider account, sponsorship, credit, benchmark, local synthetic fixture, compatibility label, or migration plan into canonical truth;
 - invoke an authoritative domain action;
 - claim that acceptance for processing proves completion;
 - claim that domain validation, storage, execution, progression, or reward occurred;
@@ -28,10 +28,25 @@ Every Aster authority, role, proposal, extraction, intent, recall, memory, untru
 - retry unknown external outcomes automatically;
 - use stale authority or overwrite newer results;
 - let provider funding determine defaults, source rank, connector rank, egress policy, benchmark conclusions, publication, or governance;
-- use local fixtures as model-quality, provider-quality, production-readiness, or specialist-review evidence; or
+- use local fixtures as model-quality, provider-quality, production-readiness, or specialist-review evidence;
+- use compatibility or migration to hide field removal, erase prior revisions, or change authority; or
 - treat authority-bearing context, provider rank, retrieval score, source recency, standards profile, remembered context, successful processing, transport acknowledgement, provider promises, or provider deletion labels as truth.
 
 There is intentionally no production-provider approval state in this pre-stable contract.
+
+## Compatibility, fixtures, migration, and cross-contract guarantees
+
+- The current manifest covers twelve public components: authority, role contracts, proposal, structured extraction, intent, source recall, memory, untrusted input, work lifecycle, provider governance, local synthetic adapter, and the package public surface.
+- Every component binds a current revision, serialized schema identifiers, validator identity and revision, public fixture identifiers, compatibility status, migration status, and literal non-authority.
+- Every component has a synthetic, public-safe, credential-free, non-authoritative fixture entry bound to one or more current local scenarios.
+- Five role bindings preserve exact role, operation, primary proposal kind, success scenario, and provider-independent fallback alignment.
+- The manifest preserves the exact seventeen local scenarios and seven core non-AI paths.
+- The provider-state taxonomy remains exact and rejects a production-approved state.
+- Optional additive changes may remain compatible; required additions, enum expansion, field removal, semantic changes, and revision rebases require migration evidence.
+- Authority-boundary changes are incompatible with ordinary migration and require a new governing decision.
+- Unknown changes fail closed.
+- Migration plans bind exact package and component revisions, preserve source artifacts and prior evidence, create a new revision, declare rollback or forward-only behavior, and cite public synthetic fixtures.
+- Migration cannot create canonical, permission, confirmation, provider-default, source-ranking, publication, progression, or reward authority.
 
 ## Local synthetic adapter and non-AI guarantees
 
@@ -143,15 +158,15 @@ There is intentionally no production-provider approval state in this pre-stable 
 ## Current evidence
 
 - public authority and detailed role-contract matrices;
-- versioned proposal, extraction, intent, recall, memory, untrusted-input, work-lifecycle, provider-governance, and local-synthetic-adapter contracts;
-- public memory, untrusted-input, provider, local-scenario, local-outcome, runtime, role-fallback, and core-fallback taxonomies;
-- serialized memory lifecycle, untrusted-input isolation, responsive/deferred work, provider-governance, and local synthetic run envelopes;
-- stable authority, role, proposal, extraction, intent, recall, memory, untrusted-input, work, provider-governance, and local-adapter validation issue codes;
-- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, missing-memory fallback, prompt-injection containment, cross-subject isolation, arbitrary resource rejection, visibility preservation, memory self-persistence rejection, responsive success, truthful deferred acceptance, bounded retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, replay, correction relationships, unknown external outcomes, synthetic-only provider evaluation, private-egress rejection, provider training and human-review rejection, evaluator independence, funding conflicts, public funding records, concentration, exit planning, deterministic repeatability, all-role local coverage, source-linked local fixtures, clarification, local refusal, local prompt-injection containment, complete core non-AI fallback, and runtime, fallback, role, and authority escalation rejection; and
-- architecture and execution documentation that keeps Chronicle, House of Keys, gameplay, application, memory, provider, retrieval, work, local fixtures, audit, funding, and institutional authority separate.
+- versioned proposal, extraction, intent, recall, memory, untrusted-input, work-lifecycle, provider-governance, local-synthetic-adapter, compatibility-manifest, and migration contracts;
+- public memory, untrusted-input, provider, local-scenario, local-outcome, runtime, role-fallback, core-fallback, component, fixture, compatibility, change-class, and migration taxonomies;
+- serialized memory lifecycle, untrusted-input isolation, responsive/deferred work, provider-governance, local synthetic run, compatibility manifest, and migration-plan envelopes;
+- stable authority, role, proposal, extraction, intent, recall, memory, untrusted-input, work, provider-governance, local-adapter, compatibility, and migration validation issue codes;
+- public-surface Node tests covering authority separation, exact confirmation, intent clarification and refusal, source-linked recall, stale-index fallback, mapping and lifecycle uncertainty, material-memory player controls, record-linked recomputation, provider-metadata separation, deletion, secondary-use rejection, missing-memory fallback, prompt-injection containment, cross-subject isolation, arbitrary resource rejection, visibility preservation, memory self-persistence rejection, responsive success, truthful deferred acceptance, bounded retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, replay, correction relationships, unknown external outcomes, synthetic-only provider evaluation, private-egress rejection, provider training and human-review rejection, evaluator independence, funding conflicts, public funding records, concentration, exit planning, deterministic repeatability, all-role local coverage, source-linked local fixtures, clarification, local refusal, local prompt-injection containment, complete core non-AI fallback, complete component and fixture coverage, additive compatibility, migration requirements, authority-boundary incompatibility, role-operation-proposal-scenario drift, provider-state drift, and migration authority escalation; and
+- architecture and execution documentation that keeps Chronicle, House of Keys, gameplay, application, memory, provider, retrieval, work, local fixtures, compatibility evidence, migrations, audit, funding, and institutional authority separate.
 
 ## Current limits
 
-This baseline does not yet complete compatibility review, cross-contract completion evidence, production provider selection, procurement, private-data egress, production queueing, scheduling, workflow execution, sandboxing, persistence, secure deletion, or the Sprint 6 acceptance record. Those remain tracked in issue #47 and the Sprint 6 execution plan.
+This baseline does not yet complete the Sprint 6 completion record, unresolved-work register, specialist holdpoint mapping, final acceptance review, production provider selection, procurement, private-data egress, production queueing, scheduling, workflow execution, sandboxing, persistence, secure deletion, or a real production migration. Those remain tracked in issue #47 and the Sprint 6 execution plan.
 
 No production provider, EHR, connector, clinical partner, model gateway, queue, scheduler, workflow engine, event store, vector database, account system, real-data path, sandbox, or enterprise relationship is selected or approved by this contract baseline.
