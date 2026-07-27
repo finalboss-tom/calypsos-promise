@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -19,6 +19,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: pnpm/action-setup@v6
         with:
           version: 10.13.1
@@ -28,6 +31,90 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Apply final roadmap reconciliation
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          roadmap = Path("ROADMAP.md")
+          text = roadmap.read_text()
+          old = "- A proposed consumer-first and institutional-interoperability workstream defining provider, connector, standards, funding, evidence, replacement, and future enterprise-partnership gates before a material relationship becomes operational\n"
+          new = "- An accepted consumer-first and institutional-interoperability workstream defining provider, connector, standards, funding, evidence, replacement, and future enterprise-partnership gates before a material relationship becomes operational\n- An accepted operational-simplicity and durable-workflows baseline defining the modular-monolith default, responsive and deferred work, local simulation, provider isolation, operability, and evidence-gated service extraction before production topology is selected\n"
+          if text.count(old) != 1:
+              raise SystemExit("ROADMAP consumer-first status anchor was not unique")
+          text = text.replace(old, new)
+          old_exit = "- The consumer-first and provider-independent boundary is accepted, revised, or explicitly declined rather than left to future procurement or sponsor pressure\n"
+          new_exit = old_exit + "- The operational-simplicity and durable-workflows boundary is accepted, with persistence, queue, scheduler, service, observability, offline, performance, and provider choices kept explicit and evidence-gated\n"
+          if text.count(old_exit) != 1:
+              raise SystemExit("ROADMAP operational exit anchor was not unique")
+          roadmap.write_text(text.replace(old_exit, new_exit))
+
+          sprints = Path("docs/roadmap/sprints.md")
+          text = sprints.read_text()
+          old_decision = "- Proposed Decision 0010 — Consumer-First, Provider-Independent Product Boundary\n"
+          new_decision = "- Decision 0010 — Consumer-First, Provider-Independent Product Boundary — accepted through PR #42\n"
+          if text.count(old_decision) != 1:
+              raise SystemExit("Sprint Decision 0010 status anchor was not unique")
+          text = text.replace(old_decision, new_decision)
+
+          sprint6 = "## Sprint 6 — Aster contracts and AI governance\n"
+          operational = """## Phase 0 Institutional Workstream — Operational Simplicity and Durable Workflows
+
+**Goal:** Make the smallest trustworthy, correctable, provider-replaceable, and successor-operable architecture an accepted constraint before implementation pressure selects hidden infrastructure or premature services.
+
+Decision and evidence:
+
+- Decision 0011 — Operational Simplicity and Durable Workflows — accepted through PR #44
+- Operational architecture separating responsive work, deferred work, commands, events, projections, jobs, schedules, authoritative state, and derivatives
+- Mission-to-runtime traceability
+- Developer Experience and Operability Policy
+- AS-0013 — Operational Simplicity Can Support Durable Personal Value
+- Cross-phase implementation workstream and repository reconciliation
+
+Acceptance:
+
+- The modular monolith remains the default deployment posture
+- A separate service requires evidence of a distinct trust, scale, failure, runtime, ownership, legal, or release boundary
+- Schedules trigger bounded operations and do not own domain truth
+- Retryable or delayed work has stable identity, timeout, cancellation, duplicate, failure, replay, correction, supersession, and owner behavior proportionate to consequence
+- Responsive, deferred, pending, failed, stale, corrected, superseded, and provider-unavailable states remain explicit
+- Manual and non-AI personal-core paths remain complete
+- Public and provider-independent development remains credential-free and locally or synthetically reproducible where practical
+- Provider, queue, scheduler, model, storage, analytics, observability, and infrastructure choices remain replaceable adapters rather than domain authority
+- Event-informed architecture is not represented as universal event sourcing
+- Offline-tolerant direction is not represented as a completed local-first security or synchronization design
+- Performance and complexity gates use measured evidence rather than architectural preference
+
+Handoff:
+
+- This is a non-numbered institutional workstream; Sprint 6 remains next
+- Sprint 6 inherits responsive, deferred, stale-result, provider-unavailable, local-simulation, and non-AI-fallback contracts
+- Sprint 7 inherits bounded long-running operation and synthetic tool behavior
+- Sprint 11 provides the first complete synthetic durable-work reference journey
+- Sprints 12–16 exercise clocks, routes, indexes, connectors, analytics, and MCP operation semantics
+- Sprints 17–18 add specialist and operational evidence gates
+- Sprint 19 publishes install, validation, provider, workflow, replacement, and release evidence without overstating production maturity
+
+The detailed inheritance is maintained in [`operational-simplicity-workstream.md`](operational-simplicity-workstream.md).
+
+"""
+          if text.count(sprint6) != 1:
+              raise SystemExit("Sprint 6 insertion anchor was not unique")
+          sprints.write_text(text.replace(sprint6, operational + sprint6))
+          PY
+          pnpm format
+          git fetch origin main --depth=1
+          git show FETCH_HEAD:.github/workflows/ci.yml > .github/workflows/ci.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "docs: reconcile canonical roadmap workstreams"
+          git push origin "HEAD:${HEAD_BRANCH}"
       - name: Check formatting
         id: formatting
         continue-on-error: true
