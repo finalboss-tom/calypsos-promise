@@ -71,7 +71,10 @@ function makePreferenceMemory() {
 }
 
 test("the memory policy matrix covers every class", () => {
-  assert.deepEqual(Object.keys(ASTER_MEMORY_CLASS_POLICIES), ASTER_MEMORY_CLASSES);
+  assert.deepEqual(
+    Object.keys(ASTER_MEMORY_CLASS_POLICIES),
+    ASTER_MEMORY_CLASSES,
+  );
   assert.deepEqual(
     validateAsterMemoryClassPolicies(ASTER_MEMORY_CLASS_POLICIES),
     [],
