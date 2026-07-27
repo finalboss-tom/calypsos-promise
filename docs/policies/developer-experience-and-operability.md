@@ -1,6 +1,9 @@
-# Developer Experience and Operability Policy — PROPOSED
+# Developer Experience and Operability Policy — BASELINE
 
-[Policy index](README.md) · [Decision 0011](../decisions/0011-operational-simplicity-and-durable-workflows.md) · [Operational architecture](../architecture/operational-simplicity-and-durable-workflows.md) · [Minimum Viable Validation](minimum-viable-validation.md) · [Development policy](development.md)
+[Policy index](README.md) · [Decision 0011](../decisions/0011-operational-simplicity-and-durable-workflows.md) · [Operational architecture](../architecture/operational-simplicity-and-durable-workflows.md) · [Minimum Viable Validation](minimum-viable-validation.md) · [Development policy](development.md) · [Pre-Sprint 6 review](../roadmap/pre-sprint-6-alignment-review.md)
+
+- **Status:** BASELINE — accepted through Decision 0011 and PR #44
+- **Evidence boundary:** policy and architecture direction only; numeric timing targets remain investigation targets until measured
 
 ## Purpose
 
@@ -138,7 +141,7 @@ Candidate initial planning targets for the current and near-term repository incl
 - a full installed-dependency local baseline within two minutes at the current repository scale;
 - and local startup of the current relevant environment within one minute after dependencies are installed.
 
-These are **proposed investigation targets**, not accepted service guarantees. The baseline-measurement workstream may revise them before enforcement.
+These are **investigation targets**, not accepted service guarantees. The baseline-measurement workstream may revise them before enforcement.
 
 A performance target must not encourage:
 
