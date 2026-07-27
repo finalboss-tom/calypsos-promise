@@ -55,7 +55,20 @@ jobs:
         run: pnpm format
       - name: Validate funding records
         run: pnpm economics:check
-      - name: Commit reconciliation
+      - name: Prepare validated reconciliation artifact
+        run: |
+          git diff --binary > final-funding-reconciliation.patch
+          git diff --name-only --diff-filter=ACMRT -z | tar --null -T - -czf final-funding-reconciliation-files.tar.gz
+      - name: Upload validated reconciliation artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: validated-funding-reconciliation
+          path: |
+            final-funding-reconciliation.patch
+            final-funding-reconciliation-files.tar.gz
+          if-no-files-found: error
+      - name: Attempt reconciliation commit
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
