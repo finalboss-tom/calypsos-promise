@@ -24,7 +24,8 @@ export const ASTER_RECALL_SOURCE_CLASSES = [
   "chronicle-record",
   "public-educational-material",
 ] as const;
-export type AsterRecallSourceClass = (typeof ASTER_RECALL_SOURCE_CLASSES)[number];
+export type AsterRecallSourceClass =
+  (typeof ASTER_RECALL_SOURCE_CLASSES)[number];
 
 export const ASTER_RECALL_RECORD_STATES = [
   "active",
@@ -36,7 +37,8 @@ export const ASTER_RECALL_RECORD_STATES = [
   "deleted",
   "unavailable",
 ] as const;
-export type AsterRecallRecordState = (typeof ASTER_RECALL_RECORD_STATES)[number];
+export type AsterRecallRecordState =
+  (typeof ASTER_RECALL_RECORD_STATES)[number];
 
 export const ASTER_RECALL_CORRECTION_STATES = [
   "none",
@@ -317,7 +319,9 @@ export const ASTER_RECALL_AUTHORITY_BOUNDARY: AsterRecallAuthorityBoundary = {
   canTreatStandardsConformanceAsTruth: false,
 };
 
-export function getAsterRecallModeForRole(role: AsterRecallRole): AsterRecallMode {
+export function getAsterRecallModeForRole(
+  role: AsterRecallRole,
+): AsterRecallMode {
   return role === "librarian" ? "recall" : "explanation";
 }
 
