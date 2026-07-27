@@ -19,13 +19,13 @@ The permanent transaction boundary is:
 
 The five role names are narrative interfaces with direct accessible names. A narrative name does not grant technical authority.
 
-| Narrative role | Accessible meaning                    | Primary output                          | Authoritative action owner |
-| -------------- | ------------------------------------- | --------------------------------------- | -------------------------- |
-| Scribe         | structured capture assistant          | structured draft or clarification       | Living Chronicle           |
-| Librarian      | source-linked recall assistant         | source-linked recall draft              | none                       |
-| Wayfinder      | navigation assistant                  | navigation proposal                     | application navigation     |
-| Interpreter    | plain-language explanation assistant  | uncertainty-preserving explanation      | none                       |
-| Storykeeper    | narrative presentation assistant      | narrative presentation proposal         | gameplay                   |
+| Narrative role | Accessible meaning                   | Primary output                     | Authoritative action owner |
+| -------------- | ------------------------------------ | ---------------------------------- | -------------------------- |
+| Scribe         | structured capture assistant         | structured draft or clarification  | Living Chronicle           |
+| Librarian      | source-linked recall assistant       | source-linked recall draft         | none                       |
+| Wayfinder      | navigation assistant                 | navigation proposal                | application navigation     |
+| Interpreter    | plain-language explanation assistant | uncertainty-preserving explanation | none                       |
+| Storykeeper    | narrative presentation assistant     | narrative presentation proposal    | gameplay                   |
 
 ## Authority invariants
 
