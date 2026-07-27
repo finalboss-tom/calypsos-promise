@@ -25,7 +25,8 @@ function basePolicy() {
     task: {
       operationIds: ["scribe.prepare-structured-capture"],
       informationClasses: ["public", "synthetic"],
-      purpose: "Evaluate a provider-neutral synthetic structured-drafting task.",
+      purpose:
+        "Evaluate a provider-neutral synthetic structured-drafting task.",
       outputContractId: "aster.proposal",
       outputContractRevision: 1,
     },

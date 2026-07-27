@@ -3,25 +3,9 @@ import { ASTER_CONTRACT_VERSION } from "./version.js";
 import {
   ASTER_PROVIDER_ALLOWED_SYNTHETIC_EGRESS_FIELDS,
   ASTER_PROVIDER_AUTHORITY_BOUNDARY,
-  ASTER_PROVIDER_CONCENTRATION_STATES,
-  ASTER_PROVIDER_CRITICALITY_STATES,
-  ASTER_PROVIDER_DELETION_EVIDENCE_CLASSES,
-  ASTER_PROVIDER_EGRESS_MODES,
   ASTER_PROVIDER_EVALUATION_CRITERIA,
-  ASTER_PROVIDER_EVALUATION_INDEPENDENCE_STATES,
-  ASTER_PROVIDER_EVALUATOR_FUNDING_SOURCES,
-  ASTER_PROVIDER_FIELD_CLASSES,
-  ASTER_PROVIDER_FUNDING_RELATIONSHIP_STATES,
   ASTER_PROVIDER_GOVERNANCE_SCHEMA_ID,
-  ASTER_PROVIDER_GOVERNANCE_STATES,
-  ASTER_PROVIDER_INFORMATION_CLASSES,
-  ASTER_PROVIDER_LOGGING_MODES,
   ASTER_PROVIDER_MANDATORY_PROHIBITED_FIELDS,
-  ASTER_PROVIDER_RETENTION_MODES,
-  ASTER_PROVIDER_SERVICE_CLASSES,
-  ASTER_PROVIDER_SPECIALIST_HOLDPOINTS,
-  ASTER_PROVIDER_SUBPROCESSOR_STATES,
-  ASTER_PROVIDER_USE_POLICIES,
   type AsterProviderGovernanceEnvelope,
 } from "./provider-governance.js";
 
@@ -56,6 +40,7 @@ export const ASTER_PROVIDER_GOVERNANCE_ISSUE_CODES = [
   "aster.provider.missing-specialist-holdpoint",
   "aster.provider.authority-escalation",
 ] as const;
+
 export type AsterProviderGovernanceIssueCode =
   (typeof ASTER_PROVIDER_GOVERNANCE_ISSUE_CODES)[number];
 
@@ -70,59 +55,76 @@ export interface AsterProviderGovernanceValidationResult {
   readonly issues: readonly AsterProviderGovernanceValidationIssue[];
 }
 
-const values = <T extends readonly string[]>(items: T) => new Set<string>(items);
-const STATES = values(ASTER_PROVIDER_GOVERNANCE_STATES);
-const SERVICES = values(ASTER_PROVIDER_SERVICE_CLASSES);
-const INFO = values(ASTER_PROVIDER_INFORMATION_CLASSES);
-const OPERATIONS = values(ASTER_ROLE_OPERATION_IDS);
-const EGRESS = values(ASTER_PROVIDER_EGRESS_MODES);
-const FIELDS = values(ASTER_PROVIDER_FIELD_CLASSES);
-const SAFE_FIELDS = values(ASTER_PROVIDER_ALLOWED_SYNTHETIC_EGRESS_FIELDS);
-const REQUIRED_PROHIBITED = values(ASTER_PROVIDER_MANDATORY_PROHIBITED_FIELDS);
-const RETENTION = values(ASTER_PROVIDER_RETENTION_MODES);
-const LOGGING = values(ASTER_PROVIDER_LOGGING_MODES);
-const USE = values(ASTER_PROVIDER_USE_POLICIES);
-const SUBPROCESSORS = values(ASTER_PROVIDER_SUBPROCESSOR_STATES);
-const DELETION = values(ASTER_PROVIDER_DELETION_EVIDENCE_CLASSES);
-const CRITERIA = values(ASTER_PROVIDER_EVALUATION_CRITERIA);
-const FUNDING_SOURCE = values(ASTER_PROVIDER_EVALUATOR_FUNDING_SOURCES);
-const INDEPENDENCE = values(ASTER_PROVIDER_EVALUATION_INDEPENDENCE_STATES);
-const FUNDING = values(ASTER_PROVIDER_FUNDING_RELATIONSHIP_STATES);
-const CONCENTRATION = values(ASTER_PROVIDER_CONCENTRATION_STATES);
-const CRITICALITY = values(ASTER_PROVIDER_CRITICALITY_STATES);
-const HOLDPOINTS = values(ASTER_PROVIDER_SPECIALIST_HOLDPOINTS);
+const GOVERNANCE_STATES = new Set([
+  "not-approved",
+  "synthetic-evaluation-only",
+  "specialist-review-required",
+  "blocked",
+  "retired",
+]);
+const SERVICE_CLASSES = new Set([
+  "model-inference",
+  "embedding-or-retrieval",
+  "document-processing",
+  "speech-processing",
+  "image-processing",
+  "translation",
+  "safety-or-moderation",
+]);
+const INFORMATION_CLASSES = new Set([
+  "public",
+  "synthetic",
+  "private-personal",
+  "protected-operational",
+]);
+const OPERATIONS = new Set<string>(ASTER_ROLE_OPERATION_IDS);
+const SAFE_FIELDS = new Set<string>(
+  ASTER_PROVIDER_ALLOWED_SYNTHETIC_EGRESS_FIELDS,
+);
+const REQUIRED_PROHIBITED = new Set<string>(
+  ASTER_PROVIDER_MANDATORY_PROHIBITED_FIELDS,
+);
+const REQUIRED_CRITERIA = new Set<string>(
+  ASTER_PROVIDER_EVALUATION_CRITERIA,
+);
+const HOLDPOINTS = new Set([
+  "security",
+  "privacy",
+  "legal",
+  "procurement",
+  "accessibility",
+  "clinical",
+  "interoperability",
+  "financial-control",
+  "data-protection",
+  "ai-safety",
+]);
 
-function validId(value: unknown): value is string {
+function text(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
 
-function validRevision(value: unknown): value is number {
+function revision(value: unknown): value is number {
   return Number.isInteger(value) && Number(value) > 0;
 }
 
-function uniqueKnown(
-  items: readonly string[],
-  known: ReadonlySet<string>,
-): boolean {
-  return (
-    new Set(items).size === items.length &&
-    items.every((item) => known.has(item))
-  );
+function unique(values: readonly string[]): boolean {
+  return new Set(values).size === values.length;
 }
 
-function hasAll(
-  items: readonly string[],
+function containsAll(
+  actual: readonly string[],
   required: ReadonlySet<string>,
 ): boolean {
-  const actual = new Set(items);
-  return [...required].every((item) => actual.has(item));
+  const set = new Set(actual);
+  return [...required].every((value) => set.has(value));
 }
 
-function validReference(value: {
+function reference(value: {
   readonly id: string;
   readonly revision: number;
 }): boolean {
-  return validId(value.id) && validRevision(value.revision);
+  return text(value.id) && revision(value.revision);
 }
 
 export function validateAsterProviderGovernance(
@@ -139,168 +141,124 @@ export function validateAsterProviderGovernance(
     policy.schemaId !== ASTER_PROVIDER_GOVERNANCE_SCHEMA_ID ||
     policy.contractVersion !== ASTER_CONTRACT_VERSION
   ) {
-    add(
-      "aster.provider.invalid-schema",
-      "schemaId",
-      "Use the current public provider-governance schema and contract version.",
-    );
+    add("aster.provider.invalid-schema", "schemaId", "Invalid schema.");
   }
-  if (!validId(policy.policyId) || !validRevision(policy.revision)) {
-    add(
-      "aster.provider.invalid-identity",
-      "policyId",
-      "Policy identity and revision must be stable and positive.",
-    );
+  if (!text(policy.policyId) || !revision(policy.revision)) {
+    add("aster.provider.invalid-identity", "policyId", "Invalid identity.");
   }
-  if (!STATES.has(policy.state)) {
-    add(
-      "aster.provider.invalid-state",
-      "state",
-      "Provider governance state is not recognized.",
-    );
+  if (!GOVERNANCE_STATES.has(policy.state)) {
+    add("aster.provider.invalid-state", "state", "Invalid governance state.");
   }
 
   const provider = policy.provider;
   if (
-    !validId(provider.providerId) ||
-    !validRevision(provider.providerRevision) ||
-    !SERVICES.has(provider.serviceClass) ||
-    !validId(provider.adapterId) ||
-    !validRevision(provider.adapterRevision)
+    !text(provider.providerId) ||
+    !revision(provider.providerRevision) ||
+    !SERVICE_CLASSES.has(provider.serviceClass) ||
+    !text(provider.adapterId) ||
+    !revision(provider.adapterRevision)
   ) {
-    add(
-      "aster.provider.invalid-provider",
-      "provider",
-      "Provider and adapter identity must be versioned and use a recognized service class.",
-    );
+    add("aster.provider.invalid-provider", "provider", "Invalid provider.");
   }
 
   const task = policy.task;
   if (
+    !unique(task.operationIds) ||
     task.operationIds.length === 0 ||
-    !uniqueKnown(task.operationIds, OPERATIONS) ||
+    !task.operationIds.every((value) => OPERATIONS.has(value)) ||
+    !unique(task.informationClasses) ||
     task.informationClasses.length === 0 ||
-    !uniqueKnown(task.informationClasses, INFO) ||
-    !validId(task.purpose) ||
-    !validId(task.outputContractId) ||
-    !validRevision(task.outputContractRevision)
+    !task.informationClasses.every((value) =>
+      INFORMATION_CLASSES.has(value),
+    ) ||
+    !text(task.purpose) ||
+    !text(task.outputContractId) ||
+    !revision(task.outputContractRevision)
   ) {
-    add(
-      "aster.provider.invalid-task",
-      "task",
-      "Task scope must bind recognized operations, information classes, purpose, and output contract.",
-    );
+    add("aster.provider.invalid-task", "task", "Invalid task scope.");
   }
 
   const egress = policy.egress;
-  const allowed = egress.allowedFields;
-  const prohibited = egress.prohibitedFields;
+  const privateInformation = task.informationClasses.some(
+    (value) =>
+      value === "private-personal" || value === "protected-operational",
+  );
   if (
-    !EGRESS.has(egress.mode) ||
-    !uniqueKnown(allowed, FIELDS) ||
-    !uniqueKnown(prohibited, FIELDS) ||
-    allowed.some((field) => prohibited.includes(field)) ||
-    !hasAll(prohibited, REQUIRED_PROHIBITED) ||
-    egress.minimumNecessary !== true ||
-    egress.authorityBearingContextProhibited !== true ||
-    egress.rawSourceMaterialProhibited !== true ||
-    egress.secretsProhibited !== true ||
-    egress.privateDataAuthorized !== false
+    !unique(egress.allowedFields) ||
+    !unique(egress.prohibitedFields) ||
+    egress.allowedFields.some((value) =>
+      egress.prohibitedFields.includes(value),
+    ) ||
+    !containsAll(egress.prohibitedFields, REQUIRED_PROHIBITED) ||
+    !egress.minimumNecessary ||
+    !egress.authorityBearingContextProhibited ||
+    !egress.rawSourceMaterialProhibited ||
+    !egress.secretsProhibited ||
+    egress.privateDataAuthorized
+  ) {
+    add("aster.provider.invalid-egress", "egress", "Invalid egress boundary.");
+  }
+  if (egress.allowedFields.some((value) => !SAFE_FIELDS.has(value))) {
+    add(
+      "aster.provider.authority-bearing-egress",
+      "egress.allowedFields",
+      "Authority-bearing egress is prohibited.",
+    );
+  }
+  if (privateInformation && egress.mayTransmit) {
+    add(
+      "aster.provider.private-egress-prohibited",
+      "egress.mayTransmit",
+      "Private egress is prohibited.",
+    );
+  }
+  if (
+    policy.state === "synthetic-evaluation-only" &&
+    (privateInformation ||
+      !task.informationClasses.every(
+        (value) => value === "public" || value === "synthetic",
+      ) ||
+      (egress.mayTransmit &&
+        egress.mode !== "public-or-synthetic-minimum-necessary"))
+  ) {
+    add(
+      "aster.provider.private-egress-prohibited",
+      "state",
+      "Synthetic evaluation is public or synthetic only.",
+    );
+  }
+  if (
+    policy.state !== "synthetic-evaluation-only" &&
+    egress.mayTransmit
   ) {
     add(
       "aster.provider.invalid-egress",
       "egress",
-      "Egress must be minimum-necessary, non-authoritative, secret-free, and explicitly field-bounded.",
-    );
-  }
-  if (allowed.some((field) => !SAFE_FIELDS.has(field))) {
-    add(
-      "aster.provider.authority-bearing-egress",
-      "egress.allowedFields",
-      "Only public or synthetic evaluation fields may leave the core boundary.",
-    );
-  }
-  const privateInfo = task.informationClasses.some(
-    (item) => item === "private-personal" || item === "protected-operational",
-  );
-  if (privateInfo && egress.mayTransmit) {
-    add(
-      "aster.provider.private-egress-prohibited",
-      "egress.mayTransmit",
-      "This pre-stable contract does not authorize private or protected provider egress.",
-    );
-  }
-  if (policy.state === "synthetic-evaluation-only") {
-    if (
-      privateInfo ||
-      !task.informationClasses.every(
-        (item) => item === "public" || item === "synthetic",
-      ) ||
-      (egress.mayTransmit &&
-        egress.mode !== "public-or-synthetic-minimum-necessary")
-    ) {
-      add(
-        "aster.provider.private-egress-prohibited",
-        "state",
-        "Synthetic evaluation may use only public or synthetic minimum-necessary egress.",
-      );
-    }
-  } else if (egress.mayTransmit) {
-    add(
-      "aster.provider.invalid-egress",
-      "egress.mayTransmit",
-      "Only synthetic-evaluation-only policies may transmit public or synthetic fields.",
+      "Transmission is not eligible.",
     );
   }
 
   const handling = policy.handling;
-  if (
-    !["declared", "unknown"].includes(handling.regionStatus) ||
-    !RETENTION.has(handling.retentionMode) ||
-    !LOGGING.has(handling.requestLogging) ||
-    !LOGGING.has(handling.responseLogging) ||
-    handling.contentLogging !== false ||
-    !USE.has(handling.trainingUse) ||
-    !USE.has(handling.modelImprovementUse) ||
-    !USE.has(handling.humanReview) ||
-    !["metadata-only", "content-bounded", "unknown"].includes(
-      handling.abuseMonitoringUse,
-    ) ||
-    !SUBPROCESSORS.has(handling.subprocessorState)
-  ) {
-    add(
-      "aster.provider.invalid-handling",
-      "handling",
-      "Handling terms must use recognized region, retention, logging, use, review, and subprocessor states.",
-    );
-  }
-  if (
+  const unknownHandling =
     handling.regionStatus === "unknown" ||
     handling.regions.length === 0 ||
     handling.retentionMode === "unknown" ||
     handling.requestLogging === "unknown" ||
     handling.responseLogging === "unknown" ||
     handling.abuseMonitoringUse === "unknown" ||
-    handling.subprocessorState === "unknown"
-  ) {
-    add(
-      "aster.provider.unknown-handling",
-      "handling",
-      "Unknown provider handling requires a specialist hold and cannot be evaluation-eligible.",
-    );
+    handling.subprocessorState === "unknown";
+  if (unknownHandling) {
+    add("aster.provider.unknown-handling", "handling", "Handling is unresolved.");
   }
   if (
+    handling.contentLogging ||
     (handling.retentionMode === "no-retention" &&
       handling.maxRetentionDays !== 0) ||
     (handling.retentionMode === "bounded-retention" &&
       (!Number.isInteger(handling.maxRetentionDays) ||
         Number(handling.maxRetentionDays) < 0))
   ) {
-    add(
-      "aster.provider.invalid-handling",
-      "handling.maxRetentionDays",
-      "Retention must be zero for no-retention or a non-negative bound for bounded retention.",
-    );
+    add("aster.provider.invalid-handling", "handling", "Invalid handling terms.");
   }
   if (
     handling.trainingUse !== "prohibited" ||
@@ -309,14 +267,14 @@ export function validateAsterProviderGovernance(
     add(
       "aster.provider.training-or-improvement-enabled",
       "handling.trainingUse",
-      "Training and model-improvement use must remain prohibited.",
+      "Training and improvement are prohibited.",
     );
   }
   if (handling.humanReview !== "prohibited") {
     add(
       "aster.provider.human-review-unbounded",
       "handling.humanReview",
-      "Synthetic evaluation requires provider human review to be prohibited.",
+      "Provider human review is prohibited.",
     );
   }
   if (
@@ -324,20 +282,20 @@ export function validateAsterProviderGovernance(
       handling.subprocessors.length > 0) ||
     (handling.subprocessorState === "declared" &&
       (handling.subprocessors.length === 0 ||
-        !handling.subprocessors.every(validReference)))
+        !handling.subprocessors.every(reference)))
   ) {
     add(
       "aster.provider.invalid-subprocessor",
       "handling.subprocessors",
-      "Subprocessors must be absent when none or exactly versioned when declared.",
+      "Invalid subprocessor evidence.",
     );
   }
 
   const deletion = policy.deletion;
   if (
-    !DELETION.has(deletion.evidenceClass) ||
-    deletion.downstreamCopyUncertaintyDisclosed !== true ||
-    deletion.providerEvidenceIsNotUniversalProof !== true ||
+    deletion.evidenceClass === "unknown" ||
+    !deletion.downstreamCopyUncertaintyDisclosed ||
+    !deletion.providerEvidenceIsNotUniversalProof ||
     (deletion.deletionRequestSupported &&
       (!Number.isInteger(deletion.deletionDeadlineDays) ||
         Number(deletion.deletionDeadlineDays) < 0))
@@ -345,59 +303,53 @@ export function validateAsterProviderGovernance(
     add(
       "aster.provider.invalid-deletion",
       "deletion",
-      "Deletion behavior must be bounded, evidenced, and preserve downstream-copy uncertainty.",
-    );
-  }
-  if (deletion.evidenceClass === "unknown") {
-    add(
-      "aster.provider.invalid-deletion",
-      "deletion.evidenceClass",
-      "Unknown deletion evidence blocks evaluation eligibility.",
+      "Invalid deletion evidence.",
     );
   }
 
   const credentials = policy.credentials;
   if (
-    credentials.containsSecretMaterial !== false ||
-    credentials.leastPrivilegeRequired !== true ||
-    credentials.environmentBound !== true ||
-    credentials.rotationAndRevocationRequired !== true ||
-    credentials.publicRepositoryCredentialsProhibited !== true
+    credentials.containsSecretMaterial ||
+    !credentials.leastPrivilegeRequired ||
+    !credentials.environmentBound ||
+    !credentials.rotationAndRevocationRequired ||
+    !credentials.publicRepositoryCredentialsProhibited
   ) {
     add(
       "aster.provider.invalid-credentials",
       "credentials",
-      "Credential boundaries must exclude secret material and require least privilege, environment binding, rotation, and revocation.",
+      "Invalid credentials.",
     );
   }
 
   const evaluation = policy.evaluation;
   if (
-    !validId(evaluation.criteriaId) ||
-    !validRevision(evaluation.criteriaRevision) ||
-    !uniqueKnown(evaluation.criteria, CRITERIA) ||
-    !hasAll(evaluation.criteria, CRITERIA) ||
-    !FUNDING_SOURCE.has(evaluation.evaluatorFundingSource) ||
-    !INDEPENDENCE.has(evaluation.independence) ||
-    evaluation.negativeFindingsPublishable !== true ||
-    evaluation.sponsorBenefitsDoNotAffectOutcome !== true
+    !text(evaluation.criteriaId) ||
+    !revision(evaluation.criteriaRevision) ||
+    !unique(evaluation.criteria) ||
+    !containsAll(evaluation.criteria, REQUIRED_CRITERIA) ||
+    !evaluation.conflictsDisclosed ||
+    !evaluation.negativeFindingsPublishable ||
+    !evaluation.sponsorBenefitsDoNotAffectOutcome ||
+    evaluation.evaluatorFundingSource === "unknown" ||
+    evaluation.independence === "unknown"
   ) {
     add(
       "aster.provider.invalid-evaluation",
       "evaluation",
-      "Evaluation must use complete provider-neutral criteria, visible conflicts, and publishable negative findings.",
+      "Invalid evaluation.",
     );
   }
   if (
-    evaluation.providerCanSetCriteria !== false ||
-    evaluation.providerCanSetWeights !== false ||
-    evaluation.providerCanControlFindings !== false ||
-    evaluation.providerCanControlPublication !== false
+    evaluation.providerCanSetCriteria ||
+    evaluation.providerCanSetWeights ||
+    evaluation.providerCanControlFindings ||
+    evaluation.providerCanControlPublication
   ) {
     add(
       "aster.provider.provider-controls-evaluation",
       "evaluation",
-      "A provider cannot control criteria, weights, findings, or publication.",
+      "Provider control of evaluation is prohibited.",
     );
   }
   if (
@@ -408,191 +360,142 @@ export function validateAsterProviderGovernance(
     add(
       "aster.provider.false-independence",
       "evaluation.independence",
-      "A provider-funded evaluator cannot be the independent reviewer and requires separate review.",
-    );
-  }
-  if (
-    evaluation.evaluatorFundingSource === "unknown" ||
-    evaluation.independence === "unknown" ||
-    !evaluation.conflictsDisclosed
-  ) {
-    add(
-      "aster.provider.invalid-evaluation",
-      "evaluation.conflictsDisclosed",
-      "Unknown or undisclosed evaluation conflicts block eligibility.",
+      "Provider-funded evaluation is not independent.",
     );
   }
 
   const funding = policy.funding;
-  if (!FUNDING.has(funding.relationshipState)) {
+  const materialSupport =
+    funding.providerCreditsPresent || funding.sponsorBenefitsPresent;
+  if (
+    funding.relationshipState === "unknown" ||
+    !funding.conflictsDisclosed
+  ) {
     add(
       "aster.provider.invalid-funding",
-      "funding.relationshipState",
-      "Funding relationship state is not recognized.",
+      "funding",
+      "Funding is unresolved.",
     );
   }
   if (
-    funding.relationshipState === "public-record-linked" &&
-    (!funding.publicFundingRecord ||
-      !validReference(funding.publicFundingRecord))
+    (funding.relationshipState === "public-record-linked" &&
+      (!funding.publicFundingRecord ||
+        !reference(funding.publicFundingRecord))) ||
+    (materialSupport &&
+      funding.relationshipState !== "public-record-linked")
   ) {
     add(
       "aster.provider.missing-public-funding-record",
       "funding.publicFundingRecord",
-      "Material provider support requires an exact public funding record reference.",
+      "Material support requires a public funding record.",
     );
   }
   if (
-    (funding.providerCreditsPresent || funding.sponsorBenefitsPresent) &&
-    funding.relationshipState !== "public-record-linked"
-  ) {
-    add(
-      "aster.provider.missing-public-funding-record",
-      "funding.relationshipState",
-      "Credits and sponsor benefits require a public material-relationship record.",
-    );
-  }
-  if (funding.relationshipState === "unknown" || !funding.conflictsDisclosed) {
-    add(
-      "aster.provider.invalid-funding",
-      "funding",
-      "Unknown or undisclosed provider funding conflicts block eligibility.",
-    );
-  }
-  if (
-    funding.fundingCanDetermineProviderDefault !== false ||
-    funding.fundingCanDetermineSourceRank !== false ||
-    funding.fundingCanDetermineConnectorRank !== false ||
-    funding.fundingCanDetermineEgressPolicy !== false ||
-    funding.fundingCanDetermineBenchmarkConclusion !== false ||
-    funding.fundingCanControlPublication !== false ||
-    funding.fundingCreatesGovernanceAuthority !== false
+    funding.fundingCanDetermineProviderDefault ||
+    funding.fundingCanDetermineSourceRank ||
+    funding.fundingCanDetermineConnectorRank ||
+    funding.fundingCanDetermineEgressPolicy ||
+    funding.fundingCanDetermineBenchmarkConclusion ||
+    funding.fundingCanControlPublication ||
+    funding.fundingCreatesGovernanceAuthority
   ) {
     add(
       "aster.provider.funding-control-attempt",
       "funding",
-      "Funding cannot determine defaults, rank, egress, conclusions, publication, or governance.",
+      "Funding cannot control product or evaluation authority.",
     );
   }
 
   const continuity = policy.continuity;
   if (
-    !CRITICALITY.has(continuity.criticality) ||
-    !CONCENTRATION.has(continuity.concentration) ||
-    continuity.providerIndependentAdapter !== true ||
-    continuity.localOrManualFallback !== true ||
-    !validReference(continuity.replacementPlan) ||
-    !validReference(continuity.migrationPlan) ||
-    !validReference(continuity.teardownPlan) ||
-    continuity.credentialRotationIncluded !== true ||
-    continuity.providerSideDeletionIncluded !== true ||
-    continuity.residualObligationsTracked !== true
+    !continuity.providerIndependentAdapter ||
+    !continuity.localOrManualFallback ||
+    !reference(continuity.replacementPlan) ||
+    !reference(continuity.migrationPlan) ||
+    !reference(continuity.teardownPlan) ||
+    !continuity.credentialRotationIncluded ||
+    !continuity.providerSideDeletionIncluded ||
+    !continuity.residualObligationsTracked
   ) {
     add(
       "aster.provider.invalid-continuity",
       "continuity",
-      "Continuity requires provider-independent adapters, fallback, and versioned replacement, migration, and teardown plans.",
+      "Invalid continuity.",
     );
   }
   if (continuity.criticality === "critical-without-exit-plan") {
     add(
       "aster.provider.missing-exit-plan",
       "continuity.criticality",
-      "A critical provider dependency without an exit plan is prohibited.",
+      "Critical dependencies require an exit plan.",
     );
   }
   if (
-    continuity.concentration === "pause-or-exception-required" &&
-    policy.state === "synthetic-evaluation-only"
+    continuity.concentration === "unknown" ||
+    (continuity.concentration === "pause-or-exception-required" &&
+      policy.state === "synthetic-evaluation-only")
   ) {
     add(
       "aster.provider.concentration-hold-required",
       "continuity.concentration",
-      "Concentration requiring pause or exception cannot remain evaluation-eligible.",
-    );
-  }
-  if (continuity.concentration === "unknown") {
-    add(
-      "aster.provider.concentration-hold-required",
-      "continuity.concentration",
-      "Unknown provider concentration requires review.",
+      "Concentration requires a hold.",
     );
   }
 
   const incident = policy.incidentAndCorrection;
   if (
-    incident.suspensionSupported !== true ||
-    !validId(incident.incidentPath) ||
-    !validId(incident.correctionPath) ||
-    incident.publicClaimsCorrectable !== true ||
-    incident.materialChangeTriggersRevalidation !== true ||
-    incident.termsChangeRequiresReview !== true ||
-    incident.acquisitionRequiresReview !== true
+    !incident.suspensionSupported ||
+    !text(incident.incidentPath) ||
+    !text(incident.correctionPath) ||
+    !incident.publicClaimsCorrectable ||
+    !incident.materialChangeTriggersRevalidation ||
+    !incident.termsChangeRequiresReview ||
+    !incident.acquisitionRequiresReview
   ) {
     add(
       "aster.provider.invalid-incident-boundary",
       "incidentAndCorrection",
-      "Provider incidents, corrections, suspension, terms changes, and acquisitions require inspectable review paths.",
+      "Invalid incident and correction boundary.",
     );
   }
 
-  if (Object.values(policy.publicClaims).some((value) => value !== false)) {
+  if (Object.values(policy.publicClaims).some(Boolean)) {
     add(
       "aster.provider.public-claim-overreach",
       "publicClaims",
-      "Provider statements cannot establish production approval, deletion proof, independence, suitability, preference, standards safety, or source authority.",
+      "Provider claims cannot establish approval or authority.",
     );
   }
   if (
-    policy.deletion.providerEvidenceIsNotUniversalProof !== true ||
-    policy.publicClaims.claimsDeletionComplete !== false ||
-    policy.publicClaims.claimsZeroRetentionProven !== false
+    policy.publicClaims.claimsDeletionComplete ||
+    policy.publicClaims.claimsZeroRetentionProven ||
+    !deletion.providerEvidenceIsNotUniversalProof
   ) {
     add(
       "aster.provider.deletion-overclaim",
       "publicClaims",
-      "Provider deletion or zero-retention evidence is bounded evidence, not universal proof.",
+      "Deletion evidence is bounded, not universal proof.",
     );
   }
 
-  const holds = policy.specialistHoldpoints;
-  if (!uniqueKnown(holds, HOLDPOINTS)) {
-    add(
-      "aster.provider.missing-specialist-holdpoint",
-      "specialistHoldpoints",
-      "Specialist holdpoints must be unique and recognized.",
-    );
-  }
+  const holdsValid =
+    unique(policy.specialistHoldpoints) &&
+    policy.specialistHoldpoints.every((value) => HOLDPOINTS.has(value));
   const requiresHold =
-    privateInfo ||
+    privateInformation ||
     policy.state === "specialist-review-required" ||
-    handling.regionStatus === "unknown" ||
-    handling.retentionMode === "unknown" ||
-    handling.subprocessorState === "unknown" ||
+    unknownHandling ||
     funding.relationshipState === "unknown" ||
     continuity.concentration === "unknown" ||
     continuity.concentration === "pause-or-exception-required";
-  if (requiresHold && holds.length === 0) {
+  if (
+    !holdsValid ||
+    (requiresHold && policy.specialistHoldpoints.length === 0)
+  ) {
     add(
       "aster.provider.missing-specialist-holdpoint",
       "specialistHoldpoints",
-      "Unresolved private-data, handling, funding, or concentration state requires explicit specialist holds.",
-    );
-  }
-  if (
-    policy.state === "synthetic-evaluation-only" &&
-    issues.some(
-      (issue) =>
-        issue.code === "aster.provider.unknown-handling" ||
-        issue.code === "aster.provider.invalid-evaluation" ||
-        issue.code === "aster.provider.invalid-funding" ||
-        issue.code === "aster.provider.concentration-hold-required",
-    )
-  ) {
-    add(
-      "aster.provider.invalid-state",
-      "state",
-      "A policy with unresolved handling, evaluation, funding, or concentration cannot be synthetic-evaluation-only.",
+      "Explicit specialist holds are required.",
     );
   }
 
@@ -605,7 +508,7 @@ export function validateAsterProviderGovernance(
     add(
       "aster.provider.authority-escalation",
       "authority",
-      "Provider governance cannot create domain, ranking, evaluation, publication, production, progression, or reward authority.",
+      "Provider governance cannot create authority.",
     );
   }
 

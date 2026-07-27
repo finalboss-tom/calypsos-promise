@@ -373,19 +373,20 @@ export interface AsterProviderGovernanceEnvelope {
   readonly authority: AsterProviderAuthorityBoundary;
 }
 
-export const ASTER_PROVIDER_AUTHORITY_BOUNDARY: AsterProviderAuthorityBoundary = {
-  canWriteCanonicalRecords: false,
-  canCreateOrExpandPermission: false,
-  canConfirmProposal: false,
-  canDetermineProviderDefault: false,
-  canDetermineSourceRank: false,
-  canDetermineConnectorRank: false,
-  canAuthorizeProductionUse: false,
-  canControlBenchmarkConclusion: false,
-  canControlPublication: false,
-  canCompleteQuest: false,
-  canGrantReward: false,
-};
+export const ASTER_PROVIDER_AUTHORITY_BOUNDARY: AsterProviderAuthorityBoundary =
+  {
+    canWriteCanonicalRecords: false,
+    canCreateOrExpandPermission: false,
+    canConfirmProposal: false,
+    canDetermineProviderDefault: false,
+    canDetermineSourceRank: false,
+    canDetermineConnectorRank: false,
+    canAuthorizeProductionUse: false,
+    canControlBenchmarkConclusion: false,
+    canControlPublication: false,
+    canCompleteQuest: false,
+    canGrantReward: false,
+  };
 
 export const ASTER_PROVIDER_GOVERNANCE_SCHEMA_ID =
   "aster.provider.governance" as const;
