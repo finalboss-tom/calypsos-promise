@@ -1,6 +1,6 @@
 # Aster Responsive and Deferred Work Contracts
 
-[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Memory lifecycle](aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation](aster-prompt-injection-and-untrusted-input-isolation.md) · [Operational simplicity](operational-simplicity-and-durable-workflows.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
+[Architecture index](README.md) · [Aster boundary](aster-contract-boundary.md) · [Role contracts](aster-role-contracts.md) · [Memory lifecycle](aster-memory-lifecycle-contracts.md) · [Untrusted-input isolation](aster-untrusted-input-isolation-contracts.md) · [Operational simplicity](operational-simplicity-and-durable-workflows.md) · [Product contract baseline](../product/aster-contract-baseline.md) · [Sprint 6 execution plan](../roadmap/sprint-6-execution-plan.md)
 
 - **Status:** ACTIVE PRE-STABLE CONTRACT
 - **Package:** `@calypsos-promise/aster`
@@ -211,7 +211,7 @@ Operational replay uses current authority facts. Historical reproduction does no
 
 ## Quarantine and hostile input
 
-Deferred work inherits the [Aster prompt-injection and untrusted-input isolation contract](aster-prompt-injection-and-untrusted-input-isolation.md) and the accepted Sprint 5 security baseline.
+Deferred work inherits the [Aster prompt-injection and untrusted-input isolation contract](aster-untrusted-input-isolation-contracts.md) and the accepted Sprint 5 security baseline.
 
 Quarantined work:
 
