@@ -226,20 +226,20 @@ The public governance taxonomy intentionally has no production-approved state. N
 
 ## Workstream completion mapping
 
-| Workstream | Completion evidence | Evidence status |
-| --- | --- | --- |
-| 6.1 | bounded package, version, authority matrix, prohibitions, and public exports | complete at contract and test level |
-| 6.2 | five detailed role contracts with evidence, failure, retention, egress, and fallback | complete at contract and test level |
-| 6.3 | proposal envelope, exact review revision, transformation provenance, and extraction candidates | complete at contract and test level |
-| 6.4 | intent, confidence, ambiguity, clarification, refusal, and safe fallback | complete at contract and test level |
-| 6.5 | exact source-linked recall, mapping, lifecycle, freshness, fallback, and uncertainty | complete at contract and test level |
-| 6.6 | memory classes, separate player choice, lifecycle, correction, export, deletion, and non-blocking absence | complete at contract and test level |
-| 6.7 | untrusted-input and prompt-injection isolation | complete at contract and test level |
-| 6.8 | responsive and deferred work, retry, duplicate safety, cancellation, stale rejection, correction, and replay | complete at contract and test level |
-| 6.9 | provider egress, handling, deletion uncertainty, evaluation independence, funding conflicts, concentration, and exit | complete at contract and test level |
-| 6.10 | seventeen deterministic scenarios, five role fallbacks, and seven core non-AI paths | complete at public-synthetic-fixture and test level |
-| 6.11 | twelve-component manifest, public fixture catalogue, compatibility, migration, and cross-contract validation | complete at contract and test level |
-| 6.12 | completion record, reconciliation, control map, specialist holdpoints, unresolved work, and final validation | complete on review branch; founding-steward acceptance pending |
+| Workstream | Completion evidence                                                                                                  | Evidence status                                                |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| 6.1        | bounded package, version, authority matrix, prohibitions, and public exports                                         | complete at contract and test level                            |
+| 6.2        | five detailed role contracts with evidence, failure, retention, egress, and fallback                                 | complete at contract and test level                            |
+| 6.3        | proposal envelope, exact review revision, transformation provenance, and extraction candidates                       | complete at contract and test level                            |
+| 6.4        | intent, confidence, ambiguity, clarification, refusal, and safe fallback                                             | complete at contract and test level                            |
+| 6.5        | exact source-linked recall, mapping, lifecycle, freshness, fallback, and uncertainty                                 | complete at contract and test level                            |
+| 6.6        | memory classes, separate player choice, lifecycle, correction, export, deletion, and non-blocking absence            | complete at contract and test level                            |
+| 6.7        | untrusted-input and prompt-injection isolation                                                                       | complete at contract and test level                            |
+| 6.8        | responsive and deferred work, retry, duplicate safety, cancellation, stale rejection, correction, and replay         | complete at contract and test level                            |
+| 6.9        | provider egress, handling, deletion uncertainty, evaluation independence, funding conflicts, concentration, and exit | complete at contract and test level                            |
+| 6.10       | seventeen deterministic scenarios, five role fallbacks, and seven core non-AI paths                                  | complete at public-synthetic-fixture and test level            |
+| 6.11       | twelve-component manifest, public fixture catalogue, compatibility, migration, and cross-contract validation         | complete at contract and test level                            |
+| 6.12       | completion record, reconciliation, control map, specialist holdpoints, unresolved work, and final validation         | complete on review branch; founding-steward acceptance pending |
 
 ## Validation and evidence status
 
