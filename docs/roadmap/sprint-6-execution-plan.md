@@ -83,7 +83,13 @@ Define allowed inputs, outputs, prohibited actions, required evidence, clarifica
 
 ### 6.3 Proposal and extraction contracts
 
+**Implementation status:** IMPLEMENTED ON DRAFT PR #48; exact-head CI validation and final Sprint 6 acceptance remain pending.
+
 Define a structured Aster proposal envelope and extraction schemas separate from Chronicle records, House of Keys facts, memory, receipts, provider logs, retrieval indexes, product state, and delayed-work state.
+
+**Current evidence:** stable proposal and schema identity; contract, proposal, request, subject, producer, model-or-rule revision, source-reference, transformation-provenance, intended-action, qualitative-confidence, uncertainty, clarification, payload, review, authority, and domain-outcome fields; role-to-operation and role-to-proposal-kind alignment; exact-revision player confirmation; non-copying minimum-necessary source references; structured extraction value and state taxonomies; source- and transformation-linked candidates; visible unparsed segments; literal non-canonical, unconfirmed, and not-domain-accepted candidate flags; stable proposal and extraction validation issues; architecture and product documentation; and public-surface Node tests.
+
+**Exit evidence:** proposal and extraction contracts compile through the public package; a valid synthetic Scribe proposal and structured extraction validate; confirmation binds the exact proposal revision and player actor; source and transformation provenance remain inspectable; role, operation, kind, owner, and confirmation rules cannot drift; proposal payloads and extraction candidates cannot become canonical; and tests reject permission, authoritative-action, domain-outcome, player-confirmation, and domain-acceptance escalation.
 
 ### 6.4 Intent, confidence, clarification, and refusal
 
