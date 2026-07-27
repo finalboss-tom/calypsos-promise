@@ -20,12 +20,23 @@ The core package intentionally has no database, network, provider, model SDK, UI
 - `authority.ts` defines the five roles, direct accessible names, allowed input and output classes, authority-source classes, deterministic action owners, execution classes, confirmation rules, mandatory prohibitions, and the authority matrix.
 - `role-contracts.ts` defines the bounded operation, evidence requirements, clarification triggers, qualitative confidence and uncertainty rules, failure codes, source-link rules, retention limits, provider-egress limits, manual fallback, and role-specific prohibitions for each role.
 - `proposal.ts` defines proposal kinds, subject, request, producer, source, transformation, confidence, uncertainty, clarification, intended-action, review, authority, domain-outcome, payload, and structured-extraction contracts.
+- `intent.ts` defines bindable and safe meta intents, consequence classes, dispositions, ambiguity and refusal taxonomies, clarification lifecycle, intent candidates, and non-authoritative intent decisions.
 - `validate.ts` deterministically validates the authority matrix.
 - `validate-role-contracts.ts` deterministically validates detailed role contracts against the authority matrix and shared safety boundaries.
 - `validate-proposal.ts` deterministically validates proposal envelopes and structured extraction candidates against role, source, review, provenance, non-authority, and domain-handoff boundaries.
+- `validate-intent.ts` deterministically validates intent binding, qualitative confidence, clarification, refusal, safe proposal preparation, and non-authority.
 - `version.ts` exposes the pre-stable contract version.
 
 Tests import only `dist/index.js` so private file layout does not become the consumer contract.
+
+## Intent guarantees
+
+- The public taxonomy distinguishes capture, recall, explanation, navigation, permission review, correction, export, deletion preparation, support routing, non-actionable conversation, unknown, mixed, conflicting, and unsupported intent.
+- Unknown, mixed, conflicting, or multiply plausible bindable intent requires clarification rather than choosing the most likely action.
+- Unsupported intent requires an inspectable refusal, explanation, and safe manual fallback.
+- Confidence is qualitative, explained, and explicitly non-authoritative; numeric probabilities, scores, and percentages are rejected.
+- A bound intent requires explicit player choice and may prepare only a non-authoritative proposal.
+- Intent classification cannot invoke actions, create or expand permission, confirm proposals, or claim domain completion.
 
 ## Proposal guarantees
 
@@ -46,4 +57,4 @@ Tests import only `dist/index.js` so private file layout does not become the con
 
 All request context is transient by default. Roles own no hidden retained memory. Any retained memory requires a separate visible player choice. Future provider egress remains policy-gated and minimum necessary; no provider is approved by this package.
 
-See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
+See [`docs/architecture/aster-contract-boundary.md`](../../docs/architecture/aster-contract-boundary.md), [`docs/architecture/aster-role-contracts.md`](../../docs/architecture/aster-role-contracts.md), [`docs/architecture/aster-proposal-and-extraction-contracts.md`](../../docs/architecture/aster-proposal-and-extraction-contracts.md), [`docs/architecture/aster-intent-confidence-clarification-refusal.md`](../../docs/architecture/aster-intent-confidence-clarification-refusal.md), [`docs/product/aster-contract-baseline.md`](../../docs/product/aster-contract-baseline.md), and [`docs/roadmap/sprint-6-execution-plan.md`](../../docs/roadmap/sprint-6-execution-plan.md).
