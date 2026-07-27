@@ -39,7 +39,8 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Initial founder-subsidy and economic-dependency register using reviewed public categories without exposing private financial source records
 - A public feedback-to-governed-work baseline linking issues, prioritization, implementation, validation, and outcome review
 - A funding and sponsorship baseline defining acceptable support, prohibited benefits, conflicts, public reporting, concentration, dependency, correction, termination, and unresolved operating gates before a fundraising surface becomes live
-- A proposed consumer-first and institutional-interoperability workstream defining provider, connector, standards, funding, evidence, replacement, and future enterprise-partnership gates before a material relationship becomes operational
+- An accepted consumer-first and institutional-interoperability workstream defining provider, connector, standards, funding, evidence, replacement, and future enterprise-partnership gates before a material relationship becomes operational
+- An accepted operational-simplicity and durable-workflows baseline defining the modular-monolith default, responsive and deferred work, local simulation, provider isolation, operability, and evidence-gated service extraction before production topology is selected
 
 **Governance unlock**
 
@@ -57,6 +58,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Material decisions no longer live only in private notes or chat
 - The progressive-decentralization mandate is accepted as an architectural constraint
 - The consumer-first and provider-independent boundary is accepted, revised, or explicitly declined rather than left to future procurement or sponsor pressure
+- The operational-simplicity and durable-workflows boundary is accepted, with persistence, queue, scheduler, service, observability, offline, performance, and provider choices kept explicit and evidence-gated
 - Funding cannot purchase player rights, private-data access, Chronicle schema authority, provider placement, connector rank, product or research authority, roadmap control, governance power, favorable findings, or exemption from ordinary review
 - Material funding, sponsor, provider, connector, vendor-credit, related-party, concentration, distribution, source-reach, and dependency relationships have a public institutional record shape and explicit private-source boundary
 - Future connector and institutional-partnership work has named evidence requirements, specialist holdpoints, provider-replacement behavior, and rollback conditions
