@@ -1,30 +1,31 @@
 # Current Project Status
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md) · [Funding baseline](../economics/README.md)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Institutional roadmap](../../ROADMAP.md) · [Sprint sequence](sprints.md) · [Funding baseline](../economics/README.md) · [Sprint 5 completion](sprint-5-completion-record.md) · [Security architecture](../security/README.md)
 
-**Status date:** 2026-07-26  
+**Status date:** 2026-07-27  
 **Institutional phase:** Phase 0 — Constitutional and open-source foundations  
-**Design-to-build sequence:** Sprints 0–5 complete and merged; Sprint 6 remains the next numbered sprint  
-**Active institutional workstream:** Phase 0 Funding and Sponsorship Baseline on issue #37  
-**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, connector, research, financial, or deployed security-control runtime
+**Design-to-build sequence:** Sprints 0–5 complete and merged; Phase 0 Funding and Sponsorship Baseline complete on draft PR #38 pending explicit approval and merge; Sprint 6 is next afterward  
+**Runtime status:** Bounded public repository gateway only; no production health-data, account, House of Keys, agent, connector, research, financial, private Chronicle, encryption, monitoring, or deployed security-control runtime
 
 ## Executive status
 
 Calypso’s Promise has two coordinated roadmaps:
 
-1. [`docs/roadmap/sprints.md`](sprints.md) defines the near-term design-to-build sequence.
+1. [`docs/roadmap/sprints.md`](sprints.md) defines the near-term design-to-build sequence and non-numbered institutional workstreams.
 2. [`ROADMAP.md`](../../ROADMAP.md) defines the longer institutional progression from constitutional foundations to a founder-independent, hundred-year institution.
 
 Sprints 0–5 are complete and merged.
 
 - Sprint 3 merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`, establishing the pre-stable Living Chronicle architecture, schema, validators, fixtures, compatibility requirements, and completion evidence.
 - Sprint 4 merged through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`, establishing the pre-stable House of Keys architecture, contracts, validator, pure policy evaluator, receipts, synthetic evidence, compatibility boundaries, and completion record.
-- The pre-Sprint 5 reconciliation merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`, repairing post-merge drift and confirming the Sprint 5 handoff.
-- Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the security and privacy architecture, control objectives, residual-risk register, public synthetic abuse cases, founding-steward design tabletops, cross-contract reconciliation, and specialist holdpoints.
+- The pre-Sprint 5 reconciliation merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`, repairing post-merge drift and confirming the unchanged Sprint 5 handoff.
+- Sprint 5 merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`, establishing the security architecture, policies, procedures, public synthetic evidence, founding-steward design tabletops, residual-risk records, reconciliation, and specialist holdpoints.
 
-The active bounded work is [Phase 0 — Funding and Sponsorship Baseline](../economics/README.md), tracked in [issue #37](https://github.com/finalboss-tom/calypsos-promise/issues/37). It establishes doctrine before any donation, sponsor, grant, affiliate, provider-credit, compensation, investment, research-funding, treasury, or payment implementation.
+The Phase 0 Funding and Sponsorship Baseline is complete on draft PR #38. Issue #37 remains the acceptance and closure ledger until explicit founding-steward approval and merge.
 
-Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Merged design baselines do not declare the private product, deployed security posture, legal or clinical review, research infrastructure, sustainable economics, governance transition, or Phase 0 complete.
+The funding workstream defines doctrine, public register contracts, fictional relationship and opportunity examples, lightweight validation, and founding-steward design tabletop evidence. It does not authorize a legal recipient, donations, grants, sponsors, providers, affiliates, research funding, compensation, investment, payment rails, accounting, treasury, charitable status, tax deductibility, or financial operations.
+
+Institutional Phase 0 remains active until its organizational and evidence gates are reviewed explicitly. Completing this baseline does not declare the product runtime, financial operations, deployed security posture, clinical or legal review, research infrastructure, governance transition, or Phase 0 complete.
 
 ## Merged baseline
 
@@ -32,23 +33,23 @@ Institutional Phase 0 remains active until its organizational and evidence gates
 
 Established:
 
-- frozen product, architecture, gameplay, and lore foundations;
-- status vocabulary and change control;
-- source and assumption records;
-- the initial sprint roadmap; and
-- the repository as the intended source of truth.
+- frozen product, architecture, gameplay, lore, and repository-governance foundations
+- status vocabulary and change control
+- source and assumption records
+- the initial sprint roadmap
+- the repository as the intended source of truth
 
 ### Sprint 1 — Repository and open-source operating model
 
 Established:
 
-- runnable pnpm and Turborepo workspace;
-- Node.js and package-manager baselines;
-- contributor, conduct, security, DCO, dependency, and synthetic-data policies;
-- formatting, documentation-link, repository-policy, content-validation, lint, typecheck, test, and DCO checks; and
-- a credential-free contributor environment.
+- runnable pnpm and Turborepo workspace
+- Node.js and package-manager baselines
+- contributor, conduct, security, DCO, dependency, and synthetic-data policies
+- independent formatting, documentation-link, repository-policy, content-validation, lint, typecheck, test, and DCO checks
+- a credential-free contributor environment
 
-The exact legal dedication instruments, branch-protection administration, contributor public-domain migration, and commit-level DCO enforcement remain follow-on work.
+The exact legal dedication instruments, trademark policy, branch-protection administration, and commit-level DCO enforcement remain follow-on work.
 
 ### Sprint 2 — Controlled vocabulary, incentives, and content schemas
 
@@ -56,15 +57,19 @@ Merged through PR #9 as squash commit `3cdcc6fc7fe6a500ce57c00530109c2e976c9e70`
 
 Established:
 
-- controlled and retired terminology;
-- pre-stable content contracts and JSON Schema;
-- character, zone, scene, dialogue, quest, lesson, and notification records;
-- deterministic quest completion and reward shapes;
-- meaningful defer, refuse, exit, and shame-free return behavior;
-- one authoritative repository validation path; and
-- content review, replacement, publication, recall, and rollback governance.
+- controlled and retired terminology
+- the pre-stable `0.1.0` content contract
+- strict dotted identifiers and common review metadata
+- character, zone, scene, dialogue, quest, lesson, and notification records
+- deterministic quest completion and reward shapes
+- meaningful defer, refuse, and exit paths
+- shame-free return behavior
+- JSON Schema and TypeScript contracts
+- one authoritative repository validation path
+- content review, replacement, publication, recall, and rollback governance
+- canonical examples that remain honestly marked `specialist-review`
 
-The incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader permission, unnecessary intimate disclosure, payment, wealth, social reach, or donation size.
+The Sprint 2 incentive boundary requires personal value first, deterministic rewards, meaningful refusal, non-punitive return, optional Fellowship, and no reward for broader permission or unnecessary intimate disclosure.
 
 ### Progressive-decentralization mandate
 
@@ -72,100 +77,163 @@ Merged through PR #10 as squash commit `2b56415b2c3ebc65dfe25690af2421bcde375afa
 
 Established as a frozen institutional and architectural constraint:
 
-- the consumer application is the first operating surface, not the final institutional form;
-- authority follows demonstrated capacity and public evidence gates;
-- early accountable leadership remains bounded and must reduce key-person dependency;
-- governance distinguishes constitutional, safety, strategic, economic, technical, operational, and community decisions;
-- capital cannot purchase unlimited control, player rights, private-data access, or immunity from oversight;
-- governance participation cannot require broader permission or intimate disclosure;
-- token, blockchain, NFT, and on-chain mechanisms remain optional and deferred; and
-- founder independence is a success condition.
+- the consumer application is the first operating surface, not the final institutional form
+- authority follows demonstrated capacity and public evidence gates
+- early accountable leadership is compatible with the end state only when it is bounded and reduces key-person dependency
+- governance distinguishes constitutional, safety, strategic, economic, technical, operational, and community decisions
+- capital cannot purchase unlimited control, player rights, private-data access, or immunity from oversight
+- governance participation cannot require broader health-data permission or unnecessary intimate disclosure
+- token, blockchain, NFT, and on-chain DAO mechanisms remain optional and deferred
+- founder independence is a success condition
+- deterministic incentives, meaningful refusal, non-punitive return, and personal value first are constitutional boundaries
 
 ### Sprint 3 — Canonical data model v1
 
-Established provider-independent and pseudonymous Chronicle identity; temporal representation; observations, intervals, reflections, goals, associations, and inferences; stable variables and normalization; source artifacts and provenance; correction, conflict, merge, export, deletion, custody, compatibility, validators, and public synthetic fixtures.
-
-Permission, story, quest, receipt, Aster memory, and production migration authority remain outside Chronicle truth.
-
-### Sprint 4 — House of Keys consent architecture
-
-Established a separate, pre-stable House of Keys capability with:
-
-- versioned purpose and data-category taxonomies;
-- atomic purpose-specific grants;
-- prospective revocation and explicit lifecycle evidence;
-- direct and narrative explanation parity;
-- comprehension and confirmation requirements;
-- person-inspectable access receipts; and
-- a pure provider-independent `allow`, `deny`, or `indeterminate` evaluator.
-
-Blanket permission cannot authorize an action, personal-core use remains independent from research or commerce, and missing or conflicting material authority fails closed.
-
-### Sprint 5 — Threat model and security baseline
-
-The [Sprint 5 Completion Record](sprint-5-completion-record.md) is the canonical merged evidence.
-
-Sprint 5 established:
-
-- nine authority domains, fourteen actor classes, thirteen trust zones, twenty-three asset classes, eighteen boundary crossings, and twelve principal flows;
-- forty-six stable threats and forty-six open residual risks;
-- 236 stable controls or control objectives across identity, integrated threat, Chronicle, House of Keys, untrusted-input, key/secret/environment, and reliability/incident/deletion families;
-- fifteen public synthetic abuse cases and fifteen paired founding-steward design-tabletop records;
-- cross-contract reconciliation and truthful control-status vocabulary; and
-- twenty-four specialist, pilot, production, and institutional holdpoints.
-
-All residual risks remain open. Production-facing risks remain mitigation-required and production-blocking. Designed, synthetically exercised, internally accepted, independently reviewed, implemented, deployed, and operationally verified remain distinct statuses.
-
-Sprint 5 does not authorize production accounts, providers, uploads, connectors, agents, recipients, research, encryption deployment, key custody, backups, monitoring, incident operations, protected audit, deletion verification, or private-data processing.
-
-### Website Track 0A — Repository gateway
-
-Merged through PR #26, with deployment and concept-art corrections through PRs #28 and #31.
+Merged through PR #14 as squash commit `19c1045a24679246dae209e13c62038362c69cc1`.
 
 Established:
 
-- a bounded public repository gateway;
-- truthful planned-capability language;
-- a GitHub repository call to action;
-- a purpose-limited Founding Expedition email form behind a private webhook; and
-- no account, private Chronicle, health-data intake, research enrollment, analytics, or production permission behavior.
+- provider-independent and pseudonymous Chronicle identity
+- explicit subject, actor, author, recorder, source, confirmer, transformer, and custody distinctions
+- exact, date-only, local, approximate, recurring, bounded, and open temporal representations
+- observations, intervals, reflections, goals, derived records, associations, and inferences
+- stable variables, discriminated values, categories, units, mappings, and deterministic normalization
+- raw source artifacts, immutable versions, exact locators, and provenance chains
+- correction, supersession, retraction, invalidation, conflict, duplicate, merge, unmerge, and preferred-presentation semantics
+- document, attachment, stored-representation, derived-representation, and replaceable custody contracts
+- export, omission, deletion, retention-exception, tombstone, and completion-evidence lifecycles
+- independent Living Chronicle schema version `0.1.0`
+- strict TypeScript contracts and a JSON-serializable aggregate bundle
+- deterministic cross-reference and invariant validation
+- public synthetic fixtures and inclusive interaction contexts
+- migration and compatibility requirements without executable production migrations
+- cross-contract completion evidence and an explicit deferred-work register
 
-This bounded slice does not replace Sprint 8 or authorize a donation or sponsorship runtime.
+Sprint 3 preserves person control, traceable derivation, visible uncertainty and conflict, inspectable correction history, explicit deletion, provider replaceability, and the prohibition on converting disclosure into rewards or governance power.
 
-## Active Phase 0 funding and sponsorship workstream
+The historical Sprint 3 deliverable list named story, quest, permission, receipt, Aster-memory, and database-migration directions. The accepted completion record kept those domains outside Chronicle truth and deferred executable production migrations. This is an execution clarification, not a retroactive scope change.
 
-[Decision 0008](../decisions/0008-funding-and-sponsorship-baseline.md) accepts a provider-independent Funding and Sponsorship Baseline.
+### Sprint 4 — House of Keys consent architecture
 
-The active branch establishes:
+Merged through PR #33 as squash commit `51e94a19cc21a0da0c57f1ae3b09f57092aee8d1`. Closed issue #32 contains the workstream and acceptance ledger.
 
-- funding classification for individual and organizational donations, restricted grants, underwriting, sponsorships, in-kind support, matching support, pro bono review, affiliate revenue, research funding, investment, and compensation;
-- constitutional limits on what money can purchase;
-- sponsor recognition and prohibited-benefit rules;
-- conflicts, recusals, related-party review, acceptance authority, suspension, and termination;
-- a public institutional ledger separated from private financial source records;
-- public-good underwriting opportunities;
-- infrastructure-credit, provider-neutrality, portability, dependency, and exit rules;
-- concentration, continuity, donor-capture, and founder-subsidy treatment;
-- versioned public funding and opportunity register structures; and
-- public synthetic funding records and founding-steward design tabletops.
+Established:
 
-The workstream does **not**:
+- a separate House of Keys bounded capability rather than permission state inside `packages/health-schema`
+- versioned purpose and data-category taxonomies with non-grantable families and explicit grantable leaves
+- atomic grants binding controlling authority, recipient, resource, subjects, exact category and action revisions, selectors, conditions, duration, explanation, comprehension requirement, and confirmation
+- prospective revocation and explicit lifecycle states and events
+- person-inspectable access-receipt contracts separated from decisions, execution, and protected operational audit records
+- direct and narrative explanation parity, accessible alternatives, and non-punitive comprehension evidence
+- a pure, provider-independent, side-effect-free `allow`, `deny`, or `indeterminate` evaluator
+- the independent package `@calypsos-promise/house-of-keys` at contract version `0.1.0-pre.1`
+- deterministic structural validation, seventeen public synthetic policy scenarios, one synthetic completed-access receipt, and twenty-nine Node tests
+- cross-contract remediation for exact revisions, selector narrowing, explanation parity, grant authority, lifecycle evidence, receipt validation, decision correlation, required actors, and personal-core independence
 
-- accept money, grants, sponsors, affiliate revenue, investment, compensation, or research funding;
-- activate `.github/FUNDING.yml` or a website donation form;
-- select a nonprofit, for-profit, fiscal sponsor, payment processor, bank, accounting system, or treasury;
-- claim tax deductibility, charitable status, independent financial review, or operating financial controls;
-- select AI, cloud, health, security, identity, analytics, or other providers; or
-- create player rewards, Fellowship, governance power, data access, research access, or roadmap priority from funding.
+The accepted Sprint 4 criteria are met:
+
+- blanket permission cannot authorize an action
+- active grants and receipts are inspectable
+- withdrawn authority denies future access
+- personal-core use remains independent from optional research or commerce
+- missing or conflicting material authority fails closed
+
+The [Sprint 4 Completion Record](sprint-4-completion-record.md) is the canonical evidence, compatibility, hold-point, and unresolved-work record.
+
+### Pre-Sprint 5 repository reconciliation
+
+Merged through PR #34 as squash commit `d135b2fdf79a3c2cca9bf7cad275fc454d22fa6d`.
+
+Established:
+
+- truthful Sprint 4 merge status across repository surfaces
+- content-to-House-of-Keys identifier alignment
+- public-site live-versus-planned permission claims
+- the Sprint 3 execution clarification
+- the Living Chronicle and House of Keys security handoff
+- the unchanged Sprint 5 scope and entry conditions
+- explicit requirements for privacy threats, authority-bearing flows, policy freshness, untrusted inputs, recoverability, control-status truth, residual risk, and independent-review status
+
+### Sprint 5 — Threat model and security baseline
+
+Merged through PR #36 as squash commit `4d09e8fc5b81f354c4568f97794fd9533ec68048`.
+
+Established:
+
+1. security scope, assets, classifications, authorities, data flows, and trust boundaries
+2. identity, account, session, tenant, operator, recovery, and emergency-power boundaries
+3. integrated security and privacy threats and residual risk
+4. Living Chronicle source, provenance, inference, export, deletion, and custody threats
+5. House of Keys enforcement, freshness, lifecycle, receipt, and audit threats
+6. upload, connector, document, AI, MCP, dependency, and untrusted-input isolation
+7. encryption, key management, secrets, and environment isolation
+8. availability, backup, restore, incident response, audit retention, and deletion verification
+9. public synthetic abuse cases and tabletop exercises
+10. cross-contract review, control-status truth, specialist hold points, and completion evidence
+
+All ten workstreams are complete for the accepted architecture, policy, procedure, risk, control, and founding-steward design-tabletop scope. The [Sprint 5 Completion Record](sprint-5-completion-record.md) is the canonical evidence. Completion does not imply implementation, deployment, operational verification, independent review, production readiness, or Phase 0 exit.
+
+Sprint 5 preserves:
+
+- useful personal value first
+- individual control and meaningful refusal
+- deterministic authority rather than AI or UI convenience
+- private people and public code kept separate
+- separately authorized research, commerce, compensation, and collective benefit
+- evidence-gated institutional authority
+- explicit challenge, containment, rollback, restoration, and revalidation
+
+Security may not become a reason to pressure people into broader collection, longer retention, wider recipient access, optional analytics, model training, research, public visibility, or surrender of correction, export, deletion, refusal, accessibility, or non-AI fallback.
+
+### Phase 0 Funding and Sponsorship Baseline
+
+Complete on draft PR #38 for explicit approval and merge.
+
+Established at doctrine, public-register-contract, fictional-example, lightweight-validation, and founding-steward design-tabletop levels:
+
+- Decision 0008
+- funding taxonomy and acceptance policy
+- sponsor benefit and recognition policy
+- conflict, recusal, related-party, authority, exception, suspension, and termination policy
+- public ledger and private-source boundary
+- empty canonical real funding and opportunity registers
+- five fictional funding relationship records and six fictional funding opportunity records
+- public-good underwriting catalogue
+- infrastructure sponsorship, provider-neutrality, portability, replacement, and exit rules
+- concentration, continuity, donor-capture, and founder-subsidy treatment
+- sixteen fictional sponsor-capture and continuity table exercises
+- funding-register validation through `pnpm economics:check`
+- explicit inheritance into Governance, Website Information Architecture, Sprints 6, 7, 8, 17, 18, and 19, Phase 2, Phase 5, and a future Funding Operations and Financial Controls workstream
+
+The baseline does not accept or operate money. It does not establish a recipient, entity, fiscal sponsor, bank, processor, accounting system, tax status, treasury, compensation system, provider, affiliate program, investment instrument, research-funding program, nonprofit status, charitable status, or tax deductibility.
+
+## Security control and review status
+
+Sprint 5 distinguishes:
+
+- required controls
+- designed controls
+- synthetically tested controls
+- independently reviewed controls
+- implemented controls
+- deployed controls
+- operationally verified controls
+- deferred, rejected, retired, or not-applicable controls
+
+These statuses do not collapse into one maturity score. A documented or synthetically tested control is not deployed. Founding-steward acceptance is not independent specialist review.
+
+The canonical vocabulary is maintained in [`docs/security/control-status-and-risk-vocabulary.md`](../security/control-status-and-risk-vocabulary.md).
+
+The project currently has no named independent security reviewer. This must remain explicit until a qualified reviewer is recorded or a separately reviewed temporary exception is accepted.
 
 ## Next design-to-build boundary
 
-After the bounded Phase 0 funding baseline is accepted and merged, Sprint 6 — Aster contracts and AI governance remains the next numbered sprint.
+After the Funding and Sponsorship Baseline is approved and merged, Sprint 6 — Aster contracts and AI governance is next. Sprint 6 must inherit both:
 
-Sprint 6 must inherit:
+- Sprint 5 threats, controls, provider-egress, prompt-injection, retrieval, memory, non-AI fallback, evidence-status, and specialist-holdpoint boundaries; and
+- Decision 0008 provider-neutrality, funding-conflict, model-credit, sponsored-benchmark, affiliate, related-party, and publication-independence boundaries.
 
-- Sprint 5 security, untrusted-input, provider-egress, prompt-injection, retrieval, memory, evidence-status, and specialist-holdpoint boundaries; and
-- Decision 0008’s requirement that provider credits, sponsorship, affiliate value, or commercial relationships do not create default provider status, product authority, health influence, or control over findings.
+Sprint 6 defines provider-governance requirements. It does not select or endorse a production provider.
 
 ## Institutional Phase 0 gate assessment
 
