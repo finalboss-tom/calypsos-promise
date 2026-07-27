@@ -13,6 +13,41 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  funding-final-audit:
+    if: github.event_name == 'pull_request' && github.head_ref == 'institution/phase-0-funding-sponsorship-baseline'
+    name: funding-final-audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Apply final funding audit
+        run: node tools/one-time-funding-final-audit.mjs
+      - name: Format reconciled files
+        run: pnpm format
+      - name: Validate funding records
+        run: pnpm economics:check
+      - name: Commit reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "docs: complete original funding plan reconciliation"
+          git push origin HEAD:${{ github.head_ref }}
+
   formatting:
     name: formatting
     runs-on: ubuntu-latest
