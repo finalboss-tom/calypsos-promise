@@ -322,9 +322,7 @@ export function validateAsterUntrustedInputIsolation(
       if (
         input.allowedUses.some(
           (use) =>
-            !policy.allowedUses.includes(
-              use as AsterUntrustedInputAllowedUse,
-            ),
+            !policy.allowedUses.includes(use as AsterUntrustedInputAllowedUse),
         )
       ) {
         push(
@@ -452,9 +450,7 @@ export function validateAsterUntrustedInputIsolation(
 
   for (const inputId of resourceRequestInputIds) {
     if (
-      !findingCodesByInput
-        .get(inputId)
-        ?.has("arbitrary-resource-invocation")
+      !findingCodesByInput.get(inputId)?.has("arbitrary-resource-invocation")
     ) {
       push(
         issues,
@@ -467,9 +463,7 @@ export function validateAsterUntrustedInputIsolation(
 
   for (const inputId of toolRequestInputIds) {
     if (
-      !findingCodesByInput
-        .get(inputId)
-        ?.has("arbitrary-resource-invocation")
+      !findingCodesByInput.get(inputId)?.has("arbitrary-resource-invocation")
     ) {
       push(
         issues,
