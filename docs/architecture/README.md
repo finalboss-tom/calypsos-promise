@@ -20,6 +20,7 @@ This directory contains versioned architecture baselines that implement the froz
 12. [House of Keys Permission Explanation and Comprehension Model](house-of-keys-explanation-comprehension-model.md) — direct and narrative parity, layered explanations, accessible evidence, confirmation separation, and synthetic comprehension prototypes
 13. [House of Keys Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md) — pure versioned evaluation, explicit facts, complete-grant matching, fail-closed outcomes, stable reasons, freshness, and execution separation
 14. [House of Keys Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md) — pre-stable TypeScript contracts, deterministic validation, pure evaluation, public synthetic fixtures, and Node tests
+15. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Living Chronicle architecture
 
@@ -46,6 +47,16 @@ This directory contains versioned architecture baselines that implement the froz
 
 The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
 
+## Legacy and succession architecture
+
+- [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](../decisions/0009-health-data-legacy-and-post-mortem-stewardship.md)
+- [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+- [Future Health Data Legacy Workstream](../roadmap/health-data-legacy-workstream.md)
+- [AS-0011 — Post-Mortem Chronicle Value](../governance/assumption-AS-0011-health-data-legacy-value.md)
+- [Account Recovery and Emergency Access Model](../security/account-recovery-and-emergency-access-model.md)
+
+Legacy and succession are proposed future capabilities, not extensions of login recovery or Chronicle truth. A directive expresses person intent; external authority evidence supports a role; the House of Keys evaluates a bounded operation; execution and receipts record what occurred. Death, incapacity, inactivity, custody, family relationship, or scientific value cannot collapse those domains.
+
 ## Boundary rule
 
-Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, authentication, consent enforcement, connector rollout, clinical behavior, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
+Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, authentication, consent enforcement, connector rollout, clinical behavior, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
