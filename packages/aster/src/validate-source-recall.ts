@@ -199,7 +199,10 @@ function validateMapping(
   value: unknown,
   path: string,
 ): void {
-  if (!isRecord(value) || !includesString(ASTER_RECALL_MAPPING_STATES, value.state)) {
+  if (
+    !isRecord(value) ||
+    !includesString(ASTER_RECALL_MAPPING_STATES, value.state)
+  ) {
     addIssue(
       issues,
       "aster.recall.invalid-mapping",
@@ -312,8 +315,7 @@ function validateRetrieval(
 
   if (
     value.method === "semantic-index" &&
-    (!isNonEmptyString(value.indexId) ||
-      !isNonEmptyString(value.indexRevision))
+    (!isNonEmptyString(value.indexId) || !isNonEmptyString(value.indexRevision))
   ) {
     addIssue(
       issues,
@@ -375,7 +377,10 @@ export function validateAsterSourceLinkedRecall(
     return issues;
   }
 
-  if (value.schemaId !== "aster.recall.source-linked" || value.schemaRevision !== 1) {
+  if (
+    value.schemaId !== "aster.recall.source-linked" ||
+    value.schemaRevision !== 1
+  ) {
     addIssue(
       issues,
       "aster.recall.invalid-schema",
@@ -430,7 +435,10 @@ export function validateAsterSourceLinkedRecall(
   const subject = isRecord(value.subject) ? value.subject : {};
   if (
     !isNonEmptyString(subject.subjectId) ||
-    !(subject.subjectRevision === null || isNonEmptyString(subject.subjectRevision))
+    !(
+      subject.subjectRevision === null ||
+      isNonEmptyString(subject.subjectRevision)
+    )
   ) {
     addIssue(
       issues,
@@ -555,7 +563,10 @@ export function validateAsterSourceLinkedRecall(
     if (
       !isRecord(statement) ||
       !isNonEmptyString(statement.statementId) ||
-      !includesString(ASTER_RECALL_STATEMENT_CLASSES, statement.statementClass) ||
+      !includesString(
+        ASTER_RECALL_STATEMENT_CLASSES,
+        statement.statementClass,
+      ) ||
       !isNonEmptyString(statement.text) ||
       typeof statement.assertsPersonSpecificFact !== "boolean"
     ) {
@@ -582,7 +593,10 @@ export function validateAsterSourceLinkedRecall(
 
     const referencedSources: Record<string, unknown>[] = [];
     for (const sourceReferenceId of sourceReferenceIds) {
-      if (!isNonEmptyString(sourceReferenceId) || !sourceIndex.has(sourceReferenceId)) {
+      if (
+        !isNonEmptyString(sourceReferenceId) ||
+        !sourceIndex.has(sourceReferenceId)
+      ) {
         addIssue(
           issues,
           "aster.recall.unknown-source-reference",
@@ -742,7 +756,9 @@ export function validateAsterSourceLinkedRecall(
   if (
     value.complete === false &&
     (!isNonEmptyArray(value.unavailableReasons) ||
-      value.unavailableReasons.some((reason: unknown) => !isNonEmptyString(reason)))
+      value.unavailableReasons.some(
+        (reason: unknown) => !isNonEmptyString(reason),
+      ))
   ) {
     addIssue(
       issues,
