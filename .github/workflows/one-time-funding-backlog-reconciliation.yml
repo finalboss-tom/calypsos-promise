@@ -1,9 +1,11 @@
 name: One-time funding backlog reconciliation
 
 on:
-  push:
+  pull_request:
     branches:
-      - institution/phase-0-funding-sponsorship-baseline
+      - main
+    types:
+      - synchronize
 
 permissions:
   contents: write
