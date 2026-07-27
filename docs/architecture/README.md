@@ -31,7 +31,8 @@ This directory contains versioned architecture baselines that implement the froz
 23. [Aster Memory Classes and Lifecycle Contracts](aster-memory-lifecycle-contracts.md) — transient and retained classes, player controls, retention, correction, supersession, export, deletion, provider metadata separation, egress, secondary-use boundaries, and missing-memory fallback
 24. [Aster Prompt-Injection and Untrusted-Input Isolation Contracts](aster-untrusted-input-isolation-contracts.md) — data-only input classes, deterministic context, server-owned tools, findings, containment, source and uncertainty preservation, memory separation, and non-authority
 25. [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md) — truthful acceptance, attempts, retry, duplicate safety, timeout, cancellation, provider fallback, stale-result rejection, correction, replay, and non-authority
-26. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
+26. [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md) — synthetic-only evaluation, minimum-necessary egress, handling, deletion, credentials, evaluation independence, funding conflicts, concentration, replacement, migration, teardown, incidents, and public-claim boundaries
+27. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md) — proposed Legacy Directive, incapacity, death, estate, fiduciary, contested-authority, family-health, research, archive, deletion, receipt, and institutional-continuity boundaries
 
 ## Operational simplicity and durable workflows
 
@@ -89,10 +90,11 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Aster Memory Classes and Lifecycle Contracts](aster-memory-lifecycle-contracts.md)
 - [Aster Prompt-Injection and Untrusted-Input Isolation Contracts](aster-untrusted-input-isolation-contracts.md)
 - [Aster Responsive and Deferred Work Contracts](aster-responsive-and-deferred-work-contracts.md)
+- [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
 - [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Execution Plan](../roadmap/sprint-6-execution-plan.md)
 
-Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, and work-lifecycle contract capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, and bounded delayed work, but it does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority. Deferred acceptance never means completion. Retry and replay require current authority facts, and stale, superseded, corrected, quarantined, or unknown-outcome work cannot overwrite newer results or duplicate authoritative effects.
+Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, and provider-governance contract capability. It may classify a request, prepare drafts, recall, routes, explanations, narrative presentation, bounded delayed work, and public or synthetic provider evaluation. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, delayed-work execution state, protected audit, or institutional authority. There is no production provider approval state. Minimum-necessary egress remains public or synthetic only, funding cannot determine provider outcomes, and every candidate requires provider-independent fallback, replacement, migration, and teardown evidence.
 
 ## Legacy and succession architecture
 
@@ -106,7 +108,7 @@ Legacy and succession are proposed future capabilities, not extensions of login 
 
 ## Sprint 6 handoff
 
-The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, role contracts, proposal and extraction boundary, intent and refusal contracts, source-linked recall, player-controlled memory lifecycle, untrusted-input isolation, and responsive/deferred work semantics while preserving provider neutrality, a deterministic synthetic adapter, and complete manual or non-AI paths as required remaining work.
+The [Pre-Sprint 6 Alignment Review](../roadmap/pre-sprint-6-alignment-review.md) recommended a bounded pre-stable Aster contract capability rather than materially extending the Chronicle package. The active Sprint 6 branch now establishes the package boundary, authority matrix, role contracts, proposal and extraction boundary, intent and refusal contracts, source-linked recall, player-controlled memory lifecycle, untrusted-input isolation, responsive and deferred work semantics, and provider governance while preserving a deterministic synthetic adapter and complete manual or non-AI paths as required remaining work.
 
 ## Boundary rule
 
