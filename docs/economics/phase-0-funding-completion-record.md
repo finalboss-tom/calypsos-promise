@@ -228,6 +228,7 @@ Reconciled surfaces:
 - [`Decision index`](../decisions/README.md)
 - [`Roadmap index`](../roadmap/README.md)
 - [`Current status`](../roadmap/current-status.md)
+- [`Design-to-Build Sprint Plan`](../roadmap/sprints.md)
 - [`Public Institutional Roadmap`](../../ROADMAP.md)
 - [`Assumption Registry`](../governance/assumption-registry.md)
 - roadmap issue #2
@@ -243,22 +244,24 @@ Result:
 
 ## Acceptance criteria mapping
 
-| Criterion                                                                                                                                                                       | Evidence                                              | Status                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------- |
-| Money cannot purchase data, research access, product authority, health influence, roadmap control, governance power, game progression, favorable findings, or safety exceptions | Decision 0008; recognition policy; operating baseline | Met at doctrine level                         |
-| Funding classes are distinct                                                                                                                                                    | Operating baseline; public register vocabulary        | Met                                           |
-| Permitted and prohibited benefits are inspectable                                                                                                                               | Recognition policy                                    | Met                                           |
-| Material organizational, restricted, related-party, vendor-linked, and in-kind relationships require public records                                                             | Ledger and conflict policies                          | Met                                           |
-| Raw private financial source records remain outside public GitHub systems                                                                                                       | Decision 0008; ledger policy                          | Met                                           |
-| Funded work remains under ordinary governance and outcome reporting                                                                                                             | Operating baseline; underwriting catalogue            | Met                                           |
-| Sponsors and implementers cannot independently evaluate themselves                                                                                                              | Conflict policy; synthetic exercises                  | Met at doctrine level                         |
-| Infrastructure support requires replacement and exit behavior                                                                                                                   | Infrastructure policy                                 | Met at design level                           |
-| Concentration and critical dependency triggers are defined                                                                                                                      | Concentration policy                                  | Met as provisional baseline                   |
-| Relationships can decline, pause, correct, terminate, refund, expire, or supersede                                                                                              | Operating, conflict, recognition, and ledger policies | Met                                           |
-| Public records connect support to delivery, outcomes, variance, and obligations                                                                                                 | Ledger policy and synthetic records                   | Met at contract level                         |
-| Capture, data, provider, exclusivity, related-party, concentration, source-loss, and outcome-failure scenarios are exercised                                                    | Sixteen design tabletops                              | Met at founding-steward design-tabletop level |
-| No legal, charitable, tax, treasury, accounting, or operating financial status is overstated                                                                                    | All status and non-scope records                      | Met                                           |
-| Accepted doctrine remains distinct from implementation                                                                                                                          | Decision, indexes, current status, and this record    | Met                                           |
+| Criterion | Evidence | Status |
+| --- | --- | --- |
+| A decision record accepts the doctrine and names unresolved legal, accounting, tax, entity, custody, and payment-rail questions | Decision 0008; operating baseline; unresolved gates | Met |
+| Money cannot purchase data, research access, product authority, health influence, roadmap control, governance power, game progression, favorable findings, or safety exceptions | Decision 0008; recognition policy; operating baseline | Met at doctrine level |
+| Funding classes are distinct | Operating baseline; public register vocabulary | Met |
+| Permitted and prohibited benefits are inspectable | Recognition policy | Met |
+| Material organizational, restricted, related-party, vendor-linked, and in-kind relationships require public records | Ledger and conflict policies | Met |
+| Raw private financial source records remain outside public GitHub systems | Decision 0008; ledger policy | Met |
+| Funded work remains under ordinary governance and outcome reporting | Operating baseline; underwriting catalogue | Met |
+| Sponsors and implementers cannot independently evaluate themselves | Conflict policy; synthetic exercises | Met at doctrine level |
+| Infrastructure support requires replacement and exit behavior | Infrastructure policy | Met at design level |
+| Concentration and critical dependency triggers are defined | Concentration policy | Met as provisional baseline |
+| Relationships can decline, pause, correct, terminate, refund, expire, or supersede | Operating, conflict, recognition, and ledger policies | Met |
+| Public records connect support to delivery, outcomes, variance, and obligations | Ledger policy and synthetic records | Met at contract level |
+| Capture, data, provider, exclusivity, related-party, concentration, source-loss, and outcome-failure scenarios are exercised | Sixteen design tabletops | Met at founding-steward design-tabletop level |
+| The public website cannot activate donation or sponsorship transactions before a legitimate recipient, custody, accounting, tax, privacy, refund, and payment route is accepted | Decision 0008; operating baseline; sprint-plan handoff | Met at doctrine and roadmap level |
+| No legal, charitable, tax, treasury, accounting, or operating financial status is overstated | All status and non-scope records | Met |
+| Accepted doctrine remains distinct from implementation | Decision, indexes, current status, sprint plan, and this record | Met |
 
 ## Cross-contract result
 
@@ -277,6 +280,61 @@ The review found no conflict requiring a change to:
 - the long-horizon Phase 5 sustainable-economics direction.
 
 The funding baseline implements those higher layers by making future economic relationships explicit, bounded, challengeable, replaceable, and publicly accountable.
+
+## Future sprint and institutional inheritance
+
+The baseline is complete only when its accepted constraints are carried forward into the work that can create funding conflicts or public funding claims.
+
+### Sprint 6 — Aster contracts and AI governance
+
+- governs conflicts involving AI providers, model credits, sponsored benchmarks, affiliate incentives, egress partners, infrastructure support, and related parties;
+- requires provider-neutral evaluation and publication independence; and
+- defines requirements without selecting or endorsing a production provider.
+
+### Sprint 7 — Forge MCP and agent safety
+
+Sponsor-funded developer tools remain subject to the same public-data, synthetic-only, tool-risk, provider-neutrality, review, and publication boundaries as unfunded tools.
+
+### Sprint 8 — Public website foundation
+
+The Support and Funding Transparency surface must derive from canonical economics records and show:
+
+- who supported the project;
+- what they funded;
+- what benefits they received;
+- which prohibited or absent benefits they did not receive;
+- current relationship and work status;
+- delivery and outcome evidence;
+- conflicts and recusals;
+- concentration and dependency;
+- corrections, terminations, and residual obligations; and
+- correction, challenge, and reporting routes.
+
+No donation or sponsorship transaction surface activates until a legitimate recipient, custody, accounting, tax, privacy, refund, and payment route is accepted.
+
+### Sprint 17 — Clinical, safety, and accessibility governance
+
+Funder, sponsor, vendor, and related-party interests cannot control clinical or safety conclusions, health-product placement, specialist review, adverse-event handling, accessibility findings, or publication.
+
+### Sprint 18 — Beta evidence and release gate
+
+When any real funding relationship exists, release evidence must include ledger integrity, restrictions, approved benefits, conflicts, concentration, continuity, source-loss response, expenditure linkage where applicable, funded outcomes, corrections, and residual obligations. Phase 0 doctrine alone is not operational evidence.
+
+### Sprint 19 — Open-source public launch
+
+Funding transparency becomes launch-grade implementation and reporting rather than the first design of funding rules. Material relationships remain traceable through support, restrictions, benefits, work, expenditure where applicable, outcomes, conflicts, concentration, correction, and residual obligations.
+
+### Phase 2 — Evidence and trust
+
+Phase 2 adds operating public funding and expenditure reports, financial controls, conflict and concentration evidence, continuity and source-loss behavior, and an independently reviewable treasury record when funding is active.
+
+### Phase 5 — Sustainable economics and shared value
+
+Phase 5 matures hosted-service economics, reserves, compensation, treasury policy, participatory budget input, independent financial review, and long-term donor-capture controls. It operationalizes Decision 0008 rather than replacing its Phase 0 guardrails.
+
+### Future funding-operations workstream
+
+Before accepting or operating real funding, a separately reviewed institutional workstream must establish the legal recipient or fiscal sponsor, custody, payment, accounting, tax, refunds, contracts, privacy, expenditure, procurement, compensation, related-party, treasury, recovery, reporting, and multi-party operational controls.
 
 ## Unresolved specialist and operating gates
 
@@ -309,9 +367,9 @@ The canonical relationship and opportunity registers contain no real records. Sy
 
 ## Validation boundary
 
-Repository CI is expected to validate formatting, documentation links, repository policy, content validation, lint, type checking, tests, and DCO after the review pull request opens.
+Repository CI must validate formatting, documentation links, repository policy, content validation, lint, type checking, tests, and DCO after the final reconciliation commit.
 
-Passing repository CI will establish repository consistency only. It will not establish legal, accounting, tax, nonprofit, financial-control, security, privacy, accessibility, clinical, research, provider, operational, or public-benefit approval.
+Passing repository CI establishes repository consistency only. It does not establish legal, accounting, tax, nonprofit, financial-control, security, privacy, accessibility, clinical, research, provider, operational, or public-benefit approval.
 
 ## Merge and next boundary
 
