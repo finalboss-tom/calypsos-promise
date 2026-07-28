@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -41,8 +41,9 @@ This directory contains versioned architecture baselines that implement the froz
 33. [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
 34. [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
 35. [Forge MCP Lore and Schema Tools](forge-mcp-lore-and-schema-tools.md)
-36. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-37. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+36. [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
+37. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+38. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -121,18 +122,19 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 - [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
 - [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
 - [Forge MCP Lore and Schema Tools](forge-mcp-lore-and-schema-tools.md)
+- [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
 - [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
 - [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
 - [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.4 define the application boundary, accepted registry, finalized-version local `stdio` transport, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, four enabled lore and schema tools, public package validation, fixed quest-schema inspection, literal non-authority, funding neutrality, validators, and public tests.
+Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.5 define the application boundary, accepted registry, finalized-version local `stdio` transport, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, six enabled lore, schema, architecture, and decision tools, public package validation, fixed quest-schema inspection, exact documentation provenance, conservative authority classification, literal non-authority, funding neutrality, validators, and public tests.
 
-Exactly four identities are enabled through a separate runtime registry: lore search, content validation, quest-schema inspection, and quest validation. The other six accepted identities remain planned and unexposed. Tool and transport success cannot approve canon, mutate the repository, complete gameplay, grant rewards, prove clinical safety, or create institutional authority. Sprint 7.5 owns architecture and decision search.
+Exactly six identities are enabled through runtime registry revision `2`: lore search, content validation, quest-schema inspection, quest validation, architecture search, and decision search. The other four accepted identities remain planned and unexposed. Tool and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, complete gameplay, grant rewards, prove clinical safety, or create institutional authority. Sprint 7.6 owns public standards, mapping-draft, and synthetic connector-fixture tooling and has not started.
 
 Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, production provider gateway, connector runtime, or institutional authority.
 
-Retrieved and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, or governance authority.
+Retrieved and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, mapping, or governance authority.
 
 ## Legacy and succession architecture
 
