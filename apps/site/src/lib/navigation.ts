@@ -39,6 +39,18 @@ export const directNavigation: readonly NavigationItem[] = [
     description: "Proposal, confirmation, source, fallback, and non-authority.",
   },
   {
+    href: "/trust",
+    label: "Trust Center",
+    description:
+      "Rights, privacy, security status, open gates, and correction routes.",
+  },
+  {
+    href: "/forge",
+    label: "Open Forge",
+    description:
+      "Ten bounded local public and synthetic tools with visible limits.",
+  },
+  {
     href: "/#capability-status",
     label: "Capability status",
     description: "What is live, experimental, planned, or long-horizon.",
@@ -97,6 +109,18 @@ export const narrativeNavigation: readonly NavigationItem[] = [
       "Understand the Wayfinder’s roles, sources, limits, and fallbacks.",
   },
   {
+    href: "/trust",
+    label: "Enter the House of Oaths",
+    description:
+      "Inspect rights, safeguards, unresolved gates, and challenge paths.",
+  },
+  {
+    href: "/forge",
+    label: "Visit Hephaestus’s Open Forge",
+    description:
+      "Inspect the ten bounded tools and their public evidence limits.",
+  },
+  {
     href: "/#capability-status",
     label: "Consult the signal fires",
     description: "See what exists now and what remains ahead.",
@@ -114,8 +138,8 @@ export const narrativeNavigation: readonly NavigationItem[] = [
   },
   {
     href: "https://github.com/finalboss-tom/calypsos-promise",
-    label: "Enter the open forge",
-    description: "Follow the public repository and contribute directly.",
+    label: "Enter the public repository",
+    description: "Follow the open project and contribute directly.",
     external: true,
   },
 ];
