@@ -75,26 +75,26 @@ A successful raw result that removes required evidence or claims authority fails
 
 ## Adversarial matrix
 
-| Scenario | Required behavior | Primary evidence |
-| --- | --- | --- |
-| Path traversal | reject during source resolution | source isolation tests |
-| Symlink escape | reject during source resolution | source isolation tests |
-| Arbitrary root selection | reject before operation | strict tool-input tests |
-| Shell execution | absent from production surface | static production-source audit |
-| Network access | absent from production surface and unused at runtime | static audit and fetch trap |
-| Dynamic module loading | absent from production surface | static production-source audit |
-| Registry mutation | fail runtime integrity | integrity validator tests |
-| Scope mutation | fail runtime integrity | integrity validator tests |
-| Confused deputy | reject mismatched or authority-bearing result | execution and security-postcondition tests |
-| Source evidence suppression | preserve visible evidence or fail closed | security-postcondition tests |
-| Oversized input | reject before operation | execution-limit tests |
-| Timeout | return stable bounded error | real accepted-timeout test |
-| Cancellation | suppress cancelled response | execution and transport tests |
-| Receipt leakage or impersonation | reject result-owned receipt and disclose no protected material | receipt and security tests |
-| Synthetic-label removal | reject successful result | generation postcondition test |
-| Mapping self-approval | reject successful result | mapping postcondition test |
-| Funding influence | reject contract mutation and unknown sponsor fields | boundary and input tests |
-| Protected-source access | reject before read and disclose no path or content | source isolation and service tests |
+| Scenario                         | Required behavior                                              | Primary evidence                           |
+| -------------------------------- | -------------------------------------------------------------- | ------------------------------------------ |
+| Path traversal                   | reject during source resolution                                | source isolation tests                     |
+| Symlink escape                   | reject during source resolution                                | source isolation tests                     |
+| Arbitrary root selection         | reject before operation                                        | strict tool-input tests                    |
+| Shell execution                  | absent from production surface                                 | static production-source audit             |
+| Network access                   | absent from production surface and unused at runtime           | static audit and fetch trap                |
+| Dynamic module loading           | absent from production surface                                 | static production-source audit             |
+| Registry mutation                | fail runtime integrity                                         | integrity validator tests                  |
+| Scope mutation                   | fail runtime integrity                                         | integrity validator tests                  |
+| Confused deputy                  | reject mismatched or authority-bearing result                  | execution and security-postcondition tests |
+| Source evidence suppression      | preserve visible evidence or fail closed                       | security-postcondition tests               |
+| Oversized input                  | reject before operation                                        | execution-limit tests                      |
+| Timeout                          | return stable bounded error                                    | real accepted-timeout test                 |
+| Cancellation                     | suppress cancelled response                                    | execution and transport tests              |
+| Receipt leakage or impersonation | reject result-owned receipt and disclose no protected material | receipt and security tests                 |
+| Synthetic-label removal          | reject successful result                                       | generation postcondition test              |
+| Mapping self-approval            | reject successful result                                       | mapping postcondition test                 |
+| Funding influence                | reject contract mutation and unknown sponsor fields            | boundary and input tests                   |
+| Protected-source access          | reject before read and disclose no path or content             | source isolation and service tests         |
 
 All scenario records are public-or-synthetic-only, evidence-preserving, and explicitly unable to expand authority.
 
