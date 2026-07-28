@@ -33,12 +33,12 @@ It does not own the policies or domain truth it explains.
 
 Current public routes:
 
-| Route | Current purpose | Sprint 8 migration rule |
-| --- | --- | --- |
-| `/` | cinematic public repository gateway | preserve as the public homepage |
-| `/privacy` | signup privacy explanation | preserve if signup remains; otherwise redirect to the Trust Center or a retired-signup explanation |
-| `/joined` | signup confirmation | preserve if signup remains; otherwise redirect to the homepage or retired-signup explanation |
-| `/api/join` | purpose-limited signup submission | preserve only if workstream 8.8 satisfies the bounded operational gate; otherwise retire with an honest disabled response or remove after deliberate route handling |
+| Route       | Current purpose                     | Sprint 8 migration rule                                                                                                                                             |
+| ----------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`         | cinematic public repository gateway | preserve as the public homepage                                                                                                                                     |
+| `/privacy`  | signup privacy explanation          | preserve if signup remains; otherwise redirect to the Trust Center or a retired-signup explanation                                                                  |
+| `/joined`   | signup confirmation                 | preserve if signup remains; otherwise redirect to the homepage or retired-signup explanation                                                                        |
+| `/api/join` | purpose-limited signup submission   | preserve only if workstream 8.8 satisfies the bounded operational gate; otherwise retire with an honest disabled response or remove after deliberate route handling |
 
 Silent route loss is prohibited.
 

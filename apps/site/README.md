@@ -28,13 +28,13 @@ Workstream 8.1 does not change that. Framework dependency and version selection 
 
 ## Current public routes
 
-| Route | Current purpose | Sprint 8 rule |
-| --- | --- | --- |
-| `/` | cinematic repository gateway | preserve as homepage |
-| `/privacy` | Founding Expedition signup privacy notice | preserve if signup remains; otherwise redirect deliberately |
-| `/joined` | signup confirmation | preserve if signup remains; otherwise redirect deliberately |
-| `/api/join` | purpose-limited email signup endpoint | preserve only if workstream 8.8 satisfies the operational gate; otherwise retire deliberately |
-| `/assets/*`, `/styles/*`, `/site.js` | public presentation assets | migrate to framework-fingerprinted assets or correct cache semantics |
+| Route                                | Current purpose                           | Sprint 8 rule                                                                                 |
+| ------------------------------------ | ----------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `/`                                  | cinematic repository gateway              | preserve as homepage                                                                          |
+| `/privacy`                           | Founding Expedition signup privacy notice | preserve if signup remains; otherwise redirect deliberately                                   |
+| `/joined`                            | signup confirmation                       | preserve if signup remains; otherwise redirect deliberately                                   |
+| `/api/join`                          | purpose-limited email signup endpoint     | preserve only if workstream 8.8 satisfies the operational gate; otherwise retire deliberately |
+| `/assets/*`, `/styles/*`, `/site.js` | public presentation assets                | migrate to framework-fingerprinted assets or correct cache semantics                          |
 
 Silent route loss is prohibited.
 
