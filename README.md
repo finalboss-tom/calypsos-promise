@@ -1,16 +1,17 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Pre-Sprint 8 review](docs/roadmap/pre-sprint-8-alignment-review.md) · [Sprint 7 completion](docs/roadmap/sprint-7-completion-record.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
-Calypso’s Promise is an open-source, narrative-driven health platform that helps people build, understand, and control a longitudinal record of their lives. The playable world of Ogygia turns brief health actions, data capture, learning, and reflection into quests while keeping private health data separate from the open-source codebase.
+Calypso’s Promise is an open-source, narrative-driven health platform intended to help people build, understand, improve, and control a longitudinal record of their lives. Ogygia turns brief health actions, data capture, learning, and reflection into quests while keeping private health data separate from the open-source codebase.
 
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See the current state:** [Current Project Status](docs/roadmap/current-status.md) → [Pre-Sprint 8 Alignment Review](docs/roadmap/pre-sprint-8-alignment-review.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
-- **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Control Map](docs/architecture/forge-sprint-7-control-and-evidence-map.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md)
+- **Review the accepted handoff:** [Pre-Sprint 8 Alignment Review](docs/roadmap/pre-sprint-8-alignment-review.md)
+- **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
 - **Apply core decisions:** [Operational Simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-First Boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding Baseline](docs/economics/README.md)
 - **Build safely:** [Contributing](CONTRIBUTING.md) → [Module Boundaries](docs/architecture/module-boundaries.md) → [Development Policy](docs/policies/development.md) → [Security](SECURITY.md)
@@ -19,34 +20,33 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-**Sprints 0–7 are complete and merged.** Sprint 7 — Forge MCP and Agent Safety merged through PR #55 as squash commit `f28f054fe16d550fad37663cf234e06c5622dd42`.
+**Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged.** The reconciliation merged through PR #59 as squash commit `9da8034220954a1ca50420e71fd94e7795232a35`.
 
-The accepted Forge baseline provides:
+**Sprint 8 — Public Website Foundation is active** through issue #60 and draft PR #61.
 
-- one local `apps/mcp-forge` application over newline-delimited UTF-8 `stdio`;
-- exactly ten accepted public/synthetic tools through runtime registry revision `4`;
-- nine server-owned source roots with allowlists, traversal and symlink isolation, SHA-256 provenance, and visible partial states;
-- bounded search, inspection, validation, synthetic connector-fixture, and deterministic-generation behavior;
-- immutable execution scopes, resource limits, cancellation, timeout, per-tool concurrency, bounded receipts, and stable public-safe errors;
-- runtime-integrity checks and successful-result security postconditions;
-- exact-revision compatibility and additive migrations;
-- provider-independent clean startup and static prohibited-capability auditing;
-- an 18-scenario public/synthetic adversarial matrix; and
-- 28 controls, 19 open holdpoints, and 18 unresolved-work records.
-
-Forge is bounded local contributor tooling. It is not a private Chronicle service, repository mutator, shell, network client, provider gateway, connector runtime, production sandbox, general agent, or institutional authority.
-
-## Active pre-Sprint 8 review
-
-Issue #58 is reconciling the merged repository before Sprint 8 begins.
-
-The accepted Sprint 8 direction remains:
+The goal is:
 
 > Publish an honest, accessible gateway to Ogygia.
 
-The review confirms that Sprint 8 should migrate the existing `apps/site` Website Track 0A gateway in place into one Next.js public website foundation. It must not create a duplicate site, second status system, independent funding ledger, CMS, database, account system, private-data path, provider runtime, donation checkout, or Sprint 9 prologue.
+### Active workstream: 8.1
 
-Sprint 8 implementation has **not** started. It remains blocked until the post-merge reconciliation is validated, accepted, and squash merged.
+Workstream 8.1 defines the website boundary before adding framework dependencies.
+
+It establishes:
+
+- `apps/site` as the single public website owner;
+- one in-place migration of Website Track 0A rather than a duplicate site;
+- explicit route treatment for `/`, `/privacy`, `/joined`, and `/api/join`;
+- repository-owned content authority and canonical source links;
+- server-rendered essential information and optional client enhancement;
+- design tokens inside `apps/site` without a premature shared package;
+- build-time canonical status and economics views rather than runtime GitHub fetching or second ledgers;
+- security-header, server-only secret, cache, and asset rules;
+- a preserve-or-retire gate for signup;
+- preview, official cutover, rollback, and release-evidence distinctions; and
+- accessibility, performance, route, metadata, status, funding, signup, security, and content-authority validation requirements.
+
+Workstream 8.1 does **not** add Next.js or React dependencies. The pinned framework shell begins in 8.2 after the boundary is validated.
 
 ## Existing public site
 
@@ -59,9 +59,9 @@ Sprint 8 implementation has **not** started. It remains blocked until the post-m
 - responsive and reduced-motion behavior; and
 - public security headers.
 
-The current routes are `/`, `/privacy`, `/joined`, and `/api/join`. Sprint 8 must preserve, redirect, or deliberately retire them through an explicit migration and rollback plan.
+The current routes are `/`, `/privacy`, `/joined`, and `/api/join`. Sprint 8 must preserve, redirect, or deliberately retire them.
 
-Git-triggered Vercel deployment is currently disabled. Preview, production cutover, cache behavior, CSP and security headers, signup privacy, canonical status and funding data, metadata, accessibility, performance, and rollback are Sprint 8 release gates rather than framework defaults.
+Git-triggered Vercel deployment remains disabled at Sprint 8 entry. Preview, official cutover, cache behavior, CSP, signup disposition, metadata, accessibility, performance, and rollback are explicit work rather than framework defaults.
 
 ## Accepted and merged foundations
 
@@ -76,6 +76,7 @@ Git-triggered Vercel deployment is currently disabled. Preview, production cutov
 - Decision 0011 — operational simplicity and durable-workflow constraints
 - Sprint 6 — pre-stable provider-independent Aster contracts
 - Sprint 7 — bounded local public/synthetic Forge MCP
+- Pre-Sprint 8 reconciliation — accepted website migration boundary
 
 These foundations remain contract, policy, local implementation, and public/synthetic evidence. They do not establish production health-data operation or independent certification.
 
@@ -92,14 +93,9 @@ These foundations remain contract, policy, local implementation, and public/synt
 - Personal value before secondary use, deterministic incentives, meaningful refusal, and non-punitive return
 - Progressive decentralization toward a self-sustaining, founder-independent institution
 
-## Current gates
+## Sprint 8 non-scope
 
-- Complete and merge the pre-Sprint 8 reconciliation through issue #58.
-- Keep Sprint 8 implementation separate until that gate closes.
-- Preserve all Sprint 5, Sprint 6, and Sprint 7 production, security, privacy, accessibility, clinical, provider, connector, operational, institutional, and measurement holdpoints.
-- Keep issue #50 trigger-based; Forge produced no Aster consumer dependency or ergonomics evidence.
-- Review proposed Decision 0009 without representing it as a live legal or product capability.
-- Complete the remaining Phase 0 key-person, succession, founder-power, economic-dependency, historical-source, branch-protection, DCO, operability, distributed-ownership, specialist-review, human-readable and machine-readable architecture audit, and phase-exit work.
+Sprint 8 does not activate accounts, authentication, real health-data intake, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, governance voting, donations, payments, financial operations, personal-data analytics, estate directives, or Sprint 9 gameplay.
 
 ## Core rule
 
