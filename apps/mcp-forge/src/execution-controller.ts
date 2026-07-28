@@ -1,4 +1,8 @@
 import {
+  FORGE_CONTRACT_VERSION,
+  FORGE_REGISTRY_REVISION,
+} from "./contracts.js";
+import {
   FORGE_EXECUTION_ERROR_CODES,
   FORGE_INVOCATION_RECEIPT_SCHEMA_ID,
   FORGE_NON_AUTHORITY_PROFILE_ID,
@@ -16,6 +20,7 @@ import {
   type ForgeMcpToolCallResult,
 } from "./lore-schema-contracts.js";
 import { forgeToolResult, isRecord } from "./lore-tool-support.js";
+import { FORGE_RUNTIME_REGISTRY_REVISION } from "./runtime-registry.js";
 
 interface ForgeExecutionMetrics {
   readonly scannedFiles: number;
@@ -59,7 +64,9 @@ function safeCount(value: unknown): number | undefined {
 function uniqueSortedStrings(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return [
-    ...new Set(value.filter((entry): entry is string => typeof entry === "string")),
+    ...new Set(
+      value.filter((entry): entry is string => typeof entry === "string"),
+    ),
   ].sort();
 }
 
@@ -108,9 +115,9 @@ function invocationReceipt(
   return {
     schemaId: FORGE_INVOCATION_RECEIPT_SCHEMA_ID,
     revision: scope.revision,
-    contractVersion: "0.1.0-pre.1",
-    acceptedRegistryRevision: "1",
-    runtimeRegistryRevision: "4",
+    contractVersion: FORGE_CONTRACT_VERSION,
+    acceptedRegistryRevision: FORGE_REGISTRY_REVISION,
+    runtimeRegistryRevision: FORGE_RUNTIME_REGISTRY_REVISION,
     toolId: scope.toolId,
     toolRevision: scope.toolRevision,
     riskClass: scope.riskClass,
@@ -144,7 +151,7 @@ function invocationReceipt(
       rawInputIncluded: false,
       absolutePathsIncluded: false,
       environmentValuesIncluded: false,
-      stackTracesIncluded: false,
+      internalTraceIncluded: false,
       credentialsIncluded: false,
       protectedSourceMaterialIncluded: false,
       wallClockTimestampIncluded: false,
@@ -320,7 +327,19 @@ export class ForgeToolExecutionController {
         timeout,
       ]);
       if (externalSignal.aborted) throw publicAbortReason(externalSignal);
-      if (!isRecord(value) || value.toolId !== scope.toolId || "receipt" in value) {
+      if (timedOut) {
+        return errorResult(
+          scope,
+          inputBytes,
+          FORGE_EXECUTION_ERROR_CODES.timeoutReached,
+          timeoutFault.message,
+        );
+      }
+      if (
+        !isRecord(value) ||
+        value.toolId !== scope.toolId ||
+        "receipt" in value
+      ) {
         return errorResult(
           scope,
           inputBytes,
@@ -368,7 +387,7 @@ export class ForgeToolExecutionController {
         return errorResult(
           scope,
           inputBytes,
-          FORGE_EXECUTION_ERROR_CODES.outputLimitReached,
+          FORGE_EXECUTION_ERROR_CODES.materializedMemoryLimitReached,
           "The Forge tool result exceeds its accepted materialized-memory limit.",
           metrics,
         );
