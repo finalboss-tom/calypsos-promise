@@ -1,9 +1,6 @@
 import { createHash } from "node:crypto";
 
-import {
-  FORGE_BOUNDARY,
-  FORGE_TOOL_REGISTRY,
-} from "./contracts.js";
+import { FORGE_BOUNDARY, FORGE_TOOL_REGISTRY } from "./contracts.js";
 import { FORGE_RUNTIME_EXECUTION_SCOPES } from "./execution-contracts.js";
 import { FORGE_TOOL_NON_AUTHORITY } from "./lore-schema-contracts.js";
 import {
@@ -177,9 +174,7 @@ function validateProvenance(
     );
   }
   if (isRecord(value.locator)) {
-    if (
-      value.locator.repositoryRelativePath !== value.repositoryRelativePath
-    ) {
+    if (value.locator.repositoryRelativePath !== value.repositoryRelativePath) {
       issues.push(
         issue(
           FORGE_SECURITY_ERROR_CODES.postconditionFailed,
@@ -313,7 +308,9 @@ function validateSearchOutput(
       );
       return;
     }
-    issues.push(...validateProvenance(match.provenance, `matches[${index}].provenance`));
+    issues.push(
+      ...validateProvenance(match.provenance, `matches[${index}].provenance`),
+    );
     if (
       (toolId === "forge.search.architecture" ||
         toolId === "forge.search.decision") &&
@@ -404,7 +401,10 @@ function validateSearchOutput(
       );
     }
   }
-  if (toolId === "forge.search.lore" && value.canonAcceptance !== "not-granted") {
+  if (
+    toolId === "forge.search.lore" &&
+    value.canonAcceptance !== "not-granted"
+  ) {
     issues.push(
       issue(
         FORGE_SECURITY_ERROR_CODES.postconditionFailed,
