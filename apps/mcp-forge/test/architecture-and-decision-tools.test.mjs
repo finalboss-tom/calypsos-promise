@@ -25,6 +25,16 @@ async function createService(t) {
     await rm(repositoryRoot, { recursive: true, force: true });
   });
 
+  for (const directory of [
+    "docs/frozen",
+    "docs/policies",
+    "docs/security",
+    "docs/economics",
+    "docs/product",
+  ]) {
+    await mkdir(join(repositoryRoot, directory), { recursive: true });
+  }
+
   await write(
     repositoryRoot,
     "VISION.md",
@@ -158,7 +168,9 @@ test("Sprint 7.5 enables exactly the two accepted documentation search tools", (
 
 test("architecture search returns exact provenance and explicit accepted authority evidence", async (t) => {
   const service = await createService(t);
-  const result = await service.searchArchitecture({ query: "modular monolith" });
+  const result = await service.searchArchitecture({
+    query: "modular monolith",
+  });
 
   assert.equal(result.toolId, "forge.search.architecture");
   assert.equal(result.matches[0].documentClass, "architecture");
@@ -178,14 +190,19 @@ test("architecture search returns exact provenance and explicit accepted authori
 test("decision search distinguishes accepted, proposed, active-hypothesis, planned, and historical evidence", async (t) => {
   const service = await createService(t);
 
-  const decisions = await service.searchDecision({ query: "provider boundary" });
+  const decisions = await service.searchDecision({
+    query: "provider boundary",
+  });
   const states = new Map(
     decisions.matches.map((match) => [
       match.provenance.repositoryRelativePath,
       match.authority.state,
     ]),
   );
-  assert.equal(states.get("docs/decisions/0001-accepted.md"), "accepted-current");
+  assert.equal(
+    states.get("docs/decisions/0001-accepted.md"),
+    "accepted-current",
+  );
   assert.equal(states.get("docs/decisions/0002-proposed.md"), "proposed");
 
   const assumption = await service.searchDecision({
@@ -199,7 +216,9 @@ test("decision search distinguishes accepted, proposed, active-hypothesis, plann
 
   const planned = await service.searchDecision({ query: "connector launch" });
   assert.ok(planned.matches.length >= 1);
-  assert.ok(planned.matches.every((match) => match.authority.state === "planned"));
+  assert.ok(
+    planned.matches.every((match) => match.authority.state === "planned"),
+  );
   assert.ok(
     planned.matches.some(
       (match) => match.authority.basis === "section-heading",
@@ -221,7 +240,10 @@ test("retrieved instructions remain reference-only and cannot promote themselves
 
   assert.equal(result.matches[0].authority.state, "reference-only");
   assert.equal(result.matches[0].authority.acceptedCurrentAuthority, false);
-  assert.equal(result.matches[0].authority.retrievedContentCanChangeAuthority, false);
+  assert.equal(
+    result.matches[0].authority.retrievedContentCanChangeAuthority,
+    false,
+  );
   assert.equal(result.canMutateRepository, false);
   assert.equal(result.canCreateInstitutionalAuthority, false);
 });
