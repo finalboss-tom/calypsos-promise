@@ -86,18 +86,18 @@ Issue #50 remains open as a trigger-based review of Aster public API and validat
 
 ## Mission-to-Forge traceability
 
-| Protected directive | Current owner or source | Sprint 7 expression | Result |
-| --- | --- | --- | --- |
-| Build useful personal and contributor value | Product Constitution; Vision | local search, validation, and synthetic generation reduce contributor friction | Consistent |
-| Keep private people separate from open code | Product Constitution; publication policy | Forge uses only allowlisted public repository material and synthetic data | Required and consistent |
-| Keep authority deterministic | Architecture Foundation; House of Keys; Aster | server-owned tool registry, exact contracts, deterministic validators, no content-derived authority | Required and consistent |
-| Keep AI and agents non-authoritative | Architecture Foundation; Sprint 6 | MCP clients and retrieved content cannot grant tools, permission, canon, truth, or execution authority | Required and consistent |
-| Preserve source and uncertainty | Living Chronicle; Aster | search and generated results carry repository-relative provenance and draft status | Required and consistent |
-| Preserve meaningful refusal and non-punitive paths | Product Constitution; incentives | Forge remains optional; ordinary repository workflows remain complete without MCP | Consistent |
-| Preserve provider and sponsor independence | Decisions 0008 and 0010 | no funded tool, credit, provider, or distribution relationship controls defaults, ranking, validation, or publication | Required and consistent |
-| Preserve operational legibility | Decision 0011 | one local `stdio` process, deterministic core, no premature service or database | Required and consistent |
-| Remain corrigible and replaceable | Decision 0007 | versioned tools, stable errors, bounded receipts, compatibility, migration, removal, and revalidation | Required and consistent |
-| Progress toward founder-independent stewardship | Vision; Governance | public contracts and evidence allow future maintainers to inspect and replace Forge behavior | Consistent but intentionally incomplete |
+| Protected directive                                | Current owner or source                       | Sprint 7 expression                                                                                                   | Result                                  |
+| -------------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| Build useful personal and contributor value        | Product Constitution; Vision                  | local search, validation, and synthetic generation reduce contributor friction                                        | Consistent                              |
+| Keep private people separate from open code        | Product Constitution; publication policy      | Forge uses only allowlisted public repository material and synthetic data                                             | Required and consistent                 |
+| Keep authority deterministic                       | Architecture Foundation; House of Keys; Aster | server-owned tool registry, exact contracts, deterministic validators, no content-derived authority                   | Required and consistent                 |
+| Keep AI and agents non-authoritative               | Architecture Foundation; Sprint 6             | MCP clients and retrieved content cannot grant tools, permission, canon, truth, or execution authority                | Required and consistent                 |
+| Preserve source and uncertainty                    | Living Chronicle; Aster                       | search and generated results carry repository-relative provenance and draft status                                    | Required and consistent                 |
+| Preserve meaningful refusal and non-punitive paths | Product Constitution; incentives              | Forge remains optional; ordinary repository workflows remain complete without MCP                                     | Consistent                              |
+| Preserve provider and sponsor independence         | Decisions 0008 and 0010                       | no funded tool, credit, provider, or distribution relationship controls defaults, ranking, validation, or publication | Required and consistent                 |
+| Preserve operational legibility                    | Decision 0011                                 | one local `stdio` process, deterministic core, no premature service or database                                       | Required and consistent                 |
+| Remain corrigible and replaceable                  | Decision 0007                                 | versioned tools, stable errors, bounded receipts, compatibility, migration, removal, and revalidation                 | Required and consistent                 |
+| Progress toward founder-independent stewardship    | Vision; Governance                            | public contracts and evidence allow future maintainers to inspect and replace Forge behavior                          | Consistent but intentionally incomplete |
 
 ## Incentive alignment
 
