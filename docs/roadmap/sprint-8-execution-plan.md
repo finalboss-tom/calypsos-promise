@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.3 record](sprint-8-workstream-8-3-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 and 8.2 complete; workstream 8.3 implementation candidate awaiting final exact-head validation
+- **Status:** ACTIVE — workstreams 8.1 through 8.3 complete; workstream 8.4 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -36,8 +36,8 @@ Sprint 8 inherits:
 
 - [x] **8.1 — Website application boundary and migration contract**
 - [x] **8.2 — Next.js shell, design tokens, security headers, metadata, and assets**
-- [ ] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations — IMPLEMENTED; VALIDATION PENDING**
-- [ ] **8.4 — Homepage and Promise migration — NEXT AFTER VALIDATION**
+- [x] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations**
+- [ ] **8.4 — Homepage and Promise migration — NEXT**
 - [ ] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
 - [ ] **8.6 — Trust Center and Open Forge**
 - [ ] **8.7 — Roadmap, capability status, support, and funding transparency**
@@ -85,9 +85,7 @@ The final reconciled 8.2 head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed 
 
 ## 8.3 result — navigation and accessibility foundations
 
-The formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`.
-
-Workstream 8.3 adds:
+Workstream 8.3 established:
 
 - shared conventional direct navigation;
 - an optional native `details` and `summary` narrative path reaching the same essential destinations;
@@ -102,24 +100,15 @@ Workstream 8.3 adds:
 - lazy decorative hero imagery; and
 - expanded deterministic validation and focused tests.
 
-Exit evidence implemented:
+The first implementation run found one wording-coupled source assertion and formatter differences. The assertion was corrected to verify the structured `sourceHref` and `sourceLabel` fields, and Prettier output was applied through a self-removing workflow.
 
-- essential shell destinations are available through direct navigation;
-- the narrative path exposes no exclusive essential content;
-- controlled status values are deterministic and source-linked;
-- keyboard and visible-focus foundations are encoded and tested;
-- reduced-motion removes non-essential movement;
-- decorative images may fail or be suppressed without hiding essential information;
-- client JavaScript is not required for essential navigation or status understanding; and
-- no later page family, signup operation, transaction, or Sprint 9 behavior was activated.
+The validated reconciled 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI run 986, and DCO Attestation run 1064.
 
-The first implementation run passed documentation links, repository policy, economics validation, content validation, lint, and typecheck. It found one wording-coupled source assertion and formatter differences. The assertion now verifies the structured `sourceHref` and `sourceLabel` fields, and Prettier output was applied through a self-removing workflow.
-
-Final exact-head validation remains pending. The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
+The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
 
 ## 8.4 — homepage and Promise migration
 
-After 8.3 validation, workstream 8.4 may deliver:
+Workstream 8.4 may now deliver:
 
 - migrated cinematic homepage using deliberate cuts and splices;
 - primary Promise and player-control explanation;
