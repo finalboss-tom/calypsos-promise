@@ -1,0 +1,46 @@
+name: Validate Sprint 8.6 trust surfaces
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/validate-sprint-8-6.yml
+      - apps/site/**
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-8-public-website-foundation
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format
+      - run: pnpm --filter @calypsos-promise/site build
+      - run: pnpm --filter @calypsos-promise/site lint
+      - run: pnpm --filter @calypsos-promise/site typecheck
+      - run: pnpm --filter @calypsos-promise/site test
+      - name: Remove generated build state
+        run: |
+          git checkout -- apps/site/tsconfig.json
+          rm -f apps/site/tsconfig.tsbuildinfo
+      - run: pnpm format
+      - run: rm .github/workflows/validate-sprint-8-6.yml
+      - name: Commit validated candidate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: validate Sprint 8.6 trust surfaces"
+          git push origin HEAD:agent/sprint-8-public-website-foundation
