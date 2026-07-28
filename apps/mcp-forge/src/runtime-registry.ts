@@ -8,16 +8,21 @@ import {
   FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
 } from "./lore-schema-contracts.js";
 import {
+  FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
+  FORGE_STANDARDS_MAPPING_TOOL_DESCRIPTORS,
+} from "./standards-mapping-contracts.js";
+import {
   FORGE_INITIALIZE_RESULT,
   FORGE_TRANSPORT_BOUNDARY,
   type ForgeInitializeResult,
 } from "./transport-contracts.js";
 
-export const FORGE_RUNTIME_REGISTRY_REVISION = "2" as const;
+export const FORGE_RUNTIME_REGISTRY_REVISION = "3" as const;
 
 export const FORGE_RUNTIME_ENABLED_TOOL_IDS = [
   ...FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   ...FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS,
+  ...FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
 ] as const;
 
 export type ForgeRuntimeEnabledToolId =
@@ -26,6 +31,7 @@ export type ForgeRuntimeEnabledToolId =
 export const FORGE_RUNTIME_TOOL_DESCRIPTORS = [
   ...FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
   ...FORGE_DOCUMENTATION_SEARCH_TOOL_DESCRIPTORS,
+  ...FORGE_STANDARDS_MAPPING_TOOL_DESCRIPTORS,
 ] as const;
 
 const ENABLED_IDS = new Set<string>(FORGE_RUNTIME_ENABLED_TOOL_IDS);
@@ -43,8 +49,10 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
-  "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools are enabled through a server-owned allowlist.",
-  "Documentation search exposes exact provenance and conservative authority status; ambiguous, proposed, planned, historical, superseded, and unresolved records are never promoted to accepted current authority.",
+  "Exactly nine Sprint 7.1-7.6 lore, schema, architecture, decision, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist.",
+  "Documentation and standards search expose exact provenance and no certification, completeness, or provider-preference authority.",
+  "Mapping validation requires draft-only non-authority claims and cannot approve semantic equivalence, connector behavior, certification, production readiness, or a provider default.",
+  "Synthetic connector search returns only explicitly synthetic, non-production fixtures without personal data or credentials.",
   "Tool and transport success do not create canon, Chronicle truth, permission, gameplay completion, rewards, provider approval, clinical authority, or institutional authority.",
   "Forge does not provide shell, network, repository mutation, private-data, provider, connector, or consequential action authority.",
 ].join(" ");
@@ -142,7 +150,7 @@ export function validateForgeRuntimeToolRegistry(
           runtimeIssue(
             FORGE_RUNTIME_VALIDATION_CODES.enabledLifecycle,
             `${path}.lifecycle`,
-            "Accepted Sprint 7.1-7.5 runtime tools must be explicitly enabled.",
+            "Accepted Sprint 7.1-7.6 runtime tools must be explicitly enabled.",
           ),
         );
       }
@@ -172,7 +180,7 @@ export function validateForgeRuntimeToolRegistry(
         runtimeIssue(
           FORGE_RUNTIME_VALIDATION_CODES.unexpectedEnablement,
           path,
-          "Only the six accepted Sprint 7.1-7.5 runtime tools may be enabled.",
+          "Only the nine accepted Sprint 7.1-7.6 runtime tools may be enabled.",
         ),
       );
     }
@@ -229,7 +237,7 @@ export function validateForgeRuntimeToolRegistry(
       runtimeIssue(
         FORGE_RUNTIME_VALIDATION_CODES.descriptorMismatch,
         "descriptors",
-        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.5 tool set.",
+        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.6 tool set.",
       ),
     );
   }
