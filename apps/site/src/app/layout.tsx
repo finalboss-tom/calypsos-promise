@@ -6,6 +6,7 @@ import { SiteNavigation } from "@/components/site-navigation";
 import "./globals.css";
 import "./homepage.css";
 import "./guide-pages.css";
+import "./trust-forge.css";
 
 const siteUrl = new URL("https://www.calypsospromise.org");
 
@@ -95,6 +96,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <p>The software is open. The person’s health data is private.</p>
           <nav aria-label="Footer navigation">
             <Link href="/promise">The Promise</Link>
+            <Link href="/trust">Trust Center</Link>
+            <Link href="/forge">Open Forge</Link>
             <a
               href="https://github.com/finalboss-tom/calypsos-promise"
               target="_blank"
