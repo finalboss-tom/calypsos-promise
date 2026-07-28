@@ -36,7 +36,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Apply status and formatting
         run: |
-          python tools/apply-sprint-7-3-status.py
+          python tools/apply-sprint-7-3-status-tolerant.py
           pnpm format
       - name: Restore workflow and remove temporary files
         run: |
@@ -45,6 +45,7 @@ jobs:
           git rm -f .github/workflows/apply-sprint-7-3-status.yml
           git rm -f .sprint-7-3-status-trigger
           git rm -f tools/apply-sprint-7-3-status.py
+          git rm -f tools/apply-sprint-7-3-status-tolerant.py
       - name: Commit reconciled Sprint 7.3 tree
         run: |
           git config user.name "github-actions[bot]"
