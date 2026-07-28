@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { SiteNavigation } from "@/components/site-navigation";
 import "./globals.css";
 import "./homepage.css";
+import "./guide-pages.css";
 
 const siteUrl = new URL("https://www.calypsospromise.org");
 
