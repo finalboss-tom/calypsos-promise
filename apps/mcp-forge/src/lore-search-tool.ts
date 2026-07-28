@@ -338,7 +338,9 @@ export async function searchForgeLore(
   }
 
   const ordered = rankMatches(ranked);
-  const limited = ordered.slice(0, request.maxResults).map((entry) => entry.match);
+  const limited = ordered
+    .slice(0, request.maxResults)
+    .map((entry) => entry.match);
   const reasons = new Set<ForgeSourcePartialReasonId | "result-limit-reached">(
     listing.partialReasons,
   );
