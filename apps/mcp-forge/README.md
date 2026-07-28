@@ -65,11 +65,11 @@ Every enabled tool has exactly one execution scope derived from its accepted reg
 
 Accepted risk-class ceilings are:
 
-| Risk class | Request | Files | Results | Output | Timeout | Per-tool concurrency |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `read-public` | 32,768 bytes | 200 | 50 | 524,288 bytes | 5,000 ms | 1 |
-| `validate-public` | 1,048,576 bytes | 100 | 100 | 1,048,576 bytes | 10,000 ms | 1 |
-| `generate-synthetic-draft` | 131,072 bytes | 50 | 25 | 1,048,576 bytes | 10,000 ms | 1 |
+| Risk class                 |         Request | Files | Results |          Output |   Timeout | Per-tool concurrency |
+| -------------------------- | --------------: | ----: | ------: | --------------: | --------: | -------------------: |
+| `read-public`              |    32,768 bytes |   200 |      50 |   524,288 bytes |  5,000 ms |                    1 |
+| `validate-public`          | 1,048,576 bytes |   100 |     100 | 1,048,576 bytes | 10,000 ms |                    1 |
+| `generate-synthetic-draft` |   131,072 bytes |    50 |      25 | 1,048,576 bytes | 10,000 ms |                    1 |
 
 Tool schemas and source roots may impose narrower limits.
 

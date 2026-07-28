@@ -49,11 +49,11 @@ The scope validator rejects:
 
 The immutable accepted registry defines three risk-class budgets.
 
-| Risk class | Max request | Max files scanned | Max results | Max output | Timeout | Concurrent calls per tool |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `read-public` | 32,768 bytes | 200 | 50 | 524,288 bytes | 5,000 ms | 1 |
-| `validate-public` | 1,048,576 bytes | 100 | 100 | 1,048,576 bytes | 10,000 ms | 1 |
-| `generate-synthetic-draft` | 131,072 bytes | 50 | 25 | 1,048,576 bytes | 10,000 ms | 1 |
+| Risk class                 |     Max request | Max files scanned | Max results |      Max output |   Timeout | Concurrent calls per tool |
+| -------------------------- | --------------: | ----------------: | ----------: | --------------: | --------: | ------------------------: |
+| `read-public`              |    32,768 bytes |               200 |          50 |   524,288 bytes |  5,000 ms |                         1 |
+| `validate-public`          | 1,048,576 bytes |               100 |         100 | 1,048,576 bytes | 10,000 ms |                         1 |
+| `generate-synthetic-draft` |   131,072 bytes |                50 |          25 | 1,048,576 bytes | 10,000 ms |                         1 |
 
 These are ceilings. Individual tool input schemas and source-catalogue entries may impose narrower limits.
 
