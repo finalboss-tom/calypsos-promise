@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Source Catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Source Catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) → [Lore and Schema Tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) → [Architecture and Decision Tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
 - **Review the merged Aster baseline:** [Sprint 6 Completion Record](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md) → [Aster Holdpoints](docs/architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - **Apply operational simplicity:** [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) → [Operational Architecture](docs/architecture/operational-simplicity-and-durable-workflows.md)
 - **Apply the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md)
@@ -25,7 +25,7 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`, establishing the bounded Forge MCP handoff.
 
-**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstreams 7.1–7.3 establish the Forge boundary, registry, finalized-version local `stdio` transport, direct harness, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, and public-safe errors. Every tool remains planned and unexposed; Sprint 7.4 — lore and schema tools is next.
+**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstreams 7.1–7.5 establish the Forge boundary, accepted and runtime registries, finalized-version local `stdio` transport, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, deterministic lore and documentation search, public content and quest validation, fixed quest-schema inspection, exact line evidence, conservative authority classification, and public synthetic tests. Exactly six read-only lore, schema, architecture, and decision tools are enabled; Sprint 7.6 — standards and synthetic connector fixtures — is next and has not started.
 
 No current documentation or contract baseline activates production health data, production AI, private MCP, accounts, provider calls, connectors, clinical workflows, enterprise services, workflow orchestration, research enrollment, donation checkout, sponsor intake, legacy directives, estate access, or financial operations.
 
@@ -62,7 +62,7 @@ The merged Chronicle, House of Keys, security, funding, operational, and Aster w
 
 ## Current gates and unresolved work
 
-- Begin Sprint 7.4 on draft PR #55 by implementing lore search, public content validation, quest-schema inspection, and quest validation through accepted public package exports without granting canon or mutation authority.
+- Begin Sprint 7.6 on draft PR #55 only after the completed 7.5 status reconciliation remains green, implementing public standards, mapping-draft, and synthetic connector-fixture tooling without provider preference, protected mappings, credentials, or certification claims.
 - Continue Sprint 7 through issue #54, the [execution plan](docs/roadmap/sprint-7-execution-plan.md), public or synthetic evidence, completion records, and explicit founding-steward acceptance.
 - Keep Forge MCP local, public-only, synthetic-only, allowlisted, non-mutating, network-free, and unable to execute consequential actions during Sprint 7.
 - Preserve all Sprint 5 and Sprint 6 production, security, privacy, accessibility, clinical, provider, connector, operational, and institutional holdpoints.
@@ -119,6 +119,7 @@ Open `http://localhost:3000` to run the bounded public repository gateway locall
 ### Implemented now
 
 - [`apps/site`](apps/site) — bounded public repository gateway and purpose-limited signup adapter
+- [`apps/mcp-forge`](apps/mcp-forge) — active local `stdio` public-documentation and synthetic-data contributor tooling with six enabled read-only tools
 - [`packages/domain`](packages/domain) — shared repository invariants and contracts
 - [`packages/content-schema`](packages/content-schema) — content contracts, deterministic validators, graph contracts, and JSON Schema
 - [`packages/health-schema`](packages/health-schema) — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
@@ -131,7 +132,6 @@ Open `http://localhost:3000` to run the bounded public repository gateway locall
 
 ### Planned and gated
 
-- `apps/mcp-forge` — planned Sprint 7 local public-documentation and synthetic-data tooling
 - `apps/game` — planned universal Expo game
 - `apps/api` — planned modular TypeScript application
 - `apps/mcp-chronicle` — future private, policy-controlled tools
