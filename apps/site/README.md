@@ -2,13 +2,13 @@
 
 `apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.5 are complete; workstream 8.6 is next.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.6 are complete; workstream 8.7 is next.
 
 Controlling records:
 
 - [Sprint 8 Execution Plan](../../docs/roadmap/sprint-8-execution-plan.md)
 - [Public Website Foundation and Migration Boundary](../../docs/architecture/public-website-foundation-and-migration.md)
-- [Workstream 8.5 Record](../../docs/roadmap/sprint-8-workstream-8-5-record.md)
+- [Workstream 8.6 Record](../../docs/roadmap/sprint-8-workstream-8-6-record.md)
 - [Current Project Status](../../docs/roadmap/current-status.md)
 
 ## Current implementation
@@ -19,7 +19,7 @@ The application is a pinned Next.js App Router site with:
 - exact type dependencies and monorepo lockfile evidence;
 - one server-rendered root layout;
 - a migrated cinematic homepage;
-- source-backed `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` routes;
+- source-backed `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, and `/forge` routes;
 - shared direct navigation and an optional native Ogygia path reaching the same essential destinations;
 - visible-on-focus skip links and semantic landmarks;
 - controlled `live`, `experimental`, `planned`, and `long-horizon` evidence statuses;
@@ -43,6 +43,8 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 | `/how-it-works`   | planned short-session, player-confirmed, non-punitive experience               |
 | `/consumer-first` | provider-respectful consumer-first and interoperability boundary               |
 | `/aster`          | Aster proposal, confirmation, source, uncertainty, fallback, and non-authority |
+| `/trust`          | source-backed rights, safeguards, open gates, and challenge routes             |
+| `/forge`          | ten bounded local public/synthetic tools with visible evidence limits          |
 | `/privacy`        | migration-period signup privacy explanation                                    |
 | `/joined`         | migration-period no-submission confirmation                                    |
 | `/api/join`       | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded                |
@@ -74,6 +76,18 @@ No provider, EHR, connector, clinical workflow, decision-support, or enterprise 
 
 No production model, provider, private-data egress, memory, retrieval, queue, scheduler, workflow, or tool runtime is live.
 
+### Trust Center
+
+`/trust` organizes the frozen rights floor, public/private information boundary, truthful security status, authority separation, provider and connector status, funding doctrine, correction routes, public-versus-private reporting paths, and open production and independent-review gates.
+
+It is a read-only derivative of canonical repository records. It is not security, privacy, accessibility, clinical, legal, financial, provider, or institutional certification.
+
+### Open Forge
+
+`/forge` exposes all ten accepted local public/synthetic tool identities, source provenance, bounded scopes, receipts, errors, compatibility and non-authority limits, nineteen open holdpoints, eighteen unresolved-work records, and the ordinary repository contribution path.
+
+Forge remains local-only, public-and-synthetic-only, non-mutating, provider-independent, and non-authoritative. No remote, private, provider, connector, repository-writing, shell, network, or production-sandbox capability is live.
+
 ## Direct and narrative navigation
 
 Both navigation modes expose:
@@ -84,6 +98,8 @@ Both navigation modes expose:
 - How It Works;
 - Consumer First;
 - Aster and AI;
+- Trust Center;
+- Open Forge;
 - capability status;
 - signup privacy;
 - the canonical repository status; and
@@ -122,7 +138,6 @@ These are validated implementation foundations, not accessibility conformance ce
 
 ## What is not implemented
 
-- Trust Center or Open Forge;
 - roadmap, support, or canonical funding-transparency pages;
 - final signup disposition;
 - representative accessibility review or certification;
@@ -183,5 +198,7 @@ Run `pnpm check` from the repository root before review.
 Workstream 8.4 final head `c54c377ad072f745772ccf3bbbcdabf1b8193cc3` passed CI 1021 and DCO 1100.
 
 Workstream 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` passed repository formatting, the production site build, site validator/lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
+
+Workstream 8.6 focused candidate `e43d0a47186041599674f6608455752a4e3b7319` passed repository formatting, the production site build, site validator/lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
 This evidence does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, provider integration, clinical safety, production AI, or production readiness.

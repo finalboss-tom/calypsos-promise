@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.5 record](docs/roadmap/sprint-8-workstream-8-5-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.6 record](docs/roadmap/sprint-8-workstream-8-6-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.5 Record](docs/roadmap/sprint-8-workstream-8-5-record.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.6 Record](docs/roadmap/sprint-8-workstream-8-6-record.md)
 - **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
@@ -33,14 +33,15 @@ The goal is:
 - **8.3:** direct/narrative navigation parity, landmarks, keyboard and focus foundations, controlled evidence statuses, canonical source links, and resilient presentation.
 - **8.4:** cinematic homepage, dedicated Promise route, frozen player promise, three personal-value loops, public-software/private-data boundary, player-rights explanation, and contribution paths.
 - **8.5:** source-backed Seven Laws, How It Works, consumer-first/interoperability, and Aster/AI routes with metadata, sitemap inclusion, both navigation paths, explicit status boundaries, production-build evidence, and deterministic validation.
+- **8.6:** source-backed Trust Center and Open Forge routes with truthful rights, security, funding, challenge, tool-registry, provenance, receipt, error, holdpoint, and non-authority explanations.
 
-The 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
+The 8.6 focused candidate `e43d0a47186041599674f6608455752a4e3b7319` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
-### Next workstream: 8.6
+### Next workstream: 8.7
 
-Workstream 8.6 will implement the Trust Center and Open Forge while preserving frozen authority, canonical source links, provider independence, Aster and Forge non-authority, server-rendered essential information, accessibility and resilience foundations, paused signup, disabled deployment, and every permanent Sprint 8 boundary.
+Workstream 8.7 will implement roadmap, capability-status, support, and canonical funding-transparency views derived from approved public repository records or honest empty states.
 
-It will not claim certification, production safety, private-data capability, provider or clinical capability, transactions, or Sprint 9 gameplay.
+It will not activate donations, sponsorship checkout, payments, charitable or tax claims, nonprofit or public-benefit claims, provider intake, connector placement, ranking, private support records, or Sprint 9 gameplay.
 
 ## Current public site
 
@@ -49,7 +50,7 @@ It will not claim certification, production safety, private-data capability, pro
 It currently provides:
 
 - cinematic server-rendered homepage and dedicated `/promise` route;
-- `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` source-backed guide routes;
+- `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, and `/forge` source-backed guide and trust routes;
 - direct and optional narrative navigation reaching the same essential destinations;
 - skip links, semantic landmarks, keyboard access, and visible focus;
 - controlled evidence statuses and canonical source links;
@@ -59,7 +60,7 @@ It currently provides:
 - metadata routes, sitemap, error states, nonce CSP, and public security headers; and
 - production-build, lint, typecheck, validator, and focused-test evidence.
 
-It does not yet provide Trust Center, Open Forge, canonical roadmap or funding views, final signup disposition, representative accessibility review, route-level performance release evidence, preview deployment, official production cutover, or any private product capability.
+It does not yet provide canonical roadmap, support, or funding-transparency views, final signup disposition, representative accessibility review, route-level performance release evidence, preview deployment, official production cutover, or any private product capability.
 
 ## Accepted and merged foundations
 

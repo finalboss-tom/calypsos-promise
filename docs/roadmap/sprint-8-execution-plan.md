@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.5 record](sprint-8-workstream-8-5-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.6 record](sprint-8-workstream-8-6-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 through 8.5 complete; workstream 8.6 next
+- **Status:** ACTIVE — workstreams 8.1 through 8.6 complete; workstream 8.7 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -39,8 +39,8 @@ Sprint 8 inherits:
 - [x] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations**
 - [x] **8.4 — Homepage and Promise migration**
 - [x] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
-- [ ] **8.6 — Trust Center and Open Forge — NEXT**
-- [ ] **8.7 — Roadmap, capability status, support, and funding transparency**
+- [x] **8.6 — Trust Center and Open Forge**
+- [ ] **8.7 — Roadmap, capability status, support, and funding transparency — NEXT**
 - [ ] **8.8 — Signup disposition and bounded implementation**
 - [ ] **8.9 — Accessibility, performance, security, route, and authority validation**
 - [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff**
@@ -89,17 +89,22 @@ The final self-removing focused validation workflow passed formatting, productio
 
 The controlling evidence is [Sprint 8.5 Record](sprint-8-workstream-8-5-record.md).
 
-## 8.6 — Trust Center and Open Forge
+## 8.6 result — Trust Center and Open Forge
 
-Deliverables:
+Workstream 8.6 established:
 
-- Trust Center shell organizing rights, privacy, security disclosure, authority boundaries, provider and connector status, funding doctrine, open holdpoints, corrections, and challenge routes;
-- Open Forge page describing the ten bounded local public/synthetic tools, provenance, limits, receipts, errors, compatibility, non-authority, and ordinary non-MCP contribution path; and
-- no certification or production-safety overstatement.
+- `/trust` with the public rights floor, publication boundary, designed-versus-deployed security status, authority separation, provider and connector status, funding doctrine, public and private challenge routes, and open review gates;
+- `/forge` with the exact ten-tool local public/synthetic registry, source provenance, scopes, limits, receipts, public-safe errors, compatibility and non-authority boundaries, open holdpoints, and ordinary non-MCP contribution paths;
+- direct and narrative navigation parity, footer links, canonical metadata, and sitemap inclusion;
+- server-rendered essential information without `use client`;
+- responsive Trust and Forge layouts with reduced-data, contrast, and forced-colors behavior; and
+- expanded source, trust, tool-registry, receipt, error, route, signup, deployment, and non-certification validation.
 
-Workstream 8.6 must preserve the accepted homepage and guide family, frozen authority, direct/narrative parity, controlled statuses, canonical source links, server-rendered essential information, provider independence, Aster and Forge non-authority, accessibility/resilience controls, paused signup, disabled deployment, and permanent non-scope.
+The first full repository pass passed every substantive job and found only canonical formatting differences. The self-removing focused workflow then passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, final formatting, and cleanup before producing candidate `e43d0a47186041599674f6608455752a4e3b7319`.
 
-## 8.7 — roadmap, capability status, support, and funding transparency
+The controlling evidence is [Sprint 8.6 Record](sprint-8-workstream-8-6-record.md).
+
+## 8.7 — roadmap, capability status, support, and funding transparency — NEXT
 
 Deliverables:
 
