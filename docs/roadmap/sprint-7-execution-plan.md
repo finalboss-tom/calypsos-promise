@@ -1,13 +1,13 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](../architecture/forge-mcp-deterministic-synthetic-generation.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.6 complete and validated; Sprint 7.7 next and unstarted
+- **Status:** ACTIVE — Sprint 7.1–7.7 implemented; Sprint 7.8 next and unstarted
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
 - **Information boundary:** public repository material and explicitly synthetic data only
-- **Certification boundary:** public contracts, deterministic validation, local synthetic evidence, and repository consistency; not production security, privacy, clinical, accessibility, legal, interoperability, operations, provider, or AI-safety certification
+- **Certification boundary:** public contracts, deterministic validation, local synthetic evidence, and repository consistency; not production security, privacy, clinical, accessibility, legal, interoperability, operations, provider, statistical, or AI-safety certification
 
 ## Goal
 
@@ -87,21 +87,17 @@ Activates `forge.search.architecture` and `forge.search.decision` with exact lin
 
 ### 7.6 Standards and synthetic connector fixtures
 
-Activates:
+Activates `forge.search.public-standards`, `forge.validate.mapping-draft`, and `forge.search.synthetic-connector-fixtures`.
 
-- `forge.search.public-standards`;
-- `forge.validate.mapping-draft`; and
-- `forge.search.synthetic-connector-fixtures`.
-
-Runtime registry revision `3` exposes exactly nine accepted identities through local `stdio`. `forge.generate.synthetic-data` remains planned and unexposed for Sprint 7.7.
-
-**Exit:** met. Public standards search returns exact provenance without completeness, certification, or provider-preference claims. Mapping validation requires draft status, human interoperability and semantic review, and explicit non-authority claims. Connector search returns only explicitly synthetic, credential-free, personal-data-free, non-production fixtures and exposes skipped unclassified records. No proprietary mapping, provider credential, protected finding, certification claim, semantic-equivalence approval, provider preference, connector activation, production behavior, or institutional authority is accessed or created.
+**Exit:** met. Public standards search remains non-certifying; mapping validation requires draft status and human review; connector search returns only explicitly synthetic, credential-free, personal-data-free, non-production fixtures and exposes skipped unclassified records.
 
 ### 7.7 Synthetic generation
 
-Implement deterministic or reproducible synthetic generation with synthetic labels, generator and schema revisions, diverse and accessibility-relevant cases, deterministic validation, and draft-only mapping behavior.
+Activates `forge.generate.synthetic-data` through runtime registry revision `4`, exposing all ten accepted identities in accepted registry order.
 
-**Exit:** generated output cannot self-approve or become canonical, clinical, provider, mapping, or connector authority.
+The tool generates deterministic synthetic quest or mapping-draft batches from one bounded public-safe seed, count, and profile. Every artifact is immediately passed through its accepted deterministic validator and returned with generator, schema, validator, case, classification, and diversity evidence.
+
+**Exit:** met at the public-contract and synthetic-evidence level. Generated output cannot self-approve or become canonical, clinical, provider, mapping, connector, permission, gameplay, production, or institutional authority. A passing batch does not prove statistical validity, demographic representativeness, accessibility conformance, clinical realism, privacy for arbitrary caller input, or fitness for model training.
 
 ### 7.8 Scopes, limits, receipts, and errors
 
@@ -123,48 +119,52 @@ Publish cross-contract reconciliation, control and evidence mapping, specialist 
 
 **Exit:** accepted scope is complete at the stated evidence level and explicit founding-steward acceptance remains a separate human gate.
 
-## Validated evidence through 7.5
+## Validated evidence through 7.6
 
 The completed workstreams establish:
 
-- accepted registry revision `1` and runtime revisions `1` and `2`;
+- accepted registry revision `1` and runtime revisions `1`–`3`;
 - finalized local MCP transport revision `2025-11-25`;
 - fixed public and synthetic source roots with exact provenance;
-- four source-linked lore and schema tools;
-- two source-linked architecture and decision tools;
+- six lore, schema, architecture, and decision tools;
+- three public standards, mapping-draft, and synthetic-connector tools;
 - deterministic validation and public-safe errors;
 - inert default sessions;
 - retrieved-instruction isolation; and
-- visible non-authority for canon, Chronicle truth, permission, gameplay, rewards, clinical claims, providers, mappings, and institutional decisions.
+- visible non-authority for canon, Chronicle truth, permission, gameplay, rewards, clinical claims, providers, mappings, connectors, and institutional decisions.
 
-Sprint 7.5 implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f` passed CI run 793 and DCO run 861. Its final reconciled head `fc2f11c72e21aef573f6c1212880aed4cffb47f1` passed CI run 801 and DCO run 870.
+Sprint 7.6 final head `16701b72fe3d11159774aac746adc9f0ead7743a` passed CI run 833 and DCO run 903; its PR-body DCO recheck passed run 904.
 
-## Sprint 7.6 evidence
+## Sprint 7.7 evidence
 
-Sprint 7.6 adds:
+Sprint 7.7 adds:
 
-- tool contract revision `1` and runtime registry revision `3`;
-- exact activation of the three accepted standards, mapping-draft, and synthetic-fixture identities;
-- continued local-stdio-only exposure for exactly nine identities;
-- continued planned and unexposed status for `forge.generate.synthetic-data`;
-- deterministic Unicode-normalized public standards search with exact line provenance and no hidden numeric rank;
-- explicit no-completeness, no-certification, no-network, and no-provider-preference results;
-- revision-1 mapping-draft validation for inline public or synthetic records and allowlisted public JSON sources;
-- bounded source and target identities, unique mapping entries, accepted transform and confidence classes, synthetic evidence, and required interoperability and semantic review;
-- rejection of approval, certification, production-readiness, provider-default, and provider-preference fields or claims;
-- explicit synthetic-only connector fixture filtering and exact object provenance;
-- visible `unclassified-fixture-skipped` partial evidence;
-- one pinned public FHIR R4 reference, one public draft mapping example, and one fictional synthetic connector fixture;
-- direct and transport-level tests; and
-- preservation of all six previously validated tools inside the nine-tool runtime.
+- tool and generator revision `1` and runtime registry revision `4`;
+- activation of `forge.generate.synthetic-data` in accepted registry order;
+- exactly ten enabled local-stdio-only identities;
+- preservation of the nine previously validated tools;
+- bounded `quest` and `mapping-draft` output families;
+- bounded `balanced`, `accessibility`, and `edge-cases` profiles;
+- Unicode-normalized seed handling without echoing the seed;
+- SHA-256 seed digests and deterministic case identities;
+- fixed synthetic timestamps rather than wall-clock time;
+- no random source, network, provider, credential, production endpoint, arbitrary filesystem read, or repository write;
+- immediate content-schema validation for generated quests;
+- immediate mapping-draft validation for generated mappings;
+- visible generator, scenario, schema, validator, classification, and diversity evidence;
+- explicit synthetic, non-production, credential-free, personal-data-free, and human-review-required labels;
+- public tests for repeatability, seed separation, accessibility and edge cases, draft-only mappings, input rejection, cancellation, prompt-like seed isolation, backward compatibility, and transport dispatch; and
+- a canonical [deterministic generation architecture](../architecture/forge-mcp-deterministic-synthetic-generation.md).
 
-The functional 7.6 head passed documentation links, repository policy, economics validation, content validation, lint, typecheck, and tests in CI run 815; DCO run 885 passed. Formatting was applied exactly, and the final completed status surface is validated through the repository checks. Exact final-head evidence is recorded in issue #54 and draft PR #55.
+Implementation head `eed685814046f0cf5996fde37b084ebff457faa9` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, GitHub Actions CI run 847, and DCO Attestation run 918.
 
 ## Information handling
 
 Only public repository records and public synthetic evidence may appear in Sprint 7 issues, branches, pull requests, fixtures, tests, comments, logs, and artifacts.
 
 No production health data, credentials, private provider negotiations, contracts, evaluations, proprietary mappings, protected interoperability findings, real exploit details, protected audit, account-specific support, or private operational evidence belongs here.
+
+A seed that satisfies the public-safe syntax contract is not proof that its contents are appropriate. Private or production information remains prohibited.
 
 ## Validation strategy
 
@@ -186,6 +186,6 @@ Public tests import the application contract through `dist/index.js` rather than
 
 ## Completion rule
 
-Sprint 7 completion does not establish production MCP, private Chronicle tools, provider approval, connector operation, clinical behavior, repository mutation authority, remote hosting, deployment, or independent specialist approval.
+Sprint 7 completion does not establish production MCP, private Chronicle tools, provider approval, connector operation, clinical behavior, repository mutation authority, remote hosting, deployment, statistical synthetic-data validity, or independent specialist approval.
 
 The sprint remains open until all accepted workstreams and criteria are evidenced, the completion package is validated, and the founding steward explicitly accepts and squash merges the final pull request.
