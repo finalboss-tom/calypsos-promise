@@ -11,7 +11,8 @@ export default function HomePage() {
           width={1600}
           height={900}
           sizes="100vw"
-          priority
+          loading="lazy"
+          quality={72}
           alt=""
         />
         <div className="hero-content">
@@ -42,13 +43,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="navigation-parity" aria-labelledby="navigation-parity-title">
+      <section
+        className="navigation-parity"
+        aria-labelledby="navigation-parity-title"
+      >
         <p className="eyebrow">Two paths, one truth</p>
-        <h2 id="navigation-parity-title">Choose direct access or the Ogygia path.</h2>
+        <h2 id="navigation-parity-title">
+          Choose direct access or the Ogygia path.
+        </h2>
         <p>
-          Primary navigation exposes the essential routes immediately. The optional
-          narrative path uses the same destinations and does not unlock hidden or
-          more authoritative information.
+          Primary navigation exposes the essential routes immediately. The
+          optional narrative path uses the same destinations and does not unlock
+          hidden or more authoritative information.
         </p>
       </section>
 
