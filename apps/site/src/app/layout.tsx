@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteNavigation } from "@/components/site-navigation";
 import "./globals.css";
+import "./homepage.css";
 
 const siteUrl = new URL("https://www.calypsospromise.org");
 
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <footer className="site-footer">
           <p>The software is open. The person’s health data is private.</p>
           <nav aria-label="Footer navigation">
+            <Link href="/promise">The Promise</Link>
             <a
               href="https://github.com/finalboss-tom/calypsos-promise"
               target="_blank"
