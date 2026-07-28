@@ -17,6 +17,26 @@ export const directNavigation: readonly NavigationItem[] = [
     description: "Player rights, personal value, privacy, and control.",
   },
   {
+    href: "/laws",
+    label: "Seven Laws",
+    description: "Frozen canon protecting agency, privacy, evidence, and return.",
+  },
+  {
+    href: "/how-it-works",
+    label: "How It Works",
+    description: "The planned short-session, player-confirmed experience.",
+  },
+  {
+    href: "/consumer-first",
+    label: "Consumer First",
+    description: "Provider-respectful interoperability without product capture.",
+  },
+  {
+    href: "/aster",
+    label: "Aster & AI",
+    description: "Proposal, confirmation, source, fallback, and non-authority.",
+  },
+  {
     href: "/#capability-status",
     label: "Capability status",
     description: "What is live, experimental, planned, or long-horizon.",
@@ -52,9 +72,35 @@ export const narrativeNavigation: readonly NavigationItem[] = [
     description: "Understand the rights that govern the journey.",
   },
   {
+    href: "/laws",
+    label: "Learn the Seven Laws",
+    description: "Read the frozen rules no feature or faction may outrank.",
+  },
+  {
+    href: "/how-it-works",
+    label: "Follow the Wayfinder route",
+    description: "See the planned voluntary, confirm-before-storage experience.",
+  },
+  {
+    href: "/consumer-first",
+    label: "Cross the institutional bridges",
+    description: "See how standards and providers connect without taking the key.",
+  },
+  {
+    href: "/aster",
+    label: "Meet Aster",
+    description: "Understand the Wayfinder’s roles, sources, limits, and fallbacks.",
+  },
+  {
     href: "/#capability-status",
     label: "Consult the signal fires",
     description: "See what exists now and what remains ahead.",
+  },
+  {
+    href: "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md",
+    label: "Read the island ledger",
+    description: "Inspect the canonical integrated project status.",
+    external: true,
   },
   {
     href: "/privacy",
