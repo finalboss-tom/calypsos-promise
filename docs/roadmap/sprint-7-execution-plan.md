@@ -1,8 +1,8 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.4 implemented and validated; Sprint 7.5 next
+- **Status:** ACTIVE — Sprint 7.1–7.5 implemented and validated; Sprint 7.6 next
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -99,7 +99,7 @@ Implement lore search, content validation, quest-schema inspection, and quest va
 
 Implement architecture, decision, policy, assumption, roadmap, and status search with exact provenance and visible authority status.
 
-**Exit:** search results cannot silently promote proposed, planned, synthetic, or historical material to accepted current truth.
+**Exit:** met. Runtime registry revision `2` enables exactly six accepted local `stdio` tools, including architecture and decision search with exact line provenance and explicit conservative authority states. Proposed, planned, active-hypothesis, historical, superseded, unresolved, and reference-only records cannot be silently promoted to accepted current truth. Implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f` passed CI run 793 and DCO run 861.
 
 ### 7.6 Standards and synthetic connector fixtures
 
@@ -195,6 +195,28 @@ Sprint 7.4 adds:
 Tool success remains evidence only. It does not approve canon, accept a repository change, complete gameplay, grant rewards, prove semantic completeness, prove clinical safety, or create institutional authority.
 
 The clean implementation head passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, and DCO through CI run 767 and DCO run 832.
+
+## Sprint 7.5 evidence
+
+Sprint 7.5 adds:
+
+- runtime registry revision `2` while preserving the accepted Sprint 7.1 registry;
+- exact activation of `forge.search.architecture` and `forge.search.decision` alongside the four existing Sprint 7.4 tools;
+- local-stdio-only exposure for exactly six accepted identities;
+- continued planned and unexposed status for the remaining four accepted identities;
+- architecture search over allowlisted frozen, architecture, policy, governance, security, economics, and product records;
+- decision search over allowlisted decisions, assumptions, roadmaps, workstreams, completion records, and current-status evidence;
+- Unicode-normalized exact-phrase, all-term, and partial-term match classes without hidden numeric ranking;
+- exact match-line provenance, document title, document class, section path, and status-evidence provenance;
+- explicit `frozen-current`, `accepted-current`, `active-working-hypothesis`, `proposed`, `planned`, `historical`, `superseded`, `unresolved`, and `reference-only` states;
+- explicit classification bases from status lines, confidence lines, headings, matched lines, path class, or conservative fallback;
+- fail-closed unresolved classification for ambiguous decision and assumption records;
+- reference-only treatment for other ambiguous public documentation;
+- retrieved-instruction isolation preventing content from elevating status, changing registry or source authority, suppressing provenance, or creating domain authority;
+- direct and transport-level tests preserving all Sprint 7.4 behavior; and
+- complete repository validation on implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f` through CI run 793 and DCO run 861.
+
+Search output remains evidence only. It cannot approve or change a decision, override the documentation authority order, create Chronicle truth or House of Keys permission, approve canon or mappings, mutate the repository, complete gameplay, grant rewards, endorse a provider, or create institutional authority.
 
 ## Information handling
 
