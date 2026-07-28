@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.3 record](roadmap/sprint-8-workstream-8-3-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.4 record](roadmap/sprint-8-workstream-8-4-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -21,26 +21,27 @@ The directive is constrained by the player promise:
 
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 8 Execution Plan](roadmap/sprint-8-execution-plan.md)
-3. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
-4. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
-5. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
-6. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
-7. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-8. [Sprint Roadmap](roadmap/sprints.md)
-9. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-10. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-11. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-12. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-13. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-14. [Aster Contract Baseline](product/aster-contract-baseline.md)
-15. [Security Architecture](security/README.md)
-16. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-17. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-18. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-19. [Repository and Module Boundaries](architecture/module-boundaries.md)
-20. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-21. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-22. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+3. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
+4. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
+5. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
+6. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
+7. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
+8. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
+9. [Sprint Roadmap](roadmap/sprints.md)
+10. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+11. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+12. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+13. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+14. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+15. [Aster Contract Baseline](product/aster-contract-baseline.md)
+16. [Security Architecture](security/README.md)
+17. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+18. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+19. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+20. [Repository and Module Boundaries](architecture/module-boundaries.md)
+21. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+22. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+23. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -75,25 +76,27 @@ Sprints 0–7 and the pre-Sprint 8 repository reconciliation are complete and me
 
 Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61.
 
-Workstream 8.1 established the website application, route, authority, rendering, security, cache, signup, deployment, rollback, accessibility, performance, metadata, validation, and non-scope boundary.
+Workstreams 8.1 through 8.4 are complete.
 
-Workstream 8.2 migrated the public site to one pinned Next.js App Router compatibility shell with exact lockfile evidence, preserved routes, paused signup, application-local design tokens, metadata routes, CSP and security headers, mutable public-asset caching, shell validation, and continued disabled Git-triggered deployment.
+The public site now provides:
 
-Workstream 8.3 established:
+- one pinned Next.js App Router application;
+- a migrated cinematic homepage;
+- a dedicated source-backed `/promise` route;
+- direct and optional narrative navigation parity;
+- controlled status primitives with canonical source links;
+- server-rendered essential information;
+- skip links, landmarks, keyboard and visible-focus foundations;
+- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive behavior;
+- paused signup without intake or forwarding;
+- nonce CSP and public security headers; and
+- successful focused production-build and complete repository validation evidence.
 
-- direct navigation and an optional narrative path reaching the same essential destinations;
-- skip links, semantic landmarks, keyboard access, and visible focus;
-- controlled `live`, `experimental`, `planned`, and `long-horizon` status primitives;
-- stable capability IDs and canonical source links;
-- server-rendered essential information without a client-component dependency;
-- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive foundations; and
-- deterministic validation and focused tests.
+Workstream 8.4 focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the site production build, lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
 
-The validated 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed CI 986 and DCO 1064.
+Workstream 8.5 is next. It owns the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and Aster/AI page.
 
-Workstream 8.4 is next. It owns the final cinematic homepage and Promise migration while preserving the validated navigation, evidence-status, and accessibility foundations.
-
-The site is not a preview deployment, official release, final multi-page website, final signup system, accessibility certification, performance release, or private product capability.
+The site is not a preview deployment, official release, Trust Center, Open Forge, canonical funding view, final signup system, accessibility certification, performance release, or private product capability.
 
 ## Accepted strategic baselines
 
