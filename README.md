@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.2 record](docs/roadmap/sprint-8-workstream-8-2-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.3 record](docs/roadmap/sprint-8-workstream-8-3-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.2 Shell Record](docs/roadmap/sprint-8-workstream-8-2-record.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.3 Navigation and Accessibility Record](docs/roadmap/sprint-8-workstream-8-3-record.md)
 - **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review the accepted handoff:** [Pre-Sprint 8 Alignment Review](docs/roadmap/pre-sprint-8-alignment-review.md)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
@@ -48,31 +48,46 @@ The goal is:
 - shell validation and focused tests; and
 - continued disabled Git-triggered Vercel deployment.
 
-The exact 8.2 implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+**8.3 — Navigation, narrative entry, status primitives, and accessibility foundations** established:
 
-### Next workstream: 8.3
+- shared direct navigation;
+- an optional native Ogygia path reaching the same essential destinations;
+- skip links and semantic landmarks;
+- deterministic keyboard and visible-focus foundations;
+- controlled `live`, `experimental`, `planned`, and `long-horizon` status values;
+- source-linked capability records and reusable status components;
+- server-rendered essential information without a client-component dependency;
+- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive foundations; and
+- expanded deterministic validation and focused tests.
 
-Workstream 8.3 will implement the shared direct navigation, optional narrative entry, reusable capability-status primitives, semantic and keyboard foundations, reduced motion, image-failure and low-bandwidth behavior, and server-rendered essential-information parity.
+The validated 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed CI run 986 and DCO Attestation run 1064.
 
-It will not activate signup intake, add a CMS or second source of truth, complete later page content prematurely, or begin Sprint 9 gameplay.
+### Next workstream: 8.4
+
+Workstream 8.4 will migrate the final cinematic homepage and Promise explanation through deliberate cuts and splices while preserving direct and narrative navigation parity, controlled status labels, source links, server-rendered essential information, accessibility and resilience foundations, and the paused-signup boundary.
+
+It will not activate later page families, signup intake, transactions, private data, providers, connectors, or Sprint 9 gameplay prematurely.
 
 ## Current public site
 
-[`apps/site`](apps/site) is now a validated Next.js compatibility shell, not an official public release.
+[`apps/site`](apps/site) is a validated Next.js compatibility shell with navigation, status, and accessibility foundations. It is not an official public release.
 
 It currently provides:
 
 - server-rendered compatibility homepage content preserving the Ogygia direction;
-- a root layout, skip link, basic header/footer, and direct repository/status links;
+- shared direct navigation and an optional narrative path;
+- skip links, semantic landmarks, keyboard access, and visible-focus treatment;
+- source-linked capability-status primitives;
 - privacy and joined compatibility pages;
 - `503 SIGNUP_MIGRATION_PAUSED` at `/api/join`;
 - application-local design tokens and global styling;
+- reduced-motion, reduced-data, contrast, forced-colors, and image-failure behavior;
 - metadata routes and error states;
 - repository-owned SVG and WebP assets;
 - nonce CSP and public security headers; and
 - build, lint, typecheck, shell validation, and focused tests.
 
-It does not yet provide final direct/narrative navigation, final homepage and Promise content, Seven Laws, How It Works, consumer-first or Aster/AI pages, Trust Center, Open Forge, canonical funding views, final signup disposition, accessibility or performance release evidence, preview deployment, official production cutover, or any private product capability.
+It does not yet provide final homepage and Promise content, Seven Laws, How It Works, consumer-first or Aster/AI pages, Trust Center, Open Forge, canonical funding views, final signup disposition, representative accessibility review, performance release evidence, preview deployment, official production cutover, or any private product capability.
 
 ## Accepted and merged foundations
 
