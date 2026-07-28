@@ -1,0 +1,166 @@
+name: Apply Sprint 7 status and formatting once
+
+on:
+  push:
+    branches:
+      - agent/sprint-7-forge-mcp
+
+permissions:
+  contents: write
+
+jobs:
+  apply-status:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-7-forge-mcp
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Reconcile Sprint 7 status
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          def replace(path: str, old: str, new: str) -> None:
+              file = Path(path)
+              text = file.read_text()
+              if old not in text:
+                  raise SystemExit(f"Expected text not found in {path}: {old[:100]!r}")
+              file.write_text(text.replace(old, new))
+
+          replace(
+              "README.md",
+              "[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md)",
+              "[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md)",
+          )
+          replace(
+              "README.md",
+              "- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) → [Sprint Roadmap](docs/roadmap/sprints.md)",
+              "- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Sprint Roadmap](docs/roadmap/sprints.md)",
+          )
+          replace(
+              "README.md",
+              "The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md), tracked by issue #51, is the active gate. It confirms Sprint 7 remains aligned and defines a bounded Forge MCP handoff before implementation begins.\n\nAfter that reconciliation is accepted and merged, **Sprint 7 — Forge MCP and Agent Safety** becomes the next numbered sprint. Sprint 7 remains limited to local `stdio`, public documentation, synthetic data, allowlisted repository sources, deterministic validation, draft generation, and public-safe contributor tooling.",
+              "The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`, establishing the bounded Forge MCP handoff.\n\n**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstream 7.1 establishes the contract-only Forge application boundary, source classes, server-owned registry, risk classes, prohibited capabilities, validators, and public tests. Every tool remains planned and unexposed; no MCP transport or repository read exists yet.",
+          )
+          replace(
+              "README.md",
+              "- Accept and merge the [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) before Sprint 7 implementation starts.\n- Begin Sprint 7 through a dedicated issue, execution plan, branch, draft pull request, public or synthetic evidence, completion record, and explicit founding-steward acceptance.",
+              "- Complete Sprint 7.1 on draft PR #55 with full repository validation before enabling any tool or transport.\n- Continue Sprint 7 through issue #54, the [execution plan](docs/roadmap/sprint-7-execution-plan.md), public or synthetic evidence, completion records, and explicit founding-steward acceptance.",
+          )
+
+          replace(
+              "docs/README.md",
+              "[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)",
+              "[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 plan](roadmap/sprint-7-execution-plan.md) · [Forge boundary](architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)",
+          )
+          replace(
+              "docs/README.md",
+              "1. [Current Project Status](roadmap/current-status.md)\n2. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)\n3. [Sprint Roadmap](roadmap/sprints.md)\n4. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)\n5. [Aster Contract Baseline](product/aster-contract-baseline.md)\n6. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)\n7. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)\n8. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)\n9. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)\n10. [Security Architecture](security/README.md)\n11. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)\n12. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)\n13. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)\n14. [Repository and Module Boundaries](architecture/module-boundaries.md)\n15. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)\n16. [Minimum Viable Validation](policies/minimum-viable-validation.md)\n17. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary",
+              "1. [Current Project Status](roadmap/current-status.md)\n2. [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md)\n3. [Forge MCP Boundary and Tool Registry](architecture/forge-mcp-boundary-and-tool-registry.md)\n4. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)\n5. [Sprint Roadmap](roadmap/sprints.md)\n6. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)\n7. [Aster Contract Baseline](product/aster-contract-baseline.md)\n8. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)\n9. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)\n10. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)\n11. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)\n12. [Security Architecture](security/README.md)\n13. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)\n14. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)\n15. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)\n16. [Repository and Module Boundaries](architecture/module-boundaries.md)\n17. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)\n18. [Minimum Viable Validation](policies/minimum-viable-validation.md)\n19. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary",
+          )
+          replace(
+              "docs/README.md",
+              "The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) is the active gate. It confirms Sprint 7 remains aligned and binds Forge to local `stdio`, public documentation, synthetic data, allowlisted sources, server-owned tools, deterministic validation, no repository mutation, no arbitrary shell or network, source-linked results, draft generation, bounded receipts, stable errors, compatibility, migration, and funding neutrality.\n\nAfter that review is accepted and merged, Sprint 7 — Forge MCP and Agent Safety becomes the next numbered design-to-build boundary.",
+              "The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.\n\nSprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md) and [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md) govern the contract-only 7.1 baseline. All tools remain planned and unexposed; no transport or repository read exists yet.",
+          )
+
+          replace(
+              "docs/roadmap/README.md",
+              "[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)",
+              "[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)",
+          )
+          replace(
+              "docs/roadmap/README.md",
+              "1. [Current Project Status](current-status.md)\n2. [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md)\n3. [Sprint 6 Completion Record](sprint-6-completion-record.md)",
+              "1. [Current Project Status](current-status.md)\n2. [Sprint 7 Execution Plan](sprint-7-execution-plan.md)\n3. [Forge MCP Boundary and Tool Registry](../architecture/forge-mcp-boundary-and-tool-registry.md)\n4. [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md)\n5. [Sprint 6 Completion Record](sprint-6-completion-record.md)",
+          )
+          replace(
+              "docs/roadmap/README.md",
+              "- [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) — active reconciliation tracked by issue #51",
+              "- [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) — complete and merged through PR #52\n- [Sprint 7 Execution Plan](sprint-7-execution-plan.md) — active through issue #54 and draft PR #55",
+          )
+          replace(
+              "docs/roadmap/README.md",
+              "The pre-Sprint 7 reconciliation is the current gate. It confirms Sprint 7 remains aligned and defines the local `stdio`, public-only, synthetic-only, allowlisted-source, no-mutation, no-shell, no-network, server-owned-tool, provenance, receipt, resource-limit, compatibility, migration, and funding boundaries for Forge MCP.\n\nAfter that review is accepted and merged, Sprint 7 — Forge MCP and Agent Safety becomes the next numbered design-to-build boundary. Sprint 7 does not activate private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.",
+              "The pre-Sprint 7 reconciliation merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.\n\nSprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. Workstream 7.1 defines the contract-only local application boundary, public source classes, server-owned registry, risk classes, planned tools, prohibited capabilities, validators, and public tests. It does not activate transport, repository reads, private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.",
+          )
+
+          replace(
+              "docs/roadmap/current-status.md",
+              "[Repository home](../../README.md) · [Documentation home](../README.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)",
+              "[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "- **Design-to-build position:** Sprints 0–6 complete and merged; pre-Sprint 7 reconciliation active\n- **Merged baseline:** `main` at Sprint 6 squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`\n- **Active review surface:** issue #51 and the pre-Sprint 7 reconciliation branch\n- **Next numbered sprint:** Sprint 7 — Forge MCP and Agent Safety, after the reconciliation is accepted and merged",
+              "- **Design-to-build position:** Sprints 0–6 and the pre-Sprint 7 reconciliation complete and merged; Sprint 7 active\n- **Merged baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`\n- **Active implementation surface:** issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55\n- **Current workstream:** 7.1 — Forge boundary and registry",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) is the active gate. It confirms the accepted Sprint 7 scope remains aligned and adds binding implementation clarifications for public sources, deterministic local operation, server-owned tool authority, no arbitrary mutation or execution, provenance, receipts, resource limits, compatibility, migration, and funding neutrality.",
+              "The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`. Sprint 7 is active through issue #54 and draft PR #55. Workstream 7.1 defines the contract-only Forge application boundary, public source classes, server-owned tool registry, risk classes, planned tool identities, prohibited capabilities, compatibility, migration references, resource-limit contracts, non-authority, funding neutrality, validators, and public tests.",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "| Sprint 6 — Aster Contracts and AI Governance                  | PR #48; `5aa3540765e5573f3304ce2b624d7a02c3ba2d13` | pre-stable Aster authority, role, proposal, intent, recall, memory, untrusted-input, work, provider, local-fixture, compatibility, migration, validator, test, control, holdpoint, and completion baseline | production AI, private egress, provider approval, identity, persistence, retrieval, memory storage, durable runtime, tools, connectors, clinical use, deployment, or independent review |",
+              "| Sprint 6 — Aster Contracts and AI Governance                  | PR #48; `5aa3540765e5573f3304ce2b624d7a02c3ba2d13` | pre-stable Aster authority, role, proposal, intent, recall, memory, untrusted-input, work, provider, local-fixture, compatibility, migration, validator, test, control, holdpoint, and completion baseline | production AI, private egress, provider approval, identity, persistence, retrieval, memory storage, durable runtime, tools, connectors, clinical use, deployment, or independent review |\n| Pre-Sprint 7 Repository Alignment Review                       | PR #52; `a41ca5ad9d2c0fe8a009946f376705bb7910e223` | post-Sprint 6 status reconciliation and bounded Forge MCP implementation handoff | Sprint 7 implementation, remote MCP, private data, provider selection, production tools, or specialist approval |",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "## Active reconciliation\n\n| Workstream                               | Review evidence                                       | Purpose                                                                                      | What it does not establish                                                                                      |\n| ---------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |\n| Pre-Sprint 7 Repository Alignment Review | issue #51; [review](pre-sprint-7-alignment-review.md) | post-Sprint 6 status repair, repository-wide alignment review, and bounded Forge MCP handoff | Sprint 7 implementation, remote MCP, private data, production tools, provider selection, or specialist approval |",
+              "## Active Sprint 7 implementation\n\n| Workstream | Evidence | Purpose | What it does not establish |\n| --- | --- | --- | --- |\n| Sprint 7.1 — Forge boundary and registry | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md) | contract-only application ownership, public source classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests | MCP transport, repository reads, enabled tools, remote hosting, private data, mutation, provider calls, or production readiness |",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "- [`apps/site`](../../apps/site) — bounded public repository gateway and purpose-limited signup adapter",
+              "- [`apps/site`](../../apps/site) — bounded public repository gateway and purpose-limited signup adapter\n- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 contract-only Forge boundary; all tools remain planned and unexposed",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "- `apps/mcp-forge` for Sprint 7 local public-documentation and synthetic-data contributor tools\n",
+              "",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "## Sprint 7 entry boundary\n\nSprint 7 becomes greenlit only after the [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) is accepted and merged.",
+              "## Active Sprint 7 boundary\n\nSprint 7 is active through issue #54 and draft PR #55. Workstream 7.1 is contract-only: every tool remains planned and not exposed, and no transport or repository read exists yet.",
+          )
+
+          replace(
+              "docs/roadmap/sprint-7-execution-plan.md",
+              "[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)",
+              "[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)",
+          )
+          PY
+
+      - name: Format repository
+        run: pnpm format
+
+      - name: Remove one-run workflow and commit
+        shell: bash
+        run: |
+          git rm .github/workflows/apply-sprint-7-status.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "docs: activate Sprint 7 status and format baseline"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
