@@ -85,4 +85,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run ${{ matrix.check.name }}
-        run: ${{ matrix.check.command }}
+        run: |
+          set -o pipefail
+          if [ "${{ matrix.check.name }}" = "tests" ]; then
+            ${{ matrix.check.command }} 2>&1 | tee test-output.log
+          else
+            ${{ matrix.check.command }}
+          fi
+      - name: Upload failing test output
+        if: failure() && matrix.check.name == 'tests'
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-output
+          path: test-output.log
+          if-no-files-found: error
