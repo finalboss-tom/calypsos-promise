@@ -1,49 +1,43 @@
 # Sprint 7 Completion Record — Forge MCP and Agent Safety
 
-[Current status](current-status.md) · [Sprint 7 execution plan](sprint-7-execution-plan.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Forge architecture](../architecture/README.md#forge-mcp-architecture) · [Cross-contract reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/forge-sprint-7-control-and-evidence-map.md) · [Specialist holdpoints and unresolved work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+[Current status](current-status.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint 7 execution plan](sprint-7-execution-plan.md) · [Forge architecture](../architecture/README.md#forge-mcp-architecture) · [Cross-contract reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/forge-sprint-7-control-and-evidence-map.md) · [Specialist holdpoints and unresolved work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 
-- **Status:** READY FOR FOUNDING-STEWARD ACCEPTANCE — not merged
-- **Tracking issue:** [#54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
-- **Draft pull request:** [#55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
-- **Entry baseline:** `main` at `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
-- **Reviewed implementation head:** `32492040684c2a89e32c866888f6be0888ee1279`
-- **Validated completion-package evidence head:** `660b41e0ede313926a992c2ba7094a49fc756535`
-- **Completion-package validation:** CI run 924 and DCO Attestation run 998 passed
+- **Status:** COMPLETE AND MERGED
+- **Tracking issue:** [#54](https://github.com/finalboss-tom/calypsos-promise/issues/54) — closed as completed
+- **Pull request:** [#55](https://github.com/finalboss-tom/calypsos-promise/pull/55) — squash merged
+- **Squash commit:** `f28f054fe16d550fad37663cf234e06c5622dd42`
+- **Entry baseline:** `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
+- **Final reviewed branch head:** `8be922187955480a473f11f5e03ee61be0c666b2`
+- **Final branch validation:** CI run 926 and DCO Attestation run 1000 passed; final PR-body DCO run 1003 passed
 - **Application:** `apps/mcp-forge`
 - **Accepted registry revision:** `1`
 - **Runtime registry revision:** `4`
 - **Execution contract revision:** `1`
 - **Scope:** bounded local public-and-synthetic Forge implementation, deterministic validators and generators, adversarial public tests, compatibility, migration, operability, completion evidence, holdpoints, and Sprint 8 handoff only
 
-## Completion decision awaiting acceptance
+## Completion decision
 
-Sprint 7 produced a coherent local Forge MCP implementation for the accepted goal:
+The founding steward accepted Sprint 7 for the goal:
 
 > Provide useful agent tooling without private health-data risk.
 
-The candidate implements one local `stdio` contributor-tool application with ten server-owned tools over allowlisted public repository material and explicitly synthetic data.
+Sprint 7 establishes one local `stdio` contributor-tool application with ten server-owned tools over allowlisted public repository material and explicitly synthetic data.
 
-The completion package supports acceptance at the local implementation, deterministic-validation, public/synthetic source, adversarial-test, compatibility, migration, clean-start, and repository-consistency evidence level.
+Acceptance applies at the local implementation, deterministic-validation, public/synthetic source, adversarial-test, compatibility, migration, clean-start, and repository-consistency evidence level.
 
-Founding-steward acceptance and squash merge are still required. Until they occur:
+It does not authorize production deployment, private data, remote agents, providers, connectors, repository mutation, consequential actions, or specialist claims.
 
-- Sprint 7 is not accepted or merged;
-- issue #54 remains open;
-- PR #55 remains open and draft;
-- no production, private-data, remote-agent, provider, connector, or consequential capability is authorized; and
-- Sprint 8 remains blocked.
+## Accepted deliverables
 
-## Delivered Forge surface
+### Boundary, registry, and risk classes
 
-### Boundary and registry
-
-The candidate defines one application owner at `apps/mcp-forge`, public and explicitly synthetic information classes, server-owned registry and source authority, bounded risk classes, ten accepted tool identities, exact schemas, limits, compatibility, migrations, funding neutrality, prohibited capabilities, literal non-authority, validators, and public tests.
+Forge has one application owner at `apps/mcp-forge`, public and explicitly synthetic information classes, server-owned registry and source authority, bounded risk classes, ten accepted tool identities, exact schemas, limits, compatibility, migrations, funding neutrality, prohibited capabilities, literal non-authority, validators, and public tests.
 
 ### Local MCP transport
 
-The candidate implements MCP protocol revision `2025-11-25` over newline-delimited UTF-8 local `stdio`, deterministic initialization and discovery, bounded calls, cancellation, idempotent shutdown, bounded framing, and public-safe transport errors.
+Forge implements MCP protocol revision `2025-11-25` over newline-delimited UTF-8 local `stdio`, deterministic initialization and discovery, bounded calls, cancellation, idempotent shutdown, bounded framing, and public-safe transport errors.
 
-No remote endpoint, listener, authentication service, provider call, credential path, repository mutation, or private-data path is introduced.
+No remote endpoint, authentication service, provider call, credential path, repository mutation, or private-data path is introduced.
 
 ### Source catalogue and provenance
 
@@ -51,7 +45,14 @@ Nine server-owned roots use exact-file or recursive allowlists, prohibited names
 
 ### Lore, schema, architecture, and decision tools
 
-The runtime enables `forge.search.lore`, `forge.validate.content`, `forge.inspect.quest-schema`, `forge.validate.quest`, `forge.search.architecture`, and `forge.search.decision`.
+The runtime enables:
+
+- `forge.search.lore`;
+- `forge.validate.content`;
+- `forge.inspect.quest-schema`;
+- `forge.validate.quest`;
+- `forge.search.architecture`; and
+- `forge.search.decision`.
 
 These tools return source-linked evidence and deterministic validation. They cannot accept canon, approve architecture, close decisions, create Chronicle truth or permission, complete quests, grant rewards, mutate the repository, or establish clinical authority.
 
@@ -59,7 +60,11 @@ Architecture and decision search preserve conservative authority classes so prop
 
 ### Standards, mappings, and connector fixtures
 
-The runtime enables `forge.search.public-standards`, `forge.validate.mapping-draft`, and `forge.search.synthetic-connector-fixtures`.
+The runtime enables:
+
+- `forge.search.public-standards`;
+- `forge.validate.mapping-draft`; and
+- `forge.search.synthetic-connector-fixtures`.
 
 Standards search preserves provenance without claiming completeness, certification, semantic equivalence, provider preference, or endorsement.
 
@@ -87,7 +92,7 @@ The materialized-memory model is local serialized evidence, not JavaScript heap 
 
 ### Agent security, compatibility, and operability
 
-The candidate defines an 18-scenario adversarial matrix covering traversal, symlink escape, arbitrary roots, protected sources, shell, network, dynamic loading, registry and scope mutation, confused-deputy behavior, evidence suppression, oversized input, timeout, cancellation, receipt impersonation, synthetic-label removal, mapping self-approval, and funding influence.
+Sprint 7 defines an 18-scenario adversarial matrix covering traversal, symlink escape, arbitrary roots, protected sources, shell, network, dynamic loading, registry and scope mutation, confused-deputy behavior, evidence suppression, oversized input, timeout, cancellation, receipt impersonation, synthetic-label removal, mapping self-approval, and funding influence.
 
 Before each real operation, runtime-integrity fingerprints verify the boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and scopes.
 
@@ -99,68 +104,62 @@ The compiled entrypoint starts from a descendant directory with an empty environ
 
 Production Forge source has no shell, subprocess, network client, socket, VM, worker-thread, dynamic import, code-evaluation, or CommonJS-loading capability. The package depends only on `@calypsos-promise/content-schema` and does not depend on Aster.
 
-## Acceptance-criterion conclusion
+## Accepted acceptance criteria
 
-### Public documentation and synthetic data only
+All Sprint 7 acceptance criteria are met at the bounded local implementation and public/synthetic-test evidence level:
 
-Supported by public-only source classes, nine server-owned allowlisted roots, prohibited source classes and paths, synthetic labels, no private Chronicle or provider dependency, static source auditing, clean empty-environment startup, and protected-source adversarial tests.
-
-**Conclusion before human acceptance:** met at local implementation and public/synthetic-test level.
-
-### Retrieved content cannot grant tool authority
-
-Supported by server-owned registries, immutable scopes, data-only treatment of retrieved and generated content, tool identity validation, integrity fingerprints, successful-result postconditions, caller-owned receipt rejection, and deterministic refusal tests.
-
-**Conclusion before human acceptance:** met at contract, local runtime, integrity, and adversarial-test level.
-
-### Versioned and testable contracts
-
-Supported by exact application, registry, runtime, source, tool, execution, receipt, error, compatibility, security, and operability revisions; stable codes; additive migrations; aggregate validation; public-surface tests; and clean compiled startup.
-
-**Conclusion before human acceptance:** met at public contract, migration, validator, and test level.
-
-### Generated mappings remain drafts
-
-Supported by mapping revision and draft status, deterministic validation, immediate generator validation, required human review, and postconditions denying approval, equivalence, certification, connector behavior, provider preference, and production readiness.
-
-**Conclusion before human acceptance:** met at local validator, generator, postcondition, and public-test level.
-
-### Sponsor-funded tools retain equal boundaries
-
-Supported by funding boundary flags, immutable risks and scopes, source and ranking neutrality, provider-neutral standards and mappings, funding-influence adversarial tests, and ordinary issue, PR, review, test, and publication requirements.
-
-**Conclusion before human acceptance:** met at governance-contract, integrity-validator, and adversarial-test level; no active funding relationship is selected.
-
-### Protected provider and interoperability information remains inaccessible
-
-Supported by source allowlists and exclusions, prohibited names and segments, no arbitrary root, environment, credential, network, or provider path, protected-source tests, public-safe receipts and errors, and static capability auditing.
-
-**Conclusion before human acceptance:** met at local source, runtime, disclosure, and adversarial-test level.
+- Forge operates entirely on public documentation and synthetic data.
+- Retrieved content cannot grant itself tool authority.
+- Tool contracts are versioned and testable.
+- Generated mappings remain drafts requiring deterministic validation and human review.
+- Sponsor-funded tools retain the same public-data, synthetic-only, risk, provider-neutrality, review, and publication boundaries as unfunded tools.
+- Forge cannot access private provider negotiations, contracts, credentials, production endpoints, proprietary mappings, or protected interoperability findings.
 
 ## Completion-package evidence
 
-The package records twenty-eight stable control objectives, nineteen open Forge holdpoints, eighteen unresolved-work records, local implementation evidence, deterministic public/synthetic tests, clean compiled startup, exact compatibility and migrations, cross-contract reconciliation, truthful status repairs, and the bounded Sprint 8 handoff.
+The package records:
 
-The reviewed implementation head `32492040684c2a89e32c866888f6be0888ee1279` passed CI run 904 and DCO run 977.
+- twenty-eight stable control objectives;
+- nineteen open Forge holdpoints;
+- eighteen unresolved-work records;
+- local implementation evidence;
+- deterministic public/synthetic tests;
+- clean compiled startup;
+- exact compatibility and migrations;
+- cross-contract reconciliation;
+- truthful status boundaries; and
+- the bounded Sprint 8 handoff.
 
-The completed 7.10 evidence package at `660b41e0ede313926a992c2ba7094a49fc756535` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI run 924, and DCO run 998.
+Immutable validation layers:
 
-The exact final branch head and its validation are recorded in issue #54 and PR #55 after this evidence-only completion-record update.
+- reviewed implementation head `32492040684c2a89e32c866888f6be0888ee1279` — CI 904, DCO 977;
+- completed 7.10 evidence package `660b41e0ede313926a992c2ba7094a49fc756535` — CI 924, DCO 998;
+- final branch head `8be922187955480a473f11f5e03ee61be0c666b2` — CI 926, DCO 1000, final PR-body DCO 1003; and
+- squash merge commit `f28f054fe16d550fad37663cf234e06c5622dd42`.
 
 ## Evidence limits
 
-Sprint 7 does not establish production deployment, remote MCP, authentication, tenancy, private-data processing, private Chronicle or House of Keys tools, provider or network access, connectors, repository mutation, shell or general-agent capability, production isolation or rate limiting, production monitoring or recovery, representative measurement, production synthetic-data publication, independent penetration testing, or specialist review.
+Sprint 7 does not establish:
+
+- production deployment or official service operation;
+- remote MCP, authentication, tenancy, or private-data processing;
+- private Chronicle or House of Keys tools;
+- provider or network access, connectors, repository mutation, shell, or general-agent capability;
+- production process isolation, CPU or heap enforcement, distributed quota, rate limiting, monitoring, incident response, backup, recovery, or deletion verification;
+- representative security, reliability, performance, cost, accessibility, usability, or contributor-benefit measurement;
+- production synthetic-data generation, de-identification, statistical population validity, or dataset publication; or
+- independent penetration testing or specialist review.
 
 ## Open holdpoints
 
 The controlling follow-up record is the [Sprint 7 Forge Specialist Holdpoint and Unresolved-Work Register](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md).
 
-No production or specialist holdpoint closes merely because Sprint 7 is accepted or merged.
+No production or specialist holdpoint closed because Sprint 7 was accepted or merged.
 
-## Sprint 8 handoff
+## Handoff
 
-The [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md) defines the bounded next-sprint entry conditions.
+The [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md) is the controlling next-sprint review.
 
-After explicit Sprint 7 acceptance and squash merge, Sprint 8 may evolve the existing `apps/site` Website Track 0A repository gateway into one honest, accessible Next.js public website foundation.
+Sprint 8 may evolve the existing `apps/site` Website Track 0A repository gateway into one honest, accessible Next.js public website foundation only after the post-merge reconciliation is accepted and merged.
 
 Sprint 8 inherits frozen mission and player rights, truthful capability status, public-code and private-data separation, consumer-first provider independence, Aster and Forge non-authority, canonical funding transparency, disabled transactions without operational evidence, narrative and direct navigation parity, accessibility and performance gates, signup privacy gates, and every open production, specialist, institutional, and measurement holdpoint.
