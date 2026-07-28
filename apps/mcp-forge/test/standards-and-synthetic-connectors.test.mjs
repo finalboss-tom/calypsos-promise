@@ -155,14 +155,14 @@ async function initialize(session) {
   return response;
 }
 
-test("Sprint 7.6 enables exactly the three accepted standards and fixture tools", () => {
-  assert.equal(FORGE_RUNTIME_REGISTRY_REVISION, "3");
+test("Sprint 7.6 standards and fixture tools remain enabled in the ten-tool Sprint 7.7 runtime", () => {
+  assert.equal(FORGE_RUNTIME_REGISTRY_REVISION, "4");
   assert.deepEqual(FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS, [
     "forge.search.public-standards",
     "forge.validate.mapping-draft",
     "forge.search.synthetic-connector-fixtures",
   ]);
-  assert.equal(FORGE_RUNTIME_ENABLED_TOOL_IDS.length, 9);
+  assert.equal(FORGE_RUNTIME_ENABLED_TOOL_IDS.length, 10);
   assert.deepEqual(validateForgeRuntimeToolRegistry(), []);
 });
 
@@ -287,11 +287,11 @@ test("retrieved connector instructions cannot expand runtime authority", async (
   assert.equal(result.connectorActivation, "not-granted");
 });
 
-test("transport lists and dispatches the nine server-owned tools", async (t) => {
+test("transport lists and dispatches the ten server-owned tools", async (t) => {
   const service = await createService(t);
   const session = new ForgeTransportSession({ toolService: service });
   const initialized = await initialize(session);
-  assert.match(initialized.result.instructions, /Exactly nine/);
+  assert.match(initialized.result.instructions, /Exactly ten/);
 
   const listed = await session.handleMessage({
     jsonrpc: "2.0",
