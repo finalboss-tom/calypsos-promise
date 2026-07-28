@@ -38,6 +38,8 @@ export const FORGE_EXECUTION_ERROR_CODES = {
   scanLimitExceeded: "forge.execution.scan-limit-exceeded",
   resultLimitExceeded: "forge.execution.result-limit-exceeded",
   outputLimitReached: "forge.execution.output-limit-reached",
+  materializedMemoryLimitReached:
+    "forge.execution.materialized-memory-limit-reached",
   invalidToolResult: "forge.execution.invalid-tool-result",
 } as const;
 
@@ -109,7 +111,7 @@ export interface ForgeInvocationReceipt {
     readonly rawInputIncluded: false;
     readonly absolutePathsIncluded: false;
     readonly environmentValuesIncluded: false;
-    readonly stackTracesIncluded: false;
+    readonly internalTraceIncluded: false;
     readonly credentialsIncluded: false;
     readonly protectedSourceMaterialIncluded: false;
     readonly wallClockTimestampIncluded: false;
@@ -204,17 +206,6 @@ function validationIssue(
   return { code, path, message };
 }
 
-function limitsEqual(
-  left: ForgeExecutionLimits,
-  right: ForgeExecutionLimits,
-): boolean {
-  return Object.keys(left).every(
-    (key) =>
-      left[key as keyof ForgeExecutionLimits] ===
-      right[key as keyof ForgeExecutionLimits],
-  );
-}
-
 export function validateForgeExecutionScopes(
   scopes: readonly ForgeToolExecutionScope[] = FORGE_RUNTIME_EXECUTION_SCOPES,
 ): ForgeExecutionScopeValidationIssue[] {
@@ -282,7 +273,9 @@ export function validateForgeExecutionScopes(
       );
     }
 
-    if (!limitsEqual(scope.limits, executionLimits(tool))) {
+    if (
+      JSON.stringify(scope.limits) !== JSON.stringify(executionLimits(tool))
+    ) {
       issues.push(
         validationIssue(
           FORGE_EXECUTION_SCOPE_VALIDATION_CODES.limitMismatch,
