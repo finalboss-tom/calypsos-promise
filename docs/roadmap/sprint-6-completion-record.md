@@ -1,10 +1,11 @@
 # Sprint 6 Completion Record — Aster Contracts and AI Governance
 
-[Current status](current-status.md) · [Sprint 6 execution plan](sprint-6-execution-plan.md) · [Aster architecture](../architecture/README.md#aster-architecture) · [Cross-contract reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/aster-sprint-6-control-and-evidence-map.md) · [Specialist holdpoints and unresolved work](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+[Current status](current-status.md) · [Sprint 6 execution plan](sprint-6-execution-plan.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Aster architecture](../architecture/README.md#aster-architecture) · [Cross-contract reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/aster-sprint-6-control-and-evidence-map.md) · [Specialist holdpoints and unresolved work](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 
-- **Status:** COMPLETE ON REVIEW BRANCH — explicit founding-steward acceptance and merge pending
+- **Status:** COMPLETE AND MERGED
 - **Tracking issue:** [#47](https://github.com/finalboss-tom/calypsos-promise/issues/47)
 - **Pull request:** [#48](https://github.com/finalboss-tom/calypsos-promise/pull/48)
+- **Squash commit:** `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`
 - **Entry baseline:** `main` at `4dfd39e7aa02ffe1ef3f5ba296378b29bd078047`
 - **Package:** `@calypsos-promise/aster`
 - **Contract version:** `0.1.0-pre.1`
@@ -12,287 +13,121 @@
 
 ## Completion decision
 
-Sprint 6 produced a coherent pre-stable Aster contract baseline for the accepted goal:
+Sprint 6 produced and merged a coherent pre-stable Aster contract baseline for the accepted goal:
 
 > Convert Aster from a concept into enforceable interfaces.
-
-The review branch now contains bounded authority, role, proposal, extraction, intent, recall, memory, untrusted-input, work-lifecycle, provider-governance, local-adapter, compatibility, migration, and validation contracts for Aster's five narrative roles.
 
 The permanent transaction boundary remains:
 
 > AI proposes; the player confirms; deterministic domain services validate and store.
 
-This record does not claim production AI, private-data processing, model quality, clinical safety, legal sufficiency, privacy certification, security certification, accessibility conformance, interoperability conformance, provider approval, operational reliability, production migration readiness, or independent specialist review.
+Founding-steward acceptance and the squash merge record completion of the Sprint 6 design and public-synthetic evidence scope. They do not authorize production AI, private-data processing, model quality, clinical safety, legal sufficiency, privacy certification, security certification, accessibility conformance, interoperability conformance, provider approval, operational reliability, production migration readiness, or independent specialist review.
 
-Branch completion means the accepted Sprint 6 contract and public-synthetic evidence scope is ready for explicit founding-steward review. It does not authorize merge, deployment, provider selection, private egress, real health data, production memory, retrieval, durable execution, agents, connectors, or clinical behavior.
+## Accepted deliverables
 
-## Review authority and precedence
+### Role contracts
 
-The completion review used this order:
+The merged baseline defines bounded contracts for:
 
-1. frozen Product Constitution, Architecture Foundation, Gameplay Foundation, World and Lore Canon, and institutional commitments;
-2. accepted decisions, progressive decentralization, and the Institutional Immune System;
-3. security, publication, development, economics, consumer-first, provider-independent, and operational-simplicity policies;
-4. Living Chronicle, House of Keys, deterministic incentive, and public-status contracts;
-5. the accepted Sprint 6 goal, deliverables, and acceptance criteria;
-6. Sprint 6 authority, role, proposal, intent, recall, memory, isolation, work, provider, local-fixture, compatibility, migration, validator, and test evidence;
-7. the [cross-contract reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md);
-8. the [control and evidence map](../architecture/aster-sprint-6-control-and-evidence-map.md);
-9. the [specialist holdpoint and unresolved-work register](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md); and
-10. this completion record.
-
-A lower layer may make a protected requirement more explicit. It may not silently weaken a higher-authority boundary.
-
-## Accepted deliverable mapping
-
-### Scribe contract
-
-**Status:** met at public contract and synthetic-fixture level.
-
-The Scribe prepares reviewable structured-capture proposals and extraction candidates. It cannot confirm, validate, store, correct, or delete Chronicle truth.
-
-Evidence:
-
-- [`authority.ts`](../../packages/aster/src/authority.ts)
-- [`role-contracts.ts`](../../packages/aster/src/role-contracts.ts)
-- [`proposal.ts`](../../packages/aster/src/proposal.ts)
-- [`aster-role-contracts.md`](../architecture/aster-role-contracts.md)
-- [`aster-proposal-and-extraction-contracts.md`](../architecture/aster-proposal-and-extraction-contracts.md)
-
-### Librarian contract
-
-**Status:** met at public contract and synthetic-fixture level.
-
-The Librarian prepares source-linked recall from exact Chronicle revisions or clearly labeled public educational material. Retrieval score, source recency, provider identity, and public material cannot become person-specific truth.
-
-Evidence:
-
-- [`role-contracts.ts`](../../packages/aster/src/role-contracts.ts)
-- [`source-recall.ts`](../../packages/aster/src/source-recall.ts)
-- [`aster-source-linked-recall-and-explanation-contracts.md`](../architecture/aster-source-linked-recall-and-explanation-contracts.md)
-
-### Wayfinder contract
-
-**Status:** met at public contract and synthetic-fixture level.
-
-The Wayfinder proposes product routes and permission-review navigation without creating permission, proving completion, or invoking authoritative actions.
-
-Evidence:
-
-- [`role-contracts.ts`](../../packages/aster/src/role-contracts.ts)
-- [`intent.ts`](../../packages/aster/src/intent.ts)
-- [`local-synthetic-adapter.ts`](../../packages/aster/src/local-synthetic-adapter.ts)
-
-### Interpreter contract
-
-**Status:** met at public contract and synthetic-fixture level.
-
-The Interpreter prepares source-aware explanations while preserving uncertainty, mapping loss, source lifecycle, implementation-guide limits, and the separation between standards conformance and clinical completeness, equivalence, safety, or endorsement.
-
-Evidence:
-
-- [`role-contracts.ts`](../../packages/aster/src/role-contracts.ts)
-- [`source-recall.ts`](../../packages/aster/src/source-recall.ts)
-- [`aster-source-linked-recall-and-explanation-contracts.md`](../architecture/aster-source-linked-recall-and-explanation-contracts.md)
-
-### Storykeeper contract
-
-**Status:** met at public contract and synthetic-fixture level.
-
-The Storykeeper prepares narrative presentation only from confirmed domain events and cannot invent canon, progression, quest completion, or rewards.
-
-Evidence:
-
-- [`role-contracts.ts`](../../packages/aster/src/role-contracts.ts)
-- [`local-synthetic-adapter.ts`](../../packages/aster/src/local-synthetic-adapter.ts)
-- [`aster-local-synthetic-adapter-and-non-ai-fallbacks.md`](../architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
+- **Scribe:** prepares reviewable structured-capture proposals and extraction candidates without confirming, validating, or storing Chronicle truth;
+- **Librarian:** prepares source-linked recall from exact Chronicle revisions or clearly labeled public educational material;
+- **Wayfinder:** proposes product routes and permission-review navigation without creating permission or proving completion;
+- **Interpreter:** prepares source-aware explanations while preserving uncertainty, mapping loss, lifecycle, and implementation-guide limits; and
+- **Storykeeper:** prepares narrative presentation from confirmed domain events without inventing canon, progression, quest completion, or rewards.
 
 ### Intent, extraction, confidence, clarification, and refusal
 
-**Status:** met at public contract, deterministic validation, and synthetic-fixture level.
+The baseline defines supported and unsupported intents, consequence classes, qualitative confidence, ambiguity, clarification lifecycle, refusal reasons, extraction candidates, visible unparsed material, and safe manual fallback.
 
-The baseline defines supported bindable intents, safe meta intents, consequence classes, qualitative confidence, ambiguity, clarification lifecycle, refusal reasons, extraction candidates, and visible unsupported material. Consequential uncertainty fails safely rather than choosing the most likely action.
+Consequential uncertainty fails safely rather than choosing the most likely action.
 
-Evidence:
+### Source-linked recall and explanation
 
-- [`intent.ts`](../../packages/aster/src/intent.ts)
-- [`proposal.ts`](../../packages/aster/src/proposal.ts)
-- [`validate-intent.ts`](../../packages/aster/src/validate-intent.ts)
-- [`validate-proposal.ts`](../../packages/aster/src/validate-proposal.ts)
+Person-specific health statements require exact Chronicle record and revision evidence. Public educational material remains clearly labeled and cannot establish a person-specific fact.
 
-### AI memory classes and retention rules
+Source references preserve lifecycle, correction, conflict, deletion, mapping, implementation-guide, freshness, and uncertainty state.
 
-**Status:** met at public contract and synthetic-test level.
+### Memory classes and lifecycle
 
 Material product memory requires a separate visible player choice and remains visible, revision-editable, exportable, and deletable. Transient context does not silently become retained memory. Provider operational metadata remains outside product memory.
 
-Evidence:
+### Prompt-injection and untrusted-input isolation
 
-- [`memory.ts`](../../packages/aster/src/memory.ts)
-- [`validate-memory.ts`](../../packages/aster/src/validate-memory.ts)
-- [`aster-memory-lifecycle-contracts.md`](../architecture/aster-memory-lifecycle-contracts.md)
+Documents, images, imported records, web content, retrieved passages, provider responses, tool results, model output, and prior conversation remain untrusted data.
 
-### Provider egress, evaluation, and funding conflicts
+Embedded instructions cannot select the subject, create permission, alter policy, bypass confirmation, invoke arbitrary resources, suppress sources or uncertainty, cross subject boundaries, or persist themselves as memory.
 
-**Status:** met at provider-independent governance-contract and synthetic-test level.
+### Responsive and deferred work
 
-The baseline permits only minimum-necessary public or synthetic evaluation, explicitly records handling and deletion uncertainty, prohibits production approval, and prevents credits, sponsorship, funding, related parties, provider relationships, or enterprise distribution from controlling source authority, defaults, connector rank, egress, benchmark conclusions, publication, or governance.
+Work contracts preserve stable identity, exact revisions, attempts, bounded retry, domain idempotency, timeout, cancellation, provider fallback, stale-result rejection, correction, supersession, and replay.
 
-Evidence:
+Acceptance for processing is not completion. Unknown external outcomes cannot retry automatically. Stale authority cannot be reused.
 
-- [`provider-governance.ts`](../../packages/aster/src/provider-governance.ts)
-- [`validate-provider-governance.ts`](../../packages/aster/src/validate-provider-governance.ts)
-- [`aster-provider-governance-and-egress-contracts.md`](../architecture/aster-provider-governance-and-egress-contracts.md)
+### Provider governance and egress
 
-### Source, mapping, provenance, and uncertainty explanation
+The provider-governance taxonomy intentionally contains no production-approved state.
 
-**Status:** met at public contract and synthetic-test level.
+Public or synthetic evaluation uses minimum-necessary fields and preserves handling, region, retention, logging, training, human-review, subprocessor, deletion-evidence, concentration, replacement, migration, teardown, incident, funding-conflict, evaluator-independence, and public-claim boundaries.
 
-Exact Chronicle sources, public educational sources, source locators, source and record revisions, lifecycle, correction, conflict, deletion, mapping, implementation-guide, retrieval-freshness, fallback, confidence, and uncertainty remain inspectable.
+### Local substitute and non-AI fallback
 
-Evidence:
+Seventeen deterministic scenarios cover successful role behavior, clarification, refusal, prompt injection, timeout, provider unavailability, stale and superseded work, manual capture, and permission review.
 
-- [`source-recall.ts`](../../packages/aster/src/source-recall.ts)
-- [`validate-source-recall.ts`](../../packages/aster/src/validate-source-recall.ts)
-- [`aster-source-linked-recall-and-explanation-contracts.md`](../architecture/aster-source-linked-recall-and-explanation-contracts.md)
+Five role fallbacks and seven core paths preserve capture, structured recall, permission review, correction, export, deletion, and ordinary play without AI or a provider.
 
-### Prompt-injection isolation
+### Compatibility and migration
 
-**Status:** met at public contract and synthetic-test level.
+A twelve-component manifest binds public components to exact schemas, revisions, validators, fixtures, compatibility state, migration state, and non-authority.
 
-Documents, images, imported records, web content, retrieval, providers, tools, model output, and prior conversation remain untrusted data. Embedded instructions cannot select the subject, create permission, change policy, bypass confirmation, invoke arbitrary resources, hide sources or uncertainty, cross user boundaries, or persist themselves as memory.
+Optional additive change may remain compatible. Required additions, enum expansion, field removal, semantic change, and revision rebases require evidence-preserving migration. Unknown change fails closed. Authority expansion requires a new governing decision rather than ordinary migration.
 
-Evidence:
+## Accepted acceptance criteria
 
-- [`untrusted-input.ts`](../../packages/aster/src/untrusted-input.ts)
-- [`validate-untrusted-input.ts`](../../packages/aster/src/validate-untrusted-input.ts)
-- [`aster-untrusted-input-isolation-contracts.md`](../architecture/aster-untrusted-input-isolation-contracts.md)
+All Sprint 6 acceptance criteria are met at contract, deterministic-validation, and public-synthetic-evidence level:
 
-### Non-AI fallback behavior
+- Aster cannot write directly to canonical records.
+- Every person-specific recalled health statement can reference authoritative Chronicle records.
+- Material memories are visible, editable through revision, exportable, and deletable.
+- AI unavailability does not block core capture or permission review.
+- Funding, credits, sponsorship, affiliate terms, related parties, provider relationships, and enterprise distribution cannot determine source authority, provider defaults, connector ranking, egress, benchmark conclusions, compatibility, migration, or publication.
+- Aster cannot imply that standards conformance proves clinical completeness, semantic equivalence, safety, or endorsement.
+- Provider governance is defined without selecting or endorsing a production AI provider, EHR, connector, or clinical partner.
 
-**Status:** met at deterministic local-fixture and public-test level.
+## Evidence status
 
-Five role fallbacks and seven core paths preserve manual capture, structured recall, permission review, correction, export, deletion, and ordinary play without AI or a provider.
+The merged branch establishes:
 
-Evidence:
+- deliberate public exports;
+- deterministic validators;
+- public-surface tests importing only `dist/index.js`;
+- public synthetic scenarios and fixtures;
+- role, operation, proposal, source, fallback, component, provider-state, compatibility, and migration bindings;
+- twenty-four stable control objectives;
+- nineteen open holdpoints; and
+- nineteen explicit unresolved-work records.
 
-- [`local-synthetic-adapter.ts`](../../packages/aster/src/local-synthetic-adapter.ts)
-- [`validate-local-synthetic-adapter.ts`](../../packages/aster/src/validate-local-synthetic-adapter.ts)
-- [`aster-local-synthetic-adapter-and-non-ai-fallbacks.md`](../architecture/aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
+It does not establish:
 
-## Accepted acceptance-criterion mapping
-
-### Aster cannot write directly to canonical records
-
-**Status:** met at contract, validator, and public-synthetic-test level.
-
-Every public authority, role, proposal, memory, untrusted-input, work, provider, local-adapter, compatibility, and migration boundary denies canonical-write authority. Domain acceptance, validation, and storage remain separate after exact player confirmation.
-
-### Every recalled health statement can reference authoritative records
-
-**Status:** met at contract, validator, and public-synthetic-test level.
-
-Person-specific health statements require exact Chronicle record and revision evidence. Public educational material remains labeled and cannot establish a person-specific fact.
-
-### Material memories are visible, editable, exportable, and deletable
-
-**Status:** met at contract, validator, and public-synthetic-test level.
-
-All material product-memory classes require separate player choice, visibility, revision-based editing, export, and deletion. Missing memory cannot block core rights.
-
-### AI unavailability does not block core capture or permissions
-
-**Status:** met at deterministic local-fixture and public-test level.
-
-Manual capture and deterministic House of Keys permission review remain available without AI or a provider. Structured recall, correction, export, deletion, and ordinary play also retain complete non-AI paths.
-
-### Funding and provider relationships cannot determine authority, defaults, ranking, egress, benchmark conclusions, or publication
-
-**Status:** met at provider-governance, compatibility, migration, validator, and public-synthetic-test level.
-
-Funding and provider influence are explicitly prohibited from controlling source authority, provider defaults, connector rank, egress policy, evaluation conclusions, publication, compatibility outcomes, migration decisions, or governance.
-
-### Aster cannot imply that standards conformance proves clinical completeness, semantic equivalence, safety, or endorsement
-
-**Status:** met at source-recall, role, validator, and public-synthetic-test level.
-
-Mapping and implementation-guide evidence remains bounded. Partial, lossy, conflicting, unsupported, stale, or unavailable source states require visible limitations and uncertainty.
-
-### Provider governance is defined without selecting or endorsing a production provider, EHR, connector, or clinical partner
-
-**Status:** met at provider-independent contract and documentation level.
-
-The public governance taxonomy intentionally has no production-approved state. No provider, EHR, connector, clinical partner, model gateway, private-data route, or enterprise relationship is selected.
-
-## Workstream completion mapping
-
-| Workstream | Completion evidence                                                                                                  | Evidence status                                                |
-| ---------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| 6.1        | bounded package, version, authority matrix, prohibitions, and public exports                                         | complete at contract and test level                            |
-| 6.2        | five detailed role contracts with evidence, failure, retention, egress, and fallback                                 | complete at contract and test level                            |
-| 6.3        | proposal envelope, exact review revision, transformation provenance, and extraction candidates                       | complete at contract and test level                            |
-| 6.4        | intent, confidence, ambiguity, clarification, refusal, and safe fallback                                             | complete at contract and test level                            |
-| 6.5        | exact source-linked recall, mapping, lifecycle, freshness, fallback, and uncertainty                                 | complete at contract and test level                            |
-| 6.6        | memory classes, separate player choice, lifecycle, correction, export, deletion, and non-blocking absence            | complete at contract and test level                            |
-| 6.7        | untrusted-input and prompt-injection isolation                                                                       | complete at contract and test level                            |
-| 6.8        | responsive and deferred work, retry, duplicate safety, cancellation, stale rejection, correction, and replay         | complete at contract and test level                            |
-| 6.9        | provider egress, handling, deletion uncertainty, evaluation independence, funding conflicts, concentration, and exit | complete at contract and test level                            |
-| 6.10       | seventeen deterministic scenarios, five role fallbacks, and seven core non-AI paths                                  | complete at public-synthetic-fixture and test level            |
-| 6.11       | twelve-component manifest, public fixture catalogue, compatibility, migration, and cross-contract validation         | complete at contract and test level                            |
-| 6.12       | completion record, reconciliation, control map, specialist holdpoints, unresolved work, and final validation         | complete on review branch; founding-steward acceptance pending |
-
-## Validation and evidence status
-
-The branch must pass the repository's complete validation surface on the final reviewed head. Exact head, CI run, DCO run, and any formatter-remediation evidence are recorded in issue #47 and PR #48 so this file does not create a self-referential head update.
-
-The public evidence establishes:
-
-- deliberate public exports and public-surface tests importing only `dist/index.js`;
-- deterministic validation with stable issue, refusal, ambiguity, finding, failure, compatibility, and migration codes;
-- twelve public component identities and twelve public fixture records;
-- seventeen deterministic local scenarios, five role fallbacks, and seven core non-AI paths;
-- exact role, operation, proposal-kind, success-scenario, and fallback bindings;
-- exact provider-governance state coverage with production approval absent;
-- fail-closed compatibility and evidence-preserving migration rules; and
-- repository-wide formatting, documentation-link, content, policy, economics, lint, typecheck, test, and DCO checks.
-
-The public evidence does not establish:
-
-- model or provider quality;
-- production prompt-injection detection rates;
-- production privacy, security, accessibility, clinical, legal, interoperability, reliability, or deletion assurance;
-- deployed backward compatibility or production migration readiness;
-- private-data provider egress;
-- production identity, permission orchestration, persistence, retrieval, memory, queues, schedulers, workflows, tools, connectors, or agents; or
+- production implementation, deployment, or operational verification;
+- representative model, prompt, latency, reliability, cost, accessibility, clinical, or benefit measurements;
+- private-data egress or real-person operation;
+- production identity, persistence, retrieval, memory, tools, queues, schedules, workflows, connectors, incidents, or deletion verification; or
 - independent specialist review.
 
-## Specialist holdpoints and unresolved work
+## Validation and merge evidence
 
-No production or specialist holdpoint is closed merely because Sprint 6 is complete at contract and public-synthetic evidence level.
+The final review branch head `dbd1ff6cd7764500c9a1a68bec9d8ce5281890de` passed formatting, documentation links, content validation, repository policy, economics validation, lint, typecheck, tests, and DCO attestation.
 
-The controlling follow-up record is the [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md). It inherits and refines the Sprint 5 Aster, privacy, identity, Chronicle, House of Keys, upload, MCP, connector, clinical, accessibility, reliability, audit, deletion, supply-chain, repository, founder-dependence, and legal holdpoints.
+PR #48 was explicitly accepted and squash merged as `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`, closing issue #47.
 
-## Sprint 7 handoff
+## Open holdpoints
 
-After explicit acceptance and merge, Sprint 7 — Forge MCP and Agent Safety may begin within its accepted public-documentation and synthetic-data boundary.
+The controlling follow-up record remains the [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md).
 
-Sprint 7 inherits:
+No production or specialist holdpoint closed merely because Sprint 6 merged.
 
-- server-owned tool authority and resource binding;
-- data-only treatment of retrieved content;
-- exact public and synthetic source provenance;
-- deterministic validation and draft-only generated mappings;
-- provider, funding, sponsor, and publication independence;
-- stable operation, failure, refusal, retry, cancellation, and receipt concepts where applicable;
-- complete non-AI repository contribution paths; and
-- all open production, private-data, identity, provider, clinical, legal, accessibility, security, and operational holdpoints.
+## Handoff
 
-Sprint 7 may not reinterpret Sprint 6 completion as authority to access private Chronicles, production providers, protected mappings, private negotiations, credentials, real health data, or consequential domain actions.
+The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) reconciles the merged status and defines the bounded Forge MCP entry conditions.
 
-## Acceptance authority
-
-Sprint 6 is complete on the review branch for its accepted contract, deterministic validation, public synthetic fixture, governance, compatibility, migration, and documentation scope.
-
-The sprint is not accepted or merged until the founding steward explicitly reviews and approves PR #48. That decision must remain inspectable in the issue and pull-request record.
-
-Approval and merge will record acceptance of the design sprint only. They will not authorize production AI, private data, clinical behavior, provider selection, deployment, specialist certification, or Phase 0 exit.
+Sprint 7 inherits public documentation and synthetic data only, server-owned tool authority, data-only treatment of retrieved content, deterministic validation, source provenance, draft-only generation, compatibility, migration, provider and funding independence, complete non-MCP contribution paths, and every open production and specialist holdpoint.
