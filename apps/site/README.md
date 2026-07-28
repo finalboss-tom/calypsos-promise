@@ -1,12 +1,19 @@
 # Calypso’s Promise public site
 
-`apps/site` currently implements **Website Track 0A — Repository Gateway**: an honest, accessible public front door for the open-source project and the planned Calypso’s Promise game.
+`apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 has not started. Issue #58 is reconciling the post-Sprint 7 repository and freezing the in-place migration contract before Next.js implementation begins.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstream 8.1 defines the migration boundary before Next.js dependencies are added.
+
+Controlling records:
+
+- [Sprint 8 Execution Plan](../../docs/roadmap/sprint-8-execution-plan.md)
+- [Public Website Foundation and Migration Boundary](../../docs/architecture/public-website-foundation-and-migration.md)
+- [Current Project Status](../../docs/roadmap/current-status.md)
+- [Accepted Pre-Sprint 8 Review](../../docs/roadmap/pre-sprint-8-alignment-review.md)
 
 ## Current implementation
 
-Track 0A uses:
+Website Track 0A currently uses:
 
 - `src/server.mjs` — custom Node HTTP server and route composition;
 - `src/signup.mjs` — isolated purpose-limited signup webhook adapter;
@@ -15,17 +22,21 @@ Track 0A uses:
 - `src/check-site.mjs` — required-file, required-copy, and prohibited-signup-field checks; and
 - `node --test` — site tests.
 
-The application has no runtime package dependencies.
+The application has no runtime package dependencies at Sprint 8 entry.
+
+Workstream 8.1 does not change that. Framework dependency and version selection belong to 8.2 after the application boundary is validated.
 
 ## Current public routes
 
-- `/` — cinematic repository gateway
-- `/privacy` — Founding Expedition signup privacy notice
-- `/joined` — signup confirmation
-- `/api/join` — purpose-limited email signup endpoint
-- `/assets/*`, `/styles/*`, and `/site.js` — public presentation assets
+| Route | Current purpose | Sprint 8 rule |
+| --- | --- | --- |
+| `/` | cinematic repository gateway | preserve as homepage |
+| `/privacy` | Founding Expedition signup privacy notice | preserve if signup remains; otherwise redirect deliberately |
+| `/joined` | signup confirmation | preserve if signup remains; otherwise redirect deliberately |
+| `/api/join` | purpose-limited email signup endpoint | preserve only if workstream 8.8 satisfies the operational gate; otherwise retire deliberately |
+| `/assets/*`, `/styles/*`, `/site.js` | public presentation assets | migrate to framework-fingerprinted assets or correct cache semantics |
 
-Sprint 8 must preserve, redirect, or explicitly retire every public route. Silent route loss is not an acceptable framework migration.
+Silent route loss is prohibited.
 
 ## What is implemented
 
@@ -44,29 +55,57 @@ The images are presentation assets. Essential copy, links, controls, status labe
 
 - Sprint 8 Next.js foundation;
 - narrative and direct multi-route navigation modes;
+- design-token system;
 - Trust Center, Open Forge, roadmap, or canonical funding views;
+- defined accessibility and performance baselines;
 - accounts or authentication;
 - real health-data capture;
 - private Living Chronicles;
 - production Aster or private MCP;
 - providers or connectors;
-- research enrollment, compensated opportunities, governance voting, or donations;
+- research enrollment, governance voting, or transactions;
 - production analytics over personal information; or
 - independent accessibility, security, privacy, legal, clinical, or production review.
+
+## Sprint 8 application boundary
+
+`apps/site` may own:
+
+- public routes and route composition;
+- server-rendered page and layout presentation;
+- repository-owned design tokens and website components;
+- metadata, canonical URLs, sitemap, robots, not-found, and error presentation;
+- public navigation and optional narrative entry;
+- read-only capability, roadmap, Trust Center, Open Forge, and economics views;
+- build-time ingestion of approved public repository records;
+- public security headers and deployment configuration;
+- accessibility and performance budgets; and
+- the separately gated signup adapter.
+
+It may not own:
+
+- Product Constitution, lore canon, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, or governance authority;
+- Chronicle or House of Keys truth;
+- Aster or Forge authority;
+- accounts, private identity, or private health data;
+- production providers, connectors, research, clinical workflows, or financial operations;
+- a second status registry or funding ledger;
+- a CMS or remote content service selected without later evidence; or
+- Sprint 9 game state.
 
 ## Current evidence limits
 
 ### Deployment
 
-`vercel.json` currently sets `git.deploymentEnabled` to `false`. Git-triggered preview and production deployments are intentionally disabled.
+`vercel.json` currently sets `git.deploymentEnabled` to `false`. Git-triggered preview and production deployments remain disabled at Sprint 8 entry.
 
-Sprint 8 may change deployment behavior only through an explicit preview, cutover, rollback, and official-release gate. A framework migration must not silently publish an unfinished site or remove the ability to restore Track 0A.
+Sprint 8 may change deployment behavior only through an explicit preview, official cutover, rollback, and release-evidence gate. A successful preview is not an official production release.
 
 ### Caching
 
 The custom server currently sends immutable one-day caching for static-file URLs, although not every URL is content-fingerprinted.
 
-Sprint 8 must replace this with framework-managed hashed assets, versioned filenames, or correct mutable cache semantics. Status corrections, public records, and rollback must not be trapped behind stale immutable URLs.
+Sprint 8 must replace this with framework-managed hashed assets, versioned filenames, or correct mutable cache semantics. HTML, status, funding, privacy, and correction views must remain updateable.
 
 ### Signup
 
@@ -85,7 +124,7 @@ These controls are bounded implementation evidence, not a production privacy or 
 
 The current in-memory limiter is not distributed rate limiting. Forwarded client-address headers are not trustworthy without an explicit hosting-proxy trust model. Provider, retention, unsubscribe, correction, deletion, policy-version, incident, and operational ownership remain open gates.
 
-Sprint 8 must deliberately choose either:
+Workstream 8.8 must choose either:
 
 1. preserve `/api/join`, `/privacy`, and `/joined` with equivalent or stronger disclosure and behavior; or
 2. remove or disable signup until those gates are met.
@@ -98,27 +137,14 @@ Existing semantic HTML, skip-link, responsive behavior, reduced motion, security
 
 They are not accessibility certification, privacy approval, independent penetration testing, production security evidence, or affected-user validation.
 
-## Sprint 8 migration boundary
+## Workstream 8.1 exit
 
-Sprint 8 must:
+8.1 closes when:
 
-- keep `apps/site` as the single public website owner;
-- migrate Track 0A in place rather than create a duplicate application;
-- preserve the approved cinematic Ogygia direction through deliberate cuts and splices;
-- provide equal narrative and direct information paths;
-- use repository-owned public records as content authority;
-- use a validated site-local public capability registry with canonical source links;
-- render canonical economics records or honest empty states rather than create a second funding ledger;
-- preserve or strengthen security headers;
-- define correct cache behavior;
-- define preview, production cutover, and rollback evidence;
-- establish metadata, sitemap, robots, not-found, and error-page behavior;
-- define accessibility and performance budgets; and
-- retain server-rendered essential information when JavaScript, animation, audio, or images fail.
-
-Sprint 8 must not add a CMS, database, runtime GitHub fetch, account system, private-data path, provider runtime, connector, transaction surface, or Sprint 9 prologue.
-
-The controlling record is the [Pre-Sprint 8 Alignment Review](../../docs/roadmap/pre-sprint-8-alignment-review.md).
+- route, content-authority, rendering, design-token, security, secret, cache, asset, signup, deployment, rollback, accessibility, performance, metadata, and validation contracts are recorded;
+- repository status, issue #2, issue #60, and PR #61 agree;
+- no Next.js dependency or implementation has been added; and
+- the full repository checks pass.
 
 ## Run locally
 
@@ -135,19 +161,6 @@ Configure an approved private HTTPS endpoint only when the current disclosure an
 ```bash
 SIGNUP_WEBHOOK_URL=https://example.org/private-signup-webhook
 SIGNUP_WEBHOOK_TOKEN=replace-me
-```
-
-The endpoint currently receives:
-
-```json
-{
-  "email": "seeker@example.com",
-  "consent": true,
-  "policyVersion": "2026-07-25",
-  "purpose": "Calypso's Promise public project updates",
-  "source": "founding-expedition-website",
-  "receivedAt": "2026-07-25T00:00:00.000Z"
-}
 ```
 
 Private provider identity, retention, unsubscribe, correction, deletion, and incident details do not belong in this public repository unless separately approved for publication.
