@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint 7 completion](sprint-7-completion-record.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -12,18 +12,19 @@ Advancement is gate-based rather than calendar-based. A completed sprint or acce
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
-3. [Sprint 7 Completion Record](sprint-7-completion-record.md)
-4. [Sprint 7 Cross-Contract Reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md)
-5. [Sprint 7 Control and Evidence Map](../architecture/forge-sprint-7-control-and-evidence-map.md)
-6. [Sprint 7 Specialist Holdpoints and Unresolved Work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-7. [Sprint Sequence](sprints.md)
-8. [Sprint 6 Completion Record](sprint-6-completion-record.md)
-9. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
-10. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
-11. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
-12. [Security Architecture](../security/README.md)
-13. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 8 Execution Plan](sprint-8-execution-plan.md)
+3. [Public Website Foundation and Migration Boundary](../architecture/public-website-foundation-and-migration.md)
+4. [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
+5. [Sprint Sequence](sprints.md)
+6. [Sprint 7 Completion Record](sprint-7-completion-record.md)
+7. [Sprint 7 Cross-Contract Reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md)
+8. [Sprint 7 Specialist Holdpoints and Unresolved Work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+9. [Sprint 6 Completion Record](sprint-6-completion-record.md)
+10. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
+11. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
+12. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
+13. [Security Architecture](../security/README.md)
+14. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Completion records and plans
 
@@ -45,18 +46,30 @@ Advancement is gate-based rather than calendar-based. A completed sprint or acce
 - [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) — merged through PR #52
 - [Sprint 7 Execution Plan](sprint-7-execution-plan.md) — complete and merged through PR #55
 - [Sprint 7 Completion Record](sprint-7-completion-record.md) — authoritative local public/synthetic Forge evidence
-- [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md) — active post-merge reconciliation through issue #58
+- [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md) — accepted through reconciliation PR #59
+- [Pre-Sprint 8 Reconciliation Validation](pre-sprint-8-reconciliation-validation.md) — validated opening baseline
+- [Sprint 8 Execution Plan](sprint-8-execution-plan.md) — active through issue #60 and draft PR #61
 - [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md) — tracked by issue #39; does not change numbered sprint order or authorize production
 
-## Current boundary
+## Active Sprint 8 boundary
 
-Sprints 0–7 are complete and merged. Sprint 7 merged as `f28f054fe16d550fad37663cf234e06c5622dd42`.
+Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged. Sprint 8 is active.
 
-Issue #58 is reconciling the merged repository before Sprint 8 begins. It confirms that Sprint 8 remains the correct next numbered sprint and that no decision record or scope change is required.
+Workstream 8.1 defines:
 
-The reconciliation preserves `apps/site` as the single public website owner and binds the in-place migration requirements for routes, deployment, cutover, rollback, caching, security headers, signup privacy, canonical status and funding data, metadata, accessibility, performance, and validation.
+- `apps/site` as the single public website owner;
+- one in-place Track 0A migration;
+- route preservation, redirect, or retirement;
+- repository-owned content authority;
+- server-rendered essential information;
+- design-token ownership;
+- canonical status and funding derivative views;
+- security, secrets, cache, and assets;
+- signup preserve-or-retire rules;
+- preview, cutover, rollback, and release evidence; and
+- accessibility, performance, metadata, route, authority, and full validation.
 
-Sprint 8 implementation has not started. No Next.js code, duplicate site, CMS, database, account system, private-data path, provider runtime, connector, donation checkout, or Sprint 9 prologue belongs in the reconciliation.
+Next.js dependency selection and shell implementation belong to 8.2 after the 8.1 boundary is validated.
 
 Issue #50 remains open and trigger-based. Forge has no `@calypsos-promise/aster` dependency or genuine Aster consumer evidence, so the trigger remains inactive.
 
