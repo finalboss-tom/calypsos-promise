@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.4 record](../roadmap/sprint-8-workstream-8-4-record.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.5 record](../roadmap/sprint-8-workstream-8-5-record.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -22,6 +22,7 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Sprint 8.2 Next.js Shell Record](../roadmap/sprint-8-workstream-8-2-record.md)
 - [Sprint 8.3 Navigation, Status, and Accessibility Record](../roadmap/sprint-8-workstream-8-3-record.md)
 - [Sprint 8.4 Homepage and Promise Record](../roadmap/sprint-8-workstream-8-4-record.md)
+- [Sprint 8.5 Guide Family Record](../roadmap/sprint-8-workstream-8-5-record.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -52,13 +53,26 @@ Workstream 8.4 implemented:
 
 Focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the site production build, lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
 
+Workstream 8.5 implemented:
+
+- `/laws` with the exact frozen Seven Laws and their non-amendment boundary;
+- `/how-it-works` with the planned short daily route, player confirmation, deterministic authority, non-punitive return, and honest planned status;
+- `/consumer-first` with provider-respectful interoperability, standards at the edges, provider-independent Chronicle meaning at the core, and explicit absence of live provider or connector capability;
+- `/aster` with the accepted pre-stable five-role contract, source and uncertainty rules, visible memory choice, fallback behavior, and explicit absence of production AI or private-data egress;
+- canonical metadata, sitemap inclusion, and direct/narrative navigation parity for the four routes;
+- server-rendered essential information without a client-component dependency;
+- inherited accessibility and resilience behavior; and
+- deterministic source, authority, route, signup, and deployment checks.
+
+The focused validation workflow passed formatting, a production site build, site lint, typecheck, focused tests, generated-state cleanup, and self-removal before producing clean candidate `16fe324c508719734b8923a8f99b59fb16712726`.
+
 The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup surface.
 
 It may not own Product Constitution, lore canon, Chronicle truth, permission truth, Aster or Forge authority, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, governance authority, private data, providers, connectors, transactions, or Sprint 9 game state.
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.5 is next. It owns the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and Aster/AI page while preserving the homepage, Promise, provider independence, Aster non-authority, source authority, server-rendering, accessibility, resilience, paused-signup, and permanent non-scope boundaries.
+Workstream 8.6 is next. It may implement the Trust Center and Open Forge pages while preserving frozen authority, accepted public routes, direct and narrative navigation parity, controlled status values, source links, server-rendered essential information, provider independence, Aster and Forge non-authority, accessibility and resilience foundations, paused signup, disabled deployment, and permanent non-scope boundaries.
 
 ## Content and story architecture
 
