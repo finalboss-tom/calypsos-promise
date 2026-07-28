@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - .github/workflows/validate-sprint-8-5.yml
+      - apps/site/**
 
 permissions:
   contents: write
