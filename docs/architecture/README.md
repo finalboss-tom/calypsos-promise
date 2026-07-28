@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 8 review](../roadmap/pre-sprint-8-alignment-review.md) · [Sprint 7 completion](../roadmap/sprint-7-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -11,8 +11,29 @@ This directory contains versioned architecture baselines that implement the froz
 3. [Operational Simplicity and Durable Workflows](operational-simplicity-and-durable-workflows.md)
 4. [Mission-to-Runtime Traceability](mission-to-runtime-traceability.md)
 5. [Consumer-First and Provider-Independent Architecture](consumer-first-provider-independent-boundary.md)
+6. [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 
 The modular monolith remains the default. A new package, service, provider, queue, database, CMS, or deployment boundary must earn its place through a current consumer, distinct responsibility, explicit trust and failure boundary, tests, ownership, operability, and rollback evidence.
+
+## Public website architecture — Sprint 8
+
+- [Sprint 8 Execution Plan](../roadmap/sprint-8-execution-plan.md)
+- [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
+- [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
+- [Current Status](../roadmap/current-status.md)
+- [Site README](../../apps/site/README.md)
+- [Issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
+- [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+
+`apps/site` remains the single website owner. Workstream 8.1 defines the migration boundary before framework dependencies are added.
+
+The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup adapter.
+
+It may not own Product Constitution, lore canon, Chronicle truth, permission truth, Aster or Forge authority, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, governance authority, private data, providers, connectors, transactions, or Sprint 9 game state.
+
+Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
+
+Workstream 8.2 will select and pin the Next.js and React dependencies only after 8.1 validation.
 
 ## Content and story architecture
 
@@ -49,7 +70,7 @@ The Living Chronicle remains the provider-independent longitudinal product model
 - [Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md)
 - [Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md)
 
-Permission truth remains separate from Chronicle truth. The House of Keys does not authenticate actors, execute operations, or convert model or tool confidence into permission.
+Permission truth remains separate from Chronicle truth. The House of Keys does not authenticate actors, execute operations, or convert website, model, or tool confidence into permission.
 
 ## Aster architecture
 
@@ -64,9 +85,6 @@ Permission truth remains separate from Chronicle truth. The House of Keys does n
 - [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
 - [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
 - [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md)
-- [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md)
-- [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
-- [Sprint 6 Specialist Holdpoints and Unresolved Work](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - [Sprint 6 Completion Record](../roadmap/sprint-6-completion-record.md)
 
 Aster is a merged pre-stable proposal and explanation capability. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, protected audit, or institutional authority.
@@ -88,27 +106,10 @@ Aster is a merged pre-stable proposal and explanation capability. It does not ow
 - [Sprint 7 Control and Evidence Map](forge-sprint-7-control-and-evidence-map.md)
 - [Sprint 7 Specialist Holdpoints and Unresolved Work](forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - [Sprint 7 Completion Record](../roadmap/sprint-7-completion-record.md)
-- [Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
-- [Completed issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
-- [Merged PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is complete and merged as `f28f054fe16d550fad37663cf234e06c5622dd42`.
+Sprint 7 is complete and merged. Forge exposes exactly ten accepted tools through runtime registry revision `4` and remains local-only, public/synthetic-only, allowlisted, provider-independent, non-mutating, and non-authoritative.
 
-Forge exposes exactly ten accepted tools through runtime registry revision `4`. Execution, security, compatibility, and operability contracts are revision `1`. Forge remains local-only, public/synthetic-only, allowlisted, provider-independent, non-mutating, and non-authoritative.
-
-Runtime integrity and successful-result postconditions fail closed when server-owned contracts or required evidence change. The completion package records 28 controls, 19 open holdpoints, 18 unresolved-work items, and the bounded Sprint 8 handoff.
-
-Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, production resource-control system, production sandbox, or institutional authority without later accepted decisions and evidence.
-
-## Public website architecture entering Sprint 8
-
-The active review is the [Pre-Sprint 8 Repository Alignment Review](../roadmap/pre-sprint-8-alignment-review.md), tracked by [issue #58](https://github.com/finalboss-tom/calypsos-promise/issues/58).
-
-`apps/site` remains the single public website owner. Sprint 8 should migrate Website Track 0A in place into one Next.js foundation rather than create a duplicate site or service.
-
-The public website may explain and render accepted public records. It cannot create product, security, privacy, funding, provider, clinical, permission, legal, or governance authority.
-
-The migration must preserve or deliberately supersede current routes, semantic information access, cinematic Ogygia direction, reduced motion, security-header intent, signup isolation, and rollback capability. Status and funding views must remain derived from canonical repository records rather than becoming independent systems.
+Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, production sandbox, or institutional authority without later accepted decisions and evidence.
 
 ## Operational simplicity and provider independence
 
@@ -119,7 +120,7 @@ The migration must preserve or deliberately supersede current routes, semantic i
 - [Developer Experience and Operability Policy](../policies/developer-experience-and-operability.md)
 - [Infrastructure Sponsorship and Exit Policy](../economics/infrastructure-sponsorship-and-exit-policy.md)
 
-Provider, queue, scheduler, model, storage, analytics, observability, CMS, and infrastructure choices remain replaceable adapters rather than domain authority. Sprint 8 should remain one public site application with static or build-time public content where practical.
+Provider, queue, scheduler, model, storage, analytics, observability, CMS, and infrastructure choices remain replaceable adapters rather than domain authority. Sprint 8 remains one public site application with static or build-time public content where practical.
 
 ## Legacy and succession architecture
 
