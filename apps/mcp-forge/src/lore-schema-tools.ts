@@ -12,7 +12,6 @@ import {
   searchForgeArchitecture,
   searchForgeDecision,
 } from "./documentation-search-tools.js";
-import { ForgeToolExecutionController } from "./execution-controller.js";
 import {
   FORGE_LORE_SCHEMA_ERROR_CODES,
   FORGE_LORE_SCHEMA_TOOL_REVISION,
@@ -41,6 +40,7 @@ import { validateForgeMappingDraft } from "./mapping-draft-tools.js";
 import { searchForgePublicStandards } from "./public-standards-tools.js";
 import { createForgeObjectIdLocator } from "./source-repository.js";
 import { ForgeSourceRepository } from "./source-repository.js";
+import { ForgeSecureToolExecutionController } from "./secure-execution-controller.js";
 import {
   type ForgeSearchPublicStandardsOutput,
   type ForgeSearchSyntheticConnectorFixturesOutput,
@@ -56,7 +56,7 @@ export type { ForgeTransportToolService } from "./lore-tool-support.js";
 
 export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
   readonly #repository: ForgeSourceRepository;
-  readonly #executionController = new ForgeToolExecutionController();
+  readonly #executionController = new ForgeSecureToolExecutionController();
 
   constructor(repository: ForgeSourceRepository) {
     this.#repository = repository;
