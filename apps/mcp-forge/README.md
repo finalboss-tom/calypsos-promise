@@ -2,7 +2,7 @@
 
 `apps/mcp-forge` is the bounded local contributor-tool application for Sprint 7.
 
-Sprint 7.1 establishes the Forge boundary and accepted registry. Sprint 7.2 adds the local `stdio` MCP transport. Sprint 7.3 adds the server-owned source catalogue, allowlisted repository access, and exact provenance. Sprint 7.4 activates exactly four read-only lore and content-schema tools through a separate server-owned runtime registry.
+Sprint 7.1 establishes the Forge boundary and accepted registry. Sprint 7.2 adds the local `stdio` MCP transport. Sprint 7.3 adds the server-owned source catalogue, allowlisted repository access, and exact provenance. Sprint 7.4 activates four read-only lore and content-schema tools. Sprint 7.5 activates two read-only architecture and decision search tools with visible conservative authority status.
 
 ## Current public surface
 
@@ -13,7 +13,7 @@ Sprint 7.1 establishes the Forge boundary and accepted registry. Sprint 7.2 adds
 - conservative resource-limit contracts;
 - compatibility and migration requirements;
 - literal non-authority and funding-neutrality boundaries;
-- ten accepted tool identities, with exactly four enabled for Sprint 7.4;
+- ten accepted tool identities, with exactly six enabled through runtime registry revision `2`;
 - pinned MCP protocol revision `2025-11-25`;
 - initialization and initialized-notification lifecycle;
 - `ping`, bounded `tools/list`, and server-owned `tools/call` dispatch;
@@ -28,8 +28,12 @@ Sprint 7.1 establishes the Forge boundary and accepted registry. Sprint 7.2 adds
 - `forge.search.lore` over allowlisted public content;
 - `forge.validate.content` through `@calypsos-promise/content-schema`;
 - `forge.inspect.quest-schema` over the fixed public content-schema source;
-- `forge.validate.quest` through the accepted deterministic validator and quest-kind check; and
-- public tests for runtime activation, source-linked search, validation, schema inspection, non-authority, and fail-closed transport behavior.
+- `forge.validate.quest` through the accepted deterministic validator and quest-kind check;
+- `forge.search.architecture` over allowlisted public frozen, architecture, policy, governance, security, economics, and product records;
+- `forge.search.decision` over allowlisted public decisions, assumptions, roadmaps, completion records, and current-status evidence;
+- exact match and authority-evidence provenance for documentation results;
+- conservative visible states for frozen, accepted, working-hypothesis, proposed, planned, historical, superseded, unresolved, and reference-only material; and
+- public tests for runtime activation, source-linked search, validation, schema inspection, authority classification, non-authority, and fail-closed transport behavior.
 
 ## Run locally
 
@@ -42,21 +46,25 @@ pnpm --filter @calypsos-promise/mcp-forge start
 
 The server waits for newline-delimited MCP JSON-RPC messages on stdin. Stdout is reserved exclusively for protocol messages; diagnostics use stderr.
 
-## Enabled Sprint 7.4 tools
+## Enabled tools through Sprint 7.5
 
 - `forge.search.lore`
 - `forge.validate.content`
 - `forge.inspect.quest-schema`
 - `forge.validate.quest`
+- `forge.search.architecture`
+- `forge.search.decision`
 
-Lore search accepts only a query and bounded result and file limits. Validation accepts either one allowlisted public JSON source or one bounded inline record explicitly classified as `public-content` or `public-synthetic-fixture`. Inline classification is a contributor contract, not proof that arbitrary private data is safe to submit. Private data remains prohibited.
+Lore and documentation search accept only a query and bounded result and file limits. Validation accepts either one allowlisted public JSON source or one bounded inline record explicitly classified as `public-content` or `public-synthetic-fixture`. Inline classification is a contributor contract, not proof that arbitrary private data is safe to submit. Private data remains prohibited.
 
-The accepted registry in `contracts.ts` remains the immutable Sprint 7.1 contract baseline. `runtime-registry.ts` activates only the four Sprint 7.4 identities for the real local server. A transport session without the server-owned tool service remains inert, returns an empty tool list, and refuses tool calls.
+Documentation search returns exact line provenance and an explicit conservative authority state. Retrieved text cannot mark itself accepted, alter its authority class, register a tool, select a root, authorize a call, or suppress provenance. Ambiguous decision-like records fail closed as unresolved; other ambiguous documentation remains reference-only.
+
+The accepted registry in `contracts.ts` remains the immutable Sprint 7.1 contract baseline. `runtime-registry.ts` activates only the six identities accepted through Sprint 7.5. The other four accepted identities remain planned and unexposed. A transport session without the server-owned tool service remains inert, returns an empty tool list, and refuses tool calls.
 
 ## Permanent boundary
 
 Forge may search, inspect, validate, and later generate clearly labeled synthetic or draft output from allowlisted public sources. It cannot acquire private-data, arbitrary-filesystem, mutation, shell, subprocess, dynamic-module, network, provider, credential, production, canonical, permission, gameplay, clinical, protected-audit, or institutional authority.
 
-Search results are evidence only. Validation success does not approve canon, accept a repository change, complete a quest, grant a reward, prove semantic completeness, establish clinical safety, or create institutional authority. Retrieved content cannot register tools, alter the runtime registry, select roots, or authorize tool calls.
+Search results are evidence only. Validation success does not approve canon, accept a repository change, complete a quest, grant a reward, prove semantic completeness, establish clinical safety, or create institutional authority. Retrieved content cannot register tools, alter the runtime registry, select roots, authorize tool calls, or promote proposed, planned, historical, superseded, unresolved, or working-hypothesis material to accepted current truth.
 
 Ordinary repository contribution remains complete without MCP.
