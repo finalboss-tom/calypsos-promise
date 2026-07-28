@@ -1,0 +1,50 @@
+name: Finalize Sprint 7.1 status once
+
+on:
+  push:
+    branches:
+      - agent/sprint-7-forge-mcp
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-7-forge-mcp
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Record validated 7.1 status
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          path = Path('docs/roadmap/sprint-7-execution-plan.md')
+          text = path.read_text()
+          old = '- **Status:** ACTIVE — Sprint 7.1 in progress'
+          new = '- **Status:** ACTIVE — Sprint 7.1 complete and validated; Sprint 7.2 next'
+          if old not in text:
+              raise SystemExit('Expected Sprint 7.1 status not found')
+          path.write_text(text.replace(old, new))
+          PY
+          pnpm format
+      - name: Remove workflow and commit
+        shell: bash
+        run: |
+          git rm .github/workflows/finalize-sprint-7-1.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "docs: mark Sprint 7.1 validated"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
