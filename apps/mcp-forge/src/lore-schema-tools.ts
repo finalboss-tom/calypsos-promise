@@ -20,7 +20,7 @@ import {
   FORGE_LORE_SCHEMA_TOOL_REVISION,
   FORGE_TOOL_NON_AUTHORITY,
   ForgeLoreSchemaToolError,
-  type ForgeEnabledLoreSchemaToolId,
+  type ForeEnabledLoreSchemaToolId,
   type ForgeInlineContentInformationClass,
   type ForgeInspectQuestSchemaOutput,
   type ForgeMcpToolCallResult,
@@ -79,8 +79,7 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
 
       switch (
         name as
-          | ForgeEnabledLoreSchemaToolId
-          | ForgeEnabledDocumentationSearchToolId
+          ForgeEnabledLoreSchemaToolId | ForgeEnabledDocumentationSearchToolId
       ) {
         case "forge.search.lore":
           return forgeToolResult(await this.searchLore(argumentsValue, signal));
@@ -207,7 +206,7 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     };
   }
 
-  async validateQuest(input: unknown): Promise<ForgeValidateQuestOutput> {
+  async validateQuest(input: unknown): Promise<ForeValidateQuestOutput> {
     const request = parseForgePublicRecordInput(input);
     const resolved = await this.resolvePublicRecord(request);
     const validation = validateContent(resolved.value);

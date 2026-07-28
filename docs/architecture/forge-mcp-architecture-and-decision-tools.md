@@ -68,17 +68,17 @@ The search engine:
 
 Each match carries one of these states:
 
-| State | Meaning |
-| --- | --- |
-| `frozen-current` | The source is a frozen foundation or carries explicit frozen status. |
-| `accepted-current` | The source carries explicit accepted or accepted-baseline status. |
-| `active-working-hypothesis` | An active assumption currently informs design but is not validated truth. |
-| `proposed` | The source or matched section remains proposed or draft. |
-| `planned` | The source or matched section describes future, deferred, or next work. |
-| `historical` | The source is completion, archive, or historical evidence rather than current governing authority. |
-| `superseded` | The source or matched section is retired, replaced, deprecated, or superseded. |
-| `unresolved` | Material authority, review, implementation, or evidence remains explicitly unresolved, or a decision-like record lacks safe status evidence. |
-| `reference-only` | The public record is useful context but does not itself establish accepted current authority. |
+| State                       | Meaning                                                                                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `frozen-current`            | The source is a frozen foundation or carries explicit frozen status.                                                                         |
+| `accepted-current`          | The source carries explicit accepted or accepted-baseline status.                                                                            |
+| `active-working-hypothesis` | An active assumption currently informs design but is not validated truth.                                                                    |
+| `proposed`                  | The source or matched section remains proposed or draft.                                                                                     |
+| `planned`                   | The source or matched section describes future, deferred, or next work.                                                                      |
+| `historical`                | The source is completion, archive, or historical evidence rather than current governing authority.                                           |
+| `superseded`                | The source or matched section is retired, replaced, deprecated, or superseded.                                                               |
+| `unresolved`                | Material authority, review, implementation, or evidence remains explicitly unresolved, or a decision-like record lacks safe status evidence. |
+| `reference-only`            | The public record is useful context but does not itself establish accepted current authority.                                                |
 
 Every authority classification also exposes its basis:
 

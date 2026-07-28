@@ -86,13 +86,11 @@ const ARCHITECTURE_TARGETS: readonly SearchTarget[] = [
     "security",
     "economics",
     "product",
-  ].map(
-    (relativeDirectory): SearchTarget => ({
-      sourceRootId: "forge.docs",
-      relativeDirectory,
-      include: () => true,
-    }),
-  ),
+  ].map((relativeDirectory): SearchTarget => ({
+    sourceRootId: "forge.docs",
+    relativeDirectory,
+    include: () => true,
+  })),
   {
     sourceRootId: "forge.docs",
     relativeDirectory: "governance",

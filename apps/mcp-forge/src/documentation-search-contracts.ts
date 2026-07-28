@@ -80,9 +80,7 @@ export interface ForgeSearchDocumentationInput {
 }
 
 export type ForgeDocumentationMatchClass =
-  | "exact-phrase"
-  | "all-terms"
-  | "partial-terms";
+  "exact-phrase" | "all-terms" | "partial-terms";
 
 export interface ForgeDocumentationSearchMatch {
   readonly title?: string;
@@ -95,15 +93,13 @@ export interface ForgeDocumentationSearchMatch {
   readonly provenance: ForgeSourceProvenance;
 }
 
-export interface ForgeDocumentationSearchOutputBase
-  extends ForgeToolNonAuthority {
+export interface ForgeDocumentationSearchOutputBase extends ForgeToolNonAuthority {
   readonly revision: typeof FORGE_DOCUMENTATION_SEARCH_TOOL_REVISION;
   readonly query: string;
   readonly matches: readonly ForgeDocumentationSearchMatch[];
   readonly resultState: ForgeSourceResultState;
   readonly partialReasons: readonly (
-    | ForgeSourcePartialReasonId
-    | "result-limit-reached"
+    ForgeSourcePartialReasonId | "result-limit-reached"
   )[];
   readonly scannedFiles: number;
   readonly returnedMatches: number;
@@ -111,13 +107,11 @@ export interface ForgeDocumentationSearchOutputBase
   readonly ambiguousAuthorityIsPromoted: false;
 }
 
-export interface ForgeSearchArchitectureOutput
-  extends ForgeDocumentationSearchOutputBase {
+export interface ForgeSearchArchitectureOutput extends ForgeDocumentationSearchOutputBase {
   readonly toolId: "forge.search.architecture";
 }
 
-export interface ForgeSearchDecisionOutput
-  extends ForgeDocumentationSearchOutputBase {
+export interface ForgeSearchDecisionOutput extends ForgeDocumentationSearchOutputBase {
   readonly toolId: "forge.search.decision";
 }
 
