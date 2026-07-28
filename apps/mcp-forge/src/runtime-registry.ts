@@ -50,6 +50,7 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
   "Exactly nine Sprint 7.1-7.6 lore, schema, architecture, decision, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist.",
+  "Exactly six previously validated Sprint 7.1-7.5 tools remain enabled unchanged, with three bounded Sprint 7.6 identities added.",
   "Documentation and standards search expose exact provenance and no certification, completeness, or provider-preference authority.",
   "Mapping validation requires draft-only non-authority claims and cannot approve semantic equivalence, connector behavior, certification, production readiness, or a provider default.",
   "Synthetic connector search returns only explicitly synthetic, non-production fixtures without personal data or credentials.",
