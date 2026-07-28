@@ -7,7 +7,8 @@
 - **Draft pull request:** [#55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 - **Entry baseline:** `main` at `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Reviewed implementation head:** `32492040684c2a89e32c866888f6be0888ee1279`
-- **Final completion-package head:** pending final exact-head validation
+- **Validated completion-package evidence head:** `660b41e0ede313926a992c2ba7094a49fc756535`
+- **Completion-package validation:** CI run 924 and DCO Attestation run 998 passed
 - **Application:** `apps/mcp-forge`
 - **Accepted registry revision:** `1`
 - **Runtime registry revision:** `4`
@@ -20,7 +21,7 @@ Sprint 7 produced a coherent local Forge MCP implementation for the accepted goa
 
 > Provide useful agent tooling without private health-data risk.
 
-The exact candidate branch implements one local `stdio` contributor-tool application with ten server-owned tools over allowlisted public repository material and explicitly synthetic data.
+The candidate implements one local `stdio` contributor-tool application with ten server-owned tools over allowlisted public repository material and explicitly synthetic data.
 
 The completion package supports acceptance at the local implementation, deterministic-validation, public/synthetic source, adversarial-test, compatibility, migration, clean-start, and repository-consistency evidence level.
 
@@ -30,55 +31,27 @@ Founding-steward acceptance and squash merge are still required. Until they occu
 - issue #54 remains open;
 - PR #55 remains open and draft;
 - no production, private-data, remote-agent, provider, connector, or consequential capability is authorized; and
-- Sprint 8 should not begin on a new implementation branch.
+- Sprint 8 remains blocked.
 
-## Accepted deliverables evidenced by the candidate
+## Delivered Forge surface
 
-### Forge boundary and accepted registry
+### Boundary and registry
 
-The candidate defines:
-
-- one application owner at `apps/mcp-forge`;
-- public and explicitly synthetic information classes;
-- server-owned registry and source authority;
-- read-public, validate-public, generate-synthetic-draft, and prohibited risk classes;
-- ten accepted tool identities;
-- input and output schema identities;
-- limits, compatibility, migration, funding neutrality, prohibited capabilities, and literal non-authority; and
-- deterministic validators and public tests.
+The candidate defines one application owner at `apps/mcp-forge`, public and explicitly synthetic information classes, server-owned registry and source authority, bounded risk classes, ten accepted tool identities, exact schemas, limits, compatibility, migrations, funding neutrality, prohibited capabilities, literal non-authority, validators, and public tests.
 
 ### Local MCP transport
 
-The candidate implements:
-
-- MCP protocol revision `2025-11-25`;
-- newline-delimited UTF-8 local `stdio`;
-- deterministic initialization and initialized-notification lifecycle;
-- bounded `ping`, `tools/list`, and `tools/call` behavior;
-- cancellation, idempotent shutdown, and bounded framing;
-- stable public-safe JSON-RPC transport errors; and
-- direct harness and compiled-entrypoint tests.
+The candidate implements MCP protocol revision `2025-11-25` over newline-delimited UTF-8 local `stdio`, deterministic initialization and discovery, bounded calls, cancellation, idempotent shutdown, bounded framing, and public-safe transport errors.
 
 No remote endpoint, listener, authentication service, provider call, credential path, repository mutation, or private-data path is introduced.
 
 ### Source catalogue and provenance
 
-The candidate implements nine server-owned source roots with:
-
-- exact-file and recursive-tree allowlists;
-- prohibited path names, suffixes, and segments;
-- plain, encoded, double-encoded, backslash, absolute, URI, and drive-path traversal rejection;
-- symlink file and directory isolation;
-- deterministic listing and bounded reads;
-- SHA-256 content digests;
-- repository-relative paths;
-- whole-file, line-range, and object locators;
-- source authority and literal non-authority; and
-- complete, partial, and truncated evidence.
+Nine server-owned roots use exact-file or recursive allowlists, prohibited names and segments, traversal rejection, symlink isolation, deterministic listing, bounded reads, SHA-256 digests, repository-relative paths, bounded locators, source authority, and visible complete, partial, and truncated states.
 
 ### Lore, schema, architecture, and decision tools
 
-The candidate enables:
+The runtime enables:
 
 - `forge.search.lore`;
 - `forge.validate.content`;
@@ -87,160 +60,128 @@ The candidate enables:
 - `forge.search.architecture`; and
 - `forge.search.decision`.
 
-Search and validation remain source-linked evidence. They cannot accept canon, approve architecture, close decisions, create Chronicle truth, create permission, complete quests, grant rewards, mutate the repository, or establish clinical authority.
+These tools return source-linked evidence and deterministic validation. They cannot accept canon, approve architecture, close decisions, create Chronicle truth or permission, complete quests, grant rewards, mutate the repository, or establish clinical authority.
 
 Architecture and decision search preserve conservative authority classes so proposed, planned, historical, superseded, unresolved, reference-only, and working material cannot be silently promoted to accepted current truth.
 
-### Public standards, draft mappings, and synthetic connector fixtures
+### Standards, mappings, and connector fixtures
 
-The candidate enables:
+The runtime enables:
 
 - `forge.search.public-standards`;
 - `forge.validate.mapping-draft`; and
 - `forge.search.synthetic-connector-fixtures`.
 
-Public standards search preserves exact provenance without claiming completeness, certification, semantic equivalence, provider preference, or endorsement.
+Standards search preserves provenance without claiming completeness, certification, semantic equivalence, provider preference, or endorsement.
 
-Mapping validation requires revisioned draft status, deterministic validation, and human interoperability and semantic review. It denies mapping approval, semantic equivalence, connector behavior, certification, production readiness, and provider preference.
+Mapping validation requires revisioned draft status, deterministic validation, and human interoperability and semantic review. It denies approval, equivalence, connector behavior, certification, production readiness, and provider preference.
 
-Synthetic connector search returns only explicitly synthetic, non-production, credential-free, personal-data-free fixtures and exposes skipped unclassified records.
+Connector search returns only explicitly synthetic, non-production, credential-free, personal-data-free fixtures and exposes skipped unclassified records.
 
 ### Deterministic synthetic generation
 
-The candidate enables `forge.generate.synthetic-data` and exposes exactly ten accepted tools through runtime registry revision `4`.
+`forge.generate.synthetic-data` completes the ten-tool surface through runtime registry revision `4`.
 
-The generator:
+The generator accepts bounded quest or mapping-draft requests, hashes rather than echoes its seed, derives cases and timestamps deterministically, uses fixed synthetic time, invokes no random source, network, provider, credential, production endpoint, arbitrary filesystem read, or repository write, immediately validates every artifact, and returns explicit generator, schema, validator, classification, diversity, synthetic, non-production, human-review, and non-authority evidence.
 
-- accepts `quest` or `mapping-draft` output;
-- accepts one normalized public-safe seed, count, and bounded profile;
-- supports balanced, accessibility-relevant, and edge-case scenarios;
-- hashes rather than echoes the seed;
-- derives case identities, values, and timestamps deterministically;
-- uses fixed synthetic time rather than wall-clock time;
-- uses no random source, network, provider, credential, production endpoint, arbitrary filesystem read, or repository write;
-- immediately validates every generated artifact; and
-- returns explicit generator, scenario, schema, validator, classification, diversity, synthetic, non-production, personal-data-free, credential-free, human-review, and non-authority evidence.
+A passing batch does not prove privacy for arbitrary input, de-identification, representativeness, accessibility conformance, clinical realism, statistical validity, model-training fitness, or publication fitness.
 
-A passing generated batch does not prove privacy for arbitrary input, de-identification, representativeness, accessibility conformance, clinical realism, statistical validity, model-training fitness, or publication fitness.
-
-### Scopes, limits, receipts, and stable errors
+### Scopes, limits, receipts, and errors
 
 Execution contract revision `1` derives one immutable server-owned scope per enabled tool.
 
-The central controller enforces:
+The controller enforces request serialization and bytes, file scans, result counts, complete serialized output, timeout, linked cancellation, one active call per tool identity, caller-owned receipt rejection, and a deterministic serialized-materialization budget.
 
-- JSON serialization and request-byte ceilings before execution;
-- accepted file-scan and result-count postconditions;
-- the complete serialized MCP output ceiling;
-- accepted timeout;
-- linked caller cancellation;
-- one active call per tool identity while allowing different identities to proceed;
-- rejection of caller- or result-owned receipts; and
-- a deterministic serialized-materialization model covering request, complete output, and at most one bounded public source file.
+Every scoped success and stable scoped error includes `forge.invocation-receipt.v1`; stable failures use `forge.error.v1`. Receipts and errors omit raw input, host paths, environment values, internal traces, credentials, protected source material, and wall-clock timestamps.
 
-Every scoped success and stable scoped tool error includes `forge.invocation-receipt.v1`. Receipts report exact contract and scope identities, accepted limits, observed bounded counts and bytes, completion state, partial reasons, enforced controls, and non-authority.
-
-Receipts and `forge.error.v1` errors omit raw input, absolute host paths, environment values, internal traces, credentials, protected source material, and wall-clock timestamps.
-
-The materialized-memory model is deterministic serialized evidence. It is not JavaScript heap isolation, operating-system enforcement, a production sandbox, distributed quota, or production rate limiting.
+The materialized-memory model is local serialized evidence, not JavaScript heap isolation, operating-system enforcement, a production sandbox, distributed quota, or production rate limiting.
 
 ### Agent security, compatibility, and operability
 
-The candidate defines an 18-scenario adversarial matrix covering:
+The candidate defines an 18-scenario adversarial matrix covering traversal, symlink escape, arbitrary roots, protected sources, shell, network, dynamic loading, registry and scope mutation, confused-deputy behavior, evidence suppression, oversized input, timeout, cancellation, receipt impersonation, synthetic-label removal, mapping self-approval, and funding influence.
 
-- path traversal and symlink escape;
-- arbitrary root and protected-source access;
-- shell, network, and dynamic-module attempts;
-- registry and execution-scope mutation;
-- confused-deputy behavior and evidence suppression;
-- oversized input, timeout, and cancellation;
-- receipt leakage or impersonation;
-- synthetic-label removal;
-- mapping self-approval; and
-- funding influence.
+Before each real operation, runtime-integrity fingerprints verify the boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and scopes.
 
-Before every real tool operation, runtime-integrity fingerprints verify the application boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and execution scopes.
-
-Every successful raw result is checked before receipt assembly for exact tool identity, common non-authority, source evidence, visible partial state, result counts, conservative documentation authority, standards non-certification, provider neutrality, synthetic labels, mapping draft status, required human review, validation evidence, and tool-specific denial claims.
+Every successful raw result is checked before receipt assembly for exact tool identity, common non-authority, provenance, visible partial state, result counts, conservative documentation authority, standards non-certification, provider neutrality, synthetic labels, mapping draft status, required human review, validation evidence, and tool-specific denial claims.
 
 Compatibility remains pre-stable, exact-revision, migration-bearing, and fail-closed. Additive records cover runtime revisions `1` through `4` and execution envelope v1. Unknown and breaking changes fail closed; authority expansion requires an accepted governing decision.
 
-The compiled `stdio` entrypoint starts from a descendant directory with an empty environment, initializes, lists exactly ten tools, performs deterministic generation, returns a bounded receipt, exits cleanly, and emits no stderr output.
+The compiled entrypoint starts from a descendant directory with an empty environment, initializes, lists ten tools, performs deterministic generation, returns a bounded receipt, exits cleanly, and emits no stderr output.
 
-The production source has no shell, subprocess, network client, socket, VM, worker-thread, dynamic import, code-evaluation, or CommonJS-loading capability. The package depends only on `@calypsos-promise/content-schema` and does not depend on Aster.
+Production Forge source has no shell, subprocess, network client, socket, VM, worker-thread, dynamic import, code-evaluation, or CommonJS-loading capability. The package depends only on `@calypsos-promise/content-schema` and does not depend on Aster.
 
-## Acceptance-criterion evidence
+## Acceptance-criterion conclusion
 
-The completion package supports every accepted Sprint 7 criterion:
+### Public documentation and synthetic data only
 
-### Forge operates entirely on public documentation and synthetic data
-
-**Evidence:** public-only source classes; nine server-owned allowlisted roots; prohibited source classes and paths; synthetic fixture labels; no private Chronicle, provider, credential, environment, or production endpoint dependency; static source audit; clean empty-environment startup; adversarial protected-source tests.
+Supported by public-only source classes, nine server-owned allowlisted roots, prohibited source classes and paths, synthetic labels, no private Chronicle or provider dependency, static source auditing, clean empty-environment startup, and protected-source adversarial tests.
 
 **Conclusion before human acceptance:** met at local implementation and public/synthetic-test level.
 
-### Retrieved content cannot grant itself tool authority
+### Retrieved content cannot grant tool authority
 
-**Evidence:** server-owned accepted and runtime registries; immutable execution scopes; data-only treatment of retrieved and generated content; tool identity validation; runtime-integrity fingerprints; successful-result postconditions; caller-owned receipt rejection; method and tool refusal tests.
+Supported by server-owned registries, immutable scopes, data-only treatment of retrieved and generated content, tool identity validation, integrity fingerprints, successful-result postconditions, caller-owned receipt rejection, and deterministic refusal tests.
 
 **Conclusion before human acceptance:** met at contract, local runtime, integrity, and adversarial-test level.
 
-### Tool contracts are versioned and testable
+### Versioned and testable contracts
 
-**Evidence:** application, registry, runtime, source catalogue, tool, execution, receipt, error, compatibility, security, and operability revisions; exact public schemas; stable error codes; additive migration records; aggregate runtime validator; public-surface tests; clean compiled startup.
+Supported by exact application, registry, runtime, source, tool, execution, receipt, error, compatibility, security, and operability revisions; stable codes; additive migrations; aggregate validation; public-surface tests; and clean compiled startup.
 
 **Conclusion before human acceptance:** met at public contract, migration, validator, and test level.
 
-### Generated mappings remain drafts requiring deterministic validation and human review
+### Generated mappings remain drafts
 
-**Evidence:** mapping-draft revision and status contract; deterministic validator; generator immediate validation; explicit human review; postconditions denying approval, equivalence, certification, connector behavior, provider preference, and production readiness.
+Supported by mapping revision and draft status, deterministic validation, immediate generator validation, required human review, and postconditions denying approval, equivalence, certification, connector behavior, provider preference, and production readiness.
 
 **Conclusion before human acceptance:** met at local validator, generator, postcondition, and public-test level.
 
-### Sponsor-funded tools retain the same public-data, synthetic-only, risk, provider-neutrality, review, and publication boundaries
+### Sponsor-funded tools retain equal boundaries
 
-**Evidence:** funding boundary flags; baseline validator; risk and scope immutability; source and ranking neutrality; provider-neutral standards and mappings; funding influence adversarial scenario; public doctrine; ordinary issue, PR, review, test, and publication path.
+Supported by funding boundary flags, immutable risks and scopes, source and ranking neutrality, provider-neutral standards and mappings, funding-influence adversarial tests, and ordinary issue, PR, review, test, and publication requirements.
 
 **Conclusion before human acceptance:** met at governance-contract, integrity-validator, and adversarial-test level; no active funding relationship is selected.
 
-### Forge cannot access protected provider and interoperability information
+### Protected provider and interoperability information remains inaccessible
 
-**Evidence:** source allowlists and exclusions; prohibited names and segments; no arbitrary root; no environment or credential path; no network or provider dependency; protected-source adversarial tests; public-safe receipts and errors; static capability audit.
+Supported by source allowlists and exclusions, prohibited names and segments, no arbitrary root, environment, credential, network, or provider path, protected-source tests, public-safe receipts and errors, and static capability auditing.
 
 **Conclusion before human acceptance:** met at local source, runtime, disclosure, and adversarial-test level.
 
-## Evidence status
+## Completion-package evidence
 
-The candidate establishes:
+The package records:
 
 - twenty-eight stable Forge control objectives;
 - nineteen open Forge-specific holdpoints;
-- eighteen explicit unresolved-work records;
-- required and designed evidence across all controls;
-- local implementation evidence for the public/synthetic runtime controls;
+- eighteen unresolved-work records;
+- local implementation evidence for the public/synthetic controls;
 - deterministic public/synthetic test evidence;
 - clean compiled startup evidence;
 - exact compatibility and migration evidence;
-- cross-contract reconciliation; and
-- a bounded Sprint 8 handoff.
+- cross-contract reconciliation;
+- truthful status repairs; and
+- the bounded Sprint 8 handoff.
 
-It does not establish:
+The reviewed implementation head `32492040684c2a89e32c866888f6be0888ee1279` passed CI run 904 and DCO run 977.
+
+The completed 7.10 evidence package at `660b41e0ede313926a992c2ba7094a49fc756535` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI run 924, and DCO run 998.
+
+The exact final branch head and its validation are recorded in issue #54 and PR #55 after this evidence-only completion-record update.
+
+## Evidence limits
+
+Sprint 7 does not establish:
 
 - production deployment or official service operation;
 - remote MCP, authentication, tenancy, or private-data processing;
 - private Chronicle or House of Keys tools;
 - provider, network, connector, repository-mutation, shell, or general-agent capability;
 - production process isolation, CPU or heap enforcement, distributed quota, or rate limiting;
-- production monitoring, audit, incident response, backup, recovery, or deletion verification;
+- production monitoring, protected audit, incident response, backup, recovery, or deletion verification;
 - representative security, performance, reliability, cost, accessibility, usability, or contributor-benefit measurement;
 - production synthetic-data, de-identification, statistical validity, or dataset publication; or
-- independent specialist review.
-
-## Validation evidence
-
-The reviewed implementation head `32492040684c2a89e32c866888f6be0888ee1279` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, GitHub Actions CI run 904, and DCO Attestation run 977.
-
-The final completion-package head and exact validation runs will be inserted after the 7.10 documentation and status reconciliation is complete.
+- independent penetration testing or specialist review.
 
 ## Open holdpoints
 
@@ -248,22 +189,10 @@ The controlling follow-up record is the [Sprint 7 Forge Specialist Holdpoint and
 
 No production or specialist holdpoint closes merely because Sprint 7 is accepted or merged.
 
-## Handoff
+## Sprint 8 handoff
 
 The [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md) defines the bounded next-sprint entry conditions.
 
 After explicit Sprint 7 acceptance and squash merge, Sprint 8 may evolve the existing `apps/site` Website Track 0A repository gateway into one honest, accessible Next.js public website foundation.
 
-Sprint 8 inherits:
-
-- frozen mission, player rights, lore, and architecture;
-- truthful capability status;
-- public code and private personal-data separation;
-- consumer-first and provider-independent explanation;
-- Aster and Forge non-authority;
-- canonical funding transparency;
-- disabled transaction surfaces without operational evidence;
-- narrative and direct navigation parity;
-- accessibility and performance gates;
-- existing signup privacy and operational holdpoints; and
-- every open production, specialist, institutional, and measurement gate.
+Sprint 8 inherits frozen mission and player rights, truthful capability status, public-code and private-data separation, consumer-first provider independence, Aster and Forge non-authority, canonical funding transparency, disabled transactions without operational evidence, narrative and direct navigation parity, accessibility and performance gates, signup privacy gates, and every open production, specialist, institutional, and measurement holdpoint.
