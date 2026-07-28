@@ -154,6 +154,7 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
     asterPage,
     asterData,
   ].join("\n");
+  const normalizedSource = source.replace(/\s+/g, " ");
 
   for (const law of [
     "The Law of the Open Hand",
@@ -164,25 +165,22 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
     "The Right of Return",
     "The Covenant of the Commons",
   ]) {
-    assert.match(source, new RegExp(law));
+    assert.match(normalizedSource, new RegExp(law));
   }
 
-  assert.match(source, /A typical session is[\s\S]*three to eight minutes/);
-  assert.match(source, /AI may assist\. Deterministic services decide\./);
-  assert.match(source, /No broken-streak punishment/);
+  assert.match(normalizedSource, /A typical session is.*three to eight minutes/);
+  assert.match(normalizedSource, /AI may assist\. Deterministic services decide\./);
+  assert.match(normalizedSource, /No broken-streak punishment/);
+  assert.match(normalizedSource, /interoperate with institutional healthcare without.*architected around institutional healthcare/i);
+  assert.match(normalizedSource, /Standards at the edges/);
+  assert.match(normalizedSource, /No provider or connector capability is live/);
   assert.match(
-    source,
-    /interoperate with institutional healthcare without[\s\S]*architected around institutional healthcare/i,
-  );
-  assert.match(source, /Standards at the edges/);
-  assert.match(source, /No provider or connector capability is live/);
-  assert.match(
-    source,
+    normalizedSource,
     /AI proposes\. The player confirms\. The domain service validates and stores\./,
   );
-  assert.match(source, /No production Aster capability is live/);
+  assert.match(normalizedSource, /No production Aster capability is live/);
   for (const role of ["Scribe", "Librarian", "Wayfinder", "Interpreter", "Storykeeper"]) {
-    assert.match(source, new RegExp(role));
+    assert.match(normalizedSource, new RegExp(role));
   }
   for (const route of ["/laws", "/how-it-works", "/consumer-first", "/aster"]) {
     assert.match(sitemap, new RegExp(route));
