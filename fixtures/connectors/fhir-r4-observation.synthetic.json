@@ -1,0 +1,44 @@
+{
+  "$schema": "https://calypsospromise.org/forge/synthetic-connector-fixture/1",
+  "id": "connector-fixture.synthetic.fhir-r4-observation",
+  "revision": "1",
+  "informationClass": "public-synthetic-connector-fixture",
+  "synthetic": true,
+  "productionReady": false,
+  "containsCredentials": false,
+  "containsPersonalData": false,
+  "connectorKind": "public-standard-import-example",
+  "description": "A fictional FHIR R4 Observation payload for deterministic contributor tests. It is not linked to any person, provider, endpoint, account, or production system.",
+  "standard": {
+    "id": "hl7.fhir.r4",
+    "version": "4.0.1",
+    "publicReference": "https://hl7.org/fhir/R4/observation.html"
+  },
+  "payload": {
+    "resourceType": "Observation",
+    "id": "synthetic-observation-001",
+    "status": "final",
+    "code": {
+      "text": "Synthetic resting heart rate"
+    },
+    "subject": {
+      "reference": "Patient/synthetic-person-001"
+    },
+    "effectiveDateTime": "2026-01-15T08:30:00Z",
+    "valueQuantity": {
+      "value": 64,
+      "unit": "beats/minute"
+    }
+  },
+  "expectedDraftMappingIds": [
+    "mapping-draft.synthetic.fhir-r4-observation-to-chronicle"
+  ],
+  "claims": {
+    "connectorActivation": "not-granted",
+    "mappingApproval": "not-granted",
+    "semanticEquivalence": "not-proven",
+    "certification": "not-granted",
+    "productionReadiness": "not-established",
+    "providerPreference": "none"
+  }
+}

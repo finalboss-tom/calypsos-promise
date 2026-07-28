@@ -21,6 +21,12 @@ importers:
         specifier: ^5.8.3
         version: 5.9.3
 
+  apps/mcp-forge:
+    dependencies:
+      '@calypsos-promise/content-schema':
+        specifier: workspace:*
+        version: link:../../packages/content-schema
+
   apps/site: {}
 
   packages/aster: {}

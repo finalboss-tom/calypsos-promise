@@ -1,0 +1,55 @@
+{
+  "kind": "mapping-draft",
+  "id": "mapping-draft.synthetic.fhir-r4-observation-to-chronicle",
+  "revision": "1",
+  "status": "draft",
+  "title": "Synthetic FHIR R4 Observation to Living Chronicle candidate mapping",
+  "sourceStandard": {
+    "id": "hl7.fhir.r4",
+    "version": "4.0.1",
+    "publicReference": "https://hl7.org/fhir/R4/observation.html"
+  },
+  "targetModel": {
+    "id": "calypsos-promise.living-chronicle",
+    "version": "0.1.0-pre.1"
+  },
+  "entries": [
+    {
+      "id": "entry.observation-id",
+      "sourcePath": "Observation.id",
+      "targetPath": "record.sourceRecordId",
+      "transform": "text-copy",
+      "confidence": "candidate",
+      "notes": "Candidate source identity preservation only."
+    },
+    {
+      "id": "entry.observation-effective-date-time",
+      "sourcePath": "Observation.effectiveDateTime",
+      "targetPath": "record.assertedAt",
+      "transform": "date-normalization",
+      "confidence": "candidate",
+      "notes": "Temporal semantics require human interoperability review."
+    },
+    {
+      "id": "entry.observation-value-quantity",
+      "sourcePath": "Observation.valueQuantity.value",
+      "targetPath": "record.value.numericValue",
+      "transform": "identity",
+      "confidence": "candidate",
+      "notes": "Meaning depends on code, unit, context, and provenance."
+    }
+  ],
+  "syntheticEvidence": {
+    "fixtureIds": ["connector-fixture.synthetic.fhir-r4-observation"],
+    "evidenceOnly": true
+  },
+  "reviewRequirements": ["interoperability", "semantic", "privacy", "clinical"],
+  "claims": {
+    "mappingApproval": "not-granted",
+    "semanticEquivalence": "not-proven",
+    "connectorBehavior": "not-proven",
+    "certification": "not-granted",
+    "productionReadiness": "not-established",
+    "providerPreference": "none"
+  }
+}
