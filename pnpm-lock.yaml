@@ -21,6 +21,8 @@ importers:
         specifier: ^5.8.3
         version: 5.9.3
 
+  apps/mcp-forge: {}
+
   apps/site: {}
 
   packages/aster: {}
@@ -74,7 +76,7 @@ packages:
     hasBin: true
 
   turbo@2.10.6:
-    resolution: {integrity: sha512-3VfH7fK7WQ/ZHYjvfWyVnPRpcNaX3ZqXfGDMdc82eGdM0ESATyxFK4R4PM3wNsVFsdkUFZ4pZpkNeG37dxOv+g==}
+    resolution: {integrity: sha512-3VfH7fK7WQ/ZHYjvfWyVnPRpcNaX3qXfGDMdc82fZHYjvfWyVnPRpcNaX3qXfGDMdc82eGdM0ESATyxFK4R4PM3wNsVFsdkUFZ4pZpkNeG37dxOv+g==}
     hasBin: true
 
   typescript@5.9.3:
@@ -83,7 +85,7 @@ packages:
     hasBin: true
 
   undici-types@7.18.2:
-    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
 
 snapshots:
 
