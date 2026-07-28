@@ -12,6 +12,7 @@ const required = [
   "src/app/homepage.css",
   "src/app/guide-pages.css",
   "src/app/trust-forge.css",
+  "src/app/public-records.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
@@ -21,6 +22,9 @@ const required = [
   "src/app/aster/page.tsx",
   "src/app/trust/page.tsx",
   "src/app/forge/page.tsx",
+  "src/app/roadmap/page.tsx",
+  "src/app/support/page.tsx",
+  "src/app/funding/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -43,6 +47,9 @@ const required = [
   "src/lib/aster.ts",
   "src/lib/trust-center.ts",
   "src/lib/open-forge.ts",
+  "src/lib/public-roadmap.ts",
+  "src/lib/support-routes.ts",
+  "src/lib/funding-transparency.ts",
   "public/assets/compass-mark.svg",
   "public/assets/hero-ogygia.webp",
   "vercel.json",
@@ -69,6 +76,7 @@ const sourcePaths = [
   "src/app/homepage.css",
   "src/app/guide-pages.css",
   "src/app/trust-forge.css",
+  "src/app/public-records.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
@@ -78,6 +86,9 @@ const sourcePaths = [
   "src/app/aster/page.tsx",
   "src/app/trust/page.tsx",
   "src/app/forge/page.tsx",
+  "src/app/roadmap/page.tsx",
+  "src/app/support/page.tsx",
+  "src/app/funding/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -96,6 +107,9 @@ const sourcePaths = [
   "src/lib/aster.ts",
   "src/lib/trust-center.ts",
   "src/lib/open-forge.ts",
+  "src/lib/public-roadmap.ts",
+  "src/lib/support-routes.ts",
+  "src/lib/funding-transparency.ts",
   "src/proxy.ts",
   "next.config.mjs",
 ];
@@ -139,6 +153,15 @@ for (const phrase of [
   "forge.error.v1",
   "Nineteen specialist holdpoints and eighteen unresolved-work records remain open",
   "Contributors do not need Forge to participate.",
+  "Evidence decides what comes next.",
+  "A roadmap is a sequence of evidence gates",
+  "Use the route that protects the person.",
+  "Do not make private evidence public.",
+  "Support cannot purchase the Promise.",
+  "No accepted funding relationships are recorded.",
+  "No live funding opportunity is published.",
+  "Attribution is not authority.",
+  "No payment handoff is available.",
   "forge.search.lore",
   "forge.validate.content",
   "forge.inspect.quest-schema",
@@ -164,6 +187,9 @@ for (const phrase of [
   'href: "/aster"',
   'href: "/trust"',
   'href: "/forge"',
+  'href: "/roadmap"',
+  'href: "/support"',
+  'href: "/funding"',
   '"live"',
   '"experimental"',
   '"planned"',
@@ -181,9 +207,43 @@ for (const phrase of [
   }
 }
 
+const fundingRecords = await readFile(
+  `${app}/../../docs/economics/funding-records.yml`,
+  "utf8",
+);
+const fundingOpportunities = await readFile(
+  `${app}/../../docs/economics/funding-opportunities.yml`,
+  "utf8",
+);
+
+if (!/^records: \[\]$/m.test(fundingRecords)) {
+  throw new Error(
+    "Canonical funding relationships must remain parseable by the build-time website view",
+  );
+}
+if (!/^opportunities: \[\]$/m.test(fundingOpportunities)) {
+  throw new Error(
+    "Canonical funding opportunities must remain parseable by the build-time website view",
+  );
+}
+if (!/contains no accepted funding relationships/i.test(fundingRecords)) {
+  throw new Error("Funding relationship empty-state notice is missing");
+}
+if (!/contains no live opportunity/i.test(fundingOpportunities)) {
+  throw new Error("Funding opportunity empty-state notice is missing");
+}
+
+const fundingPage = await readFile(`${app}/src/app/funding/page.tsx`, "utf8");
+if (/<(?:form|input|button)\b/i.test(fundingPage)) {
+  throw new Error("Funding transparency must not activate transaction controls");
+}
+if (/stripe|paypal|checkout session|payment intent/i.test(source)) {
+  throw new Error("Site must not contain a payment runtime");
+}
+
 if (source.includes('"use client"') || source.includes("'use client'")) {
   throw new Error(
-    "Sprint 8 homepage, Promise, guide, trust, Forge, navigation, and status surfaces must remain server-rendered",
+    "Sprint 8 homepage, guide, trust, Forge, roadmap, support, funding, navigation, and status surfaces must remain server-rendered",
   );
 }
 
@@ -199,5 +259,5 @@ for (const phrase of [
 }
 
 console.log(
-  "Sprint 8.6 Trust Center and Open Forge boundaries are implemented for validation.",
+  "Sprint 8.7 roadmap, capability, support, and funding transparency boundaries are implemented for validation.",
 );
