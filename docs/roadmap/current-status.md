@@ -9,7 +9,7 @@
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
 - **Active workstream:** 8.1 — website application boundary and migration contract
-- **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR pending
+- **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
 - **Existing site:** Website Track 0A repository gateway; Next.js migration not yet implemented
 - **Production health data:** none
@@ -33,7 +33,7 @@ Sprints 0–7 and the pre-Sprint 8 repository reconciliation are complete and me
 
 The reconciliation merged through PR #59 as squash commit `9da8034220954a1ca50420e71fd94e7795232a35`, closing issue #58 and authorizing the separately tracked Sprint 8 implementation.
 
-Sprint 8 is active through issue #60 and branch `agent/sprint-8-public-website-foundation`.
+Sprint 8 is active through issue #60, draft PR #61, and branch `agent/sprint-8-public-website-foundation`.
 
 The accepted Sprint 8 goal is:
 
