@@ -54,6 +54,7 @@ export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
   "Exactly ten Sprint 7.1-7.7 lore, schema, architecture, decision, standards, mapping-draft, synthetic-connector, and deterministic synthetic-generation tools are enabled through a server-owned allowlist.",
   "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged, with the accepted synthetic-generation identity added.",
+  "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools remain unchanged inside that prior nine-tool baseline.",
   "Synthetic generation is deterministic for the same seed and input, immediately validates every result, and labels every artifact synthetic, non-production, credential-free, personal-data-free, and human-review-required.",
   "Generated quests and mapping drafts cannot self-approve, create canon, prove semantic equivalence, authorize clinical use, select a provider, activate a connector, mutate the repository, complete gameplay, grant rewards, or create institutional authority.",
   "Documentation and standards search expose exact provenance and no certification, completeness, or provider-preference authority.",
