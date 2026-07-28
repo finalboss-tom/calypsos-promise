@@ -42,6 +42,8 @@ test("keeps current public route contracts present", async () => {
     "../src/app/how-it-works/page.tsx",
     "../src/app/consumer-first/page.tsx",
     "../src/app/aster/page.tsx",
+    "../src/app/trust/page.tsx",
+    "../src/app/forge/page.tsx",
     "../src/app/privacy/page.tsx",
     "../src/app/joined/page.tsx",
     "../src/app/api/join/route.ts",
@@ -68,6 +70,8 @@ test("provides direct and narrative navigation without a client boundary", async
     "/how-it-works",
     "/consumer-first",
     "/aster",
+    "/trust",
+    "/forge",
   ]) {
     assert.match(source, new RegExp(`href: "${route}"`));
   }
@@ -203,14 +207,63 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
   assert.doesNotMatch(source, /["']use client["']/);
 });
 
-test("provides reduced-motion, reduced-data, contrast, and forced-color fallbacks", async () => {
-  const [globalCss, homepageCss, guideCss, page] = await Promise.all([
-    read("../src/app/globals.css"),
-    read("../src/app/homepage.css"),
-    read("../src/app/guide-pages.css"),
-    read("../src/app/page.tsx"),
+test("publishes the source-backed Trust Center and Open Forge", async () => {
+  const [trustPage, trustData, forgePage, forgeData, sitemap] = await Promise.all([
+    read("../src/app/trust/page.tsx"),
+    read("../src/lib/trust-center.ts"),
+    read("../src/app/forge/page.tsx"),
+    read("../src/lib/open-forge.ts"),
+    read("../src/app/sitemap.ts"),
   ]);
-  const css = `${globalCss}\n${homepageCss}\n${guideCss}`;
+  const source = `${trustPage}\n${trustData}\n${forgePage}\n${forgeData}`;
+  const normalizedSource = source.replace(/\s+/g, " ");
+
+  for (const phrase of [
+    "Trust begins with visible limits.",
+    "A documented control is not a deployed control.",
+    "Do not open a public issue.",
+    "No public page closes these gates.",
+    "Useful tools without hidden authority.",
+    "Exactly ten tools",
+    "forge.invocation-receipt.v1",
+    "forge.error.v1",
+    "Nineteen specialist holdpoints and eighteen unresolved-work records remain open",
+    "Contributors do not need Forge to participate.",
+  ]) {
+    assert.match(normalizedSource, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  for (const tool of [
+    "forge.search.lore",
+    "forge.validate.content",
+    "forge.inspect.quest-schema",
+    "forge.validate.quest",
+    "forge.search.architecture",
+    "forge.search.decision",
+    "forge.search.public-standards",
+    "forge.validate.mapping-draft",
+    "forge.search.synthetic-connector-fixtures",
+    "forge.generate.synthetic-data",
+  ]) {
+    assert.match(normalizedSource, new RegExp(tool.replace(/\./g, "\\.")));
+  }
+
+  assert.match(sitemap, /\/trust/);
+  assert.match(sitemap, /\/forge/);
+  assert.doesNotMatch(source, /["']use client["']/);
+  assert.doesNotMatch(normalizedSource, /production (?:security|privacy|clinical) certification is live/i);
+});
+
+test("provides reduced-motion, reduced-data, contrast, and forced-color fallbacks", async () => {
+  const [globalCss, homepageCss, guideCss, trustForgeCss, page] =
+    await Promise.all([
+      read("../src/app/globals.css"),
+      read("../src/app/homepage.css"),
+      read("../src/app/guide-pages.css"),
+      read("../src/app/trust-forge.css"),
+      read("../src/app/page.tsx"),
+    ]);
+  const css = `${globalCss}\n${homepageCss}\n${guideCss}\n${trustForgeCss}`;
 
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /prefers-reduced-data/);
