@@ -73,7 +73,8 @@ test("defines all controlled capability status values", async () => {
   for (const status of ["live", "experimental", "planned", "long-horizon"]) {
     assert.match(source, new RegExp(`\\b${status}\\b`));
   }
-  assert.match(source, /canonical source/i);
+  assert.match(source, /sourceHref/);
+  assert.match(source, /sourceLabel/);
   assert.doesNotMatch(source, /["']use client["']/);
 });
 
