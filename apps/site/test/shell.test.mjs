@@ -37,6 +37,7 @@ test("preserves security headers and mutable asset cache semantics", async () =>
 test("keeps current public route contracts present", async () => {
   for (const path of [
     "../src/app/page.tsx",
+    "../src/app/promise/page.tsx",
     "../src/app/privacy/page.tsx",
     "../src/app/joined/page.tsx",
     "../src/app/api/join/route.ts",
@@ -57,6 +58,7 @@ test("provides direct and narrative navigation without a client boundary", async
   assert.match(source, /id="primary-navigation"/);
   assert.match(source, /aria-label="Narrative journey"/);
   assert.match(source, /No story traversal is required/);
+  assert.match(source, /href: "\/promise"/);
   assert.match(source, /<details/);
   assert.match(source, /<summary>/);
   assert.doesNotMatch(source, /["']use client["']/);
@@ -78,11 +80,37 @@ test("defines all controlled capability status values", async () => {
   assert.doesNotMatch(source, /["']use client["']/);
 });
 
+test("migrates the source-backed homepage and Promise explanation", async () => {
+  const [home, promisePage, promiseData, loops, principles, sitemap] =
+    await Promise.all([
+      read("../src/app/page.tsx"),
+      read("../src/app/promise/page.tsx"),
+      read("../src/lib/promise.ts"),
+      read("../src/components/connected-loops.tsx"),
+      read("../src/components/promise-principles.tsx"),
+      read("../src/app/sitemap.ts"),
+    ]);
+  const source = `${home}\n${promisePage}\n${promiseData}\n${loops}\n${principles}`;
+
+  assert.match(source, /Build your Living Chronicle\. Improve your health\. Keep the key\./);
+  assert.match(source, /The software is open\. The person’s health data is private\./);
+  assert.match(source, /without agreeing to research/);
+  assert.match(source, /Build your health record/);
+  assert.match(source, /Improve your health/);
+  assert.match(source, /Control and share in created value/);
+  assert.match(source, /Product Constitution/);
+  assert.match(home, /Read the contribution guide/);
+  assert.match(sitemap, /\/promise/);
+  assert.doesNotMatch(source, /["']use client["']/);
+});
+
 test("provides reduced-motion, reduced-data, contrast, and forced-color fallbacks", async () => {
-  const [css, page] = await Promise.all([
+  const [globalCss, homepageCss, page] = await Promise.all([
     read("../src/app/globals.css"),
+    read("../src/app/homepage.css"),
     read("../src/app/page.tsx"),
   ]);
+  const css = `${globalCss}\n${homepageCss}`;
 
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /prefers-reduced-data/);
@@ -90,7 +118,7 @@ test("provides reduced-motion, reduced-data, contrast, and forced-color fallback
   assert.match(css, /forced-colors/);
   assert.match(css, /\.hero-image\s*\{[\s\S]*display:\s*none/);
   assert.match(page, /loading="lazy"/);
-  assert.match(page, /Essential[\s\S]*server-rendered/);
+  assert.match(page, /planned game/);
 });
 
 test("pauses signup without accepting data", async () => {
