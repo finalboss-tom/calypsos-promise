@@ -456,7 +456,10 @@ function parseInput(input: unknown): ForgeValidateMappingDraftInput {
     );
   }
   const hasMapping = Object.prototype.hasOwnProperty.call(input, "mapping");
-  const hasSourcePath = Object.prototype.hasOwnProperty.call(input, "sourcePath");
+  const hasSourcePath = Object.prototype.hasOwnProperty.call(
+    input,
+    "sourcePath",
+  );
   if (hasMapping === hasSourcePath) {
     throw new ForgeLoreSchemaToolError(
       FORGE_LORE_SCHEMA_ERROR_CODES.invalidInput,
