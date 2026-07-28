@@ -173,7 +173,9 @@ function parseToolCallParams(params: unknown): {
 
 export class ForgeTransportSession {
   private state: ForgeTransportSessionState = "created";
-  private readonly requestHandlers: Readonly<Record<string, ForgeRequestHandler>>;
+  private readonly requestHandlers: Readonly<
+    Record<string, ForgeRequestHandler>
+  >;
   private readonly toolService?: ForgeTransportToolService;
   private readonly activeRequests = new Map<ForgeJsonRpcId, AbortController>();
 
@@ -404,11 +406,7 @@ export class ForgeTransportSession {
           "The requested tool is not enabled by the server-owned runtime registry.",
         );
       }
-      return this.toolService.callTool(
-        call.name,
-        call.argumentsValue,
-        signal,
-      );
+      return this.toolService.callTool(call.name, call.argumentsValue, signal);
     }
     const handler = this.requestHandlers[request.method];
     if (handler === undefined) {
