@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { CapabilityStatusGrid } from "@/components/capability-status-grid";
 
 export default function HomePage() {
   return (
     <>
-      <section className="hero" aria-labelledby="hero-title">
+      <section id="begin" className="hero" aria-labelledby="hero-title">
         <Image
           className="hero-image"
           src="/assets/hero-ogygia.webp"
@@ -20,12 +21,11 @@ export default function HomePage() {
             Build your Living Chronicle. Improve your health. Keep the key.
           </p>
           <p className="summary">
-            This compatibility shell establishes the Next.js foundation while
-            the full public gateway is migrated through deliberate, reviewable
-            workstreams. Essential project information remains available without
-            animation, audio, or an account.
+            This public gateway is being built in reviewable layers. Essential
+            project information remains server-rendered and available without
+            animation, audio, client JavaScript, an account, or story traversal.
           </p>
-          <div className="actions">
+          <div className="actions" aria-label="Primary actions">
             <a
               className="button button-primary"
               href="https://github.com/finalboss-tom/calypsos-promise"
@@ -33,45 +33,26 @@ export default function HomePage() {
               rel="noreferrer"
             >
               Explore the repository
+              <span className="visually-hidden"> (opens in a new tab)</span>
             </a>
-            <a
-              className="button"
-              href="https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Read current status
+            <a className="button" href="#capability-status">
+              Review capability status
             </a>
           </div>
         </div>
       </section>
 
-      <section className="status-grid" aria-label="Capability status">
-        <article className="card">
-          <span className="status status-live">Live</span>
-          <h2>Public repository</h2>
-          <p>
-            Governance, architecture, roadmap, public contracts, and synthetic
-            evidence are inspectable now.
-          </p>
-        </article>
-        <article className="card">
-          <span className="status status-foundation">Foundation</span>
-          <h2>Website migration</h2>
-          <p>
-            The App Router shell, security policy, metadata, route
-            compatibility, and design tokens are under active review.
-          </p>
-        </article>
-        <article className="card">
-          <span className="status status-planned">Planned</span>
-          <h2>Private product</h2>
-          <p>
-            Accounts, private Chronicles, production Aster, providers,
-            connectors, transactions, and gameplay are not activated here.
-          </p>
-        </article>
+      <section className="navigation-parity" aria-labelledby="navigation-parity-title">
+        <p className="eyebrow">Two paths, one truth</p>
+        <h2 id="navigation-parity-title">Choose direct access or the Ogygia path.</h2>
+        <p>
+          Primary navigation exposes the essential routes immediately. The optional
+          narrative path uses the same destinations and does not unlock hidden or
+          more authoritative information.
+        </p>
       </section>
+
+      <CapabilityStatusGrid />
     </>
   );
 }
