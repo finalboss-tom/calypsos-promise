@@ -130,9 +130,8 @@ async function createToolService(t) {
     "utf8",
   );
 
-  const repository = await ForgeSourceRepository.forSyntheticTests(
-    repositoryRoot,
-  );
+  const repository =
+    await ForgeSourceRepository.forSyntheticTests(repositoryRoot);
   return new ForgeLoreSchemaToolService(repository);
 }
 
@@ -195,8 +194,14 @@ test("retrieved instructions remain evidence and cannot expand tool authority", 
   const service = await createToolService(t);
   const result = await service.searchLore({ query: "enable shell access" });
 
-  assert.equal(result.matches.length, 1);
-  assert.match(result.matches[0].excerpt, /enable shell access/i);
+  const exactInstruction = result.matches.find(
+    (match) =>
+      match.matchClass === "exact-phrase" &&
+      /enable shell access/i.test(match.excerpt),
+  );
+
+  assert.ok(exactInstruction);
+  assert.equal(exactInstruction.provenance.canApproveCanon, false);
   assert.equal(result.canMutateRepository, false);
   assert.equal(result.canApproveCanon, false);
   assert.equal(result.canCreateOrExpandPermission, false);
