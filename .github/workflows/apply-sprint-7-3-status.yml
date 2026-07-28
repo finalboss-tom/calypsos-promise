@@ -1,0 +1,181 @@
+name: Apply Sprint 7.3 status once
+
+on:
+  push:
+    branches:
+      - agent/sprint-7-forge-mcp
+
+permissions:
+  contents: write
+
+jobs:
+  apply-status:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-7-forge-mcp
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Reconcile Sprint 7.3 status
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def replace(path, old, new):
+              file = Path(path)
+              text = file.read_text()
+              if old not in text:
+                  raise SystemExit(f"missing expected text in {path}: {old[:80]}")
+              file.write_text(text.replace(old, new))
+
+          replace(
+              "apps/mcp-forge/README.md",
+              "Sprint 7.1 establishes the Forge boundary and registry. Sprint 7.2 adds a local `stdio` MCP transport and direct invocation harness while keeping every planned tool unexposed and every repository read disabled.",
+              "Sprint 7.1 establishes the Forge boundary and registry. Sprint 7.2 adds the local `stdio` transport. Sprint 7.3 adds a server-owned source catalogue, allowlisted repository access, and provenance while keeping every planned tool unexposed.",
+          )
+          replace(
+              "apps/mcp-forge/README.md",
+              "- a direct transport harness and stream-level tests.",
+              "- a direct transport harness and stream-level tests;\n- nine server-owned source-root identities;\n- exact-file and recursive-tree allowlists;\n- traversal, prohibited-path, and symlink isolation;\n- SHA-256 digests, line counts, and whole-file, line-range, and object locators;\n- deterministic listing, truncation, and partial-result evidence; and\n- public-safe source errors with no absolute-path leakage.",
+          )
+          replace(
+              "apps/mcp-forge/README.md",
+              "All initial tools remain `planned` and `not-exposed`. Sprint 7.2 does not read repository files, resolve roots, inspect paths, search, validate content, or generate data. Later workstreams must implement source catalogues, path isolation, provenance, tool behavior, limits, receipts, compatibility, migration, and agent-security evidence before any tool becomes exposed.",
+              "All initial tools remain `planned` and `not-exposed`. Sprint 7.3 can resolve and read only named server-owned public roots through the direct application API; MCP `tools/list` remains empty and `tools/call` remains refused. Later workstreams must implement accepted tool behavior, limits, receipts, compatibility, migration, and agent-security evidence before any tool becomes exposed.",
+          )
+
+          replace(
+              "docs/architecture/README.md",
+              "[Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Sprint 7 plan]",
+              "[Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Sprint 7 plan]",
+          )
+          replace(
+              "docs/architecture/README.md",
+              "33. [Pre-Sprint 7 Repository Alignment Review]",
+              "33. [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)\n34. [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)\n35. [Pre-Sprint 7 Repository Alignment Review]",
+          )
+          replace(
+              "docs/architecture/README.md",
+              "34. [Health Data Legacy and Succession Architecture]",
+              "36. [Health Data Legacy and Succession Architecture]",
+          )
+          replace(
+              "docs/architecture/README.md",
+              "- [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)\n- [Pre-Sprint 7 Alignment Review]",
+              "- [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)\n- [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)\n- [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)\n- [Pre-Sprint 7 Alignment Review]",
+          )
+          replace(
+              "docs/architecture/README.md",
+              "Sprint 7 is active on issue #54 and draft PR #55. Workstream 7.1 defines the application boundary, public source classes, server-owned registry, risk classes, planned tool contracts, prohibited capabilities, compatibility and migration references, resource-limit contracts, literal non-authority, funding neutrality, validators, and public tests.\n\nEvery initial tool remains planned and unexposed. No MCP transport or repository read is implemented yet.",
+              "Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.3 define the application boundary, planned registry, finalized-version local transport, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, truncation, public-safe errors, and public tests.\n\nEvery initial tool remains planned and unexposed. The direct source core can read only named public roots; MCP discovery remains empty and tool calls remain refused.",
+          )
+
+          replace(
+              "docs/roadmap/sprint-7-execution-plan.md",
+              "- **Status:** ACTIVE — Sprint 7.1 complete and validated; Sprint 7.2 next",
+              "- **Status:** ACTIVE — Sprint 7.1–7.3 implemented; exact-head validation pending; Sprint 7.4 next",
+          )
+          marker = "## Information handling"
+          plan = Path("docs/roadmap/sprint-7-execution-plan.md")
+          text = plan.read_text()
+          evidence = """## Sprint 7.3 evidence\n\nSprint 7.3 defines nine server-owned source roots, exact-file and recursive-tree allowlists, public and synthetic information-class coverage, process-root discovery, prohibited path and credential classes, normalized path resolution, plain and encoded traversal rejection, component-level symlink rejection, resolved-path containment, locale-independent ordering, SHA-256 content digests, byte and line counts, whole-file, line-range, and object locators, explicit truncation and partial reasons, public-safe errors, deterministic validators, and public synthetic tests.\n\nThe source core is available only through the direct application API. Every accepted MCP tool remains planned and unexposed; `tools/list` remains empty and `tools/call` remains refused.\n\n"""
+          if evidence not in text:
+              text = text.replace(marker, evidence + marker)
+              plan.write_text(text)
+
+          replace(
+              "docs/roadmap/current-status.md",
+              "- **Current workstream:** 7.1 — Forge boundary and registry",
+              "- **Current workstream:** 7.3 implemented; exact-head validation pending; 7.4 next",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "Workstream 7.1 defines the contract-only Forge application boundary, public source classes, server-owned tool registry, risk classes, planned tool identities, prohibited capabilities, compatibility, migration references, resource-limit contracts, non-authority, funding neutrality, validators, and public tests.",
+              "Workstreams 7.1–7.3 define the Forge boundary, finalized-version local transport, nine server-owned source roots, exact allowlists, prohibited classes, traversal and symlink isolation, SHA-256 provenance, locators, deterministic listing, truncation, public-safe errors, validators, and public tests. All MCP tools remain planned and unexposed.",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "| Sprint 7.1 — Forge boundary and registry | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md) | contract-only application ownership, public source classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests | MCP transport, repository reads, enabled tools, remote hosting, private data, mutation, provider calls, or production readiness |",
+              "| Sprint 7.1 — Forge boundary and registry | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md) | application ownership, public information classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests | enabled tools, private data, mutation, provider calls, or production readiness |\n| Sprint 7.2 — Local transport | [transport](../architecture/forge-mcp-local-stdio-transport.md) | finalized-version local `stdio`, initialization, cancellation, shutdown, framing, direct harness, and transport-safe errors | repository reads, enabled tools, remote hosting, providers, or consequential actions |\n| Sprint 7.3 — Source catalogue and provenance | [source architecture](../architecture/forge-mcp-source-catalogue-and-provenance.md) | server-owned roots, exact allowlists, path and symlink isolation, digests, locators, deterministic listing, truncation, and public-safe errors | MCP tool exposure, arbitrary filesystem access, search behavior, validation execution, generation, or authority |",
+          )
+          replace(
+              "docs/roadmap/current-status.md",
+              "- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 contract-only Forge boundary; all tools remain planned and unexposed",
+              "- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 local transport and internal allowlisted source core; all tools remain planned and unexposed",
+          )
+
+          replace(
+              "README.md",
+              "[Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Pre-Sprint 7 review]",
+              "[Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review]",
+          )
+          replace(
+              "README.md",
+              "[Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Sprint Roadmap]",
+              "[Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Source Catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) → [Sprint Roadmap]",
+          )
+          replace(
+              "README.md",
+              "Workstreams 7.1 and 7.2 establish the Forge boundary, registry, finalized-version local `stdio` transport, direct harness, cancellation, shutdown, framing, and transport-safe errors. Every tool remains planned and unexposed; no repository read exists yet. Sprint 7.3 — source catalogue and provenance is next.",
+              "Workstreams 7.1–7.3 establish the Forge boundary, registry, finalized-version local `stdio` transport, direct harness, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, and public-safe errors. Every tool remains planned and unexposed; Sprint 7.4 — lore and schema tools is next.",
+          )
+          replace(
+              "README.md",
+              "- Begin Sprint 7.3 on draft PR #55 by defining server-owned repository roots, source allowlists, prohibited paths, traversal and symlink isolation, digests, locators, truncation, and partial results before any tool reads repository content.",
+              "- Begin Sprint 7.4 on draft PR #55 by implementing lore search, public content validation, quest-schema inspection, and quest validation through accepted public package exports without granting canon or mutation authority.",
+          )
+
+          replace(
+              "docs/README.md",
+              "[Local transport](architecture/forge-mcp-local-stdio-transport.md) · [Pre-Sprint 7 review]",
+              "[Local transport](architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review]",
+          )
+          replace(
+              "docs/README.md",
+              "5. [Pre-Sprint 7 Repository Alignment Review]",
+              "5. [Forge MCP Source Catalogue and Provenance](architecture/forge-mcp-source-catalogue-and-provenance.md)\n6. [Pre-Sprint 7 Repository Alignment Review]",
+          )
+          for number in range(20, 5, -1):
+              replace("docs/README.md", f"{number}. ", f"{number + 1}. ")
+          replace(
+              "docs/README.md",
+              "A finalized-version local `stdio` transport exists, but all tools remain planned and unexposed and no repository read exists yet. Sprint 7.3 is next.",
+              "A finalized-version local `stdio` transport and server-owned allowlisted source core exist, but all tools remain planned and unexposed. Sprint 7.4 is next.",
+          )
+
+          replace(
+              "docs/roadmap/README.md",
+              "[Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review]",
+              "[Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review]",
+          )
+          replace(
+              "docs/roadmap/README.md",
+              "4. [Pre-Sprint 7 Alignment Review]",
+              "4. [Forge MCP Local `stdio` Transport](../architecture/forge-mcp-local-stdio-transport.md)\n5. [Forge MCP Source Catalogue and Provenance](../architecture/forge-mcp-source-catalogue-and-provenance.md)\n6. [Pre-Sprint 7 Alignment Review]",
+          )
+          for number in range(20, 4, -1):
+              replace("docs/roadmap/README.md", f"{number}. ", f"{number + 2}. ")
+          replace(
+              "docs/roadmap/README.md",
+              "Workstream 7.1 defines the contract-only local application boundary, public source classes, server-owned registry, risk classes, planned tools, prohibited capabilities, validators, and public tests. It does not activate transport, repository reads, private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.",
+              "Workstreams 7.1–7.3 define the local application boundary, finalized-version transport, server-owned source catalogue, allowlisted reads, traversal and symlink isolation, SHA-256 provenance, locators, truncation, public-safe errors, validators, and public tests. They do not expose tools, private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.",
+          )
+      - run: pnpm format
+      - name: Remove one-run workflow and commit
+        shell: bash
+        run: |
+          git rm .github/workflows/apply-sprint-7-3-status.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "docs: reconcile Sprint 7.3 source catalogue status"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
