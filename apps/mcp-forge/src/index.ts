@@ -15,6 +15,8 @@ export * from "./source-roots.js";
 export * from "./standards-mapping-contracts.js";
 export * from "./stdio.js";
 export * from "./synthetic-connector-tools.js";
+export * from "./synthetic-generation-contracts.js";
+export * from "./synthetic-generation-tools.js";
 export * from "./transport-contracts.js";
 export * from "./transport-harness.js";
 export * from "./transport-session.js";
