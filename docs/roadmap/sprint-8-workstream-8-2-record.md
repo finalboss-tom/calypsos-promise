@@ -52,14 +52,14 @@ The previous custom Node server, HTML fragment runtime, legacy page styles, brow
 
 The shell preserves the current public route contracts:
 
-| Route | Workstream 8.2 behavior |
-| --- | --- |
-| `/` | server-rendered compatibility homepage |
-| `/privacy` | explicit migration-period signup privacy explanation |
-| `/joined` | explicit migration-period no-submission confirmation |
-| `/api/join` | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded |
-| `/robots.txt` | App Router metadata route |
-| `/sitemap.xml` | App Router metadata route |
+| Route          | Workstream 8.2 behavior                                         |
+| -------------- | --------------------------------------------------------------- |
+| `/`            | server-rendered compatibility homepage                          |
+| `/privacy`     | explicit migration-period signup privacy explanation            |
+| `/joined`      | explicit migration-period no-submission confirmation            |
+| `/api/join`    | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded |
+| `/robots.txt`  | App Router metadata route                                       |
+| `/sitemap.xml` | App Router metadata route                                       |
 
 The signup route is paused, not silently removed. Workstream 8.8 still owns the final preserve-or-retire decision.
 

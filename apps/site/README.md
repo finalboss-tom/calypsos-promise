@@ -31,15 +31,15 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 
 ## Current route behavior
 
-| Route | Current behavior |
-| --- | --- |
-| `/` | server-rendered compatibility homepage preserving the Ogygia visual direction |
-| `/privacy` | migration-period signup privacy explanation |
-| `/joined` | migration-period no-submission confirmation |
-| `/api/join` | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded |
-| `/robots.txt` | App Router metadata route |
-| `/sitemap.xml` | App Router metadata route |
-| `/assets/*` | repository-owned compatibility assets with revalidation caching |
+| Route          | Current behavior                                                              |
+| -------------- | ----------------------------------------------------------------------------- |
+| `/`            | server-rendered compatibility homepage preserving the Ogygia visual direction |
+| `/privacy`     | migration-period signup privacy explanation                                   |
+| `/joined`      | migration-period no-submission confirmation                                   |
+| `/api/join`    | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded               |
+| `/robots.txt`  | App Router metadata route                                                     |
+| `/sitemap.xml` | App Router metadata route                                                     |
+| `/assets/*`    | repository-owned compatibility assets with revalidation caching               |
 
 The route names remain deliberate compatibility contracts. Workstream 8.8 owns the final signup preserve-or-retire decision.
 
