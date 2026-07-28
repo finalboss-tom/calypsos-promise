@@ -1,14 +1,14 @@
 # Pre-Sprint 8 Repository Alignment Review
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Sprint 7 execution plan](sprint-7-execution-plan.md) · [Sprint 7 completion record](sprint-7-completion-record.md) · [Forge reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Sprint 7 completion](sprint-7-completion-record.md) · [Forge reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md) · [Tracking issue #58](https://github.com/finalboss-tom/calypsos-promise/issues/58)
 
-- **Status:** PREPARED ON SPRINT 7 BRANCH — blocked pending Sprint 7 founding-steward acceptance and squash merge
-- **Reviewed baseline:** Sprint 7 candidate head `32492040684c2a89e32c866888f6be0888ee1279` plus the 7.10 completion package
+- **Status:** ACTIVE POST-MERGE RECONCILIATION — Sprint 8 implementation has not started
+- **Reviewed baseline:** `main` at Sprint 7 squash commit `f28f054fe16d550fad37663cf234e06c5622dd42`
 - **Review date:** 2026-07-28
 - **Next accepted sprint:** Sprint 8 — Public website foundation
 - **Existing website surface:** `apps/site`, Website Track 0A — Repository Gateway
-- **Scope:** mission, player promise, incentives, governance, architecture, security, funding, provider independence, operability, website status, current implementation, open-source maintenance, and bounded Sprint 8 handoff
-- **Certification boundary:** internal repository-consistency and readiness review; not independent accessibility, security, privacy, clinical, legal, interoperability, operations, financial, AI-safety, user-research, performance, or production-readiness certification
+- **Scope:** mission, player promise, incentives, governance, architecture, security, funding, provider independence, operability, website status, current implementation, deployment and migration risks, open-source maintenance, and bounded Sprint 8 handoff
+- **Certification boundary:** internal repository-consistency and implementation-readiness review; not independent accessibility, security, privacy, clinical, legal, interoperability, operations, financial, AI-safety, user-research, performance, or production-readiness certification
 
 ## Decision summary
 
@@ -16,21 +16,20 @@ The accepted Sprint 8 goal, deliverables, acceptance criteria, and numbered sequ
 
 > Publish an honest, accessible gateway to Ogygia.
 
-No decision record is required before Sprint 8 if the work remains within the accepted public website scope.
+No decision record or Sprint 8 scope change is required if implementation remains inside this review.
 
-Sprint 8 must evolve the existing `apps/site` repository gateway rather than creating a duplicate public website. The current surface is a custom Node-served cinematic landing page with semantic HTML, repository-owned concept-art crops, honest capability status, reduced-motion behavior, security headers, and a purpose-limited signup adapter. It is not yet the accepted Sprint 8 Next.js foundation.
+Sprint 8 must evolve the existing `apps/site` repository gateway in place. It must not create a duplicate public website, parallel status system, independent funding ledger, CMS, database, account system, private-data path, provider runtime, or premature service boundary.
 
-**Recommendation:** after explicit Sprint 7 acceptance and squash merge, begin Sprint 8 through its own issue, execution plan, branch, draft pull request, public-only implementation evidence, accessibility and performance baselines, completion record, and explicit founding-steward acceptance.
+Sprint 7 is accepted and squash merged. The remaining entry gate is this post-merge reconciliation: repair status truth, bind the actual migration risks, validate the repository, obtain founding-steward acceptance, and squash merge the reconciliation before opening a Sprint 8 implementation branch.
 
-## Entry gates
+## Entry-gate status
 
-Sprint 8 should not begin until:
-
-1. Sprint 7 workstream 7.10 is complete;
-2. issue #54 records an explicit founding-steward acceptance decision;
-3. PR #55 is squash merged to `main`;
-4. the final Sprint 7 squash commit is inserted into completion and status records if needed; and
-5. the Sprint 8 issue and execution plan explicitly inherit this review.
+1. Sprint 7 workstream 7.10 is complete — **met**.
+2. Issue #54 records founding-steward acceptance — **met**.
+3. PR #55 is squash merged — **met** as `f28f054fe16d550fad37663cf234e06c5622dd42`.
+4. Sprint 7 completion and status evidence exists — **met**, subject to post-merge status repair in this reconciliation.
+5. The pre-Sprint 8 repository review is merged — **open** through issue #58.
+6. A separate Sprint 8 issue, execution plan, branch, and draft PR inherit this review — **not started**.
 
 Sprint 8 does not require closing Forge production or specialist holdpoints because its accepted scope is a public website over public records and explicitly synthetic examples.
 
@@ -43,219 +42,335 @@ The review used this order:
 3. security, publication, development, economics, accessibility, and contributor policies;
 4. controlled vocabulary, deterministic incentives, Living Chronicle, House of Keys, Aster, and Forge baselines;
 5. accepted Sprint 8 goal, deliverables, and acceptance criteria;
-6. the current `apps/site` Track 0A implementation and public claims;
-7. Sprint 7 completion evidence, holdpoints, unresolved work, and capability status; and
-8. this handoff review.
+6. the merged Sprint 7 completion package and open holdpoints;
+7. the actual `apps/site` Track 0A implementation, deployment configuration, public URLs, assets, copy, tests, and signup adapter; and
+8. this reconciliation.
 
 A lower layer may implement, test, or explain a higher-authority requirement. It may not silently weaken it.
 
+## Review conclusion
+
+Calypso’s Promise remains aligned from the frozen Promise through the merged Forge baseline and into the public website foundation.
+
+The review found no basis to:
+
+- reopen the Product Constitution, frozen architecture, lore, gameplay, funding doctrine, consumer-first boundary, or operational-simplicity decision;
+- change the accepted Sprint 8 goal, deliverables, acceptance criteria, or sequence;
+- create another site application or extract a shared website package before a second consumer exists;
+- add a CMS, database, remote content service, analytics platform, account system, provider service, or donation runtime;
+- treat the website as the source of product, security, funding, provider, clinical, legal, or governance authority; or
+- activate Sprint 9 prologue, private-product, provider, connector, financial, or institutional capabilities through website implementation.
+
+The material work before Sprint 8 is status repair and implementation clarification, not architecture redesign.
+
 ## Repository state entering Sprint 8
 
-After Sprint 7 acceptance, the repository will contain:
+The merged repository contains:
 
-- a bounded public repository gateway at `apps/site`;
-- a complete local public/synthetic Forge application at `apps/mcp-forge`;
+- Website Track 0A at `apps/site`;
+- the complete local public/synthetic Forge application at `apps/mcp-forge`;
 - frozen product, lore, architecture, gameplay, and institutional foundations;
 - pre-stable Living Chronicle, House of Keys, and Aster contract baselines;
-- security, funding, consumer-first, provider-independent, operational-simplicity, and publication policies;
+- security, funding, consumer-first, provider-independent, operational-simplicity, accessibility, and publication policies;
 - public standards references, draft mappings, and explicitly synthetic connector fixtures;
-- honest status and capability vocabulary; and
-- open production, specialist, institutional, accessibility, and measurement holdpoints.
+- honest capability-status vocabulary; and
+- open production, specialist, institutional, accessibility, release, and measurement holdpoints.
 
 No account system, private Chronicle, production Aster, provider call, connector runtime, donation checkout, research enrollment, governance vote, private MCP, or production health-data path is active.
 
-## Existing `apps/site` disposition
+## Actual Website Track 0A inventory
 
-### Retain
+### Application and runtime
 
-Sprint 8 should preserve or deliberately migrate:
+`apps/site` is a private workspace application with no runtime package dependencies. It currently uses:
+
+- `src/server.mjs` as a custom Node HTTP server;
+- `src/signup.mjs` as an isolated signup webhook adapter;
+- HTML fragments under `src/views/`;
+- CSS, JavaScript, SVG, and WebP assets under `public/`;
+- `src/check-site.mjs` for required-file, required-copy, and prohibited-signup-field checks; and
+- `node --test` for its public test suite.
+
+The repository-wide Turbo configuration already recognizes `.next/**` build output, so an in-place Next.js migration fits the existing monorepo boundary without a new application or package.
+
+### Public routes and contracts
+
+The current server exposes:
+
+- `/` — cinematic repository gateway;
+- `/privacy` — Founding Expedition signup privacy notice;
+- `/joined` — signup confirmation;
+- `/api/join` — purpose-limited email signup endpoint; and
+- static assets under `/assets`, `/styles`, and `/site.js`.
+
+Sprint 8 must preserve, redirect, or explicitly retire each public route. Silent route loss is not an acceptable migration strategy.
+
+### Current public content
+
+The homepage currently contains semantic HTML for:
+
+- the player promise and planned game;
+- the game loop;
+- Aster’s proposal-only authority;
+- Ogygia and canonical zones;
+- privacy, meaningful refusal, confirmation, correction, export, and deletion principles;
+- live-versus-planned capability status;
+- repository and current-status links; and
+- the Founding Expedition signup surface.
+
+The warm cinematic Ogygia direction remains approved. Sprint 8 should preserve it through deliberate cuts and splices rather than treating the framework migration as permission for a generic visual reset.
+
+### Current security and accessibility foundations
+
+Track 0A already provides:
+
+- semantic HTML and one skip link;
+- named landmarks and navigation;
+- reduced-motion and responsive behavior;
+- live text rather than flattened copy inside images;
+- a content security policy;
+- frame, content-type, referrer, opener, and permissions headers;
+- bounded request bodies;
+- no health-data signup fields; and
+- generic signup failure logging without email content.
+
+These are useful foundations, not accessibility, privacy, security, or production certification.
+
+### Current deployment state
+
+`apps/site/vercel.json` sets `git.deploymentEnabled` to `false`. Git-triggered preview and production deployments are therefore intentionally disabled today.
+
+Sprint 8 may change deployment behavior only through an explicit preview, cutover, rollback, and official-release decision. Framework migration must not silently switch the public site, expose an unfinished preview as official, or remove the ability to restore Track 0A.
+
+## Retain, mature, and retire deliberately
+
+### Retain or deliberately migrate
 
 - the warm cinematic Ogygia visual direction;
-- repository-owned concept-art crops and their presentation role;
+- repository-owned concept-art crops and truthful captions;
 - semantic live HTML for essential information and controls;
-- prominent GitHub, documentation, and current-status paths;
-- reduced-motion support;
-- responsive behavior;
-- security headers;
+- prominent GitHub, documentation, current-status, and contribution paths;
+- the player promise as the primary message;
+- reduced-motion, responsive, keyboard, and image-failure resilience;
+- the current security-header intent;
 - honest live-versus-planned language;
-- the purpose-limited signup boundary; and
-- the principle that essential information is not embedded only in flattened imagery.
+- the isolated purpose-limited signup boundary; and
+- the rule that essential information does not depend on flattened imagery, animation, audio, lore knowledge, or client JavaScript.
 
 ### Replace or mature
 
-Sprint 8 should replace or mature:
-
-- the custom Node server with the accepted Next.js site foundation;
-- one-page gateway structure with durable route and content architecture;
-- ad hoc page styling with versioned design tokens;
-- implicit narrative traversal with explicit narrative and direct navigation modes;
-- high-level status copy with reusable capability-status components;
+- the custom Node server with one Next.js application in `apps/site`;
+- the one-page structure with durable public routes and shared layout;
+- section-specific ad hoc styling with versioned design tokens;
+- implicit narrative traversal with equal narrative and direct navigation modes;
+- hand-written status summaries with a validated site-local public status registry linked to canonical records;
 - scattered trust explanations with a Trust Center shell;
 - high-level Forge references with an honest Open Forge page;
-- hand-maintained funding recognition with canonical economics-record views; and
-- temporary website-specific patterns that duplicate repository source-of-truth records.
+- hand-maintained support copy with build-time views over canonical economics records or explicit empty states;
+- the phrase-only bundle check with route, content-authority, accessibility, metadata, status-truth, and performance validation; and
+- non-fingerprinted immutable asset caching with framework-managed fingerprints or correct cache headers.
 
-The migration should use cuts and splices that preserve the approved look and feel where it remains aligned. Sprint 8 is not a visual reset by default.
+### Do not introduce
+
+- a second site application;
+- a shared website package without a second consumer;
+- a CMS, database, remote content API, runtime GitHub fetch, or vector index;
+- a second funding or capability-status source of truth;
+- accounts, authentication, health-data intake, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, governance voting, or transactions; or
+- analytics, tracking, advertising, personalization, or third-party scripts without a separately accepted privacy and operational boundary.
 
 ## Mission-to-website traceability
 
 ### Personal utility and control
 
-The homepage and Promise explanation must lead with “Build your Living Chronicle. Improve your health. Keep the key.” Personal utility and control come before institutional benefit.
+The homepage and Promise explanation must lead with:
+
+> Build your Living Chronicle. Improve your health. Keep the key.
+
+Personal utility and control come before research, funding, partner, or institutional benefit.
 
 ### Public software and private personal data
 
 The Trust Center, Open Forge, How It Works, and status components must distinguish public code and public/synthetic evidence from private future personal data.
 
-### Personal value before secondary use
+### Meaningful refusal and direct access
 
-The visitor journey must explain the personal loop before research, funding, partner, or institutional possibilities.
-
-### Meaningful refusal and non-punitive return
-
-Narrative and direct modes remain optional. Essential content must require no story traversal, animation, audio, or mythological knowledge.
+Narrative and direct modes remain optional. Essential content must require no story traversal, animation, sound, image, account, or mythological knowledge.
 
 ### Deterministic authority around AI
 
-The Aster and AI explanation must distinguish proposals, player confirmation, deterministic domain validation, fallbacks, and current non-production status.
+The Aster explanation must distinguish proposals, player confirmation, deterministic domain validation, non-AI fallbacks, and current non-production status.
 
 ### MCP remains bounded tooling
 
-The Open Forge page must explain local public/synthetic tools, source evidence, limits, receipts, non-authority, and open holdpoints without presenting MCP as the product database or general agent authority.
+Open Forge must explain local public/synthetic tools, provenance, limits, receipts, non-authority, and open holdpoints without presenting MCP as the product database or a general agent.
 
 ### Provider and standards replaceability
 
-The consumer-first explanation must distinguish standards support, planned connectors, active relationships, and production exchange. Providers and standards remain additive, attributed, and replaceable.
+The consumer-first explanation must distinguish standards support, planned connectors, active relationships, and production exchange. Providers and standards remain additive, attributed, versioned, and replaceable.
 
 ### Funding cannot purchase authority
 
-Support views must derive from canonical economics records and keep recognition separate from endorsement, recommendation, ranking, safety, guidance, permissions, and governance.
+Support views must derive from canonical economics records and keep recognition separate from recommendation, ranking, endorsement, safety, guidance, permission, and governance.
 
 ### Complexity must earn its place
 
-Sprint 8 should remain one understandable Next.js public site with clear routes, content ownership, local build, and no premature service platform.
-
-### Status must describe evidence
-
-Reusable status components must distinguish live, experimental, planned, long-horizon, deferred, frozen, baseline, and proposed states where relevant.
+Sprint 8 remains one understandable site application with static or build-time public content where practical. A new service or runtime dependency requires current evidence, ownership, tests, and a distinct boundary.
 
 ## Binding Sprint 8 execution clarifications
 
-These clarifications do not change the accepted Sprint 8 scope. They define how the scope should be implemented.
+### 1. One application and one cutover
 
-### 1. One public site, no duplicate gateway
+- `apps/site` remains the only public website owner.
+- Migrate Track 0A in place.
+- Keep the current site deployable until the replacement passes its release gate.
+- Define preview, production cutover, rollback owner, rollback command or procedure, asset compatibility, and DNS or project-setting impact before changing official deployment behavior.
+- Do not delete Track 0A implementation until the replacement has passed accepted verification and rollback evidence exists.
 
-- `apps/site` remains the public website owner.
-- Migrate Track 0A into the Next.js foundation rather than creating another site application.
-- Preserve public URLs or provide deliberate redirects where practical.
-- Do not create empty applications, shared packages, a CMS, database, or service merely because they may be useful later.
+### 2. Public route map
 
-### 2. Narrative and direct modes are equal paths
+The initial durable route set should include:
 
-- Narrative mode may welcome visitors into Ogygia through lore, atmosphere, exploration, and progressive disclosure.
-- Direct mode must expose all essential information through conventional navigation and plain language.
-- No visitor should have to animate, play, scroll through a cinematic sequence, hear audio, or understand mythology to access the Promise, trust, privacy, status, support, or contribution information.
+- `/` — homepage and narrative entry;
+- `/promise` — player promise and rights;
+- `/laws` — Seven Laws;
+- `/how-it-works` — personal value loop and product model;
+- `/aster` — Aster and AI boundaries;
+- `/trust` — Trust Center shell;
+- `/forge` — Open Forge;
+- `/status` — roadmap and capability status;
+- `/support` — funding and support transparency; and
+- `/privacy` — public-site and signup privacy information.
 
-### 3. Content authority remains repository-owned
+`/joined` and `/api/join` must be preserved, redirected, or deliberately retired under the signup decision. Route names may be refined in the Sprint 8 execution plan, but every accepted content responsibility must remain directly addressable.
+
+### 3. Narrative and direct modes are equal
+
+- Narrative mode may welcome visitors through Ogygia, atmosphere, exploration, and progressive disclosure.
+- Direct mode must expose the same essential information through conventional navigation and plain language.
+- Mode selection cannot create a separate policy, status, or content source.
+- Server-rendered essential content must remain available when client JavaScript, animation, images, or audio fail.
+
+### 4. Content authority remains repository-owned
 
 - Frozen and accepted repository records remain the source of truth.
-- Website copy may summarize and explain; it may not silently create product, security, funding, provider, clinical, legal, or governance policy.
-- Material claims should link to controlling records or structured public data where appropriate.
-- Generated navigation and status views must preserve source, status, uncertainty, and update ownership.
+- Website copy may summarize and explain; it may not create policy.
+- Use small site-local, typed, read-only content or data adapters at build time where structured views are needed.
+- Do not parse arbitrary Markdown at request time or fetch repository content from GitHub at runtime.
+- Every material status, funding, Forge, provider, connector, security, and governance claim should carry a canonical source link and explicit status.
 
-### 4. Capability status is a reusable system
+### 5. Capability status is a validated system
 
-- Live, experimental, planned, and long-horizon distinctions from the acceptance criteria must be visually obvious.
-- The complete repository status vocabulary should remain available where relevant.
-- A merged contract or completed sprint must not be labeled as a live product capability without deployment evidence.
-- Forge should be described as a local contributor tool, not a production consumer health feature.
+- Define one site-local public capability registry with stable IDs, public labels, evidence status, source links, owner, and last-reviewed metadata.
+- Validate allowed statuses against repository vocabulary.
+- A completed sprint or merged contract cannot be labeled as a live product capability without deployment evidence.
+- Forge is a local contributor tool, not a consumer health feature.
+- Status records must fail validation when a source is missing, a status is unknown, or a live claim lacks an allowed evidence reference.
 
-### 5. Trust Center is a shell, not certification
+### 6. Funding transparency uses canonical economics data
 
-The initial Trust Center may organize:
+- Render `docs/economics/funding-records.yml` and `funding-opportunities.yml` only through a bounded build-time adapter or explicit checked-in derivative with provenance.
+- The current live registers are empty; the website must display an honest empty state rather than fictional support.
+- Synthetic funding files may be used only in tests or clearly fictional demonstrations.
+- A website sponsor model cannot become a second ledger.
+- No donation, sponsorship, grant-intake, affiliate, referral, provider-intake, payment, charitable, tax-deductible, nonprofit, or refund claim activates without separately accepted operational evidence.
 
-- the Promise and player rights;
-- privacy and public-information boundaries;
-- security policy and disclosure route;
-- Living Chronicle, House of Keys, Aster, and Forge boundaries;
-- provider and connector status;
-- funding and sponsorship doctrine;
-- open holdpoints and specialist review status;
-- capability status and corrections; and
-- public issue and challenge routes.
+### 7. Signup migration is a separate bounded decision
 
-It must not imply independent certification, production security, legal compliance, clinical approval, operational reliability, or private-data processing.
+Sprint 8 must explicitly choose one of two paths:
 
-### 6. Open Forge inherits Sprint 7 truth
+1. preserve `/api/join`, `/privacy`, and `/joined` with equivalent or stronger disclosure, validation, no-email logging, provider configuration, timeout, error, and response behavior; or
+2. remove or disable signup until its provider, retention, unsubscribe, correction, deletion, privacy, and operational ownership are accepted.
 
-The Open Forge page should explain:
+If preserved:
 
-- its contributor purpose;
-- the ten bounded tools;
-- public and synthetic information only;
-- local `stdio` operation;
-- source provenance and conservative authority;
-- deterministic validation and generation;
-- execution limits, receipts, stable errors, and compatibility;
-- no shell, network, mutation, private data, providers, connectors, or consequential actions;
-- open production and specialist holdpoints; and
-- ordinary non-MCP contribution paths.
+- retain email-only, purpose-specific consent and honeypot behavior;
+- do not add health, account, research, donation, demographic, or marketing-profile fields;
+- update and version the privacy policy and payload purpose together;
+- do not treat the current in-memory throttling as distributed abuse protection;
+- do not trust forwarded client-address headers without an explicit hosting-proxy trust model;
+- keep webhook credentials server-only;
+- never log email addresses, tokens, payloads, or provider responses containing personal data; and
+- document correction, deletion, unsubscribe, provider, retention, and failure paths before representing signup as production-ready.
 
-It should not expose protected security details or claim that local adversarial tests prove production safety.
+### 8. Security headers must survive the framework migration
 
-### 7. Funding transparency derives from canonical records
+- Preserve or strengthen CSP, frame-ancestor, content-type, referrer, opener, and permissions policies.
+- Do not weaken CSP merely to accommodate framework defaults, analytics, or third-party scripts.
+- Test response headers on all public routes and error pages.
+- Keep secrets and server-only modules out of client bundles.
+- Verify that source maps, build output, errors, and previews expose no credentials or private operational material.
 
-- Public support and relationship views must derive from canonical economics records or explicit empty states.
-- Recognition must remain separate from recommendation, provider preference, connector ranking, clinical endorsement, health guidance, safety, permissions, and governance authority.
-- Approved and prohibited benefits, relationship state, delivery, outcomes, conflicts, concentration, corrections, and challenge routes should remain inspectable.
-- A website sponsor model must not become a second source of funding truth.
+### 9. Cache and asset behavior must be correct
 
-### 8. Transaction surfaces remain disabled
+The current server applies immutable caching to static URLs that are not all content-fingerprinted. Sprint 8 must:
 
-No donation, sponsorship, checkout, payment, charitable, tax-deductible, nonprofit, public-benefit, refund, or financial-control surface may activate until the legitimate recipient, custody, accounting, tax, privacy, refund, and payment-rail gates are accepted.
+- use framework-managed hashed assets or versioned filenames for immutable caching;
+- avoid immutable caching for mutable public URLs;
+- define HTML, structured public data, image, font, and API cache behavior explicitly;
+- ensure corrections and status changes can propagate without a stale-content trap; and
+- test image failure, stale asset, and rollback behavior.
 
-The site may explain support intent and current status without accepting money.
+### 10. Deployment and official status remain explicit
 
-### 9. Consumer-first and provider-independent explanation
+- `git.deploymentEnabled: false` is the current repository state.
+- Preview deployment may be enabled only with public-data-only content, no production signup secrets by default, truthful preview labeling, and no implication of official release.
+- Production cutover requires accepted build, accessibility, performance, security-header, content-authority, link, route, signup, and rollback evidence.
+- Deployment success does not promote planned product capabilities to live.
+- The official site and repository must remain mutually navigable.
 
-The explanation must:
+### 11. Accessibility and performance are release criteria
 
-- acknowledge substantial and evolving healthcare standards;
-- avoid disparaging clinicians, providers, EHRs, institutions, or standards work;
-- distinguish source systems from Chronicle truth;
-- explain versioned mappings, provenance, conflict, and uncertainty;
-- preserve personal-core value without enterprise enrollment; and
-- avoid representing a provider, connector, clinical, or enterprise relationship as live.
-
-Historical Google and Microsoft references must remain within cited evidence when used.
-
-### 10. Accessibility and performance are release criteria
-
-Sprint 8 should define measurable baselines before closure for:
+Define measurable baselines before implementation closes for:
 
 - semantic structure and landmarks;
-- keyboard operation;
-- screen-reader labels and reading order;
+- keyboard operation and visible focus;
+- screen-reader names, descriptions, and reading order;
 - reduced motion;
-- contrast and focus visibility;
-- responsive layout;
+- contrast;
+- responsive and zoom behavior;
 - low-bandwidth and image-failure behavior;
 - direct-navigation parity;
 - automated accessibility checks;
-- representative manual review; and
-- page performance and asset budgets.
+- representative manual review;
+- JavaScript, CSS, image, font, and page-weight budgets;
+- Core Web Vitals or equivalent page-performance evidence; and
+- no essential-content dependency on hydration.
 
-Passing automated checks alone is not affected-user validation or accessibility certification.
+Automated checks alone are not affected-user validation or accessibility certification.
 
-### 11. Signup remains purpose-limited and separately gated
+### 12. Metadata and public-web completeness
 
-The existing signup adapter should remain isolated from public content and health-data flows.
+The foundation should include:
 
-Sprint 8 must either preserve its current disabled or bounded status with honest provider, retention, unsubscribe, correction, deletion, and privacy disclosures, or remove it until those requirements can be met.
+- canonical titles and descriptions;
+- social preview metadata using repository-owned assets;
+- canonical URLs;
+- sitemap and robots behavior;
+- accessible not-found and error pages;
+- noindex behavior for non-official previews where practical;
+- truthful structured data without product, medical, nonprofit, or organizational claims unsupported by evidence; and
+- link checking for internal routes and canonical repository sources.
 
-It must not become account creation, health-data intake, research enrollment, donation processing, or an undeclared marketing database.
+### 13. Validation strategy
 
-### 12. No production expansion through website code
+Sprint 8 should add proportionate tests for:
+
+- route coverage and redirects;
+- direct and narrative essential-content parity;
+- server-rendered content without client JavaScript;
+- status-registry vocabulary, sources, and evidence rules;
+- funding-registry empty and synthetic separation;
+- signup preservation or retirement behavior;
+- security headers and client-bundle isolation;
+- caching and rollback assumptions;
+- metadata, sitemap, robots, and error pages;
+- accessibility automation and manual checklist evidence;
+- asset and page-performance budgets;
+- public links and source references; and
+- full repository validation.
+
+### 14. No production expansion through website code
 
 Sprint 8 does not activate:
 
@@ -271,21 +386,20 @@ Sprint 8 does not activate:
 - estate or legacy directives; or
 - production analytics over personal data.
 
-## Sprint 8 implementation sequence
+## Recommended Sprint 8 implementation sequence
 
-A bounded execution plan should proceed in this order:
-
-1. inventory the existing Track 0A routes, assets, copy, tests, signup boundary, and public URLs;
-2. define the Next.js application boundary, route map, content ownership, design tokens, and migration strategy;
-3. implement shared layout, direct navigation, narrative entry, status components, and accessibility foundations;
-4. migrate and reconcile the homepage and Promise content;
-5. implement Seven Laws, How It Works, consumer-first explanation, and Aster and AI;
-6. implement Trust Center and Open Forge pages from accepted records;
-7. implement roadmap, capability status, and funding transparency from canonical data;
-8. preserve or deliberately retire the signup surface under its own privacy and operational gates;
-9. validate essential-information parity without animation, story, images, or client JavaScript where practical;
-10. run accessibility, performance, security-header, link, content-authority, status-truth, and full repository checks; and
-11. publish a completion package and explicit founding-steward acceptance decision.
+1. create the Sprint 8 issue and execution plan from this merged review;
+2. inventory Track 0A URLs, assets, copy, tests, signup behavior, deployment settings, and rollback path;
+3. pin the framework and testing versions through normal dependency review;
+4. define route map, content ownership, design tokens, status registry, funding adapter, security headers, cache policy, and migration strategy;
+5. implement shared layout, direct navigation, narrative entry, metadata, and accessibility foundations;
+6. migrate the homepage and Promise content without visual reset;
+7. implement Seven Laws, How It Works, consumer-first explanation, and Aster pages;
+8. implement Trust Center, Open Forge, status, roadmap, and support views from accepted records;
+9. preserve or deliberately retire signup under its separate gate;
+10. establish preview, cutover, rollback, and official-release evidence;
+11. validate essential-information parity without animation, story, images, client JavaScript, or provider dependencies where practical; and
+12. publish the Sprint 8 completion package and obtain explicit founding-steward acceptance.
 
 ## Sprint 8 acceptance interpretation
 
@@ -308,15 +422,15 @@ Sprint 8 inherits, without closing:
 - accessibility and affected-user review;
 - public security and disclosure correctness;
 - signup privacy, provider, retention, unsubscribe, correction, deletion, and operational gates;
+- deployment, release, rollback, branch-setting, second-owner, succession, and founder-independent administration;
 - legal, trademark, consumer, charitable, tax, nonprofit, and public-claim review;
 - provider and institutional relationship truth;
 - funding record, transaction, custody, accounting, and payment gates;
-- release integrity, branch settings, second-owner, succession, and founder-independent administration;
 - representative performance and user-benefit measurement; and
 - every production health-data, Aster, connector, clinical, research, private MCP, and account gate.
 
 ## Handoff conclusion
 
-Sprint 8 is correctly scoped as the next numbered sprint after Sprint 7.
+Sprint 8 remains the correct next numbered sprint. No decision record or scope amendment is required.
 
-This review is a prepared handoff, not authorization to start before Sprint 7 acceptance and merge. Once that gate closes, Sprint 8 should begin by reconciling and migrating the existing `apps/site` Track 0A surface into one honest, accessible, durable Next.js public website foundation.
+The repository is ready to begin Sprint 8 only after this reconciliation is validated, explicitly accepted, and squash merged. The Sprint 8 issue and implementation branch must then inherit this review and preserve `apps/site` as the single public website owner.
