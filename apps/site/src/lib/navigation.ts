@@ -51,6 +51,24 @@ export const directNavigation: readonly NavigationItem[] = [
       "Ten bounded local public and synthetic tools with visible limits.",
   },
   {
+    href: "/roadmap",
+    label: "Roadmap",
+    description:
+      "Evidence-based capability status, active work, and later gates.",
+  },
+  {
+    href: "/support",
+    label: "Support",
+    description:
+      "Public-safe issues, contributions, challenges, and private routing.",
+  },
+  {
+    href: "/funding",
+    label: "Funding",
+    description:
+      "Canonical public registers, honest empty states, and anti-capture rules.",
+  },
+  {
     href: "/#capability-status",
     label: "Capability status",
     description: "What is live, experimental, planned, or long-horizon.",
@@ -119,6 +137,24 @@ export const narrativeNavigation: readonly NavigationItem[] = [
     label: "Visit Hephaestus’s Open Forge",
     description:
       "Inspect the ten bounded tools and their public evidence limits.",
+  },
+  {
+    href: "/roadmap",
+    label: "Read the island roadmap",
+    description:
+      "Follow evidence gates from the current website sprint to later horizons.",
+  },
+  {
+    href: "/support",
+    label: "Bring a signal to the agora",
+    description:
+      "Choose a public-safe contribution or the correct protected route.",
+  },
+  {
+    href: "/funding",
+    label: "Inspect the commons ledger",
+    description:
+      "See public funding records, empty states, and what support cannot buy.",
   },
   {
     href: "/#capability-status",
