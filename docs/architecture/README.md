@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](forge-mcp-deterministic-synthetic-generation.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](forge-mcp-deterministic-synthetic-generation.md) · [Scopes, limits, receipts, and errors](forge-mcp-scopes-limits-receipts-and-errors.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -44,8 +44,9 @@ This directory contains versioned architecture baselines that implement the froz
 36. [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
 37. [Forge MCP Public Standards, Mapping Drafts, and Synthetic Connector Fixtures](forge-mcp-public-standards-mapping-and-synthetic-connectors.md)
 38. [Forge MCP Deterministic Synthetic Generation](forge-mcp-deterministic-synthetic-generation.md)
-39. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-40. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+39. [Forge MCP Scopes, Limits, Receipts, and Errors](forge-mcp-scopes-limits-receipts-and-errors.md)
+40. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+41. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -58,7 +59,7 @@ This directory contains versioned architecture baselines that implement the froz
 
 Decision 0011 is accepted. The modular monolith remains the default. Responsive work, deferred jobs, schedules, events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first design.
 
-Sprint 7 therefore remains one local `stdio` Forge application, not a remote service, database, queue, vector index, provider platform, connector runtime, or production synthetic-data platform.
+Sprint 7 therefore remains one local `stdio` Forge application, not a remote service, database, queue, vector index, provider platform, connector runtime, production synthetic-data platform, or production resource-control system.
 
 ## Consumer-first and provider-independent architecture
 
@@ -127,21 +128,24 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 - [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
 - [Forge MCP Public Standards, Mapping Drafts, and Synthetic Connector Fixtures](forge-mcp-public-standards-mapping-and-synthetic-connectors.md)
 - [Forge MCP Deterministic Synthetic Generation](forge-mcp-deterministic-synthetic-generation.md)
+- [Forge MCP Scopes, Limits, Receipts, and Errors](forge-mcp-scopes-limits-receipts-and-errors.md)
 - [Public Standards Reference Boundary](../standards/README.md)
 - [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
 - [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
 - [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.7 define the application boundary, accepted registry, finalized local `stdio` transport, server-owned source catalogue, path and symlink isolation, exact provenance, deterministic search and validation, conservative documentation authority classification, public standards search, draft mapping validation, explicitly synthetic connector-fixture search, deterministic quest and mapping-draft generation, literal non-authority, funding neutrality, and public tests.
+Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.8 define the application boundary, accepted registry, finalized local `stdio` transport, server-owned source catalogue, path and symlink isolation, exact provenance, deterministic search and validation, conservative documentation authority classification, public standards search, draft mapping validation, explicitly synthetic connector-fixture search, deterministic quest and mapping-draft generation, server-owned execution scopes and limits, bounded receipts, stable errors, literal non-authority, funding neutrality, and public tests.
 
-All ten accepted identities are enabled through runtime registry revision `4` in accepted registry order. The prior six-tool and nine-tool surfaces remain behaviorally tested. Generated batches contain explicit synthetic, non-production, validation, generator, schema, and diversity evidence and are never written to the repository by the tool.
+All ten accepted identities remain enabled through runtime registry revision `4` in accepted registry order. Execution contract revision `1` derives one immutable scope per enabled tool and enforces request, scan, result, output, timeout, cancellation, concurrency, and serialized-materialization budgets without adding an identity.
 
-Tool and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, approve mappings, claim certification, select providers, activate connectors, complete gameplay, grant rewards, prove clinical safety, prove statistical validity, or create institutional authority.
+Receipts expose bounded execution evidence and omit raw input, absolute paths, environment values, internal traces, credentials, protected source material, and wall-clock timestamps. They do not establish production sandboxing, heap isolation, distributed quotas, or rate limiting.
 
-Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, or institutional authority.
+Tool, receipt, error, and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, approve mappings, claim certification, select providers, activate connectors, complete gameplay, grant rewards, prove clinical safety, prove statistical validity, or create institutional authority.
 
-Retrieved, supplied, and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, mapping, provider, connector, synthetic-data, or governance authority.
+Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, production resource-control system, or institutional authority.
+
+Retrieved, supplied, and generated content cannot grant itself tool, scope, receipt, filesystem, network, repository, canon, Chronicle, permission, gameplay, mapping, provider, connector, synthetic-data, or governance authority.
 
 ## Legacy and succession architecture
 
@@ -155,4 +159,4 @@ Legacy and succession remain proposed future capabilities, not extensions of log
 
 ## Boundary rule
 
-Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, permission enforcement, connector rollout, clinical behavior, production synthetic-data assurance, enterprise integration, offline synchronization, production migrations, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
+Architecture documentation describes contracts and dependency direction. Runtime provider selection, production database topology, queue or scheduler selection, event persistence, authentication, permission enforcement, connector rollout, clinical behavior, production synthetic-data assurance, production sandboxing or resource isolation, enterprise integration, offline synchronization, production migrations, estate or incapacity authority, post-mortem release, and real health-data processing remain gated until their roadmap and specialist-review requirements are met.
