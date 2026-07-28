@@ -10,9 +10,14 @@ const required = [
   "src/proxy.ts",
   "src/app/globals.css",
   "src/app/homepage.css",
+  "src/app/guide-pages.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
+  "src/app/laws/page.tsx",
+  "src/app/how-it-works/page.tsx",
+  "src/app/consumer-first/page.tsx",
+  "src/app/aster/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -29,6 +34,10 @@ const required = [
   "src/lib/navigation.ts",
   "src/lib/capability-status.ts",
   "src/lib/promise.ts",
+  "src/lib/seven-laws.ts",
+  "src/lib/how-it-works.ts",
+  "src/lib/consumer-first.ts",
+  "src/lib/aster.ts",
   "public/assets/compass-mark.svg",
   "public/assets/hero-ogygia.webp",
   "vercel.json",
@@ -53,9 +62,14 @@ for (const [name, version] of Object.entries(expectedVersions)) {
 const sourcePaths = [
   "src/app/globals.css",
   "src/app/homepage.css",
+  "src/app/guide-pages.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
+  "src/app/laws/page.tsx",
+  "src/app/how-it-works/page.tsx",
+  "src/app/consumer-first/page.tsx",
+  "src/app/aster/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -68,6 +82,10 @@ const sourcePaths = [
   "src/lib/navigation.ts",
   "src/lib/capability-status.ts",
   "src/lib/promise.ts",
+  "src/lib/seven-laws.ts",
+  "src/lib/how-it-works.ts",
+  "src/lib/consumer-first.ts",
+  "src/lib/aster.ts",
   "src/proxy.ts",
   "next.config.mjs",
 ];
@@ -85,6 +103,20 @@ for (const phrase of [
   "Build your health record",
   "Improve your health",
   "Control and share in created value",
+  "The Law of the Open Hand",
+  "The Right of the Key",
+  "The Sanctity of the Hearth",
+  "The Law of the True Chronicle",
+  "No Oracle Above Evidence",
+  "The Right of Return",
+  "The Covenant of the Commons",
+  "three to eight minutes",
+  "AI may assist. Deterministic services decide.",
+  "No broken-streak punishment.",
+  "Standards at the edges",
+  "No provider or connector capability is live.",
+  "AI proposes. The player confirms. The domain service validates and stores.",
+  "No production Aster capability is live.",
   "SIGNUP_MIGRATION_PAUSED",
   "Content-Security-Policy",
   "metadataBase",
@@ -94,6 +126,10 @@ for (const phrase of [
   'aria-label="Narrative journey"',
   "No story traversal is required.",
   'href: "/promise"',
+  'href: "/laws"',
+  'href: "/how-it-works"',
+  'href: "/consumer-first"',
+  'href: "/aster"',
   '"live"',
   '"experimental"',
   '"planned"',
@@ -112,7 +148,7 @@ for (const phrase of [
 
 if (source.includes('"use client"') || source.includes("'use client'")) {
   throw new Error(
-    "Sprint 8 homepage, Promise, navigation, and status surfaces must remain server-rendered",
+    "Sprint 8 homepage, Promise, guide, navigation, and status surfaces must remain server-rendered",
   );
 }
 
@@ -127,4 +163,6 @@ for (const phrase of [
   }
 }
 
-console.log("Sprint 8.4 homepage and Promise migration boundary is complete.");
+console.log(
+  "Sprint 8.5 Seven Laws, How It Works, consumer-first, and Aster boundaries are complete.",
+);
