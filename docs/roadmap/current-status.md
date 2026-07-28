@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.4 record](sprint-8-workstream-8-4-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.5 record](sprint-8-workstream-8-5-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
@@ -8,14 +8,14 @@
 - **Merged baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
-- **Completed workstreams:** 8.1 through 8.4
-- **Next workstream:** 8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI
+- **Completed workstreams:** 8.1 through 8.5
+- **Next workstream:** 8.6 — Trust Center and Open Forge
 - **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
-- **Website runtime:** validated Next.js App Router site with migrated homepage, dedicated Promise route, navigation, status, and accessibility foundations; not deployed or officially released
+- **Website runtime:** validated Next.js App Router site with homepage, Promise, Seven Laws, How It Works, consumer-first, Aster, navigation, status, and accessibility foundations; not deployed or officially released
 - **Production health data:** none
 - **Production AI, private MCP, providers, connectors, accounts, transactions, or consequential actions:** none
-- **Independent specialist review:** not established for the principal product, website accessibility, security, privacy, clinical, legal, provider, financial, operational, or research boundaries
+- **Independent specialist review:** not established for the principal product, website accessibility, security, privacy, AI safety, clinical, interoperability, legal, provider, financial, operational, or research boundaries
 - **Phase 0 exit review:** not completed
 
 ## Primary directive
@@ -80,54 +80,64 @@ Final reconciled head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI 968 a
 
 Workstream 8.3 established:
 
-- a shared direct-navigation registry;
-- an optional native `details` and `summary` Ogygia path reaching the same essential destinations;
-- visible-on-focus skip links for primary navigation and main content;
-- semantic `header`, `nav`, `main`, and `footer` landmarks;
-- deterministic visible-focus treatment;
+- shared direct navigation and an optional native Ogygia path reaching the same essential destinations;
+- visible-on-focus skip links and semantic landmarks;
+- deterministic visible-focus and keyboard foundations;
 - controlled `live`, `experimental`, `planned`, and `long-horizon` status values;
-- reusable status data, badge, and grid components;
-- canonical source URLs and labels for every capability record;
+- source-linked reusable status data, badge, and grid components;
 - no client-component dependency for essential navigation or status understanding;
-- reduced-motion, reduced-data, higher-contrast, forced-colors, image-failure, and responsive foundations;
-- deferred decorative hero imagery; and
-- expanded deterministic shell validation and focused tests.
+- reduced-motion, reduced-data, higher-contrast, forced-colors, image-failure, and responsive foundations; and
+- expanded deterministic validation and focused tests.
 
 Validated final head `9174d713755220906144beef80bec6b43932f459` passed CI 994 and DCO 1072.
 
 ## Workstream 8.4 — validated homepage and Promise migration
 
-Workstream 8.4 migrated the final cinematic homepage and dedicated Promise explanation through deliberate cuts and splices from the Track 0A direction.
+Workstream 8.4 established:
 
-It established:
-
-- a cinematic `/` route that explains the product without hiding its purpose;
+- a cinematic `/` route preserving the Ogygia direction while explaining the product plainly;
 - visibly distinct experimental website, live repository, and planned-game claims;
-- the frozen player promise;
-- the three connected loops for record-building, personal value, and separately authorized collective or compensated use;
+- the frozen player promise and three connected value loops;
 - the public-software/private-data boundary;
-- private-by-default, meaningful-refusal, player-confirmation, and correction-and-exit principles;
+- private-by-default, meaningful-refusal, player-confirmation, correction-and-exit, and meaningfully-free explanations;
 - a dedicated `/promise` route with canonical metadata and sitemap inclusion;
-- direct links to the frozen Product Constitution as upstream authority;
-- the meaningfully-free requirement;
-- direct and narrative navigation parity for the Promise;
-- ordinary public contribution paths;
-- server-rendered essential content without `use client`; and
-- retained reduced-motion, reduced-data, image-failure, contrast, forced-colors, responsive, security, signup, and deployment boundaries.
+- direct Product Constitution source links;
+- Promise navigation parity and ordinary public contribution paths; and
+- retained server-rendering, accessibility, resilience, security, signup, and deployment boundaries.
 
-A self-removing validation workflow applied canonical formatting and passed a focused production build, site lint, typecheck, and focused tests before producing commit `790bf9a79a76c28451fefcf959d92aefa59b5d03`.
+The clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089. Final repository-wide head `c54c377ad072f745772ccf3bbbcdabf1b8193cc3` passed CI 1021 and DCO 1100.
 
-Next.js regenerated an incremental TypeScript cache during that build. The generated cache and incremental setting were removed. The clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
+## Workstream 8.5 — validated source-backed guide family
 
-The controlling evidence is [Sprint 8.4 Record](sprint-8-workstream-8-4-record.md).
+Workstream 8.5 established four public routes:
+
+- `/laws` — the exact frozen Seven Laws of Ogygia and their authority boundary;
+- `/how-it-works` — the planned three-to-eight-minute, player-confirmed, non-punitive experience;
+- `/consumer-first` — provider-respectful interoperability with standards at the edges and provider-independent Chronicle meaning at the core; and
+- `/aster` — accepted pre-stable proposal, confirmation, source, uncertainty, memory, fallback, and non-authority contracts.
+
+It also established:
+
+- route metadata, canonical URLs, sitemap inclusion, and direct/narrative navigation parity for all four routes;
+- explicit live, experimental, and planned status distinctions;
+- deterministic authority over permission, completion, safety, progression, rewards, story order, and canon;
+- AI-assisted drafting and explanation without canonical, permission, clinical, provider, or institutional authority;
+- explicit absence of production providers, EHRs, connectors, clinical workflows, production Aster, private-data egress, memory, retrieval, workflow, or tools;
+- server-rendered essential information without `use client`;
+- responsive guide layouts and inherited reduced-motion, reduced-data, contrast, forced-colors, and image-failure behavior; and
+- deterministic source, route, authority, fallback, signup, and deployment validation.
+
+The focused validation workflow passed formatting, a production site build, site lint, typecheck, focused tests, generated-state cleanup, and self-removal before producing clean candidate `16fe324c508719734b8923a8f99b59fb16712726`.
+
+The controlling evidence is [Sprint 8.5 Record](sprint-8-workstream-8-5-record.md).
 
 ## Current public website surface
 
 `apps/site` now provides:
 
 - one pinned Next.js App Router application;
-- a migrated cinematic homepage preserving the Ogygia direction;
-- a dedicated source-backed `/promise` route;
+- a migrated cinematic homepage;
+- `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` source-backed routes;
 - shared direct navigation and an optional narrative path;
 - skip links, semantic landmarks, and visible-focus foundations;
 - controlled capability-status primitives with canonical source links;
@@ -140,32 +150,28 @@ The controlling evidence is [Sprint 8.4 Record](sprint-8-workstream-8-4-record.m
 
 It does not yet provide:
 
-- Seven Laws, How It Works, consumer-first, interoperability, or Aster/AI pages;
-- Trust Center or Open Forge;
+- Trust Center or Open Forge routes;
 - canonical roadmap, support, or funding-transparency pages;
 - final signup disposition;
 - representative accessibility review or certification;
-- defined performance release evidence;
+- defined route-level performance release evidence;
 - preview or official production deployment; or
 - any private or production product capability.
 
 ## Next workstream
 
-Workstream 8.5 may now implement:
+Workstream 8.6 may now implement:
 
-- the Seven Laws page;
-- the How It Works page;
-- provider-respectful consumer-first and interoperability explanation;
-- the Aster and AI page preserving proposal, confirmation, validation, fallback, source, and uncertainty boundaries; and
-- cited treatment of historical claims.
+- a Trust Center organizing player rights, privacy, security disclosure, authority boundaries, provider and connector status, funding doctrine, open holdpoints, corrections, and challenge routes; and
+- an Open Forge page explaining the ten bounded local public/synthetic tools, provenance, scopes, limits, receipts, errors, compatibility, non-authority, and ordinary non-MCP contribution path.
 
-It must preserve the homepage and Promise, frozen content authority, provider independence, Aster non-authority, direct and narrative navigation parity, controlled status values, server-rendered essential information, accessibility and resilience foundations, paused signup, and every permanent Sprint 8 non-scope boundary.
+It must preserve frozen authority, the accepted page family, direct and narrative navigation parity, controlled status values, canonical source links, server-rendered essential information, provider independence, Aster and Forge non-authority, accessibility and resilience foundations, paused signup, disabled deployment, and every permanent Sprint 8 non-scope boundary.
 
-It may not represent providers, EHRs, connectors, clinical behavior, production AI, private Chronicles, or institutional access as live.
+It may not claim certification, production safety, private-data capability, provider capability, clinical capability, transactions, or Sprint 9 gameplay.
 
 ## Implemented repository surfaces
 
-- [`apps/site`](../../apps/site) — validated Next.js site with homepage, Promise, navigation, status, and accessibility foundations; not deployed
+- [`apps/site`](../../apps/site) — validated source-backed public website foundation through workstream 8.5; not deployed
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor tooling with ten bounded tools
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
