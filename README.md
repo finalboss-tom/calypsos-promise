@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](docs/architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Public standards boundary](docs/standards/README.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](docs/architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](docs/architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](docs/architecture/forge-mcp-deterministic-synthetic-generation.md) · [Public standards boundary](docs/standards/README.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Source Catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) → [Lore and Schema Tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) → [Architecture and Decision Tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) → [Standards, Mapping, and Synthetic Connectors](docs/architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Local Transport](docs/architecture/forge-mcp-local-stdio-transport.md) → [Source Catalogue](docs/architecture/forge-mcp-source-catalogue-and-provenance.md) → [Lore and Schema Tools](docs/architecture/forge-mcp-lore-and-schema-tools.md) → [Architecture and Decision Tools](docs/architecture/forge-mcp-architecture-and-decision-tools.md) → [Standards, Mapping, and Synthetic Connectors](docs/architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) → [Deterministic Synthetic Generation](docs/architecture/forge-mcp-deterministic-synthetic-generation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
 - **Review the merged Aster baseline:** [Sprint 6 Completion Record](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md) → [Aster Holdpoints](docs/architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - **Apply operational simplicity:** [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) → [Operational Architecture](docs/architecture/operational-simplicity-and-durable-workflows.md)
 - **Apply the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md)
@@ -25,11 +25,15 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`, establishing the bounded Forge MCP handoff.
 
-**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstreams 7.1–7.6 establish the Forge boundary, accepted and runtime registries, finalized local `stdio` transport, server-owned source catalogue, path and symlink isolation, SHA-256 provenance, deterministic lore and documentation search, content and quest validation, quest-schema inspection, conservative authority classification, public standards search, strict mapping-draft validation, explicitly synthetic connector-fixture search, and public tests.
+**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstreams 7.1–7.7 establish the Forge boundary, accepted and runtime registries, finalized local `stdio` transport, server-owned source catalogue, path and symlink isolation, SHA-256 provenance, deterministic search, content and quest validation, quest-schema inspection, conservative authority classification, public standards search, strict mapping-draft validation, explicitly synthetic connector-fixture search, deterministic quest and mapping-draft generation, and public tests.
 
-Runtime registry revision `3` exposes exactly nine local public or synthetic search and validation tools. `forge.generate.synthetic-data` remains planned and unexposed for Sprint 7.7. The current runtime does not call providers, use the network, activate connectors, certify interoperability, approve mappings, establish semantic equivalence or production readiness, or process private health data.
+Runtime registry revision `4` exposes all ten accepted identities in accepted registry order. Synthetic generation is reproducible for the same accepted input, immediately validates every artifact, and returns explicit generator, schema, validator, case, classification, and diversity evidence.
 
-No current documentation or contract baseline activates production health data, production AI, private MCP, accounts, provider calls, connectors, clinical workflows, enterprise services, workflow orchestration, research enrollment, donation checkout, sponsor intake, legacy directives, estate access, or financial operations.
+The runtime does not call providers, use the network, activate connectors, certify interoperability, approve mappings, establish semantic equivalence or production readiness, persist generated output, prove accessibility conformance or statistical representativeness, or process private health data.
+
+Sprint 7.8 — scopes, limits, receipts, and errors — is next and has not started.
+
+No current documentation or contract baseline activates production health data, production AI, private MCP, accounts, provider calls, connectors, clinical workflows, enterprise services, workflow orchestration, research enrollment, donation checkout, sponsor intake, legacy directives, estate access, production synthetic-data publication, or financial operations.
 
 ### Accepted and merged foundations
 
@@ -64,10 +68,11 @@ The merged Chronicle, House of Keys, security, funding, operational, and Aster w
 
 ## Current gates and unresolved work
 
-- Begin Sprint 7.7 only after the completed Sprint 7.6 baseline remains green, implementing reproducible synthetic generation without self-approval, canon, clinical, provider, mapping, or connector authority.
+- Begin Sprint 7.8 only after the completed 7.7 baseline remains green, implementing comprehensive scopes, limits, receipts, and errors without authority expansion or information leakage.
 - Continue Sprint 7 through issue #54, the [execution plan](docs/roadmap/sprint-7-execution-plan.md), public or synthetic evidence, completion records, and explicit founding-steward acceptance.
 - Keep Forge MCP local, public-only, synthetic-only, allowlisted, non-mutating, network-free, provider-free, and unable to execute consequential actions during Sprint 7.
 - Preserve all Sprint 5 and Sprint 6 production, security, privacy, accessibility, clinical, provider, connector, operational, and institutional holdpoints.
+- Treat generated diversity and accessibility summaries as test evidence rather than conformance, representativeness, clinical, privacy, or statistical assurance.
 - Keep issue #50 trigger-based until a real consumer produces concrete Aster API or validator ergonomics evidence.
 - Review, revise, accept, or decline proposed Decision 0009 without representing it as a live legal or product capability.
 - Complete the remaining institutional Phase 0 key-person, succession, founder-power, economic-dependency, historical-source, branch-protection, DCO, operability, distributed-ownership, specialist-review, and phase-exit work.
@@ -121,7 +126,7 @@ Open `http://localhost:3000` to run the bounded public repository gateway locall
 ### Implemented now
 
 - [`apps/site`](apps/site) — bounded public repository gateway and purpose-limited signup adapter
-- [`apps/mcp-forge`](apps/mcp-forge) — active local `stdio` public-documentation and synthetic-data contributor tooling with nine enabled search and validation tools
+- [`apps/mcp-forge`](apps/mcp-forge) — active local `stdio` public-documentation and synthetic-data contributor tooling with all ten accepted search, inspection, validation, and deterministic generation tools
 - [`packages/domain`](packages/domain) — shared repository invariants and contracts
 - [`packages/content-schema`](packages/content-schema) — content contracts, deterministic validators, graph contracts, and JSON Schema
 - [`packages/health-schema`](packages/health-schema) — pre-stable Living Chronicle contracts, deterministic validators, and public synthetic fixtures
@@ -136,7 +141,8 @@ Open `http://localhost:3000` to run the bounded public repository gateway locall
 
 ### Planned and gated
 
-- `forge.generate.synthetic-data` — planned Sprint 7.7 reproducible synthetic generation
+- Sprint 7.8 complete cross-tool scopes, limits, receipts, and stable errors
+- production synthetic-data generation, de-identification, statistical population modeling, validation, and dataset publication
 - `apps/game` — planned universal Expo game
 - `apps/api` — planned modular TypeScript application
 - `apps/mcp-chronicle` — future private, policy-controlled tools
@@ -148,9 +154,9 @@ Planned surfaces should not be created as empty placeholders. A new module needs
 
 > The software is open. The person’s health data is private.
 
-A provider, EHR, sponsor, enterprise contract, workflow engine, queue, cloud service, MCP client, mapping draft, synthetic connector fixture, death, incapacity, inactivity, or possible scientific value does not alter that rule.
+A provider, EHR, sponsor, enterprise contract, workflow engine, queue, cloud service, MCP client, mapping draft, synthetic connector fixture, generated fixture, death, incapacity, inactivity, or possible scientific value does not alter that rule.
 
-No contributor workflow, public demo, test environment, or open-source agent may require production health data. Synthetic fixtures are the default development material.
+No contributor workflow, public demo, test environment, or open-source agent may require production health data. Synthetic fixtures are the default development material. A seed that passes a public-safe syntax check is not proof that private information is appropriate input.
 
 ## Contributing and security
 
