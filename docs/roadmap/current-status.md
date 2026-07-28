@@ -1,19 +1,19 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Sprint sequence](sprints.md) · [Forge architecture](../architecture/README.md#forge-mcp-architecture) · [Deterministic generation](../architecture/forge-mcp-deterministic-synthetic-generation.md) · [Scopes, limits, receipts, and errors](../architecture/forge-mcp-scopes-limits-receipts-and-errors.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Sprint sequence](sprints.md) · [Forge architecture](../architecture/README.md#forge-mcp-architecture) · [Scopes, limits, receipts, and errors](../architecture/forge-mcp-scopes-limits-receipts-and-errors.md) · [Agent security, compatibility, and operability](../architecture/forge-mcp-agent-security-compatibility-and-operability.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
 - **Merged baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Active implementation:** issue #54, branch `agent/sprint-7-forge-mcp`, draft PR #55
-- **Completed Sprint 7 workstreams:** 7.1–7.8
-- **Next unstarted workstream:** 7.9 — agent security, compatibility, and operability
-- **Forge runtime:** local `stdio`, runtime registry revision `4`, exactly ten enabled public or synthetic tools, execution contract revision `1`
+- **Completed Sprint 7 workstreams:** 7.1–7.9
+- **Next unstarted workstream:** 7.10 — completion and Sprint 8 handoff
+- **Forge runtime:** local `stdio`, runtime registry revision `4`, exactly ten enabled public or synthetic tools, execution contract revision `1`, security/compatibility/operability contract revision `1`
 - **Production health data:** none
 - **Production AI, providers, connectors, private MCP, mutation, or consequential actions:** none
-- **Production process isolation, distributed rate limiting, or resource certification:** none
-- **Independent specialist review:** not established for the principal product, AI, MCP, security, privacy, clinical, accessibility, interoperability, legal, operations, financial, statistical-synthetic-data, resource-isolation, or research boundaries
+- **Production sandbox, process isolation, distributed rate limiting, monitoring, or resource certification:** none
+- **Independent specialist review:** not established for the principal product, AI, MCP, security, privacy, clinical, accessibility, interoperability, legal, operations, financial, statistical-synthetic-data, resource-isolation, penetration-test, or research boundaries
 - **Phase 0 exit review:** not completed
 
 ## Primary directive
@@ -30,7 +30,7 @@ Every implementation, provider, sponsor, institution, workflow, contributor prac
 
 Sprints 0–6 and the pre-Sprint 7 repository reconciliation are complete and merged. Their detailed evidence remains in the [sprint sequence](sprints.md), completion records, accepted decisions, architecture records, and the public roadmap.
 
-Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.8 establish:
+Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.9 establish:
 
 - one bounded Forge application at `apps/mcp-forge`;
 - an immutable accepted registry with ten tool identities;
@@ -41,10 +41,15 @@ Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.8 est
 - content, quest, and draft-mapping validation;
 - fixed quest-schema inspection;
 - explicitly synthetic connector-fixture search;
-- deterministic synthetic quest and mapping-draft generation; and
-- one server-owned execution scope, resource-limit, receipt, and stable-error envelope across all ten tool calls.
+- deterministic synthetic quest and mapping-draft generation;
+- one server-owned execution scope, resource-limit, receipt, and stable-error envelope across all ten tool calls;
+- runtime-integrity checks before real tool operations;
+- successful-result security postconditions before receipt assembly;
+- exact-revision compatibility and additive migration records;
+- clean local startup from a descendant directory with an empty environment; and
+- static production-source and dependency evidence for provider independence.
 
-Runtime registry revision `4` still exposes all ten accepted identities through local `stdio` in accepted registry order. Sprint 7.8 adds no identity and does not change source or domain authority.
+Runtime registry revision `4` still exposes all ten accepted identities through local `stdio` in accepted registry order. Sprint 7.9 adds no tool identity, accepted schema, source root, provider, or domain authority.
 
 ## Sprint 7 evidence
 
@@ -60,16 +65,7 @@ They do not establish canon approval, Chronicle truth, permission, gameplay comp
 
 `forge.generate.synthetic-data` completes the accepted ten-tool surface through runtime registry revision `4`.
 
-The tool:
-
-- accepts one bounded public-safe seed, count, output family, and profile;
-- supports `quest` and `mapping-draft` output;
-- supports `balanced`, `accessibility`, and `edge-cases` profiles;
-- hashes rather than echoes the seed;
-- derives identifiers, timestamps, cases, and values deterministically;
-- uses no random source, wall-clock time, network, provider, credential, production endpoint, arbitrary filesystem read, or repository write;
-- validates every generated artifact through its accepted validator; and
-- labels every record synthetic, non-production, credential-free, personal-data-free, human-review-required, and non-authoritative.
+The tool hashes rather than echoes its bounded seed, generates deterministic quest or mapping-draft fixtures, validates every artifact through its accepted validator, and preserves explicit synthetic, non-production, credential-free, personal-data-free, human-review-required, and non-authoritative state.
 
 Final head `97b8b9152f1efcd0b1284daafa35c441d3ec0e25` passed CI run 858 and DCO run 930.
 
@@ -79,30 +75,40 @@ A passing batch does not prove statistical validity, demographic representativen
 
 Execution contract revision `1` derives one immutable server-owned scope for each enabled accepted tool.
 
-The central controller enforces:
+The central controller enforces request, scan, result, complete-output, timeout, cancellation, per-tool concurrency, caller-owned receipt rejection, and a deterministic serialized-materialization budget. Every scoped success and stable scoped error includes a bounded `forge.invocation-receipt.v1` receipt; stable failures use `forge.error.v1`.
 
-- JSON serialization and request-byte ceilings before tool execution;
-- accepted file-scan and result postconditions;
-- the complete serialized MCP output ceiling, including the receipt;
-- linked caller cancellation and accepted tool timeouts;
-- one active call per tool identity while allowing independent tool identities to proceed;
-- rejection of tool- or caller-supplied receipt fields; and
-- a serialized-materialization budget covering request, complete output, and at most one bounded public source file.
+Receipts contain no raw input, absolute host path, environment value, internal trace, credential, protected source material, or wall-clock timestamp. The materialized-memory model does not prove peak heap use, operating-system isolation, distributed quotas, rate limiting, or sandbox certification.
 
-Every scoped success and stable scoped tool error includes a `forge.invocation-receipt.v1` receipt. The receipt exposes scope identity, accepted limits, bounded observed counts and bytes, completion state, partial reasons, enforced controls, and literal non-authority.
+Final head `9fcac0a6ab912202b34c71350a92559d8b9f280b` passed CI run 877 and DCO run 950.
 
-Receipts and stable `forge.error.v1` errors contain no raw input, absolute host path, environment value, internal trace, credential, protected source material, or wall-clock timestamp.
+### 7.9 — Agent security, compatibility, and operability
 
-Caller cancellation suppresses a response rather than manufacturing a receipt. Accepted timeouts return one stable public-safe error receipt.
+Security, compatibility-manifest, operability, security-postcondition, and aggregate-runtime-validation contracts are revision `1`.
 
-The materialized-memory model is a deterministic serialized contract. It does not prove peak JavaScript heap usage, operating-system memory isolation, distributed quotas, production rate limiting, or sandbox certification.
+The workstream adds:
+
+- an 18-scenario adversarial matrix covering traversal, symlink escape, arbitrary roots, prohibited capabilities, registry and scope mutation, confused-deputy behavior, source suppression, resource abuse, timeout, cancellation, receipt impersonation, synthetic-label removal, mapping self-approval, funding influence, and protected sources;
+- SHA-256 runtime-integrity verification over the boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and execution scopes;
+- successful-result checks preserving non-authority, provenance, digests, locators, partial states, conservative documentation authority, standards neutrality, connector labels, mapping draft status, and generated-record labels;
+- stable `forge.security.integrity-violation` and `forge.security.postcondition-failed` errors inside the existing bounded envelope;
+- exact compatibility identities for contract, registry, execution, source, protocol, receipt, and error revisions;
+- visible additive migration records for runtime revisions `1`–`4` and execution envelope v1;
+- a static audit showing production source contains no shell, network-client, socket, VM, worker-thread, dynamic-loading, or code-evaluation primitive;
+- a runtime fetch trap observing no network use;
+- clean compiled-entrypoint startup from `apps/mcp-forge/src` with `env: {}`, exact ten-tool discovery, deterministic generation, a bounded receipt, clean exit, and no stderr output;
+- one aggregate `validateForgeCompleteRuntime()` entry point; and
+- package dependency evidence showing Forge depends only on `@calypsos-promise/content-schema`.
+
+Issue #50 remains untriggered. Forge does not import or depend on `@calypsos-promise/aster`, and the workstream produced no concrete Aster API or validator friction.
+
+This evidence is local and public/synthetic. It does not establish independent penetration testing, production process isolation, operating-system attestation, code signing, secure boot, production monitoring, incident response, privacy certification, or safety after compromise of the host process or checkout.
 
 Focused and final validation evidence is recorded in issue #54 and draft PR #55.
 
 ## Implemented repository surfaces
 
 - [`apps/site`](../../apps/site) — bounded public repository gateway and purpose-limited signup adapter
-- [`apps/mcp-forge`](../../apps/mcp-forge) — active local contributor-tool application with ten bounded tools and server-owned execution receipts
+- [`apps/mcp-forge`](../../apps/mcp-forge) — active local contributor-tool application with ten bounded tools, execution receipts, runtime integrity, security postconditions, exact compatibility, and clean-startup evidence
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
 - [`packages/house-of-keys`](../../packages/house-of-keys) — pre-stable permission contracts, pure evaluation, receipts, and public synthetic fixtures
@@ -136,15 +142,15 @@ Aster cannot write canonical records, create permission, confirm itself, invoke 
 
 ### Forge MCP
 
-Forge is not the repository database, a general shell, a mutation agent, a private Chronicle service, a House of Keys service, a standards or mapping authority, a provider gateway, a connector runtime, a production synthetic-data system, a production resource-isolation system, or an institutional authority.
+Forge is not the repository database, a general shell, a mutation agent, a private Chronicle service, a House of Keys service, a standards or mapping authority, a provider gateway, a connector runtime, a production synthetic-data system, a production resource-isolation system, a general agent runtime, or an institutional authority.
 
-Retrieved, supplied, or generated content cannot register tools, alter risk classes or execution scopes, expand source access, invoke arbitrary resources, impersonate receipts, elevate its own authority, approve mappings, claim certification, select providers, create canon, write Chronicle truth, change permission, complete gameplay, grant rewards, or create governance authority.
+Retrieved, supplied, or generated content cannot register tools, alter risk classes or execution scopes, expand source access, invoke arbitrary resources, impersonate receipts, suppress evidence, elevate its own authority, approve mappings, claim certification, select providers, create canon, write Chronicle truth, change permission, complete gameplay, grant rewards, or create governance authority.
 
-## Next workstream: 7.9
+## Next workstream: 7.10
 
-Sprint 7.9 will exercise the full agent-security matrix, compatibility and migration behavior, clean local startup, focused validation, contributor documentation, provider independence, and operability.
+Sprint 7.10 will publish the cross-contract reconciliation, control and evidence map, specialist holdpoints, unresolved-work register, completion record, status repairs, complete validation evidence, and Sprint 8 handoff.
 
-It must preserve the ten-tool registry, execution contract, public and synthetic information boundary, stable receipts and errors, and every production and specialist holdpoint.
+It must not reinterpret local adversarial tests, clean startup, CI, or contract validation as production or independent certification. Founding-steward acceptance and squash merge remain separate human gates.
 
 ## Information handling
 
