@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.3 record](sprint-8-workstream-8-3-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.4 record](sprint-8-workstream-8-4-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 through 8.3 complete; workstream 8.4 next
+- **Status:** ACTIVE — workstreams 8.1 through 8.4 complete; workstream 8.5 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -37,8 +37,8 @@ Sprint 8 inherits:
 - [x] **8.1 — Website application boundary and migration contract**
 - [x] **8.2 — Next.js shell, design tokens, security headers, metadata, and assets**
 - [x] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations**
-- [ ] **8.4 — Homepage and Promise migration — NEXT**
-- [ ] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
+- [x] **8.4 — Homepage and Promise migration**
+- [ ] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI — NEXT**
 - [ ] **8.6 — Trust Center and Open Forge**
 - [ ] **8.7 — Roadmap, capability status, support, and funding transparency**
 - [ ] **8.8 — Signup disposition and bounded implementation**
@@ -79,8 +79,6 @@ Workstream 8.2 established:
 - shell validation and focused tests; and
 - continued disabled Git-triggered Vercel deployment.
 
-The custom Node page server and HTML-fragment runtime were removed rather than retained as a parallel website.
-
 The final reconciled 8.2 head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI run 968 and DCO Attestation run 1045.
 
 ## 8.3 result — navigation and accessibility foundations
@@ -100,23 +98,31 @@ Workstream 8.3 established:
 - lazy decorative hero imagery; and
 - expanded deterministic validation and focused tests.
 
-The first implementation run found one wording-coupled source assertion and formatter differences. The assertion was corrected to verify the structured `sourceHref` and `sourceLabel` fields, and Prettier output was applied through a self-removing workflow.
+The final repository-wide 8.3 head `9174d713755220906144beef80bec6b43932f459` passed CI run 994 and DCO Attestation run 1072.
 
-The validated reconciled 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI run 986, and DCO Attestation run 1064.
+## 8.4 result — homepage and Promise migration
 
-The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
+Workstream 8.4 established:
 
-## 8.4 — homepage and Promise migration
+- a migrated cinematic homepage using deliberate cuts and splices from the Track 0A direction;
+- the frozen player promise and plain-language mission explanation;
+- explicit experimental website, live repository, and planned-game distinctions;
+- the three connected loops for Chronicle-building, personal value, and separately authorized collective or compensated use;
+- a dedicated `/promise` route with canonical metadata and sitemap inclusion;
+- private-by-default, meaningful-refusal, player-confirmation, and correction-and-exit explanations;
+- the public-software/private-data boundary;
+- the meaningfully-free requirement;
+- direct Product Constitution source links;
+- direct and narrative Promise navigation parity;
+- ordinary repository and issue contribution paths;
+- source-backed route and content-authority tests; and
+- preservation of the 8.3 accessibility and resilience foundations.
 
-Workstream 8.4 may now deliver:
+A self-removing validation workflow applied formatting and passed a focused production build, site lint, typecheck, and tests before producing commit `790bf9a79a76c28451fefcf959d92aefa59b5d03`.
 
-- migrated cinematic homepage using deliberate cuts and splices;
-- primary Promise and player-control explanation;
-- public-software/private-data boundary;
-- current capability status and contribution paths; and
-- route and content-authority tests.
+The generated TypeScript build cache and incremental setting were removed. The clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI run 1010 and DCO Attestation run 1089.
 
-It must preserve the 8.3 direct/narrative parity, controlled status values, server-rendered essential information, and accessibility/resilience foundations.
+The controlling evidence is [Sprint 8.4 Record](sprint-8-workstream-8-4-record.md).
 
 ## 8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI
 
@@ -127,6 +133,20 @@ Deliverables:
 - provider-respectful consumer-first and interoperability explanation;
 - Aster and AI page preserving proposal, confirmation, validation, fallback, source, and uncertainty boundaries; and
 - historical claims kept inside cited evidence.
+
+Workstream 8.5 must preserve:
+
+- the homepage and dedicated Promise route;
+- the Product Constitution and accepted repository records as upstream authority;
+- direct and narrative navigation parity;
+- controlled live, experimental, planned, and long-horizon status values;
+- server-rendered essential information;
+- provider independence and Aster non-authority;
+- accessibility and resilience foundations;
+- paused signup; and
+- every permanent Sprint 8 non-scope boundary.
+
+It may not represent provider, EHR, connector, clinical, enterprise, production AI, or private Chronicle capability as live.
 
 ## 8.6 — Trust Center and Open Forge
 
