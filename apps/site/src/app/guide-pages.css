@@ -177,7 +177,11 @@
 
 .standards-panel {
   background:
-    radial-gradient(circle at 90% 0%, rgb(52 131 151 / 0.18), transparent 28rem),
+    radial-gradient(
+      circle at 90% 0%,
+      rgb(52 131 151 / 0.18),
+      transparent 28rem
+    ),
     rgb(4 17 29 / 0.72);
 }
 

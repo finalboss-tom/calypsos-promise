@@ -168,10 +168,19 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
     assert.match(normalizedSource, new RegExp(law));
   }
 
-  assert.match(normalizedSource, /A typical session is.*three to eight minutes/);
-  assert.match(normalizedSource, /AI may assist\. Deterministic services decide\./);
+  assert.match(
+    normalizedSource,
+    /A typical session is.*three to eight minutes/,
+  );
+  assert.match(
+    normalizedSource,
+    /AI may assist\. Deterministic services decide\./,
+  );
   assert.match(normalizedSource, /No broken-streak punishment/);
-  assert.match(normalizedSource, /interoperate with institutional healthcare without.*architected around institutional healthcare/i);
+  assert.match(
+    normalizedSource,
+    /interoperate with institutional healthcare without.*architected around institutional healthcare/i,
+  );
   assert.match(normalizedSource, /Standards at the edges/);
   assert.match(normalizedSource, /No provider or connector capability is live/);
   assert.match(
@@ -179,7 +188,13 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
     /AI proposes\. The player confirms\. The domain service validates and stores\./,
   );
   assert.match(normalizedSource, /No production Aster capability is live/);
-  for (const role of ["Scribe", "Librarian", "Wayfinder", "Interpreter", "Storykeeper"]) {
+  for (const role of [
+    "Scribe",
+    "Librarian",
+    "Wayfinder",
+    "Interpreter",
+    "Storykeeper",
+  ]) {
     assert.match(normalizedSource, new RegExp(role));
   }
   for (const route of ["/laws", "/how-it-works", "/consumer-first", "/aster"]) {

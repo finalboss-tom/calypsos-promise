@@ -51,14 +51,21 @@ export default function LawsPage() {
       <section className="guide-callout" aria-labelledby="laws-canon-title">
         <div>
           <p className="eyebrow">Canon boundary</p>
-          <h2 id="laws-canon-title">No model, sponsor, or feature outranks them.</h2>
+          <h2 id="laws-canon-title">
+            No model, sponsor, or feature outranks them.
+          </h2>
           <p>
             AI may phrase dialogue, but it may not alter the Seven Laws, player
             rights, consent behavior, the meaning of the Promise, or the
             distinction between clues and medical conclusions.
           </p>
         </div>
-        <a className="button button-primary" href={canonUrl} target="_blank" rel="noreferrer">
+        <a
+          className="button button-primary"
+          href={canonUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
           Read the frozen canon
           <span className="visually-hidden"> (opens in a new tab)</span>
         </a>

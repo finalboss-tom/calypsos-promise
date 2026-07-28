@@ -39,7 +39,8 @@ export default function HowItWorksPage() {
         </p>
         <p className="source-note">
           This page explains accepted product direction. Accounts, private
-          Chronicles, production capture, Aster, quests, and gameplay are not live.
+          Chronicles, production capture, Aster, quests, and gameplay are not
+          live.
         </p>
       </header>
 
@@ -47,11 +48,14 @@ export default function HowItWorksPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">A planned daily route</p>
-            <h2 id="daily-route-title">Arrive, choose, confirm, and leave freely.</h2>
+            <h2 id="daily-route-title">
+              Arrive, choose, confirm, and leave freely.
+            </h2>
           </div>
           <p>
-            The route adapts to goals, context, accessibility needs, and available
-            data. It may be replaced, deferred, or rejected without punishment.
+            The route adapts to goals, context, accessibility needs, and
+            available data. It may be replaced, deferred, or rejected without
+            punishment.
           </p>
         </div>
         <ol className="journey-grid">
@@ -67,11 +71,16 @@ export default function HowItWorksPage() {
         </ol>
       </section>
 
-      <section className="guide-section authority-split" aria-labelledby="authority-title">
+      <section
+        className="guide-section authority-split"
+        aria-labelledby="authority-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Authority boundary</p>
-            <h2 id="authority-title">AI may assist. Deterministic services decide.</h2>
+            <h2 id="authority-title">
+              AI may assist. Deterministic services decide.
+            </h2>
           </div>
           <p>
             Generative presentation cannot decide eligibility, permission,
@@ -79,7 +88,10 @@ export default function HowItWorksPage() {
           </p>
         </div>
         <div className="boundary-columns">
-          <section className="boundary-panel" aria-labelledby="deterministic-title">
+          <section
+            className="boundary-panel"
+            aria-labelledby="deterministic-title"
+          >
             <h3 id="deterministic-title">Deterministic responsibilities</h3>
             <ul>
               {deterministicResponsibilities.map((item) => (
@@ -98,7 +110,10 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="guide-section return-panel" aria-labelledby="return-title">
+      <section
+        className="guide-section return-panel"
+        aria-labelledby="return-title"
+      >
         <p className="eyebrow">Failure and return</p>
         <h2 id="return-title">No broken-streak punishment.</h2>
         <p>

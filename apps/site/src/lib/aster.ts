@@ -7,13 +7,16 @@ export type AsterRole = {
 export const asterRoles: readonly AsterRole[] = [
   {
     name: "Scribe",
-    purpose: "Prepares reviewable structured-capture proposals and extraction candidates.",
+    purpose:
+      "Prepares reviewable structured-capture proposals and extraction candidates.",
     boundary: "Cannot confirm, validate, or store a canonical record.",
   },
   {
     name: "Librarian",
-    purpose: "Prepares source-linked recall from exact Chronicle revisions or clearly labeled public educational material.",
-    boundary: "Cannot turn educational material or retrieval into a person-specific fact.",
+    purpose:
+      "Prepares source-linked recall from exact Chronicle revisions or clearly labeled public educational material.",
+    boundary:
+      "Cannot turn educational material or retrieval into a person-specific fact.",
   },
   {
     name: "Wayfinder",
@@ -22,12 +25,15 @@ export const asterRoles: readonly AsterRole[] = [
   },
   {
     name: "Interpreter",
-    purpose: "Explains sources, mappings, lifecycle states, and uncertainty limits.",
-    boundary: "Cannot diagnose or imply completeness, safety, endorsement, or clinical authority.",
+    purpose:
+      "Explains sources, mappings, lifecycle states, and uncertainty limits.",
+    boundary:
+      "Cannot diagnose or imply completeness, safety, endorsement, or clinical authority.",
   },
   {
     name: "Storykeeper",
-    purpose: "Presents confirmed domain events inside approved narrative boundaries.",
+    purpose:
+      "Presents confirmed domain events inside approved narrative boundaries.",
     boundary: "Cannot invent canon, progression, quest completion, or rewards.",
   },
 ];

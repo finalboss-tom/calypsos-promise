@@ -34,18 +34,19 @@ export default function AsterPage() {
         <p className="eyebrow">Aster and AI</p>
         <h1>Aster proposes. The player decides.</h1>
         <blockquote className="guide-quote">
-          AI proposes. The player confirms. The domain service validates and stores.
+          AI proposes. The player confirms. The domain service validates and
+          stores.
         </blockquote>
         <p className="summary">
           Aster is the planned Wayfinder and presentation layer for structured
           drafts, source-linked recall, explanations, route suggestions, and
-          approved story phrasing. A role name, model response, retrieval result,
-          or confident sentence creates no technical authority.
+          approved story phrasing. A role name, model response, retrieval
+          result, or confident sentence creates no technical authority.
         </p>
         <p className="source-note">
-          The repository contains public, dependency-free contracts and synthetic
-          fixtures. It does not contain a production model, private-data egress,
-          production memory, or a live AI service.
+          The repository contains public, dependency-free contracts and
+          synthetic fixtures. It does not contain a production model,
+          private-data egress, production memory, or a live AI service.
         </p>
       </header>
 
@@ -53,12 +54,15 @@ export default function AsterPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Five bounded roles</p>
-            <h2 id="roles-title">Narrative responsibilities without hidden power.</h2>
+            <h2 id="roles-title">
+              Narrative responsibilities without hidden power.
+            </h2>
           </div>
           <p>
             Every role prepares proposals or explanations for review. None can
-            create Chronicle truth, permission, completion, progression, rewards,
-            clinical authority, provider approval, or institutional authority.
+            create Chronicle truth, permission, completion, progression,
+            rewards, clinical authority, provider approval, or institutional
+            authority.
           </p>
         </div>
         <div className="role-grid">
@@ -72,9 +76,14 @@ export default function AsterPage() {
         </div>
       </section>
 
-      <section className="guide-section guardrail-panel" aria-labelledby="guardrails-title">
+      <section
+        className="guide-section guardrail-panel"
+        aria-labelledby="guardrails-title"
+      >
         <p className="eyebrow">Control boundary</p>
-        <h2 id="guardrails-title">Every consequential step remains inspectable.</h2>
+        <h2 id="guardrails-title">
+          Every consequential step remains inspectable.
+        </h2>
         <ul className="guardrail-list">
           {asterGuardrails.map((guardrail) => (
             <li key={guardrail}>{guardrail}</li>
@@ -82,15 +91,21 @@ export default function AsterPage() {
         </ul>
       </section>
 
-      <section className="guide-section authority-split" aria-labelledby="fallbacks-title">
+      <section
+        className="guide-section authority-split"
+        aria-labelledby="fallbacks-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Provider-independent fallback</p>
-            <h2 id="fallbacks-title">Core rights do not disappear when AI is absent.</h2>
+            <h2 id="fallbacks-title">
+              Core rights do not disappear when AI is absent.
+            </h2>
           </div>
           <p>
-            Missing memory, retrieval, a model, or a provider cannot block capture,
-            permission review, correction, export, deletion, or ordinary play.
+            Missing memory, retrieval, a model, or a provider cannot block
+            capture, permission review, correction, export, deletion, or
+            ordinary play.
           </p>
         </div>
         <ul className="fallback-grid">
@@ -100,7 +115,10 @@ export default function AsterPage() {
         </ul>
       </section>
 
-      <section className="guide-section current-limits" aria-labelledby="aster-limits-title">
+      <section
+        className="guide-section current-limits"
+        aria-labelledby="aster-limits-title"
+      >
         <div className="page-status-line">
           <StatusBadge status="planned" />
           <span>Current production capability</span>

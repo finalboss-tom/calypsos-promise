@@ -34,17 +34,18 @@ export default function ConsumerFirstPage() {
         <h1>Interoperate with healthcare without being captured by it.</h1>
         <p className="summary">
           Clinics, professionals, laboratories, pharmacies, payers, devices,
-          standards, and health systems can provide essential evidence and future
-          collaboration. They do not automatically own the person’s complete
-          longitudinal product experience or the meaning of the Living Chronicle.
+          standards, and health systems can provide essential evidence and
+          future collaboration. They do not automatically own the person’s
+          complete longitudinal product experience or the meaning of the Living
+          Chronicle.
         </p>
         <blockquote className="guide-quote">
-          Calypso’s Promise will interoperate with institutional healthcare without
-          being architected around institutional healthcare.
+          Calypso’s Promise will interoperate with institutional healthcare
+          without being architected around institutional healthcare.
         </blockquote>
         <p className="source-note">
-          This is not anti-clinician or anti-standard. It rejects both enterprise
-          capture and consumer isolation.
+          This is not anti-clinician or anti-standard. It rejects both
+          enterprise capture and consumer isolation.
         </p>
       </header>
 
@@ -52,12 +53,15 @@ export default function ConsumerFirstPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">The continuity layer</p>
-            <h2 id="continuity-title">The person is the only participant present across a lifetime.</h2>
+            <h2 id="continuity-title">
+              The person is the only participant present across a lifetime.
+            </h2>
           </div>
           <p>
-            No provider, payer, application, device, standard, insurer, or country
-            follows every stage of a person’s life. The Chronicle can preserve the
-            sequence while keeping each source’s authority and limitations visible.
+            No provider, payer, application, device, standard, insurer, or
+            country follows every stage of a person’s life. The Chronicle can
+            preserve the sequence while keeping each source’s authority and
+            limitations visible.
           </p>
         </div>
         <div className="principle-grid guide-principle-grid">
@@ -70,20 +74,26 @@ export default function ConsumerFirstPage() {
         </div>
       </section>
 
-      <section className="guide-section standards-panel" aria-labelledby="standards-title">
+      <section
+        className="guide-section standards-panel"
+        aria-labelledby="standards-title"
+      >
         <p className="eyebrow">Interoperability rule</p>
-        <h2 id="standards-title">Standards at the edges. Provider-independent meaning at the core.</h2>
+        <h2 id="standards-title">
+          Standards at the edges. Provider-independent meaning at the core.
+        </h2>
         <p>
           External payloads, profiles, implementation guides, terminology, local
           fields, mappings, versions, timing, and source artifacts should remain
-          inspectable. An export or exchange schema may be useful without becoming
-          the complete internal ontology of a person’s health and lived experience.
+          inspectable. An export or exchange schema may be useful without
+          becoming the complete internal ontology of a person’s health and lived
+          experience.
         </p>
         <p>
-          When sources disagree, the Chronicle may preserve multiple assertions and
-          a preferred presentation. It must not silently rewrite history to match
-          the newest provider, largest institution, sponsoring organization, or most
-          convenient connector.
+          When sources disagree, the Chronicle may preserve multiple assertions
+          and a preferred presentation. It must not silently rewrite history to
+          match the newest provider, largest institution, sponsoring
+          organization, or most convenient connector.
         </p>
       </section>
 
@@ -91,7 +101,9 @@ export default function ConsumerFirstPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Separate authority layers</p>
-            <h2 id="layers-title">Success in one relationship authorizes nothing else.</h2>
+            <h2 id="layers-title">
+              Success in one relationship authorizes nothing else.
+            </h2>
           </div>
           <p>
             Personal exchange, care collaboration, institutional workflow, and
@@ -112,12 +124,17 @@ export default function ConsumerFirstPage() {
         </ol>
       </section>
 
-      <section className="guide-section current-limits" aria-labelledby="institutional-limits-title">
+      <section
+        className="guide-section current-limits"
+        aria-labelledby="institutional-limits-title"
+      >
         <div className="page-status-line">
           <StatusBadge status="planned" />
           <span>Current institutional capability</span>
         </div>
-        <h2 id="institutional-limits-title">No provider or connector capability is live.</h2>
+        <h2 id="institutional-limits-title">
+          No provider or connector capability is live.
+        </h2>
         <ul>
           {currentInstitutionalLimits.map((limit) => (
             <li key={limit}>{limit}</li>

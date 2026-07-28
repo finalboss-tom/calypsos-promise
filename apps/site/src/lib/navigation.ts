@@ -19,7 +19,8 @@ export const directNavigation: readonly NavigationItem[] = [
   {
     href: "/laws",
     label: "Seven Laws",
-    description: "Frozen canon protecting agency, privacy, evidence, and return.",
+    description:
+      "Frozen canon protecting agency, privacy, evidence, and return.",
   },
   {
     href: "/how-it-works",
@@ -29,7 +30,8 @@ export const directNavigation: readonly NavigationItem[] = [
   {
     href: "/consumer-first",
     label: "Consumer First",
-    description: "Provider-respectful interoperability without product capture.",
+    description:
+      "Provider-respectful interoperability without product capture.",
   },
   {
     href: "/aster",
@@ -79,17 +81,20 @@ export const narrativeNavigation: readonly NavigationItem[] = [
   {
     href: "/how-it-works",
     label: "Follow the Wayfinder route",
-    description: "See the planned voluntary, confirm-before-storage experience.",
+    description:
+      "See the planned voluntary, confirm-before-storage experience.",
   },
   {
     href: "/consumer-first",
     label: "Cross the institutional bridges",
-    description: "See how standards and providers connect without taking the key.",
+    description:
+      "See how standards and providers connect without taking the key.",
   },
   {
     href: "/aster",
     label: "Meet Aster",
-    description: "Understand the Wayfinder’s roles, sources, limits, and fallbacks.",
+    description:
+      "Understand the Wayfinder’s roles, sources, limits, and fallbacks.",
   },
   {
     href: "/#capability-status",
