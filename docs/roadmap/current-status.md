@@ -1,16 +1,17 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Public standards boundary](../standards/README.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
 - **Design-to-build position:** Sprints 0–6 and the pre-Sprint 7 reconciliation complete and merged; Sprint 7 active
 - **Merged baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Active implementation surface:** issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55
 - **Completed Sprint 7 workstreams:** 7.1 — Forge boundary and registry; 7.2 — local transport; 7.3 — source catalogue and provenance; 7.4 — lore and schema tools; 7.5 — architecture and decision tools
-- **Current workstream:** 7.6 — standards and synthetic connector fixtures
-- **Runtime status:** bounded public repository gateway plus local Forge `stdio` transport, server-owned allowlisted source core, and exactly six enabled read-only lore, schema, architecture, and decision tools
+- **Implemented with final status-head validation pending:** 7.6 — standards and synthetic connector fixtures
+- **Next unstarted workstream:** 7.7 — synthetic generation
+- **Runtime status:** local Forge `stdio` transport, server-owned allowlisted source core, runtime registry revision `3`, and exactly nine enabled read-only or validation tools; `forge.generate.synthetic-data` remains planned and unexposed
 - **Production health-data status:** none
-- **Production AI or private MCP status:** none
+- **Production AI, connector, or private MCP status:** none
 - **Independent specialist review:** not established for the principal product, AI, MCP, security, privacy, clinical, accessibility, interoperability, legal, operations, financial, or research boundaries
 - **Phase 0 status:** active; exit review not yet completed
 
@@ -44,7 +45,11 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 Sprint 6 does not activate production AI, private health data, provider calls, retrieval, memory storage, identity, permission orchestration, persistence, durable execution, MCP tools, connectors, clinical behavior, deployment, or specialist certification.
 
-The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`. Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.5 define the Forge application boundary, accepted and runtime tool registries, finalized-version local `stdio` transport, nine server-owned source roots, exact allowlists, prohibited classes, traversal and symlink isolation, SHA-256 provenance, locators, deterministic listing and lore search, public content and quest validation, fixed quest-schema inspection, architecture and decision search, explicit conservative authority classification, truncation, public-safe errors, compatibility references, non-authority, funding neutrality, validators, and public tests. Exactly six read-only lore, schema, architecture, and decision tools are enabled through the server-owned local runtime; the remaining four accepted identities remain planned and unexposed.
+The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
+
+Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.6 now define the Forge application boundary, accepted and runtime registries, finalized local `stdio` transport, server-owned source catalogue, exact allowlists, path and symlink isolation, SHA-256 provenance, deterministic search, public content and quest validation, fixed quest-schema inspection, architecture and decision search, conservative authority classification, public standards search, mapping-draft validation, synthetic connector-fixture search, public-safe errors, non-authority, validators, and public tests.
+
+Runtime registry revision `3` exposes exactly nine accepted tool identities through local `stdio`. The tenth accepted identity, `forge.generate.synthetic-data`, remains planned and unexposed for Sprint 7.7.
 
 A proposed health-data legacy and post-mortem stewardship boundary remains under review through Decision 0009. It does not authorize a production succession, estate, fiduciary, archive, research-release, or post-mortem access system.
 
@@ -70,13 +75,14 @@ A proposed health-data legacy and post-mortem stewardship boundary remains under
 
 ## Active Sprint 7 implementation
 
-| Workstream                                   | Evidence                                                                                                                                                                                            | Purpose                                                                                                                                                                                                                                   | What it does not establish                                                                                                                                     |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sprint 7.1 — Forge boundary and registry     | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md)                                                                | application ownership, public source classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests                                                                                              | MCP transport, repository reads, enabled tools, remote hosting, private data, mutation, provider calls, or production readiness                                |
-| Sprint 7.2 — Local transport                 | issue #54; draft PR #55; [transport](../architecture/forge-mcp-local-stdio-transport.md)                                                                                                            | finalized-version local `stdio`, initialization, empty inert-session discovery, cancellation, shutdown, framing, errors, direct harness, and tests                                                                                        | repository reads by inert sessions, source provenance, remote hosting, private data, providers, or production readiness                                        |
-| Sprint 7.3 — Source catalogue and provenance | issue #54; draft PR #55; [source architecture](../architecture/forge-mcp-source-catalogue-and-provenance.md)                                                                                        | server-owned roots, exact allowlists, path and symlink isolation, digests, locators, deterministic listing, truncation, errors, and tests                                                                                                 | arbitrary filesystem access, caller-selected roots, search behavior, validation execution, generation, or authority                                            |
-| Sprint 7.4 — Lore and schema tools           | issue #54; draft PR #55; [tool architecture](../architecture/forge-mcp-lore-and-schema-tools.md); CI run 767; DCO run 832                                                                           | exact four-tool runtime activation, source-linked lore search, deterministic public content and quest validation, fixed quest-schema inspection, transport gating, non-authority, and tests                                               | architecture or decision search, generation, private data, repository mutation, remote hosting, clinical claims, canon, rewards, or power                      |
-| Sprint 7.5 — Architecture and decision tools | issue #54; draft PR #55; [tool architecture](../architecture/forge-mcp-architecture-and-decision-tools.md); implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f`; CI run 793; DCO run 861 | exact six-tool runtime activation, architecture and decision search, exact line and authority-evidence provenance, visible conservative status classes, ambiguous-record fail-closed behavior, retrieved-instruction isolation, and tests | standards or connector search, mapping validation, generation, receipts, production limits, private data, mutation, remote hosting, or institutional authority |
+| Workstream                                   | Evidence                                                                                                                                                                                            | Purpose                                                                                                                                                                                                                                      | What it does not establish                                                                                                                                                           |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Sprint 7.1 — Forge boundary and registry     | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md)                                                                | application ownership, public source classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests                                                                                                 | MCP transport, repository reads, enabled tools, remote hosting, private data, mutation, provider calls, or production readiness                                                     |
+| Sprint 7.2 — Local transport                 | issue #54; draft PR #55; [transport](../architecture/forge-mcp-local-stdio-transport.md)                                                                                                            | finalized-version local `stdio`, initialization, empty inert-session discovery, cancellation, shutdown, framing, errors, direct harness, and tests                                                                                           | repository reads by inert sessions, source provenance, remote hosting, private data, providers, or production readiness                                                             |
+| Sprint 7.3 — Source catalogue and provenance | issue #54; draft PR #55; [source architecture](../architecture/forge-mcp-source-catalogue-and-provenance.md)                                                                                        | server-owned roots, exact allowlists, path and symlink isolation, digests, locators, deterministic listing, truncation, errors, and tests                                                                                                    | arbitrary filesystem access, caller-selected roots, search behavior, validation execution, generation, or authority                                                                 |
+| Sprint 7.4 — Lore and schema tools           | issue #54; draft PR #55; [tool architecture](../architecture/forge-mcp-lore-and-schema-tools.md); CI run 767; DCO run 832                                                                           | exact four-tool runtime activation, source-linked lore search, deterministic public content and quest validation, fixed quest-schema inspection, transport gating, non-authority, and tests                                                  | architecture or decision search, standards search, mapping validation, generation, private data, mutation, remote hosting, clinical claims, canon, rewards, or power               |
+| Sprint 7.5 — Architecture and decision tools | issue #54; draft PR #55; [tool architecture](../architecture/forge-mcp-architecture-and-decision-tools.md); final head `fc2f11c72e21aef573f6c1212880aed4cffb47f1`; CI run 801; DCO run 870          | exact six-tool runtime activation, architecture and decision search, exact line and authority-evidence provenance, conservative status classes, ambiguous-record fail-closed behavior, instruction isolation, and tests                      | standards or connector search, mapping validation, generation, receipts, production limits, private data, mutation, remote hosting, or institutional authority                     |
+| Sprint 7.6 — Standards and connector fixtures | issue #54; draft PR #55; [tool architecture](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md); functional CI run 815; DCO run 885                                    | runtime revision `3`, nine enabled tools, source-linked public standards search, strict draft mapping validation, explicit synthetic-only connector search, non-authority, public fixtures, and adversarial tests                              | synthetic generation, network access, provider endpoints, connector execution, proprietary mappings, certification, semantic approval, production readiness, or institutional power |
 
 ## Active and proposed assumptions
 
@@ -96,9 +102,11 @@ Active means the assumption currently influences design. It does not mean suppor
 ### Applications
 
 - [`apps/site`](../../apps/site) — bounded public repository gateway and purpose-limited signup adapter
-- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 local `stdio` contributor-tool application with a server-owned allowlisted source core and exactly six enabled read-only lore, schema, architecture, and decision tools
+- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 local `stdio` contributor-tool application with nine server-owned public or synthetic search and validation tools
 
 The public site does not provide accounts, health-data capture, a private Chronicle, production House of Keys enforcement, production Aster, private MCP, provider or EHR connections, clinical workflows, research enrollment, enterprise services, durable workflow orchestration, legacy directives, successor access, donation checkout, sponsor intake, or financial operations.
+
+Forge does not provide network access, a provider client, production connectors, certification, mapping approval, private data, repository mutation, or consequential domain actions.
 
 ### Packages
 
@@ -113,8 +121,10 @@ The public site does not provide accounts, health-data capture, a private Chroni
 ### Documentation and validation
 
 - [`docs/security`](../security/README.md) — merged Sprint 5 architecture, controls, residual risks, procedures, synthetic scenarios, design tabletops, reconciliation, and specialist holdpoints
-- [`docs/architecture`](../architecture/README.md) — architecture, merged Aster contracts, and active Forge boundary, transport, source, lore, schema, architecture-search, and decision-search contracts
+- [`docs/architecture`](../architecture/README.md) — architecture, merged Aster contracts, and active Forge boundary, transport, source, lore, schema, architecture, decision, standards, mapping, and synthetic-fixture contracts
+- [`docs/standards`](../standards/README.md) — public reference boundary and public mapping-draft examples; no certification or production connector claims
 - [`docs/economics`](../economics/README.md) — merged funding and sponsorship doctrine, public record contracts, fictional examples, validation, and design tabletops
+- [`fixtures/connectors`](../../fixtures/connectors) — explicitly synthetic, non-production, credential-free, personal-data-free connector examples
 - [`tools`](../../tools) — documentation-link, repository-policy, funding-register, and content validation
 - `pnpm check` — formatting, documentation links, repository policy, economics, content, lint, type checking, and tests
 - GitHub Actions — independent formatting and validation jobs with read-only repository content permissions in the main CI workflow
@@ -123,6 +133,7 @@ The public site does not provide accounts, health-data capture, a private Chroni
 
 Planned surfaces are not empty placeholders and should not be created until the module-creation gate is met.
 
+- `forge.generate.synthetic-data` for Sprint 7.7 reproducible synthetic generation
 - `apps/game` for the future universal Expo experience
 - `apps/api` for future modular TypeScript application
 - `apps/mcp-chronicle` for future private, user-scoped tools
@@ -131,7 +142,7 @@ Planned surfaces are not empty placeholders and should not be created until the 
 - production House of Keys orchestration, enforcement, receipts, and protected audit
 - command, event, job, projection, queue, scheduler, replay, observability, and workflow runtime
 - production AI provider, model gateway, retrieval, vector indexing, memory storage, media processing, and provider administration
-- standards registries, mappings, connectors, provider, EHR, payer, laboratory, pharmacy, device, exchange, clinical, and enterprise systems
+- production standards registries, approved mappings, connectors, provider, EHR, payer, laboratory, pharmacy, device, exchange, clinical, and enterprise systems
 - analytics and research environments
 - notifications and communication systems
 - legacy directive, incapacity, estate, fiduciary, successor, archive, research-release, and post-mortem deletion systems
@@ -143,7 +154,7 @@ Planned surfaces are not empty placeholders and should not be created until the 
 
 The Living Chronicle owns longitudinal records, values, temporal assertions, source provenance, correction, conflict, supersession, source artifacts, export, and deletion contracts.
 
-It does not own authentication, permission, receipts, gameplay, research enrollment, provider selection, AI behavior, MCP tools, model logs, retrieval indexes, product memory, or delayed-work orchestration.
+It does not own authentication, permission, receipts, gameplay, research enrollment, provider selection, AI behavior, MCP tools, model logs, retrieval indexes, product memory, mappings, connectors, or delayed-work orchestration.
 
 ### House of Keys
 
@@ -165,15 +176,15 @@ The frozen transaction rule remains:
 
 ### Forge MCP
 
-Sprint 7 exposes exactly six bounded public contributor tools through a server-owned local `stdio` MCP runtime. The remaining four accepted identities stay planned and unexposed until their workstreams establish contracts and evidence.
+Sprint 7 currently exposes exactly nine bounded public or synthetic contributor tools through a server-owned local `stdio` runtime. `forge.generate.synthetic-data` remains planned and unexposed.
 
-Forge MCP is not the repository database, a general shell, a repository mutation agent, a private Chronicle service, a House of Keys service, a production provider gateway, or an institutional authority.
+Forge MCP is not the repository database, a general shell, a repository mutation agent, a private Chronicle service, a House of Keys service, a standards authority, a mapping authority, a provider gateway, a connector runtime, or an institutional authority.
 
-Retrieved or generated content cannot register tools, alter risk classes, expand source access, invoke arbitrary resources, elevate its own authority status, approve mappings, create canon, write Chronicle truth, change permission, complete gameplay, grant rewards, or create governance authority.
+Retrieved, supplied, or generated content cannot register tools, alter risk classes, expand source access, invoke arbitrary resources, elevate its own authority, approve mappings, claim certification, select providers, create canon, write Chronicle truth, change permission, complete gameplay, grant rewards, or create governance authority.
 
 ## Active Sprint 7 boundary
 
-Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.5 are implemented and validated. Exactly six server-owned lore, schema, architecture, and decision tools are exposed through local `stdio`; standards and synthetic connector fixtures remain the next bounded workstream.
+Sprint 7 is active through issue #54 and draft PR #55. Workstreams 7.1–7.6 are implemented; the final combined 7.6 status-head validation is pending. Sprint 7.7 is next and has not started.
 
 **Goal:** Provide useful agent tooling without private health-data risk.
 
@@ -183,16 +194,14 @@ Sprint 7 must preserve:
 - public documentation and synthetic data only;
 - explicit allowlisted repository roots and prohibited paths;
 - server-owned tool identity, revision, schemas, risk classes, scopes, and limits;
-- no arbitrary repository mutation, shell execution, module loading, network access, private-data access, or consequential action;
+- no arbitrary repository mutation, shell execution, module loading, network access, private-data access, provider call, connector execution, or consequential action;
 - deterministic validation and source-linked results;
-- draft-only generated mappings and synthetic output;
-- public-safe receipts and stable error formats;
+- draft-only mappings and clearly labeled synthetic output;
+- public-safe receipts and stable errors;
 - compatibility and migration rules;
 - provider, funding, sponsor, and publication independence;
 - complete non-MCP contributor paths; and
 - every open production and specialist holdpoint.
-
-Sprint 7 does not authorize private Chronicle tools, production providers, protected mappings, credentials, real health data, remote MCP hosting, production connectors, or consequential domain actions.
 
 Issue #50 remains trigger-based. It activates only if a real Forge or other repository consumer uses the Aster public surface and records concrete ergonomics evidence.
 
@@ -202,7 +211,7 @@ The funding baseline defines doctrine and public record contracts. It does not a
 
 The project currently has no accepted repository record establishing an operating legal recipient, tax-deductible status, bank, payment processor, accounting or treasury operation, compensation or investment instrument, active sponsor, provider, connector, affiliate, research-funding, or enterprise relationship.
 
-Funding cannot purchase data, private access, research authority, health influence, product authority, source rank, tool authority, provider defaults, connector placement, roadmap control, governance power, favorable findings, safety exceptions, compatibility outcomes, game progression, or publication control.
+Funding cannot purchase data, private access, research authority, health influence, product authority, source rank, tool authority, provider defaults, connector placement, mapping approval, certification outcomes, roadmap control, governance power, favorable findings, safety exceptions, compatibility outcomes, game progression, or publication control.
 
 ## Open-source operating assessment
 
@@ -222,7 +231,7 @@ These gates do not require a token, treasury, identity system, broad vote, legal
 
 The repository does not currently select or implement production databases, queues, schedulers, workflow engines, observability, identity, providers, connectors, real health-data ingestion, research enrollment, financial operations, legacy systems, production AI memory, private retrieval, arbitrary agent access, or clinical decision support.
 
-Documentation, contracts, synthetic fixtures, design tabletops, completion records, local public tools, and CI passing do not activate those capabilities.
+Documentation, contracts, synthetic fixtures, mapping drafts, design tabletops, completion records, local public tools, and CI passing do not activate those capabilities.
 
 ## Status rule
 
