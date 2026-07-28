@@ -35,20 +35,20 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 
 ## Current route behavior
 
-| Route              | Current behavior                                                                  |
-| ------------------ | --------------------------------------------------------------------------------- |
-| `/`                | cinematic homepage with Promise, status, and contribution paths                  |
-| `/promise`         | player Promise, rights, three loops, and meaningfully-free policy                 |
-| `/laws`            | frozen Seven Laws of Ogygia with direct canon source                             |
-| `/how-it-works`    | planned short-session, player-confirmed, non-punitive experience                  |
-| `/consumer-first`  | provider-respectful consumer-first and interoperability boundary                  |
-| `/aster`           | Aster proposal, confirmation, source, uncertainty, fallback, and non-authority    |
-| `/privacy`         | migration-period signup privacy explanation                                       |
-| `/joined`          | migration-period no-submission confirmation                                       |
-| `/api/join`        | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded                   |
-| `/robots.txt`      | App Router metadata route                                                         |
-| `/sitemap.xml`     | metadata route including the accepted public page family                          |
-| `/assets/*`        | repository-owned compatibility assets with revalidation caching                   |
+| Route             | Current behavior                                                               |
+| ----------------- | ------------------------------------------------------------------------------ |
+| `/`               | cinematic homepage with Promise, status, and contribution paths                |
+| `/promise`        | player Promise, rights, three loops, and meaningfully-free policy              |
+| `/laws`           | frozen Seven Laws of Ogygia with direct canon source                           |
+| `/how-it-works`   | planned short-session, player-confirmed, non-punitive experience               |
+| `/consumer-first` | provider-respectful consumer-first and interoperability boundary               |
+| `/aster`          | Aster proposal, confirmation, source, uncertainty, fallback, and non-authority |
+| `/privacy`        | migration-period signup privacy explanation                                    |
+| `/joined`         | migration-period no-submission confirmation                                    |
+| `/api/join`       | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded                |
+| `/robots.txt`     | App Router metadata route                                                      |
+| `/sitemap.xml`    | metadata route including the accepted public page family                       |
+| `/assets/*`       | repository-owned compatibility assets with revalidation caching                |
 
 Workstream 8.8 owns the final signup preserve-or-retire decision.
 
