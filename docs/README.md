@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.2 record](roadmap/sprint-8-workstream-8-2-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.3 record](roadmap/sprint-8-workstream-8-3-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -21,18 +21,18 @@ The directive is constrained by the player promise:
 
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 8 Execution Plan](roadmap/sprint-8-execution-plan.md)
-3. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
-4. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
-5. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
-6. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-7. [Sprint Roadmap](roadmap/sprints.md)
-8. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-9. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-10. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-11. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-12. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-13. [Aster Contract Baseline](product/aster-contract-baseline.md)
-14. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
+3. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
+4. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
+5. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
+6. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
+7. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
+8. [Sprint Roadmap](roadmap/sprints.md)
+9. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+10. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+11. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+12. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+13. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+14. [Aster Contract Baseline](product/aster-contract-baseline.md)
 15. [Security Architecture](security/README.md)
 16. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
 17. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
@@ -77,23 +77,23 @@ Sprint 8 — Public Website Foundation is active through issue #60 and draft PR 
 
 Workstream 8.1 established the website application, route, authority, rendering, security, cache, signup, deployment, rollback, accessibility, performance, metadata, validation, and non-scope boundary.
 
-Workstream 8.2 migrated the public site to one pinned Next.js App Router compatibility shell. It provides:
+Workstream 8.2 migrated the public site to one pinned Next.js App Router compatibility shell with exact lockfile evidence, preserved routes, paused signup, application-local design tokens, metadata routes, CSP and security headers, mutable public-asset caching, shell validation, and continued disabled Git-triggered deployment.
 
-- exact Next.js and React versions with lockfile evidence;
-- server-rendered compatibility routes;
-- application-local design tokens;
-- metadata, sitemap, robots, not-found, and error presentation;
-- nonce CSP and public security headers;
-- mutable cache behavior for repository-owned compatibility assets;
-- a paused signup endpoint with no intake or forwarding;
-- shell validation and focused tests; and
-- continued disabled Git-triggered deployment.
+Workstream 8.3 established:
 
-The validated implementation head is `8c757e9482e616db7c86689a1d1d9c99d70ca6cd`, with CI run 957 and DCO Attestation run 1034.
+- direct navigation and an optional narrative path reaching the same essential destinations;
+- skip links, semantic landmarks, keyboard access, and visible focus;
+- controlled `live`, `experimental`, `planned`, and `long-horizon` status primitives;
+- stable capability IDs and canonical source links;
+- server-rendered essential information without a client-component dependency;
+- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive foundations; and
+- deterministic validation and focused tests.
 
-Workstream 8.3 is next. It owns the shared direct navigation, optional narrative entry, reusable status primitives, focus and keyboard foundations, reduced motion, image-failure and low-bandwidth behavior, and server-rendered essential-information parity.
+The validated 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed CI 986 and DCO 1064.
 
-The shell is not a preview deployment, official release, final homepage, Trust Center, Open Forge, canonical funding view, final signup system, accessibility certification, performance release, or private product capability.
+Workstream 8.4 is next. It owns the final cinematic homepage and Promise migration while preserving the validated navigation, evidence-status, and accessibility foundations.
+
+The site is not a preview deployment, official release, final multi-page website, final signup system, accessibility certification, performance release, or private product capability.
 
 ## Accepted strategic baselines
 
