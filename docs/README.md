@@ -78,7 +78,7 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
 
-Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md), [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md), and [Local Transport](architecture/forge-mcp-local-stdio-transport.md) govern the validated 7.1 and 7.2 baselines. A finalized-version local `stdio` transport and server-owned allowlisted source core exist, but all tools remain planned and unexposed. Sprint 7.4 is next.
+Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md), [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md), [Local Transport](architecture/forge-mcp-local-stdio-transport.md), and [Source Catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md) govern the implemented 7.1–7.3 baselines. A finalized-version local `stdio` transport and server-owned allowlisted source core exist, but all tools remain planned and unexposed. Sprint 7.4 is next.
 
 ## Current accepted strategic and architectural baselines
 

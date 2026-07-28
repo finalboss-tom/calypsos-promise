@@ -1,8 +1,8 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1 and 7.2 complete and validated; Sprint 7.3 next
+- **Status:** ACTIVE — Sprint 7.1–7.3 implemented; exact-head validation pending; Sprint 7.4 next
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -87,7 +87,7 @@ Sprint 7.2 pins finalized MCP protocol revision `2025-11-25`, exposes only initi
 
 Define exact repository root resolution, source allowlists, prohibited paths, path normalization, traversal and symlink isolation, content digests, line and object locators, deterministic ordering, truncation, and partial results.
 
-**Exit:** no caller-selected root or arbitrary file can be read; every result has public-safe provenance.
+**Exit:** met at the branch evidence level. No caller-selected root or arbitrary file can be read; every result has public-safe provenance. Exact-head CI and DCO remain the closure gate.
 
 ### 7.4 Lore and schema tools
 

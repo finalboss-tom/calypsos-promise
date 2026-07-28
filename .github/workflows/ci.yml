@@ -13,44 +13,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  apply-sprint-7-3-corrections:
-    name: apply-sprint-7-3-corrections
-    if: github.event_name == 'pull_request' && github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          ref: agent/sprint-7-forge-mcp
-          fetch-depth: 0
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 10.13.1
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Apply corrections and formatting
-        run: |
-          python tools/fix-sprint-7-3-status.py
-          pnpm format
-      - name: Restore workflow and remove temporary script
-        run: |
-          git fetch origin main
-          git checkout origin/main -- .github/workflows/ci.yml
-          git rm -f tools/fix-sprint-7-3-status.py
-      - name: Commit corrected Sprint 7.3 tree
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --all
-          git commit -m "docs: finalize Sprint 7.3 status navigation"
-          git push origin "HEAD:agent/sprint-7-forge-mcp"
-
   formatting:
     name: formatting
     runs-on: ubuntu-latest

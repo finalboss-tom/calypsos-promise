@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -65,7 +65,7 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 The pre-Sprint 7 reconciliation merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
 
-Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. Workstreams 7.1 and 7.2 define the bounded application, public source classes, server-owned registry, risk classes, planned tools, prohibited capabilities, finalized-version local `stdio` transport, direct harness, cancellation, shutdown, framing, validators, and public tests. The transport does not activate repository reads, enabled tools, private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions. Sprint 7.3 is next.
+Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. Workstreams 7.1–7.3 define the bounded application, planned registry, finalized-version local `stdio` transport, nine server-owned source roots, exact allowlists, prohibited classes, traversal and symlink isolation, SHA-256 provenance, locators, deterministic listing, truncation, public-safe errors, validators, and public tests. All MCP tools remain planned and unexposed; Sprint 7.4 is next.
 
 Issue #50 remains open and trigger-based. It activates only after a real consumer uses the Aster public surface and records concrete ergonomics evidence.
 
