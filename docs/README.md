@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 completion](roadmap/sprint-7-completion-record.md) · [Pre-Sprint 8 review](roadmap/pre-sprint-8-alignment-review.md) · [Architecture](architecture/README.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Pre-Sprint 8 review](roadmap/pre-sprint-8-alignment-review.md) · [Sprint 7 completion](roadmap/sprint-7-completion-record.md) · [Architecture](architecture/README.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -17,38 +17,26 @@ The directive is constrained by the player promise:
 
 > **Build your Living Chronicle. Improve your health. Keep the key.**
 
-The application is the first operating surface of a long-lived public-benefit institution. Product utility, individual control, provider-independent continuity, operational legibility, transparent contribution, sustainable economics, founder independence, and person-directed long-horizon stewardship must mature together.
-
 ## Current orientation
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-3. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-4. [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md)
-5. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-6. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-7. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-8. [Forge MCP Agent Security, Compatibility, and Operability](architecture/forge-mcp-agent-security-compatibility-and-operability.md)
-9. [Forge MCP Scopes, Limits, Receipts, and Errors](architecture/forge-mcp-scopes-limits-receipts-and-errors.md)
-10. [Forge MCP Deterministic Synthetic Generation](architecture/forge-mcp-deterministic-synthetic-generation.md)
-11. [Forge MCP Public Standards, Mapping Drafts, and Synthetic Connector Fixtures](architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md)
-12. [Forge MCP Architecture and Decision Tools](architecture/forge-mcp-architecture-and-decision-tools.md)
-13. [Forge MCP Lore and Schema Tools](architecture/forge-mcp-lore-and-schema-tools.md)
-14. [Forge MCP Source Catalogue and Provenance](architecture/forge-mcp-source-catalogue-and-provenance.md)
-15. [Forge MCP Local `stdio` Transport](architecture/forge-mcp-local-stdio-transport.md)
-16. [Forge MCP Boundary and Tool Registry](architecture/forge-mcp-boundary-and-tool-registry.md)
-17. [Sprint Roadmap](roadmap/sprints.md)
-18. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-19. [Aster Contract Baseline](product/aster-contract-baseline.md)
-20. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
-21. [Security Architecture](security/README.md)
-22. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-23. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-24. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-25. [Repository and Module Boundaries](architecture/module-boundaries.md)
-26. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-27. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-28. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+2. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
+3. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+4. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+5. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+6. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+7. [Sprint Roadmap](roadmap/sprints.md)
+8. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+9. [Aster Contract Baseline](product/aster-contract-baseline.md)
+10. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
+11. [Security Architecture](security/README.md)
+12. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+13. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+14. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+15. [Repository and Module Boundaries](architecture/module-boundaries.md)
+16. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+17. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+18. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -79,17 +67,23 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 ## Current project boundary
 
-Sprints 0–6, the funding and sponsorship doctrine, Decisions 0010 and 0011, and the pre-Sprint 7 reconciliation are complete and merged.
+Sprints 0–7 are complete and merged.
 
-Sprint 7 — Forge MCP and Agent Safety remains active through issue #54 and draft PR #55. All workstream and 7.10 completion artifacts are present on the branch. The [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md) is ready for founding-steward acceptance but is not merged.
+Sprint 7 — Forge MCP and Agent Safety merged through PR #55 as squash commit `f28f054fe16d550fad37663cf234e06c5622dd42`.
 
-The candidate implements one local public/synthetic Forge application with exactly ten accepted tools, allowlisted source provenance, deterministic validation and generation, bounded scopes and receipts, stable errors, runtime integrity, successful-result postconditions, exact compatibility and migrations, static prohibited-capability auditing, provider-independent clean startup, cross-contract reconciliation, control mapping, holdpoints, and the bounded Sprint 8 handoff.
+The accepted Forge baseline is one local public/synthetic contributor-tool application with exactly ten tools, allowlisted source provenance, deterministic validation and generation, bounded scopes and receipts, stable errors, runtime integrity, successful-result postconditions, exact compatibility and migrations, static prohibited-capability auditing, provider-independent clean startup, cross-contract reconciliation, control mapping, holdpoints, and a bounded website handoff.
 
-This is local public/synthetic evidence. It does not establish private Chronicle tools, remote MCP, repository mutation, providers, connectors, shell or network authority, production deployment, process isolation, monitoring, incident response, representative measurement, independent penetration testing, or specialist approval.
+Forge remains non-authoritative and non-production. It is not a private Chronicle service, provider gateway, connector runtime, repository mutation agent, shell, network client, production sandbox, or general agent.
 
-Sprint 8 remains blocked until Sprint 7 is explicitly accepted and squash merged. The prepared handoff preserves `apps/site` as the single website owner and directs migration of Website Track 0A into one honest, accessible Next.js public foundation.
+## Active pre-Sprint 8 reconciliation
 
-## Current accepted strategic baselines
+Issue #58 is the current review ledger. Sprint 8 implementation has not started.
+
+The review confirms that the accepted Sprint 8 goal and sequence remain correct and that no new decision record is needed. It preserves `apps/site` as the single website owner and binds the actual migration requirements for routes, deployment, rollback, cache behavior, security headers, signup privacy, canonical status and funding data, metadata, accessibility, performance, and validation.
+
+The review may repair documentation and planning truth. It may not add Next.js implementation, a duplicate website, CMS, database, account system, private data, providers, connectors, donation checkout, or Sprint 9 behavior.
+
+## Accepted strategic baselines
 
 ### Consumer-first and provider-independent
 
@@ -108,56 +102,28 @@ Providers and institutions are important sources, destinations, and potential pa
 - [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
 - [AS-0013 — Operational Simplicity](governance/assumption-AS-0013-operational-simplicity-durable-value.md)
 
-The modular monolith remains the default. Forge remains one local `stdio` application, not a remote service, connector platform, general agent runtime, production synthetic-data system, or production resource-control system.
+The modular monolith remains the default. Sprint 8 should remain one site application, not a service platform or content infrastructure program.
 
 ### Funding and sponsorship
 
-- [Decision 0008 — Funding and Sponsorship Baseline](decisions/0008-funding-and-sponsorship-baseline.md)
+- [Decision 0008](decisions/0008-funding-and-sponsorship-baseline.md)
 - [Economics and Public-Good Funding](economics/README.md)
 - [Funding Conflict and Acceptance Policy](economics/funding-conflict-and-acceptance-policy.md)
 - [Infrastructure Sponsorship and Exit Policy](economics/infrastructure-sponsorship-and-exit-policy.md)
 
-Funding cannot purchase private data, product authority, health influence, source rank, tool or scope authority, provider defaults, connector placement, mapping approval, generated outcomes, receipt outcomes, research authority, roadmap control, governance power, favorable findings, safety exceptions, compatibility outcomes, progression, or publication control.
-
-## Living Chronicle, House of Keys, Aster, and Forge
-
-### Living Chronicle
-
-The Living Chronicle owns longitudinal records, source provenance, correction, conflict, supersession, export, and deletion contracts. External schemas and providers remain source-attributed inputs rather than automatic truth.
-
-### House of Keys
-
-Permission truth remains separate from Chronicle truth. A grant may authorize an operation; it does not create the record, authenticate the actor, execute the operation, or become a reward condition.
-
-### Aster
-
-Aster may draft, clarify, recall source-linked information, explain provenance and uncertainty, route, and prepare narrative presentation. It cannot write canonical records, create permission, confirm itself, invoke authoritative actions, complete quests, grant rewards, diagnose, or treat model, provider, retrieval, fixture, compatibility, migration, or CI output as truth.
-
-> AI proposes. The player confirms. The domain service validates and stores.
-
-### Forge MCP
-
-Forge remains one bounded local contributor application over public documentation and explicitly synthetic data. It is not the repository database, a general shell, mutation agent, private Chronicle service, House of Keys service, provider gateway, connector runtime, production synthetic-data system, production sandbox, or institutional authority.
-
-Forge does not import or depend on Aster. Issue #50 remains evidence-triggered and unactivated because no genuine Aster consumer friction exists.
+Funding cannot purchase private data, product authority, source rank, provider defaults, connector placement, mapping approval, certification outcomes, favorable findings, roadmap control, governance power, safety exceptions, game progression, or publication control.
 
 ## Security and information handling
 
-- [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
-- [Security Architecture](security/README.md)
-- [Sprint 5 Specialist Holdpoints](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
-- [Sprint 6 Specialist Holdpoints](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
-- [Sprint 7 Specialist Holdpoints](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - [Security Policy](../SECURITY.md)
 - [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
+- [Sprint 5 Specialist Holdpoints](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
+- [Sprint 6 Specialist Holdpoints](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 7 Forge Holdpoints](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 
-No production health data, credentials, private exports, contact lists, private correspondence, conduct evidence, security reports, protected provider or interoperability records, private contracts or negotiations, estate records, financial source records, or protected operational information belongs in public project systems.
+No production health data, credentials, private exports, contact lists, private correspondence, conduct evidence, security reports, protected provider or interoperability records, private contracts or negotiations, estate records, financial source records, or protected operational information belong in public project systems.
 
-Use public or synthetic information. A local checkout file is not automatically an approved Forge source. Input passing syntax or size checks is not proof that its contents are appropriate.
-
-## Legacy, incapacity, estate, or post-mortem stewardship
-
-Decision 0009 and its companion records remain proposed future capability only. They do not create a production estate-planning service, executor override, property classification, post-mortem research release, public archive, successor runtime, or legal conclusion.
+Use public or synthetic information. A local checkout file is not automatically an approved public source. Input that passes a syntax or size check is not proof that its contents are appropriate.
 
 ## Contribute code, content, or documentation
 
@@ -169,4 +135,4 @@ Decision 0009 and its companion records remain proposed future capability only. 
 6. [Security Policy](../SECURITY.md)
 7. [Governance Baseline](../GOVERNANCE.md)
 
-Ordinary public development must remain credential-free and use public or explicitly synthetic information. A passing test, comprehensive contract, completed workstream, generated fixture, provider claim, agent response, receipt, integrity check, compatibility record, mapping draft, synthetic connector fixture, or sponsor relationship cannot bypass the repository’s authority, privacy, safety, publication, or evidence boundaries.
+Ordinary public development must remain credential-free and use public or explicitly synthetic information. A passing test, completed sprint, deployed preview, generated fixture, provider claim, model response, receipt, mapping draft, sponsor relationship, or website statement cannot bypass the repository’s authority, privacy, safety, publication, or evidence boundaries.
