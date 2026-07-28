@@ -316,8 +316,5 @@ test("transport lists and dispatches the nine server-owned tools", async (t) => 
     },
   });
   assert.equal(called.result.structuredContent.valid, true);
-  assert.equal(
-    called.result.structuredContent.mappingApproval,
-    "not-granted",
-  );
+  assert.equal(called.result.structuredContent.mappingApproval, "not-granted");
 });
