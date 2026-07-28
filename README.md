@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.4 record](docs/roadmap/sprint-8-workstream-8-4-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.5 record](docs/roadmap/sprint-8-workstream-8-5-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -8,10 +8,9 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 
 ## Start here
 
-- **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.4 Homepage and Promise Record](docs/roadmap/sprint-8-workstream-8-4-record.md)
+- **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.5 Record](docs/roadmap/sprint-8-workstream-8-5-record.md)
 - **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
-- **Review the accepted handoff:** [Pre-Sprint 8 Alignment Review](docs/roadmap/pre-sprint-8-alignment-review.md)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
 - **Apply core decisions:** [Operational Simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-First Boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding Baseline](docs/economics/README.md)
@@ -21,9 +20,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-**Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged.** The reconciliation merged through PR #59 as squash commit `9da8034220954a1ca50420e71fd94e7795232a35`.
-
-**Sprint 8 — Public Website Foundation is active** through issue #60 and draft PR #61.
+**Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged.** Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61.
 
 The goal is:
 
@@ -31,55 +28,38 @@ The goal is:
 
 ### Completed Sprint 8 workstreams
 
-**8.1 — Website application boundary and migration contract** established one `apps/site` owner, one in-place migration, explicit route handling, repository-owned content authority, server-rendering requirements, security and cache rules, signup and deployment gates, accessibility and performance requirements, rollback, and permanent non-scope.
+- **8.1:** one `apps/site` owner, in-place migration, authority, route, security, signup, deployment, rollback, accessibility, performance, and validation boundaries.
+- **8.2:** pinned Next.js App Router shell, exact dependencies, compatibility routes, paused signup, metadata, CSP, headers, caching, and focused validation.
+- **8.3:** direct/narrative navigation parity, landmarks, keyboard and focus foundations, controlled evidence statuses, canonical source links, and resilient presentation.
+- **8.4:** cinematic homepage, dedicated Promise route, frozen player promise, three personal-value loops, public-software/private-data boundary, player-rights explanation, and contribution paths.
+- **8.5:** source-backed Seven Laws, How It Works, consumer-first/interoperability, and Aster/AI routes with metadata, sitemap inclusion, both navigation paths, explicit status boundaries, production-build evidence, and deterministic validation.
 
-**8.2 — Next.js shell, design tokens, security headers, metadata, and assets** established the pinned App Router shell, compatibility routes, paused signup, application-local tokens, metadata routes, CSP and public headers, mutable asset caching, and focused validation.
+The 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
-**8.3 — Navigation, narrative entry, status primitives, and accessibility foundations** established direct and narrative navigation parity, skip links and landmarks, keyboard and visible-focus foundations, controlled evidence statuses, canonical source links, server-rendered essential information, and resilience media behavior.
+### Next workstream: 8.6
 
-**8.4 — Homepage and Promise migration** established:
+Workstream 8.6 will implement the Trust Center and Open Forge while preserving frozen authority, canonical source links, provider independence, Aster and Forge non-authority, server-rendered essential information, accessibility and resilience foundations, paused signup, disabled deployment, and every permanent Sprint 8 boundary.
 
-- a migrated cinematic homepage preserving the Ogygia direction;
-- the frozen player promise and plain-language mission explanation;
-- explicit experimental website, live repository, and planned-game distinctions;
-- the three connected loops for Chronicle-building, personal value, and separately authorized collective or compensated use;
-- the public-software/private-data boundary;
-- a dedicated source-backed `/promise` route;
-- private-by-default, meaningful-refusal, player-confirmation, and correction-and-exit explanations;
-- the meaningfully-free requirement;
-- direct Product Constitution source links;
-- ordinary public contribution paths; and
-- deterministic route, content-authority, build, and focused test evidence.
-
-The focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the production build, site lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
-
-### Next workstream: 8.5
-
-Workstream 8.5 will implement the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and the Aster/AI page while preserving the homepage and Promise, frozen authority, provider independence, Aster non-authority, source-linked status, server-rendered essential information, and accessibility and resilience foundations.
-
-It will not represent providers, EHRs, connectors, clinical behavior, production AI, private Chronicles, transactions, or Sprint 9 gameplay as live.
+It will not claim certification, production safety, private-data capability, provider or clinical capability, transactions, or Sprint 9 gameplay.
 
 ## Current public site
 
-[`apps/site`](apps/site) is a validated Next.js site with a migrated homepage, dedicated Promise route, navigation, status, and accessibility foundations. It is not an official public release.
+[`apps/site`](apps/site) is a validated Next.js public website foundation, not an official production release.
 
 It currently provides:
 
-- cinematic server-rendered homepage content preserving the Ogygia direction;
-- a dedicated `/promise` route sourced to the frozen Product Constitution;
-- shared direct navigation and an optional narrative path;
-- skip links, semantic landmarks, keyboard access, and visible-focus treatment;
-- source-linked capability-status primitives;
-- privacy and joined compatibility pages;
+- cinematic server-rendered homepage and dedicated `/promise` route;
+- `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` source-backed guide routes;
+- direct and optional narrative navigation reaching the same essential destinations;
+- skip links, semantic landmarks, keyboard access, and visible focus;
+- controlled evidence statuses and canonical source links;
 - `503 SIGNUP_MIGRATION_PAUSED` at `/api/join`;
-- application-local design tokens and presentation styles;
-- reduced-motion, reduced-data, contrast, forced-colors, responsive, and image-failure behavior;
-- metadata routes and error states;
-- repository-owned SVG and WebP assets;
-- nonce CSP and public security headers; and
-- production-build, lint, typecheck, shell-validation, and focused-test evidence.
+- application-local design tokens and responsive presentation styles;
+- reduced-motion, reduced-data, contrast, forced-colors, and image-failure behavior;
+- metadata routes, sitemap, error states, nonce CSP, and public security headers; and
+- production-build, lint, typecheck, validator, and focused-test evidence.
 
-It does not yet provide Seven Laws, How It Works, consumer-first or Aster/AI pages, Trust Center, Open Forge, canonical funding views, final signup disposition, representative accessibility review, performance release evidence, preview deployment, official production cutover, or any private product capability.
+It does not yet provide Trust Center, Open Forge, canonical roadmap or funding views, final signup disposition, representative accessibility review, route-level performance release evidence, preview deployment, official production cutover, or any private product capability.
 
 ## Accepted and merged foundations
 
