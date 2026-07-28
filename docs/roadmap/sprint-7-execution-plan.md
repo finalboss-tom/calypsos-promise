@@ -1,13 +1,13 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](../architecture/forge-mcp-deterministic-synthetic-generation.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](../architecture/forge-mcp-deterministic-synthetic-generation.md) · [Scopes, limits, receipts, and errors](../architecture/forge-mcp-scopes-limits-receipts-and-errors.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.7 implemented; Sprint 7.8 next and unstarted
+- **Status:** ACTIVE — Sprint 7.1–7.8 implemented; Sprint 7.9 next and unstarted
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
 - **Information boundary:** public repository material and explicitly synthetic data only
-- **Certification boundary:** public contracts, deterministic validation, local synthetic evidence, and repository consistency; not production security, privacy, clinical, accessibility, legal, interoperability, operations, provider, statistical, or AI-safety certification
+- **Certification boundary:** public contracts, deterministic validation, local synthetic evidence, and repository consistency; not production security, privacy, clinical, accessibility, legal, interoperability, operations, provider, statistical, resource-isolation, or AI-safety certification
 
 ## Goal
 
@@ -101,9 +101,25 @@ The tool generates deterministic synthetic quest or mapping-draft batches from o
 
 ### 7.8 Scopes, limits, receipts, and errors
 
-Implement tool scopes, request, scan, result, output, timeout, cancellation, concurrency, and memory limits; stable partial results; public-safe receipts; and stable errors.
+Applies one revision-1 server-owned execution scope to every enabled tool. Scopes derive immutable request, scan, result, output, timeout, and per-tool concurrency ceilings from the accepted Sprint 7.1 registry and add an explicit serialized-materialization budget.
 
-**Exit:** limits are enforced and receipts reveal no absolute paths, environment values, stack traces, credentials, or protected source material.
+The central controller:
+
+- rejects non-serializable and oversized requests before tool execution;
+- enforces linked cancellation and accepted timeouts;
+- enforces one active call per tool identity without blocking other identities;
+- verifies scan and result postconditions;
+- measures the complete MCP output envelope, including the receipt;
+- rejects caller- or content-supplied receipt fields;
+- preserves complete, partial, truncated, and error state;
+- returns `forge.invocation-receipt.v1` on scoped successes and stable scoped tool errors; and
+- uses `forge.error.v1` stable errors without echoing arbitrary input or revealing host details.
+
+Receipts expose scope identities, accepted limits, bounded observed counts and bytes, completion state, partial reasons, enforced controls, and non-authority. They contain no raw input, absolute paths, environment values, internal traces, credentials, protected source material, or wall-clock timestamp.
+
+The memory model is serialized input + complete serialized output + at most one bounded public source file. It does not claim process-heap isolation, operating-system memory enforcement, distributed quotas, rate limiting, or a production sandbox.
+
+**Exit:** met at the public-contract and local deterministic-evidence level. Limits are enforced, partial states remain visible, receipts are server-owned and bounded, stable errors do not leak prohibited material, and no scope or receipt creates authority.
 
 ### 7.9 Agent security, compatibility, and operability
 
@@ -119,44 +135,42 @@ Publish cross-contract reconciliation, control and evidence mapping, specialist 
 
 **Exit:** accepted scope is complete at the stated evidence level and explicit founding-steward acceptance remains a separate human gate.
 
-## Validated evidence through 7.6
+## Validated evidence through 7.7
 
 The completed workstreams establish:
 
-- accepted registry revision `1` and runtime revisions `1`–`3`;
+- accepted registry revision `1` and runtime registry revision `4`;
 - finalized local MCP transport revision `2025-11-25`;
 - fixed public and synthetic source roots with exact provenance;
-- six lore, schema, architecture, and decision tools;
-- three public standards, mapping-draft, and synthetic-connector tools;
-- deterministic validation and public-safe errors;
+- ten enabled lore, schema, architecture, decision, standards, mapping, fixture, and generation tools;
+- deterministic validation, generation, and public-safe errors;
 - inert default sessions;
 - retrieved-instruction isolation; and
-- visible non-authority for canon, Chronicle truth, permission, gameplay, rewards, clinical claims, providers, mappings, connectors, and institutional decisions.
+- visible non-authority for canon, Chronicle truth, permission, gameplay, rewards, clinical claims, providers, mappings, connectors, production readiness, and institutional decisions.
 
-Sprint 7.6 final head `16701b72fe3d11159774aac746adc9f0ead7743a` passed CI run 833 and DCO run 903; its PR-body DCO recheck passed run 904.
+Sprint 7.6 final head `16701b72fe3d11159774aac746adc9f0ead7743a` passed CI run 833 and DCO run 903. Sprint 7.7 final head `97b8b9152f1efcd0b1284daafa35c441d3ec0e25` passed CI run 858 and DCO run 930.
 
-## Sprint 7.7 evidence
+## Sprint 7.8 evidence
 
-Sprint 7.7 adds:
+Sprint 7.8 adds:
 
-- tool and generator revision `1` and runtime registry revision `4`;
-- activation of `forge.generate.synthetic-data` in accepted registry order;
-- exactly ten enabled local-stdio-only identities;
-- preservation of the nine previously validated tools;
-- bounded `quest` and `mapping-draft` output families;
-- bounded `balanced`, `accessibility`, and `edge-cases` profiles;
-- Unicode-normalized seed handling without echoing the seed;
-- SHA-256 seed digests and deterministic case identities;
-- fixed synthetic timestamps rather than wall-clock time;
-- no random source, network, provider, credential, production endpoint, arbitrary filesystem read, or repository write;
-- immediate content-schema validation for generated quests;
-- immediate mapping-draft validation for generated mappings;
-- visible generator, scenario, schema, validator, classification, and diversity evidence;
-- explicit synthetic, non-production, credential-free, personal-data-free, and human-review-required labels;
-- public tests for repeatability, seed separation, accessibility and edge cases, draft-only mappings, input rejection, cancellation, prompt-like seed isolation, backward compatibility, and transport dispatch; and
-- a canonical [deterministic generation architecture](../architecture/forge-mcp-deterministic-synthetic-generation.md).
+- execution contract revision `1` without changing runtime registry revision `4`;
+- one immutable server-owned scope for each of the ten enabled tools;
+- exact inheritance of accepted request, scan, result, output, timeout, and concurrency ceilings;
+- derived source-working and serialized-materialization budgets;
+- pre-execution JSON serialization and request-byte enforcement;
+- scan, result, complete-output, and materialized-memory postconditions;
+- per-tool concurrency with independent tool identities;
+- linked caller cancellation and deterministic timeout handling;
+- server-owned `forge.invocation-receipt.v1` receipts;
+- stable `forge.error.v1` tool errors;
+- rejection of caller-owned or result-owned receipts;
+- receipts without raw input, absolute paths, environment values, internal traces, credentials, protected material, or wall-clock timestamps;
+- unchanged deterministic domain methods for focused testing;
+- direct and MCP transport tests; and
+- a canonical [scopes, limits, receipts, and errors architecture](../architecture/forge-mcp-scopes-limits-receipts-and-errors.md).
 
-Implementation head `eed685814046f0cf5996fde37b084ebff457faa9` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, GitHub Actions CI run 847, and DCO Attestation run 918.
+Focused implementation and final reconciliation evidence are recorded in issue #54 and draft PR #55.
 
 ## Information handling
 
@@ -164,7 +178,7 @@ Only public repository records and public synthetic evidence may appear in Sprin
 
 No production health data, credentials, private provider negotiations, contracts, evaluations, proprietary mappings, protected interoperability findings, real exploit details, protected audit, account-specific support, or private operational evidence belongs here.
 
-A seed that satisfies the public-safe syntax contract is not proof that its contents are appropriate. Private or production information remains prohibited.
+A seed or other input that satisfies a public-safe syntax contract is not proof that its contents are appropriate. Private or production information remains prohibited.
 
 ## Validation strategy
 
@@ -186,6 +200,6 @@ Public tests import the application contract through `dist/index.js` rather than
 
 ## Completion rule
 
-Sprint 7 completion does not establish production MCP, private Chronicle tools, provider approval, connector operation, clinical behavior, repository mutation authority, remote hosting, deployment, statistical synthetic-data validity, or independent specialist approval.
+Sprint 7 completion does not establish production MCP, private Chronicle tools, provider approval, connector operation, clinical behavior, repository mutation authority, remote hosting, deployment, statistical synthetic-data validity, production resource isolation, or independent specialist approval.
 
 The sprint remains open until all accepted workstreams and criteria are evidenced, the completion package is validated, and the founding steward explicitly accepts and squash merges the final pull request.
