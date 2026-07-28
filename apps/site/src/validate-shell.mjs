@@ -62,7 +62,9 @@ const sourcePaths = [
 ];
 
 const source = (
-  await Promise.all(sourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")))
+  await Promise.all(
+    sourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")),
+  )
 ).join("\n");
 
 for (const phrase of [

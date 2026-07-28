@@ -27,7 +27,11 @@ function NavigationLink({ item }: { item: NavigationItem }) {
 export function SiteNavigation() {
   return (
     <div className="navigation-shell">
-      <nav id="primary-navigation" className="direct-navigation" aria-label="Primary navigation">
+      <nav
+        id="primary-navigation"
+        className="direct-navigation"
+        aria-label="Primary navigation"
+      >
         <ul>
           {directNavigation.map((item) => (
             <li key={item.href}>

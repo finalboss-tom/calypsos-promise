@@ -273,7 +273,11 @@ summary:focus-visible,
   border: 1px solid rgb(232 201 130 / 0.35);
   border-radius: var(--radius-large);
   background:
-    radial-gradient(circle at 80% 20%, rgb(52 131 151 / 0.3), transparent 24rem),
+    radial-gradient(
+      circle at 80% 20%,
+      rgb(52 131 151 / 0.3),
+      transparent 24rem
+    ),
     var(--color-ink-800);
   box-shadow: var(--shadow-deep);
 }

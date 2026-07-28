@@ -25,7 +25,8 @@ export const capabilityStatusDefinitions: Readonly<
   },
   experimental: {
     label: "Experimental",
-    explanation: "Implemented for review but not an accepted production release.",
+    explanation:
+      "Implemented for review but not an accepted production release.",
   },
   planned: {
     label: "Planned",
@@ -53,8 +54,7 @@ export const publicCapabilities: readonly CapabilityRecord[] = [
     status: "experimental",
     summary:
       "The Next.js shell, security policy, metadata, direct navigation, and accessibility foundations are under active review.",
-    sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/issues/60",
+    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/60",
     sourceLabel: "Review Sprint 8",
   },
   {

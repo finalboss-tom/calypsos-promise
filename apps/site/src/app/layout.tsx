@@ -66,7 +66,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
         <header className="site-header">
           <div className="header-bar">
-            <Link className="brand" href="/" aria-label="Calypso’s Promise home">
+            <Link
+              className="brand"
+              href="/"
+              aria-label="Calypso’s Promise home"
+            >
               <Image
                 src="/assets/compass-mark.svg"
                 width={54}
