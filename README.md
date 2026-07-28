@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.2 record](docs/roadmap/sprint-8-workstream-8-2-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,8 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.2 Shell Record](docs/roadmap/sprint-8-workstream-8-2-record.md)
+- **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review the accepted handoff:** [Pre-Sprint 8 Alignment Review](docs/roadmap/pre-sprint-8-alignment-review.md)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
@@ -28,40 +29,50 @@ The goal is:
 
 > Publish an honest, accessible gateway to Ogygia.
 
-### Active workstream: 8.1
+### Completed Sprint 8 workstreams
 
-Workstream 8.1 defines the website boundary before adding framework dependencies.
+**8.1 — Website application boundary and migration contract** established one `apps/site` owner, one in-place migration, explicit route handling, repository-owned content authority, server-rendering requirements, security and cache rules, signup and deployment gates, accessibility and performance requirements, rollback, and permanent non-scope.
 
-It establishes:
+**8.2 — Next.js shell, design tokens, security headers, metadata, and assets** established:
 
-- `apps/site` as the single public website owner;
-- one in-place migration of Website Track 0A rather than a duplicate site;
-- explicit route treatment for `/`, `/privacy`, `/joined`, and `/api/join`;
-- repository-owned content authority and canonical source links;
-- server-rendered essential information and optional client enhancement;
-- design tokens inside `apps/site` without a premature shared package;
-- build-time canonical status and economics views rather than runtime GitHub fetching or second ledgers;
-- security-header, server-only secret, cache, and asset rules;
-- a preserve-or-retire gate for signup;
-- preview, official cutover, rollback, and release-evidence distinctions; and
-- accessibility, performance, route, metadata, status, funding, signup, security, and content-authority validation requirements.
+- Next.js `16.2.12`;
+- React and React DOM `19.2.8`;
+- exact lockfile evidence;
+- one server-rendered App Router compatibility shell;
+- preserved `/`, `/privacy`, `/joined`, and `/api/join` contracts;
+- paused signup without intake or forwarding;
+- application-local design tokens;
+- canonical and social metadata, sitemap, robots, not-found, and error behavior;
+- nonce CSP and public security headers;
+- mutable caching for repository-owned compatibility assets;
+- shell validation and focused tests; and
+- continued disabled Git-triggered Vercel deployment.
 
-Workstream 8.1 does **not** add Next.js or React dependencies. The pinned framework shell begins in 8.2 after the boundary is validated.
+The exact 8.2 implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
 
-## Existing public site
+### Next workstream: 8.3
 
-[`apps/site`](apps/site) currently implements Website Track 0A:
+Workstream 8.3 will implement the shared direct navigation, optional narrative entry, reusable capability-status primitives, semantic and keyboard foundations, reduced motion, image-failure and low-bandwidth behavior, and server-rendered essential-information parity.
 
-- a cinematic semantic homepage using repository-owned Ogygia concept art;
-- live text for the Promise, Aster, game loop, Ogygia, and capability status;
-- privacy and signup-confirmation pages;
-- an isolated, purpose-limited email signup webhook adapter;
-- responsive and reduced-motion behavior; and
-- public security headers.
+It will not activate signup intake, add a CMS or second source of truth, complete later page content prematurely, or begin Sprint 9 gameplay.
 
-The current routes are `/`, `/privacy`, `/joined`, and `/api/join`. Sprint 8 must preserve, redirect, or deliberately retire them.
+## Current public site
 
-Git-triggered Vercel deployment remains disabled at Sprint 8 entry. Preview, official cutover, cache behavior, CSP, signup disposition, metadata, accessibility, performance, and rollback are explicit work rather than framework defaults.
+[`apps/site`](apps/site) is now a validated Next.js compatibility shell, not an official public release.
+
+It currently provides:
+
+- server-rendered compatibility homepage content preserving the Ogygia direction;
+- a root layout, skip link, basic header/footer, and direct repository/status links;
+- privacy and joined compatibility pages;
+- `503 SIGNUP_MIGRATION_PAUSED` at `/api/join`;
+- application-local design tokens and global styling;
+- metadata routes and error states;
+- repository-owned SVG and WebP assets;
+- nonce CSP and public security headers; and
+- build, lint, typecheck, shell validation, and focused tests.
+
+It does not yet provide final direct/narrative navigation, final homepage and Promise content, Seven Laws, How It Works, consumer-first or Aster/AI pages, Trust Center, Open Forge, canonical funding views, final signup disposition, accessibility or performance release evidence, preview deployment, official production cutover, or any private product capability.
 
 ## Accepted and merged foundations
 
