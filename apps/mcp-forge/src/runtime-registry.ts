@@ -23,8 +23,8 @@ export const FORGE_RUNTIME_REGISTRY_REVISION = "4" as const;
 export const FORGE_RUNTIME_ENABLED_TOOL_IDS = [
   ...FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   ...FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS,
-  ...FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
   FORGE_SYNTHETIC_GENERATION_TOOL_DESCRIPTOR.name,
+  ...FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
 ] as const;
 
 export type ForgeRuntimeEnabledToolId =
@@ -33,8 +33,8 @@ export type ForgeRuntimeEnabledToolId =
 export const FORGE_RUNTIME_TOOL_DESCRIPTORS = [
   ...FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
   ...FORGE_DOCUMENTATION_SEARCH_TOOL_DESCRIPTORS,
-  ...FORGE_STANDARDS_MAPPING_TOOL_DESCRIPTORS,
   FORGE_SYNTHETIC_GENERATION_TOOL_DESCRIPTOR,
+  ...FORGE_STANDARDS_MAPPING_TOOL_DESCRIPTORS,
 ] as const;
 
 const ENABLED_IDS = new Set<string>(FORGE_RUNTIME_ENABLED_TOOL_IDS);
@@ -52,7 +52,7 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
-  "Exactly ten Sprint 7.1-7.7 lore, schema, architecture, decision, standards, mapping-draft, synthetic-connector, and deterministic synthetic-generation tools are enabled through a server-owned allowlist.",
+  "Exactly ten Sprint 7.1-7.7 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
   "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged, with the accepted synthetic-generation identity added.",
   "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools remain unchanged inside that prior nine-tool baseline.",
   "Synthetic generation is deterministic for the same seed and input, immediately validates every result, and labels every artifact synthetic, non-production, credential-free, personal-data-free, and human-review-required.",
