@@ -19,6 +19,11 @@ const required = [
   "src/app/global-error.tsx",
   "src/app/robots.ts",
   "src/app/sitemap.ts",
+  "src/components/site-navigation.tsx",
+  "src/components/status-badge.tsx",
+  "src/components/capability-status-grid.tsx",
+  "src/lib/navigation.ts",
+  "src/lib/capability-status.ts",
   "public/assets/compass-mark.svg",
   "public/assets/hero-ogygia.webp",
   "vercel.json",
@@ -40,18 +45,24 @@ for (const [name, version] of Object.entries(expectedVersions)) {
   }
 }
 
+const sourcePaths = [
+  "src/app/globals.css",
+  "src/app/layout.tsx",
+  "src/app/page.tsx",
+  "src/app/privacy/page.tsx",
+  "src/app/joined/page.tsx",
+  "src/app/api/join/route.ts",
+  "src/components/site-navigation.tsx",
+  "src/components/status-badge.tsx",
+  "src/components/capability-status-grid.tsx",
+  "src/lib/navigation.ts",
+  "src/lib/capability-status.ts",
+  "src/proxy.ts",
+  "next.config.mjs",
+];
+
 const source = (
-  await Promise.all(
-    [
-      "src/app/layout.tsx",
-      "src/app/page.tsx",
-      "src/app/privacy/page.tsx",
-      "src/app/joined/page.tsx",
-      "src/app/api/join/route.ts",
-      "src/proxy.ts",
-      "next.config.mjs",
-    ].map((path) => readFile(`${app}/${path}`, "utf8")),
-  )
+  await Promise.all(sourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")))
 ).join("\n");
 
 for (const phrase of [
@@ -61,10 +72,28 @@ for (const phrase of [
   "metadataBase",
   "sitemap",
   "robots",
+  "Skip to primary navigation",
+  'aria-label="Narrative journey"',
+  "No story traversal is required.",
+  '"live"',
+  '"experimental"',
+  '"planned"',
+  '"long-horizon"',
+  "prefers-reduced-motion",
+  "prefers-reduced-data",
+  "prefers-contrast",
+  "forced-colors",
+  'loading="lazy"',
 ]) {
   if (!source.includes(phrase)) {
-    throw new Error(`Next.js shell is missing required evidence: ${phrase}`);
+    throw new Error(`Site foundation is missing required evidence: ${phrase}`);
   }
+}
+
+if (source.includes('"use client"') || source.includes("'use client'")) {
+  throw new Error(
+    "Sprint 8.3 navigation and status foundations must remain server-rendered",
+  );
 }
 
 for (const phrase of [
@@ -78,4 +107,6 @@ for (const phrase of [
   }
 }
 
-console.log("Sprint 8.2 Next.js shell boundary is complete.");
+console.log(
+  "Sprint 8.3 navigation, status, and accessibility foundations are complete.",
+);
