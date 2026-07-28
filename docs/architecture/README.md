@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -42,8 +42,9 @@ This directory contains versioned architecture baselines that implement the froz
 34. [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
 35. [Forge MCP Lore and Schema Tools](forge-mcp-lore-and-schema-tools.md)
 36. [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
-37. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-38. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+37. [Forge MCP Public Standards, Mapping Drafts, and Synthetic Connector Fixtures](forge-mcp-public-standards-mapping-and-synthetic-connectors.md)
+38. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+39. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -56,7 +57,7 @@ This directory contains versioned architecture baselines that implement the froz
 
 Decision 0011 is accepted. The modular monolith remains the default. Responsive work, deferred jobs, schedules, events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first design.
 
-Sprint 7 therefore begins as one local `stdio` Forge application, not a remote service, database, queue, vector index, or provider platform.
+Sprint 7 therefore remains one local `stdio` Forge application, not a remote service, database, queue, vector index, provider platform, or connector runtime.
 
 ## Consumer-first and provider-independent architecture
 
@@ -123,18 +124,22 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 - [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
 - [Forge MCP Lore and Schema Tools](forge-mcp-lore-and-schema-tools.md)
 - [Forge MCP Architecture and Decision Tools](forge-mcp-architecture-and-decision-tools.md)
+- [Forge MCP Public Standards, Mapping Drafts, and Synthetic Connector Fixtures](forge-mcp-public-standards-mapping-and-synthetic-connectors.md)
+- [Public Standards Reference Boundary](../standards/README.md)
 - [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
 - [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
 - [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.5 define the application boundary, accepted registry, finalized-version local `stdio` transport, server-owned source catalogue, allowlisted repository access, path and symlink isolation, SHA-256 provenance, locators, deterministic listing, six enabled lore, schema, architecture, and decision tools, public package validation, fixed quest-schema inspection, exact documentation provenance, conservative authority classification, literal non-authority, funding neutrality, validators, and public tests.
+Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.6 define the application boundary, accepted registry, finalized local `stdio` transport, server-owned source catalogue, path and symlink isolation, exact provenance, deterministic search and validation, conservative documentation authority classification, public standards search, draft mapping validation, explicitly synthetic connector-fixture search, literal non-authority, funding neutrality, and public tests.
 
-Exactly six identities are enabled through runtime registry revision `2`: lore search, content validation, quest-schema inspection, quest validation, architecture search, and decision search. The other four accepted identities remain planned and unexposed. Tool and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, complete gameplay, grant rewards, prove clinical safety, or create institutional authority. Sprint 7.6 owns public standards, mapping-draft, and synthetic connector-fixture tooling and has not started.
+Exactly nine identities are enabled through runtime registry revision `3`: lore search, content validation, quest-schema inspection, quest validation, architecture search, decision search, public standards search, mapping-draft validation, and synthetic connector-fixture search. `forge.generate.synthetic-data` remains planned and unexposed for Sprint 7.7.
 
-Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, production provider gateway, connector runtime, or institutional authority.
+Tool and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, approve mappings, claim certification, select providers, activate connectors, complete gameplay, grant rewards, prove clinical safety, or create institutional authority.
 
-Retrieved and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, mapping, or governance authority.
+Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, or institutional authority.
+
+Retrieved, supplied, and generated content cannot grant itself tool, filesystem, network, repository, canon, Chronicle, permission, gameplay, mapping, provider, connector, or governance authority.
 
 ## Legacy and succession architecture
 
