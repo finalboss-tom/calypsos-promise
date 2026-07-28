@@ -360,6 +360,7 @@ This phase never permanently completes. The institution must repeatedly demonstr
 Decision 0006 and `docs/governance/feedback-to-governed-work.md` define the operational path from user friction to progressively governed work.
 
 The path is intentionally asymmetric:
+
 - public visibility and contribution begin early
 - advisory signals begin before binding votes
 - low-risk delegated domains unlock before strategic, economic, provider, enterprise, research, or constitutional authority
