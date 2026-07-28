@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.4 record](sprint-8-workstream-8-4-record.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.5 record](sprint-8-workstream-8-5-record.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -13,22 +13,23 @@ Advancement is gate-based rather than calendar-based. A completed workstream doe
 
 1. [Current Project Status](current-status.md)
 2. [Sprint 8 Execution Plan](sprint-8-execution-plan.md)
-3. [Sprint 8.4 Homepage and Promise Record](sprint-8-workstream-8-4-record.md)
-4. [Sprint 8.3 Navigation, Status, and Accessibility Record](sprint-8-workstream-8-3-record.md)
-5. [Sprint 8.2 Next.js Shell Record](sprint-8-workstream-8-2-record.md)
-6. [Sprint 8.1 Boundary Record](sprint-8-workstream-8-1-record.md)
-7. [Public Website Foundation and Migration Boundary](../architecture/public-website-foundation-and-migration.md)
-8. [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
-9. [Sprint Sequence](sprints.md)
-10. [Sprint 7 Completion Record](sprint-7-completion-record.md)
-11. [Sprint 7 Cross-Contract Reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md)
-12. [Sprint 7 Specialist Holdpoints and Unresolved Work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-13. [Sprint 6 Completion Record](sprint-6-completion-record.md)
-14. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
-15. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
-16. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
-17. [Security Architecture](../security/README.md)
-18. [Public Institutional Roadmap](../../ROADMAP.md)
+3. [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](sprint-8-workstream-8-5-record.md)
+4. [Sprint 8.4 Homepage and Promise Record](sprint-8-workstream-8-4-record.md)
+5. [Sprint 8.3 Navigation, Status, and Accessibility Record](sprint-8-workstream-8-3-record.md)
+6. [Sprint 8.2 Next.js Shell Record](sprint-8-workstream-8-2-record.md)
+7. [Sprint 8.1 Boundary Record](sprint-8-workstream-8-1-record.md)
+8. [Public Website Foundation and Migration Boundary](../architecture/public-website-foundation-and-migration.md)
+9. [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
+10. [Sprint Sequence](sprints.md)
+11. [Sprint 7 Completion Record](sprint-7-completion-record.md)
+12. [Sprint 7 Cross-Contract Reconciliation](../architecture/forge-sprint-7-cross-contract-reconciliation.md)
+13. [Sprint 7 Specialist Holdpoints and Unresolved Work](../architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+14. [Sprint 6 Completion Record](sprint-6-completion-record.md)
+15. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
+16. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
+17. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
+18. [Security Architecture](../security/README.md)
+19. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Completion records and plans
 
@@ -57,19 +58,20 @@ Advancement is gate-based rather than calendar-based. A completed workstream doe
 - [Sprint 8.2 Record](sprint-8-workstream-8-2-record.md) — validated Next.js compatibility shell
 - [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md) — validated navigation, evidence-status, and accessibility foundations
 - [Sprint 8.4 Record](sprint-8-workstream-8-4-record.md) — validated cinematic homepage and source-backed Promise migration
+- [Sprint 8.5 Record](sprint-8-workstream-8-5-record.md) — validated laws, experience, consumer-first interoperability, and Aster guide family
 - [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md) — tracked by issue #39; does not change numbered sprint order or authorize production
 
 ## Active Sprint 8 boundary
 
 Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged. Sprint 8 is active.
 
-Workstreams 8.1 through 8.4 established the single-site boundary, pinned Next.js shell, direct and narrative navigation parity, source-linked status model, accessibility and resilience foundations, migrated cinematic homepage, and dedicated Promise route.
+Workstreams 8.1 through 8.5 established the single-site boundary, pinned Next.js shell, direct and narrative navigation parity, source-linked status model, accessibility and resilience foundations, migrated homepage and Promise, frozen Seven Laws, planned experience explanation, consumer-first interoperability boundary, and Aster non-authority explanation.
 
-Workstream 8.4 focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the production build, site lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
+The 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` passed formatting, production build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
-Workstream 8.5 is next. It owns the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and Aster/AI page.
+Workstream 8.6 is next. It owns the Trust Center and Open Forge.
 
-Issue #50 remains open and trigger-based. The current website presentation does not import or exercise the Aster package, so the Aster ergonomics trigger remains inactive.
+Issue #50 remains open and trigger-based. The website presentation explains accepted Aster contracts but does not import or exercise the Aster package as a genuine runtime consumer, so the ergonomics trigger remains inactive.
 
 Institutional Phase 0 remains active pending key-person, succession, founder-reserved-power, economic-dependency, historical-source, branch-protection, DCO, operability, distributed-ownership, specialist-review, Decision 0009, human-readable and machine-readable architecture audit, and phase-exit evidence.
 
