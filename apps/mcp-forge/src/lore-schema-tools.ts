@@ -119,7 +119,9 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
             await this.searchPublicStandards(argumentsValue, signal),
           );
         case "forge.validate.mapping-draft":
-          return forgeToolResult(await this.validateMappingDraft(argumentsValue));
+          return forgeToolResult(
+            await this.validateMappingDraft(argumentsValue),
+          );
         case "forge.search.synthetic-connector-fixtures":
           return forgeToolResult(
             await this.searchSyntheticConnectorFixtures(argumentsValue, signal),
@@ -167,7 +169,9 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     return searchForgePublicStandards(this.#repository, input, signal);
   }
 
-  validateMappingDraft(input: unknown): Promise<ForgeValidateMappingDraftOutput> {
+  validateMappingDraft(
+    input: unknown,
+  ): Promise<ForgeValidateMappingDraftOutput> {
     return validateForgeMappingDraft(this.#repository, input);
   }
 
