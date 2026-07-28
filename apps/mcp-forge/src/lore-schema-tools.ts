@@ -5,8 +5,6 @@ import {
 } from "@calypsos-promise/content-schema";
 
 import {
-  FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS,
-  type ForgeEnabledDocumentationSearchToolId,
   type ForgeSearchArchitectureOutput,
   type ForgeSearchDecisionOutput,
 } from "./documentation-search-contracts.js";
@@ -14,13 +12,12 @@ import {
   searchForgeArchitecture,
   searchForgeDecision,
 } from "./documentation-search-tools.js";
+import { ForgeToolExecutionController } from "./execution-controller.js";
 import {
-  FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   FORGE_LORE_SCHEMA_ERROR_CODES,
   FORGE_LORE_SCHEMA_TOOL_REVISION,
   FORGE_TOOL_NON_AUTHORITY,
   ForgeLoreSchemaToolError,
-  type ForgeEnabledLoreSchemaToolId,
   type ForgeInlineContentInformationClass,
   type ForgeInspectQuestSchemaOutput,
   type ForgeMcpToolCallResult,
@@ -32,8 +29,6 @@ import {
 import { searchForgeLore } from "./lore-search-tool.js";
 import {
   FORGE_QUEST_SCHEMA_PATH,
-  forgePublicToolErrorResult,
-  forgeToolResult,
   forgeValidationIdentity,
   isRecord,
   parseForgeInspectInput,
@@ -47,8 +42,6 @@ import { searchForgePublicStandards } from "./public-standards-tools.js";
 import { createForgeObjectIdLocator } from "./source-repository.js";
 import { ForgeSourceRepository } from "./source-repository.js";
 import {
-  FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
-  type ForgeEnabledStandardsMappingToolId,
   type ForgeSearchPublicStandardsOutput,
   type ForgeSearchSyntheticConnectorFixturesOutput,
   type ForgeValidateMappingDraftOutput,
@@ -63,6 +56,7 @@ export type { ForgeTransportToolService } from "./lore-tool-support.js";
 
 export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
   readonly #repository: ForgeSourceRepository;
+  readonly #executionController = new ForgeToolExecutionController();
 
   constructor(repository: ForgeSourceRepository) {
     this.#repository = repository;
@@ -73,84 +67,52 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     argumentsValue: unknown,
     signal: AbortSignal,
   ): Promise<ForgeMcpToolCallResult> {
-    try {
-      const loreTool = FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(
-        name as ForgeEnabledLoreSchemaToolId,
-      );
-      const documentationTool =
-        FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS.includes(
-          name as ForgeEnabledDocumentationSearchToolId,
-        );
-      const standardsTool = FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS.includes(
-        name as ForgeEnabledStandardsMappingToolId,
-      );
-      const generationTool = name === "forge.generate.synthetic-data";
-      if (
-        !loreTool &&
-        !documentationTool &&
-        !standardsTool &&
-        !generationTool
-      ) {
+    return this.#executionController.execute(
+      name,
+      argumentsValue,
+      signal,
+      (executionSignal) =>
+        this.executeEnabledTool(name, argumentsValue, executionSignal),
+    );
+  }
+
+  getActiveToolCallCount(toolId?: string): number {
+    return this.#executionController.getActiveToolCallCount(toolId);
+  }
+
+  private async executeEnabledTool(
+    name: string,
+    argumentsValue: unknown,
+    signal: AbortSignal,
+  ): Promise<unknown> {
+    if (signal.aborted) throw signal.reason;
+
+    switch (name) {
+      case "forge.search.lore":
+        return this.searchLore(argumentsValue, signal);
+      case "forge.validate.content":
+        return this.validatePublicContent(argumentsValue);
+      case "forge.inspect.quest-schema":
+        return this.inspectQuestSchema(argumentsValue);
+      case "forge.validate.quest":
+        return this.validateQuest(argumentsValue);
+      case "forge.search.architecture":
+        return this.searchArchitecture(argumentsValue, signal);
+      case "forge.search.decision":
+        return this.searchDecision(argumentsValue, signal);
+      case "forge.generate.synthetic-data":
+        return this.generateSyntheticData(argumentsValue, signal);
+      case "forge.search.public-standards":
+        return this.searchPublicStandards(argumentsValue, signal);
+      case "forge.validate.mapping-draft":
+        return this.validateMappingDraft(argumentsValue);
+      case "forge.search.synthetic-connector-fixtures":
+        return this.searchSyntheticConnectorFixtures(argumentsValue, signal);
+      default:
         throw new ForgeLoreSchemaToolError(
           FORGE_LORE_SCHEMA_ERROR_CODES.toolUnknown,
           "The requested Forge tool is not enabled.",
         );
-      }
-      if (signal.aborted) throw signal.reason;
-
-      switch (
-        name as
-          | ForgeEnabledLoreSchemaToolId
-          | ForgeEnabledDocumentationSearchToolId
-          | ForgeEnabledStandardsMappingToolId
-          | "forge.generate.synthetic-data"
-      ) {
-        case "forge.search.lore":
-          return forgeToolResult(await this.searchLore(argumentsValue, signal));
-        case "forge.validate.content":
-          return forgeToolResult(
-            await this.validatePublicContent(argumentsValue),
-          );
-        case "forge.inspect.quest-schema":
-          return forgeToolResult(await this.inspectQuestSchema(argumentsValue));
-        case "forge.validate.quest":
-          return forgeToolResult(await this.validateQuest(argumentsValue));
-        case "forge.search.architecture":
-          return forgeToolResult(
-            await this.searchArchitecture(argumentsValue, signal),
-          );
-        case "forge.search.decision":
-          return forgeToolResult(
-            await this.searchDecision(argumentsValue, signal),
-          );
-        case "forge.search.public-standards":
-          return forgeToolResult(
-            await this.searchPublicStandards(argumentsValue, signal),
-          );
-        case "forge.validate.mapping-draft":
-          return forgeToolResult(
-            await this.validateMappingDraft(argumentsValue),
-          );
-        case "forge.search.synthetic-connector-fixtures":
-          return forgeToolResult(
-            await this.searchSyntheticConnectorFixtures(argumentsValue, signal),
-          );
-        case "forge.generate.synthetic-data":
-          return forgeToolResult(
-            await this.generateSyntheticData(argumentsValue, signal),
-          );
-      }
-    } catch (error) {
-      if (signal.aborted) throw error;
-      if (error instanceof ForgeLoreSchemaToolError) {
-        return forgePublicToolErrorResult(error);
-      }
-      return forgePublicToolErrorResult(
-        new ForgeLoreSchemaToolError(
-          FORGE_LORE_SCHEMA_ERROR_CODES.sourceUnavailable,
-          "The requested public Forge operation failed safely.",
-        ),
-      );
     }
   }
 
