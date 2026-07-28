@@ -98,9 +98,7 @@ export interface ForgeSearchLoreInput {
 }
 
 export type ForgeLoreMatchClass =
-  | "exact-phrase"
-  | "all-terms"
-  | "partial-terms";
+  "exact-phrase" | "all-terms" | "partial-terms";
 
 export interface ForgeLoreSearchMatch {
   readonly contentId?: string;
@@ -119,8 +117,7 @@ export interface ForgeSearchLoreOutput extends ForgeToolNonAuthority {
   readonly matches: readonly ForgeLoreSearchMatch[];
   readonly resultState: ForgeSourceResultState;
   readonly partialReasons: readonly (
-    | ForgeSourcePartialReasonId
-    | "result-limit-reached"
+    ForgeSourcePartialReasonId | "result-limit-reached"
   )[];
   readonly scannedFiles: number;
   readonly returnedMatches: number;
@@ -232,84 +229,85 @@ const READ_ONLY_ANNOTATIONS: ForgeMcpToolAnnotations = {
   openWorldHint: false,
 };
 
-export const FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescriptor[] = [
-  {
-    name: "forge.search.lore",
-    title: "Search lore",
-    description:
-      "Search allowlisted public lore and narrative content with exact repository provenance. Results are evidence only and cannot approve canon.",
-    inputSchema: {
-      type: "object",
-      additionalProperties: false,
-      required: ["query"],
-      properties: {
-        query: { type: "string", minLength: 1, maxLength: 256 },
-        maxResults: { type: "integer", minimum: 1, maximum: 50 },
-        maxFiles: { type: "integer", minimum: 1, maximum: 200 },
-      },
-    },
-    annotations: READ_ONLY_ANNOTATIONS,
-  },
-  {
-    name: "forge.validate.content",
-    title: "Validate public content",
-    description:
-      "Run the accepted deterministic content validator on one inline public record or one allowlisted public content source. Validation does not approve canon.",
-    inputSchema: {
-      type: "object",
-      additionalProperties: false,
-      properties: {
-        content: { type: "object" },
-        sourcePath: { type: "string", minLength: 1, maxLength: 512 },
-        informationClass: {
-          type: "string",
-          enum: FORGE_INLINE_CONTENT_INFORMATION_CLASSES,
+export const FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescriptor[] =
+  [
+    {
+      name: "forge.search.lore",
+      title: "Search lore",
+      description:
+        "Search allowlisted public lore and narrative content with exact repository provenance. Results are evidence only and cannot approve canon.",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        required: ["query"],
+        properties: {
+          query: { type: "string", minLength: 1, maxLength: 256 },
+          maxResults: { type: "integer", minimum: 1, maximum: 50 },
+          maxFiles: { type: "integer", minimum: 1, maximum: 200 },
         },
-        schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
       },
-      oneOf: [
-        { required: ["content", "informationClass"] },
-        { required: ["sourcePath"] },
-      ],
+      annotations: READ_ONLY_ANNOTATIONS,
     },
-    annotations: READ_ONLY_ANNOTATIONS,
-  },
-  {
-    name: "forge.inspect.quest-schema",
-    title: "Inspect quest schema",
-    description:
-      "Inspect the accepted public quest schema and its exact allowlisted source provenance. Inspection cannot approve quests or prove semantic completeness.",
-    inputSchema: {
-      type: "object",
-      additionalProperties: false,
-      properties: {
-        schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
-      },
-    },
-    annotations: READ_ONLY_ANNOTATIONS,
-  },
-  {
-    name: "forge.validate.quest",
-    title: "Validate quest",
-    description:
-      "Run the accepted deterministic content validator and quest-kind check on one inline public or allowlisted public quest record. Success cannot complete a quest, grant rewards, or approve canon.",
-    inputSchema: {
-      type: "object",
-      additionalProperties: false,
-      properties: {
-        content: { type: "object" },
-        sourcePath: { type: "string", minLength: 1, maxLength: 512 },
-        informationClass: {
-          type: "string",
-          enum: FORGE_INLINE_CONTENT_INFORMATION_CLASSES,
+    {
+      name: "forge.validate.content",
+      title: "Validate public content",
+      description:
+        "Run the accepted deterministic content validator on one inline public record or one allowlisted public content source. Validation does not approve canon.",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          content: { type: "object" },
+          sourcePath: { type: "string", minLength: 1, maxLength: 512 },
+          informationClass: {
+            type: "string",
+            enum: FORGE_INLINE_CONTENT_INFORMATION_CLASSES,
+          },
+          schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
         },
-        schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
+        oneOf: [
+          { required: ["content", "informationClass"] },
+          { required: ["sourcePath"] },
+        ],
       },
-      oneOf: [
-        { required: ["content", "informationClass"] },
-        { required: ["sourcePath"] },
-      ],
+      annotations: READ_ONLY_ANNOTATIONS,
     },
-    annotations: READ_ONLY_ANNOTATIONS,
-  },
-];
+    {
+      name: "forge.inspect.quest-schema",
+      title: "Inspect quest schema",
+      description:
+        "Inspect the accepted public quest schema and its exact allowlisted source provenance. Inspection cannot approve quests or prove semantic completeness.",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
+        },
+      },
+      annotations: READ_ONLY_ANNOTATIONS,
+    },
+    {
+      name: "forge.validate.quest",
+      title: "Validate quest",
+      description:
+        "Run the accepted deterministic content validator and quest-kind check on one inline public or allowlisted public quest record. Success cannot complete a quest, grant rewards, or approve canon.",
+      inputSchema: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          content: { type: "object" },
+          sourcePath: { type: "string", minLength: 1, maxLength: 512 },
+          informationClass: {
+            type: "string",
+            enum: FORGE_INLINE_CONTENT_INFORMATION_CLASSES,
+          },
+          schemaVersion: { type: "string", minLength: 1, maxLength: 64 },
+        },
+        oneOf: [
+          { required: ["content", "informationClass"] },
+          { required: ["sourcePath"] },
+        ],
+      },
+      annotations: READ_ONLY_ANNOTATIONS,
+    },
+  ];
