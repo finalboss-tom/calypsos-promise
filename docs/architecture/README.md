@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.3 record](../roadmap/sprint-8-workstream-8-3-record.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.4 record](../roadmap/sprint-8-workstream-8-4-record.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -21,6 +21,7 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Sprint 8.1 Boundary Record](../roadmap/sprint-8-workstream-8-1-record.md)
 - [Sprint 8.2 Next.js Shell Record](../roadmap/sprint-8-workstream-8-2-record.md)
 - [Sprint 8.3 Navigation, Status, and Accessibility Record](../roadmap/sprint-8-workstream-8-3-record.md)
+- [Sprint 8.4 Homepage and Promise Record](../roadmap/sprint-8-workstream-8-4-record.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -32,21 +33,24 @@ The modular monolith remains the default. A new package, service, provider, queu
 
 Workstream 8.1 established the application, route, authority, rendering, design-token, security, cache, signup, deployment, rollback, accessibility, performance, metadata, validation, and non-scope boundary.
 
-Workstream 8.2 implemented one pinned Next.js App Router compatibility shell with exact lockfile evidence, server-rendered compatibility routes, paused signup, application-local design tokens, metadata routes, nonce CSP, public security headers, mutable compatibility-asset caching, shell validation, and disabled Git-triggered deployment.
+Workstream 8.2 implemented one pinned Next.js App Router shell with exact lockfile evidence, server-rendered compatibility routes, paused signup, application-local design tokens, metadata routes, nonce CSP, public security headers, mutable compatibility-asset caching, shell validation, and disabled Git-triggered deployment.
 
-Workstream 8.3 implemented:
+Workstream 8.3 implemented direct and optional narrative navigation parity, skip links and semantic landmarks, visible-focus and keyboard foundations, controlled status values, canonical source links, server-rendered essential information, resilience media behavior, and deterministic tests.
 
-- shared direct navigation;
-- an optional native narrative path reaching the same essential destinations;
-- skip links and semantic landmarks;
-- visible-focus and keyboard foundations;
-- controlled `live`, `experimental`, `planned`, and `long-horizon` status values;
-- stable capability IDs, summaries, canonical source URLs, and source labels;
-- server-rendered essential information without a client-component dependency;
-- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive behavior; and
-- deterministic validation and focused tests.
+Workstream 8.4 implemented:
 
-The validated 8.3 head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed CI 986 and DCO 1064.
+- a migrated cinematic homepage preserving the Ogygia direction;
+- a dedicated source-backed `/promise` route;
+- the frozen player promise and three connected loops;
+- the public-software/private-data boundary;
+- private-by-default, meaningful-refusal, player-confirmation, and correction-and-exit explanations;
+- the meaningfully-free requirement;
+- explicit experimental website, live repository, and planned-game distinctions;
+- direct Product Constitution source links;
+- ordinary public contribution paths; and
+- focused production-build and repository-wide validation evidence.
+
+Focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the site production build, lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
 
 The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup surface.
 
@@ -54,7 +58,7 @@ It may not own Product Constitution, lore canon, Chronicle truth, permission tru
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.4 is next. It owns the final cinematic homepage and Promise migration while preserving the validated direct/narrative parity, status vocabulary, source links, server-rendering, accessibility, resilience, paused-signup, and permanent non-scope boundaries.
+Workstream 8.5 is next. It owns the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and Aster/AI page while preserving the homepage, Promise, provider independence, Aster non-authority, source authority, server-rendering, accessibility, resilience, paused-signup, and permanent non-scope boundaries.
 
 ## Content and story architecture
 
