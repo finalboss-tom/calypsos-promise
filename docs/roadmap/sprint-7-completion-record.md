@@ -51,14 +51,7 @@ Nine server-owned roots use exact-file or recursive allowlists, prohibited names
 
 ### Lore, schema, architecture, and decision tools
 
-The runtime enables:
-
-- `forge.search.lore`;
-- `forge.validate.content`;
-- `forge.inspect.quest-schema`;
-- `forge.validate.quest`;
-- `forge.search.architecture`; and
-- `forge.search.decision`.
+The runtime enables `forge.search.lore`, `forge.validate.content`, `forge.inspect.quest-schema`, `forge.validate.quest`, `forge.search.architecture`, and `forge.search.decision`.
 
 These tools return source-linked evidence and deterministic validation. They cannot accept canon, approve architecture, close decisions, create Chronicle truth or permission, complete quests, grant rewards, mutate the repository, or establish clinical authority.
 
@@ -66,11 +59,7 @@ Architecture and decision search preserve conservative authority classes so prop
 
 ### Standards, mappings, and connector fixtures
 
-The runtime enables:
-
-- `forge.search.public-standards`;
-- `forge.validate.mapping-draft`; and
-- `forge.search.synthetic-connector-fixtures`.
+The runtime enables `forge.search.public-standards`, `forge.validate.mapping-draft`, and `forge.search.synthetic-connector-fixtures`.
 
 Standards search preserves provenance without claiming completeness, certification, semantic equivalence, provider preference, or endorsement.
 
@@ -150,18 +139,7 @@ Supported by source allowlists and exclusions, prohibited names and segments, no
 
 ## Completion-package evidence
 
-The package records:
-
-- twenty-eight stable Forge control objectives;
-- nineteen open Forge-specific holdpoints;
-- eighteen unresolved-work records;
-- local implementation evidence for the public/synthetic controls;
-- deterministic public/synthetic test evidence;
-- clean compiled startup evidence;
-- exact compatibility and migration evidence;
-- cross-contract reconciliation;
-- truthful status repairs; and
-- the bounded Sprint 8 handoff.
+The package records twenty-eight stable control objectives, nineteen open Forge holdpoints, eighteen unresolved-work records, local implementation evidence, deterministic public/synthetic tests, clean compiled startup, exact compatibility and migrations, cross-contract reconciliation, truthful status repairs, and the bounded Sprint 8 handoff.
 
 The reviewed implementation head `32492040684c2a89e32c866888f6be0888ee1279` passed CI run 904 and DCO run 977.
 
@@ -171,17 +149,7 @@ The exact final branch head and its validation are recorded in issue #54 and PR 
 
 ## Evidence limits
 
-Sprint 7 does not establish:
-
-- production deployment or official service operation;
-- remote MCP, authentication, tenancy, or private-data processing;
-- private Chronicle or House of Keys tools;
-- provider, network, connector, repository-mutation, shell, or general-agent capability;
-- production process isolation, CPU or heap enforcement, distributed quota, or rate limiting;
-- production monitoring, protected audit, incident response, backup, recovery, or deletion verification;
-- representative security, performance, reliability, cost, accessibility, usability, or contributor-benefit measurement;
-- production synthetic-data, de-identification, statistical validity, or dataset publication; or
-- independent penetration testing or specialist review.
+Sprint 7 does not establish production deployment, remote MCP, authentication, tenancy, private-data processing, private Chronicle or House of Keys tools, provider or network access, connectors, repository mutation, shell or general-agent capability, production isolation or rate limiting, production monitoring or recovery, representative measurement, production synthetic-data publication, independent penetration testing, or specialist review.
 
 ## Open holdpoints
 
