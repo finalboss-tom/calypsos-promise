@@ -161,7 +161,10 @@ test("successful partial search returns a stable public-safe receipt", async (t)
   );
 
   assert.equal(first.isError, false);
-  assert.deepEqual(first.structuredContent.receipt, second.structuredContent.receipt);
+  assert.deepEqual(
+    first.structuredContent.receipt,
+    second.structuredContent.receipt,
+  );
   const receipt = first.structuredContent.receipt;
   assert.equal(receipt.schemaId, FORGE_INVOCATION_RECEIPT_SCHEMA_ID);
   assert.equal(receipt.toolId, "forge.search.lore");
@@ -224,7 +227,10 @@ test("request serialization and byte limits fail before tool execution", async (
     oversized.structuredContent.error.code,
     FORGE_EXECUTION_ERROR_CODES.inputLimitReached,
   );
-  assert.equal(oversized.structuredContent.receipt.observed.resultState, "error");
+  assert.equal(
+    oversized.structuredContent.receipt.observed.resultState,
+    "error",
+  );
   assert.equal(JSON.stringify(oversized).includes("x".repeat(200)), false);
 
   const circular = {};
@@ -404,9 +410,13 @@ test("tool errors include stable schemas and exclude caller secrets or internals
   assert.equal(serialized.includes(marker), false);
   assert.equal(serialized.includes("stack"), false);
   assert.equal(serialized.includes(process.cwd()), false);
-  assert.equal(result.structuredContent.receipt.disclosures.credentialsIncluded, false);
   assert.equal(
-    result.structuredContent.receipt.disclosures.protectedSourceMaterialIncluded,
+    result.structuredContent.receipt.disclosures.credentialsIncluded,
+    false,
+  );
+  assert.equal(
+    result.structuredContent.receipt.disclosures
+      .protectedSourceMaterialIncluded,
     false,
   );
 });
