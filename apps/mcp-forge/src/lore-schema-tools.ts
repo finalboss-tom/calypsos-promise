@@ -66,9 +66,7 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
 
       switch (name as ForgeEnabledLoreSchemaToolId) {
         case "forge.search.lore":
-          return forgeToolResult(
-            await this.searchLore(argumentsValue, signal),
-          );
+          return forgeToolResult(await this.searchLore(argumentsValue, signal));
         case "forge.validate.content":
           return forgeToolResult(
             await this.validatePublicContent(argumentsValue),
@@ -123,7 +121,9 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     };
   }
 
-  async inspectQuestSchema(input: unknown): Promise<ForgeInspectQuestSchemaOutput> {
+  async inspectQuestSchema(
+    input: unknown,
+  ): Promise<ForgeInspectQuestSchemaOutput> {
     parseForgeInspectInput(input);
     const read = await this.#repository.readText({
       sourceRootId: "forge.content-schema",
