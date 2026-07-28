@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.2 record](sprint-8-workstream-8-2-record.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.3 record](sprint-8-workstream-8-3-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 and 8.2 complete; workstream 8.3 next
+- **Status:** ACTIVE — workstreams 8.1 and 8.2 complete; workstream 8.3 implementation candidate awaiting final exact-head validation
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -36,8 +36,8 @@ Sprint 8 inherits:
 
 - [x] **8.1 — Website application boundary and migration contract**
 - [x] **8.2 — Next.js shell, design tokens, security headers, metadata, and assets**
-- [ ] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations — NEXT**
-- [ ] **8.4 — Homepage and Promise migration**
+- [ ] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations — IMPLEMENTED; VALIDATION PENDING**
+- [ ] **8.4 — Homepage and Promise migration — NEXT AFTER VALIDATION**
 - [ ] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
 - [ ] **8.6 — Trust Center and Open Forge**
 - [ ] **8.7 — Roadmap, capability status, support, and funding transparency**
@@ -62,7 +62,7 @@ The validated 8.1 head is `d780a8c31cc484ede9b110b4dd0e43918ae88f42` with CI run
 
 ## 8.2 result — Next.js compatibility shell
 
-Workstream 8.2 establishes:
+Workstream 8.2 established:
 
 - pinned Next.js `16.2.12`;
 - pinned React and React DOM `19.2.8`;
@@ -79,43 +79,55 @@ Workstream 8.2 establishes:
 - shell validation and focused tests; and
 - continued disabled Git-triggered Vercel deployment.
 
-The custom Node page server and HTML-fragment runtime are removed rather than retained as a parallel website.
+The custom Node page server and HTML-fragment runtime were removed rather than retained as a parallel website.
 
-The exact implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+The final reconciled 8.2 head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI run 968 and DCO Attestation run 1045.
 
-The controlling evidence is [Sprint 8.2 Record](sprint-8-workstream-8-2-record.md).
+## 8.3 result — navigation and accessibility foundations
 
-## 8.3 — navigation and accessibility foundations
+The formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`.
 
-Workstream 8.3 may implement:
+Workstream 8.3 adds:
 
-- shared header, footer, skip links, landmarks, focus behavior, and keyboard navigation;
-- equal narrative and direct navigation paths;
-- reusable capability-status vocabulary and components;
+- shared conventional direct navigation;
+- an optional native `details` and `summary` narrative path reaching the same essential destinations;
+- skip links for primary navigation and main content;
+- semantic `header`, `nav`, `main`, and `footer` landmarks;
+- deterministic visible-focus treatment and native keyboard operation;
+- reusable `live`, `experimental`, `planned`, and `long-horizon` status primitives;
+- stable capability IDs, summaries, canonical source URLs, and source labels;
+- server-rendered navigation and status understanding without `use client`;
 - reduced-motion and no-animation behavior;
-- low-bandwidth and image-failure behavior; and
-- server-rendered essential information without client JavaScript.
+- reduced-data, image-failure, higher-contrast, and forced-colors behavior;
+- lazy decorative hero imagery; and
+- expanded deterministic validation and focused tests.
 
-Exit criteria:
+Exit evidence implemented:
 
-- all essential shell destinations are reachable through conventional direct navigation;
-- optional narrative entry exposes no exclusive essential content;
-- status primitives use only approved evidence vocabulary;
-- keyboard and visible-focus behavior are deterministic and tested;
-- reduced-motion behavior removes non-essential movement;
-- images may fail without hiding essential information;
+- essential shell destinations are available through direct navigation;
+- the narrative path exposes no exclusive essential content;
+- controlled status values are deterministic and source-linked;
+- keyboard and visible-focus foundations are encoded and tested;
+- reduced-motion removes non-essential movement;
+- decorative images may fail or be suppressed without hiding essential information;
 - client JavaScript is not required for essential navigation or status understanding; and
-- the workstream does not prematurely implement later page content, signup operation, transactions, or Sprint 9 play.
+- no later page family, signup operation, transaction, or Sprint 9 behavior was activated.
+
+The first implementation run passed documentation links, repository policy, economics validation, content validation, lint, and typecheck. It found one wording-coupled source assertion and formatter differences. The assertion now verifies the structured `sourceHref` and `sourceLabel` fields, and Prettier output was applied through a self-removing workflow.
+
+Final exact-head validation remains pending. The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
 
 ## 8.4 — homepage and Promise migration
 
-Deliverables:
+After 8.3 validation, workstream 8.4 may deliver:
 
 - migrated cinematic homepage using deliberate cuts and splices;
 - primary Promise and player-control explanation;
 - public-software/private-data boundary;
 - current capability status and contribution paths; and
 - route and content-authority tests.
+
+It must preserve the 8.3 direct/narrative parity, controlled status values, server-rendered essential information, and accessibility/resilience foundations.
 
 ## 8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI
 
