@@ -1,0 +1,161 @@
+.definition-grid,
+.roadmap-grid,
+.support-grid,
+.funding-record-grid,
+.funding-boundary-grid,
+.concentration-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.definition-grid,
+.funding-boundary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.roadmap-grid,
+.support-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.funding-record-grid,
+.concentration-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.definition-card,
+.roadmap-card,
+.support-card,
+.empty-state,
+.funding-record-card,
+.funding-boundary-card,
+.concentration-card {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-medium);
+  background: rgb(11 36 54 / 0.56);
+  padding: var(--space-5);
+}
+
+.definition-card p,
+.roadmap-card p,
+.support-card p,
+.empty-state p,
+.funding-record-card p,
+.funding-boundary-card li,
+.concentration-card p,
+.registry-note {
+  color: var(--color-sand-200);
+}
+
+.roadmap-card > a,
+.support-card > a {
+  color: var(--color-gold-300);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
+}
+
+.public-record-page .status-section {
+  margin-top: var(--space-8);
+}
+
+.public-record-page .status-section .section-heading {
+  max-width: var(--content-reading);
+}
+
+.protected-support-panel,
+.concentration-panel {
+  border-block: 1px solid rgb(234 215 181 / 0.18);
+  padding-block: var(--space-7);
+}
+
+.empty-state {
+  max-width: var(--content-reading);
+}
+
+.empty-state h3 {
+  margin-top: var(--space-4);
+}
+
+.record-id {
+  color: var(--color-sea-300);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.registry-note {
+  margin-top: var(--space-4);
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.funding-boundary-card ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
+.funding-boundary-card li + li {
+  margin-top: var(--space-3);
+}
+
+.concentration-card h3 {
+  color: var(--color-gold-300);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+@media (max-width: 64rem) {
+  .concentration-grid,
+  .funding-record-grid,
+  .roadmap-grid,
+  .support-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .concentration-grid,
+  .definition-grid,
+  .funding-boundary-grid,
+  .funding-record-grid,
+  .roadmap-grid,
+  .support-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .concentration-card,
+  .definition-card,
+  .empty-state,
+  .funding-boundary-card,
+  .funding-record-card,
+  .roadmap-card,
+  .support-card {
+    background-image: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .concentration-card,
+  .definition-card,
+  .empty-state,
+  .funding-boundary-card,
+  .funding-record-card,
+  .roadmap-card,
+  .support-card {
+    border-width: 0.15rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .concentration-card,
+  .definition-card,
+  .empty-state,
+  .funding-boundary-card,
+  .funding-record-card,
+  .roadmap-card,
+  .support-card {
+    forced-color-adjust: auto;
+  }
+}
