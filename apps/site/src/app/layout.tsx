@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { SiteNavigation } from "@/components/site-navigation";
 import "./globals.css";
 
 const siteUrl = new URL("https://www.calypsospromise.org");
@@ -55,55 +56,48 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#main">
-          Skip to content
-        </a>
+        <div className="skip-links" aria-label="Skip links">
+          <a className="skip-link" href="#primary-navigation">
+            Skip to primary navigation
+          </a>
+          <a className="skip-link" href="#main">
+            Skip to content
+          </a>
+        </div>
         <header className="site-header">
-          <Link className="brand" href="/" aria-label="Calypso’s Promise home">
-            <Image
-              src="/assets/compass-mark.svg"
-              width={54}
-              height={54}
-              alt=""
-            />
-            <span>
-              <strong>Calypso’s Promise</strong>
-              <small>An open-source health odyssey</small>
-            </span>
-          </Link>
-          <nav className="site-nav" aria-label="Primary navigation">
-            <Link href="/">Home</Link>
-            <Link href="/privacy">Signup privacy</Link>
-            <a
-              href="https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Current status
-            </a>
+          <div className="header-bar">
+            <Link className="brand" href="/" aria-label="Calypso’s Promise home">
+              <Image
+                src="/assets/compass-mark.svg"
+                width={54}
+                height={54}
+                alt=""
+              />
+              <span>
+                <strong>Calypso’s Promise</strong>
+                <small>An open-source health odyssey</small>
+              </span>
+            </Link>
+            <p className="header-promise">Build. Understand. Control.</p>
+          </div>
+          <SiteNavigation />
+        </header>
+        <main id="main" className="page-shell" tabIndex={-1}>
+          {children}
+        </main>
+        <footer className="site-footer">
+          <p>The software is open. The person’s health data is private.</p>
+          <nav aria-label="Footer navigation">
             <a
               href="https://github.com/finalboss-tom/calypsos-promise"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
+              Inspect the public repository
+              <span className="visually-hidden"> (opens in a new tab)</span>
             </a>
+            <Link href="/privacy">Signup privacy</Link>
           </nav>
-        </header>
-        <main id="main" className="page-shell">
-          {children}
-        </main>
-        <footer className="site-footer">
-          <span>
-            The software is open. The person’s health data is private.
-          </span>
-          <a
-            href="https://github.com/finalboss-tom/calypsos-promise"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Inspect the public repository
-          </a>
         </footer>
       </body>
     </html>
