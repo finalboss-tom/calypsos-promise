@@ -2,9 +2,11 @@
 
 [Current status](current-status.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Workstream 8.2 record](sprint-8-workstream-8-2-record.md) · [Site README](../../apps/site/README.md) · [Issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** IMPLEMENTED — final exact-head validation pending
+- **Status:** IMPLEMENTED AND VALIDATED — workstream 8.4 next
 - **Entry baseline:** Sprint 8.2 final validated head `2e9170efebd68562e0dbf8775815066e2a042e4e`
 - **Formatted implementation head:** `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`
+- **Validated reconciled head:** `2ff9fd966cd7d00bf846ed63147584cadd437d6b`
+- **Validation:** CI run 986 and DCO Attestation run 1064 passed
 - **Application owner:** `apps/site`
 - **Rendering boundary:** server-rendered essential information; no client component is required
 - **Information boundary:** public repository records and explicitly synthetic examples only
@@ -105,6 +107,19 @@ The site validator and focused tests verify:
 - disabled Git-triggered deployment.
 
 The first implementation run found one test assertion tied to wording rather than the structured source fields. The assertion was corrected to verify the actual schema. CI formatting was then applied through a self-removing workflow; no temporary workflow remains at the formatted implementation head.
+
+The final reconciled candidate `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed:
+
+- formatting;
+- documentation links;
+- repository policy;
+- economics validation;
+- content validation;
+- lint;
+- typecheck;
+- tests;
+- GitHub Actions CI run 986; and
+- DCO Attestation run 1064.
 
 ## Evidence limits
 
