@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.4 record](roadmap/sprint-8-workstream-8-4-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.5 record](roadmap/sprint-8-workstream-8-5-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -21,27 +21,28 @@ The directive is constrained by the player promise:
 
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 8 Execution Plan](roadmap/sprint-8-execution-plan.md)
-3. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
-4. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
-5. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
-6. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
-7. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
-8. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-9. [Sprint Roadmap](roadmap/sprints.md)
-10. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-11. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-12. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-13. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-14. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-15. [Aster Contract Baseline](product/aster-contract-baseline.md)
-16. [Security Architecture](security/README.md)
-17. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-18. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-19. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-20. [Repository and Module Boundaries](architecture/module-boundaries.md)
-21. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-22. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-23. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+3. [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](roadmap/sprint-8-workstream-8-5-record.md)
+4. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
+5. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
+6. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
+7. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
+8. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
+9. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
+10. [Sprint Roadmap](roadmap/sprints.md)
+11. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+12. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+13. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+14. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+15. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+16. [Aster Contract Baseline](product/aster-contract-baseline.md)
+17. [Security Architecture](security/README.md)
+18. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+19. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+20. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+21. [Repository and Module Boundaries](architecture/module-boundaries.md)
+22. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+23. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+24. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -74,27 +75,25 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 Sprints 0–7 and the pre-Sprint 8 repository reconciliation are complete and merged.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61.
-
-Workstreams 8.1 through 8.4 are complete.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.5 are complete; workstream 8.6 is next.
 
 The public site now provides:
 
 - one pinned Next.js App Router application;
-- a migrated cinematic homepage;
-- a dedicated source-backed `/promise` route;
+- a migrated cinematic homepage and dedicated `/promise` route;
+- `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` source-backed guide routes;
 - direct and optional narrative navigation parity;
-- controlled status primitives with canonical source links;
+- controlled evidence statuses with canonical source links;
 - server-rendered essential information;
 - skip links, landmarks, keyboard and visible-focus foundations;
 - reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive behavior;
 - paused signup without intake or forwarding;
 - nonce CSP and public security headers; and
-- successful focused production-build and complete repository validation evidence.
+- focused production-build and repository validation evidence.
 
-Workstream 8.4 focused build commit `790bf9a79a76c28451fefcf959d92aefa59b5d03` passed the site production build, lint, typecheck, and focused tests. Clean source-only head `dc5986d19c691ba4dea95040be5bc5aa34a8d1b2` passed CI 1010 and DCO 1089.
+The 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
-Workstream 8.5 is next. It owns the Seven Laws, How It Works, provider-respectful consumer-first and interoperability explanation, and Aster/AI page.
+Workstream 8.6 is next. It owns the Trust Center and Open Forge while preserving frozen authority, canonical sources, provider independence, Aster and Forge non-authority, server-rendering, accessibility and resilience controls, paused signup, disabled deployment, and permanent non-scope.
 
 The site is not a preview deployment, official release, Trust Center, Open Forge, canonical funding view, final signup system, accessibility certification, performance release, or private product capability.
 
@@ -139,4 +138,4 @@ Only public repository records and explicitly synthetic evidence belong in publi
 
 ## Status rule
 
-Status follows evidence. A merged contract, passing test, preview, or deployment proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, clinical, legal, provider, financial, operational, or production-health-data approval.
+Status follows evidence. A merged contract, passing test, preview, or deployment proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, AI-safety, clinical, interoperability, legal, provider, financial, operational, or production-health-data approval.
