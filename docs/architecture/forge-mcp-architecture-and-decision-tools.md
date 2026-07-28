@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Architecture index](README.md) · [Current status](../roadmap/current-status.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** Sprint 7.5 implementation complete on draft PR #55; fresh final-head repository validation in progress
+- **Status:** COMPLETE for Sprint 7.5 public contracts and synthetic evidence; implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f` passed CI run 793 and DCO run 861
 - **Tool contract revision:** `1`
 - **Runtime registry revision:** `2`
 - **Transport:** local `stdio` only
@@ -143,8 +143,24 @@ The Sprint 7.5 synthetic test suite covers:
 - runtime descriptor listing and transport dispatch; and
 - preservation of all Sprint 7.4 tool behavior inside the revised runtime.
 
+## Validation evidence
+
+Implementation head `5fca3dc6063b3c461fb153e6ab29460a0094202f` passed:
+
+- formatting;
+- documentation links;
+- repository policy;
+- economics validation;
+- content validation;
+- lint;
+- typecheck;
+- tests; and
+- DCO attestation.
+
+The evidence is recorded in GitHub Actions CI run 793 and DCO Attestation run 861. This establishes repository consistency and public synthetic evidence only; it does not establish production or specialist readiness.
+
 ## Explicit non-scope
 
 Sprint 7.5 does not implement standards or synthetic connector search, mapping validation, synthetic generation, invocation receipts, production rate limiting, remote MCP, authentication, a database, vector search, embeddings, model calls, arbitrary filesystem search, repository mutation, private Chronicle access, provider access, connectors, clinical behavior, deployment, or specialist approval.
 
-Those boundaries remain assigned to later accepted workstreams or institutional gates. Sprint 7.6 remains next only after the final Sprint 7.5 head is repository-green and its status records are reconciled.
+Those boundaries remain assigned to later accepted workstreams or institutional gates. Sprint 7.6 is the next bounded workstream after this completed 7.5 baseline.
