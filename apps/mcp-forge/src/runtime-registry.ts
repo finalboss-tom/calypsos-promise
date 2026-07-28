@@ -1,7 +1,4 @@
-import {
-  FORGE_TOOL_REGISTRY,
-  type ForgeToolContract,
-} from "./contracts.js";
+import { FORGE_TOOL_REGISTRY, type ForgeToolContract } from "./contracts.js";
 import {
   FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
