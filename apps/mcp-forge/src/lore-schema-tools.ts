@@ -42,8 +42,18 @@ import {
   type ForgeTransportToolService,
   type ResolvedPublicRecord,
 } from "./lore-tool-support.js";
+import { validateForgeMappingDraft } from "./mapping-draft-tools.js";
+import { searchForgePublicStandards } from "./public-standards-tools.js";
 import { createForgeObjectIdLocator } from "./source-repository.js";
 import { ForgeSourceRepository } from "./source-repository.js";
+import {
+  FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS,
+  type ForgeEnabledStandardsMappingToolId,
+  type ForgeSearchPublicStandardsOutput,
+  type ForgeSearchSyntheticConnectorFixturesOutput,
+  type ForgeValidateMappingDraftOutput,
+} from "./standards-mapping-contracts.js";
+import { searchForgeSyntheticConnectorFixtures } from "./synthetic-connector-tools.js";
 
 const MAX_PUBLIC_RECORD_BYTES = 1_048_576;
 
@@ -69,7 +79,10 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
         FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS.includes(
           name as ForgeEnabledDocumentationSearchToolId,
         );
-      if (!loreTool && !documentationTool) {
+      const standardsTool = FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS.includes(
+        name as ForgeEnabledStandardsMappingToolId,
+      );
+      if (!loreTool && !documentationTool && !standardsTool) {
         throw new ForgeLoreSchemaToolError(
           FORGE_LORE_SCHEMA_ERROR_CODES.toolUnknown,
           "The requested Forge tool is not enabled.",
@@ -79,7 +92,9 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
 
       switch (
         name as
-          ForgeEnabledLoreSchemaToolId | ForgeEnabledDocumentationSearchToolId
+          | ForgeEnabledLoreSchemaToolId
+          | ForgeEnabledDocumentationSearchToolId
+          | ForgeEnabledStandardsMappingToolId
       ) {
         case "forge.search.lore":
           return forgeToolResult(await this.searchLore(argumentsValue, signal));
@@ -98,6 +113,16 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
         case "forge.search.decision":
           return forgeToolResult(
             await this.searchDecision(argumentsValue, signal),
+          );
+        case "forge.search.public-standards":
+          return forgeToolResult(
+            await this.searchPublicStandards(argumentsValue, signal),
+          );
+        case "forge.validate.mapping-draft":
+          return forgeToolResult(await this.validateMappingDraft(argumentsValue));
+        case "forge.search.synthetic-connector-fixtures":
+          return forgeToolResult(
+            await this.searchSyntheticConnectorFixtures(argumentsValue, signal),
           );
       }
     } catch (error) {
@@ -133,6 +158,28 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     signal?: AbortSignal,
   ): Promise<ForgeSearchDecisionOutput> {
     return searchForgeDecision(this.#repository, input, signal);
+  }
+
+  searchPublicStandards(
+    input: unknown,
+    signal?: AbortSignal,
+  ): Promise<ForgeSearchPublicStandardsOutput> {
+    return searchForgePublicStandards(this.#repository, input, signal);
+  }
+
+  validateMappingDraft(input: unknown): Promise<ForgeValidateMappingDraftOutput> {
+    return validateForgeMappingDraft(this.#repository, input);
+  }
+
+  searchSyntheticConnectorFixtures(
+    input: unknown,
+    signal?: AbortSignal,
+  ): Promise<ForgeSearchSyntheticConnectorFixturesOutput> {
+    return searchForgeSyntheticConnectorFixtures(
+      this.#repository,
+      input,
+      signal,
+    );
   }
 
   async validatePublicContent(
