@@ -1,4 +1,6 @@
 export * from "./contracts.js";
+export * from "./documentation-search-contracts.js";
+export * from "./documentation-search-tools.js";
 export * from "./fixtures.js";
 export * from "./lore-schema-contracts.js";
 export * from "./lore-schema-tools.js";
