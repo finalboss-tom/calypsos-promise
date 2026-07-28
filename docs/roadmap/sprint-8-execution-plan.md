@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.2 record](sprint-8-workstream-8-2-record.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstream 8.1
+- **Status:** ACTIVE — workstreams 8.1 and 8.2 complete; workstream 8.3 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -32,54 +32,62 @@ Sprint 8 inherits:
 - the pre-Sprint 8 route, deployment, rollback, cache, security-header, signup, canonical-data, accessibility, performance, and validation controls; and
 - every open production, specialist, institutional, signup, release, and measurement holdpoint.
 
-## Workstream sequence
+## Workstream status
 
-### 8.1 — Website application boundary and migration contract
+- [x] **8.1 — Website application boundary and migration contract**
+- [x] **8.2 — Next.js shell, design tokens, security headers, metadata, and assets**
+- [ ] **8.3 — Navigation, narrative entry, status primitives, and accessibility foundations — NEXT**
+- [ ] **8.4 — Homepage and Promise migration**
+- [ ] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
+- [ ] **8.6 — Trust Center and Open Forge**
+- [ ] **8.7 — Roadmap, capability status, support, and funding transparency**
+- [ ] **8.8 — Signup disposition and bounded implementation**
+- [ ] **8.9 — Accessibility, performance, security, route, and authority validation**
+- [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff**
 
-Define the implementation boundary before framework migration.
+## 8.1 result — website boundary
 
-Deliverables:
+Workstream 8.1 established:
 
-- current Track 0A route, asset, content, script, signup, test, and deployment inventory;
-- target `apps/site` application ownership and dependency direction;
-- public route map and preserve, redirect, or retire rules;
-- repository-owned content-authority and source-link rules;
-- design-token ownership and no-premature-package rule;
-- server-rendering and client-enhancement boundary;
-- security-header, secret, cache, and asset rules;
-- signup preserve-or-retire decision gate;
-- preview, cutover, rollback, and official-release evidence rules;
-- accessibility, performance, metadata, route, status, funding, and content-authority validation plan; and
-- explicit non-scope.
+- `apps/site` as the only website owner;
+- one in-place migration and no duplicate application;
+- explicit route migration rules;
+- repository-owned content authority and canonical source links;
+- design-token ownership inside `apps/site`;
+- server-rendering and optional client-enhancement boundaries;
+- security-header, secret, cache, asset, signup, deployment, rollback, accessibility, performance, metadata, and validation contracts; and
+- permanent non-scope.
 
-Exit criteria:
+The validated 8.1 head is `d780a8c31cc484ede9b110b4dd0e43918ae88f42` with CI run 951 and DCO run 1027.
 
-- `apps/site` is confirmed as the only website owner;
-- no duplicate site, CMS, database, remote content API, or new shared package is selected;
-- every current public route has an explicit migration rule;
-- canonical status and economics records remain upstream authority;
-- security, cache, deployment, signup, accessibility, performance, and rollback requirements are testable;
-- no Next.js dependency or implementation is added in this workstream; and
-- repository status, issue #2, issue #60, and the draft Sprint 8 PR agree on the active boundary.
+## 8.2 result — Next.js compatibility shell
 
-### 8.2 — Next.js shell, tokens, security, metadata, and assets
+Workstream 8.2 establishes:
 
-Migrate `apps/site` to one pinned Next.js application foundation.
-
-Deliverables:
-
-- pinned framework and React dependencies with lockfile evidence;
-- App Router shell and root layout;
-- repository-owned design tokens;
-- global styling and asset migration;
-- security headers and content-security policy;
+- pinned Next.js `16.2.12`;
+- pinned React and React DOM `19.2.8`;
+- exact React type dependencies and lockfile evidence;
+- App Router root layout and server-rendered compatibility homepage;
+- preserved `/`, `/privacy`, `/joined`, and `/api/join` contracts;
+- paused signup with no intake or forwarding;
+- application-local design tokens and global styling;
 - metadata, canonical URL, social preview, sitemap, robots, not-found, and error behavior;
-- route compatibility for the current public surface; and
-- local build, start, lint, type, and focused tests.
+- nonce CSP through the Next.js 16 proxy convention;
+- public security headers and no-store API behavior;
+- mutable cache semantics for repository-owned compatibility assets;
+- `next/image` for shell imagery;
+- shell validation and focused tests; and
+- continued disabled Git-triggered Vercel deployment.
 
-### 8.3 — Navigation, narrative entry, status primitives, and accessibility foundations
+The custom Node page server and HTML-fragment runtime are removed rather than retained as a parallel website.
 
-Deliverables:
+The exact implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+
+The controlling evidence is [Sprint 8.2 Record](sprint-8-workstream-8-2-record.md).
+
+## 8.3 — navigation and accessibility foundations
+
+Workstream 8.3 may implement:
 
 - shared header, footer, skip links, landmarks, focus behavior, and keyboard navigation;
 - equal narrative and direct navigation paths;
@@ -88,7 +96,18 @@ Deliverables:
 - low-bandwidth and image-failure behavior; and
 - server-rendered essential information without client JavaScript.
 
-### 8.4 — Homepage and Promise migration
+Exit criteria:
+
+- all essential shell destinations are reachable through conventional direct navigation;
+- optional narrative entry exposes no exclusive essential content;
+- status primitives use only approved evidence vocabulary;
+- keyboard and visible-focus behavior are deterministic and tested;
+- reduced-motion behavior removes non-essential movement;
+- images may fail without hiding essential information;
+- client JavaScript is not required for essential navigation or status understanding; and
+- the workstream does not prematurely implement later page content, signup operation, transactions, or Sprint 9 play.
+
+## 8.4 — homepage and Promise migration
 
 Deliverables:
 
@@ -98,7 +117,7 @@ Deliverables:
 - current capability status and contribution paths; and
 - route and content-authority tests.
 
-### 8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI
+## 8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI
 
 Deliverables:
 
@@ -108,7 +127,7 @@ Deliverables:
 - Aster and AI page preserving proposal, confirmation, validation, fallback, source, and uncertainty boundaries; and
 - historical claims kept inside cited evidence.
 
-### 8.6 — Trust Center and Open Forge
+## 8.6 — Trust Center and Open Forge
 
 Deliverables:
 
@@ -116,7 +135,7 @@ Deliverables:
 - Open Forge page describing the ten bounded local public/synthetic tools, provenance, limits, receipts, errors, compatibility, non-authority, and ordinary non-MCP contribution path; and
 - no certification or production-safety overstatement.
 
-### 8.7 — Roadmap, capability status, support, and funding transparency
+## 8.7 — roadmap, capability status, support, and funding transparency
 
 Deliverables:
 
@@ -125,7 +144,7 @@ Deliverables:
 - approved and prohibited benefit, conflict, concentration, outcome, correction, and challenge explanations; and
 - disabled transaction handoff with no charitable, tax, nonprofit, payment, or public-benefit claim.
 
-### 8.8 — Signup disposition and bounded implementation
+## 8.8 — signup disposition and bounded implementation
 
 Choose one evidence-backed path:
 
@@ -134,7 +153,7 @@ Choose one evidence-backed path:
 
 The signup surface cannot become account creation, health-data intake, research enrollment, donation processing, or an undeclared marketing database.
 
-### 8.9 — Accessibility, performance, security, route, and authority validation
+## 8.9 — accessibility, performance, security, route, and authority validation
 
 Deliverables:
 
@@ -150,7 +169,7 @@ Deliverables:
 - full repository validation; and
 - preview evidence without claiming independent certification.
 
-### 8.10 — Completion, release evidence, and Sprint 9 handoff
+## 8.10 — completion, release evidence, and Sprint 9 handoff
 
 Deliverables:
 
@@ -178,19 +197,7 @@ The sprint does not close until:
 
 ## Permanent non-scope
 
-Sprint 8 does not activate:
-
-- accounts, authentication, or private identity;
-- real health-data capture or private Living Chronicles;
-- production Aster or private MCP;
-- provider, EHR, connector, or production exchange behavior;
-- clinical workflows or health guidance;
-- research enrollment;
-- governance voting;
-- donations, sponsorship checkout, payments, tax claims, or financial operations;
-- estate or legacy directives;
-- analytics over personal data; or
-- Sprint 9 prologue or gameplay.
+Sprint 8 does not activate accounts, authentication, private identity, real health-data capture, private Living Chronicles, production Aster, private MCP, provider, EHR, connector, production exchange behavior, clinical workflows, health guidance, research enrollment, governance voting, donations, sponsorship checkout, payments, tax claims, financial operations, estate directives, personal-data analytics, or Sprint 9 gameplay.
 
 ## Evidence rule
 
