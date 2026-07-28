@@ -8,12 +8,11 @@
 - **Merged baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
-- **Completed workstreams:** 8.1 and 8.2
-- **Implementation candidate:** 8.3 — navigation, narrative entry, status primitives, and accessibility foundations
-- **Next after validation:** 8.4 — homepage and Promise migration
+- **Completed workstreams:** 8.1, 8.2, and 8.3
+- **Next workstream:** 8.4 — homepage and Promise migration
 - **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
-- **Website runtime:** Next.js App Router compatibility shell with server-rendered navigation and status foundations; not deployed or officially released
+- **Website runtime:** validated Next.js App Router compatibility shell with server-rendered navigation and status foundations; not deployed or officially released
 - **Production health data:** none
 - **Production AI, private MCP, providers, connectors, accounts, transactions, or consequential actions:** none
 - **Independent specialist review:** not established for the principal product, website accessibility, security, privacy, clinical, legal, provider, financial, operational, or research boundaries
@@ -77,11 +76,9 @@ It established:
 
 Final reconciled head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI 968 and DCO 1045.
 
-## Workstream 8.3 — implementation candidate
+## Workstream 8.3 — validated navigation and accessibility foundations
 
-The formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`.
-
-The candidate adds:
+Workstream 8.3 established:
 
 - a shared direct-navigation registry;
 - an optional native `details` and `summary` Ogygia path reaching the same essential destinations;
@@ -96,9 +93,9 @@ The candidate adds:
 - deferred decorative hero imagery; and
 - expanded deterministic shell validation and focused tests.
 
-The first CI run passed documentation links, repository policy, economics validation, content validation, lint, and typecheck. It found one wording-coupled test assertion and formatter differences. The test now verifies the actual `sourceHref` and `sourceLabel` schema, and Prettier output has been applied through a self-removing workflow.
+The first implementation run found one wording-coupled source assertion and formatter differences. The assertion was corrected to verify the structured `sourceHref` and `sourceLabel` fields, and Prettier output was applied through a self-removing workflow.
 
-Final exact-head validation remains pending. Until it passes, workstream 8.3 is an implementation candidate rather than a completed workstream.
+Validated reconciled head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI 986, and DCO 1064.
 
 The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
 
@@ -130,7 +127,7 @@ It does not yet provide:
 - preview or official production deployment; or
 - any private or production product capability.
 
-## Next workstream after validation
+## Next workstream
 
 Workstream 8.4 may migrate the final cinematic homepage and Promise explanation through deliberate cuts and splices while preserving:
 
@@ -145,7 +142,7 @@ It may not activate later page families, signup intake, transactions, private da
 
 ## Implemented repository surfaces
 
-- [`apps/site`](../../apps/site) — Next.js compatibility shell with 8.3 navigation/status/accessibility candidate; not deployed
+- [`apps/site`](../../apps/site) — validated Next.js shell with navigation/status/accessibility foundations; not deployed
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor tooling with ten bounded tools
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
