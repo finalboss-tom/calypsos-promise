@@ -2,7 +2,7 @@
 
 `apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 and 8.2 are complete. Workstream 8.3 is implemented and awaiting final exact-head validation.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.3 are complete; workstream 8.4 is next.
 
 Controlling records:
 
@@ -13,7 +13,7 @@ Controlling records:
 
 ## Current implementation
 
-The application is a pinned Next.js App Router compatibility shell with server-rendered navigation and status foundations:
+The application is a pinned Next.js App Router compatibility shell with validated server-rendered navigation and status foundations:
 
 - Next.js `16.2.12`;
 - React and React DOM `19.2.8`;
@@ -95,7 +95,7 @@ The current implementation includes:
 - forced-colors removal of decorative imagery and overlays; and
 - responsive navigation and status layouts.
 
-These are implementation foundations, not accessibility conformance certification or affected-user validation.
+These are validated implementation foundations, not accessibility conformance certification or affected-user validation.
 
 ## What is not implemented
 
@@ -185,6 +185,6 @@ Run `pnpm check` from the repository root before review.
 
 Workstream 8.2 final head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI 968 and DCO 1045.
 
-Workstream 8.3 formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`. Final exact-head validation is pending and will be recorded in issue #60 and draft PR #61.
+Workstream 8.3 validated reconciled head `2ff9fd966cd7d00bf846ed63147584cadd437d6b` passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, CI 986, and DCO 1064.
 
 This evidence does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, or production readiness.
