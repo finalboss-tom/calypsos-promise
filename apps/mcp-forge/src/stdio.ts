@@ -26,20 +26,12 @@ function transportFailure(
   return {
     jsonrpc: "2.0",
     id: null,
-    error: {
-      code,
-      message,
-      data: {
-        forgeCode,
-      },
-    },
+    error: { code, message, data: { forgeCode } },
   };
 }
 
 async function writeChunk(output: Writable, chunk: string): Promise<void> {
-  if (output.write(chunk)) {
-    return;
-  }
+  if (output.write(chunk)) return;
   await once(output, "drain");
 }
 
@@ -56,6 +48,7 @@ export class ForgeStdioServer {
   constructor(options: ForgeStdioServerOptions = {}) {
     this.session = new ForgeTransportSession({
       requestHandlers: options.requestHandlers,
+      toolService: options.toolService,
     });
     this.maxMessageBytes =
       options.maxMessageBytes ?? FORGE_STDIO_MAX_MESSAGE_BYTES;
@@ -66,10 +59,7 @@ export class ForgeStdioServer {
     output: Writable = process.stdout,
     errorOutput: Writable = process.stderr,
   ): Promise<void> {
-    if (this.serving) {
-      throw new Error("Forge stdio server is already serving.");
-    }
-
+    if (this.serving) throw new Error("Forge stdio server is already serving.");
     this.serving = true;
     this.output = output;
     this.errorOutput = errorOutput;
@@ -80,12 +70,9 @@ export class ForgeStdioServer {
 
     const processText = (incoming: string): void => {
       let text = incoming;
-
       if (discardingOversizedLine) {
         const newlineIndex = text.indexOf("\n");
-        if (newlineIndex === -1) {
-          return;
-        }
+        if (newlineIndex === -1) return;
         text = text.slice(newlineIndex + 1);
         discardingOversizedLine = false;
       }
@@ -98,7 +85,6 @@ export class ForgeStdioServer {
         const line = rawLine.endsWith("\r")
           ? rawLine.slice(0, rawLine.length - 1)
           : rawLine;
-
         if (Buffer.byteLength(line, "utf8") > this.maxMessageBytes) {
           this.scheduleResponse(
             transportFailure(
@@ -133,12 +119,10 @@ export class ForgeStdioServer {
           : Buffer.from(String(chunk));
         processText(decoder.write(bytes));
       }
-
       processText(decoder.end());
       if (!discardingOversizedLine && buffer.length > 0) {
         this.scheduleLine(buffer.endsWith("\r") ? buffer.slice(0, -1) : buffer);
       }
-
       await Promise.allSettled([...this.pending]);
       await this.writeQueue;
     } catch {
@@ -213,9 +197,7 @@ export class ForgeStdioServer {
     }
 
     const response = await this.session.handleMessage(message);
-    if (response !== undefined) {
-      await this.writeResponse(response);
-    }
+    if (response !== undefined) await this.writeResponse(response);
   }
 
   private writeResponse(response: ForgeJsonRpcResponse): Promise<void> {
@@ -223,7 +205,6 @@ export class ForgeStdioServer {
     if (output === undefined) {
       return Promise.reject(new Error("Forge stdio output is unavailable."));
     }
-
     const line = `${JSON.stringify(response)}\n`;
     this.writeQueue = this.writeQueue.then(() => writeChunk(output, line));
     return this.writeQueue;
