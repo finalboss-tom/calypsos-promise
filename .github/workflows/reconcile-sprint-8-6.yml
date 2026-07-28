@@ -33,12 +33,12 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: python .github/scripts/reconcile_sprint_8_6.py
-      - run: pnpm format
       - name: Remove temporary reconciliation files
         run: |
           rm .github/workflows/reconcile-sprint-8-6.yml
           rm .github/scripts/reconcile_sprint_8_6.py
           rm -f .github/workflows/activate-reconcile-sprint-8-6.yml
+      - run: pnpm format
       - name: Commit reconciliation
         run: |
           git config user.name "github-actions[bot]"
