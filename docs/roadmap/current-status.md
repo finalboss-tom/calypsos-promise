@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.2 record](sprint-8-workstream-8-2-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Pre-Sprint 8 review](pre-sprint-8-alignment-review.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.3 record](sprint-8-workstream-8-3-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
@@ -9,10 +9,11 @@
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
 - **Completed workstreams:** 8.1 and 8.2
-- **Next workstream:** 8.3 — navigation, narrative entry, status primitives, and accessibility foundations
+- **Implementation candidate:** 8.3 — navigation, narrative entry, status primitives, and accessibility foundations
+- **Next after validation:** 8.4 — homepage and Promise migration
 - **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
-- **Website runtime:** validated Next.js App Router compatibility shell; not deployed or officially released
+- **Website runtime:** Next.js App Router compatibility shell with server-rendered navigation and status foundations; not deployed or officially released
 - **Production health data:** none
 - **Production AI, private MCP, providers, connectors, accounts, transactions, or consequential actions:** none
 - **Independent specialist review:** not established for the principal product, website accessibility, security, privacy, clinical, legal, provider, financial, operational, or research boundaries
@@ -46,85 +47,105 @@ Workstream 8.1 established:
 
 - `apps/site` as the single public website owner;
 - one in-place migration rather than a duplicate site;
-- preserve, redirect, or retire rules for the existing public routes;
+- explicit route migration rules;
 - repository-owned content authority and canonical source-link requirements;
 - server-rendered essential information with optional client enhancement;
-- design-token ownership inside `apps/site`;
+- application-local design-token ownership;
 - security-header, secret, cache, asset, signup, deployment, rollback, accessibility, performance, metadata, and validation contracts; and
 - permanent non-scope.
 
-The controlling records are the [Sprint 8 execution plan](sprint-8-execution-plan.md), [website architecture](../architecture/public-website-foundation-and-migration.md), and [8.1 record](sprint-8-workstream-8-1-record.md).
+Validated head `d780a8c31cc484ede9b110b4dd0e43918ae88f42` passed CI 951 and DCO 1027.
 
 ## Workstream 8.2 — validated Next.js shell
 
-Workstream 8.2 replaces the custom Node page server and HTML-fragment runtime with one pinned App Router compatibility shell.
+Workstream 8.2 replaced the custom Node page server and HTML-fragment runtime with one pinned App Router compatibility shell.
 
-The validated implementation establishes:
+It established:
 
 - Next.js `16.2.12`;
 - React and React DOM `19.2.8`;
-- exact React type packages and lockfile evidence;
+- exact React type dependencies and lockfile evidence;
 - one server-rendered root layout and compatibility homepage;
 - preserved `/`, `/privacy`, `/joined`, and `/api/join` route contracts;
-- a hard-paused signup endpoint returning `503 SIGNUP_MIGRATION_PAUSED` without accepting or forwarding data;
+- `503 SIGNUP_MIGRATION_PAUSED` without intake or forwarding;
 - application-local design tokens and global styling;
-- canonical, Open Graph, Twitter, icon, viewport, sitemap, robots, not-found, and error behavior;
-- nonce-bearing content-security policy through the Next.js 16 proxy convention;
-- public security headers and disabled framework-identifying response header;
-- mutable cache semantics for repository-owned `/assets/*` URLs;
-- `no-store` API behavior;
-- `next/image` for repository-owned shell imagery;
+- canonical and social metadata, sitemap, robots, not-found, and error behavior;
+- nonce CSP through the Next.js 16 proxy convention;
+- public security headers, mutable compatibility-asset caching, and `no-store` API behavior;
 - focused shell validation and tests; and
 - continued disabled Git-triggered Vercel deployment.
 
-The exact implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+Final reconciled head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI 968 and DCO 1045.
 
-This is local repository implementation evidence. It is not a preview deployment, official release, deployed security verification, accessibility certification, performance evidence, or production operation.
+## Workstream 8.3 — implementation candidate
+
+The formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`.
+
+The candidate adds:
+
+- a shared direct-navigation registry;
+- an optional native `details` and `summary` Ogygia path reaching the same essential destinations;
+- visible-on-focus skip links for primary navigation and main content;
+- semantic `header`, `nav`, `main`, and `footer` landmarks;
+- deterministic visible-focus treatment;
+- controlled `live`, `experimental`, `planned`, and `long-horizon` status values;
+- reusable status data, badge, and grid components;
+- canonical source URLs and labels for every capability record;
+- no client-component dependency for essential navigation or status understanding;
+- reduced-motion, reduced-data, higher-contrast, forced-colors, image-failure, and responsive foundations;
+- deferred decorative hero imagery; and
+- expanded deterministic shell validation and focused tests.
+
+The first CI run passed documentation links, repository policy, economics validation, content validation, lint, and typecheck. It found one wording-coupled test assertion and formatter differences. The test now verifies the actual `sourceHref` and `sourceLabel` schema, and Prettier output has been applied through a self-removing workflow.
+
+Final exact-head validation remains pending. Until it passes, workstream 8.3 is an implementation candidate rather than a completed workstream.
+
+The controlling evidence is [Sprint 8.3 Record](sprint-8-workstream-8-3-record.md).
 
 ## Current public website surface
 
-`apps/site` now provides a bounded compatibility foundation:
+`apps/site` now provides:
 
-- server-rendered homepage shell preserving the Ogygia visual direction;
-- shared root layout, skip link, header, footer, and basic direct links;
+- one pinned Next.js App Router application;
+- a server-rendered compatibility homepage preserving the Ogygia direction;
+- shared direct navigation and an optional narrative path;
+- skip links, semantic landmarks, and visible-focus foundations;
+- controlled capability-status primitives with canonical source links;
 - privacy and joined compatibility pages;
 - paused signup route behavior;
-- repository-owned SVG and WebP assets;
-- design tokens and global styles;
-- security-header and CSP configuration;
-- metadata routes and error states; and
-- build, shell validation, typecheck, and focused tests.
+- metadata, sitemap, robots, not-found, and error states;
+- nonce CSP and public security headers;
+- reduced-motion, reduced-data, contrast, forced-colors, and image-failure foundations; and
+- deterministic build, validation, typecheck, and focused tests.
 
 It does not yet provide:
 
-- final direct and narrative navigation parity;
-- reusable capability-status primitives;
 - final homepage or Promise migration;
 - Seven Laws, How It Works, consumer-first, or Aster/AI pages;
 - Trust Center or Open Forge;
-- canonical roadmap, status, support, or funding views;
+- canonical roadmap, support, or funding-transparency pages;
 - final signup disposition;
-- defined accessibility or performance release evidence;
+- representative accessibility review or certification;
+- defined performance release evidence;
 - preview or official production deployment; or
 - any private or production product capability.
 
-## Next workstream
+## Next workstream after validation
 
-Workstream 8.3 may now implement:
+Workstream 8.4 may migrate the final cinematic homepage and Promise explanation through deliberate cuts and splices while preserving:
 
-- shared direct navigation;
-- optional narrative entry exposing the same essential information;
-- reusable status vocabulary and components;
-- semantic landmarks, focus treatment, and keyboard foundations;
-- reduced-motion and no-animation behavior;
-- low-bandwidth and image-failure behavior; and
-- server-rendered essential-information parity without client JavaScript.
+- direct and narrative navigation parity;
+- server-rendered essential information;
+- controlled status vocabulary and source links;
+- reduced-motion, reduced-data, image-failure, contrast, and forced-colors behavior;
+- paused signup; and
+- every permanent Sprint 8 non-scope boundary.
 
-It may not reopen the single-site boundary, activate signup intake, introduce a CMS or second source of truth, or begin later content, transaction, or Sprint 9 work prematurely.
+It may not activate later page families, signup intake, transactions, private data, providers, connectors, or Sprint 9 gameplay prematurely.
 
 ## Implemented repository surfaces
 
-- [`apps/site`](../../apps/site) — validated Next.js compatibility shell; Sprint 8 owner; not deployed
+- [`apps/site`](../../apps/site) — Next.js compatibility shell with 8.3 navigation/status/accessibility candidate; not deployed
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor tooling with ten bounded tools
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
