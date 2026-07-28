@@ -1,9 +1,9 @@
 name: Validate Sprint 8.5 guide pages
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/sprint-8-public-website-foundation
+      - main
     paths:
       - .github/workflows/validate-sprint-8-5.yml
 
