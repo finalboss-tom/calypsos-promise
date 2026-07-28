@@ -1,8 +1,8 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1 complete and validated; Sprint 7.2 next
+- **Status:** ACTIVE — Sprint 7.1 and 7.2 complete and validated; Sprint 7.3 next
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -73,13 +73,15 @@ Define:
 - literal non-authority; and
 - deterministic validators and public tests.
 
-**Exit:** all initial tools remain planned and unexposed; the boundary is public, validated, documented, and green in repository CI.
+**Exit:** met. All initial tools remain planned and unexposed; the boundary is public, validated, documented, and green in repository CI.
 
 ### 7.2 Local transport
 
 Implement the local `stdio` MCP server, initialization, deterministic invocation envelope, direct test harness, cancellation, shutdown, and transport-safe errors.
 
-**Exit:** transport is local-only, provider-free, credential-free, network-free, and cannot expand tool authority.
+Sprint 7.2 pins finalized MCP protocol revision `2025-11-25`, exposes only initialization, `ping`, empty tool discovery, deterministic tool-call refusal, cancellation, and local shutdown, and keeps all repository reads and planned tools disabled.
+
+**Exit:** met. Transport is local-only, provider-free, credential-free, network-free, repository-read-free, and unable to expand tool authority.
 
 ### 7.3 Source catalogue and provenance
 
@@ -131,13 +133,39 @@ Publish cross-contract reconciliation, control and evidence mapping, specialist 
 
 **Exit:** accepted scope is complete at the stated evidence level and explicit founding-steward acceptance remains a separate human gate.
 
-## Initial 7.1 evidence
+## Validated 7.1 evidence
 
 Sprint 7.1 creates `@calypsos-promise/mcp-forge` as a private workspace application with a deliberate contract export surface.
 
 It defines seven accepted public or synthetic information classes, four risk classes, ten planned tool identities, twenty-two prohibited capabilities, conservative resource-limit contracts, exact compatibility and migration rules, a literal false authority matrix, funding-neutrality controls, deterministic validators, and public-surface tests.
 
-It does not implement transport or repository reads.
+All tools remain `planned` and `not-exposed`.
+
+## Sprint 7.2 transport evidence
+
+Sprint 7.2 adds:
+
+- transport contract revision `1`;
+- finalized MCP protocol revision `2025-11-25` as the only supported wire version;
+- a deterministic session state machine covering created, initialize-responded, ready, closing, and closed states;
+- strict initialization and initialized-notification sequencing;
+- `ping`;
+- empty `tools/list` discovery;
+- deterministic refusal of every `tools/call` request;
+- server-owned request-handler injection for direct synthetic tests only;
+- `notifications/cancelled` support for active non-initialize requests;
+- response suppression after cancellation;
+- EOF, `SIGINT`, and `SIGTERM` shutdown;
+- newline-delimited UTF-8 stdio framing;
+- 65,536-byte default transport message limit;
+- parse, invalid-request, method, parameter, initialization, closing, and handler error contracts;
+- strict stdout protocol isolation and stderr-only diagnostics;
+- a direct transport harness; and
+- public direct and stream-level tests.
+
+Sprint 7.2 does not read repository files, expose a planned tool, use the network, call a provider, access credentials, mutate files, or create domain authority.
+
+The still-pre-release `2026-07-28` protocol path is deferred to explicit Sprint 7.9 compatibility and migration review rather than being adopted silently.
 
 ## Information handling
 
