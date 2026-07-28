@@ -11,6 +11,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - Personal rights do not depend on progression, payment, contribution, provider enrollment, enterprise distribution, or secondary-use consent.
 - Institutional systems may be important sources, destinations, and partners; they do not become the automatic owner of Chronicle meaning, product authority, permissions, incentives, or governance.
 - Standards, profiles, implementation guides, mappings, providers, connectors, and vendors remain versioned and replaceable rather than becoming unquestioned canonical truth.
+- Frontier-model capability, context growth, retrieval, memory, tools, and lower inference costs are architectural leverage rather than hidden correctness dependencies; durable repository artifacts and deterministic domains remain authoritative.
 - Governance power is never unlocked solely by fundraising, enterprise revenue, provider status, token issuance, user count, or contributor volume.
 - Every phase must publish its evidence, unresolved risks, responsible stewards, conflicts, dependencies, and rollback conditions.
 - A later phase may be paused or reversed when safety, legitimacy, sustainability, provider neutrality, personal utility, or constitutional compliance deteriorates.
@@ -41,6 +42,7 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 - A funding and sponsorship baseline defining acceptable support, prohibited benefits, conflicts, public reporting, concentration, dependency, correction, termination, and unresolved operating gates before a fundraising surface becomes live
 - An accepted consumer-first and institutional-interoperability workstream defining provider, connector, standards, funding, evidence, replacement, and future enterprise-partnership gates before a material relationship becomes operational
 - An accepted operational-simplicity and durable-workflows baseline defining the modular-monolith default, responsive and deferred work, local simulation, provider isolation, operability, and evidence-gated service extraction before production topology is selected
+- A mandatory [Phase 0 Exit Frontier-Model-First Architecture Audit and Build Authorization](docs/roadmap/phase-0-exit-frontier-model-architecture-audit.md) that reviews the complete repository, defines the model, context, provider, agent, memory, runtime, security, evaluation, and operability architecture, and controls entry into Phase 1
 
 **Governance unlock**
 
@@ -54,6 +56,10 @@ The detailed implementation sprints in `docs/roadmap/sprints.md` describe near-t
 **Exit gate**
 
 - Core foundations are internally consistent
+- The [Phase 0 Exit Frontier-Model-First Architecture Audit and Build Authorization](docs/roadmap/phase-0-exit-frontier-model-architecture-audit.md) is accepted against an exact repository revision and records **AUTHORIZED FOR PHASE 1**, **AUTHORIZED WITH NAMED HOLDPOINTS**, or **BLOCKED**
+- Frontier-model-first development is defined as a primary cognitive development posture while the repository, deterministic domain services, reviewed records, provenance, tests, and accepted governance artifacts remain durable memory and authority
+- A bounded context architecture, effective-context evaluation suite, provider and model replacement boundary, agent and tool authority matrix, durable memory map, private-data holdpoints, cost and capacity model, and reproducible whole-repository audit path are accepted
+- No Phase 1 private-product implementation begins before the accepted audit explicitly authorizes it
 - Repository controls meet minimum viable validation
 - Material decisions no longer live only in private notes or chat
 - The progressive-decentralization mandate is accepted as an architectural constraint
