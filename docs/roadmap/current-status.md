@@ -1,12 +1,12 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md) · [Public institutional roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
-- **Design-to-build position:** Sprints 0–6 complete and merged; pre-Sprint 7 reconciliation active
-- **Merged baseline:** `main` at Sprint 6 squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`
-- **Active review surface:** issue #51 and the pre-Sprint 7 reconciliation branch
-- **Next numbered sprint:** Sprint 7 — Forge MCP and Agent Safety, after the reconciliation is accepted and merged
+- **Design-to-build position:** Sprints 0–6 and the pre-Sprint 7 reconciliation complete and merged; Sprint 7 active
+- **Merged baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
+- **Active implementation surface:** issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55
+- **Current workstream:** 7.1 — Forge boundary and registry
 - **Runtime status:** bounded public repository gateway only
 - **Production health-data status:** none
 - **Production AI or private MCP status:** none
@@ -43,7 +43,7 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 Sprint 6 does not activate production AI, private health data, provider calls, retrieval, memory storage, identity, permission orchestration, persistence, durable execution, MCP tools, connectors, clinical behavior, deployment, or specialist certification.
 
-The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) is the active gate. It confirms the accepted Sprint 7 scope remains aligned and adds binding implementation clarifications for public sources, deterministic local operation, server-owned tool authority, no arbitrary mutation or execution, provenance, receipts, resource limits, compatibility, migration, and funding neutrality.
+The [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`. Sprint 7 is active through issue #54 and draft PR #55. Workstream 7.1 defines the contract-only Forge application boundary, public source classes, server-owned tool registry, risk classes, planned tool identities, prohibited capabilities, compatibility, migration references, resource-limit contracts, non-authority, funding neutrality, validators, and public tests.
 
 A proposed health-data legacy and post-mortem stewardship boundary remains under review through Decision 0009. It does not authorize a production succession, estate, fiduciary, archive, research-release, or post-mortem access system.
 
@@ -65,12 +65,13 @@ A proposed health-data legacy and post-mortem stewardship boundary remains under
 | Decision 0011 — Operational Simplicity and Durable Workflows  | PR #44; `43fb01894639e7484ab1553428e1381a0f51b32c` | modular-monolith default, responsive and deferred paths, durable-work semantics, local simulation, provider isolation, operability, and evidence-gated complexity                                          | production queue, scheduler, event store, workflow engine, service topology, observability provider, local-first system, or measured performance                                        |
 | Pre-Sprint 6 Alignment Review                                 | PR #46; `4dfd39e7aa02ffe1ef3f5ba296378b29bd078047` | repository-wide mission, incentive, architecture, provider, funding, workflow, and Aster handoff reconciliation                                                                                            | Sprint 6 implementation, production readiness, or specialist review                                                                                                                     |
 | Sprint 6 — Aster Contracts and AI Governance                  | PR #48; `5aa3540765e5573f3304ce2b624d7a02c3ba2d13` | pre-stable Aster authority, role, proposal, intent, recall, memory, untrusted-input, work, provider, local-fixture, compatibility, migration, validator, test, control, holdpoint, and completion baseline | production AI, private egress, provider approval, identity, persistence, retrieval, memory storage, durable runtime, tools, connectors, clinical use, deployment, or independent review |
+| Pre-Sprint 7 Repository Alignment Review                      | PR #52; `a41ca5ad9d2c0fe8a009946f376705bb7910e223` | post-Sprint 6 status reconciliation and bounded Forge MCP implementation handoff                                                                                                                           | Sprint 7 implementation, remote MCP, private data, provider selection, production tools, or specialist approval                                                                         |
 
-## Active reconciliation
+## Active Sprint 7 implementation
 
-| Workstream                               | Review evidence                                       | Purpose                                                                                      | What it does not establish                                                                                      |
-| ---------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Pre-Sprint 7 Repository Alignment Review | issue #51; [review](pre-sprint-7-alignment-review.md) | post-Sprint 6 status repair, repository-wide alignment review, and bounded Forge MCP handoff | Sprint 7 implementation, remote MCP, private data, production tools, provider selection, or specialist approval |
+| Workstream                               | Evidence                                                                                                                             | Purpose                                                                                                                                                    | What it does not establish                                                                                                      |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Sprint 7.1 — Forge boundary and registry | issue #54; draft PR #55; [plan](sprint-7-execution-plan.md); [architecture](../architecture/forge-mcp-boundary-and-tool-registry.md) | contract-only application ownership, public source classes, server-owned registry, risk classes, planned tools, prohibitions, validators, and public tests | MCP transport, repository reads, enabled tools, remote hosting, private data, mutation, provider calls, or production readiness |
 
 ## Active and proposed assumptions
 
@@ -90,6 +91,7 @@ Active means the assumption currently influences design. It does not mean suppor
 ### Applications
 
 - [`apps/site`](../../apps/site) — bounded public repository gateway and purpose-limited signup adapter
+- [`apps/mcp-forge`](../../apps/mcp-forge) — active Sprint 7 contract-only Forge boundary; all tools remain planned and unexposed
 
 The public site does not provide accounts, health-data capture, a private Chronicle, production House of Keys enforcement, production Aster, private MCP, provider or EHR connections, clinical workflows, research enrollment, enterprise services, durable workflow orchestration, legacy directives, successor access, donation checkout, sponsor intake, or financial operations.
 
@@ -116,7 +118,6 @@ The public site does not provide accounts, health-data capture, a private Chroni
 
 Planned surfaces are not empty placeholders and should not be created until the module-creation gate is met.
 
-- `apps/mcp-forge` for Sprint 7 local public-documentation and synthetic-data contributor tools
 - `apps/game` for the future universal Expo experience
 - `apps/api` for future modular application composition
 - `apps/mcp-chronicle` for future private, user-scoped tools
@@ -165,9 +166,9 @@ Forge MCP is not the repository database, a general shell, a repository mutation
 
 Retrieved or generated content cannot register tools, alter risk classes, expand source access, invoke arbitrary resources, approve mappings, create canon, write Chronicle truth, change permission, complete gameplay, or create governance authority.
 
-## Sprint 7 entry boundary
+## Active Sprint 7 boundary
 
-Sprint 7 becomes greenlit only after the [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) is accepted and merged.
+Sprint 7 is active through issue #54 and draft PR #55. Workstream 7.1 is contract-only: every tool remains planned and not exposed, and no transport or repository read exists yet.
 
 **Goal:** Provide useful agent tooling without private health-data risk.
 

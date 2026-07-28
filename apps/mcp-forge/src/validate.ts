@@ -74,7 +74,10 @@ function issue(
   return { code, path, message };
 }
 
-function sameStringSet(actual: readonly string[], expected: readonly string[]): boolean {
+function sameStringSet(
+  actual: readonly string[],
+  expected: readonly string[],
+): boolean {
   const sortedActual = [...actual].sort();
   const sortedExpected = [...expected].sort();
   return (
@@ -89,9 +92,13 @@ function validateLimits(
   allowZero: boolean,
 ): ForgeValidationIssue[] {
   const issues: ForgeValidationIssue[] = [];
-  const entries = Object.entries(limits) as [keyof ForgeResourceLimits, number][];
+  const entries = Object.entries(limits) as [
+    keyof ForgeResourceLimits,
+    number,
+  ][];
   for (const [name, value] of entries) {
-    const valid = Number.isInteger(value) && (allowZero ? value >= 0 : value > 0);
+    const valid =
+      Number.isInteger(value) && (allowZero ? value >= 0 : value > 0);
     if (!valid) {
       issues.push(
         issue(
@@ -166,8 +173,10 @@ export function validateForgeBoundary(
   }
 
   for (const [name, value] of Object.entries({
-    untrustedContentCanModifyRegistry: boundary.untrustedContentCanModifyRegistry,
-    untrustedContentCanExpandResources: boundary.untrustedContentCanExpandResources,
+    untrustedContentCanModifyRegistry:
+      boundary.untrustedContentCanModifyRegistry,
+    untrustedContentCanExpandResources:
+      boundary.untrustedContentCanExpandResources,
     untrustedContentCanAuthorizeToolCalls:
       boundary.untrustedContentCanAuthorizeToolCalls,
   })) {
@@ -481,7 +490,10 @@ export function validateForgeToolRegistry(
         ),
       );
     }
-    if (tool.lifecycle === "planned" && tool.transportExposure !== "not-exposed") {
+    if (
+      tool.lifecycle === "planned" &&
+      tool.transportExposure !== "not-exposed"
+    ) {
       issues.push(
         issue(
           FORGE_VALIDATION_CODES.toolTransport,

@@ -299,7 +299,8 @@ export const FORGE_SOURCE_CLASSES: readonly ForgeSourceClassContract[] = [
   {
     id: "public-documentation",
     revision: "1",
-    purpose: "Public repository documentation, decisions, policies, and roadmaps.",
+    purpose:
+      "Public repository documentation, decisions, policies, and roadmaps.",
     publicOnly: true,
     syntheticOnly: false,
     requiresServerOwnedRoot: true,
@@ -323,7 +324,8 @@ export const FORGE_SOURCE_CLASSES: readonly ForgeSourceClassContract[] = [
   {
     id: "public-schema",
     revision: "1",
-    purpose: "Public schema and contract sources used by deterministic validation.",
+    purpose:
+      "Public schema and contract sources used by deterministic validation.",
     publicOnly: true,
     syntheticOnly: false,
     requiresServerOwnedRoot: true,
@@ -359,7 +361,8 @@ export const FORGE_SOURCE_CLASSES: readonly ForgeSourceClassContract[] = [
   {
     id: "public-standards-reference",
     revision: "1",
-    purpose: "Explicitly public standards references and public mapping guidance.",
+    purpose:
+      "Explicitly public standards references and public mapping guidance.",
     publicOnly: true,
     syntheticOnly: false,
     requiresServerOwnedRoot: true,
@@ -371,7 +374,8 @@ export const FORGE_SOURCE_CLASSES: readonly ForgeSourceClassContract[] = [
   {
     id: "public-synthetic-connector-fixture",
     revision: "1",
-    purpose: "Synthetic connector examples with no proprietary or protected source material.",
+    purpose:
+      "Synthetic connector examples with no proprietary or protected source material.",
     publicOnly: true,
     syntheticOnly: true,
     requiresServerOwnedRoot: true,
@@ -399,7 +403,8 @@ export const FORGE_RISK_CLASSES: readonly ForgeRiskClassContract[] = [
   {
     id: "validate-public",
     revision: "1",
-    purpose: "Deterministic validation of public or synthetic inputs with no mutation.",
+    purpose:
+      "Deterministic validation of public or synthetic inputs with no mutation.",
     allowedOperations: ["validate"],
     canMutate: false,
     canUseNetwork: false,
@@ -412,7 +417,8 @@ export const FORGE_RISK_CLASSES: readonly ForgeRiskClassContract[] = [
   {
     id: "generate-synthetic-draft",
     revision: "1",
-    purpose: "Generate explicitly synthetic or draft output requiring validation and human review.",
+    purpose:
+      "Generate explicitly synthetic or draft output requiring validation and human review.",
     allowedOperations: ["generate-synthetic-draft"],
     canMutate: false,
     canUseNetwork: false,
@@ -425,7 +431,8 @@ export const FORGE_RISK_CLASSES: readonly ForgeRiskClassContract[] = [
   {
     id: "unsupported-or-prohibited",
     revision: "1",
-    purpose: "Mutation, shell, network, private-data, credential, arbitrary-resource, production, or consequential behavior.",
+    purpose:
+      "Mutation, shell, network, private-data, credential, arbitrary-resource, production, or consequential behavior.",
     allowedOperations: ["none"],
     canMutate: false,
     canUseNetwork: false,
@@ -491,7 +498,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.search.lore",
     title: "Search lore",
-    purpose: "Search allowlisted public lore and narrative content with source provenance.",
+    purpose:
+      "Search allowlisted public lore and narrative content with source provenance.",
     riskClass: "read-public",
     operation: "search",
     sourceClasses: ["public-content"],
@@ -503,7 +511,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.validate.content",
     title: "Validate public content",
-    purpose: "Run named deterministic content validation without mutation or canon approval.",
+    purpose:
+      "Run named deterministic content validation without mutation or canon approval.",
     riskClass: "validate-public",
     operation: "validate",
     sourceClasses: ["public-content", "public-schema"],
@@ -527,10 +536,15 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.validate.quest",
     title: "Validate quest",
-    purpose: "Validate public or synthetic quest records against a named schema revision.",
+    purpose:
+      "Validate public or synthetic quest records against a named schema revision.",
     riskClass: "validate-public",
     operation: "validate",
-    sourceClasses: ["public-content", "public-schema", "public-synthetic-fixture"],
+    sourceClasses: [
+      "public-content",
+      "public-schema",
+      "public-synthetic-fixture",
+    ],
     inputSchemaId: "forge.validate.quest.input.v1",
     outputSchemaId: "forge.validate.quest.output.v1",
     limits: VALIDATE_PUBLIC_LIMITS,
@@ -539,7 +553,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.search.architecture",
     title: "Search architecture",
-    purpose: "Search public architecture and policy records with exact repository provenance.",
+    purpose:
+      "Search public architecture and policy records with exact repository provenance.",
     riskClass: "read-public",
     operation: "search",
     sourceClasses: ["public-documentation"],
@@ -551,7 +566,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.search.decision",
     title: "Search decisions",
-    purpose: "Search public decisions, assumptions, roadmap records, and status evidence.",
+    purpose:
+      "Search public decisions, assumptions, roadmap records, and status evidence.",
     riskClass: "read-public",
     operation: "search",
     sourceClasses: ["public-documentation"],
@@ -563,7 +579,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.generate.synthetic-data",
     title: "Generate synthetic data",
-    purpose: "Generate explicitly synthetic draft records for deterministic validation and human review.",
+    purpose:
+      "Generate explicitly synthetic draft records for deterministic validation and human review.",
     riskClass: "generate-synthetic-draft",
     operation: "generate-synthetic-draft",
     sourceClasses: ["public-schema", "public-synthetic-fixture"],
@@ -575,7 +592,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.search.public-standards",
     title: "Search public standards",
-    purpose: "Search explicitly public standards references without implying certification or completeness.",
+    purpose:
+      "Search explicitly public standards references without implying certification or completeness.",
     riskClass: "read-public",
     operation: "search",
     sourceClasses: ["public-standards-reference"],
@@ -587,10 +605,15 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.validate.mapping-draft",
     title: "Validate mapping draft",
-    purpose: "Validate a public or synthetic draft mapping without approving semantic equivalence or connector behavior.",
+    purpose:
+      "Validate a public or synthetic draft mapping without approving semantic equivalence or connector behavior.",
     riskClass: "validate-public",
     operation: "validate",
-    sourceClasses: ["public-standards-reference", "public-schema", "public-synthetic-fixture"],
+    sourceClasses: [
+      "public-standards-reference",
+      "public-schema",
+      "public-synthetic-fixture",
+    ],
     inputSchemaId: "forge.validate.mapping-draft.input.v1",
     outputSchemaId: "forge.validate.mapping-draft.output.v1",
     limits: VALIDATE_PUBLIC_LIMITS,
@@ -599,7 +622,8 @@ export const FORGE_TOOL_REGISTRY: readonly ForgeToolContract[] = [
   plannedTool({
     id: "forge.search.synthetic-connector-fixtures",
     title: "Search synthetic connector fixtures",
-    purpose: "Search synthetic connector examples without accessing provider credentials or proprietary mappings.",
+    purpose:
+      "Search synthetic connector examples without accessing provider credentials or proprietary mappings.",
     riskClass: "read-public",
     operation: "search",
     sourceClasses: ["public-synthetic-connector-fixture"],

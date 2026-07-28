@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 7 plan](sprint-7-execution-plan.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Sprint 6 completion](sprint-6-completion-record.md) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -12,23 +12,25 @@ Advancement is gate-based rather than calendar-based. A completed sprint or acce
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md)
-3. [Sprint 6 Completion Record](sprint-6-completion-record.md)
-4. [Sprint 6 Cross-Contract Reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md)
-5. [Sprint 6 Control and Evidence Map](../architecture/aster-sprint-6-control-and-evidence-map.md)
-6. [Sprint 6 Specialist Holdpoints and Unresolved Work](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
-7. [Sprint Sequence](sprints.md)
-8. [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md)
-9. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
-10. [Operational Simplicity and Durable Workflows Workstream](operational-simplicity-workstream.md)
-11. [Mission-to-Runtime Traceability](../architecture/mission-to-runtime-traceability.md)
-12. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
-13. [Consumer-First and Institutional Interoperability Workstream](consumer-first-provider-independent-workstream.md)
-14. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
-15. [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md)
-16. [Sprint 5 Completion Record](sprint-5-completion-record.md)
-17. [Security Architecture](../security/README.md)
-18. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 7 Execution Plan](sprint-7-execution-plan.md)
+3. [Forge MCP Boundary and Tool Registry](../architecture/forge-mcp-boundary-and-tool-registry.md)
+4. [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md)
+5. [Sprint 6 Completion Record](sprint-6-completion-record.md)
+6. [Sprint 6 Cross-Contract Reconciliation](../architecture/aster-sprint-6-cross-contract-reconciliation.md)
+7. [Sprint 6 Control and Evidence Map](../architecture/aster-sprint-6-control-and-evidence-map.md)
+8. [Sprint 6 Specialist Holdpoints and Unresolved Work](../architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+9. [Sprint Sequence](sprints.md)
+10. [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md)
+11. [Decision 0011 — Operational Simplicity and Durable Workflows](../decisions/0011-operational-simplicity-and-durable-workflows.md)
+12. [Operational Simplicity and Durable Workflows Workstream](operational-simplicity-workstream.md)
+13. [Mission-to-Runtime Traceability](../architecture/mission-to-runtime-traceability.md)
+14. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](../decisions/0010-consumer-first-provider-independent-boundary.md)
+15. [Consumer-First and Institutional Interoperability Workstream](consumer-first-provider-independent-workstream.md)
+16. [Phase 0 Funding and Sponsorship Baseline](../economics/README.md)
+17. [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md)
+18. [Sprint 5 Completion Record](sprint-5-completion-record.md)
+19. [Security Architecture](../security/README.md)
+20. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Completion records and plans
 
@@ -49,7 +51,8 @@ Advancement is gate-based rather than calendar-based. A completed sprint or acce
 - [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md) — complete and merged through PR #46
 - [Sprint 6 Execution Plan](sprint-6-execution-plan.md) — complete and merged through PR #48
 - [Sprint 6 Completion Record](sprint-6-completion-record.md) — authoritative merged contract and public-synthetic evidence
-- [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) — active reconciliation tracked by issue #51
+- [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md) — complete and merged through PR #52
+- [Sprint 7 Execution Plan](sprint-7-execution-plan.md) — active through issue #54 and draft PR #55
 - [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md) — tracked by issue #39; does not change Sprint 7 order or authorize production
 
 ## Current boundary
@@ -58,9 +61,9 @@ Sprints 0–6, the funding baseline, Decisions 0010 and 0011, and the pre-Sprint
 
 Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`. It establishes the pre-stable provider-independent Aster contract baseline without activating production AI, private egress, identity, persistence, retrieval, memory storage, durable execution, tools, connectors, clinical use, provider selection, or specialist approval.
 
-The pre-Sprint 7 reconciliation is the current gate. It confirms Sprint 7 remains aligned and defines the local `stdio`, public-only, synthetic-only, allowlisted-source, no-mutation, no-shell, no-network, server-owned-tool, provenance, receipt, resource-limit, compatibility, migration, and funding boundaries for Forge MCP.
+The pre-Sprint 7 reconciliation merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
 
-After that review is accepted and merged, Sprint 7 — Forge MCP and Agent Safety becomes the next numbered design-to-build boundary. Sprint 7 does not activate private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.
+Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. Workstream 7.1 defines the contract-only local application boundary, public source classes, server-owned registry, risk classes, planned tools, prohibited capabilities, validators, and public tests. It does not activate transport, repository reads, private Chronicle MCP, production agents, credentials, connectors, providers, or consequential actions.
 
 Issue #50 remains open and trigger-based. It activates only after a real consumer uses the Aster public surface and records concrete ergonomics evidence.
 

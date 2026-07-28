@@ -40,7 +40,9 @@ test("all planned tools remain contract-only and transport-free", () => {
 
 test("source classes are public or synthetic and server-owned", () => {
   assert.deepEqual(
-    [...FORGE_7_1_PUBLIC_FIXTURE.sourceClasses.map((source) => source.id)].sort(),
+    [
+      ...FORGE_7_1_PUBLIC_FIXTURE.sourceClasses.map((source) => source.id),
+    ].sort(),
     [...FORGE_INFORMATION_CLASS_IDS].sort(),
   );
   for (const source of FORGE_7_1_PUBLIC_FIXTURE.sourceClasses) {
@@ -67,7 +69,9 @@ test("risk classes never grant mutation, network, private-data, credential, or r
 });
 
 test("the full authority boundary remains literal false", () => {
-  assert.ok(Object.values(FORGE_AUTHORITY_BOUNDARY).every((value) => value === false));
+  assert.ok(
+    Object.values(FORGE_AUTHORITY_BOUNDARY).every((value) => value === false),
+  );
   assert.equal(FORGE_BOUNDARY.registryAuthority, "server-owned");
   assert.equal(FORGE_BOUNDARY.sourceAuthority, "server-owned-allowlist");
   assert.equal(FORGE_BOUNDARY.ordinaryContributionRequiresMcp, false);
@@ -99,10 +103,14 @@ test("untrusted content cannot become registry authority", () => {
   baseline.boundary.untrustedContentCanModifyRegistry = true;
   const issues = validateForgeBaseline(baseline);
   assert.ok(
-    issues.some((entry) => entry.code === FORGE_VALIDATION_CODES.registryAuthority),
+    issues.some(
+      (entry) => entry.code === FORGE_VALIDATION_CODES.registryAuthority,
+    ),
   );
   assert.ok(
-    issues.some((entry) => entry.code === FORGE_VALIDATION_CODES.untrustedAuthority),
+    issues.some(
+      (entry) => entry.code === FORGE_VALIDATION_CODES.untrustedAuthority,
+    ),
   );
 });
 
@@ -112,9 +120,13 @@ test("private or credential-bearing source authorization is rejected", () => {
   baseline.sourceClasses[0].canContainPersonalData = true;
   baseline.sourceClasses[0].canContainCredentials = true;
   const issues = validateForgeBaseline(baseline);
-  assert.ok(issues.some((entry) => entry.code === FORGE_VALIDATION_CODES.publicOnly));
   assert.ok(
-    issues.some((entry) => entry.code === FORGE_VALIDATION_CODES.sourceSensitiveContent),
+    issues.some((entry) => entry.code === FORGE_VALIDATION_CODES.publicOnly),
+  );
+  assert.ok(
+    issues.some(
+      (entry) => entry.code === FORGE_VALIDATION_CODES.sourceSensitiveContent,
+    ),
   );
 });
 
@@ -125,8 +137,9 @@ test("funding and providers cannot purchase Forge authority", () => {
   baseline.boundary.funding.canControlPublication = true;
   const issues = validateForgeBaseline(baseline);
   assert.equal(
-    issues.filter((entry) => entry.code === FORGE_VALIDATION_CODES.fundingMustNotControl)
-      .length,
+    issues.filter(
+      (entry) => entry.code === FORGE_VALIDATION_CODES.fundingMustNotControl,
+    ).length,
     3,
   );
 });

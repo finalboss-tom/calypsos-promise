@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 7 plan](docs/roadmap/sprint-7-execution-plan.md) · [Forge boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](docs/roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](docs/roadmap/sprint-6-completion-record.md) · [Aster contracts](docs/product/aster-contract-baseline.md) · [Operational simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-first boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding baseline](docs/economics/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform that hel
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Architecture Foundation](docs/frozen/architecture.md)
-- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **See what exists now:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 7 Execution Plan](docs/roadmap/sprint-7-execution-plan.md) → [Forge Boundary](docs/architecture/forge-mcp-boundary-and-tool-registry.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
 - **Review the merged Aster baseline:** [Sprint 6 Completion Record](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md) → [Aster Holdpoints](docs/architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 - **Apply operational simplicity:** [Decision 0011](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) → [Operational Architecture](docs/architecture/operational-simplicity-and-durable-workflows.md)
 - **Apply the consumer-first boundary:** [Decision 0010](docs/decisions/0010-consumer-first-provider-independent-boundary.md) → [Architecture Rationale](docs/architecture/consumer-first-provider-independent-boundary.md)
@@ -23,9 +23,9 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 **Sprints 0–6 are complete and merged.** Sprint 6 — Aster Contracts and AI Governance merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`.
 
-The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md), tracked by issue #51, is the active gate. It confirms Sprint 7 remains aligned and defines a bounded Forge MCP handoff before implementation begins.
+The [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`, establishing the bounded Forge MCP handoff.
 
-After that reconciliation is accepted and merged, **Sprint 7 — Forge MCP and Agent Safety** becomes the next numbered sprint. Sprint 7 remains limited to local `stdio`, public documentation, synthetic data, allowlisted repository sources, deterministic validation, draft generation, and public-safe contributor tooling.
+**Sprint 7 — Forge MCP and Agent Safety is active** through issue #54, branch `agent/sprint-7-forge-mcp`, and draft PR #55. Workstream 7.1 establishes the contract-only Forge application boundary, source classes, server-owned registry, risk classes, prohibited capabilities, validators, and public tests. Every tool remains planned and unexposed; no MCP transport or repository read exists yet.
 
 No current documentation or contract baseline activates production health data, production AI, private MCP, accounts, provider calls, connectors, clinical workflows, enterprise services, workflow orchestration, research enrollment, donation checkout, sponsor intake, legacy directives, estate access, or financial operations.
 
@@ -62,8 +62,8 @@ The merged Chronicle, House of Keys, security, funding, operational, and Aster w
 
 ## Current gates and unresolved work
 
-- Accept and merge the [Pre-Sprint 7 Alignment Review](docs/roadmap/pre-sprint-7-alignment-review.md) before Sprint 7 implementation starts.
-- Begin Sprint 7 through a dedicated issue, execution plan, branch, draft pull request, public or synthetic evidence, completion record, and explicit founding-steward acceptance.
+- Complete Sprint 7.1 on draft PR #55 with full repository validation before enabling any tool or transport.
+- Continue Sprint 7 through issue #54, the [execution plan](docs/roadmap/sprint-7-execution-plan.md), public or synthetic evidence, completion records, and explicit founding-steward acceptance.
 - Keep Forge MCP local, public-only, synthetic-only, allowlisted, non-mutating, network-free, and unable to execute consequential actions during Sprint 7.
 - Preserve all Sprint 5 and Sprint 6 production, security, privacy, accessibility, clinical, provider, connector, operational, and institutional holdpoints.
 - Keep issue #50 trigger-based until a real consumer produces concrete Aster API or validator ergonomics evidence.

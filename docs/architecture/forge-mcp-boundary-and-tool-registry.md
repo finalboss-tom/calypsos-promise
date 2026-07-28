@@ -46,15 +46,15 @@ A tool may not become `enabled` or `local-stdio-only` merely because its identit
 
 The initial accepted information classes are:
 
-| Class | Purpose | Synthetic-only |
-| --- | --- | --- |
-| `public-documentation` | public documentation, decisions, policies, assumptions, roadmaps, and status records | no |
-| `public-content` | public lore, quest, dialogue, education, and safety content | no |
-| `public-schema` | public schema and contract sources used by deterministic validators | no |
-| `public-synthetic-fixture` | explicitly synthetic public fixtures and test evidence | yes |
-| `public-generated-artifact` | generated public schema artifacts approved for repository use | no |
-| `public-standards-reference` | explicitly public standards references and public mapping guidance | no |
-| `public-synthetic-connector-fixture` | synthetic connector examples with no proprietary or protected source material | yes |
+| Class                                | Purpose                                                                              | Synthetic-only |
+| ------------------------------------ | ------------------------------------------------------------------------------------ | -------------- |
+| `public-documentation`               | public documentation, decisions, policies, assumptions, roadmaps, and status records | no             |
+| `public-content`                     | public lore, quest, dialogue, education, and safety content                          | no             |
+| `public-schema`                      | public schema and contract sources used by deterministic validators                  | no             |
+| `public-synthetic-fixture`           | explicitly synthetic public fixtures and test evidence                               | yes            |
+| `public-generated-artifact`          | generated public schema artifacts approved for repository use                        | no             |
+| `public-standards-reference`         | explicitly public standards references and public mapping guidance                   | no             |
+| `public-synthetic-connector-fixture` | synthetic connector examples with no proprietary or protected source material        | yes            |
 
 Every source class:
 
@@ -87,18 +87,18 @@ All risk classes explicitly deny mutation, network, private-data, credential, an
 
 ## Initial tool registry
 
-| Tool | Risk class | Operation | Accepted source classes | Current state |
-| --- | --- | --- | --- | --- |
-| `forge.search.lore` | `read-public` | search | public content | planned, not exposed |
-| `forge.validate.content` | `validate-public` | validate | public content and schemas | planned, not exposed |
-| `forge.inspect.quest-schema` | `read-public` | inspect | public schemas and generated artifacts | planned, not exposed |
-| `forge.validate.quest` | `validate-public` | validate | public content, schemas, and synthetic fixtures | planned, not exposed |
-| `forge.search.architecture` | `read-public` | search | public documentation | planned, not exposed |
-| `forge.search.decision` | `read-public` | search | public documentation | planned, not exposed |
-| `forge.generate.synthetic-data` | `generate-synthetic-draft` | generate synthetic draft | public schemas and synthetic fixtures | planned, not exposed |
-| `forge.search.public-standards` | `read-public` | search | public standards references | planned, not exposed |
-| `forge.validate.mapping-draft` | `validate-public` | validate | public standards, schemas, and synthetic fixtures | planned, not exposed |
-| `forge.search.synthetic-connector-fixtures` | `read-public` | search | public synthetic connector fixtures | planned, not exposed |
+| Tool                                        | Risk class                 | Operation                | Accepted source classes                           | Current state        |
+| ------------------------------------------- | -------------------------- | ------------------------ | ------------------------------------------------- | -------------------- |
+| `forge.search.lore`                         | `read-public`              | search                   | public content                                    | planned, not exposed |
+| `forge.validate.content`                    | `validate-public`          | validate                 | public content and schemas                        | planned, not exposed |
+| `forge.inspect.quest-schema`                | `read-public`              | inspect                  | public schemas and generated artifacts            | planned, not exposed |
+| `forge.validate.quest`                      | `validate-public`          | validate                 | public content, schemas, and synthetic fixtures   | planned, not exposed |
+| `forge.search.architecture`                 | `read-public`              | search                   | public documentation                              | planned, not exposed |
+| `forge.search.decision`                     | `read-public`              | search                   | public documentation                              | planned, not exposed |
+| `forge.generate.synthetic-data`             | `generate-synthetic-draft` | generate synthetic draft | public schemas and synthetic fixtures             | planned, not exposed |
+| `forge.search.public-standards`             | `read-public`              | search                   | public standards references                       | planned, not exposed |
+| `forge.validate.mapping-draft`              | `validate-public`          | validate                 | public standards, schemas, and synthetic fixtures | planned, not exposed |
+| `forge.search.synthetic-connector-fixtures` | `read-public`              | search                   | public synthetic connector fixtures               | planned, not exposed |
 
 The registry is complete for the accepted Sprint 7 deliverables but does not imply that every tool must be implemented simultaneously. Workstreams enable tools only when their own evidence is complete.
 
