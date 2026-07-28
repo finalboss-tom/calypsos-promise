@@ -29,21 +29,27 @@ export const forgeToolGroups: readonly ForgeToolGroup[] = [
       {
         id: "forge.inspect.quest-schema",
         purpose: "Inspect the public quest contract and its required fields.",
-        boundary: "Cannot create eligibility, completion, progression, or reward authority.",
+        boundary:
+          "Cannot create eligibility, completion, progression, or reward authority.",
       },
       {
         id: "forge.validate.quest",
-        purpose: "Run deterministic validation over a public or synthetic quest draft.",
-        boundary: "Cannot complete a quest, grant rewards, or publish gameplay.",
+        purpose:
+          "Run deterministic validation over a public or synthetic quest draft.",
+        boundary:
+          "Cannot complete a quest, grant rewards, or publish gameplay.",
       },
       {
         id: "forge.search.architecture",
-        purpose: "Search public architecture records with conservative authority labels.",
-        boundary: "Proposed or historical material cannot be promoted to accepted truth.",
+        purpose:
+          "Search public architecture records with conservative authority labels.",
+        boundary:
+          "Proposed or historical material cannot be promoted to accepted truth.",
       },
       {
         id: "forge.search.decision",
-        purpose: "Search accepted, proposed, superseded, and unresolved decisions.",
+        purpose:
+          "Search accepted, proposed, superseded, and unresolved decisions.",
         boundary: "Cannot close, accept, supersede, or amend a decision.",
       },
     ],
@@ -55,7 +61,8 @@ export const forgeToolGroups: readonly ForgeToolGroup[] = [
     tools: [
       {
         id: "forge.search.public-standards",
-        purpose: "Search allowlisted public standards references with provenance.",
+        purpose:
+          "Search allowlisted public standards references with provenance.",
         boundary:
           "Cannot prove completeness, certification, semantic equivalence, endorsement, or provider preference.",
       },
@@ -67,7 +74,8 @@ export const forgeToolGroups: readonly ForgeToolGroup[] = [
       },
       {
         id: "forge.search.synthetic-connector-fixtures",
-        purpose: "Search explicitly synthetic, credential-free connector fixtures.",
+        purpose:
+          "Search explicitly synthetic, credential-free connector fixtures.",
         boundary:
           "Cannot access production endpoints, private negotiations, proprietary mappings, or personal data.",
       },

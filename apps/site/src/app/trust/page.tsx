@@ -42,14 +42,15 @@ export default function TrustCenterPage() {
         </blockquote>
         <p className="summary">
           This page organizes the accepted public rights, privacy boundary,
-          security posture, authority separations, provider and connector status,
-          funding doctrine, open gates, and correction paths. It is a read-only
-          explanation of repository records, not a second policy system.
+          security posture, authority separations, provider and connector
+          status, funding doctrine, open gates, and correction paths. It is a
+          read-only explanation of repository records, not a second policy
+          system.
         </p>
         <p className="source-note">
           The site does not process production health data and does not claim
-          production security, privacy, accessibility, clinical, legal, financial,
-          provider, or institutional certification.
+          production security, privacy, accessibility, clinical, legal,
+          financial, provider, or institutional certification.
         </p>
       </header>
 
@@ -57,11 +58,13 @@ export default function TrustCenterPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Evidence by domain</p>
-            <h2 id="trust-areas-title">What is protected, proven, and still open.</h2>
+            <h2 id="trust-areas-title">
+              What is protected, proven, and still open.
+            </h2>
           </div>
           <p>
-            Each domain links to its upstream repository authority and carries the
-            same controlled status vocabulary used across the public site.
+            Each domain links to its upstream repository authority and carries
+            the same controlled status vocabulary used across the public site.
           </p>
         </div>
         <div className="trust-grid">
@@ -89,7 +92,9 @@ export default function TrustCenterPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Challenge and correction</p>
-            <h2 id="challenge-title">Use the route that matches the information.</h2>
+            <h2 id="challenge-title">
+              Use the route that matches the information.
+            </h2>
           </div>
           <p>
             A public concern does not need a complete replacement solution. It

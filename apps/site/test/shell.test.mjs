@@ -208,13 +208,14 @@ test("publishes the source-backed Sprint 8.5 guide family", async () => {
 });
 
 test("publishes the source-backed Trust Center and Open Forge", async () => {
-  const [trustPage, trustData, forgePage, forgeData, sitemap] = await Promise.all([
-    read("../src/app/trust/page.tsx"),
-    read("../src/lib/trust-center.ts"),
-    read("../src/app/forge/page.tsx"),
-    read("../src/lib/open-forge.ts"),
-    read("../src/app/sitemap.ts"),
-  ]);
+  const [trustPage, trustData, forgePage, forgeData, sitemap] =
+    await Promise.all([
+      read("../src/app/trust/page.tsx"),
+      read("../src/lib/trust-center.ts"),
+      read("../src/app/forge/page.tsx"),
+      read("../src/lib/open-forge.ts"),
+      read("../src/app/sitemap.ts"),
+    ]);
   const source = `${trustPage}\n${trustData}\n${forgePage}\n${forgeData}`;
   const normalizedSource = source.replace(/\s+/g, " ");
 
@@ -230,7 +231,10 @@ test("publishes the source-backed Trust Center and Open Forge", async () => {
     "Nineteen specialist holdpoints and eighteen unresolved-work records remain open",
     "Contributors do not need Forge to participate.",
   ]) {
-    assert.match(normalizedSource, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      normalizedSource,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   for (const tool of [
@@ -251,7 +255,10 @@ test("publishes the source-backed Trust Center and Open Forge", async () => {
   assert.match(sitemap, /\/trust/);
   assert.match(sitemap, /\/forge/);
   assert.doesNotMatch(source, /["']use client["']/);
-  assert.doesNotMatch(normalizedSource, /production (?:security|privacy|clinical) certification is live/i);
+  assert.doesNotMatch(
+    normalizedSource,
+    /production (?:security|privacy|clinical) certification is live/i,
+  );
 });
 
 test("provides reduced-motion, reduced-data, contrast, and forced-color fallbacks", async () => {

@@ -43,13 +43,14 @@ export default function OpenForgePage() {
         <p className="summary">
           Forge is one local MCP application for contributors and agents working
           with allowlisted public repository records and explicitly synthetic
-          data. Its ten server-owned tools are versioned, bounded, source-linked,
-          non-mutating, provider-independent, and non-authoritative.
+          data. Its ten server-owned tools are versioned, bounded,
+          source-linked, non-mutating, provider-independent, and
+          non-authoritative.
         </p>
         <p className="source-note">
-          Forge is not the product database, a private Chronicle service, a House
-          of Keys service, a general shell, a repository-writing agent, a provider
-          gateway, a remote MCP service, or a production sandbox.
+          Forge is not the product database, a private Chronicle service, a
+          House of Keys service, a general shell, a repository-writing agent, a
+          provider gateway, a remote MCP service, or a production sandbox.
         </p>
       </header>
 
@@ -57,12 +58,14 @@ export default function OpenForgePage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Exactly ten tools</p>
-            <h2 id="forge-tools-title">Every tool has a visible job and denial.</h2>
+            <h2 id="forge-tools-title">
+              Every tool has a visible job and denial.
+            </h2>
           </div>
           <p>
             Runtime registry revision 4 exposes no hidden general-purpose tool.
-            Each identity is server-owned and checked against its accepted scope,
-            source, limits, provenance, and non-authority requirements.
+            Each identity is server-owned and checked against its accepted
+            scope, source, limits, provenance, and non-authority requirements.
           </p>
         </div>
         <div className="forge-group-list">
@@ -107,7 +110,9 @@ export default function OpenForgePage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Receipts and errors</p>
-            <h2 id="forge-receipts-title">Evidence without leaking protected state.</h2>
+            <h2 id="forge-receipts-title">
+              Evidence without leaking protected state.
+            </h2>
           </div>
           <p>
             A receipt records a bounded invocation. It cannot turn tool output
@@ -131,7 +136,9 @@ export default function OpenForgePage() {
           <StatusBadge status="planned" />
           <span>Open production and specialist gates</span>
         </div>
-        <h2 id="forge-limits-title">Local success does not imply production safety.</h2>
+        <h2 id="forge-limits-title">
+          Local success does not imply production safety.
+        </h2>
         <ul>
           {forgeOpenLimits.map((limit) => (
             <li key={limit}>{limit}</li>
@@ -145,17 +152,24 @@ export default function OpenForgePage() {
       >
         <div>
           <p className="eyebrow">MCP is optional</p>
-          <h2 id="ordinary-path-title">Contributors do not need Forge to participate.</h2>
+          <h2 id="ordinary-path-title">
+            Contributors do not need Forge to participate.
+          </h2>
           <p>
-            The repository, issue tracker, documentation, tests, and ordinary pull
-            request process remain the primary governed contribution path. Forge
-            assists with bounded public evidence; it does not control participation
-            or replace human review.
+            The repository, issue tracker, documentation, tests, and ordinary
+            pull request process remain the primary governed contribution path.
+            Forge assists with bounded public evidence; it does not control
+            participation or replace human review.
           </p>
         </div>
         <div className="ordinary-paths">
           {ordinaryContributionPaths.map((path) => (
-            <a key={path.title} href={path.href} target="_blank" rel="noreferrer">
+            <a
+              key={path.title}
+              href={path.href}
+              target="_blank"
+              rel="noreferrer"
+            >
               {path.label}
               <span className="visually-hidden"> (opens in a new tab)</span>
             </a>
