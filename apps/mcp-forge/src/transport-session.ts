@@ -14,13 +14,13 @@ import {
   type ForgeJsonRpcSuccessResponse,
   type ForgeTransportSessionState,
 } from "./transport-contracts.js";
-import {
-  FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
-  FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
-  type ForgeEnabledLoreSchemaToolId,
-} from "./lore-schema-contracts.js";
 import type { ForgeTransportToolService } from "./lore-schema-tools.js";
-import { FORGE_RUNTIME_INITIALIZE_RESULT } from "./runtime-registry.js";
+import {
+  FORGE_RUNTIME_ENABLED_TOOL_IDS,
+  FORGE_RUNTIME_INITIALIZE_RESULT,
+  FORGE_RUNTIME_TOOL_DESCRIPTORS,
+  type ForgeRuntimeEnabledToolId,
+} from "./runtime-registry.js";
 
 export interface ForgeRequestContext {
   readonly requestId: ForgeJsonRpcId;
@@ -381,9 +381,7 @@ export class ForgeTransportSession {
     if (request.method === "tools/list") {
       return {
         tools:
-          this.toolService === undefined
-            ? []
-            : FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
+          this.toolService === undefined ? [] : FORGE_RUNTIME_TOOL_DESCRIPTORS,
       };
     }
     if (request.method === "tools/call") {
@@ -396,8 +394,8 @@ export class ForgeTransportSession {
       }
       const call = parseToolCallParams(request.params);
       if (
-        !FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(
-          call.name as ForgeEnabledLoreSchemaToolId,
+        !FORGE_RUNTIME_ENABLED_TOOL_IDS.includes(
+          call.name as ForgeRuntimeEnabledToolId,
         )
       ) {
         throw new ForgeProtocolFault(
