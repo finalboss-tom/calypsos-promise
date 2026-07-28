@@ -1,3 +1,4 @@
+export * from "./agent-security-operability-contracts.js";
 export * from "./contracts.js";
 export * from "./documentation-search-contracts.js";
 export * from "./documentation-search-tools.js";
@@ -9,6 +10,8 @@ export * from "./lore-schema-tools.js";
 export * from "./mapping-draft-tools.js";
 export * from "./public-standards-tools.js";
 export * from "./runtime-registry.js";
+export * from "./secure-execution-controller.js";
+export * from "./security-postconditions.js";
 export * from "./source-contracts.js";
 export * from "./source-errors.js";
 export * from "./source-paths.js";
