@@ -64,8 +64,7 @@ The merged Chronicle, House of Keys, security, funding, operational, and Aster w
 
 ## Current gates and unresolved work
 
-- Complete final combined validation and status reconciliation for Sprint 7.6 on draft PR #55.
-- Begin Sprint 7.7 only after 7.6 remains green, implementing reproducible synthetic generation without self-approval, canon, clinical, provider, mapping, or connector authority.
+- Begin Sprint 7.7 only after the completed Sprint 7.6 baseline remains green, implementing reproducible synthetic generation without self-approval, canon, clinical, provider, mapping, or connector authority.
 - Continue Sprint 7 through issue #54, the [execution plan](docs/roadmap/sprint-7-execution-plan.md), public or synthetic evidence, completion records, and explicit founding-steward acceptance.
 - Keep Forge MCP local, public-only, synthetic-only, allowlisted, non-mutating, network-free, provider-free, and unable to execute consequential actions during Sprint 7.
 - Preserve all Sprint 5 and Sprint 6 production, security, privacy, accessibility, clinical, provider, connector, operational, and institutional holdpoints.
