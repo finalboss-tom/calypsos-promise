@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](../architecture/forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](../architecture/forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.6 implemented; final 7.6 status-head validation pending; Sprint 7.7 next and unstarted
+- **Status:** ACTIVE — Sprint 7.1–7.6 complete and validated; Sprint 7.7 next and unstarted
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -95,7 +95,7 @@ Activates:
 
 Runtime registry revision `3` exposes exactly nine accepted identities through local `stdio`. `forge.generate.synthetic-data` remains planned and unexposed for Sprint 7.7.
 
-**Exit:** implementation complete; final status-head validation pending. Public standards search returns exact provenance without completeness, certification, or provider-preference claims. Mapping validation requires draft status, human interoperability and semantic review, and explicit non-authority claims. Connector search returns only explicitly synthetic, credential-free, personal-data-free, non-production fixtures and exposes skipped unclassified records. No proprietary mapping, provider credential, protected finding, certification claim, semantic-equivalence approval, provider preference, connector activation, production behavior, or institutional authority is accessed or created.
+**Exit:** met. Public standards search returns exact provenance without completeness, certification, or provider-preference claims. Mapping validation requires draft status, human interoperability and semantic review, and explicit non-authority claims. Connector search returns only explicitly synthetic, credential-free, personal-data-free, non-production fixtures and exposes skipped unclassified records. No proprietary mapping, provider credential, protected finding, certification claim, semantic-equivalence approval, provider preference, connector activation, production behavior, or institutional authority is accessed or created.
 
 ### 7.7 Synthetic generation
 
@@ -158,7 +158,7 @@ Sprint 7.6 adds:
 - direct and transport-level tests; and
 - preservation of all six previously validated tools inside the nine-tool runtime.
 
-The functional 7.6 head passed documentation links, repository policy, economics validation, content validation, lint, typecheck, and tests in CI run 815; DCO run 885 passed. Formatting was applied exactly afterward. Final combined status-head validation remains pending.
+The functional 7.6 head passed documentation links, repository policy, economics validation, content validation, lint, typecheck, and tests in CI run 815; DCO run 885 passed. Formatting was applied exactly, and the final completed status surface is validated through the repository checks. Exact final-head evidence is recorded in issue #54 and draft PR #55.
 
 ## Information handling
 
