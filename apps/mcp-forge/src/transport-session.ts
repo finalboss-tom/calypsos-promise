@@ -14,6 +14,13 @@ import {
   type ForgeJsonRpcSuccessResponse,
   type ForgeTransportSessionState,
 } from "./transport-contracts.js";
+import {
+  FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
+  FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
+  type ForgeEnabledLoreSchemaToolId,
+} from "./lore-schema-contracts.js";
+import type { ForgeTransportToolService } from "./lore-schema-tools.js";
+import { FORGE_RUNTIME_INITIALIZE_RESULT } from "./runtime-registry.js";
 
 export interface ForgeRequestContext {
   readonly requestId: ForgeJsonRpcId;
@@ -29,6 +36,7 @@ export type ForgeRequestHandler = (
 
 export interface ForgeTransportSessionOptions {
   readonly requestHandlers?: Readonly<Record<string, ForgeRequestHandler>>;
+  readonly toolService?: ForgeTransportToolService;
 }
 
 class ForgeProtocolFault extends Error {
@@ -69,11 +77,7 @@ function success(
   id: ForgeJsonRpcId,
   result: unknown,
 ): ForgeJsonRpcSuccessResponse {
-  return {
-    jsonrpc: "2.0",
-    id,
-    result,
-  };
+  return { jsonrpc: "2.0", id, result };
 }
 
 function failure(
@@ -109,7 +113,6 @@ function parseInitializeParams(params: unknown): ForgeInitializeParams {
       "Initialize parameters must be an object.",
     );
   }
-
   const { protocolVersion, capabilities, clientInfo } = params;
   if (
     typeof protocolVersion !== "string" ||
@@ -126,43 +129,57 @@ function parseInitializeParams(params: unknown): ForgeInitializeParams {
       "Initialize parameters are incomplete or invalid.",
     );
   }
-
   return {
     protocolVersion,
     capabilities,
-    clientInfo: {
-      name: clientInfo.name,
-      version: clientInfo.version,
-    },
+    clientInfo: { name: clientInfo.name, version: clientInfo.version },
   };
 }
 
 function parseCancellationParams(
   params: unknown,
 ): ForgeCancellationParams | undefined {
-  if (!isRecord(params) || !isJsonRpcId(params.requestId)) {
-    return undefined;
-  }
-
+  if (!isRecord(params) || !isJsonRpcId(params.requestId)) return undefined;
   if (params.reason !== undefined && typeof params.reason !== "string") {
     return undefined;
   }
-
   return {
     requestId: params.requestId,
     ...(params.reason === undefined ? {} : { reason: params.reason }),
   };
 }
 
+function parseToolCallParams(params: unknown): {
+  readonly name: string;
+  readonly argumentsValue: unknown;
+} {
+  if (
+    !isRecord(params) ||
+    typeof params.name !== "string" ||
+    params.name.length === 0 ||
+    Object.keys(params).some((key) => !["name", "arguments"].includes(key))
+  ) {
+    throw new ForgeProtocolFault(
+      FORGE_JSON_RPC_ERROR_CODES.invalidParams,
+      FORGE_TRANSPORT_ERROR_IDS.invalidParams,
+      "Tool calls require a server-listed name and optional arguments.",
+    );
+  }
+  return {
+    name: params.name,
+    argumentsValue: hasOwn(params, "arguments") ? params.arguments : {},
+  };
+}
+
 export class ForgeTransportSession {
   private state: ForgeTransportSessionState = "created";
-  private readonly requestHandlers: Readonly<
-    Record<string, ForgeRequestHandler>
-  >;
+  private readonly requestHandlers: Readonly<Record<string, ForgeRequestHandler>>;
+  private readonly toolService?: ForgeTransportToolService;
   private readonly activeRequests = new Map<ForgeJsonRpcId, AbortController>();
 
   constructor(options: ForgeTransportSessionOptions = {}) {
     this.requestHandlers = options.requestHandlers ?? {};
+    this.toolService = options.toolService;
   }
 
   getState(): ForgeTransportSessionState {
@@ -185,7 +202,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     if (typeof message.method !== "string" || message.method.length === 0) {
       return failure(
         isJsonRpcId(message.id) ? message.id : null,
@@ -195,7 +211,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     if (!hasOwn(message, "id")) {
       await this.handleNotification({
         jsonrpc: "2.0",
@@ -204,7 +219,6 @@ export class ForgeTransportSession {
       });
       return undefined;
     }
-
     if (!isJsonRpcId(message.id)) {
       return failure(
         null,
@@ -214,7 +228,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     return this.handleRequest({
       jsonrpc: "2.0",
       id: message.id,
@@ -224,10 +237,7 @@ export class ForgeTransportSession {
   }
 
   async close(): Promise<void> {
-    if (this.state === "closed") {
-      return;
-    }
-
+    if (this.state === "closed") return;
     this.state = "closing";
     for (const controller of this.activeRequests.values()) {
       controller.abort("Forge transport session closed.");
@@ -240,32 +250,21 @@ export class ForgeTransportSession {
     notification: ForgeJsonRpcNotification,
   ): Promise<void> {
     if (notification.method === "notifications/initialized") {
-      if (this.state === "initialize-responded") {
-        this.state = "ready";
-      }
+      if (this.state === "initialize-responded") this.state = "ready";
       return;
     }
-
-    if (notification.method === "notifications/cancelled") {
-      const cancellation = parseCancellationParams(notification.params);
-      if (cancellation === undefined) {
-        return;
-      }
-
-      const controller = this.activeRequests.get(cancellation.requestId);
-      controller?.abort(
-        cancellation.reason ?? "Client sent notifications/cancelled.",
-      );
-    }
+    if (notification.method !== "notifications/cancelled") return;
+    const cancellation = parseCancellationParams(notification.params);
+    if (cancellation === undefined) return;
+    this.activeRequests
+      .get(cancellation.requestId)
+      ?.abort(cancellation.reason ?? "Client sent notifications/cancelled.");
   }
 
   private async handleRequest(
     request: ForgeJsonRpcRequest,
   ): Promise<ForgeJsonRpcResponse | undefined> {
-    if (request.method === "initialize") {
-      return this.handleInitialize(request);
-    }
-
+    if (request.method === "initialize") return this.handleInitialize(request);
     if (this.state === "closing" || this.state === "closed") {
       return failure(
         request.id,
@@ -275,7 +274,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     if (this.state !== "ready") {
       return failure(
         request.id,
@@ -285,7 +283,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     if (this.activeRequests.has(request.id)) {
       return failure(
         request.id,
@@ -298,18 +295,12 @@ export class ForgeTransportSession {
 
     const controller = new AbortController();
     this.activeRequests.set(request.id, controller);
-
     try {
       const result = await this.executeRequest(request, controller.signal);
-      if (controller.signal.aborted) {
-        return undefined;
-      }
+      if (controller.signal.aborted) return undefined;
       return success(request.id, result);
     } catch (error) {
-      if (controller.signal.aborted) {
-        return undefined;
-      }
-
+      if (controller.signal.aborted) return undefined;
       if (error instanceof ForgeProtocolFault) {
         return failure(
           request.id,
@@ -320,7 +311,6 @@ export class ForgeTransportSession {
           error.supportedProtocolVersions,
         );
       }
-
       return failure(
         request.id,
         FORGE_JSON_RPC_ERROR_CODES.internalError,
@@ -343,7 +333,6 @@ export class ForgeTransportSession {
         this.state,
       );
     }
-
     try {
       const params = parseInitializeParams(request.params);
       if (params.protocolVersion !== FORGE_MCP_PROTOCOL_VERSION) {
@@ -354,9 +343,13 @@ export class ForgeTransportSession {
           FORGE_SUPPORTED_MCP_PROTOCOL_VERSIONS,
         );
       }
-
       this.state = "initialize-responded";
-      return success(request.id, FORGE_INITIALIZE_RESULT);
+      return success(
+        request.id,
+        this.toolService === undefined
+          ? FORGE_INITIALIZE_RESULT
+          : FORGE_RUNTIME_INITIALIZE_RESULT,
+      );
     } catch (error) {
       if (error instanceof ForgeProtocolFault) {
         return failure(
@@ -382,22 +375,41 @@ export class ForgeTransportSession {
     request: ForgeJsonRpcRequest,
     signal: AbortSignal,
   ): Promise<unknown> {
-    if (request.method === "ping") {
-      return {};
-    }
-
+    if (request.method === "ping") return {};
     if (request.method === "tools/list") {
-      return { tools: [] };
+      return {
+        tools:
+          this.toolService === undefined
+            ? []
+            : FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS,
+      };
     }
-
     if (request.method === "tools/call") {
-      throw new ForgeProtocolFault(
-        FORGE_JSON_RPC_ERROR_CODES.invalidParams,
-        FORGE_TRANSPORT_ERROR_IDS.noToolsEnabled,
-        "No Forge tools are enabled during Sprint 7.2.",
+      if (this.toolService === undefined) {
+        throw new ForgeProtocolFault(
+          FORGE_JSON_RPC_ERROR_CODES.invalidParams,
+          FORGE_TRANSPORT_ERROR_IDS.noToolsEnabled,
+          "No Forge tools are enabled for this transport session.",
+        );
+      }
+      const call = parseToolCallParams(request.params);
+      if (
+        !FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(
+          call.name as ForgeEnabledLoreSchemaToolId,
+        )
+      ) {
+        throw new ForgeProtocolFault(
+          FORGE_JSON_RPC_ERROR_CODES.invalidParams,
+          FORGE_TRANSPORT_ERROR_IDS.invalidParams,
+          "The requested tool is not enabled by the server-owned runtime registry.",
+        );
+      }
+      return this.toolService.callTool(
+        call.name,
+        call.argumentsValue,
+        signal,
       );
     }
-
     const handler = this.requestHandlers[request.method];
     if (handler === undefined) {
       throw new ForgeProtocolFault(
@@ -406,7 +418,6 @@ export class ForgeTransportSession {
         "The requested method is not available.",
       );
     }
-
     return handler(request.params, {
       requestId: request.id,
       method: request.method,
