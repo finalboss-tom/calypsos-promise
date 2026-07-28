@@ -38,6 +38,10 @@ test("keeps current public route contracts present", async () => {
   for (const path of [
     "../src/app/page.tsx",
     "../src/app/promise/page.tsx",
+    "../src/app/laws/page.tsx",
+    "../src/app/how-it-works/page.tsx",
+    "../src/app/consumer-first/page.tsx",
+    "../src/app/aster/page.tsx",
     "../src/app/privacy/page.tsx",
     "../src/app/joined/page.tsx",
     "../src/app/api/join/route.ts",
@@ -58,7 +62,15 @@ test("provides direct and narrative navigation without a client boundary", async
   assert.match(source, /id="primary-navigation"/);
   assert.match(source, /aria-label="Narrative journey"/);
   assert.match(source, /No story traversal is required/);
-  assert.match(source, /href: "\/promise"/);
+  for (const route of [
+    "/promise",
+    "/laws",
+    "/how-it-works",
+    "/consumer-first",
+    "/aster",
+  ]) {
+    assert.match(source, new RegExp(`href: "${route}"`));
+  }
   assert.match(source, /<details/);
   assert.match(source, /<summary>/);
   assert.doesNotMatch(source, /["']use client["']/);
@@ -110,13 +122,82 @@ test("migrates the source-backed homepage and Promise explanation", async () => 
   assert.doesNotMatch(source, /["']use client["']/);
 });
 
+test("publishes the source-backed Sprint 8.5 guide family", async () => {
+  const [
+    lawsPage,
+    lawsData,
+    howPage,
+    howData,
+    consumerPage,
+    consumerData,
+    asterPage,
+    asterData,
+    sitemap,
+  ] = await Promise.all([
+    read("../src/app/laws/page.tsx"),
+    read("../src/lib/seven-laws.ts"),
+    read("../src/app/how-it-works/page.tsx"),
+    read("../src/lib/how-it-works.ts"),
+    read("../src/app/consumer-first/page.tsx"),
+    read("../src/lib/consumer-first.ts"),
+    read("../src/app/aster/page.tsx"),
+    read("../src/lib/aster.ts"),
+    read("../src/app/sitemap.ts"),
+  ]);
+  const source = [
+    lawsPage,
+    lawsData,
+    howPage,
+    howData,
+    consumerPage,
+    consumerData,
+    asterPage,
+    asterData,
+  ].join("\n");
+
+  for (const law of [
+    "The Law of the Open Hand",
+    "The Right of the Key",
+    "The Sanctity of the Hearth",
+    "The Law of the True Chronicle",
+    "No Oracle Above Evidence",
+    "The Right of Return",
+    "The Covenant of the Commons",
+  ]) {
+    assert.match(source, new RegExp(law));
+  }
+
+  assert.match(source, /A typical session is[\s\S]*three to eight minutes/);
+  assert.match(source, /AI may assist\. Deterministic services decide\./);
+  assert.match(source, /No broken-streak punishment/);
+  assert.match(
+    source,
+    /interoperate with institutional healthcare without[\s\S]*architected around institutional healthcare/i,
+  );
+  assert.match(source, /Standards at the edges/);
+  assert.match(source, /No provider or connector capability is live/);
+  assert.match(
+    source,
+    /AI proposes\. The player confirms\. The domain service validates and stores\./,
+  );
+  assert.match(source, /No production Aster capability is live/);
+  for (const role of ["Scribe", "Librarian", "Wayfinder", "Interpreter", "Storykeeper"]) {
+    assert.match(source, new RegExp(role));
+  }
+  for (const route of ["/laws", "/how-it-works", "/consumer-first", "/aster"]) {
+    assert.match(sitemap, new RegExp(route));
+  }
+  assert.doesNotMatch(source, /["']use client["']/);
+});
+
 test("provides reduced-motion, reduced-data, contrast, and forced-color fallbacks", async () => {
-  const [globalCss, homepageCss, page] = await Promise.all([
+  const [globalCss, homepageCss, guideCss, page] = await Promise.all([
     read("../src/app/globals.css"),
     read("../src/app/homepage.css"),
+    read("../src/app/guide-pages.css"),
     read("../src/app/page.tsx"),
   ]);
-  const css = `${globalCss}\n${homepageCss}`;
+  const css = `${globalCss}\n${homepageCss}\n${guideCss}`;
 
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /prefers-reduced-data/);
