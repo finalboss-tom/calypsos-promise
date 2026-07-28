@@ -1,8 +1,8 @@
 # Sprint 7 Execution Plan — Forge MCP and Agent Safety
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.3 implemented; exact-head validation pending; Sprint 7.4 next
+- **Status:** ACTIVE — Sprint 7.1–7.4 implemented; exact-head validation pending; Sprint 7.5 next
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -87,13 +87,13 @@ Sprint 7.2 pins finalized MCP protocol revision `2025-11-25`, exposes only initi
 
 Define exact repository root resolution, source allowlists, prohibited paths, path normalization, traversal and symlink isolation, content digests, line and object locators, deterministic ordering, truncation, and partial results.
 
-**Exit:** met at the branch evidence level. No caller-selected root or arbitrary file can be read; every result has public-safe provenance. Exact-head CI and DCO remain the closure gate.
+**Exit:** met. No caller-selected root or arbitrary file can be read; every accepted source result has public-safe provenance.
 
 ### 7.4 Lore and schema tools
 
 Implement lore search, content validation, quest-schema inspection, and quest validation through existing public package exports and deterministic validators.
 
-**Exit:** tool success remains distinct from canon acceptance or repository mutation.
+**Exit:** met at the branch implementation level. Exactly four server-owned read-only tools are activated through local `stdio`; success remains distinct from canon acceptance, repository mutation, quest completion, reward grant, semantic completeness, or clinical safety. Exact-head CI and DCO remain the closure gate.
 
 ### 7.5 Architecture and decision tools
 
@@ -139,7 +139,7 @@ Sprint 7.1 creates `@calypsos-promise/mcp-forge` as a private workspace applicat
 
 It defines seven accepted public or synthetic information classes, four risk classes, ten planned tool identities, twenty-two prohibited capabilities, conservative resource-limit contracts, exact compatibility and migration rules, a literal false authority matrix, funding-neutrality controls, deterministic validators, and public-surface tests.
 
-All tools remain `planned` and `not-exposed`.
+All tools remain `planned` and `not-exposed` in the accepted Sprint 7.1 contract registry.
 
 ## Sprint 7.2 transport evidence
 
@@ -150,8 +150,8 @@ Sprint 7.2 adds:
 - a deterministic session state machine covering created, initialize-responded, ready, closing, and closed states;
 - strict initialization and initialized-notification sequencing;
 - `ping`;
-- empty `tools/list` discovery;
-- deterministic refusal of every `tools/call` request;
+- empty `tools/list` discovery for inert sessions;
+- deterministic tool-call refusal when no server-owned service is supplied;
 - server-owned request-handler injection for direct synthetic tests only;
 - `notifications/cancelled` support for active non-initialize requests;
 - response suppression after cancellation;
@@ -163,7 +163,7 @@ Sprint 7.2 adds:
 - a direct transport harness; and
 - public direct and stream-level tests.
 
-Sprint 7.2 does not read repository files, expose a planned tool, use the network, call a provider, access credentials, mutate files, or create domain authority.
+Sprint 7.2 does not use the network, call a provider, access credentials, mutate files, or create domain authority.
 
 The still-pre-release `2026-07-28` protocol path is deferred to explicit Sprint 7.9 compatibility and migration review rather than being adopted silently.
 
@@ -171,7 +171,28 @@ The still-pre-release `2026-07-28` protocol path is deferred to explicit Sprint 
 
 Sprint 7.3 defines nine server-owned source roots, exact-file and recursive-tree allowlists, public and synthetic information-class coverage, process-root discovery, prohibited path and credential classes, normalized path resolution, plain and encoded traversal rejection, component-level symlink rejection, resolved-path containment, locale-independent ordering, SHA-256 content digests, byte and line counts, whole-file, line-range, and object locators, explicit truncation and partial reasons, public-safe errors, deterministic validators, and public synthetic tests.
 
-The source core is available only through the direct application API. Every accepted MCP tool remains planned and unexposed; `tools/list` remains empty and `tools/call` remains refused.
+The source core is available through the direct application API and to server-owned enabled tools. No caller-selected root or arbitrary path is accepted.
+
+## Sprint 7.4 evidence
+
+Sprint 7.4 adds:
+
+- runtime registry revision `1` without rewriting the accepted Sprint 7.1 registry;
+- exact activation of `forge.search.lore`, `forge.validate.content`, `forge.inspect.quest-schema`, and `forge.validate.quest`;
+- local-stdio-only exposure for those four identities;
+- continued planned and unexposed status for the remaining six identities;
+- server-owned MCP descriptors and dispatch allowlists;
+- deterministic Unicode-normalized lore search with exact phrase, all-term, and partial-term classes;
+- exact object or line provenance with no hidden numeric rank;
+- deterministic content and quest validation through the public `@calypsos-promise/content-schema` export;
+- explicit inline `public-content` or `public-synthetic-fixture` classification;
+- allowlisted public source-path validation;
+- fixed quest-schema inspection at `packages/content-schema/schema/content.schema.json`;
+- visible non-authority for canon, repository mutation, canonical writes, permission, gameplay completion, rewards, clinical claims, and institutional decisions;
+- stable public tool errors; and
+- direct and transport-level tests, including untrusted instruction isolation.
+
+Tool success remains evidence only. It does not approve canon, accept a repository change, complete gameplay, grant rewards, prove semantic completeness, prove clinical safety, or create institutional authority.
 
 ## Information handling
 
