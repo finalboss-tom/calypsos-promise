@@ -68,9 +68,9 @@ export default function PromisePage() {
           <p className="eyebrow">Three connected loops</p>
           <h2 id="promise-loops-title">Personal value comes first.</h2>
           <p>
-            Building the Chronicle and receiving personal value must remain useful
-            on their own. Research or compensated use is separate, optional, and
-            purpose-specific.
+            Building the Chronicle and receiving personal value must remain
+            useful on their own. Research or compensated use is separate,
+            optional, and purpose-specific.
           </p>
         </div>
         <ConnectedLoops />
@@ -85,10 +85,10 @@ export default function PromisePage() {
           The useful core cannot depend on payment or broader consent.
         </h2>
         <p>
-          A person must be able to create, maintain, inspect, export, and delete a
-          useful Living Chronicle without paying and without agreeing to secondary
-          use. Accessibility, privacy controls, safety information, export, and
-          deletion cannot become progression rewards.
+          A person must be able to create, maintain, inspect, export, and delete
+          a useful Living Chronicle without paying and without agreeing to
+          secondary use. Accessibility, privacy controls, safety information,
+          export, and deletion cannot become progression rewards.
         </p>
         <p>
           Narrative may welcome and motivate. It may not hide purpose, remove a

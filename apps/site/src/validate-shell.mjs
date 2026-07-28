@@ -127,6 +127,4 @@ for (const phrase of [
   }
 }
 
-console.log(
-  "Sprint 8.4 homepage and Promise migration boundary is complete.",
-);
+console.log("Sprint 8.4 homepage and Promise migration boundary is complete.");

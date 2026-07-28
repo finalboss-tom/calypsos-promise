@@ -92,8 +92,14 @@ test("migrates the source-backed homepage and Promise explanation", async () => 
     ]);
   const source = `${home}\n${promisePage}\n${promiseData}\n${loops}\n${principles}`;
 
-  assert.match(source, /Build your Living Chronicle\. Improve your health\. Keep the key\./);
-  assert.match(source, /The software is open\. The person’s health data is private\./);
+  assert.match(
+    source,
+    /Build your Living Chronicle\. Improve your health\. Keep the key\./,
+  );
+  assert.match(
+    source,
+    /The software is open\. The person’s health data is private\./,
+  );
   assert.match(source, /without agreeing to research/);
   assert.match(source, /Build your health record/);
   assert.match(source, /Improve your health/);
