@@ -3,10 +3,6 @@ import type {
   ValidationIssue,
 } from "@calypsos-promise/content-schema";
 
-import {
-  FORGE_ARCHITECTURE_DECISION_TOOL_DESCRIPTORS,
-  FORGE_ENABLED_ARCHITECTURE_DECISION_TOOL_IDS,
-} from "./architecture-decision-contracts.js";
 import type {
   ForgeSourcePartialReasonId,
   ForgeSourceProvenance,
@@ -15,24 +11,15 @@ import type {
 
 export const FORGE_LORE_SCHEMA_TOOL_REVISION = "1" as const;
 
-export const FORGE_CORE_LORE_SCHEMA_TOOL_IDS = [
+export const FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS = [
   "forge.search.lore",
   "forge.validate.content",
   "forge.inspect.quest-schema",
   "forge.validate.quest",
 ] as const;
 
-export const FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS = [
-  ...FORGE_CORE_LORE_SCHEMA_TOOL_IDS,
-  ...FORGE_ENABLED_ARCHITECTURE_DECISION_TOOL_IDS,
-] as const;
-
-export const FORGE_ENABLED_PUBLIC_TOOL_IDS =
-  FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS;
-
 export type ForgeEnabledLoreSchemaToolId =
   (typeof FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS)[number];
-export type ForgeEnabledPublicToolId = ForgeEnabledLoreSchemaToolId;
 
 export const FORGE_CONTENT_KIND_IDS = [
   "character",
@@ -60,7 +47,7 @@ export interface ForgeMcpToolAnnotations {
 }
 
 export interface ForgeMcpToolDescriptor {
-  readonly name: ForgeEnabledPublicToolId;
+  readonly name: ForgeEnabledLoreSchemaToolId;
   readonly title: string;
   readonly description: string;
   readonly inputSchema: ForgeJsonSchema;
@@ -242,7 +229,7 @@ const READ_ONLY_ANNOTATIONS: ForgeMcpToolAnnotations = {
   openWorldHint: false,
 };
 
-export const FORGE_CORE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescriptor[] =
+export const FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescriptor[] =
   [
     {
       name: "forge.search.lore",
@@ -324,12 +311,3 @@ export const FORGE_CORE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescr
       annotations: READ_ONLY_ANNOTATIONS,
     },
   ];
-
-export const FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS: readonly ForgeMcpToolDescriptor[] =
-  [
-    ...FORGE_CORE_LORE_SCHEMA_TOOL_DESCRIPTORS,
-    ...FORGE_ARCHITECTURE_DECISION_TOOL_DESCRIPTORS,
-  ];
-
-export const FORGE_PUBLIC_TOOL_DESCRIPTORS =
-  FORGE_LORE_SCHEMA_TOOL_DESCRIPTORS;
