@@ -52,19 +52,22 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
-  "Exactly ten Sprint 7.1-7.8 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
-  "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged, with the accepted synthetic-generation identity added during Sprint 7.7.",
-  "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools remain unchanged inside that prior nine-tool baseline.",
-  "All ten tool calls now use one server-owned execution contract derived from immutable accepted limits for request bytes, files scanned, results, output bytes, timeout, cancellation, per-tool concurrency, and serialized materialized memory.",
+  "Exactly ten Sprint 7.1-7.9 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
+  "Sprint 7.9 adds no tool identity and does not change runtime registry revision 4 or an accepted tool schema.",
+  "All ten calls use one server-owned execution contract for request bytes, files scanned, results, output bytes, timeout, cancellation, per-tool concurrency, and serialized materialized memory.",
+  "Before each real operation Forge verifies the integrity of its boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and execution scopes.",
+  "Every successful raw result must preserve the full non-authority profile, source evidence, visible partial state, and tool-specific safety claims before a receipt is created.",
   "Every scoped success or stable tool error includes a bounded invocation receipt without raw input, absolute host paths, environment values, internal traces, credentials, protected source material, or wall-clock timestamps.",
   "Caller cancellation suppresses the response rather than manufacturing a receipt, while timeouts return one stable public-safe tool error receipt.",
-  "Synthetic generation is deterministic for the same seed and input, immediately validates every result, and labels every artifact synthetic, non-production, credential-free, personal-data-free, and human-review-required.",
+  "Forge compatibility remains pre-stable, exact-revision, migration-bearing, and fail-closed for unknown revisions; authority expansion requires a governing decision.",
+  "Clean local startup requires no credentials, provider, network, database, remote endpoint, authentication service, queue, or scheduler.",
+  "Synthetic generation is deterministic, immediately validates every result, and retains synthetic, non-production, credential-free, personal-data-free, and human-review-required labels.",
   "Generated quests and mapping drafts cannot self-approve, create canon, prove semantic equivalence, authorize clinical use, select a provider, activate a connector, mutate the repository, complete gameplay, grant rewards, or create institutional authority.",
   "Documentation and standards search expose exact provenance and no certification, completeness, or provider-preference authority.",
   "Mapping validation requires draft-only non-authority claims and cannot approve semantic equivalence, connector behavior, certification, production readiness, or a provider default.",
   "Synthetic connector search returns only explicitly synthetic, non-production fixtures without personal data or credentials.",
-  "Tool, receipt, error, and transport success do not create canon, Chronicle truth, permission, gameplay completion, rewards, provider approval, clinical authority, or institutional authority.",
-  "Forge does not provide shell, network, repository mutation, private-data, provider, connector, or consequential action authority.",
+  "Tool, integrity, security-postcondition, receipt, error, compatibility, startup, and transport success do not create canon, Chronicle truth, permission, gameplay completion, rewards, provider approval, clinical authority, or institutional authority.",
+  "Forge does not provide shell, dynamic-module, network, repository mutation, private-data, provider, connector, or consequential action authority.",
 ].join(" ");
 
 export const FORGE_RUNTIME_INITIALIZE_RESULT: ForgeInitializeResult = {
@@ -83,6 +86,12 @@ export const FORGE_RUNTIME_TRANSPORT_BOUNDARY = {
   acceptedResourceLimitsEnforced: true,
   stableInvocationReceiptsEnabled: true,
   stableToolErrorsEnabled: true,
+  runtimeIntegrityChecksEnabled: true,
+  successfulResultSecurityPostconditionsEnabled: true,
+  exactRevisionCompatibilityEnabled: true,
+  cleanCredentialFreeStartupTested: true,
+  providerIndependent: true,
+  asterPackageDependency: false,
   callerCanRegisterTool: false,
   callerCanSelectRepositoryRoot: false,
   callerCanChangeExecutionScope: false,
@@ -165,7 +174,7 @@ export function validateForgeRuntimeToolRegistry(
           runtimeIssue(
             FORGE_RUNTIME_VALIDATION_CODES.enabledLifecycle,
             `${path}.lifecycle`,
-            "Accepted Sprint 7.1-7.8 runtime tools must be explicitly enabled.",
+            "Accepted Sprint 7.1-7.9 runtime tools must be explicitly enabled.",
           ),
         );
       }
@@ -195,7 +204,7 @@ export function validateForgeRuntimeToolRegistry(
         runtimeIssue(
           FORGE_RUNTIME_VALIDATION_CODES.unexpectedEnablement,
           path,
-          "Only the ten accepted Sprint 7.1-7.8 runtime tools may be enabled.",
+          "Only the ten accepted Sprint 7.1-7.9 runtime tools may be enabled.",
         ),
       );
     }
@@ -252,7 +261,7 @@ export function validateForgeRuntimeToolRegistry(
       runtimeIssue(
         FORGE_RUNTIME_VALIDATION_CODES.descriptorMismatch,
         "descriptors",
-        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.8 tool set.",
+        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.9 tool set.",
       ),
     );
   }
