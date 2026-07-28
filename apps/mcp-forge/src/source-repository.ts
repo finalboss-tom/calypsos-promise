@@ -148,8 +148,12 @@ export class ForgeSourceRepository {
     );
   }
 
-  getCatalogueEntry(sourceRootId: ForgeSourceRootId): ForgeSourceCatalogueEntry {
-    const entry = this.catalogue.find((candidate) => candidate.id === sourceRootId);
+  getCatalogueEntry(
+    sourceRootId: ForgeSourceRootId,
+  ): ForgeSourceCatalogueEntry {
+    const entry = this.catalogue.find(
+      (candidate) => candidate.id === sourceRootId,
+    );
     if (!entry) {
       throw createForgeSourceError(
         FORGE_SOURCE_ERROR_CODES.sourceRootUnknown,
@@ -160,11 +164,18 @@ export class ForgeSourceRepository {
     return entry;
   }
 
-  async readText(request: ForgeSourceReadRequest): Promise<ForgeSourceReadResult> {
+  async readText(
+    request: ForgeSourceReadRequest,
+  ): Promise<ForgeSourceReadResult> {
     const entry = this.getCatalogueEntry(request.sourceRootId);
-    const sourceRelativePath = normalizeForgeSourceRelativePath(request.relativePath);
+    const sourceRelativePath = normalizeForgeSourceRelativePath(
+      request.relativePath,
+    );
     assertForgeSourcePathAllowed(entry, sourceRelativePath);
-    const sourceRoot = await resolveForgeSourceRoot(this.#repositoryRoot, entry);
+    const sourceRoot = await resolveForgeSourceRoot(
+      this.#repositoryRoot,
+      entry,
+    );
     const targetPath = await assertNoForgeSourceSymlinkSegments(
       sourceRoot,
       sourceRelativePath,
@@ -209,15 +220,17 @@ export class ForgeSourceRepository {
       );
     }
 
-    const outputLimit = boundedLimit(request.maxOutputBytes, entry.maxOutputBytes);
+    const outputLimit = boundedLimit(
+      request.maxOutputBytes,
+      entry.maxOutputBytes,
+    );
     const decoded = truncateUtf8(bytes, outputLimit);
     const path = repositoryRelativePath(entry, sourceRelativePath);
     const resultState: ForgeSourceResultState = decoded.truncated
       ? "truncated"
       : "complete";
-    const partialReasons: readonly ForgeSourcePartialReasonId[] = decoded.truncated
-      ? ["output-limit-reached"]
-      : [];
+    const partialReasons: readonly ForgeSourcePartialReasonId[] =
+      decoded.truncated ? ["output-limit-reached"] : [];
 
     return {
       content: decoded.content,
@@ -241,7 +254,9 @@ export class ForgeSourceRepository {
     };
   }
 
-  async listFiles(request: ForgeSourceListRequest): Promise<ForgeSourceListResult> {
+  async listFiles(
+    request: ForgeSourceListRequest,
+  ): Promise<ForgeSourceListResult> {
     const entry = this.getCatalogueEntry(request.sourceRootId);
     const relativeDirectory = normalizeForgeSourceRelativePath(
       request.relativeDirectory ?? "",

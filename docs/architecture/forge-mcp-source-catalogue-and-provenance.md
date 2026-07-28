@@ -30,17 +30,17 @@ No absolute repository path is returned in public results, provenance, errors, r
 
 The revision-1 catalogue defines nine server-owned root identities:
 
-| Source root | Repository-relative root | Information classes | Availability |
-| --- | --- | --- | --- |
-| `forge.root-documents` | repository root | canonical public entry documents | required |
-| `forge.docs` | `docs` | public documentation and public standards references | required |
-| `forge.content` | `content` | public content and synthetic content fixtures | required |
-| `forge.content-schema` | `packages/content-schema` | public schemas, generated artifacts, and synthetic fixtures | required |
-| `forge.health-schema` | `packages/health-schema` | public schemas and synthetic fixtures | required |
-| `forge.house-of-keys` | `packages/house-of-keys` | public schemas and synthetic fixtures | required |
-| `forge.aster` | `packages/aster` | public schemas and synthetic fixtures | required |
-| `forge.public-standards` | bounded paths under `docs` | explicitly public standards references | optional and reserved |
-| `forge.synthetic-connectors` | `fixtures/connectors` | synthetic connector fixtures | optional and reserved |
+| Source root                  | Repository-relative root   | Information classes                                         | Availability          |
+| ---------------------------- | -------------------------- | ----------------------------------------------------------- | --------------------- |
+| `forge.root-documents`       | repository root            | canonical public entry documents                            | required              |
+| `forge.docs`                 | `docs`                     | public documentation and public standards references        | required              |
+| `forge.content`              | `content`                  | public content and synthetic content fixtures               | required              |
+| `forge.content-schema`       | `packages/content-schema`  | public schemas, generated artifacts, and synthetic fixtures | required              |
+| `forge.health-schema`        | `packages/health-schema`   | public schemas and synthetic fixtures                       | required              |
+| `forge.house-of-keys`        | `packages/house-of-keys`   | public schemas and synthetic fixtures                       | required              |
+| `forge.aster`                | `packages/aster`           | public schemas and synthetic fixtures                       | required              |
+| `forge.public-standards`     | bounded paths under `docs` | explicitly public standards references                      | optional and reserved |
+| `forge.synthetic-connectors` | `fixtures/connectors`      | synthetic connector fixtures                                | optional and reserved |
 
 Each entry fixes:
 

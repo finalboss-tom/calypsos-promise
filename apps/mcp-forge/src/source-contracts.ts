@@ -38,7 +38,8 @@ export const FORGE_SOURCE_RESULT_STATES = [
   "truncated",
 ] as const;
 
-export type ForgeSourceResultState = (typeof FORGE_SOURCE_RESULT_STATES)[number];
+export type ForgeSourceResultState =
+  (typeof FORGE_SOURCE_RESULT_STATES)[number];
 
 export const FORGE_SOURCE_PARTIAL_REASON_IDS = [
   "file-limit-reached",
@@ -176,9 +177,7 @@ export interface ForgeObjectIdLocator {
 }
 
 export type ForgeSourceLocator =
-  | ForgeWholeFileLocator
-  | ForgeLineRangeLocator
-  | ForgeObjectIdLocator;
+  ForgeWholeFileLocator | ForgeLineRangeLocator | ForgeObjectIdLocator;
 
 export interface ForgeSourceProvenance {
   readonly revision: typeof FORGE_SOURCE_PROVENANCE_REVISION;
@@ -252,7 +251,14 @@ const packageSourceEntry = (
   accessMode: "recursive-tree",
   availability: "required",
   exactFileNames: [],
-  allowedPathPrefixes: ["src/", "schema/", "schemas/", "fixtures/", "examples/", "test/"],
+  allowedPathPrefixes: [
+    "src/",
+    "schema/",
+    "schemas/",
+    "fixtures/",
+    "examples/",
+    "test/",
+  ],
   allowedExtensions: PACKAGE_SOURCE_EXTENSIONS,
   excludedPathPrefixes: ["dist/", "node_modules/", "coverage/"],
   maxFileBytes: 1_048_576,
@@ -303,7 +309,8 @@ export const FORGE_SOURCE_CATALOGUE: readonly ForgeSourceCatalogueEntry[] = [
   {
     id: "forge.docs",
     revision: FORGE_SOURCE_CATALOGUE_REVISION,
-    purpose: "Public documentation, decisions, policies, roadmaps, and architecture.",
+    purpose:
+      "Public documentation, decisions, policies, roadmaps, and architecture.",
     informationClasses: ["public-documentation", "public-standards-reference"],
     repositoryRelativeRoot: "docs",
     accessMode: "recursive-tree",
@@ -383,13 +390,19 @@ export const FORGE_SOURCE_CATALOGUE: readonly ForgeSourceCatalogueEntry[] = [
   {
     id: "forge.public-standards",
     revision: FORGE_SOURCE_CATALOGUE_REVISION,
-    purpose: "Explicitly public standards references and public mapping guidance.",
+    purpose:
+      "Explicitly public standards references and public mapping guidance.",
     informationClasses: ["public-standards-reference"],
     repositoryRelativeRoot: "docs",
     accessMode: "recursive-tree",
     availability: "optional-reserved",
     exactFileNames: [],
-    allowedPathPrefixes: ["sources/", "standards/", "architecture/", "product/"],
+    allowedPathPrefixes: [
+      "sources/",
+      "standards/",
+      "architecture/",
+      "product/",
+    ],
     allowedExtensions: MARKDOWN_AND_DATA_EXTENSIONS,
     excludedPathPrefixes: [
       "private/",
@@ -413,7 +426,8 @@ export const FORGE_SOURCE_CATALOGUE: readonly ForgeSourceCatalogueEntry[] = [
   {
     id: "forge.synthetic-connectors",
     revision: FORGE_SOURCE_CATALOGUE_REVISION,
-    purpose: "Explicitly synthetic connector fixtures with no proprietary source material.",
+    purpose:
+      "Explicitly synthetic connector fixtures with no proprietary source material.",
     informationClasses: ["public-synthetic-connector-fixture"],
     repositoryRelativeRoot: "fixtures/connectors",
     accessMode: "recursive-tree",

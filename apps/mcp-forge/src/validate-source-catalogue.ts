@@ -145,7 +145,10 @@ export const validateForgeSourceCatalogue = (
         ),
       );
     }
-    for (const [classIndex, informationClass] of entry.informationClasses.entries()) {
+    for (const [
+      classIndex,
+      informationClass,
+    ] of entry.informationClasses.entries()) {
       if (!isKnownInformationClass(informationClass)) {
         issues.push(
           issue(
@@ -169,7 +172,11 @@ export const validateForgeSourceCatalogue = (
       );
     }
 
-    if (!(FORGE_SOURCE_ACCESS_MODES as readonly string[]).includes(entry.accessMode)) {
+    if (
+      !(FORGE_SOURCE_ACCESS_MODES as readonly string[]).includes(
+        entry.accessMode,
+      )
+    ) {
       issues.push(
         issue(
           FORGE_SOURCE_CATALOGUE_VALIDATION_CODES.invalidAccessMode,
@@ -192,7 +199,10 @@ export const validateForgeSourceCatalogue = (
       );
     }
 
-    if (entry.accessMode === "exact-files" && entry.exactFileNames.length === 0) {
+    if (
+      entry.accessMode === "exact-files" &&
+      entry.exactFileNames.length === 0
+    ) {
       issues.push(
         issue(
           FORGE_SOURCE_CATALOGUE_VALIDATION_CODES.invalidExactFile,
@@ -236,8 +246,14 @@ export const validateForgeSourceCatalogue = (
       }
     }
 
-    for (const [extensionIndex, extension] of entry.allowedExtensions.entries()) {
-      if (extension !== "" && (!extension.startsWith(".") || extension.includes("/"))) {
+    for (const [
+      extensionIndex,
+      extension,
+    ] of entry.allowedExtensions.entries()) {
+      if (
+        extension !== "" &&
+        (!extension.startsWith(".") || extension.includes("/"))
+      ) {
         issues.push(
           issue(
             FORGE_SOURCE_CATALOGUE_VALIDATION_CODES.invalidExtension,

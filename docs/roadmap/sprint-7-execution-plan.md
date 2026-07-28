@@ -167,6 +167,12 @@ Sprint 7.2 does not read repository files, expose a planned tool, use the networ
 
 The still-pre-release `2026-07-28` protocol path is deferred to explicit Sprint 7.9 compatibility and migration review rather than being adopted silently.
 
+## Sprint 7.3 evidence
+
+Sprint 7.3 defines nine server-owned source roots, exact-file and recursive-tree allowlists, public and synthetic information-class coverage, process-root discovery, prohibited path and credential classes, normalized path resolution, plain and encoded traversal rejection, component-level symlink rejection, resolved-path containment, locale-independent ordering, SHA-256 content digests, byte and line counts, whole-file, line-range, and object locators, explicit truncation and partial reasons, public-safe errors, deterministic validators, and public synthetic tests.
+
+The source core is available only through the direct application API. Every accepted MCP tool remains planned and unexposed; `tools/list` remains empty and `tools/call` remains refused.
+
 ## Information handling
 
 Only public repository records and public synthetic evidence may appear in Sprint 7 issues, branches, pull requests, fixtures, tests, comments, logs, and artifacts.

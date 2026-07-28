@@ -11,10 +11,8 @@ import { createForgeSourceError } from "./source-errors.js";
 
 const MAX_RELATIVE_PATH_LENGTH = 2_048;
 
-export const compareForgeSourcePaths = (
-  left: string,
-  right: string,
-): number => (left < right ? -1 : left > right ? 1 : 0);
+export const compareForgeSourcePaths = (left: string, right: string): number =>
+  left < right ? -1 : left > right ? 1 : 0;
 
 export const forgePathIsWithin = (
   parentPath: string,
@@ -27,7 +25,9 @@ export const forgePathIsWithin = (
   );
 };
 
-const decodePathInput = (input: string): { value: string; decoded: boolean } => {
+const decodePathInput = (
+  input: string,
+): { value: string; decoded: boolean } => {
   let value = input.normalize("NFKC");
   let decoded = false;
 
@@ -121,9 +121,7 @@ export const normalizeForgeSourceRelativePath = (
   return normalized;
 };
 
-export const forgeSourcePathIsProhibited = (
-  relativePath: string,
-): boolean => {
+export const forgeSourcePathIsProhibited = (relativePath: string): boolean => {
   const segments = relativePath.toLowerCase().split("/");
   const fileName = segments.at(-1) ?? "";
 
@@ -131,9 +129,13 @@ export const forgeSourcePathIsProhibited = (
     segments.some(
       (segment) =>
         segment.startsWith(".") ||
-        (FORGE_PROHIBITED_SOURCE_SEGMENTS as readonly string[]).includes(segment),
+        (FORGE_PROHIBITED_SOURCE_SEGMENTS as readonly string[]).includes(
+          segment,
+        ),
     ) ||
-    (FORGE_PROHIBITED_SOURCE_FILE_NAMES as readonly string[]).includes(fileName) ||
+    (FORGE_PROHIBITED_SOURCE_FILE_NAMES as readonly string[]).includes(
+      fileName,
+    ) ||
     (FORGE_PROHIBITED_SOURCE_SUFFIXES as readonly string[]).some((suffix) =>
       fileName.endsWith(suffix),
     )
@@ -159,7 +161,9 @@ export const forgeSourcePathIsAllowed = (
   }
 
   if (entry.accessMode === "exact-files") {
-    return !relativePath.includes("/") && entry.exactFileNames.includes(relativePath);
+    return (
+      !relativePath.includes("/") && entry.exactFileNames.includes(relativePath)
+    );
   }
 
   if (

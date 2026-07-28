@@ -39,8 +39,9 @@ This directory contains versioned architecture baselines that implement the froz
 31. [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 32. [Forge MCP Boundary and Tool Registry](forge-mcp-boundary-and-tool-registry.md)
 33. [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
-34. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-35. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+34. [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
+35. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+36. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -117,6 +118,8 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 
 - [Forge MCP Boundary and Tool Registry](forge-mcp-boundary-and-tool-registry.md)
 - [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
+- [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
+- [Forge MCP Source Catalogue and Provenance](forge-mcp-source-catalogue-and-provenance.md)
 - [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
 - [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
