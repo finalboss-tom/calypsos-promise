@@ -1,8 +1,8 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Standards, mapping, and synthetic connectors](forge-mcp-public-standards-mapping-and-synthetic-connectors.md) · [Deterministic synthetic generation](forge-mcp-deterministic-synthetic-generation.md) · [Scopes, limits, receipts, and errors](forge-mcp-scopes-limits-receipts-and-errors.md) · [Agent security, compatibility, and operability](forge-mcp-agent-security-compatibility-and-operability.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 7 completion](../roadmap/sprint-7-completion-record.md) · [Pre-Sprint 8 review](../roadmap/pre-sprint-8-alignment-review.md)
 
-This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
+This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
 ## Read in this order
 
@@ -46,8 +46,11 @@ This directory contains versioned architecture baselines that implement the froz
 38. [Forge MCP Deterministic Synthetic Generation](forge-mcp-deterministic-synthetic-generation.md)
 39. [Forge MCP Scopes, Limits, Receipts, and Errors](forge-mcp-scopes-limits-receipts-and-errors.md)
 40. [Forge MCP Agent Security, Compatibility, and Operability](forge-mcp-agent-security-compatibility-and-operability.md)
-41. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-42. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+41. [Sprint 7 Cross-Contract Reconciliation](forge-sprint-7-cross-contract-reconciliation.md)
+42. [Sprint 7 Control and Evidence Map](forge-sprint-7-control-and-evidence-map.md)
+43. [Sprint 7 Specialist Holdpoint and Unresolved-Work Register](forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+44. [Pre-Sprint 8 Repository Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
+45. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -58,9 +61,7 @@ This directory contains versioned architecture baselines that implement the froz
 - [Operational Simplicity Workstream](../roadmap/operational-simplicity-workstream.md)
 - [AS-0013 — Operational Simplicity](../governance/assumption-AS-0013-operational-simplicity-durable-value.md)
 
-Decision 0011 is accepted. The modular monolith remains the default. Responsive work, deferred jobs, schedules, events, projections, and provider adapters remain explicit concepts rather than hidden infrastructure conventions. Event-informed architecture does not select universal event sourcing, and offline-tolerant direction does not claim a completed local-first design.
-
-Sprint 7 therefore remains one local `stdio` Forge application, not a remote service, database, queue, vector index, provider platform, connector runtime, production synthetic-data platform, production resource-control system, or general agent runtime.
+Decision 0011 is accepted. The modular monolith remains the default. Sprint 7 therefore remains one local `stdio` Forge application, not a remote service, database, queue, vector index, provider platform, connector runtime, production synthetic-data platform, production resource-control system, or general agent runtime.
 
 ## Consumer-first and provider-independent architecture
 
@@ -70,7 +71,7 @@ Sprint 7 therefore remains one local `stdio` Forge application, not a remote ser
 - [AS-0012 — Consumer-First Continuity](../governance/assumption-AS-0012-consumer-first-continuity-value.md)
 - [Infrastructure Sponsorship and Exit Policy](../economics/infrastructure-sponsorship-and-exit-policy.md)
 
-The Living Chronicle remains the provider-independent longitudinal product model. External standards, EHRs, clinics, payers, laboratories, devices, exchanges, and research systems are sources, destinations, and potential partners connected through versioned adapters. They do not silently become Chronicle truth, product authority, or a prerequisite for personal value.
+The Living Chronicle remains the provider-independent longitudinal product model. External standards and institutions remain source-attributed, versioned, mapped, purpose-specific, and replaceable rather than silently becoming Chronicle truth or product authority.
 
 ## Living Chronicle architecture
 
@@ -95,7 +96,7 @@ The Living Chronicle remains the provider-independent longitudinal product model
 - [Deterministic Policy Evaluation Model](house-of-keys-policy-evaluation-model.md)
 - [Contract and Validation Baseline](../product/house-of-keys-contract-baseline.md)
 
-The House of Keys remains a separate bounded capability. It may authorize an operation over Chronicle data, but permission truth does not become Chronicle truth and consent state does not belong in `packages/health-schema`.
+Permission truth remains separate from Chronicle truth. The House of Keys does not authenticate actors, execute operations, or convert model or tool confidence into permission.
 
 ## Aster architecture
 
@@ -110,15 +111,9 @@ The House of Keys remains a separate bounded capability. It may authorize an ope
 - [Aster Provider Governance and Egress Contracts](aster-provider-governance-and-egress-contracts.md)
 - [Aster Local Synthetic Adapter and Non-AI Fallbacks](aster-local-synthetic-adapter-and-non-ai-fallbacks.md)
 - [Aster Compatibility, Migration, and Cross-Contract Evidence](aster-compatibility-migration-and-cross-contract-evidence.md)
-- [Sprint 6 Cross-Contract Reconciliation](aster-sprint-6-cross-contract-reconciliation.md)
-- [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
-- [Sprint 6 Specialist Holdpoints and Unresolved Work](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
-- [Aster Contract Baseline](../product/aster-contract-baseline.md)
 - [Sprint 6 Completion Record](../roadmap/sprint-6-completion-record.md)
 
-Aster is a bounded proposal, explanation, player-controlled memory, untrusted-input, work-lifecycle, provider-governance, deterministic local-fixture, compatibility, and migration capability. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, protected audit, or institutional authority.
-
-Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a02c3ba2d13`. Every production and specialist holdpoint remains open unless later evidence closes it.
+Aster is a bounded proposal and explanation capability. It does not own Chronicle truth, House of Keys authority, gameplay completion, rewards, application state, provider logs, retrieval indexes, protected audit, or institutional authority.
 
 ## Forge MCP architecture
 
@@ -131,25 +126,21 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 - [Forge MCP Deterministic Synthetic Generation](forge-mcp-deterministic-synthetic-generation.md)
 - [Forge MCP Scopes, Limits, Receipts, and Errors](forge-mcp-scopes-limits-receipts-and-errors.md)
 - [Forge MCP Agent Security, Compatibility, and Operability](forge-mcp-agent-security-compatibility-and-operability.md)
-- [Public Standards Reference Boundary](../standards/README.md)
-- [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
-- [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+- [Sprint 7 Cross-Contract Reconciliation](forge-sprint-7-cross-contract-reconciliation.md)
+- [Sprint 7 Control and Evidence Map](forge-sprint-7-control-and-evidence-map.md)
+- [Sprint 7 Specialist Holdpoints and Unresolved Work](forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 7 Completion Record](../roadmap/sprint-7-completion-record.md)
+- [Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
 - [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1–7.9 define the application boundary, accepted registry, local `stdio` transport, server-owned source catalogue, exact provenance, all ten tools, deterministic generation, execution scopes and limits, bounded receipts, stable errors, runtime integrity, successful-result security postconditions, compatibility and migration, clean startup, provider independence, literal non-authority, and public adversarial tests.
+All Sprint 7 implementation workstreams and the 7.10 completion package are present on the draft branch. The package is ready for founding-steward review but is not accepted or merged.
 
-All ten accepted identities remain enabled through runtime registry revision `4` in accepted registry order. Execution contract revision `1` remains unchanged. Security, compatibility, and operability contracts are revision `1` and add no identity or source authority.
+The local runtime exposes exactly ten accepted tools through runtime registry revision `4`. Execution, security, compatibility, and operability contracts are revision `1`. Forge remains local-only, public/synthetic-only, allowlisted, provider-independent, non-mutating, and non-authoritative.
 
-Forge verifies its server-owned contract surface before real tool operations and checks every successful result before receipt assembly. A result cannot suppress provenance or partial evidence, remove synthetic labels, approve mappings, redirect tool identity, or expand authority.
+Runtime integrity and successful-result postconditions fail closed when server-owned contracts or required evidence change. The completion package records twenty-eight controls, nineteen open holdpoints, eighteen unresolved-work items, and the bounded Sprint 8 handoff.
 
-The focused suite covers traversal, symlink escape, arbitrary roots, prohibited capabilities, runtime and scope mutation, confused-deputy behavior, source suppression, resource abuse, cancellation, receipt impersonation, synthetic-label removal, mapping self-approval, funding influence, protected sources, exact revisions, migrations, clean local startup, and provider independence.
-
-Issue #50 remains untriggered: Forge does not depend on or consume `@calypsos-promise/aster`, and no concrete Aster ergonomics evidence was produced.
-
-Tool, integrity, security-postcondition, receipt, error, compatibility, startup, and transport success cannot approve canon, mutate the repository, elevate retrieved material to accepted authority, approve mappings, claim certification, select providers, activate connectors, complete gameplay, grant rewards, prove clinical safety, prove statistical validity, or create institutional authority.
-
-Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, production resource-control system, production sandbox, or institutional authority.
+Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, standards authority, mapping authority, production provider gateway, connector runtime, production synthetic-data platform, production resource-control system, production sandbox, or institutional authority without later accepted decisions and evidence.
 
 ## Legacy and succession architecture
 
