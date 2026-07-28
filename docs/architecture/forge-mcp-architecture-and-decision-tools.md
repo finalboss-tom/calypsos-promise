@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Architecture index](README.md) · [Current status](../roadmap/current-status.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](forge-mcp-lore-and-schema-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** Sprint 7.5 implementation on draft PR #55; final-head repository validation pending
+- **Status:** Sprint 7.5 implementation complete on draft PR #55; fresh final-head repository validation in progress
 - **Tool contract revision:** `1`
 - **Runtime registry revision:** `2`
 - **Transport:** local `stdio` only
