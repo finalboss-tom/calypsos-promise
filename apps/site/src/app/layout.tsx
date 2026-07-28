@@ -7,6 +7,7 @@ import "./globals.css";
 import "./homepage.css";
 import "./guide-pages.css";
 import "./trust-forge.css";
+import "./public-records.css";
 
 const siteUrl = new URL("https://www.calypsospromise.org");
 
@@ -98,6 +99,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Link href="/promise">The Promise</Link>
             <Link href="/trust">Trust Center</Link>
             <Link href="/forge">Open Forge</Link>
+            <Link href="/roadmap">Roadmap</Link>
+            <Link href="/support">Support</Link>
+            <Link href="/funding">Funding transparency</Link>
             <a
               href="https://github.com/finalboss-tom/calypsos-promise"
               target="_blank"
