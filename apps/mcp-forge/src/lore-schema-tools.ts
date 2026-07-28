@@ -85,7 +85,12 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
         name as ForgeEnabledStandardsMappingToolId,
       );
       const generationTool = name === "forge.generate.synthetic-data";
-      if (!loreTool && !documentationTool && !standardsTool && !generationTool) {
+      if (
+        !loreTool &&
+        !documentationTool &&
+        !standardsTool &&
+        !generationTool
+      ) {
         throw new ForgeLoreSchemaToolError(
           FORGE_LORE_SCHEMA_ERROR_CODES.toolUnknown,
           "The requested Forge tool is not enabled.",

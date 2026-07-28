@@ -93,7 +93,8 @@ const QUEST_SCENARIOS: readonly QuestScenario[] = [
       {
         id: "accessibility.screen-reader",
         label: "Screen reader sequence",
-        description: "Presents controls and context in a predictable linear order.",
+        description:
+          "Presents controls and context in a predictable linear order.",
       },
     ],
     edgeCase: false,
@@ -107,7 +108,8 @@ const QUEST_SCENARIOS: readonly QuestScenario[] = [
       {
         id: "accessibility.reduced-motion",
         label: "Reduced motion",
-        description: "Avoids motion-dependent instructions and timed animation.",
+        description:
+          "Avoids motion-dependent instructions and timed animation.",
       },
     ],
     edgeCase: false,
@@ -115,13 +117,15 @@ const QUEST_SCENARIOS: readonly QuestScenario[] = [
   {
     id: "low-dexterity",
     title: "Low Dexterity Path",
-    objective: "Confirm a fictional preference using a minimal interaction path.",
+    objective:
+      "Confirm a fictional preference using a minimal interaction path.",
     requirementType: "player-confirmation",
     accessibilityVariants: [
       {
         id: "accessibility.low-dexterity",
         label: "Minimal interaction",
-        description: "Uses one large confirmation target and no precision gesture.",
+        description:
+          "Uses one large confirmation target and no precision gesture.",
       },
     ],
     edgeCase: false,
@@ -129,7 +133,8 @@ const QUEST_SCENARIOS: readonly QuestScenario[] = [
   {
     id: "decline-and-return",
     title: "Decline and Return",
-    objective: "Exercise a fictional non-punitive decline and later-return path.",
+    objective:
+      "Exercise a fictional non-punitive decline and later-return path.",
     requirementType: "player-confirmation",
     accessibilityVariants: [],
     edgeCase: true,
@@ -267,7 +272,11 @@ function parseInput(input: unknown): Required<ForgeGenerateSyntheticDataInput> {
   }
 
   const count = input.count === undefined ? DEFAULT_COUNT : input.count;
-  if (!Number.isSafeInteger(count) || Number(count) < 1 || Number(count) > MAX_COUNT) {
+  if (
+    !Number.isSafeInteger(count) ||
+    Number(count) < 1 ||
+    Number(count) > MAX_COUNT
+  ) {
     throw new ForgeLoreSchemaToolError(
       FORGE_LORE_SCHEMA_ERROR_CODES.invalidInput,
       `count must be an integer from 1-${MAX_COUNT}.`,
@@ -465,10 +474,7 @@ function recordBase(
   scenarioId: string,
   caseIndex: number,
   caseId: string,
-): Omit<
-  ForgeGeneratedSyntheticRecord,
-  "schema" | "validation" | "artifact"
-> {
+): Omit<ForgeGeneratedSyntheticRecord, "schema" | "validation" | "artifact"> {
   return {
     caseId,
     kind,
