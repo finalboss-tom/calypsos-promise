@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Pre-Sprint 7 review](pre-sprint-7-alignment-review.md) · [Forge boundary](../architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](../architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](../architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](../architecture/forge-mcp-lore-and-schema-tools.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** ACTIVE — Sprint 7.1–7.4 implemented; exact-head validation pending; Sprint 7.5 next
+- **Status:** ACTIVE — Sprint 7.1–7.4 implemented and validated; Sprint 7.5 next
 - **Entry baseline:** `main` at pre-Sprint 7 reconciliation squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`
 - **Branch:** `agent/sprint-7-forge-mcp`
 - **Application:** `apps/mcp-forge`
@@ -93,7 +93,7 @@ Define exact repository root resolution, source allowlists, prohibited paths, pa
 
 Implement lore search, content validation, quest-schema inspection, and quest validation through existing public package exports and deterministic validators.
 
-**Exit:** met at the branch implementation level. Exactly four server-owned read-only tools are activated through local `stdio`; success remains distinct from canon acceptance, repository mutation, quest completion, reward grant, semantic completeness, or clinical safety. Exact-head CI and DCO remain the closure gate.
+**Exit:** met. Exactly four server-owned read-only tools are activated through local `stdio`; success remains distinct from canon acceptance, repository mutation, quest completion, reward grant, semantic completeness, or clinical safety. The clean implementation head passed CI run 767 and DCO run 832.
 
 ### 7.5 Architecture and decision tools
 
@@ -193,6 +193,8 @@ Sprint 7.4 adds:
 - direct and transport-level tests, including untrusted instruction isolation.
 
 Tool success remains evidence only. It does not approve canon, accept a repository change, complete gameplay, grant rewards, prove semantic completeness, prove clinical safety, or create institutional authority.
+
+The clean implementation head passed formatting, documentation links, repository policy, economics validation, content validation, lint, typecheck, tests, and DCO through CI run 767 and DCO run 832.
 
 ## Information handling
 
