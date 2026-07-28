@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 plan](roadmap/sprint-7-execution-plan.md) · [Forge boundary](architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 plan](roadmap/sprint-7-execution-plan.md) · [Forge boundary](architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](architecture/forge-mcp-local-stdio-transport.md) · [Source catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md) · [Lore and schema tools](architecture/forge-mcp-lore-and-schema-tools.md) · [Architecture and decision tools](architecture/forge-mcp-architecture-and-decision-tools.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -26,22 +26,24 @@ The application is the first operating surface of a long-lived public-benefit in
 3. [Forge MCP Boundary and Tool Registry](architecture/forge-mcp-boundary-and-tool-registry.md)
 4. [Forge MCP Local `stdio` Transport](architecture/forge-mcp-local-stdio-transport.md)
 5. [Forge MCP Source Catalogue and Provenance](architecture/forge-mcp-source-catalogue-and-provenance.md)
-6. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)
-7. [Sprint Roadmap](roadmap/sprints.md)
-8. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-9. [Aster Contract Baseline](product/aster-contract-baseline.md)
-10. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)
-11. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)
-12. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
-13. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
-14. [Security Architecture](security/README.md)
-15. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-16. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-17. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-18. [Repository and Module Boundaries](architecture/module-boundaries.md)
-19. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-20. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-21. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+6. [Forge MCP Lore and Schema Tools](architecture/forge-mcp-lore-and-schema-tools.md)
+7. [Forge MCP Architecture and Decision Tools](architecture/forge-mcp-architecture-and-decision-tools.md)
+8. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)
+9. [Sprint Roadmap](roadmap/sprints.md)
+10. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+11. [Aster Contract Baseline](product/aster-contract-baseline.md)
+12. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)
+13. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)
+14. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+15. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
+16. [Security Architecture](security/README.md)
+17. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+18. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+19. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+20. [Repository and Module Boundaries](architecture/module-boundaries.md)
+21. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+22. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+23. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -78,7 +80,7 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
 
-Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md), [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md), [Local Transport](architecture/forge-mcp-local-stdio-transport.md), and [Source Catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md) govern the implemented 7.1–7.3 baselines. A finalized-version local `stdio` transport and server-owned allowlisted source core exist, but all tools remain planned and unexposed. Sprint 7.4 is next.
+Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md), [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md), [Local Transport](architecture/forge-mcp-local-stdio-transport.md), [Source Catalogue](architecture/forge-mcp-source-catalogue-and-provenance.md), [Lore and Schema Tools](architecture/forge-mcp-lore-and-schema-tools.md), and [Architecture and Decision Tools](architecture/forge-mcp-architecture-and-decision-tools.md) govern the implemented and validated 7.1–7.5 baselines. A finalized-version local `stdio` transport, server-owned allowlisted source core, and exactly six read-only lore, schema, architecture, and decision tools exist. Sprint 7.6 — standards and synthetic connector fixtures — is next and has not started.
 
 ## Current accepted strategic and architectural baselines
 
@@ -132,7 +134,7 @@ Aster may draft, clarify, recall source-linked information, explain provenance a
 
 The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) is the controlling handoff.
 
-Sprint 7 should implement one bounded local `apps/mcp-forge` application that exposes useful contributor tooling over public documentation and synthetic data.
+Sprint 7 implements one bounded local `apps/mcp-forge` application that exposes useful contributor tooling over public documentation and synthetic data.
 
 It must cover:
 
@@ -146,6 +148,8 @@ It must cover:
 - prompt-injection, confused-deputy, path-escape, exfiltration, and resource-abuse tests;
 - versioned compatibility and migration; and
 - sponsor, provider, service-credit, and publication independence.
+
+Workstreams 7.1–7.5 are implemented and validated. The current local runtime exposes six server-owned read-only tools and keeps the remaining four accepted identities planned and unexposed. Architecture and decision results include exact line provenance and conservative authority status so retrieved text cannot promote itself to accepted current truth.
 
 Sprint 7 does not authorize private Chronicle tools, repository mutation, arbitrary shell execution, arbitrary network access, production providers, protected mappings, credentials, real health data, production identity, connectors, remote MCP hosting, or consequential domain actions.
 
