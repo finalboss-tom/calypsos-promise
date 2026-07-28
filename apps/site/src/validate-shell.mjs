@@ -95,6 +95,7 @@ const source = (
     sourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")),
   )
 ).join("\n");
+const normalizedSource = source.replace(/\s+/g, " ");
 
 for (const phrase of [
   "Build your Living Chronicle. Improve your health. Keep the key.",
@@ -142,7 +143,8 @@ for (const phrase of [
   'loading="lazy"',
   "Read the contribution guide",
 ]) {
-  if (!source.includes(phrase)) {
+  const normalizedPhrase = phrase.replace(/\s+/g, " ");
+  if (!normalizedSource.includes(normalizedPhrase)) {
     throw new Error(`Site foundation is missing required evidence: ${phrase}`);
   }
 }
