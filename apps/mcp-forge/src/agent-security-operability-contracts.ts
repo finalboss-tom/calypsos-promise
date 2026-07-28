@@ -112,11 +112,7 @@ export const FORGE_AGENT_SECURITY_MATRIX: readonly ForgeAgentSecurityScenarioCon
       "fail-closed-integrity",
       "contract-validator",
     ),
-    scenario(
-      "scope-mutation",
-      "fail-closed-integrity",
-      "contract-validator",
-    ),
+    scenario("scope-mutation", "fail-closed-integrity", "contract-validator"),
     scenario(
       "confused-deputy",
       "reject-security-postcondition",
@@ -132,16 +128,8 @@ export const FORGE_AGENT_SECURITY_MATRIX: readonly ForgeAgentSecurityScenarioCon
       "reject-before-operation",
       "direct-runtime-test",
     ),
-    scenario(
-      "timeout",
-      "return-stable-bounded-error",
-      "direct-runtime-test",
-    ),
-    scenario(
-      "cancellation",
-      "suppress-cancelled-response",
-      "transport-test",
-    ),
+    scenario("timeout", "return-stable-bounded-error", "direct-runtime-test"),
+    scenario("cancellation", "suppress-cancelled-response", "transport-test"),
     scenario(
       "receipt-leakage",
       "reject-security-postcondition",
@@ -341,8 +329,7 @@ const issue = (
 ): ForgeAgentSecurityValidationIssue => ({ code, path, message });
 
 export function validateForgeAgentSecurityOperability(
-  matrix: readonly ForgeAgentSecurityScenarioContract[] =
-    FORGE_AGENT_SECURITY_MATRIX,
+  matrix: readonly ForgeAgentSecurityScenarioContract[] = FORGE_AGENT_SECURITY_MATRIX,
   compatibility: ForgeCompatibilityManifest = FORGE_COMPATIBILITY_MANIFEST,
   operability: ForgeOperabilityContract = FORGE_OPERABILITY_CONTRACT,
 ): ForgeAgentSecurityValidationIssue[] {
