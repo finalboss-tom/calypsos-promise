@@ -41,7 +41,7 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 
 | Route          | Current behavior                                                                |
 | -------------- | ------------------------------------------------------------------------------- |
-| `/`            | migrated cinematic homepage with Promise, status, and contribution paths       |
+| `/`            | migrated cinematic homepage with Promise, status, and contribution paths        |
 | `/promise`     | source-backed player Promise, rights, three loops, and meaningfully-free policy |
 | `/privacy`     | migration-period signup privacy explanation                                     |
 | `/joined`      | migration-period no-submission confirmation                                     |
