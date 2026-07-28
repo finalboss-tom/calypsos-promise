@@ -25,5 +25,6 @@ export * from "./synthetic-generation-tools.js";
 export * from "./transport-contracts.js";
 export * from "./transport-harness.js";
 export * from "./transport-session.js";
+export * from "./validate-runtime-security.js";
 export * from "./validate-source-catalogue.js";
 export * from "./validate.js";
