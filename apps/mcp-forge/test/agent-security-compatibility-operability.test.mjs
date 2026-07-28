@@ -139,7 +139,10 @@ test("agent-security, compatibility, migration, and operability contracts valida
   );
   assert.equal(FORGE_COMPATIBILITY_MANIFEST.runtimeRegistryRevision, "4");
   assert.equal(FORGE_COMPATIBILITY_MANIFEST.executionContractRevision, "1");
-  assert.equal(FORGE_OPERABILITY_CONTRACT.issue50ActivationState, "not-triggered");
+  assert.equal(
+    FORGE_OPERABILITY_CONTRACT.issue50ActivationState,
+    "not-triggered",
+  );
   assert.equal(FORGE_OPERABILITY_CONTRACT.asterPackageDependency, false);
 
   const matrix = FORGE_AGENT_SECURITY_SCENARIO_IDS.map((id) => ({
@@ -176,7 +179,8 @@ test("agent-security, compatibility, migration, and operability contracts valida
   assert.ok(
     issues.some(
       (entry) =>
-        entry.code === FORGE_AGENT_SECURITY_VALIDATION_CODES.operabilityBoundary,
+        entry.code ===
+        FORGE_AGENT_SECURITY_VALIDATION_CODES.operabilityBoundary,
     ),
   );
 });
@@ -250,9 +254,15 @@ test("inputs cannot select roots, invoke capabilities, suppress evidence, or buy
       new AbortController().signal,
     );
     assert.equal(result.isError, true);
-    assert.equal(result.structuredContent.error.code, "forge.tool.invalid-input");
+    assert.equal(
+      result.structuredContent.error.code,
+      "forge.tool.invalid-input",
+    );
     assert.equal(JSON.stringify(result).includes(marker), false);
-    assert.equal(result.structuredContent.receipt.authority.resultAuthority, "none");
+    assert.equal(
+      result.structuredContent.receipt.authority.resultAuthority,
+      "none",
+    );
   }
 
   let networkCalls = 0;
