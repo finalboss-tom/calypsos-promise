@@ -20,6 +20,7 @@ jobs:
           fetch-depth: 0
       - name: Switch reconciliation to branch push
         run: |
+          # This second revision exists only to trigger the already-present workflow.
           python - <<'PY'
           from pathlib import Path
 
