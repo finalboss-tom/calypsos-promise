@@ -11,6 +11,7 @@ const required = [
   "src/app/globals.css",
   "src/app/homepage.css",
   "src/app/guide-pages.css",
+  "src/app/trust-forge.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
@@ -18,6 +19,8 @@ const required = [
   "src/app/how-it-works/page.tsx",
   "src/app/consumer-first/page.tsx",
   "src/app/aster/page.tsx",
+  "src/app/trust/page.tsx",
+  "src/app/forge/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -38,6 +41,8 @@ const required = [
   "src/lib/how-it-works.ts",
   "src/lib/consumer-first.ts",
   "src/lib/aster.ts",
+  "src/lib/trust-center.ts",
+  "src/lib/open-forge.ts",
   "public/assets/compass-mark.svg",
   "public/assets/hero-ogygia.webp",
   "vercel.json",
@@ -63,6 +68,7 @@ const sourcePaths = [
   "src/app/globals.css",
   "src/app/homepage.css",
   "src/app/guide-pages.css",
+  "src/app/trust-forge.css",
   "src/app/layout.tsx",
   "src/app/page.tsx",
   "src/app/promise/page.tsx",
@@ -70,6 +76,8 @@ const sourcePaths = [
   "src/app/how-it-works/page.tsx",
   "src/app/consumer-first/page.tsx",
   "src/app/aster/page.tsx",
+  "src/app/trust/page.tsx",
+  "src/app/forge/page.tsx",
   "src/app/privacy/page.tsx",
   "src/app/joined/page.tsx",
   "src/app/api/join/route.ts",
@@ -86,6 +94,8 @@ const sourcePaths = [
   "src/lib/how-it-works.ts",
   "src/lib/consumer-first.ts",
   "src/lib/aster.ts",
+  "src/lib/trust-center.ts",
+  "src/lib/open-forge.ts",
   "src/proxy.ts",
   "next.config.mjs",
 ];
@@ -119,6 +129,26 @@ for (const phrase of [
   "AI proposes. The player confirms.",
   "The domain service validates and stores.",
   "No production Aster capability is live.",
+  "Trust begins with visible limits.",
+  "A documented control is not a deployed control.",
+  "Do not open a public issue.",
+  "No public page closes these gates.",
+  "Useful tools without hidden authority.",
+  "Exactly ten tools",
+  "forge.invocation-receipt.v1",
+  "forge.error.v1",
+  "Nineteen specialist holdpoints and eighteen unresolved-work records remain open",
+  "Contributors do not need Forge to participate.",
+  "forge.search.lore",
+  "forge.validate.content",
+  "forge.inspect.quest-schema",
+  "forge.validate.quest",
+  "forge.search.architecture",
+  "forge.search.decision",
+  "forge.search.public-standards",
+  "forge.validate.mapping-draft",
+  "forge.search.synthetic-connector-fixtures",
+  "forge.generate.synthetic-data",
   "SIGNUP_MIGRATION_PAUSED",
   "Content-Security-Policy",
   "metadataBase",
@@ -132,6 +162,8 @@ for (const phrase of [
   'href: "/how-it-works"',
   'href: "/consumer-first"',
   'href: "/aster"',
+  'href: "/trust"',
+  'href: "/forge"',
   '"live"',
   '"experimental"',
   '"planned"',
@@ -151,7 +183,7 @@ for (const phrase of [
 
 if (source.includes('"use client"') || source.includes("'use client'")) {
   throw new Error(
-    "Sprint 8 homepage, Promise, guide, navigation, and status surfaces must remain server-rendered",
+    "Sprint 8 homepage, Promise, guide, trust, Forge, navigation, and status surfaces must remain server-rendered",
   );
 }
 
@@ -167,5 +199,5 @@ for (const phrase of [
 }
 
 console.log(
-  "Sprint 8.5 Seven Laws, How It Works, consumer-first, and Aster boundaries are complete.",
+  "Sprint 8.6 Trust Center and Open Forge boundaries are implemented for validation.",
 );
