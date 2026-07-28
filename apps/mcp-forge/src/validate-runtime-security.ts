@@ -1,8 +1,9 @@
-import { FORGE_BASELINE } from "./contracts.js";
 import { validateForgeAgentSecurityOperability } from "./agent-security-operability-contracts.js";
+import { FORGE_BASELINE } from "./contracts.js";
 import { validateForgeExecutionScopes } from "./execution-contracts.js";
 import { validateForgeRuntimeToolRegistry } from "./runtime-registry.js";
 import { validateForgeRuntimeIntegrity } from "./security-postconditions.js";
+import { FORGE_SOURCE_CATALOGUE } from "./source-contracts.js";
 import { validateForgeSourceCatalogue } from "./validate-source-catalogue.js";
 import { validateForgeBaseline } from "./validate.js";
 
@@ -19,7 +20,7 @@ export type ForgeCompleteRuntimeValidationIssue =
 export function validateForgeCompleteRuntime(): ForgeCompleteRuntimeValidationIssue[] {
   return [
     ...validateForgeBaseline(FORGE_BASELINE),
-    ...validateForgeSourceCatalogue(),
+    ...validateForgeSourceCatalogue(FORGE_SOURCE_CATALOGUE),
     ...validateForgeRuntimeToolRegistry(),
     ...validateForgeExecutionScopes(),
     ...validateForgeRuntimeIntegrity(),
