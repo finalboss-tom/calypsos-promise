@@ -9,7 +9,12 @@ export const directNavigation: readonly NavigationItem[] = [
   {
     href: "/",
     label: "Home",
-    description: "The current public gateway to Ogygia.",
+    description: "The public gateway to Ogygia and the current project state.",
+  },
+  {
+    href: "/promise",
+    label: "The Promise",
+    description: "Player rights, personal value, privacy, and control.",
   },
   {
     href: "/#capability-status",
@@ -39,7 +44,12 @@ export const narrativeNavigation: readonly NavigationItem[] = [
   {
     href: "/#begin",
     label: "Arrive at the shore",
-    description: "Read the Promise and the current website boundary.",
+    description: "Meet the project and see its current public state.",
+  },
+  {
+    href: "/promise",
+    label: "Hear the Promise",
+    description: "Understand the rights that govern the journey.",
   },
   {
     href: "/#capability-status",
