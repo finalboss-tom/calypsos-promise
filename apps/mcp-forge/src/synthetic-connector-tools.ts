@@ -10,9 +10,7 @@ import {
   FORGE_TOOL_NON_AUTHORITY,
   ForgeLoreSchemaToolError,
 } from "./lore-schema-contracts.js";
-import type {
-  ForgeSourceResultState,
-} from "./source-contracts.js";
+import type { ForgeSourceResultState } from "./source-contracts.js";
 import {
   createForgeObjectIdLocator,
   ForgeSourceRepository,
@@ -148,9 +146,7 @@ function searchableStrings(value: unknown): readonly string[] {
   return Object.values(value).flatMap(searchableStrings);
 }
 
-function explicitFixture(
-  value: unknown,
-): value is Record<string, unknown> & {
+function explicitFixture(value: unknown): value is Record<string, unknown> & {
   id: string;
   synthetic: true;
   informationClass: "public-synthetic-connector-fixture";
