@@ -100,7 +100,10 @@ export function validateForgeRuntimeToolRegistry(
   const issues: ForgeRuntimeValidationIssue[] = [];
   const seen = new Set<string>();
   const baseById = new Map(FORGE_TOOL_REGISTRY.map((tool) => [tool.id, tool]));
-  const descriptorById = new Map(
+  const descriptorById = new Map<
+    string,
+    (typeof FORGE_RUNTIME_TOOL_DESCRIPTORS)[number]
+  >(
     FORGE_RUNTIME_TOOL_DESCRIPTORS.map((descriptor) => [
       descriptor.name,
       descriptor,
