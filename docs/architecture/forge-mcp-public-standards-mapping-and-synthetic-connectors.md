@@ -2,7 +2,7 @@
 
 [Documentation home](../README.md) · [Architecture index](README.md) · [Current status](../roadmap/current-status.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Source catalogue](forge-mcp-source-catalogue-and-provenance.md) · [Architecture and decision tools](forge-mcp-architecture-and-decision-tools.md) · [Public standards boundary](../standards/README.md) · [Tracking issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54) · [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-- **Status:** Sprint 7.6 implementation on draft PR #55; final combined validation pending
+- **Status:** Sprint 7.6 complete and validated on draft PR #55
 - **Tool contract revision:** `1`
 - **Runtime registry revision:** `3`
 - **Transport:** local `stdio` only
@@ -138,6 +138,8 @@ The Sprint 7.6 synthetic test suite covers:
 - skipped unclassified fixture evidence;
 - retrieved-instruction isolation; and
 - transport discovery and dispatch.
+
+The full repository checks pass for the completed implementation surface. Exact final-head CI and DCO evidence is recorded in issue #54 and draft PR #55.
 
 ## Explicit non-scope
 
