@@ -52,15 +52,18 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
-  "Exactly ten Sprint 7.1-7.7 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
-  "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged, with the accepted synthetic-generation identity added.",
+  "Exactly ten Sprint 7.1-7.8 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
+  "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged, with the accepted synthetic-generation identity added during Sprint 7.7.",
   "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools remain unchanged inside that prior nine-tool baseline.",
+  "All ten tool calls now use one server-owned execution contract derived from immutable accepted limits for request bytes, files scanned, results, output bytes, timeout, cancellation, per-tool concurrency, and serialized materialized memory.",
+  "Every scoped success or stable tool error includes a bounded invocation receipt without raw input, absolute host paths, environment values, internal traces, credentials, protected source material, or wall-clock timestamps.",
+  "Caller cancellation suppresses the response rather than manufacturing a receipt, while timeouts return one stable public-safe tool error receipt.",
   "Synthetic generation is deterministic for the same seed and input, immediately validates every result, and labels every artifact synthetic, non-production, credential-free, personal-data-free, and human-review-required.",
   "Generated quests and mapping drafts cannot self-approve, create canon, prove semantic equivalence, authorize clinical use, select a provider, activate a connector, mutate the repository, complete gameplay, grant rewards, or create institutional authority.",
   "Documentation and standards search expose exact provenance and no certification, completeness, or provider-preference authority.",
   "Mapping validation requires draft-only non-authority claims and cannot approve semantic equivalence, connector behavior, certification, production readiness, or a provider default.",
   "Synthetic connector search returns only explicitly synthetic, non-production fixtures without personal data or credentials.",
-  "Tool and transport success do not create canon, Chronicle truth, permission, gameplay completion, rewards, provider approval, clinical authority, or institutional authority.",
+  "Tool, receipt, error, and transport success do not create canon, Chronicle truth, permission, gameplay completion, rewards, provider approval, clinical authority, or institutional authority.",
   "Forge does not provide shell, network, repository mutation, private-data, provider, connector, or consequential action authority.",
 ].join(" ");
 
@@ -76,8 +79,13 @@ export const FORGE_RUNTIME_TRANSPORT_BOUNDARY = {
   repositoryReadsEnabled: true,
   repositoryReadScope: "server-owned-public-allowlist",
   enabledToolIds: FORGE_RUNTIME_ENABLED_TOOL_IDS,
+  executionScopesServerOwned: true,
+  acceptedResourceLimitsEnforced: true,
+  stableInvocationReceiptsEnabled: true,
+  stableToolErrorsEnabled: true,
   callerCanRegisterTool: false,
   callerCanSelectRepositoryRoot: false,
+  callerCanChangeExecutionScope: false,
   untrustedContentCanAuthorizeToolCall: false,
 } as const;
 
@@ -157,7 +165,7 @@ export function validateForgeRuntimeToolRegistry(
           runtimeIssue(
             FORGE_RUNTIME_VALIDATION_CODES.enabledLifecycle,
             `${path}.lifecycle`,
-            "Accepted Sprint 7.1-7.7 runtime tools must be explicitly enabled.",
+            "Accepted Sprint 7.1-7.8 runtime tools must be explicitly enabled.",
           ),
         );
       }
@@ -187,7 +195,7 @@ export function validateForgeRuntimeToolRegistry(
         runtimeIssue(
           FORGE_RUNTIME_VALIDATION_CODES.unexpectedEnablement,
           path,
-          "Only the ten accepted Sprint 7.1-7.7 runtime tools may be enabled.",
+          "Only the ten accepted Sprint 7.1-7.8 runtime tools may be enabled.",
         ),
       );
     }
@@ -244,7 +252,7 @@ export function validateForgeRuntimeToolRegistry(
       runtimeIssue(
         FORGE_RUNTIME_VALIDATION_CODES.descriptorMismatch,
         "descriptors",
-        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.7 tool set.",
+        "MCP descriptors must exactly cover the enabled Sprint 7.1-7.8 tool set.",
       ),
     );
   }
