@@ -8,6 +8,7 @@ import {
   FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   FORGE_JSON_RPC_ERROR_CODES,
   FORGE_LORE_SCHEMA_ERROR_CODES,
+  FORGE_RUNTIME_ENABLED_TOOL_IDS,
   FORGE_RUNTIME_TOOL_REGISTRY,
   FORGE_TRANSPORT_ERROR_IDS,
   ForgeLoreSchemaToolService,
@@ -155,16 +156,21 @@ async function initialize(session) {
   return response;
 }
 
-test("the runtime registry enables exactly the four Sprint 7.4 tools", () => {
+test("the runtime registry preserves all Sprint 7.4 tools within the six-tool Sprint 7.5 runtime", () => {
   assert.deepEqual(validateForgeRuntimeToolRegistry(), []);
   assert.deepEqual(
     FORGE_RUNTIME_TOOL_REGISTRY.filter(
       (tool) => tool.lifecycle === "enabled",
     ).map((tool) => tool.id),
-    FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
+    FORGE_RUNTIME_ENABLED_TOOL_IDS,
+  );
+  assert.ok(
+    FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.every((id) =>
+      FORGE_RUNTIME_ENABLED_TOOL_IDS.includes(id),
+    ),
   );
   for (const tool of FORGE_RUNTIME_TOOL_REGISTRY) {
-    if (FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(tool.id)) {
+    if (FORGE_RUNTIME_ENABLED_TOOL_IDS.includes(tool.id)) {
       assert.equal(tool.transportExposure, "local-stdio-only");
     } else {
       assert.equal(tool.lifecycle, "planned");
@@ -290,7 +296,7 @@ test("transport activation is server-owned and default sessions remain inert", a
   const service = await createToolService(t);
   const live = new ForgeTransportSession({ toolService: service });
   const liveInitialize = await initialize(live);
-  assert.match(liveInitialize.result.instructions, /Exactly four/);
+  assert.match(liveInitialize.result.instructions, /Exactly six/);
   const liveList = await live.handleMessage({
     jsonrpc: "2.0",
     id: 2,
@@ -298,7 +304,7 @@ test("transport activation is server-owned and default sessions remain inert", a
   });
   assert.deepEqual(
     liveList.result.tools.map((tool) => tool.name),
-    FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
+    FORGE_RUNTIME_ENABLED_TOOL_IDS,
   );
 
   const call = await live.handleMessage({
