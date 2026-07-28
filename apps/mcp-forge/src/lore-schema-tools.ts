@@ -5,6 +5,16 @@ import {
 } from "@calypsos-promise/content-schema";
 
 import {
+  FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS,
+  type ForgeEnabledDocumentationSearchToolId,
+  type ForgeSearchArchitectureOutput,
+  type ForgeSearchDecisionOutput,
+} from "./documentation-search-contracts.js";
+import {
+  searchForgeArchitecture,
+  searchForgeDecision,
+} from "./documentation-search-tools.js";
+import {
   FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS,
   FORGE_LORE_SCHEMA_ERROR_CODES,
   FORGE_LORE_SCHEMA_TOOL_REVISION,
@@ -52,11 +62,14 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     signal: AbortSignal,
   ): Promise<ForgeMcpToolCallResult> {
     try {
-      if (
-        !FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(
-          name as ForgeEnabledLoreSchemaToolId,
-        )
-      ) {
+      const loreTool = FORGE_ENABLED_LORE_SCHEMA_TOOL_IDS.includes(
+        name as ForgeEnabledLoreSchemaToolId,
+      );
+      const documentationTool =
+        FORGE_ENABLED_DOCUMENTATION_SEARCH_TOOL_IDS.includes(
+          name as ForgeEnabledDocumentationSearchToolId,
+        );
+      if (!loreTool && !documentationTool) {
         throw new ForgeLoreSchemaToolError(
           FORGE_LORE_SCHEMA_ERROR_CODES.toolUnknown,
           "The requested Forge tool is not enabled.",
@@ -64,7 +77,11 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
       }
       if (signal.aborted) throw signal.reason;
 
-      switch (name as ForgeEnabledLoreSchemaToolId) {
+      switch (
+        name as
+          | ForgeEnabledLoreSchemaToolId
+          | ForgeEnabledDocumentationSearchToolId
+      ) {
         case "forge.search.lore":
           return forgeToolResult(await this.searchLore(argumentsValue, signal));
         case "forge.validate.content":
@@ -75,6 +92,14 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
           return forgeToolResult(await this.inspectQuestSchema(argumentsValue));
         case "forge.validate.quest":
           return forgeToolResult(await this.validateQuest(argumentsValue));
+        case "forge.search.architecture":
+          return forgeToolResult(
+            await this.searchArchitecture(argumentsValue, signal),
+          );
+        case "forge.search.decision":
+          return forgeToolResult(
+            await this.searchDecision(argumentsValue, signal),
+          );
       }
     } catch (error) {
       if (signal.aborted) throw error;
@@ -95,6 +120,20 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     signal?: AbortSignal,
   ): Promise<ForgeSearchLoreOutput> {
     return searchForgeLore(this.#repository, input, signal);
+  }
+
+  searchArchitecture(
+    input: unknown,
+    signal?: AbortSignal,
+  ): Promise<ForgeSearchArchitectureOutput> {
+    return searchForgeArchitecture(this.#repository, input, signal);
+  }
+
+  searchDecision(
+    input: unknown,
+    signal?: AbortSignal,
+  ): Promise<ForgeSearchDecisionOutput> {
+    return searchForgeDecision(this.#repository, input, signal);
   }
 
   async validatePublicContent(
