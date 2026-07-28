@@ -1,4 +1,5 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 
 export type PublicFundingRelationship = {
   readonly id: string;
@@ -25,13 +26,30 @@ export type PublicRegistryState<T> = {
   readonly entries: readonly T[];
 };
 
-const fundingRecordsUrl = new URL(
-  "../../../../docs/economics/funding-records.yml",
-  import.meta.url,
+function findRepositoryFile(relativePath: string): string {
+  let current = process.cwd();
+
+  while (true) {
+    const candidate = join(current, relativePath);
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+
+    const parent = dirname(current);
+    if (parent === current) {
+      break;
+    }
+    current = parent;
+  }
+
+  throw new Error(`Unable to locate canonical repository file: ${relativePath}`);
+}
+
+const fundingRecordsPath = findRepositoryFile(
+  "docs/economics/funding-records.yml",
 );
-const fundingOpportunitiesUrl = new URL(
-  "../../../../docs/economics/funding-opportunities.yml",
-  import.meta.url,
+const fundingOpportunitiesPath = findRepositoryFile(
+  "docs/economics/funding-opportunities.yml",
 );
 
 function unquote(value: string): string {
@@ -123,8 +141,11 @@ function registryMetadata(content: string) {
   };
 }
 
-const fundingRecordsSource = readFileSync(fundingRecordsUrl, "utf8");
-const fundingOpportunitiesSource = readFileSync(fundingOpportunitiesUrl, "utf8");
+const fundingRecordsSource = readFileSync(fundingRecordsPath, "utf8");
+const fundingOpportunitiesSource = readFileSync(
+  fundingOpportunitiesPath,
+  "utf8",
+);
 
 export const fundingRelationships: PublicRegistryState<PublicFundingRelationship> = {
   ...registryMetadata(fundingRecordsSource),
