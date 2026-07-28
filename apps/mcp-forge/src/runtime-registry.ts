@@ -53,6 +53,8 @@ export const FORGE_RUNTIME_TOOL_REGISTRY: readonly ForgeToolContract[] =
 export const FORGE_RUNTIME_TRANSPORT_INSTRUCTIONS = [
   "Forge is a local public-and-synthetic contributor tool boundary.",
   "Exactly ten Sprint 7.1-7.9 lore, schema, architecture, decision, deterministic synthetic-generation, standards, mapping-draft, and synthetic-connector tools are enabled through a server-owned allowlist in accepted registry order.",
+  "Exactly nine previously validated Sprint 7.1-7.6 tools remain enabled unchanged inside the ten-tool runtime.",
+  "Exactly six Sprint 7.1-7.5 lore, schema, architecture, and decision tools remain unchanged inside that prior nine-tool baseline.",
   "Sprint 7.9 adds no tool identity and does not change runtime registry revision 4 or an accepted tool schema.",
   "All ten calls use one server-owned execution contract for request bytes, files scanned, results, output bytes, timeout, cancellation, per-tool concurrency, and serialized materialized memory.",
   "Before each real operation Forge verifies the integrity of its boundary, accepted registry, source catalogue, enabled identities, descriptors, runtime registry, and execution scopes.",
