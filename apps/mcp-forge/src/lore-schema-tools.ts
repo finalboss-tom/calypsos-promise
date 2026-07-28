@@ -53,6 +53,8 @@ import {
   type ForgeSearchSyntheticConnectorFixturesOutput,
   type ForgeValidateMappingDraftOutput,
 } from "./standards-mapping-contracts.js";
+import type { ForgeGenerateSyntheticDataOutput } from "./synthetic-generation-contracts.js";
+import { generateForgeSyntheticData } from "./synthetic-generation-tools.js";
 import { searchForgeSyntheticConnectorFixtures } from "./synthetic-connector-tools.js";
 
 const MAX_PUBLIC_RECORD_BYTES = 1_048_576;
@@ -82,7 +84,8 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
       const standardsTool = FORGE_ENABLED_STANDARDS_MAPPING_TOOL_IDS.includes(
         name as ForgeEnabledStandardsMappingToolId,
       );
-      if (!loreTool && !documentationTool && !standardsTool) {
+      const generationTool = name === "forge.generate.synthetic-data";
+      if (!loreTool && !documentationTool && !standardsTool && !generationTool) {
         throw new ForgeLoreSchemaToolError(
           FORGE_LORE_SCHEMA_ERROR_CODES.toolUnknown,
           "The requested Forge tool is not enabled.",
@@ -95,6 +98,7 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
           | ForgeEnabledLoreSchemaToolId
           | ForgeEnabledDocumentationSearchToolId
           | ForgeEnabledStandardsMappingToolId
+          | "forge.generate.synthetic-data"
       ) {
         case "forge.search.lore":
           return forgeToolResult(await this.searchLore(argumentsValue, signal));
@@ -125,6 +129,10 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
         case "forge.search.synthetic-connector-fixtures":
           return forgeToolResult(
             await this.searchSyntheticConnectorFixtures(argumentsValue, signal),
+          );
+        case "forge.generate.synthetic-data":
+          return forgeToolResult(
+            await this.generateSyntheticData(argumentsValue, signal),
           );
       }
     } catch (error) {
@@ -184,6 +192,13 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
       input,
       signal,
     );
+  }
+
+  generateSyntheticData(
+    input: unknown,
+    signal?: AbortSignal,
+  ): Promise<ForgeGenerateSyntheticDataOutput> {
+    return generateForgeSyntheticData(this.#repository, input, signal);
   }
 
   async validatePublicContent(
