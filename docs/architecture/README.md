@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Forge boundary](forge-mcp-boundary-and-tool-registry.md) · [Local transport](forge-mcp-local-stdio-transport.md) · [Sprint 7 plan](../roadmap/sprint-7-execution-plan.md) · [Pre-Sprint 7 review](../roadmap/pre-sprint-7-alignment-review.md) · [Sprint 6 completion](../roadmap/sprint-6-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These documents may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -38,8 +38,9 @@ This directory contains versioned architecture baselines that implement the froz
 30. [Sprint 6 Control and Evidence Map](aster-sprint-6-control-and-evidence-map.md)
 31. [Sprint 6 Specialist Holdpoint and Unresolved-Work Register](aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
 32. [Forge MCP Boundary and Tool Registry](forge-mcp-boundary-and-tool-registry.md)
-33. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
-34. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
+33. [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
+34. [Pre-Sprint 7 Repository Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
+35. [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 ## Operational simplicity and durable workflows
 
@@ -115,14 +116,15 @@ Sprint 6 is complete and merged through PR #48 as squash commit `5aa3540765e5573
 ## Forge MCP architecture
 
 - [Forge MCP Boundary and Tool Registry](forge-mcp-boundary-and-tool-registry.md)
+- [Forge MCP Local `stdio` Transport](forge-mcp-local-stdio-transport.md)
 - [Sprint 7 Execution Plan](../roadmap/sprint-7-execution-plan.md)
 - [Pre-Sprint 7 Alignment Review](../roadmap/pre-sprint-7-alignment-review.md)
 - [Sprint 7 issue #54](https://github.com/finalboss-tom/calypsos-promise/issues/54)
 - [Draft PR #55](https://github.com/finalboss-tom/calypsos-promise/pull/55)
 
-Sprint 7 is active on issue #54 and draft PR #55. Workstream 7.1 defines the application boundary, public source classes, server-owned registry, risk classes, planned tool contracts, prohibited capabilities, compatibility and migration references, resource-limit contracts, literal non-authority, funding neutrality, validators, and public tests.
+Sprint 7 is active on issue #54 and draft PR #55. Workstreams 7.1 and 7.2 define the application boundary, public source classes, server-owned registry, risk classes, planned tool contracts, prohibited capabilities, finalized-version local `stdio` transport, direct harness, cancellation, shutdown, framing, public-safe errors, compatibility references, literal non-authority, funding neutrality, validators, and public tests.
 
-Every initial tool remains planned and unexposed. No MCP transport or repository read is implemented yet.
+Every initial tool remains planned and unexposed. The local transport is implemented, but no repository read is implemented yet. Sprint 7.3 owns source catalogues and provenance.
 
 Forge may not become a general shell, repository mutation agent, arbitrary filesystem reader, network client, private Chronicle service, House of Keys service, production provider gateway, connector runtime, or institutional authority.
 

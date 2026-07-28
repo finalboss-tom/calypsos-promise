@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 plan](roadmap/sprint-7-execution-plan.md) · [Forge boundary](architecture/forge-mcp-boundary-and-tool-registry.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 7 plan](roadmap/sprint-7-execution-plan.md) · [Forge boundary](architecture/forge-mcp-boundary-and-tool-registry.md) · [Local transport](architecture/forge-mcp-local-stdio-transport.md) · [Pre-Sprint 7 review](roadmap/pre-sprint-7-alignment-review.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -24,22 +24,23 @@ The application is the first operating surface of a long-lived public-benefit in
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md)
 3. [Forge MCP Boundary and Tool Registry](architecture/forge-mcp-boundary-and-tool-registry.md)
-4. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)
-5. [Sprint Roadmap](roadmap/sprints.md)
-6. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-7. [Aster Contract Baseline](product/aster-contract-baseline.md)
-8. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)
-9. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)
-10. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
-11. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
-12. [Security Architecture](security/README.md)
-13. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-14. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-15. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-16. [Repository and Module Boundaries](architecture/module-boundaries.md)
-17. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-18. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-19. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+4. [Forge MCP Local `stdio` Transport](architecture/forge-mcp-local-stdio-transport.md)
+5. [Pre-Sprint 7 Repository Alignment Review](roadmap/pre-sprint-7-alignment-review.md)
+6. [Sprint Roadmap](roadmap/sprints.md)
+7. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+8. [Aster Contract Baseline](product/aster-contract-baseline.md)
+9. [Sprint 6 Cross-Contract Reconciliation](architecture/aster-sprint-6-cross-contract-reconciliation.md)
+10. [Sprint 6 Control and Evidence Map](architecture/aster-sprint-6-control-and-evidence-map.md)
+11. [Sprint 6 Specialist Holdpoints and Unresolved Work](architecture/aster-sprint-6-specialist-holdpoint-and-unresolved-work-register.md)
+12. [Sprint 5 Completion Record](roadmap/sprint-5-completion-record.md)
+13. [Security Architecture](security/README.md)
+14. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+15. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+16. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+17. [Repository and Module Boundaries](architecture/module-boundaries.md)
+18. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+19. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+20. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -76,7 +77,7 @@ Sprint 6 merged through PR #48 as squash commit `5aa3540765e5573f3304ce2b624d7a0
 
 The [Pre-Sprint 7 Alignment Review](roadmap/pre-sprint-7-alignment-review.md) merged through PR #52 as squash commit `a41ca5ad9d2c0fe8a009946f376705bb7910e223`.
 
-Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md) and [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md) govern the contract-only 7.1 baseline. All tools remain planned and unexposed; no transport or repository read exists yet.
+Sprint 7 — Forge MCP and Agent Safety is active through issue #54 and draft PR #55. The [Sprint 7 Execution Plan](roadmap/sprint-7-execution-plan.md), [Forge Boundary](architecture/forge-mcp-boundary-and-tool-registry.md), and [Local Transport](architecture/forge-mcp-local-stdio-transport.md) govern the validated 7.1 and 7.2 baselines. A finalized-version local `stdio` transport exists, but all tools remain planned and unexposed and no repository read exists yet. Sprint 7.3 is next.
 
 ## Current accepted strategic and architectural baselines
 

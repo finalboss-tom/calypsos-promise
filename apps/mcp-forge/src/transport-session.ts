@@ -55,8 +55,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function isJsonRpcId(value: unknown): value is ForgeJsonRpcId {
-  return typeof value === "string" ||
-    (typeof value === "number" && Number.isFinite(value));
+  return (
+    typeof value === "string" ||
+    (typeof value === "number" && Number.isFinite(value))
+  );
 }
 
 function hasOwn(value: object, key: PropertyKey): boolean {
@@ -171,7 +173,9 @@ export class ForgeTransportSession {
     return this.activeRequests.size;
   }
 
-  async handleMessage(message: unknown): Promise<ForgeJsonRpcResponse | undefined> {
+  async handleMessage(
+    message: unknown,
+  ): Promise<ForgeJsonRpcResponse | undefined> {
     if (!isRecord(message) || message.jsonrpc !== "2.0") {
       return failure(
         null,
@@ -329,9 +333,7 @@ export class ForgeTransportSession {
     }
   }
 
-  private handleInitialize(
-    request: ForgeJsonRpcRequest,
-  ): ForgeJsonRpcResponse {
+  private handleInitialize(request: ForgeJsonRpcRequest): ForgeJsonRpcResponse {
     if (this.state !== "created") {
       return failure(
         request.id,

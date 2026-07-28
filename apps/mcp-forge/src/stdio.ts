@@ -128,7 +128,9 @@ export class ForgeStdioServer {
 
     try {
       for await (const chunk of input) {
-        const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(String(chunk));
+        const bytes = Buffer.isBuffer(chunk)
+          ? chunk
+          : Buffer.from(String(chunk));
         processText(decoder.write(bytes));
       }
 

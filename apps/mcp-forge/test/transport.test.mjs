@@ -13,7 +13,10 @@ import {
   ForgeTransportSession,
 } from "../dist/index.js";
 
-function initializeRequest(id = 1, protocolVersion = FORGE_MCP_PROTOCOL_VERSION) {
+function initializeRequest(
+  id = 1,
+  protocolVersion = FORGE_MCP_PROTOCOL_VERSION,
+) {
   return {
     jsonrpc: "2.0",
     id,
@@ -270,7 +273,10 @@ test("stdio framing returns newline-delimited JSON only and logs nothing to stdo
     .trim()
     .split("\n")
     .map((line) => JSON.parse(line));
-  assert.deepEqual(messages.map((message) => message.id), [1, 2, 3]);
+  assert.deepEqual(
+    messages.map((message) => message.id),
+    [1, 2, 3],
+  );
   assert.deepEqual(messages[1].result, {});
   assert.deepEqual(messages[2].result, { tools: [] });
   assert.equal(getErrors(), "");

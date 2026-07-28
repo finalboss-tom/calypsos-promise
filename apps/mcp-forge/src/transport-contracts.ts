@@ -1,7 +1,4 @@
-import {
-  FORGE_APPLICATION_ID,
-  FORGE_CONTRACT_VERSION,
-} from "./contracts.js";
+import { FORGE_APPLICATION_ID, FORGE_CONTRACT_VERSION } from "./contracts.js";
 
 export const FORGE_TRANSPORT_CONTRACT_REVISION = "1" as const;
 export const FORGE_MCP_PROTOCOL_VERSION = "2025-11-25" as const;
@@ -59,8 +56,7 @@ export interface ForgeJsonRpcErrorResponse {
 }
 
 export type ForgeJsonRpcResponse =
-  | ForgeJsonRpcSuccessResponse
-  | ForgeJsonRpcErrorResponse;
+  ForgeJsonRpcSuccessResponse | ForgeJsonRpcErrorResponse;
 
 export interface ForgeInitializeParams {
   readonly protocolVersion: string;

@@ -21,9 +21,7 @@ process.once("SIGTERM", () => {
   void shutdown("SIGTERM");
 });
 
-server
-  .serve(process.stdin, process.stdout, process.stderr)
-  .catch(() => {
-    process.stderr.write("forge.transport.fatal\n");
-    process.exitCode = 1;
-  });
+server.serve(process.stdin, process.stdout, process.stderr).catch(() => {
+  process.stderr.write("forge.transport.fatal\n");
+  process.exitCode = 1;
+});
