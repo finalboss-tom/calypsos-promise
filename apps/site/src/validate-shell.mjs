@@ -235,7 +235,9 @@ if (!/contains no live opportunity/i.test(fundingOpportunities)) {
 
 const fundingPage = await readFile(`${app}/src/app/funding/page.tsx`, "utf8");
 if (/<(?:form|input|button)\b/i.test(fundingPage)) {
-  throw new Error("Funding transparency must not activate transaction controls");
+  throw new Error(
+    "Funding transparency must not activate transaction controls",
+  );
 }
 if (/stripe|paypal|checkout session|payment intent/i.test(source)) {
   throw new Error("Site must not contain a payment runtime");

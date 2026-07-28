@@ -48,18 +48,22 @@ export default function FundingPage() {
         <p className="eyebrow">Funding transparency</p>
         <h1>Support cannot purchase the Promise.</h1>
         <blockquote className="guide-quote">
-          Publish the reviewed institutional relationship and effect. Protect the
-          raw financial and personal source record.
+          Publish the reviewed institutional relationship and effect. Protect
+          the raw financial and personal source record.
         </blockquote>
         <p className="summary">
           This page reads the repository’s canonical public relationship and
           opportunity registers at build time. It does not maintain a separate
           sponsor database, accept support, process money, rank providers, or
-          create charitable, tax, nonprofit, ownership, or public-benefit status.
+          create charitable, tax, nonprofit, ownership, or public-benefit
+          status.
         </p>
       </header>
 
-      <section className="guide-section" aria-labelledby="relationship-register-title">
+      <section
+        className="guide-section"
+        aria-labelledby="relationship-register-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Canonical relationship register</p>
@@ -94,12 +98,15 @@ export default function FundingPage() {
           </div>
         )}
         <p className="registry-note">
-          Registry status: {fundingRelationships.status}. Website rendering cannot
-          accept, amend, refund, terminate, or supersede a relationship.
+          Registry status: {fundingRelationships.status}. Website rendering
+          cannot accept, amend, refund, terminate, or supersede a relationship.
         </p>
       </section>
 
-      <section className="guide-section" aria-labelledby="opportunity-register-title">
+      <section
+        className="guide-section"
+        aria-labelledby="opportunity-register-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Canonical opportunity register</p>
@@ -130,7 +137,10 @@ export default function FundingPage() {
         )}
       </section>
 
-      <section className="guide-section" aria-labelledby="benefit-boundary-title">
+      <section
+        className="guide-section"
+        aria-labelledby="benefit-boundary-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Recognition versus influence</p>
@@ -169,7 +179,9 @@ export default function FundingPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Anti-capture review</p>
-            <h2 id="concentration-title">Dependence is more than a percentage.</h2>
+            <h2 id="concentration-title">
+              Dependence is more than a percentage.
+            </h2>
           </div>
           <p>
             Reviews consider financial, in-kind, restriction, critical-function,

@@ -42,7 +42,9 @@ function findRepositoryFile(relativePath: string): string {
     current = parent;
   }
 
-  throw new Error(`Unable to locate canonical repository file: ${relativePath}`);
+  throw new Error(
+    `Unable to locate canonical repository file: ${relativePath}`,
+  );
 }
 
 const fundingRecordsPath = findRepositoryFile(
@@ -147,32 +149,36 @@ const fundingOpportunitiesSource = readFileSync(
   "utf8",
 );
 
-export const fundingRelationships: PublicRegistryState<PublicFundingRelationship> = {
-  ...registryMetadata(fundingRecordsSource),
-  entries: recordBlocks(fundingRecordsSource, "records", "FND").map(
-    ({ id, body }) => ({
-      id,
-      status: scalar(body, "status", 4),
-      relationshipClass: scalar(body, "relationship_class", 4),
-      publicCounterparty: scalar(body, "public_counterparty", 4),
-      purpose: scalar(body, "summary", 6),
-      publicAmount:
-        optionalScalar(body, "public_amount_band", 6) ??
-        optionalScalar(body, "public_amount", 6),
-    }),
-  ),
-};
+export const fundingRelationships: PublicRegistryState<PublicFundingRelationship> =
+  {
+    ...registryMetadata(fundingRecordsSource),
+    entries: recordBlocks(fundingRecordsSource, "records", "FND").map(
+      ({ id, body }) => ({
+        id,
+        status: scalar(body, "status", 4),
+        relationshipClass: scalar(body, "relationship_class", 4),
+        publicCounterparty: scalar(body, "public_counterparty", 4),
+        purpose: scalar(body, "summary", 6),
+        publicAmount:
+          optionalScalar(body, "public_amount_band", 6) ??
+          optionalScalar(body, "public_amount", 6),
+      }),
+    ),
+  };
 
-export const fundingOpportunities: PublicRegistryState<PublicFundingOpportunity> = {
-  ...registryMetadata(fundingOpportunitiesSource),
-  entries: recordBlocks(fundingOpportunitiesSource, "opportunities", "OPP").map(
-    ({ id, body }) => ({
+export const fundingOpportunities: PublicRegistryState<PublicFundingOpportunity> =
+  {
+    ...registryMetadata(fundingOpportunitiesSource),
+    entries: recordBlocks(
+      fundingOpportunitiesSource,
+      "opportunities",
+      "OPP",
+    ).map(({ id, body }) => ({
       id,
       status: scalar(body, "status", 4),
       title: scalar(body, "title", 4),
-    }),
-  ),
-};
+    })),
+  };
 
 export const permittedFundingRecognition: readonly string[] = [
   "Truthful public acknowledgment of a reviewed relationship, classification, dates, support provided, and canonical funding record.",

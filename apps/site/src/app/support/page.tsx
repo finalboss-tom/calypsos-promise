@@ -44,7 +44,8 @@ export default function SupportPage() {
           GitHub issues are the current public-safe work ledger. This page helps
           route public questions, contributions, challenges, vulnerabilities,
           conduct concerns, and private information without turning the website
-          into an account-support, provider-intake, research, or clinical system.
+          into an account-support, provider-intake, research, or clinical
+          system.
         </p>
       </header>
 
@@ -52,12 +53,15 @@ export default function SupportPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Public-safe routes</p>
-            <h2 id="public-support-title">Problems, challenges, and contributions.</h2>
+            <h2 id="public-support-title">
+              Problems, challenges, and contributions.
+            </h2>
           </div>
           <p>
             Use only public repository records and synthetic evidence. Do not
             disclose a diagnosis, disability, account identity, private
-            experience, or another person’s information to establish affectedness.
+            experience, or another person’s information to establish
+            affectedness.
           </p>
         </div>
         <div className="support-grid">
@@ -81,7 +85,9 @@ export default function SupportPage() {
         <div className="split-heading">
           <div>
             <p className="eyebrow">Protected routes</p>
-            <h2 id="protected-support-title">Do not make private evidence public.</h2>
+            <h2 id="protected-support-title">
+              Do not make private evidence public.
+            </h2>
           </div>
           <p>
             A deleted issue, edited comment, closed pull request, or rewritten

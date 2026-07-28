@@ -45,7 +45,10 @@ export default function RoadmapPage() {
         </p>
       </header>
 
-      <section className="guide-section" aria-labelledby="status-language-title">
+      <section
+        className="guide-section"
+        aria-labelledby="status-language-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Controlled language</p>
@@ -73,7 +76,10 @@ export default function RoadmapPage() {
 
       <CapabilityStatusGrid />
 
-      <section className="guide-section" aria-labelledby="sprint-8-roadmap-title">
+      <section
+        className="guide-section"
+        aria-labelledby="sprint-8-roadmap-title"
+      >
         <div className="split-heading">
           <div>
             <p className="eyebrow">Active public website sprint</p>

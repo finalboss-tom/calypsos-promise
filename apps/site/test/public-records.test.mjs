@@ -52,7 +52,10 @@ test("uses a source-linked typed roadmap registry", async () => {
     "sourceHref",
     "sourceLabel",
   ]) {
-    assert.match(source, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      source,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   for (const status of ["live", "experimental", "planned", "long-horizon"]) {
@@ -77,7 +80,10 @@ test("separates public-safe support from protected evidence", async () => {
     "No account-specific customer-support system is operating.",
     "Do not make private evidence public.",
   ]) {
-    assert.match(source, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      source,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   assert.match(source, /issues\/new\/choose/);
@@ -113,7 +119,10 @@ test("derives honest funding empty states from canonical public registries", asy
     "force-static",
     "readFileSync",
   ]) {
-    assert.match(source, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      source,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   assert.doesNotMatch(page, /<form\b/i);
