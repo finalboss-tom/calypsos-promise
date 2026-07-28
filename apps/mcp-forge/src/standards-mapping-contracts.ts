@@ -27,9 +27,7 @@ export interface ForgeBoundedPublicSearchInput {
 }
 
 export type ForgeStandardsMatchClass =
-  | "exact-phrase"
-  | "all-terms"
-  | "partial-terms";
+  "exact-phrase" | "all-terms" | "partial-terms";
 
 export interface ForgePublicStandardsSearchMatch {
   readonly title?: string;
@@ -48,8 +46,7 @@ export interface ForgeSearchPublicStandardsOutput extends ForgeToolNonAuthority 
   readonly matches: readonly ForgePublicStandardsSearchMatch[];
   readonly resultState: ForgeSourceResultState;
   readonly partialReasons: readonly (
-    | ForgeSourcePartialReasonId
-    | "result-limit-reached"
+    ForgeSourcePartialReasonId | "result-limit-reached"
   )[];
   readonly scannedFiles: number;
   readonly returnedMatches: number;
@@ -79,8 +76,7 @@ export type ForgeSyntheticConnectorSearchPartialReason =
   | "result-limit-reached"
   | "unclassified-fixture-skipped";
 
-export interface ForgeSearchSyntheticConnectorFixturesOutput
-  extends ForgeToolNonAuthority {
+export interface ForgeSearchSyntheticConnectorFixturesOutput extends ForgeToolNonAuthority {
   readonly toolId: "forge.search.synthetic-connector-fixtures";
   readonly revision: typeof FORGE_STANDARDS_MAPPING_TOOL_REVISION;
   readonly query: string;
