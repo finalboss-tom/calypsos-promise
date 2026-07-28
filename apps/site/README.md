@@ -2,38 +2,46 @@
 
 `apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 and 8.2 are complete; workstream 8.3 is next.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 and 8.2 are complete. Workstream 8.3 is implemented and awaiting final exact-head validation.
 
 Controlling records:
 
 - [Sprint 8 Execution Plan](../../docs/roadmap/sprint-8-execution-plan.md)
 - [Public Website Foundation and Migration Boundary](../../docs/architecture/public-website-foundation-and-migration.md)
-- [Workstream 8.2 Record](../../docs/roadmap/sprint-8-workstream-8-2-record.md)
+- [Workstream 8.3 Record](../../docs/roadmap/sprint-8-workstream-8-3-record.md)
 - [Current Project Status](../../docs/roadmap/current-status.md)
 
 ## Current implementation
 
-The application is a pinned Next.js App Router compatibility shell:
+The application is a pinned Next.js App Router compatibility shell with server-rendered navigation and status foundations:
 
 - Next.js `16.2.12`;
 - React and React DOM `19.2.8`;
 - exact React type dependencies and monorepo lockfile evidence;
 - server-rendered root layout and compatibility homepage;
+- shared direct navigation;
+- an optional native `details` and `summary` Ogygia path;
+- visible-on-focus skip links for primary navigation and main content;
+- semantic `header`, `nav`, `main`, and `footer` landmarks;
+- controlled `live`, `experimental`, `planned`, and `long-horizon` capability statuses;
+- stable capability IDs and canonical source links;
 - application-local design tokens and global styling;
+- reduced-motion, reduced-data, higher-contrast, forced-colors, responsive, and image-failure foundations;
+- lazy decorative hero imagery;
 - nonce-bearing content-security policy through `src/proxy.ts`;
 - public security headers in `next.config.mjs`;
 - metadata, sitemap, robots, not-found, and error presentation;
 - repository-owned SVG and WebP assets;
-- shell validation and focused tests; and
+- deterministic shell validation and focused tests; and
 - Git-triggered Vercel deployment still disabled.
 
-The old custom Node page server, HTML-fragment runtime, legacy styles, browser script, signup-forwarding adapter, and server tests have been removed rather than retained as a second website implementation.
+The old custom Node page server, HTML-fragment runtime, legacy styles, browser script, signup-forwarding adapter, and server tests remain removed rather than retained as a second website implementation.
 
 ## Current route behavior
 
 | Route          | Current behavior                                                              |
 | -------------- | ----------------------------------------------------------------------------- |
-| `/`            | server-rendered compatibility homepage preserving the Ogygia visual direction |
+| `/`            | server-rendered compatibility homepage with shared navigation and status data |
 | `/privacy`     | migration-period signup privacy explanation                                   |
 | `/joined`      | migration-period no-submission confirmation                                   |
 | `/api/join`    | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded               |
@@ -43,33 +51,62 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 
 The route names remain deliberate compatibility contracts. Workstream 8.8 owns the final signup preserve-or-retire decision.
 
-## What is implemented
+## Direct and narrative navigation
 
-- one App Router application and one website owner;
-- server-rendered compatibility content;
-- skip link, root landmarks, basic header/footer, and direct repository/status links;
-- canonical, Open Graph, Twitter, icon, viewport, and theme metadata;
-- `next/image` for shell imagery;
-- CSP nonce propagation and public security headers;
-- mutable cache behavior for public compatibility assets;
-- no-store API behavior;
-- paused signup without intake, forwarding, or private configuration;
-- not-found and error presentation;
-- exact dependency validation;
-- route and shell validation;
-- focused Node tests; and
-- successful production build, lint, typecheck, and tests.
+The shared direct-navigation registry exposes conventional links to:
+
+- the public homepage;
+- current capability status;
+- signup privacy;
+- the canonical repository status record; and
+- the public GitHub repository.
+
+The optional Ogygia path links to the same essential destinations with narrative labels. It uses native browser disclosure semantics and does not require a client component, animation, or story traversal.
+
+No essential information is exclusive to the narrative path.
+
+## Capability-status model
+
+The controlled site-local values are:
+
+- `live` — publicly available and inspectable now;
+- `experimental` — implemented for review but not an accepted production release;
+- `planned` — accepted roadmap work not implemented yet; and
+- `long-horizon` — future direction behind later evidence and safety gates.
+
+Each capability record contains a stable ID, public label, controlled status, concise summary, canonical source URL, and source-link label.
+
+This is presentation data, not independent product, provider, funding, clinical, permission, or governance truth.
+
+## Accessibility and resilience foundations
+
+The current implementation includes:
+
+- skip links for navigation and content;
+- visible focus for interactive and programmatic focus targets;
+- native keyboard behavior for links, `details`, and `summary`;
+- assistive text for new-tab links;
+- server-rendered essential information;
+- no `use client` requirement for navigation or status understanding;
+- reduced-motion removal of smooth scrolling and non-essential motion;
+- reduced-data suppression of decorative imagery and gradients;
+- non-image backgrounds so image failure does not hide essential content;
+- higher-contrast border treatment;
+- forced-colors removal of decorative imagery and overlays; and
+- responsive navigation and status layouts.
+
+These are implementation foundations, not accessibility conformance certification or affected-user validation.
 
 ## What is not implemented
 
-- final direct and narrative navigation parity;
-- reusable capability-status components;
 - final homepage and Promise migration;
+- final route architecture for later Sprint 8 pages;
 - Seven Laws, How It Works, consumer-first, or Aster/AI pages;
 - Trust Center or Open Forge;
-- roadmap, capability, support, or canonical funding views;
+- roadmap, support, or canonical funding-transparency pages;
 - final signup disposition;
-- defined accessibility or performance release evidence;
+- representative accessibility review or certification;
+- defined performance release evidence;
 - preview deployment or official production cutover;
 - accounts, authentication, real health-data capture, or private Living Chronicles;
 - production Aster, private MCP, providers, connectors, clinical workflows, research, governance voting, or transactions; or
@@ -106,7 +143,7 @@ The shell preserves or strengthens:
 - `no-store` API caching; and
 - no private signup configuration in application source.
 
-Framework build assets use generated content-addressed paths. Repository-owned `/assets/*` compatibility URLs use `public, max-age=0, must-revalidate`, replacing Track 0A’s broad immutable caching.
+Framework build assets use generated content-addressed paths. Repository-owned `/assets/*` compatibility URLs use `public, max-age=0, must-revalidate`.
 
 These are repository implementation controls, not deployed-environment or independent security certification.
 
@@ -146,6 +183,8 @@ Run `pnpm check` from the repository root before review.
 
 ## Evidence
 
-Workstream 8.2 implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+Workstream 8.2 final head `2e9170efebd68562e0dbf8775815066e2a042e4e` passed CI 968 and DCO 1045.
 
-This proves the repository and shell checks at that head. It does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, or production readiness.
+Workstream 8.3 formatted implementation head is `641f298c13f030951fa9af3f8b1f82b2b9c1ef04`. Final exact-head validation is pending and will be recorded in issue #60 and draft PR #61.
+
+This evidence does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, or production readiness.
