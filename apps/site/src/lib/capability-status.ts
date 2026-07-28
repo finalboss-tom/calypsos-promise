@@ -53,9 +53,39 @@ export const publicCapabilities: readonly CapabilityRecord[] = [
     label: "Public website foundation",
     status: "experimental",
     summary:
-      "The Next.js shell, security policy, metadata, direct navigation, and accessibility foundations are under active review.",
+      "The Next.js site, public page family, security policy, metadata, navigation, and accessibility foundations are implemented on the draft Sprint 8 branch.",
     sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/60",
     sourceLabel: "Review Sprint 8",
+  },
+  {
+    id: "trust-and-forge",
+    label: "Trust Center and Open Forge",
+    status: "experimental",
+    summary:
+      "Source-backed rights, safeguards, challenge routes, and the ten local public/synthetic Forge tools are implemented for review without production or private capability.",
+    sourceHref:
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-workstream-8-6-record.md",
+    sourceLabel: "Read the 8.6 record",
+  },
+  {
+    id: "roadmap-support-funding",
+    label: "Roadmap, support, and funding transparency",
+    status: "experimental",
+    summary:
+      "Typed public roadmap and support views plus build-time canonical funding-register rendering are under active Sprint 8.7 review.",
+    sourceHref:
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md",
+    sourceLabel: "Read the Sprint 8 plan",
+  },
+  {
+    id: "signup-disposition",
+    label: "Public signup disposition",
+    status: "planned",
+    summary:
+      "Signup remains paused with no intake or forwarding until workstream 8.8 deliberately preserves or retires the surface under accepted evidence.",
+    sourceHref:
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md",
+    sourceLabel: "Review the signup gate",
   },
   {
     id: "public-synthetic-prologue",
