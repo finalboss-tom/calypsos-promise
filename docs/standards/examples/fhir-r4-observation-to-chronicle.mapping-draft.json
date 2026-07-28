@@ -40,17 +40,10 @@
     }
   ],
   "syntheticEvidence": {
-    "fixtureIds": [
-      "connector-fixture.synthetic.fhir-r4-observation"
-    ],
+    "fixtureIds": ["connector-fixture.synthetic.fhir-r4-observation"],
     "evidenceOnly": true
   },
-  "reviewRequirements": [
-    "interoperability",
-    "semantic",
-    "privacy",
-    "clinical"
-  ],
+  "reviewRequirements": ["interoperability", "semantic", "privacy", "clinical"],
   "claims": {
     "mappingApproval": "not-granted",
     "semanticEquivalence": "not-proven",
