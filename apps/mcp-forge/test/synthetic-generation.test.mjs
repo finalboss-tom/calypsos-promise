@@ -60,7 +60,7 @@ test("Sprint 7.7 activates the tenth accepted identity without replacing prior t
   ]);
   assert.equal(FORGE_RUNTIME_ENABLED_TOOL_IDS.length, 10);
   assert.equal(
-    FORGE_RUNTIME_ENABLED_TOOL_IDS.at(-1),
+    FORGE_RUNTIME_ENABLED_TOOL_IDS[6],
     "forge.generate.synthetic-data",
   );
   assert.deepEqual(validateForgeRuntimeToolRegistry(), []);
@@ -172,10 +172,7 @@ test("mapping generation remains draft-only and passes the existing validator", 
     assert.equal(record.artifact.claims.semanticEquivalence, "not-proven");
     assert.equal(record.artifact.claims.connectorBehavior, "not-proven");
     assert.equal(record.artifact.claims.certification, "not-granted");
-    assert.equal(
-      record.artifact.claims.productionReadiness,
-      "not-established",
-    );
+    assert.equal(record.artifact.claims.productionReadiness, "not-established");
     assert.equal(record.artifact.claims.providerPreference, "none");
 
     const validation = await service.validateMappingDraft({
