@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.2 record](../roadmap/sprint-8-workstream-8-2-record.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -18,6 +18,8 @@ The modular monolith remains the default. A new package, service, provider, queu
 ## Public website architecture — Sprint 8
 
 - [Sprint 8 Execution Plan](../roadmap/sprint-8-execution-plan.md)
+- [Sprint 8.1 Boundary Record](../roadmap/sprint-8-workstream-8-1-record.md)
+- [Sprint 8.2 Next.js Shell Record](../roadmap/sprint-8-workstream-8-2-record.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -25,15 +27,33 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-`apps/site` remains the single website owner. Workstream 8.1 defines the migration boundary before framework dependencies are added.
+`apps/site` remains the single website owner.
 
-The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup adapter.
+Workstream 8.1 established the application, route, authority, rendering, design-token, security, cache, signup, deployment, rollback, accessibility, performance, metadata, validation, and non-scope boundary.
+
+Workstream 8.2 implements one pinned Next.js App Router compatibility shell with:
+
+- exact Next.js and React dependencies and lockfile evidence;
+- a server-rendered root layout and compatibility homepage;
+- preserved `/`, `/privacy`, `/joined`, and `/api/join` route contracts;
+- a paused signup endpoint with no intake or forwarding;
+- application-local design tokens and global styling;
+- canonical and social metadata, sitemap, robots, not-found, and error behavior;
+- nonce CSP through the Next.js 16 proxy convention;
+- public security headers and no-store API behavior;
+- mutable cache semantics for repository-owned compatibility assets;
+- shell validation and focused tests; and
+- continued disabled Git-triggered deployment.
+
+The exact implementation head `8c757e9482e616db7c86689a1d1d9c99d70ca6cd` passed CI run 957 and DCO Attestation run 1034.
+
+The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup surface.
 
 It may not own Product Constitution, lore canon, Chronicle truth, permission truth, Aster or Forge authority, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, governance authority, private data, providers, connectors, transactions, or Sprint 9 game state.
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.2 will select and pin the Next.js and React dependencies only after 8.1 validation.
+Workstream 8.3 is next. It owns shared direct navigation, optional narrative entry, reusable status primitives, semantic landmarks, keyboard and focus foundations, reduced motion, image-failure and low-bandwidth behavior, and server-rendered essential-information parity.
 
 ## Content and story architecture
 
