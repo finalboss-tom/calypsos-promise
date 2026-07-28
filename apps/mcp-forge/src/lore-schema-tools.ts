@@ -20,7 +20,7 @@ import {
   FORGE_LORE_SCHEMA_TOOL_REVISION,
   FORGE_TOOL_NON_AUTHORITY,
   ForgeLoreSchemaToolError,
-  type ForeEnabledLoreSchemaToolId,
+  type ForgeEnabledLoreSchemaToolId,
   type ForgeInlineContentInformationClass,
   type ForgeInspectQuestSchemaOutput,
   type ForgeMcpToolCallResult,
@@ -206,7 +206,7 @@ export class ForgeLoreSchemaToolService implements ForgeTransportToolService {
     };
   }
 
-  async validateQuest(input: unknown): Promise<ForeValidateQuestOutput> {
+  async validateQuest(input: unknown): Promise<ForgeValidateQuestOutput> {
     const request = parseForgePublicRecordInput(input);
     const resolved = await this.resolvePublicRecord(request);
     const validation = validateContent(resolved.value);
