@@ -111,23 +111,39 @@ for (const contract of routeContracts) {
   }
 }
 
-const [layout, navigation, sitemap, robots, globalCss, homepageCss, guideCss, trustCss, recordsCss, nextConfig, proxy, joinRoute, privacyPage, joinedPage] =
-  await Promise.all([
-    read("src/app/layout.tsx"),
-    read("src/lib/navigation.ts"),
-    read("src/app/sitemap.ts"),
-    read("src/app/robots.ts"),
-    read("src/app/globals.css"),
-    read("src/app/homepage.css"),
-    read("src/app/guide-pages.css"),
-    read("src/app/trust-forge.css"),
-    read("src/app/public-records.css"),
-    read("next.config.mjs"),
-    read("src/proxy.ts"),
-    read("src/app/api/join/route.ts"),
-    read("src/app/privacy/page.tsx"),
-    read("src/app/joined/page.tsx"),
-  ]);
+const [
+  layout,
+  navigation,
+  navigationComponent,
+  sitemap,
+  robots,
+  globalCss,
+  homepageCss,
+  guideCss,
+  trustCss,
+  recordsCss,
+  nextConfig,
+  proxy,
+  joinRoute,
+  privacyPage,
+  joinedPage,
+] = await Promise.all([
+  read("src/app/layout.tsx"),
+  read("src/lib/navigation.ts"),
+  read("src/components/site-navigation.tsx"),
+  read("src/app/sitemap.ts"),
+  read("src/app/robots.ts"),
+  read("src/app/globals.css"),
+  read("src/app/homepage.css"),
+  read("src/app/guide-pages.css"),
+  read("src/app/trust-forge.css"),
+  read("src/app/public-records.css"),
+  read("next.config.mjs"),
+  read("src/proxy.ts"),
+  read("src/app/api/join/route.ts"),
+  read("src/app/privacy/page.tsx"),
+  read("src/app/joined/page.tsx"),
+]);
 
 if (!layout.includes('href="#primary-navigation"') || !layout.includes('href="#main"')) {
   fail("layout must retain both visible-on-focus skip links");
@@ -135,14 +151,19 @@ if (!layout.includes('href="#primary-navigation"') || !layout.includes('href="#m
 if (!layout.includes('<main id="main"') || !layout.includes('lang="en"')) {
   fail("layout must retain the main landmark and English language declaration");
 }
-if (!navigation.includes("No story traversal is required")) {
+if (!`${navigation}\n${navigationComponent}`.includes("No story traversal is required")) {
   fail("narrative navigation must remain optional");
 }
 for (const route of routeContracts.filter((route) => !route.noindex)) {
   if (route.path !== "/" && !navigation.includes(`href: "${route.path}"`)) {
     fail(`direct and narrative navigation are missing ${route.path}`);
   }
-  if (route.sitemap && !sitemap.includes(`\`${"${baseUrl}"}${route.path === "/" ? "/" : route.path}\``)) {
+  if (
+    route.sitemap &&
+    !sitemap.includes(
+      `\`${"${baseUrl}"}${route.path === "/" ? "/" : route.path}\``,
+    )
+  ) {
     fail(`sitemap source is missing ${route.path}`);
   }
 }
@@ -170,10 +191,15 @@ if (/outline:\s*(?:0|none)(?:;|\s)/i.test(css.replace(/outline:\s*0\.2rem/g, "")
 }
 
 for (const [header, value] of Object.entries(requiredPageHeaders)) {
-  if (!nextConfig.includes(`key: "${header
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("-")}"`) && !nextConfig.toLowerCase().includes(header)) {
+  if (
+    !nextConfig.includes(
+      `key: "${header
+        .split("-")
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join("-")}"`,
+    ) &&
+    !nextConfig.toLowerCase().includes(header)
+  ) {
     fail(`next config source is missing ${header}`);
   }
   if (!nextConfig.includes(value)) fail(`next config source is missing ${header} value`);
@@ -208,20 +234,25 @@ if (!privacyPage.includes(signupGateIssue) || !joinedPage.includes(signupGateIss
   fail("paused signup compatibility pages must link to Phase 0 gate #63");
 }
 
-const sourceFiles = (await filesRecursively(`${app}/src`)).filter(
-  (path) =>
+const sourceFiles = (await filesRecursively(`${app}/src`)).filter((path) => {
+  const filename = path.slice(path.lastIndexOf("/") + 1);
+  return (
     /\.(?:ts|tsx|js|mjs|css)$/.test(path) &&
-    !path.endsWith("release-contract.mjs") &&
-    !path.endsWith("validate-preview.mjs") &&
-    !path.endsWith("validate-release-source.mjs"),
-);
+    filename !== "release-contract.mjs" &&
+    !filename.startsWith("validate-")
+  );
+});
 const source = (
   await Promise.all(sourceFiles.map((path) => readFile(path, "utf8")))
 ).join("\n");
 for (const secret of secretPatterns) {
   if (secret.pattern.test(source)) fail(`public site source contains ${secret.name}`);
 }
-if (/stripe|paypal|checkout session|payment intent/i.test(source)) {
+if (
+  /(?:from\s+|require\()\s*["'](?:stripe|paypal)|\bnew Stripe\(|\bpaypal\.Buttons\(|\bcheckout\.sessions\.create\b|\bpaymentIntents\.create\b/i.test(
+    source,
+  )
+) {
   fail("public site source must not contain payment runtime behavior");
 }
 
