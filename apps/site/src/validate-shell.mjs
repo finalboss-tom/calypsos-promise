@@ -7,6 +7,7 @@ const required = [
   "next.config.mjs",
   "package.json",
   "tsconfig.json",
+  "vercel.json",
   "src/proxy.ts",
   "src/app/globals.css",
   "src/app/homepage.css",
@@ -38,6 +39,8 @@ const required = [
   "src/components/capability-status-grid.tsx",
   "src/components/connected-loops.tsx",
   "src/components/promise-principles.tsx",
+  "src/components/newsletter-signup-form.tsx",
+  "src/components/newsletter-signup-form.module.css",
   "src/lib/navigation.ts",
   "src/lib/capability-status.ts",
   "src/lib/promise.ts",
@@ -52,26 +55,22 @@ const required = [
   "src/lib/funding-transparency.ts",
   "public/assets/compass-mark.svg",
   "public/assets/hero-ogygia.webp",
-  "vercel.json",
 ];
 
 await Promise.all(required.map((path) => access(`${app}/${path}`)));
 
 const packageJson = JSON.parse(await readFile(`${app}/package.json`, "utf8"));
-
-const expectedVersions = {
+for (const [name, version] of Object.entries({
   next: "16.2.12",
   react: "19.2.8",
   "react-dom": "19.2.8",
-};
-
-for (const [name, version] of Object.entries(expectedVersions)) {
+})) {
   if (packageJson.dependencies?.[name] !== version) {
     throw new Error(`${name} must be pinned to ${version}`);
   }
 }
 
-const sourcePaths = [
+const serverSourcePaths = [
   "src/app/globals.css",
   "src/app/homepage.css",
   "src/app/guide-pages.css",
@@ -112,14 +111,15 @@ const sourcePaths = [
   "src/lib/funding-transparency.ts",
   "src/proxy.ts",
   "next.config.mjs",
+  "vercel.json",
 ];
 
-const source = (
+const serverSource = (
   await Promise.all(
-    sourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")),
+    serverSourcePaths.map((path) => readFile(`${app}/${path}`, "utf8")),
   )
 ).join("\n");
-const normalizedSource = source.replace(/\s+/g, " ");
+const normalizedSource = serverSource.replace(/\s+/g, " ");
 
 for (const phrase of [
   "Build your Living Chronicle. Improve your health. Keep the key.",
@@ -172,7 +172,9 @@ for (const phrase of [
   "forge.validate.mapping-draft",
   "forge.search.synthetic-connector-fixtures",
   "forge.generate.synthetic-data",
-  "SIGNUP_MIGRATION_PAUSED",
+  "SIGNUP_WEBHOOK_URL",
+  "SIGNUP_WEBHOOK_TOKEN",
+  "SIGNUP_NOT_CONFIGURED",
   "Content-Security-Policy",
   "metadataBase",
   "sitemap",
@@ -199,11 +201,36 @@ for (const phrase of [
   "prefers-contrast",
   "forced-colors",
   'loading="lazy"',
-  "Read the contribution guide",
+  "NewsletterSignupForm",
+  "Follow the build toward Phase 0 completion.",
+  '"framework": "nextjs"',
+  '"deploymentEnabled": false',
 ]) {
-  const normalizedPhrase = phrase.replace(/\s+/g, " ");
-  if (!normalizedSource.includes(normalizedPhrase)) {
+  if (!normalizedSource.includes(phrase.replace(/\s+/g, " "))) {
     throw new Error(`Site foundation is missing required evidence: ${phrase}`);
+  }
+}
+
+if (serverSource.includes('"use client"') || serverSource.includes("'use client'")) {
+  throw new Error(
+    "Essential routes, navigation, status, trust, roadmap, support, and funding surfaces must remain server-rendered",
+  );
+}
+
+const newsletter = await readFile(
+  `${app}/src/components/newsletter-signup-form.tsx`,
+  "utf8",
+);
+for (const phrase of [
+  '"use client"',
+  'name="email"',
+  'name="consent"',
+  'name="website"',
+  'aria-live="polite"',
+  'href="/privacy"',
+]) {
+  if (!newsletter.includes(phrase)) {
+    throw new Error(`Newsletter form is missing required boundary: ${phrase}`);
   }
 }
 
@@ -215,16 +242,11 @@ const fundingOpportunities = await readFile(
   `${app}/../../docs/economics/funding-opportunities.yml`,
   "utf8",
 );
-
 if (!/^records: \[\]$/m.test(fundingRecords)) {
-  throw new Error(
-    "Canonical funding relationships must remain parseable by the build-time website view",
-  );
+  throw new Error("Canonical funding relationships must remain parseable");
 }
 if (!/^opportunities: \[\]$/m.test(fundingOpportunities)) {
-  throw new Error(
-    "Canonical funding opportunities must remain parseable by the build-time website view",
-  );
+  throw new Error("Canonical funding opportunities must remain parseable");
 }
 if (!/contains no accepted funding relationships/i.test(fundingRecords)) {
   throw new Error("Funding relationship empty-state notice is missing");
@@ -235,31 +257,17 @@ if (!/contains no live opportunity/i.test(fundingOpportunities)) {
 
 const fundingPage = await readFile(`${app}/src/app/funding/page.tsx`, "utf8");
 if (/<(?:form|input|button)\b/i.test(fundingPage)) {
-  throw new Error(
-    "Funding transparency must not activate transaction controls",
-  );
+  throw new Error("Funding transparency must not activate transaction controls");
 }
-if (/stripe|paypal|checkout session|payment intent/i.test(source)) {
+if (/stripe|paypal|checkout session|payment intent/i.test(serverSource)) {
   throw new Error("Site must not contain a payment runtime");
 }
-
-if (source.includes('"use client"') || source.includes("'use client'")) {
-  throw new Error(
-    "Sprint 8 homepage, guide, trust, Forge, roadmap, support, funding, navigation, and status surfaces must remain server-rendered",
-  );
-}
-
-for (const phrase of [
-  "diagnosis",
-  "medical-record",
-  "wallet-address",
-  "health-condition",
-]) {
-  if (source.includes(`name="${phrase}"`)) {
+for (const phrase of ["diagnosis", "medical-record", "wallet-address", "health-condition"]) {
+  if (`${serverSource}\n${newsletter}`.includes(`name="${phrase}"`)) {
     throw new Error(`Site contains prohibited personal-data field: ${phrase}`);
   }
 }
 
 console.log(
-  "Sprint 8.7 roadmap, capability, support, and funding transparency boundaries are implemented for validation.",
+  "Post-Sprint 8 public site, bounded newsletter, manual release, and Sprint 9 preparation boundaries are implemented for validation.",
 );
