@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { PrologueCapturePanel } from "@/components/prologue-capture-panel";
+import { PrologueChronicleReceiptPanel } from "@/components/prologue-chronicle-receipt-panel";
 import { PrologueGuidePanel } from "@/components/prologue-guide-panel";
 import {
   initialOpeningState,
@@ -36,6 +37,13 @@ const announcements: Readonly<Record<OpeningTransition, string>> =
       "The synthetic draft was refused. No information was retained.",
     "change-synthetic-example": "Returned to the prepared synthetic examples.",
     "review-confirmed-entry": "Returned to synthetic review and correction.",
+    "view-synthetic-chronicle":
+      "Temporary synthetic Chronicle projection is ready.",
+    "view-synthetic-receipt":
+      "Non-authoritative House of Keys receipt demonstration is ready.",
+    "return-to-chronicle": "Returned to the temporary synthetic Chronicle.",
+    "discard-projection":
+      "The temporary synthetic projection was discarded from page memory.",
   });
 
 export function PrologueOpening() {
@@ -70,6 +78,9 @@ export function PrologueOpening() {
     state.scene === "synthetic-draft" ||
     state.scene === "review-and-correction" ||
     state.scene === "confirmed-entry";
+  const projectionIsCurrent =
+    state.scene === "synthetic-chronicle" ||
+    state.scene === "synthetic-receipt";
 
   return (
     <section
@@ -86,6 +97,8 @@ export function PrologueOpening() {
         <span data-current={guideIsCurrent}>Choose a guide</span>
         <span aria-hidden="true">→</span>
         <span data-current={captureIsCurrent}>Synthetic review</span>
+        <span aria-hidden="true">→</span>
+        <span data-current={projectionIsCurrent}>Chronicle & receipt</span>
       </div>
 
       <p className={styles.status} role="status" aria-live="polite">
@@ -176,7 +189,8 @@ export function PrologueOpening() {
               <dt>Equal paths</dt>
               <dd>
                 Aster and the manual guide expose the same sources, rules,
-                synthetic fixtures, and confirmation controls.
+                synthetic fixtures, confirmation controls, and temporary
+                projections.
               </dd>
             </div>
           </dl>
@@ -209,6 +223,11 @@ export function PrologueOpening() {
 
       <PrologueGuidePanel state={state} move={move} headingRef={sceneHeading} />
       <PrologueCapturePanel
+        state={state}
+        move={move}
+        headingRef={sceneHeading}
+      />
+      <PrologueChronicleReceiptPanel
         state={state}
         move={move}
         headingRef={sceneHeading}
