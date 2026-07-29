@@ -43,8 +43,8 @@ export function PrologueDeparturePanel({
         <p className={styles.lede}>
           The bounded public synthetic prologue is complete. You may end here,
           inspect what a future account boundary would need to protect, restart,
-          or return to the public site. No option asks for contact information or
-          changes your completion evidence.
+          or return to the public site. No option asks for contact information
+          or changes your completion evidence.
         </p>
 
         <div className={styles.statusRow} aria-label="Departure status">
@@ -105,10 +105,10 @@ export function PrologueDeparturePanel({
           A future account could hold private state. It does not exist here.
         </h2>
         <p className={styles.lede}>
-          This screen explains a future separation of responsibility. It does not
-          create an account, authenticate anyone, retain the prologue, request an
-          email address, call the newsletter, or promise that account architecture
-          is complete.
+          This screen explains a future separation of responsibility. It does
+          not create an account, authenticate anyone, retain the prologue,
+          request an email address, call the newsletter, or promise that account
+          architecture is complete.
         </p>
 
         <dl className={styles.details}>
@@ -130,7 +130,9 @@ export function PrologueDeparturePanel({
           </div>
           <div>
             <dt>Email and newsletter</dt>
-            <dd>separate contact purpose; not account identity or game state</dd>
+            <dd>
+              separate contact purpose; not account identity or game state
+            </dd>
           </div>
           <div>
             <dt>Current temporary state</dt>
@@ -181,7 +183,10 @@ export function PrologueDeparturePanel({
         calling a model, making a payment, or accepting a conversion offer.
       </p>
 
-      <div className={styles.statusRow} aria-label="Completion departure status">
+      <div
+        className={styles.statusRow}
+        aria-label="Completion departure status"
+      >
         <span>Complete in page memory</span>
         <span>No conversion</span>
         <span>No retained state</span>

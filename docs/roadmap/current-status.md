@@ -17,7 +17,7 @@
 - **Post-Sprint 8 reconciliation and newsletter squash commit:** `032a368bcd4beb999fee9a14fe4118aead0801a5`
 - **Production website:** live through Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`
 - **Deployed source commit:** `1b25a2e64ff272927c65afa5e1f16aedc5e448d7`
-- **Release control:** Git-triggered Vercel deployment remains disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`
+- **Release control:** Git-triggered Vercel deployment is disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`
 - **Newsletter:** deployed on every accepted live public page under Path A; private provider-delivery verification and final gate acceptance remain open in issue #63
 - **Production health data, accounts, private Chronicles, production Aster, providers, connectors, clinical workflows, research enrollment, payments, or consequential actions:** none
 - **Independent specialist review:** not established for the principal product or the website’s accessibility, security, privacy, legal, communications, clinical, interoperability, provider, financial, operational, or research boundaries
@@ -94,14 +94,14 @@ Permanent constraints:
 
 | Workstream | Current state                                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| 9.1        | completed and validated; validation strengthened by executable-state requirements                                 |
-| 9.2        | completed and validated; branch-only arrival and Lantern Shore                                                    |
-| 9.3        | completed and validated; Aster/manual parity retained                                                             |
-| 9.4        | completed and validated; synthetic review, correction, refusal, and confirmation                                 |
-| 9.5        | completed and validated; Chronicle/receipt mappings corrected and revalidated in the 9.6 aggregate               |
-| 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                    |
-| 9.7        | active — restart, departure, completion without conversion, and future-account information                       |
-| 9.8        | not implemented as a complete playable accessibility, security, duration, interaction, and measurement package   |
+| 9.1        | completed and validated; validation strengthened by executable-state requirements                                  |
+| 9.2        | completed and validated; branch-only arrival and Lantern Shore                                                     |
+| 9.3        | completed and validated; Aster/manual parity retained                                                              |
+| 9.4        | completed and validated; synthetic review, correction, refusal, and confirmation                                   |
+| 9.5        | completed and validated; Chronicle/receipt mappings corrected and revalidated in the 9.6 aggregate                 |
+| 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                         |
+| 9.7        | active — restart, departure, completion without conversion, and future-account information                         |
+| 9.8        | not implemented as a complete playable accessibility, security, duration, interaction, and measurement package     |
 | 9.9        | not implemented — stable sources, release, hosted evidence, rollback, and public-status reconciliation remain open |
 | 9.10       | blocked and not started                                                                                            |
 

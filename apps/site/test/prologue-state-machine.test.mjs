@@ -64,8 +64,14 @@ test("declares an exhaustive scene table with known destinations", () => {
 
   for (const [scene, transitions] of Object.entries(openingTransitionTable)) {
     for (const [transition, destination] of Object.entries(transitions)) {
-      assert.ok(openingTransitions.includes(transition), `${transition} is declared`);
-      assert.ok(openingScenes.includes(destination), `${scene} reaches ${destination}`);
+      assert.ok(
+        openingTransitions.includes(transition),
+        `${transition} is declared`,
+      );
+      assert.ok(
+        openingScenes.includes(destination),
+        `${scene} reaches ${destination}`,
+      );
     }
   }
 });
@@ -136,7 +142,9 @@ test("Aster voice path uses the same state and completion authority", () => {
 
 test("confirmed-state discard is functional and clears temporary capture evidence", () => {
   const confirmed = reachConfirmedEntry({ correction: "prepared" });
-  assert.ok(getAllowedOpeningTransitions(confirmed).includes("discard-projection"));
+  assert.ok(
+    getAllowedOpeningTransitions(confirmed).includes("discard-projection"),
+  );
 
   const discarded = move(confirmed, "discard-projection");
   assert.equal(discarded.scene, "capture-choice");

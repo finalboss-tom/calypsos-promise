@@ -236,30 +236,30 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   if (transition === "view-synthetic-chronicle") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.draftReviewed,
+      state.fixtureId &&
+      state.correctionId &&
+      state.draftReviewed,
     );
   }
 
   if (transition === "view-synthetic-receipt") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.chronicleInspected,
+      state.fixtureId &&
+      state.correctionId &&
+      state.chronicleInspected,
     );
   }
 
   if (transition === "complete-first-lantern") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.chronicleInspected &&
-        state.receiptInspected &&
-        state.lanternShoreReached &&
-        state.draftReviewed,
+      state.fixtureId &&
+      state.correctionId &&
+      state.chronicleInspected &&
+      state.receiptInspected &&
+      state.lanternShoreReached &&
+      state.draftReviewed,
     );
   }
 
