@@ -120,15 +120,15 @@ Every transition must name its preconditions, visible consequence, reversibility
 
 ## Temporary-data classes
 
-| Class | Example | Location | Lifetime | Destruction |
-|---|---|---|---|---|
-| navigation state | current scene | React memory | current page instance | refresh, navigation, discard, restart, tab close |
-| synthetic selection | pre-authored text or voice example ID | React memory | current page instance | same as navigation state |
-| deterministic draft | UI projection from selected fixture | React memory | until correction, confirmation, discard, or exit | reset, discard, exit, refresh, tab close |
-| correction choice | selected pre-authored correction | React memory | until confirmation or discard | reset, discard, exit, refresh, tab close |
-| synthetic Chronicle projection | confirmed public fixture projection | React memory | until receipt, completion, discard, or exit | reset, discard, exit, refresh, tab close |
-| synthetic receipt projection | public non-authoritative receipt view | React memory | until completion, discard, or exit | reset, discard, exit, refresh, tab close |
-| accessibility announcements | current status text | rendered DOM only | current scene | replacement, navigation, refresh, tab close |
+| Class                          | Example                               | Location          | Lifetime                                         | Destruction                                      |
+| ------------------------------ | ------------------------------------- | ----------------- | ------------------------------------------------ | ------------------------------------------------ |
+| navigation state               | current scene                         | React memory      | current page instance                            | refresh, navigation, discard, restart, tab close |
+| synthetic selection            | pre-authored text or voice example ID | React memory      | current page instance                            | same as navigation state                         |
+| deterministic draft            | UI projection from selected fixture   | React memory      | until correction, confirmation, discard, or exit | reset, discard, exit, refresh, tab close         |
+| correction choice              | selected pre-authored correction      | React memory      | until confirmation or discard                    | reset, discard, exit, refresh, tab close         |
+| synthetic Chronicle projection | confirmed public fixture projection   | React memory      | until receipt, completion, discard, or exit      | reset, discard, exit, refresh, tab close         |
+| synthetic receipt projection   | public non-authoritative receipt view | React memory      | until completion, discard, or exit               | reset, discard, exit, refresh, tab close         |
+| accessibility announcements    | current status text                   | rendered DOM only | current scene                                    | replacement, navigation, refresh, tab close      |
 
 No class may enter local storage, session storage, IndexedDB, cookies, query strings, hashes, analytics, server logs, provider logs, newsletter records, databases, remote models, or private destinations.
 
