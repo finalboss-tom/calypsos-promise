@@ -22,7 +22,7 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstream 9\.4 is under review/i);
+  assert.match(page, /workstream 9\.5 is under review/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
@@ -39,7 +39,7 @@ test("renders a server-owned route with a no-JavaScript explanation", async () =
   assert.match(page, /Return to the public site/);
 });
 
-test("implements deterministic arrival, shore, and guide transitions", async () => {
+test("implements deterministic arrival, guide, review, Chronicle, and receipt transitions", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
   for (const phrase of [
@@ -48,6 +48,8 @@ test("implements deterministic arrival, shore, and guide transitions", async () 
     '"guide-choice"',
     '"aster-introduction"',
     '"manual-introduction"',
+    '"synthetic-chronicle"',
+    '"synthetic-receipt"',
     '"begin-opening"',
     '"skip-opening"',
     '"replay-arrival"',
@@ -56,6 +58,10 @@ test("implements deterministic arrival, shore, and guide transitions", async () 
     '"choose-manual"',
     '"switch-to-aster"',
     '"switch-to-manual"',
+    '"view-synthetic-chronicle"',
+    '"view-synthetic-receipt"',
+    '"return-to-chronicle"',
+    '"discard-projection"',
     "presentationPath",
     "transitionTable",
     "if (!nextScene || !transitionAllowed(state, transition)) return state",
@@ -143,14 +149,24 @@ test("gives deterministic Aster and the manual route one shared rule set", async
 });
 
 test("introduces no arbitrary input, persistence, capture API, model, or network path", async () => {
-  const [component, guidePanel, page, state, guideContent] = await Promise.all([
+  const [
+    component,
+    guidePanel,
+    confirmedPanel,
+    projectionPanel,
+    page,
+    state,
+    guideContent,
+  ] = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
     read("../src/components/prologue-guide-panel.tsx"),
+    read("../src/components/prologue-confirmed-projection-entry.tsx"),
+    read("../src/components/prologue-chronicle-receipt-panel.tsx"),
     read("../src/app/prologue/page.tsx"),
     read("../src/lib/prologue-opening-state.ts"),
     read("../src/lib/prologue-guide-content.ts"),
   ]);
-  const source = `${component}\n${guidePanel}\n${page}\n${state}\n${guideContent}`;
+  const source = `${component}\n${guidePanel}\n${confirmedPanel}\n${projectionPanel}\n${page}\n${state}\n${guideContent}`;
 
   for (const prohibited of [
     /<input\b/i,
@@ -178,7 +194,11 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
 });
 
 test("provides responsive, reduced-data, contrast, forced-color, and focus treatment", async () => {
-  const css = await read("../src/components/prologue-opening.module.css");
+  const [openingCss, projectionCss] = await Promise.all([
+    read("../src/components/prologue-opening.module.css"),
+    read("../src/components/prologue-chronicle-receipt-panel.module.css"),
+  ]);
+  const css = `${openingCss}\n${projectionCss}`;
 
   assert.match(css, /:focus-visible/);
   assert.match(css, /outline-offset/);
@@ -188,5 +208,6 @@ test("provides responsive, reduced-data, contrast, forced-color, and focus treat
   assert.match(css, /forced-colors/);
   assert.match(css, /\.pathGrid/);
   assert.match(css, /\.guideFacts/);
+  assert.match(css, /\.projectionDetails/);
   assert.doesNotMatch(css, /outline:\s*(?:0(?:\s|;)|none)/i);
 });
