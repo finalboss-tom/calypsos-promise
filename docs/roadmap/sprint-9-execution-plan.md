@@ -2,14 +2,16 @@
 
 [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
 
-- **Status:** ACTIVE — workstream 9.1 in progress
+- **Status:** ACTIVE — workstreams 9.1–9.4 complete; workstream 9.5 in progress
 - **Tracking issue:** [#67](https://github.com/finalboss-tom/calypsos-promise/issues/67)
+- **Draft pull request:** [#68](https://github.com/finalboss-tom/calypsos-promise/pull/68)
 - **Branch:** `agent/sprint-9-public-synthetic-prologue`
 - **Application owner:** `apps/site`
 - **Primary route:** `/prologue`
 - **Institutional phase:** Phase 0 remains active
 - **Newsletter gate:** [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63) remains separate
 - **Release control:** Git-triggered Vercel deployment remains disabled
+- **Latest validated candidate:** `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283
 
 ## Goal
 
@@ -63,21 +65,31 @@ Acceptance:
 - later workstreams can be reviewed against stable state and data contracts; and
 - no playable route is publicly linked before its validation contract passes.
 
+**Status:** complete at `6bd992f91ea0948fe248ef55817afcd520664205` — CI 1169 / DCO 1247.
+
 ### 9.2 — Opening sequence and Lantern Shore
 
 Deliver a direct, skippable opening and the first Lantern Shore scene without required animation, autoplay, or timed progression.
+
+**Status:** complete at `6565fbc43c9356e7b72acaed30b50cbff2907a38` — CI 1180 / DCO 1258.
 
 ### 9.3 — Deterministic Aster and manual fallback
 
 Introduce Aster through scripted public content while exposing an equivalent non-AI explanation and completion path.
 
+**Status:** complete at `72f72223d7a07d460e89ec69b87b2003e84cdd3b` — CI 1188 / DCO 1266.
+
 ### 9.4 — Synthetic capture, draft, correction, and confirmation
 
 Demonstrate text and voice modalities through pre-authored synthetic choices, produce a deterministic draft, and allow review, correction, confirmation, or refusal without arbitrary input.
 
+**Status:** complete at `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283.
+
 ### 9.5 — Synthetic Chronicle and House of Keys receipt
 
 Render a visibly synthetic temporary Chronicle entry and a non-authoritative receipt projection derived from accepted public contracts where practical.
+
+**Status:** active.
 
 ### 9.6 — First Lantern completion
 
@@ -99,22 +111,43 @@ Define release ownership, manual deployment, domain verification, runtime checks
 
 Publish the control map, unresolved holdpoints, completion record, release evidence, rollback state, and bounded handoff to the universal game shell.
 
+## Validated progress through 9.4
+
+The branch currently proves:
+
+- one noindex, unlinked, branch-only `/prologue` route;
+- a skippable arrival and Lantern Shore;
+- deterministic Aster framing and a materially equivalent complete manual path;
+- one shared immutable guide fact set and one shared interaction state machine;
+- two pre-authored public synthetic fixtures: text and visual voice transcript;
+- no arbitrary input, microphone, audio, files, camera, location, contact, account, model, provider, analytics, storage, or network dependency;
+- deterministic fixture-to-draft projection;
+- visible source, synthetic classification, timestamp, value, context, and prohibited interpretations;
+- explicit accept-as-written, prepared correction, refusal, alternate-example, and confirmation controls;
+- fail-closed confirmation until a review choice exists;
+- confirmation held only in page memory; and
+- no Chronicle, permission, identity, consent, audit, health, account, or durable-game authority.
+
+The route remains unmerged and undeployed. Passing branch preview evidence is not a public release.
+
 ## Deterministic prologue state model
 
 The accepted state vocabulary is:
 
 1. `arrival`
 2. `lantern-shore`
-3. `aster-introduction`
-4. `capture-choice`
-5. `synthetic-draft`
-6. `review-and-correction`
-7. `confirmed-entry`
-8. `synthetic-chronicle`
-9. `synthetic-receipt`
-10. `first-lantern`
-11. `exit-choice`
-12. terminal `discarded`, `left`, or `complete`
+3. `guide-choice`
+4. `aster-introduction`
+5. `manual-introduction`
+6. `capture-choice`
+7. `synthetic-draft`
+8. `review-and-correction`
+9. `confirmed-entry`
+10. `synthetic-chronicle`
+11. `synthetic-receipt`
+12. `first-lantern`
+13. `exit-choice`
+14. terminal `discarded`, `left`, or `complete`
 
 Every transition must name its preconditions, visible consequence, reversibility, announcement behavior, and destruction behavior. URL, refresh, browser history, hidden network state, model output, newsletter state, or elapsed time may not silently advance the state machine.
 
