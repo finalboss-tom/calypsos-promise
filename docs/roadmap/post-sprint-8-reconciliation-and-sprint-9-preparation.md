@@ -11,6 +11,8 @@
 
 ## Reconciled facts
 
+Sprints 0–8 are accepted and merged.
+
 Sprint 8 was explicitly accepted by the founding steward, squash merged through PR #61, and closed through issue #60.
 
 The accepted Next.js application was deployed to the existing Vercel production project after the repository configuration was corrected to identify `apps/site` as Next.js. Deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp` reached `READY`, the canonical apex and `www` domains were assigned, the homepage returned HTTP 200 with the Sprint 8 application, and immediate runtime-error inspection found no errors.
