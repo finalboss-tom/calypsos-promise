@@ -75,8 +75,9 @@ export const directNavigation: readonly NavigationItem[] = [
   },
   {
     href: "/privacy",
-    label: "Signup privacy",
-    description: "The current paused signup state and public boundaries.",
+    label: "Newsletter privacy",
+    description:
+      "Email-only updates, consent, deletion, and the Phase 0 boundary.",
   },
   {
     href: "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md",
@@ -170,7 +171,8 @@ export const narrativeNavigation: readonly NavigationItem[] = [
   {
     href: "/privacy",
     label: "Keep the key",
-    description: "Review the paused signup and private-data boundary.",
+    description:
+      "Review the email-only newsletter, consent, deletion, and privacy boundary.",
   },
   {
     href: "https://github.com/finalboss-tom/calypsos-promise",
