@@ -72,11 +72,12 @@ test("names the exact completion evidence and prohibited inputs", async () => {
 });
 
 test("explains why the lantern lit without implying reward or authority", async () => {
-  const [panel, receiptPanel] = await Promise.all([
+  const [panel, receiptPanel, completion] = await Promise.all([
     read("../src/components/prologue-first-lantern-panel.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
+    read("../src/lib/prologue-first-lantern.ts"),
   ]);
-  const source = `${panel}\n${receiptPanel}`;
+  const source = `${panel}\n${receiptPanel}\n${completion}`;
 
   for (const phrase of [
     "Light the First Lantern from this evidence",
