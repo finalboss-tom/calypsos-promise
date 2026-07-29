@@ -11,28 +11,32 @@ import {
 } from "@/lib/prologue-opening-state";
 import styles from "./prologue-opening.module.css";
 
-const announcements: Readonly<Record<OpeningTransition, string>> = Object.freeze({
-  "begin-opening": "The opening is complete. Lantern Shore is ready.",
-  "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
-  "replay-arrival": "Returned to the arrival scene.",
-  "continue-to-guide": "Guide choice is ready.",
-  "choose-aster": "Deterministic Aster presentation selected.",
-  "choose-manual": "Direct manual presentation selected.",
-  "return-to-lantern": "Returned to Lantern Shore.",
-  "reconsider-guide": "Returned to the guide choice.",
-  "switch-to-aster": "Switched to deterministic Aster presentation.",
-  "switch-to-manual": "Switched to the direct manual presentation.",
-  "continue-to-capture": "Synthetic fixture choices are ready.",
-  "choose-synthetic-text": "Prepared synthetic text fixture selected.",
-  "choose-synthetic-voice": "Prepared synthetic voice transcript selected.",
-  "review-draft": "Synthetic draft review is ready.",
-  "accept-as-written": "The synthetic value will remain as written.",
-  "apply-synthetic-correction": "The prepared synthetic correction is selected.",
-  "confirm-entry": "The synthetic demonstration state is confirmed in page memory only.",
-  "refuse-draft": "The synthetic draft was refused. No information was retained.",
-  "change-synthetic-example": "Returned to the prepared synthetic examples.",
-  "review-confirmed-entry": "Returned to synthetic review and correction.",
-});
+const announcements: Readonly<Record<OpeningTransition, string>> =
+  Object.freeze({
+    "begin-opening": "The opening is complete. Lantern Shore is ready.",
+    "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
+    "replay-arrival": "Returned to the arrival scene.",
+    "continue-to-guide": "Guide choice is ready.",
+    "choose-aster": "Deterministic Aster presentation selected.",
+    "choose-manual": "Direct manual presentation selected.",
+    "return-to-lantern": "Returned to Lantern Shore.",
+    "reconsider-guide": "Returned to the guide choice.",
+    "switch-to-aster": "Switched to deterministic Aster presentation.",
+    "switch-to-manual": "Switched to the direct manual presentation.",
+    "continue-to-capture": "Synthetic fixture choices are ready.",
+    "choose-synthetic-text": "Prepared synthetic text fixture selected.",
+    "choose-synthetic-voice": "Prepared synthetic voice transcript selected.",
+    "review-draft": "Synthetic draft review is ready.",
+    "accept-as-written": "The synthetic value will remain as written.",
+    "apply-synthetic-correction":
+      "The prepared synthetic correction is selected.",
+    "confirm-entry":
+      "The synthetic demonstration state is confirmed in page memory only.",
+    "refuse-draft":
+      "The synthetic draft was refused. No information was retained.",
+    "change-synthetic-example": "Returned to the prepared synthetic examples.",
+    "review-confirmed-entry": "Returned to synthetic review and correction.",
+  });
 
 export function PrologueOpening() {
   const [state, setState] = useState(initialOpeningState);
@@ -95,9 +99,9 @@ export function PrologueOpening() {
             A light waits beyond the mist.
           </h2>
           <p className={styles.lede}>
-            You have reached Ogygia before an account, before a Chronicle, and before
-            any request for personal information. This opening is a public synthetic
-            demonstration. Nothing you choose here is stored.
+            You have reached Ogygia before an account, before a Chronicle, and
+            before any request for personal information. This opening is a
+            public synthetic demonstration. Nothing you choose here is stored.
           </p>
           <div
             className={styles.storyPanel}
@@ -109,8 +113,8 @@ export function PrologueOpening() {
               health, and keep the key.
             </p>
             <p>
-              The path is optional. The same boundary and controls remain available
-              whether you read the narration or skip it.
+              The path is optional. The same boundary and controls remain
+              available whether you read the narration or skip it.
             </p>
           </div>
           <div className={styles.actions} aria-label="Arrival choices">
@@ -142,32 +146,37 @@ export function PrologueOpening() {
             The first lantern illuminates the boundary.
           </h2>
           <p className={styles.lede}>
-            This is the first playable place on Ogygia, but it is not a health-data
-            intake, account, assessment, or durable game state. The shore currently
-            demonstrates arrival, orientation, and meaningful choice only.
+            This is the first playable place on Ogygia, but it is not a
+            health-data intake, account, assessment, or durable game state. The
+            shore currently demonstrates arrival, orientation, and meaningful
+            choice only.
           </p>
 
           <dl className={styles.boundaries}>
             <div>
               <dt>Your state</dt>
-              <dd>Memory-only in this page. Refreshing or leaving starts again.</dd>
+              <dd>
+                Memory-only in this page. Refreshing or leaving starts again.
+              </dd>
             </div>
             <div>
               <dt>Your information</dt>
-              <dd>No personal or health information is requested or accepted.</dd>
+              <dd>
+                No personal or health information is requested or accepted.
+              </dd>
             </div>
             <div>
               <dt>Your choice</dt>
               <dd>
-                You may use Aster framing, use the complete direct guide, replay, or
-                leave.
+                You may use Aster framing, use the complete direct guide,
+                replay, or leave.
               </dd>
             </div>
             <div>
               <dt>Equal paths</dt>
               <dd>
-                Aster and the manual guide expose the same sources, rules, synthetic
-                fixtures, and confirmation controls.
+                Aster and the manual guide expose the same sources, rules,
+                synthetic fixtures, and confirmation controls.
               </dd>
             </div>
           </dl>
@@ -198,11 +207,7 @@ export function PrologueOpening() {
         </article>
       )}
 
-      <PrologueGuidePanel
-        state={state}
-        move={move}
-        headingRef={sceneHeading}
-      />
+      <PrologueGuidePanel state={state} move={move} headingRef={sceneHeading} />
       <PrologueCapturePanel
         state={state}
         move={move}
