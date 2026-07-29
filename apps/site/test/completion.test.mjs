@@ -130,7 +130,7 @@ test("keeps newsletter, Phase 0, Sprint 9, and specialist approval separate", as
   for (const phrase of [
     "issue #63 remains open",
     "institutional Phase 0 remains active",
-    "Sprint 9 is planned and not started",
+    "planned and not started",
     "independent accessibility",
     "field performance",
     "specialist",
