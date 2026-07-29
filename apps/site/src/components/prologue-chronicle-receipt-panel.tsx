@@ -17,7 +17,11 @@ export type PrologueChronicleReceiptPanelProps = {
   readonly headingRef: RefObject<HTMLHeadingElement | null>;
 };
 
-function ProjectionLimits({ limitations }: { readonly limitations: readonly string[] }) {
+function ProjectionLimits({
+  limitations,
+}: {
+  readonly limitations: readonly string[];
+}) {
   return (
     <ul className={styles.limitations} aria-label="Projection limitations">
       {limitations.map((limitation) => (
@@ -56,7 +60,10 @@ export function PrologueChronicleReceiptPanel({
           private Chronicle or authoritative record.
         </p>
 
-        <div className={styles.statusRow} aria-label="Chronicle projection status">
+        <div
+          className={styles.statusRow}
+          aria-label="Chronicle projection status"
+        >
           <span>Synthetic</span>
           <span>Page memory only</span>
           <span>Not stored</span>
@@ -120,7 +127,10 @@ export function PrologueChronicleReceiptPanel({
         <p className={styles.sourceDetail}>{chronicle.sourceDetail}</p>
         <ProjectionLimits limitations={chronicle.limitations} />
 
-        <div className={styles.actions} aria-label="Synthetic Chronicle choices">
+        <div
+          className={styles.actions}
+          aria-label="Synthetic Chronicle choices"
+        >
           <button
             className="button button-primary"
             type="button"
@@ -237,7 +247,7 @@ export function PrologueChronicleReceiptPanel({
       <ProjectionLimits limitations={receipt.limitations} />
 
       <p className={styles.contractSources}>
-        Inspect the accepted public references: {" "}
+        Inspect the accepted public references:{" "}
         <a
           href={houseOfKeysProjectionReferences.contractSource}
           target="_blank"

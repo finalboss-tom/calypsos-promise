@@ -116,8 +116,7 @@ export function projectSyntheticReceipt(
     dataClassification: "synthetic",
     contractVersionReference: houseOfKeysProjectionReferences.contractVersion,
     contractShapeReference: "AccessReceipt",
-    acceptedFixtureReference:
-      houseOfKeysProjectionReferences.acceptedFixtureId,
+    acceptedFixtureReference: houseOfKeysProjectionReferences.acceptedFixtureId,
     controlledResourceId: chronicle.projectionId,
     selectedRecordIds: Object.freeze([chronicle.recordId]),
     purpose: Object.freeze({

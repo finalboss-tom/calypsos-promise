@@ -35,7 +35,10 @@ export function PrologueConfirmedProjectionEntry({
         Chronicle-shaped view before seeing the receipt-shaped explanation.
       </p>
 
-      <div className={styles.statusRow} aria-label="Confirmed projection status">
+      <div
+        className={styles.statusRow}
+        aria-label="Confirmed projection status"
+      >
         <span>Synthetic</span>
         <span>Visitor confirmed</span>
         <span>Not stored</span>
@@ -77,7 +80,10 @@ export function PrologueConfirmedProjectionEntry({
         record, audit event, legal consent, or durable game achievement.
       </p>
 
-      <div className={styles.actions} aria-label="Confirmed synthetic state choices">
+      <div
+        className={styles.actions}
+        aria-label="Confirmed synthetic state choices"
+      >
         <button
           className="button button-primary"
           type="button"

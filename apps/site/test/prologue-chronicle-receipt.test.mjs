@@ -55,7 +55,10 @@ test("projects Chronicle-shaped state only after explicit confirmation", async (
     state,
     /transition === "view-synthetic-chronicle"[\s\S]*!state\.confirmed/,
   );
-  assert.match(state, /transition === "review-confirmed-entry"[\s\S]*return false/);
+  assert.match(
+    state,
+    /transition === "review-confirmed-entry"[\s\S]*return false/,
+  );
   assert.match(state, /transition === "discard-projection"[\s\S]*return null/);
 });
 
