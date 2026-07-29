@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { PrologueCapturePanel } from "@/components/prologue-capture-panel";
 import { PrologueChronicleReceiptPanel } from "@/components/prologue-chronicle-receipt-panel";
+import { PrologueConfirmedProjectionEntry } from "@/components/prologue-confirmed-projection-entry";
 import { PrologueGuidePanel } from "@/components/prologue-guide-panel";
 import {
   initialOpeningState,
@@ -222,7 +223,14 @@ export function PrologueOpening() {
       )}
 
       <PrologueGuidePanel state={state} move={move} headingRef={sceneHeading} />
-      <PrologueCapturePanel
+      {state.scene !== "confirmed-entry" && (
+        <PrologueCapturePanel
+          state={state}
+          move={move}
+          headingRef={sceneHeading}
+        />
+      )}
+      <PrologueConfirmedProjectionEntry
         state={state}
         move={move}
         headingRef={sceneHeading}
