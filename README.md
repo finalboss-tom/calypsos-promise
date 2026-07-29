@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 completion package](docs/roadmap/sprint-8-completion-record.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Post-Sprint 8 reconciliation](docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md) · [Sprint 8 completion](docs/roadmap/sprint-8-completion-record.md) · [Sprint 9 alignment](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,8 +9,9 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Completion Record](docs/roadmap/sprint-8-completion-record.md) → [Release, Rollback, and Sprint 9 Handoff](docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
-- **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
+- **See the current state:** [Current Project Status](docs/roadmap/current-status.md) → [Post-Sprint 8 Reconciliation](docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Prepare Sprint 9:** [Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) → [Sprint 8 Release and Handoff](docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
+- **Inspect the live site boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
 - **Apply core decisions:** [Operational Simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-First Boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding Baseline](docs/economics/README.md)
@@ -20,49 +21,51 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-**Sprints 0–7 and the pre-Sprint 8 reconciliation are complete and merged.** Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61.
+**Sprints 0–8 are accepted and merged.** Sprint 8 was squash merged through PR #61 as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a` and closed through issue #60.
 
-The goal is:
+The accepted Next.js public gateway is live on the canonical domains through production deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`. Git-triggered Vercel deployment was restored to disabled through `a5146237356f58e8d28343e90918b70a418bccbb`, so ordinary repository commits do not automatically create releases.
 
-> Publish an honest, accessible gateway to Ogygia.
+Current work is:
 
-### Completed Sprint 8 workstreams
+- post-Sprint 8 repository and public-copy reconciliation;
+- Phase 0 newsletter preserve-and-activate gate [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63); and
+- pre-Sprint 9 public synthetic prologue alignment gate [#64](https://github.com/finalboss-tom/calypsos-promise/issues/64).
 
-- **8.1:** one `apps/site` owner, in-place migration, authority, route, security, signup, deployment, rollback, accessibility, performance, and validation boundaries.
-- **8.2:** pinned Next.js App Router shell, exact dependencies, compatibility routes, paused signup, metadata, CSP, headers, caching, and focused validation.
-- **8.3:** direct/narrative navigation parity, landmarks, keyboard and focus foundations, controlled evidence statuses, canonical source links, and resilient presentation.
-- **8.4:** cinematic homepage, dedicated Promise route, frozen player promise, three personal-value loops, public-software/private-data boundary, player-rights explanation, and contribution paths.
-- **8.5:** source-backed Seven Laws, How It Works, consumer-first/interoperability, and Aster/AI routes with metadata, sitemap inclusion, both navigation paths, explicit status boundaries, production-build evidence, and deterministic validation.
-- **8.6:** source-backed Trust Center and Open Forge routes with truthful rights, security, funding, challenge, tool-registry, provenance, receipt, error, holdpoint, and non-authority explanations.
-- **8.7:** source-backed roadmap and capability views, public-safe support routing, and build-time canonical funding-register transparency with honest empty states and transactions disabled.
-- **8.8:** deliberate paused, no-intake public email-signup state for Sprint 8 with final activation-or-retirement tracked by Phase 0 gate #63.
-- **8.9:** permanent source and isolated local production-preview validation across routes, semantics, accessibility contracts, security headers, metadata, source authority, signup, and transfer budgets.
-- **8.10:** cross-contract reconciliation, 36-control evidence map, 20 open holdpoints, 20 unresolved-work records, truthful release and rollback state, completion record, and bounded Sprint 9 handoff.
+Sprint 9 implementation has **not** started.
 
-### Sprint 8 acceptance gate
+## Live public site
 
-The Sprint 8 implementation package is complete and ready for explicit founding-steward acceptance. Issue #60 remains open and PR #61 remains draft and unmerged until that decision and the directed squash merge occur.
+[`apps/site`](apps/site) provides:
 
-No hosted preview or production deployment is claimed. Git-triggered deployment remains disabled, Phase 0 email-signup gate #63 remains open, and Sprint 9 is planned but has not started.
-
-## Current public site
-
-[`apps/site`](apps/site) is a validated Next.js public website foundation, not an official production release.
-
-It currently provides:
-
-- cinematic server-rendered homepage and dedicated `/promise` route;
-- `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, `/forge`, `/roadmap`, `/support`, and `/funding` source-backed guide, trust, and transparency routes;
+- a cinematic server-rendered homepage;
+- The Promise, Seven Laws, How It Works, Consumer First, and Aster/AI explanations;
+- Trust Center and Open Forge explanations;
+- public roadmap, support, and canonical funding-transparency views;
 - direct and optional narrative navigation reaching the same essential destinations;
-- skip links, semantic landmarks, keyboard access, and visible focus;
 - controlled evidence statuses and canonical source links;
-- `503 SIGNUP_MIGRATION_PAUSED` at `/api/join`;
-- application-local design tokens and responsive presentation styles;
-- reduced-motion, reduced-data, contrast, forced-colors, and image-failure behavior;
-- metadata routes, sitemap, error states, nonce CSP, and public security headers; and
-- permanent source validation and isolated local production-preview evidence with explicit transfer budgets.
+- metadata, sitemap, robots, not-found, error, nonce-CSP, security-header, and cache controls;
+- responsive, keyboard, focus, reduced-motion, reduced-data, contrast, forced-colors, and image-failure foundations; and
+- permanent source and isolated local production-preview validation with explicit transfer budgets.
 
-It does not yet provide final email-signup activation or retirement, independent accessibility certification or affected-user validation, a hosted preview, official production cutover, or any private product capability.
+The live site does not activate accounts, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, donations, payments, or production health-data operation.
+
+## Phase 0 newsletter
+
+The founding steward selected **Path A — preserve and activate** for narrow project updates leading up to Phase 0 completion.
+
+The implementation reuses the existing private server webhook and Google Sheet connection. It accepts an email address plus explicit consent only and cannot create an account, game identity, Chronicle record, research enrollment, provider lead, donation, or advertising profile.
+
+Issue #63 remains open until the implementation is merged, deployed, tested end to end, reconciled with its limitations and rollback, and explicitly accepted. Real subscriber addresses, webhook URLs, credentials, and protected incident evidence never belong in this repository.
+
+## Sprint 9 boundary
+
+Sprint 9’s accepted goal is:
+
+> Let anyone understand the product through play before creating an account.
+
+Issue #64 must resolve application ownership, temporary synthetic data, deterministic state, Aster fallback, refusal and exit, accessibility, security, performance, publication, rollback, and completion evidence before implementation begins.
+
+Sprint 9 remains public and explicitly synthetic only. It cannot require an account, email, real health data, production model provider, institutional connection, payment, donation, or durable private progression.
 
 ## Accepted and merged foundations
 
@@ -77,9 +80,9 @@ It does not yet provide final email-signup activation or retirement, independent
 - Decision 0011 — operational simplicity and durable-workflow constraints
 - Sprint 6 — pre-stable provider-independent Aster contracts
 - Sprint 7 — bounded local public/synthetic Forge MCP
-- Pre-Sprint 8 reconciliation — accepted website migration boundary
+- Sprint 8 — accepted and deployed public website foundation
 
-These foundations remain contract, policy, local implementation, and public/synthetic evidence. They do not establish production health-data operation or independent certification.
+These foundations remain contract, policy, local implementation, public website, and public/synthetic evidence. They do not establish production health-data operation or independent certification.
 
 ## Frozen foundations
 
@@ -94,12 +97,8 @@ These foundations remain contract, policy, local implementation, and public/synt
 - Personal value before secondary use, deterministic incentives, meaningful refusal, and non-punitive return
 - Progressive decentralization toward a self-sustaining, founder-independent institution
 
-## Sprint 8 non-scope
-
-Sprint 8 does not activate accounts, authentication, real health-data intake, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, governance voting, donations, payments, financial operations, personal-data analytics, estate directives, or Sprint 9 gameplay.
-
 ## Core rule
 
 > The software is open. The person’s health data is private.
 
-No contributor workflow, public demo, test environment, website, model, MCP client, provider, sponsor, connector, or possible scientific value changes that rule.
+No contributor workflow, public demo, newsletter, test environment, website, model, MCP client, provider, sponsor, connector, or possible scientific value changes that rule.

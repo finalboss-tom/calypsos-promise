@@ -16,18 +16,23 @@ export const routeContracts = Object.freeze([
   },
   { path: "/support", title: "Support and Contribute", sitemap: true },
   { path: "/funding", title: "Funding Transparency", sitemap: true },
-  { path: "/privacy", title: "Signup privacy", sitemap: true },
-  { path: "/joined", title: "Signup status", sitemap: false, noindex: true },
+  { path: "/privacy", title: "Newsletter privacy", sitemap: true },
+  {
+    path: "/joined",
+    title: "Newsletter signup confirmed",
+    sitemap: false,
+    noindex: true,
+  },
 ]);
 
 export const performanceBudgets = Object.freeze({
-  htmlBytes: 96 * 1024,
-  javascriptBytes: 704 * 1024,
-  cssBytes: 128 * 1024,
+  htmlBytes: 112 * 1024,
+  javascriptBytes: 736 * 1024,
+  cssBytes: 136 * 1024,
   imageBytes: 1536 * 1024,
   fontBytes: 0,
-  totalBytes: 2048 * 1024,
-  firstPartyRequests: 32,
+  totalBytes: 2112 * 1024,
+  firstPartyRequests: 34,
 });
 
 export const requiredPageHeaders = Object.freeze({
@@ -83,8 +88,14 @@ export const secretPatterns = Object.freeze([
   { name: "AWS access key", pattern: /\bAKIA[0-9A-Z]{16}\b/ },
   { name: "Slack token", pattern: /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/ },
   { name: "Stripe live key", pattern: /\bsk_live_[A-Za-z0-9]{16,}\b/ },
-  { name: "signup webhook configuration", pattern: /SIGNUP_WEBHOOK_URL/ },
+  {
+    name: "hard-coded Google Apps Script webhook URL",
+    pattern: /https:\/\/script\.google(?:usercontent)?\.com\/macros\//,
+  },
 ]);
 
 export const signupGateIssue =
   "https://github.com/finalboss-tom/calypsos-promise/issues/63";
+export const sprint9GateIssue =
+  "https://github.com/finalboss-tom/calypsos-promise/issues/64";
+export const newsletterPolicyVersion = "2026-07-29";

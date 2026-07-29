@@ -26,7 +26,7 @@ export const capabilityStatusDefinitions: Readonly<
   experimental: {
     label: "Experimental",
     explanation:
-      "Implemented for review but not an accepted production release.",
+      "Available at a bounded evidence level with explicit unresolved limitations.",
   },
   planned: {
     label: "Planned",
@@ -50,52 +50,51 @@ export const publicCapabilities: readonly CapabilityRecord[] = [
   },
   {
     id: "public-website-foundation",
-    label: "Public website foundation",
-    status: "experimental",
+    label: "Public website",
+    status: "live",
     summary:
-      "The Next.js site, public page family, security policy, metadata, navigation, and accessibility foundations are implemented on the draft Sprint 8 branch.",
-    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/60",
-    sourceLabel: "Review Sprint 8",
+      "The accepted Next.js public gateway is deployed on the canonical domains with Git-triggered deployment returned to disabled.",
+    sourceHref:
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md",
+    sourceLabel: "Read current status",
   },
   {
     id: "trust-and-forge",
     label: "Trust Center and Open Forge",
-    status: "experimental",
+    status: "live",
     summary:
-      "Source-backed rights, safeguards, challenge routes, and the ten local public/synthetic Forge tools are implemented for review without production or private capability.",
+      "The source-backed Trust Center and Open Forge explanations are public. Forge itself remains bounded local public/synthetic contributor tooling, not a private or production service.",
     sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-workstream-8-6-record.md",
-    sourceLabel: "Read the 8.6 record",
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-completion-record.md",
+    sourceLabel: "Read the Sprint 8 evidence",
   },
   {
     id: "roadmap-support-funding",
     label: "Roadmap, support, and funding transparency",
-    status: "experimental",
+    status: "live",
     summary:
-      "Typed public roadmap and support views plus build-time canonical funding-register rendering are under active Sprint 8.7 review.",
+      "Public roadmap, support, and canonical funding-transparency views are deployed without activating transactions, private support intake, or sponsor authority.",
     sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md",
-    sourceLabel: "Read the Sprint 8 plan",
+      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md",
+    sourceLabel: "Inspect the integrated status",
   },
   {
     id: "signup-disposition",
-    label: "Public signup disposition",
-    status: "planned",
+    label: "Phase 0 newsletter signup",
+    status: "experimental",
     summary:
-      "Signup remains paused with no intake or forwarding until workstream 8.8 deliberately preserves or retires the surface under accepted evidence.",
-    sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md",
-    sourceLabel: "Review the signup gate",
+      "The preserve-and-activate path uses the existing private server webhook and Google Sheet for email updates only. Gate #63 remains open until merged deployment and manual verification are accepted.",
+    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/63",
+    sourceLabel: "Review Phase 0 gate #63",
   },
   {
     id: "public-synthetic-prologue",
     label: "Public synthetic prologue",
     status: "planned",
     summary:
-      "A no-account, no-real-health-data playable explanation is reserved for Sprint 9 and is not part of this website workstream.",
-    sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprints.md",
-    sourceLabel: "Read the sprint roadmap",
+      "Sprint 9 remains unimplemented. Issue #64 is defining its public-only, no-account, no-real-health-data, temporary-state, refusal, and accessibility boundaries.",
+    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/64",
+    sourceLabel: "Review the pre-Sprint 9 gate",
   },
   {
     id: "private-product",

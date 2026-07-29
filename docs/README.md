@@ -1,13 +1,13 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 completion package](roadmap/sprint-8-completion-record.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Institutional roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Post-Sprint 8 reconciliation](roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md) · [Sprint 9 alignment #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
 1. What is Calypso’s Promise ultimately trying to accomplish?
 2. Which records are authoritative for the decision being made?
-3. What is implemented, accepted, planned, proposed, deferred, or still behind a specialist gate?
-4. Where should a contributor make a change without crossing a product, privacy, safety, canon, permission, security, funding, provider, interoperability, workflow, operability, succession, or governance boundary?
+3. What is implemented, accepted, deployed, planned, proposed, deferred, or still behind a specialist gate?
+4. Where should a contributor make a change without crossing a product, privacy, safety, canon, permission, security, funding, provider, interoperability, workflow, operability, succession, newsletter, or governance boundary?
 
 ## Primary directive
 
@@ -20,39 +20,46 @@ The directive is constrained by the player promise:
 ## Current orientation
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Sprint 8 Completion Record](roadmap/sprint-8-completion-record.md)
-3. [Sprint 8 Cross-Contract Reconciliation](architecture/public-site-sprint-8-cross-contract-reconciliation.md)
-4. [Sprint 8 Control and Evidence Map](architecture/public-site-sprint-8-control-and-evidence-map.md)
-5. [Sprint 8 Holdpoints and Unresolved Work](architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
-6. [Release, Rollback, and Sprint 9 Handoff](roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
-7. [Sprint 8 Execution Plan](roadmap/sprint-8-execution-plan.md)
-8. [Sprint 8.9 Full Website Validation Record](roadmap/sprint-8-workstream-8-9-record.md)
-9. [Sprint 8.9 Representative Implementation Review](roadmap/sprint-8-workstream-8-9-manual-review.md)
-10. [Sprint 8.8 Paused Email-Signup Record](roadmap/sprint-8-workstream-8-8-record.md)
-11. [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](roadmap/sprint-8-workstream-8-7-record.md)
-12. [Sprint 8.6 Trust Center and Open Forge Record](roadmap/sprint-8-workstream-8-6-record.md)
-13. [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](roadmap/sprint-8-workstream-8-5-record.md)
-14. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
-15. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
-16. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
-17. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
-18. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
-19. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-20. [Sprint Roadmap](roadmap/sprints.md)
-21. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-22. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-23. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-24. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-25. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-26. [Aster Contract Baseline](product/aster-contract-baseline.md)
-27. [Security Architecture](security/README.md)
-28. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-29. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-30. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-31. [Repository and Module Boundaries](architecture/module-boundaries.md)
-32. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-33. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-34. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+2. [Post-Sprint 8 Reconciliation and Sprint 9 Preparation](roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md)
+3. [Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+4. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+5. [Sprint Roadmap](roadmap/sprints.md)
+6. [Sprint 8 Completion Record](roadmap/sprint-8-completion-record.md)
+7. [Release, Rollback, and Sprint 9 Handoff](roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
+8. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
+9. [Sprint 8 Cross-Contract Reconciliation](architecture/public-site-sprint-8-cross-contract-reconciliation.md)
+10. [Sprint 8 Control and Evidence Map](architecture/public-site-sprint-8-control-and-evidence-map.md)
+11. [Sprint 8 Holdpoints and Unresolved Work](architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
+12. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+13. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+14. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+15. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+16. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+17. [Aster Contract Baseline](product/aster-contract-baseline.md)
+18. [Security Architecture](security/README.md)
+19. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+20. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+21. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+22. [Repository and Module Boundaries](architecture/module-boundaries.md)
+23. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+24. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+25. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+
+## Current state
+
+Sprints 0–8 are accepted and merged.
+
+Sprint 8 was squash merged through PR #61 as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`, deployed through Vercel production deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`, and closed through issue #60.
+
+The public Next.js site is live on the canonical domains. Git-triggered deployment is disabled, so repository commits and production releases remain separate attributable actions.
+
+Current work is:
+
+- post-Sprint 8 copy, link, status, validation, and deployment reconciliation;
+- Phase 0 newsletter **Path A — preserve and activate** under issue #63, pending merge, production verification, rollback evidence, and acceptance; and
+- pre-Sprint 9 alignment under issue #64, with playable implementation not started.
+
+Institutional Phase 0 remains active.
 
 ## Mission and non-negotiable boundaries
 
@@ -81,29 +88,25 @@ When records appear to conflict, use this order and open a decision record rathe
 
 A lower layer may implement or explain a higher layer. It may not quietly override it.
 
-## Active Sprint 8 boundary
+Historical sprint plans and completion records retain the status language true at their revision. The current-status and post-merge reconciliation records supersede only their time-sensitive orientation.
 
-Sprints 0–7 and the pre-Sprint 8 repository reconciliation are complete and merged.
+## Public website and newsletter boundary
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.10 have completed their implementation package; explicit founding-steward acceptance and squash merge remain pending.
+The live public site provides the accepted page family, direct and optional narrative navigation, controlled capability status, source-backed Trust Center and Open Forge explanations, public roadmap and support routes, canonical funding transparency, metadata, security headers, accessibility foundations, and permanent validation.
 
-The public site now provides:
+The site does not create accounts, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, donations, payments, or production health-data operation.
 
-- one pinned Next.js App Router application;
-- a migrated cinematic homepage and dedicated `/promise` route;
-- `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, `/forge`, `/roadmap`, `/support`, and `/funding` source-backed routes;
-- direct and optional narrative navigation parity;
-- controlled evidence statuses with canonical source links;
-- server-rendered essential information;
-- skip links, landmarks, keyboard and visible-focus foundations;
-- reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive behavior;
-- paused signup without intake or forwarding;
-- nonce CSP and public security headers; and
-- permanent source validation, isolated local production-preview evidence, explicit route budgets, and a representative implementation review.
+The temporary Phase 0 newsletter is a narrow contact list for public project updates. It reuses the existing server-only Google Apps Script and private Google Sheet connection, accepts email plus explicit consent only, and may not become account identity, Chronicle intake, research consent, provider lead generation, fundraising, governance, advertising, profiling, or gameplay eligibility.
 
-The completion package records 36 stable controls, 20 open holdpoints, 20 unresolved-work items, release and rollback paths, and a bounded Sprint 9 handoff. It is ready for acceptance but does not itself accept or merge Sprint 8.
+Issue #63 remains open until deployed behavior and rollback are verified and accepted. Real subscriber records, webhook URLs, credentials, and protected incidents remain private.
 
-The site is not a hosted preview, official release, final signup system, accessibility certification, field-performance report, payment system, private support system, or private product capability. Deployment remains disabled, Phase 0 gate #63 remains open, and Sprint 9 is planned but not started.
+## Sprint 9 boundary
+
+Sprint 9 remains planned and not started.
+
+Issue #64 must resolve application ownership, routes, explicitly synthetic content, temporary-data lifecycle, deterministic state and First Lantern completion, Aster and manual fallback, refusal and exit, accessibility, security, performance, publication, rollback, deployment, and completion evidence before implementation begins.
+
+The public synthetic prologue must work without an account, email, real health data, production model provider, institutional connection, payment, donation, or durable private progression.
 
 ## Accepted strategic baselines
 
@@ -114,7 +117,7 @@ The site is not a hosted preview, official release, final signup system, accessi
 - [Consumer-First and Institutional Interoperability Workstream](roadmap/consumer-first-provider-independent-workstream.md)
 - [AS-0012 — Consumer-First Continuity](governance/assumption-AS-0012-consumer-first-continuity-value.md)
 
-Providers and institutions are important sources, destinations, and potential partners connected through versioned adapters. They do not become the automatic owner of Chronicle meaning, product authority, roadmap, permissions, mappings, generated evidence, tool outcomes, website status, or governance.
+Providers and institutions are important sources, destinations, and potential partners connected through versioned adapters. They do not become the automatic owner of Chronicle meaning, product authority, roadmap, permissions, mappings, generated evidence, tool outcomes, website status, newsletter contacts, or governance.
 
 ### Operational simplicity and durable workflows
 
@@ -123,7 +126,7 @@ Providers and institutions are important sources, destinations, and potential pa
 - [Mission-to-Runtime Traceability](architecture/mission-to-runtime-traceability.md)
 - [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
 
-The modular monolith remains the default. Sprint 8 remains one site application, not a service platform, CMS, database, remote content system, or new shared package program.
+The modular monolith remains the default. The public site remains one application, not a service platform, CMS, remote content system, private contact database, or premature shared-package program.
 
 ### Funding and sponsorship
 
@@ -134,7 +137,7 @@ The modular monolith remains the default. Sprint 8 remains one site application,
 
 Funding cannot purchase private data, product authority, source rank, provider defaults, connector placement, mapping approval, certification outcomes, favorable findings, roadmap control, governance power, safety exceptions, game progression, or publication control.
 
-Website funding views must derive from canonical public records or show honest empty states. They cannot become an independent sponsor model or activate transactions.
+Website funding views derive from canonical public records or show honest empty states. The newsletter does not create a donor, sponsor, customer, or investor list.
 
 ## Security and information handling
 
@@ -142,8 +145,8 @@ Website funding views must derive from canonical public records or show honest e
 - [Publication and Confidentiality Policy](policies/publication-and-confidentiality.md)
 - [Sprint 5 Specialist Holdpoints](security/sprint-5-specialist-holdpoint-and-evidence-register.md)
 
-Only public repository records and explicitly synthetic evidence belong in public contributor workflows, website previews, tests, logs, and artifacts. No production health data, credentials, private signup records, private provider negotiations, proprietary mappings, protected security findings, or private financial records belong here.
+Only public repository records and explicitly synthetic evidence belong in public contributor workflows, website previews, tests, logs, and artifacts. No production health data, credentials, private subscriber records, private provider negotiations, proprietary mappings, protected security findings, or private financial records belong here.
 
 ## Status rule
 
-Status follows evidence. A merged contract, passing test, preview, or deployment proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, AI-safety, clinical, interoperability, legal, provider, financial, operational, or production-health-data approval.
+Status follows evidence. A merged contract, passing test, deployment, or subscriber delivery proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, communications, AI-safety, clinical, interoperability, legal, provider, financial, operational, or production-health-data approval.

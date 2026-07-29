@@ -3,12 +3,14 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import {
   contrastPairs,
+  newsletterPolicyVersion,
   performanceBudgets,
   requiredCspDirectives,
   requiredPageHeaders,
   routeContracts,
   signupGateIssue,
   siteOrigin,
+  sprint9GateIssue,
 } from "../src/release-contract.mjs";
 
 async function read(relativePath) {
@@ -31,7 +33,7 @@ function contrastRatio(foreground, background) {
   return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
-test("defines one canonical release contract for every public route", () => {
+test("defines the canonical public route family", () => {
   assert.deepEqual(
     routeContracts.map(({ path }) => path),
     [
@@ -62,29 +64,26 @@ test("defines one canonical release contract for every public route", () => {
   assert.equal(siteOrigin, "https://www.calypsospromise.org");
 });
 
-test("keeps explicit page, JavaScript, CSS, image, font, request, and total budgets", () => {
+test("keeps explicit transfer budgets after adding the newsletter client island", () => {
   assert.deepEqual(performanceBudgets, {
-    htmlBytes: 96 * 1024,
-    javascriptBytes: 704 * 1024,
-    cssBytes: 128 * 1024,
+    htmlBytes: 112 * 1024,
+    javascriptBytes: 736 * 1024,
+    cssBytes: 136 * 1024,
     imageBytes: 1536 * 1024,
     fontBytes: 0,
-    totalBytes: 2048 * 1024,
-    firstPartyRequests: 32,
+    totalBytes: 2112 * 1024,
+    firstPartyRequests: 34,
   });
 });
 
-test("requires enhanced contrast for the accepted design-token pairs", () => {
+test("retains enhanced contrast for accepted token pairs", () => {
   assert.equal(contrastPairs.length, 9);
   for (const pair of contrastPairs) {
-    assert.ok(
-      contrastRatio(pair.foreground, pair.background) >= 7,
-      `${pair.name} must meet 7:1`,
-    );
+    assert.ok(contrastRatio(pair.foreground, pair.background) >= 7);
   }
 });
 
-test("keeps the permanent CI production-preview evidence job", async () => {
+test("keeps permanent isolated production-preview validation", async () => {
   const [workflow, packageJson, previewValidator, sourceValidator] =
     await Promise.all([
       read("../../../.github/workflows/ci.yml"),
@@ -103,11 +102,12 @@ test("keeps the permanent CI production-preview evidence job", async () => {
     /"validate:preview": "node src\/validate-preview\.mjs"/,
   );
   assert.match(packageJson, /validate-release-source\.mjs/);
-  assert.match(previewValidator, /isolated-local-production-preview/);
-  assert.match(sourceValidator, /Sprint 8\.9 source validation/);
+  assert.match(previewValidator, /providerContacted: false/);
+  assert.match(previewValidator, /bot-field-must-be-ignored/);
+  assert.match(sourceValidator, /active Phase 0 newsletter gate #63/);
 });
 
-test("validates the complete security-header and CSP contract", () => {
+test("validates security headers and CSP", () => {
   assert.deepEqual(requiredPageHeaders, {
     "cross-origin-opener-policy": "same-origin",
     "permissions-policy":
@@ -129,21 +129,60 @@ test("validates the complete security-header and CSP contract", () => {
   }
 });
 
-test("preserves paused email signup and the Phase 0 gate", async () => {
-  const [route, privacy, joined, workstream] = await Promise.all([
+test("implements bounded newsletter Path A without exposing provider configuration", async () => {
+  const [route, form, privacy, joined, vercel, roadmap] = await Promise.all([
     read("../src/app/api/join/route.ts"),
+    read("../src/components/newsletter-signup-form.tsx"),
     read("../src/app/privacy/page.tsx"),
     read("../src/app/joined/page.tsx"),
-    read("../../../docs/roadmap/sprint-8-workstream-8-8-record.md"),
+    read("../vercel.json"),
+    read("../src/lib/public-roadmap.ts"),
   ]);
 
   assert.equal(signupGateIssue.endsWith("/issues/63"), true);
-  assert.match(route, /SIGNUP_MIGRATION_PAUSED/);
-  assert.match(route, /status: 503/);
-  assert.doesNotMatch(route, /request\.(?:json|formData)/);
-  assert.doesNotMatch(route, /SIGNUP_WEBHOOK_URL/);
+  assert.equal(sprint9GateIssue.endsWith("/issues/64"), true);
+  assert.equal(newsletterPolicyVersion, "2026-07-29");
+
+  for (const phrase of [
+    "SIGNUP_WEBHOOK_URL",
+    "SIGNUP_WEBHOOK_TOKEN",
+    "maxBodyBytes",
+    "maxAttemptsPerWindow",
+    "AbortController",
+    "SIGNUP_NOT_CONFIGURED",
+    "SIGNUP_PROVIDER_UNAVAILABLE",
+    'redirect: "/joined"',
+  ]) {
+    assert.match(
+      route,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+  assert.doesNotMatch(route, /script\.google(?:usercontent)?\.com\/macros/);
+  assert.doesNotMatch(route, /console\.(?:log|error)\([^)]*email/i);
+
+  for (const phrase of [
+    'name="email"',
+    'name="consent"',
+    'name="website"',
+    'aria-live="polite"',
+    'href="/privacy"',
+  ]) {
+    assert.match(
+      form,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
+  }
+
+  assert.match(privacy, /Google Apps Script/);
+  assert.match(privacy, /private Google Sheet/);
+  assert.match(privacy, /unsubscribe/);
+  assert.match(privacy, /request deletion/);
   assert.match(privacy, /issues\/63/);
+  assert.match(joined, /signup was delivered/i);
   assert.match(joined, /issues\/63/);
-  assert.match(workstream, /COMPLETE FOR SPRINT 8/);
-  assert.match(workstream, /Institutional Phase 0 cannot close/);
+  assert.match(vercel, /"framework": "nextjs"/);
+  assert.match(vercel, /"deploymentEnabled": false/);
+  assert.match(roadmap, /issues\/64/);
+  assert.match(roadmap, /id: "sprint-9"[\s\S]*status: "planned"/);
 });

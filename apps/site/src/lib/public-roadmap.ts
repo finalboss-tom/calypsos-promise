@@ -11,8 +11,6 @@ export type RoadmapRecord = {
 
 const sprintRoadmapUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprints.md";
-const sprint8PlanUrl =
-  "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md";
 const sprint8CompletionUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-completion-record.md";
 const currentStatusUrl =
@@ -21,52 +19,54 @@ const institutionalRoadmapUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/ROADMAP.md";
 const signupGateUrl =
   "https://github.com/finalboss-tom/calypsos-promise/issues/63";
+const sprint9GateUrl =
+  "https://github.com/finalboss-tom/calypsos-promise/issues/64";
 
 export const sprint8Roadmap: readonly RoadmapRecord[] = [
   {
     id: "sprint-8-1-through-8-6",
     title: "Workstreams 8.1–8.6",
-    status: "experimental",
+    status: "live",
     summary:
-      "The single-site boundary, App Router shell, navigation, homepage, Promise, guide family, Trust Center, and Open Forge are implemented on the draft Sprint 8 branch and validated for review.",
-    sourceHref: currentStatusUrl,
-    sourceLabel: "Inspect current status",
+      "The single-site boundary, App Router shell, navigation, homepage, Promise, guide family, Trust Center, and Open Forge were accepted, merged, and deployed through Sprint 8.",
+    sourceHref: sprint8CompletionUrl,
+    sourceLabel: "Read Sprint 8 completion evidence",
   },
   {
     id: "sprint-8-7",
     title: "8.7 — Roadmap, status, support, and funding transparency",
-    status: "experimental",
+    status: "live",
     summary:
-      "Source-backed roadmap, public-safe support, and canonical funding-transparency views are implemented without creating a second ledger, private support system, or transaction path.",
-    sourceHref: sprint8PlanUrl,
-    sourceLabel: "Read the Sprint 8 plan",
+      "Source-backed roadmap, public-safe support, and canonical funding-transparency views are deployed without creating a second ledger, transaction path, or sponsor authority.",
+    sourceHref: currentStatusUrl,
+    sourceLabel: "Inspect current status",
   },
   {
     id: "sprint-8-8",
-    title: "8.8 — Signup disposition",
+    title: "8.8 and Phase 0 — Newsletter disposition",
     status: "experimental",
     summary:
-      "The email newsletter or waitlist remains paused and no-intake for Sprint 8. Final safe activation or deliberate retirement remains Phase 0 gate issue #63.",
+      "Sprint 8 preserved the no-intake boundary. The post-merge preserve-and-activate path now restores the existing private webhook for email updates only, while issue #63 remains open through deployed verification and Phase 0 acceptance.",
     sourceHref: signupGateUrl,
     sourceLabel: "Review Phase 0 gate #63",
   },
   {
     id: "sprint-8-9",
     title: "8.9 — Accessibility, performance, security, and route validation",
-    status: "experimental",
+    status: "live",
     summary:
-      "Permanent source and isolated local-production-preview validation now covers thirteen routes, security headers, metadata, authority, signup, contrast, and transfer budgets without claiming hosted or independent evidence.",
+      "Permanent source and isolated production-preview validation covers public routes, security headers, metadata, authority, contrast, and transfer budgets. Independent and affected-user evidence remains separate.",
     sourceHref: sprint8CompletionUrl,
     sourceLabel: "Review completion evidence",
   },
   {
     id: "sprint-8-10",
     title: "8.10 — Completion and Sprint 9 handoff",
-    status: "experimental",
+    status: "live",
     summary:
-      "The reconciliation, control map, open holdpoints, release and rollback record, completion package, and bounded Sprint 9 handoff are implemented. Explicit founding-steward acceptance and squash merge remain open.",
-    sourceHref: sprint8CompletionUrl,
-    sourceLabel: "Review the completion package",
+      "Sprint 8 was accepted and squash merged through PR #61. The production site is live, Git deployment is disabled again, issue #60 is closed, and the bounded Sprint 9 alignment gate is issue #64.",
+    sourceHref: currentStatusUrl,
+    sourceLabel: "Read the reconciled status",
   },
 ];
 
@@ -76,9 +76,9 @@ export const futureRoadmap: readonly RoadmapRecord[] = [
     title: "Sprint 9 — Public synthetic prologue",
     status: "planned",
     summary:
-      "A no-account, no-real-health-data playable explanation of the Promise and first public synthetic journey. It has not started and requires Sprint 8 acceptance, merge, post-merge reconciliation, and a pre-Sprint 9 review.",
-    sourceHref: sprintRoadmapUrl,
-    sourceLabel: "Read Sprint 9",
+      "A no-account, no-real-health-data playable explanation of the Promise and first public synthetic journey. Implementation has not started; issue #64 is defining application ownership, temporary data, deterministic completion, Aster fallback, refusal, accessibility, security, and release evidence.",
+    sourceHref: sprint9GateUrl,
+    sourceLabel: "Review the pre-Sprint 9 alignment gate",
   },
   {
     id: "sprints-10-through-13",

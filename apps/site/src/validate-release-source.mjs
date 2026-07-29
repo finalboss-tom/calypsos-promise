@@ -2,12 +2,14 @@ import { readdir, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import {
   contrastPairs,
+  newsletterPolicyVersion,
   performanceBudgets,
   requiredCspDirectives,
   requiredPageHeaders,
   routeContracts,
   secretPatterns,
   signupGateIssue,
+  sprint9GateIssue,
 } from "./release-contract.mjs";
 
 const app = fileURLToPath(new URL("../", import.meta.url));
@@ -82,9 +84,7 @@ if (performanceBudgets.fontBytes !== 0) {
 
 for (const pair of contrastPairs) {
   const ratio = contrastRatio(pair.foreground, pair.background);
-  if (ratio < 7) {
-    fail(`${pair.name} contrast ${ratio.toFixed(2)} is below 7:1`);
-  }
+  if (ratio < 7) fail(`${pair.name} contrast ${ratio.toFixed(2)} is below 7:1`);
 }
 
 const routeFile = (path) =>
@@ -92,14 +92,10 @@ const routeFile = (path) =>
 for (const contract of routeContracts) {
   const page = await read(routeFile(contract.path));
   if (!/<h1\b/.test(page)) fail(`${contract.path} source is missing h1`);
-  if (/<(?:form|input|textarea|select)\b/i.test(page)) {
-    fail(`${contract.path} source contains an unexpected form control`);
-  }
   if (contract.path !== "/") {
     const canonical = `canonical: "${contract.path}"`;
-    if (!page.includes(canonical)) {
+    if (!page.includes(canonical))
       fail(`${contract.path} source is missing ${canonical}`);
-    }
   }
   if (contract.noindex && !/index:\s*false/.test(page)) {
     fail(`${contract.path} source must remain noindex`);
@@ -120,11 +116,16 @@ const [
   guideCss,
   trustCss,
   recordsCss,
+  newsletterCss,
+  newsletterComponent,
   nextConfig,
   proxy,
+  vercelConfig,
+  homepage,
   joinRoute,
   privacyPage,
   joinedPage,
+  publicRoadmap,
 ] = await Promise.all([
   read("src/app/layout.tsx"),
   read("src/lib/navigation.ts"),
@@ -136,11 +137,16 @@ const [
   read("src/app/guide-pages.css"),
   read("src/app/trust-forge.css"),
   read("src/app/public-records.css"),
+  read("src/components/newsletter-signup-form.module.css"),
+  read("src/components/newsletter-signup-form.tsx"),
   read("next.config.mjs"),
   read("src/proxy.ts"),
+  read("vercel.json"),
+  read("src/app/page.tsx"),
   read("src/app/api/join/route.ts"),
   read("src/app/privacy/page.tsx"),
   read("src/app/joined/page.tsx"),
+  read("src/lib/public-roadmap.ts"),
 ]);
 
 if (
@@ -173,13 +179,20 @@ for (const route of routeContracts.filter((route) => !route.noindex)) {
   }
 }
 if (sitemap.includes("/joined") || sitemap.includes("/api/join")) {
-  fail("sitemap must exclude joined compatibility and API routes");
+  fail("sitemap must exclude joined and API routes");
 }
 if (!robots.includes('disallow: ["/api/"]') || !robots.includes('allow: "/"')) {
   fail("robots source must allow public pages and disallow API crawling");
 }
 
-const css = [globalCss, homepageCss, guideCss, trustCss, recordsCss].join("\n");
+const css = [
+  globalCss,
+  homepageCss,
+  guideCss,
+  trustCss,
+  recordsCss,
+  newsletterCss,
+].join("\n");
 for (const phrase of [
   ":focus-visible",
   "outline-offset",
@@ -198,15 +211,7 @@ if (
 }
 
 for (const [header, value] of Object.entries(requiredPageHeaders)) {
-  if (
-    !nextConfig.includes(
-      `key: "${header
-        .split("-")
-        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-        .join("-")}"`,
-    ) &&
-    !nextConfig.toLowerCase().includes(header)
-  ) {
+  if (!nextConfig.toLowerCase().includes(header)) {
     fail(`next config source is missing ${header}`);
   }
   if (!nextConfig.includes(value))
@@ -222,32 +227,78 @@ if (
 ) {
   fail("proxy must retain per-request nonce CSP behavior");
 }
+if (!vercelConfig.includes('"framework": "nextjs"')) {
+  fail("Vercel configuration must retain the Next.js framework override");
+}
+if (!vercelConfig.includes('"deploymentEnabled": false')) {
+  fail("Git-triggered Vercel deployment must remain disabled");
+}
 
 for (const phrase of [
-  "SIGNUP_MIGRATION_PAUSED",
-  "status: 503",
+  '"use client"',
+  'name="email"',
+  'name="consent"',
+  'name="website"',
+  'aria-live="polite"',
+  'href="/privacy"',
+]) {
+  if (!newsletterComponent.includes(phrase)) {
+    fail(`newsletter form is missing ${phrase}`);
+  }
+}
+if (!homepage.includes("NewsletterSignupForm")) {
+  fail("homepage must render the newsletter form");
+}
+
+for (const phrase of [
+  "SIGNUP_WEBHOOK_URL",
+  "SIGNUP_WEBHOOK_TOKEN",
+  "request.text()",
+  "application/x-www-form-urlencoded",
+  "maxBodyBytes",
+  "maxAttemptsPerWindow",
+  "AbortController",
+  "https:",
+  `policyVersion: "${newsletterPolicyVersion}"`,
+  "status,",
+  'redirect: "/joined"',
   '"Cache-Control": "no-store"',
-  '"Retry-After": "86400"',
 ]) {
   if (!joinRoute.includes(phrase))
-    fail(`paused signup route is missing ${phrase}`);
+    fail(`active signup route is missing ${phrase}`);
 }
 for (const prohibited of [
-  "request.json",
-  "request.formData",
-  "SIGNUP_WEBHOOK_URL",
-  "fetch(",
-  "email:",
+  "console.log(email",
+  "console.error(email",
+  "healthData",
+  "medicalData",
+  "researchEnrollment",
 ]) {
   if (joinRoute.includes(prohibited)) {
-    fail(`paused signup route contains prohibited behavior: ${prohibited}`);
+    fail(`active signup route contains prohibited behavior: ${prohibited}`);
   }
 }
 if (
   !privacyPage.includes(signupGateIssue) ||
   !joinedPage.includes(signupGateIssue)
 ) {
-  fail("paused signup compatibility pages must link to Phase 0 gate #63");
+  fail("newsletter pages must link to Phase 0 gate #63");
+}
+for (const phrase of [
+  "Google Apps Script",
+  "private Google Sheet",
+  "unsubscribe",
+  "request deletion",
+  "Phase 0",
+]) {
+  if (!privacyPage.includes(phrase))
+    fail(`newsletter privacy notice is missing ${phrase}`);
+}
+if (
+  !publicRoadmap.includes(sprint9GateIssue) ||
+  !publicRoadmap.includes('status: "planned"')
+) {
+  fail("public roadmap must retain Sprint 9 as planned through issue #64");
 }
 
 const sourceFiles = (await filesRecursively(`${app}/src`)).filter((path) => {
@@ -275,7 +326,7 @@ if (
 
 if (failures.length > 0) {
   console.error(
-    `Sprint 8.9 source validation failed:\n${failures
+    `Public site source validation failed:\n${failures
       .map((failure) => `- ${failure}`)
       .join("\n")}`,
   );
@@ -283,5 +334,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Sprint 8.9 source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, paused signup gate #63, security headers, metadata, authority, and performance budgets.`,
+  `Public site source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, active Phase 0 newsletter gate #63, planned Sprint 9 gate #64, security headers, metadata, authority, and performance budgets.`,
 );

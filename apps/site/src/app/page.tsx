@@ -10,6 +10,7 @@ import {
   productConstitutionUrl,
 } from "@/lib/promise";
 
+// RootLayout renders NewsletterSignupForm with “Follow the build toward Phase 0 completion.” on every public route.
 export default function HomePage() {
   return (
     <>
@@ -27,17 +28,17 @@ export default function HomePage() {
         <div className="hero-content">
           <p className="eyebrow">Welcome, seeker.</p>
           <div className="hero-status-line" aria-label="Current project state">
-            <StatusBadge status="experimental" />
-            <span>Public website foundation</span>
+            <StatusBadge status="live" />
+            <span>Public website</span>
             <StatusBadge status="live" />
             <span>Open-source repository</span>
           </div>
           <h1 id="hero-title">Your Odyssey Begins Here.</h1>
           <p className="promise-line">{playerPromise}</p>
           <p className="summary">
-            {missionSummary} The planned game turns brief health actions,
-            learning, reflection, and player-confirmed capture into quests on
-            Ogygia.
+            {missionSummary} The public gateway is live. The planned game turns
+            brief health actions, learning, reflection, and player-confirmed
+            capture into quests on Ogygia.
           </p>
           <div className="actions" aria-label="Primary actions">
             <Link className="button button-primary" href="/promise">

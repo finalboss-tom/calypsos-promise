@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { SiteNavigation } from "@/components/site-navigation";
 import "./globals.css";
 import "./homepage.css";
@@ -93,6 +94,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main id="main" className="page-shell" tabIndex={-1}>
           {children}
         </main>
+        <aside
+          className="site-header contribution-callout"
+          aria-labelledby="newsletter-title"
+        >
+          <div>
+            <p className="eyebrow">Join the Founding Expedition</p>
+            <h2 id="newsletter-title">
+              Follow the build toward Phase 0 completion.
+            </h2>
+            <p>
+              Receive occasional public project updates and clear opportunities
+              to inspect, play, review, or contribute. Joining the newsletter
+              does not create an account or enroll you in research, governance,
+              fundraising, health-data sharing, or the game.
+            </p>
+          </div>
+          <NewsletterSignupForm />
+        </aside>
         <footer className="site-footer">
           <p>The software is open. The person’s health data is private.</p>
           <nav aria-label="Footer navigation">
