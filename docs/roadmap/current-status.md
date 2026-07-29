@@ -7,9 +7,11 @@
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
 - **Accepted numbered sprints:** 0–8
 - **Active numbered sprint:** Sprint 9 — Public synthetic prologue
-- **Sprint 9 tracking:** issue #67 / branch `agent/sprint-9-public-synthetic-prologue`
+- **Sprint 9 tracking:** issue #67 / draft PR #68 / branch `agent/sprint-9-public-synthetic-prologue`
 - **Sprint 9 entry gate:** issue #64 accepted and closed on July 29, 2026
-- **Sprint 9 workstream:** 9.1 application, route, state, lifecycle, fixture, and validation contracts
+- **Sprint 9 completed workstreams:** 9.1–9.4
+- **Sprint 9 active workstream:** 9.5 synthetic Chronicle and House of Keys receipt demonstration
+- **Latest validated Sprint 9 candidate:** `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283
 - **Sprint 8 squash commit:** `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`
 - **Post-Sprint 8 reconciliation and newsletter squash commit:** `032a368bcd4beb999fee9a14fe4118aead0801a5` through PR #66
 - **Production website:** live on the canonical domains through Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`
@@ -49,7 +51,7 @@ Automatic Git deployment was restored to disabled through `6be7d20fbfe1079881a07
 
 Pre-Sprint 9 alignment issue #64 is accepted and closed. It selects `apps/site` as the owner, `/prologue` as the route, memory-only interaction state, pre-authored public synthetic inputs, deterministic Aster with a complete manual fallback, no microphone or free-form health input, a temporary synthetic Chronicle and House of Keys receipt projection, deterministic First Lantern evidence, non-punitive refusal and exit, and an informational-only future account boundary.
 
-Sprint 9 is tracked through issue #67. Workstream 9.1 is establishing the permanent application, route, state, data-lifecycle, synthetic fixture, validation, publication, rollback, and holdpoint contracts before a playable route is linked publicly.
+Sprint 9 is tracked through issue #67 and draft PR #68. Workstreams 9.1–9.4 now establish the permanent route and lifecycle contracts, the branch-only opening and Lantern Shore, deterministic Aster/manual parity, and pre-authored synthetic text/voice draft review with correction, refusal, and explicit memory-only confirmation. The latest accepted branch candidate is `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a`, which passed CI 1205 and DCO 1283. Workstream 9.5 is active.
 
 ## Live public website surface
 
@@ -68,7 +70,7 @@ Sprint 9 is tracked through issue #67. Workstream 9.1 is establishing the perman
 
 The website is live evidence of the public gateway. It is not evidence of a private health product, independent accessibility certification, production-health-data security, clinical safety, provider interoperability, or institutional readiness.
 
-The Sprint 9 `/prologue` route is not yet a live public capability. Its contract is under review on the Sprint 9 branch and it must not be linked or deployed until its applicable workstream and release evidence is accepted.
+The Sprint 9 `/prologue` route is not yet a live public capability. It exists only on draft PR #68, remains noindex, unlinked, outside the sitemap, unmerged, undeployed, and subject to the remaining Sprint 9 workstreams and explicit release acceptance.
 
 ## Newsletter disposition — Phase 0 gate #63
 
@@ -110,6 +112,16 @@ The accepted architecture is:
 - refusal, skip, restart, discard, leave, and completion without account creation remain non-punitive and functional;
 - future account conversion is informational only and cannot retain state or request email; and
 - no analytics, model provider, external service, secret, storage, or new server endpoint is authorized.
+
+Validated branch behavior currently includes:
+
+- a skippable arrival and Lantern Shore;
+- deterministic Aster and complete manual presentation over one shared fact set;
+- prepared synthetic text and visual voice-transcript fixtures;
+- visible draft source, classification, timestamp, value, context, and limitations;
+- explicit accept-as-written, prepared correction, refusal, alternate-example, and confirmation controls;
+- fail-closed confirmation before review; and
+- no arbitrary input, microphone, audio, storage, analytics, provider, model, account, newsletter, or network dependency.
 
 The state vocabulary, data lifecycle, validation contract, release separation, rollback model, and inherited holdpoints are recorded in [Sprint 9 Execution Plan](sprint-9-execution-plan.md) and [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md).
 
