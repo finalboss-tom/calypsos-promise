@@ -6,6 +6,7 @@ import type {
 } from "@/lib/prologue-opening-state";
 import {
   houseOfKeysProjectionReferences,
+  livingChronicleProjectionReferences,
   projectSyntheticChronicle,
   projectSyntheticReceipt,
 } from "@/lib/prologue-synthetic-projections";
@@ -31,6 +32,21 @@ function ProjectionLimits({
   );
 }
 
+function ExternalSourceLink({
+  href,
+  children,
+}: {
+  readonly href: string;
+  readonly children: string;
+}) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer">
+      {children}
+      <span className="visually-hidden"> (opens in a new tab)</span>
+    </a>
+  );
+}
+
 export function PrologueChronicleReceiptPanel({
   state,
   move,
@@ -51,13 +67,12 @@ export function PrologueChronicleReceiptPanel({
       <article className={styles.scene} data-scene="synthetic-chronicle">
         <p className="eyebrow">Temporary synthetic Chronicle projection</p>
         <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-          This looks like a Chronicle entry. It is not stored as one.
+          Source, correction, and confirmation stay visible.
         </h2>
         <p className={styles.lede}>
-          The view below projects the explicitly confirmed synthetic example
-          from this page memory. It preserves source, classification,
-          correction, confirmation, and discard behavior without creating a
-          private Chronicle or authoritative record.
+          This page-memory view maps selected terms from the accepted Living
+          Chronicle contract so a visitor can see what provenance and authority
+          would need to remain inspectable. It is not a stored Chronicle record.
         </p>
 
         <div
@@ -65,23 +80,12 @@ export function PrologueChronicleReceiptPanel({
           aria-label="Chronicle projection status"
         >
           <span>Synthetic</span>
+          <span>Visitor confirmed</span>
           <span>Page memory only</span>
           <span>Not stored</span>
         </div>
 
         <dl className={styles.projectionDetails}>
-          <div>
-            <dt>Projection ID</dt>
-            <dd>{chronicle.projectionId}</dd>
-          </div>
-          <div>
-            <dt>Record ID</dt>
-            <dd>{chronicle.recordId}</dd>
-          </div>
-          <div>
-            <dt>Category</dt>
-            <dd>{chronicle.category}</dd>
-          </div>
           <div>
             <dt>Displayed value</dt>
             <dd>{chronicle.value}</dd>
@@ -91,32 +95,20 @@ export function PrologueChronicleReceiptPanel({
             <dd>{chronicle.originalValue}</dd>
           </div>
           <div>
-            <dt>Correction state</dt>
+            <dt>Correction and confirmation</dt>
             <dd>
               {chronicle.correctionApplied
-                ? `Prepared correction applied: ${chronicle.correctionId}`
-                : "Accepted as written"}
+                ? `Prepared correction applied: ${chronicle.correctionId}; ${chronicle.confirmationDecision}`
+                : chronicle.confirmationDecision}
             </dd>
-          </div>
-          <div>
-            <dt>Context</dt>
-            <dd>{chronicle.context}</dd>
-          </div>
-          <div>
-            <dt>Synthetic timestamp</dt>
-            <dd>{chronicle.occurredAt}</dd>
           </div>
           <div>
             <dt>Source</dt>
             <dd>{chronicle.sourceLabel}</dd>
           </div>
           <div>
-            <dt>Confirmation</dt>
-            <dd>{chronicle.confirmationState}</dd>
-          </div>
-          <div>
-            <dt>Persistence</dt>
-            <dd>{chronicle.persistence}</dd>
+            <dt>Synthetic timestamp</dt>
+            <dd>{chronicle.occurredAt}</dd>
           </div>
           <div>
             <dt>Discard behavior</dt>
@@ -124,7 +116,91 @@ export function PrologueChronicleReceiptPanel({
           </div>
         </dl>
 
+        <details>
+          <summary>Inspect the mapped Chronicle vocabulary</summary>
+          <dl className={styles.projectionDetails}>
+            <div>
+              <dt>Projection ID</dt>
+              <dd>{chronicle.projectionId}</dd>
+            </div>
+            <div>
+              <dt>Schema version reference</dt>
+              <dd>{chronicle.schemaVersionReference}</dd>
+            </div>
+            <div>
+              <dt>Contract shape reference</dt>
+              <dd>{chronicle.contractShapeReference}</dd>
+            </div>
+            <div>
+              <dt>Record ID</dt>
+              <dd>{chronicle.recordId}</dd>
+            </div>
+            <div>
+              <dt>Chronicle ID</dt>
+              <dd>{chronicle.chronicleId}</dd>
+            </div>
+            <div>
+              <dt>Subject ID</dt>
+              <dd>{chronicle.subjectId}</dd>
+            </div>
+            <div>
+              <dt>Record family</dt>
+              <dd>{chronicle.recordFamily}</dd>
+            </div>
+            <div>
+              <dt>Assertion class</dt>
+              <dd>{chronicle.assertionClass}</dd>
+            </div>
+            <div>
+              <dt>Authority state</dt>
+              <dd>{chronicle.authorityState}</dd>
+            </div>
+            <div>
+              <dt>Lifecycle state</dt>
+              <dd>{chronicle.lifecycleState}</dd>
+            </div>
+            <div>
+              <dt>Temporal assertion</dt>
+              <dd>{chronicle.temporalAssertionKind}</dd>
+            </div>
+            <div>
+              <dt>Variable ID</dt>
+              <dd>{chronicle.variableId}</dd>
+            </div>
+            <div>
+              <dt>Value shape</dt>
+              <dd>{chronicle.valueShape}</dd>
+            </div>
+            <div>
+              <dt>Source artifact ID</dt>
+              <dd>{chronicle.sourceArtifactId}</dd>
+            </div>
+            <div>
+              <dt>Source version ID</dt>
+              <dd>{chronicle.sourceVersionId}</dd>
+            </div>
+            <div>
+              <dt>Persistence</dt>
+              <dd>{chronicle.persistence}</dd>
+            </div>
+          </dl>
+        </details>
+
         <p className={styles.sourceDetail}>{chronicle.sourceDetail}</p>
+        <p className={styles.contractSources}>
+          Canonical public references: {" "}
+          <ExternalSourceLink
+            href={livingChronicleProjectionReferences.contractSource}
+          >
+            Living Chronicle record contract
+          </ExternalSourceLink>
+          {" · "}
+          <ExternalSourceLink
+            href={livingChronicleProjectionReferences.versionSource}
+          >
+            schema version
+          </ExternalSourceLink>
+        </p>
         <ProjectionLimits limitations={chronicle.limitations} />
 
         <div
@@ -136,7 +212,7 @@ export function PrologueChronicleReceiptPanel({
             type="button"
             onClick={() => move("view-synthetic-receipt")}
           >
-            View the House of Keys receipt demonstration
+            Continue to the receipt explanation
           </button>
           <button
             className="button"
@@ -164,52 +240,24 @@ export function PrologueChronicleReceiptPanel({
 
   return (
     <article className={styles.scene} data-scene="synthetic-receipt">
-      <p className="eyebrow">House of Keys receipt-shaped demonstration</p>
+      <p className="eyebrow">House of Keys receipt-shaped explanation</p>
       <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-        This explains receipt fields. It grants no permission.
+        A receipt explains authority; it does not create it.
       </h2>
       <p className={styles.lede}>
-        This illustrative projection borrows selected field meanings from the
-        accepted public House of Keys AccessReceipt contract and synthetic
-        fixture. It is deliberately not a contract record, policy decision,
-        grant, legal consent, audit event, or proof of data release.
+        This illustrative view uses selected field meanings from the accepted
+        public House of Keys AccessReceipt contract. No policy request or
+        evaluation ran, no grant exists, and no data crossed a release boundary.
       </p>
 
       <div className={styles.statusRow} aria-label="Receipt projection status">
         <span>Synthetic</span>
+        <span>Not an AccessReceipt</span>
         <span>Not evaluated</span>
         <span>No data release</span>
       </div>
 
       <dl className={styles.projectionDetails}>
-        <div>
-          <dt>Projection ID</dt>
-          <dd>{receipt.projectionId}</dd>
-        </div>
-        <div>
-          <dt>Projection status</dt>
-          <dd>{receipt.projectionStatus}</dd>
-        </div>
-        <div>
-          <dt>Contract version reference</dt>
-          <dd>{receipt.contractVersionReference}</dd>
-        </div>
-        <div>
-          <dt>Contract shape reference</dt>
-          <dd>{receipt.contractShapeReference}</dd>
-        </div>
-        <div>
-          <dt>Accepted fixture reference</dt>
-          <dd>{receipt.acceptedFixtureReference}</dd>
-        </div>
-        <div>
-          <dt>Controlled resource</dt>
-          <dd>{receipt.controlledResourceId}</dd>
-        </div>
-        <div>
-          <dt>Selected record</dt>
-          <dd>{receipt.selectedRecordIds.join(", ")}</dd>
-        </div>
         <div>
           <dt>Purpose</dt>
           <dd>{receipt.purpose.label}</dd>
@@ -231,41 +279,76 @@ export function PrologueChronicleReceiptPanel({
           <dd>{receipt.executionState}</dd>
         </div>
         <div>
-          <dt>Grant references</dt>
-          <dd>none</dd>
-        </div>
-        <div>
           <dt>Data release boundary crossed</dt>
           <dd>{receipt.dataReleaseBoundaryCrossed ? "yes" : "no"}</dd>
         </div>
-        <div>
-          <dt>Reason codes</dt>
-          <dd>{receipt.reasonCodes.join(", ")}</dd>
-        </div>
       </dl>
 
-      <ProjectionLimits limitations={receipt.limitations} />
+      <details>
+        <summary>Inspect the receipt-shaped field mapping</summary>
+        <dl className={styles.projectionDetails}>
+          <div>
+            <dt>Projection ID</dt>
+            <dd>{receipt.projectionId}</dd>
+          </div>
+          <div>
+            <dt>Projection status</dt>
+            <dd>{receipt.projectionStatus}</dd>
+          </div>
+          <div>
+            <dt>Contract version reference</dt>
+            <dd>{receipt.contractVersionReference}</dd>
+          </div>
+          <div>
+            <dt>Contract shape reference</dt>
+            <dd>{receipt.contractShapeReference}</dd>
+          </div>
+          <div>
+            <dt>Vocabulary use</dt>
+            <dd>{receipt.contractVocabularyUse}</dd>
+          </div>
+          <div>
+            <dt>Controlled resource</dt>
+            <dd>{receipt.controlledResourceId}</dd>
+          </div>
+          <div>
+            <dt>Selected record</dt>
+            <dd>{receipt.selectedRecordIds.join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Purpose ID</dt>
+            <dd>{receipt.purpose.id}</dd>
+          </div>
+          <div>
+            <dt>Recipient ID</dt>
+            <dd>{receipt.recipient.id}</dd>
+          </div>
+          <div>
+            <dt>Action ID</dt>
+            <dd>{receipt.action.id}</dd>
+          </div>
+          <div>
+            <dt>Grant references</dt>
+            <dd>none</dd>
+          </div>
+          <div>
+            <dt>Reason codes</dt>
+            <dd>{receipt.reasonCodes.join(", ")}</dd>
+          </div>
+        </dl>
+      </details>
 
       <p className={styles.contractSources}>
-        Inspect the accepted public references:{" "}
-        <a
-          href={houseOfKeysProjectionReferences.contractSource}
-          target="_blank"
-          rel="noreferrer"
-        >
+        Canonical public references: {" "}
+        <ExternalSourceLink href={houseOfKeysProjectionReferences.contractSource}>
           AccessReceipt contract
-          <span className="visually-hidden"> (opens in a new tab)</span>
-        </a>
+        </ExternalSourceLink>
         {" · "}
-        <a
-          href={houseOfKeysProjectionReferences.acceptedFixtureSource}
-          target="_blank"
-          rel="noreferrer"
-        >
-          synthetic receipt fixture
-          <span className="visually-hidden"> (opens in a new tab)</span>
-        </a>
+        <ExternalSourceLink href={houseOfKeysProjectionReferences.versionSource}>
+          contract version
+        </ExternalSourceLink>
       </p>
+      <ProjectionLimits limitations={receipt.limitations} />
 
       <div className={styles.actions} aria-label="Synthetic receipt choices">
         <button
