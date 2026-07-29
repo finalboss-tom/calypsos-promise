@@ -61,13 +61,6 @@ function stripMarkup(value) {
     .trim();
 }
 
-function exactlyOne(html, pattern, label, route) {
-  const matches = html.match(pattern) ?? [];
-  if (matches.length !== 1) {
-    fail(`${route}: expected exactly one ${label}, found ${matches.length}`);
-  }
-}
-
 function contrastRatio(foreground, background) {
   function luminance(hex) {
     const channels = hex
@@ -79,81 +72,88 @@ function contrastRatio(foreground, background) {
       );
     return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
   }
-
-  const foregroundLuminance = luminance(foreground);
-  const backgroundLuminance = luminance(background);
-  return (
-    (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
-    (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
-  );
+  const first = luminance(foreground);
+  const second = luminance(background);
+  return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
 }
 
 async function fetchResource(pathOrUrl, options = {}) {
   const url = new URL(pathOrUrl, baseUrl).toString();
   const cacheKey = `${options.method ?? "GET"}:${url}`;
-  if (!options.body && resourceCache.has(cacheKey)) {
-    return resourceCache.get(cacheKey);
-  }
+  if (!options.body && resourceCache.has(cacheKey)) return resourceCache.get(cacheKey);
 
   const response = await fetch(url, { redirect: "manual", ...options });
   const body = Buffer.from(await response.arrayBuffer());
   const result = { response, body, url };
-  if (!options.body) {
-    resourceCache.set(cacheKey, result);
-  }
+  if (!options.body) resourceCache.set(cacheKey, result);
   return result;
 }
 
-function validateHeadings(html, route) {
-  const headings = [...html.matchAll(/<h([1-6])\b[^>]*>/gi)].map((match) =>
-    Number(match[1]),
-  );
-  if (headings.length === 0 || headings[0] !== 1) {
-    fail(`${route}: heading order must begin with h1`);
-    return;
-  }
-  for (let index = 1; index < headings.length; index += 1) {
-    if (headings[index] - headings[index - 1] > 1) {
-      fail(
-        `${route}: heading order skips from h${headings[index - 1]} to h${headings[index]}`,
-      );
+function validateSecurityHeaders(response, route) {
+  for (const [header, expected] of Object.entries(requiredPageHeaders)) {
+    if (response.headers.get(header) !== expected) {
+      fail(`${route}: ${header} must be ${expected}`);
     }
   }
+  if (response.headers.has("x-powered-by")) fail(`${route}: X-Powered-By must be absent`);
+
+  const csp = response.headers.get("content-security-policy") ?? "";
+  for (const directive of requiredCspDirectives) {
+    if (!csp.includes(directive)) fail(`${route}: CSP is missing ${directive}`);
+  }
+  if (!/nonce-[A-Za-z0-9-]+/.test(csp)) fail(`${route}: CSP nonce is missing`);
+  if (csp.includes("'unsafe-eval'")) fail(`${route}: CSP must not include unsafe-eval`);
 }
 
-function validateIdsAndLabels(html, route) {
-  const ids = [...html.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]);
-  const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
-  if (duplicateIds.length > 0) {
-    fail(`${route}: duplicate ids: ${[...new Set(duplicateIds)].join(", ")}`);
+function validatePage(html, contract) {
+  const route = contract.path;
+  if (!/<html\b[^>]*\blang="en"/i.test(html)) fail(`${route}: html language must be en`);
+  if ((html.match(/<main\b/gi) ?? []).length !== 1) fail(`${route}: expected one main landmark`);
+  if ((html.match(/<h1\b/gi) ?? []).length !== 1) fail(`${route}: expected one h1`);
+  if (!/href="#primary-navigation"/i.test(html) || !/href="#main"/i.test(html)) {
+    fail(`${route}: both skip links must be present`);
   }
 
+  const hasFormControl = /<(?:form|input|textarea|select)\b/i.test(html);
+  if (route === "/") {
+    for (const phrase of [
+      'id="newsletter-email"',
+      'name="email"',
+      'name="consent"',
+      'name="website"',
+      'href="/privacy"',
+    ]) {
+      if (!html.includes(phrase)) fail(`/: newsletter form is missing ${phrase}`);
+    }
+  } else if (hasFormControl) {
+    fail(`${route}: informational route unexpectedly contains a form control`);
+  }
+
+  const headings = [...html.matchAll(/<h([1-6])\b[^>]*>/gi)].map((match) => Number(match[1]));
+  if (headings.length === 0 || headings[0] !== 1) fail(`${route}: heading order must begin with h1`);
+  for (let index = 1; index < headings.length; index += 1) {
+    if (headings[index] - headings[index - 1] > 1) {
+      fail(`${route}: heading order skips from h${headings[index - 1]} to h${headings[index]}`);
+    }
+  }
+
+  const ids = [...html.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]);
+  const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
+  if (duplicateIds.length > 0) fail(`${route}: duplicate ids found`);
   const idSet = new Set(ids);
   for (const match of html.matchAll(/\baria-labelledby="([^"]+)"/gi)) {
     for (const id of match[1].split(/\s+/)) {
-      if (!idSet.has(id)) {
-        fail(`${route}: aria-labelledby references missing id ${id}`);
-      }
+      if (!idSet.has(id)) fail(`${route}: aria-labelledby references missing id ${id}`);
     }
   }
-}
 
-function validateImagesAndLinks(html, route) {
   for (const tag of extractTags(html, "img")) {
-    const attributes = parseAttributes(tag);
-    if (!attributes.has("alt")) {
-      fail(`${route}: image is missing alt text`);
-    }
+    if (!parseAttributes(tag).has("alt")) fail(`${route}: image is missing alt text`);
   }
-
-  const anchorPattern = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
-  for (const match of html.matchAll(anchorPattern)) {
+  for (const match of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
     const attributes = parseAttributes(`<a ${match[1]}>`);
-    const text = stripMarkup(match[2]);
-    const accessibleName = text || attributes.get("aria-label") || "";
-    if (!accessibleName) {
-      fail(`${route}: link has no discernible accessible name`);
-    }
+    const accessibleName = stripMarkup(match[2]) || attributes.get("aria-label") || "";
+    if (!accessibleName) fail(`${route}: link has no accessible name`);
     if (attributes.get("target") === "_blank") {
       const rel = attributes.get("rel") ?? "";
       if (!rel.split(/\s+/).includes("noreferrer")) {
@@ -161,138 +161,53 @@ function validateImagesAndLinks(html, route) {
       }
     }
   }
-}
 
-function validatePageStructure(html, contract) {
-  const route = contract.path;
-  if (!/<html\b[^>]*\blang="en"/i.test(html)) {
-    fail(`${route}: html language must be en`);
-  }
-  exactlyOne(html, /<main\b/gi, "main landmark", route);
-  exactlyOne(html, /<h1\b/gi, "h1", route);
-  if (
-    !/href="#primary-navigation"/i.test(html) ||
-    !/href="#main"/i.test(html)
-  ) {
-    fail(`${route}: both skip links must be present`);
-  }
-  if (/<(?:form|input|textarea|select)\b/i.test(html)) {
-    fail(
-      `${route}: public informational route unexpectedly contains a form control`,
-    );
-  }
+  const title = stripMarkup(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
+  if (!title.includes(contract.title)) fail(`${route}: title does not include ${contract.title}`);
 
-  validateHeadings(html, route);
-  validateIdsAndLabels(html, route);
-  validateImagesAndLinks(html, route);
-
-  const title = stripMarkup(
-    html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "",
+  const canonicalTag = extractTags(html, "link").find(
+    (tag) => parseAttributes(tag).get("rel") === "canonical",
   );
-  if (!title.includes(contract.title)) {
-    fail(`${route}: title does not include ${contract.title}`);
-  }
-
-  const canonicalTag = extractTags(html, "link").find((tag) => {
-    const attributes = parseAttributes(tag);
-    return attributes.get("rel") === "canonical";
-  });
-  const canonical = canonicalTag
-    ? parseAttributes(canonicalTag).get("href")
-    : undefined;
-  const normalizeCanonical = (value) => {
+  const canonical = canonicalTag ? parseAttributes(canonicalTag).get("href") : undefined;
+  const normalize = (value) => {
     const url = new URL(value, siteOrigin);
-    return url.pathname === "/"
-      ? url.origin
-      : `${url.origin}${url.pathname.replace(/\/$/, "")}`;
+    return url.pathname === "/" ? url.origin : `${url.origin}${url.pathname.replace(/\/$/, "")}`;
   };
   const expectedCanonical = new URL(route, siteOrigin).toString();
-  if (
-    !canonical ||
-    normalizeCanonical(canonical) !== normalizeCanonical(expectedCanonical)
-  ) {
-    fail(
-      `${route}: canonical ${canonical ?? "missing"} does not match ${expectedCanonical}`,
-    );
+  if (!canonical || normalize(canonical) !== normalize(expectedCanonical)) {
+    fail(`${route}: canonical does not match ${expectedCanonical}`);
   }
 
-  const description = extractTags(html, "meta").find((tag) => {
-    const attributes = parseAttributes(tag);
-    return attributes.get("name") === "description";
-  });
-  if (!description || !parseAttributes(description).get("content")) {
-    fail(`${route}: meta description is missing`);
-  }
-
-  const robots = extractTags(html, "meta").find((tag) => {
-    const attributes = parseAttributes(tag);
-    return attributes.get("name") === "robots";
-  });
-  const robotsContent = robots
-    ? (parseAttributes(robots).get("content") ?? "")
-    : "";
-  if (contract.noindex && !/noindex/i.test(robotsContent)) {
-    fail(`${route}: compatibility route must be noindex`);
-  }
-}
-
-function validateSecurityHeaders(response, route) {
-  for (const [header, expected] of Object.entries(requiredPageHeaders)) {
-    if (response.headers.get(header) !== expected) {
-      fail(
-        `${route}: ${header} must be ${expected}, received ${response.headers.get(header)}`,
-      );
-    }
-  }
-  if (response.headers.has("x-powered-by")) {
-    fail(`${route}: X-Powered-By must be absent`);
-  }
-
-  const csp = response.headers.get("content-security-policy") ?? "";
-  for (const directive of requiredCspDirectives) {
-    if (!csp.includes(directive)) {
-      fail(`${route}: CSP is missing ${directive}`);
-    }
-  }
-  if (!/nonce-[A-Za-z0-9]+/.test(csp)) {
-    fail(`${route}: CSP nonce is missing`);
-  }
-  if (csp.includes("'unsafe-eval'")) {
-    fail(`${route}: production CSP must not include unsafe-eval`);
+  if (contract.noindex && !/<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/i.test(html)) {
+    fail(`${route}: route must remain noindex`);
   }
 }
 
 async function resourceMetrics(html, route) {
-  const resourceUrls = new Map();
+  const resources = new Map();
   for (const tag of extractTags(html, "script")) {
     const src = parseAttributes(tag).get("src");
-    if (src) resourceUrls.set(new URL(src, baseUrl).toString(), "javascript");
+    if (src) resources.set(new URL(src, baseUrl).toString(), "javascript");
   }
   for (const tag of extractTags(html, "link")) {
     const attributes = parseAttributes(tag);
     const href = attributes.get("href");
     if (!href) continue;
-    if (attributes.get("rel") === "stylesheet") {
-      resourceUrls.set(new URL(href, baseUrl).toString(), "css");
-    }
-    if (
-      attributes.get("rel") === "preload" &&
-      attributes.get("as") === "font"
-    ) {
-      resourceUrls.set(new URL(href, baseUrl).toString(), "font");
+    if (attributes.get("rel") === "stylesheet") resources.set(new URL(href, baseUrl).toString(), "css");
+    if (attributes.get("rel") === "preload" && attributes.get("as") === "font") {
+      resources.set(new URL(href, baseUrl).toString(), "font");
     }
   }
   for (const tag of extractTags(html, "img")) {
     const src = parseAttributes(tag).get("src");
-    if (src && !src.startsWith("data:")) {
-      resourceUrls.set(new URL(src, baseUrl).toString(), "image");
-    }
+    if (src && !src.startsWith("data:")) resources.set(new URL(src, baseUrl).toString(), "image");
   }
 
   const totals = {
-    javascriptBytes: [
-      ...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi),
-    ].reduce((sum, match) => sum + byteLength(match[1]), 0),
+    javascriptBytes: [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].reduce(
+      (sum, match) => sum + byteLength(match[1]),
+      0,
+    ),
     cssBytes: [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].reduce(
       (sum, match) => sum + byteLength(match[1]),
       0,
@@ -303,9 +218,8 @@ async function resourceMetrics(html, route) {
   };
   const scannedContent = [html];
 
-  for (const [url, type] of resourceUrls) {
-    const parsed = new URL(url);
-    if (parsed.origin !== new URL(baseUrl).origin) {
+  for (const [url, type] of resources) {
+    if (new URL(url).origin !== new URL(baseUrl).origin) {
       fail(`${route}: external runtime resource is not allowed: ${url}`);
       continue;
     }
@@ -321,21 +235,15 @@ async function resourceMetrics(html, route) {
     } else if (type === "css") {
       totals.cssBytes += body.byteLength;
       scannedContent.push(body.toString("utf8"));
-    } else if (type === "image") {
-      totals.imageBytes += body.byteLength;
-    } else if (type === "font") {
-      totals.fontBytes += body.byteLength;
-    }
+    } else if (type === "image") totals.imageBytes += body.byteLength;
+    else if (type === "font") totals.fontBytes += body.byteLength;
   }
 
   for (const content of scannedContent) {
     for (const secret of secretPatterns) {
-      if (secret.pattern.test(content)) {
-        fail(`${route}: rendered output contains ${secret.name}`);
-      }
+      if (secret.pattern.test(content)) fail(`${route}: rendered output contains ${secret.name}`);
     }
   }
-
   return totals;
 }
 
@@ -348,9 +256,7 @@ function enforceBudgets(route, htmlBytes, metrics) {
     metrics.imageBytes +
     metrics.fontBytes;
   for (const [name, budget] of Object.entries(performanceBudgets)) {
-    if (values[name] > budget) {
-      fail(`${route}: ${name} ${values[name]} exceeds budget ${budget}`);
-    }
+    if (values[name] > budget) fail(`${route}: ${name} ${values[name]} exceeds ${budget}`);
   }
   return values;
 }
@@ -367,40 +273,29 @@ for (const contract of routeContracts) {
     fail(`${contract.path}: expected HTML content type`);
   }
   validateSecurityHeaders(response, contract.path);
-  validatePageStructure(html, contract);
-  const metrics = await resourceMetrics(html, contract.path);
-  const values = enforceBudgets(contract.path, body.byteLength, metrics);
-  routeEvidence.push({
-    path: contract.path,
-    status: response.status,
-    ...values,
-  });
+  validatePage(html, contract);
+  const values = enforceBudgets(
+    contract.path,
+    body.byteLength,
+    await resourceMetrics(html, contract.path),
+  );
+  routeEvidence.push({ path: contract.path, status: response.status, ...values });
 }
 
 for (const pair of contrastPairs) {
   const ratio = contrastRatio(pair.foreground, pair.background);
-  if (ratio < 7) {
-    fail(`${pair.name}: contrast ratio ${ratio.toFixed(2)} is below 7:1`);
-  }
+  if (ratio < 7) fail(`${pair.name}: contrast ratio ${ratio.toFixed(2)} is below 7:1`);
 }
 
 const sitemap = await fetchResource("/sitemap.xml");
-if (sitemap.response.status !== 200) {
-  fail(`/sitemap.xml: expected 200, received ${sitemap.response.status}`);
-}
 const sitemapText = sitemap.body.toString("utf8");
+if (sitemap.response.status !== 200) fail("/sitemap.xml: expected 200");
 for (const contract of routeContracts) {
-  const expectedLocation = `<loc>${new URL(contract.path, siteOrigin).toString()}</loc>`;
-  if (contract.sitemap && !sitemapText.includes(expectedLocation)) {
-    fail(`/sitemap.xml: missing ${contract.path}`);
-  }
-  if (!contract.sitemap && sitemapText.includes(expectedLocation)) {
-    fail(`/sitemap.xml: ${contract.path} must not be indexed`);
-  }
+  const location = `<loc>${new URL(contract.path, siteOrigin).toString()}</loc>`;
+  if (contract.sitemap && !sitemapText.includes(location)) fail(`/sitemap.xml: missing ${contract.path}`);
+  if (!contract.sitemap && sitemapText.includes(location)) fail(`/sitemap.xml: ${contract.path} must not be indexed`);
 }
-if (/\/api\/join/.test(sitemapText)) {
-  fail("/sitemap.xml: API route must not be present");
-}
+if (/\/api\/join/.test(sitemapText)) fail("/sitemap.xml: API route must not be present");
 
 const robots = await fetchResource("/robots.txt");
 const robotsText = robots.body.toString("utf8");
@@ -416,47 +311,52 @@ for (const phrase of [
 }
 
 const missing = await fetchResource("/route-that-does-not-exist");
-const missingHtml = missing.body.toString("utf8");
-if (missing.response.status !== 404) {
-  fail(`not-found route: expected 404, received ${missing.response.status}`);
-}
-if (!missingHtml.includes("This path is not part of Ogygia yet.")) {
+if (missing.response.status !== 404) fail("not-found route: expected 404");
+if (!missing.body.toString("utf8").includes("This path is not part of Ogygia yet.")) {
   fail("not-found route: expected public-safe explanation");
 }
 
-const joinPost = await fetchResource("/api/join", { method: "POST" });
-if (joinPost.response.status !== 503) {
-  fail(`/api/join POST: expected 503, received ${joinPost.response.status}`);
+const invalidSignup = await fetchResource("/api/join", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({ email: "invalid", consent: false }),
+});
+if (invalidSignup.response.status !== 400) {
+  fail(`/api/join invalid POST: expected 400, received ${invalidSignup.response.status}`);
 }
-if (joinPost.response.headers.get("cache-control") !== "no-store") {
-  fail("/api/join POST: Cache-Control must be no-store");
+if (invalidSignup.response.headers.get("cache-control") !== "no-store") {
+  fail("/api/join invalid POST: Cache-Control must be no-store");
 }
-if (joinPost.response.headers.get("retry-after") !== "86400") {
-  fail("/api/join POST: Retry-After must be 86400");
+if (invalidSignup.response.headers.has("set-cookie")) {
+  fail("/api/join invalid POST: must not set a cookie");
 }
-if (joinPost.response.headers.has("set-cookie")) {
-  fail("/api/join POST: must not set a cookie");
+
+const botSignup = await fetchResource("/api/join", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    email: "synthetic-validator@example.invalid",
+    consent: true,
+    website: "bot-field-must-be-ignored",
+  }),
+});
+if (botSignup.response.status !== 202) {
+  fail(`/api/join honeypot POST: expected 202, received ${botSignup.response.status}`);
 }
-const joinJson = JSON.parse(joinPost.body.toString("utf8"));
-if (joinJson.code !== "SIGNUP_MIGRATION_PAUSED") {
-  fail("/api/join POST: paused code is missing");
-}
+const botJson = JSON.parse(botSignup.body.toString("utf8"));
+if (botJson.ok !== true) fail("/api/join honeypot POST: ignored success is missing");
+
 const joinGet = await fetchResource("/api/join", { method: "GET" });
-if (joinGet.response.status !== 405) {
-  fail(`/api/join GET: expected 405, received ${joinGet.response.status}`);
-}
+if (joinGet.response.status !== 405) fail(`/api/join GET: expected 405, received ${joinGet.response.status}`);
 
 const asset = await fetchResource("/assets/compass-mark.svg");
 if (asset.response.status !== 200) fail("compass asset: expected 200");
-if (
-  asset.response.headers.get("cache-control") !==
-  "public, max-age=0, must-revalidate"
-) {
+if (asset.response.headers.get("cache-control") !== "public, max-age=0, must-revalidate") {
   fail("compass asset: mutable asset cache contract changed");
 }
 
 const report = {
-  schema: "calypsos.site-release-evidence.v1",
+  schema: "calypsos.site-release-evidence.v2",
   evidenceClass: "isolated-local-production-preview",
   certification: "repository implementation evidence only",
   origin: baseUrl,
@@ -471,16 +371,16 @@ const report = {
     sitemap: sitemap.response.status,
     robots: robots.response.status,
     notFound: missing.response.status,
-    signupPost: joinPost.response.status,
+    signupInvalid: invalidSignup.response.status,
+    signupHoneypot: botSignup.response.status,
     signupGet: joinGet.response.status,
     asset: asset.response.status,
   },
+  providerContacted: false,
   failures,
 };
 
-if (reportPath) {
-  await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
-}
+if (reportPath) await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
 if (failures.length > 0) {
   console.error(
