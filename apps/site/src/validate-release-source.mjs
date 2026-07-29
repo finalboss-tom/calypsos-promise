@@ -62,6 +62,7 @@ const expectedRoutes = [
   "/roadmap",
   "/support",
   "/funding",
+  "/prologue",
   "/privacy",
   "/joined",
 ];
@@ -117,6 +118,7 @@ const [
   trustCss,
   recordsCss,
   newsletterCss,
+  prologueCss,
   newsletterComponent,
   nextConfig,
   proxy,
@@ -138,6 +140,7 @@ const [
   read("src/app/trust-forge.css"),
   read("src/app/public-records.css"),
   read("src/components/newsletter-signup-form.module.css"),
+  read("src/components/prologue-opening.module.css"),
   read("src/components/newsletter-signup-form.tsx"),
   read("next.config.mjs"),
   read("src/proxy.ts"),
@@ -178,8 +181,12 @@ for (const route of routeContracts.filter((route) => !route.noindex)) {
     fail(`sitemap source is missing ${route.path}`);
   }
 }
-if (sitemap.includes("/joined") || sitemap.includes("/api/join")) {
-  fail("sitemap must exclude joined and API routes");
+if (
+  sitemap.includes("/prologue") ||
+  sitemap.includes("/joined") ||
+  sitemap.includes("/api/join")
+) {
+  fail("sitemap must exclude branch-only prologue, joined, and API routes");
 }
 if (!robots.includes('disallow: ["/api/"]') || !robots.includes('allow: "/"')) {
   fail("robots source must allow public pages and disallow API crawling");
@@ -192,6 +199,7 @@ const css = [
   trustCss,
   recordsCss,
   newsletterCss,
+  prologueCss,
 ].join("\n");
 for (const phrase of [
   ":focus-visible",
@@ -334,5 +342,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Public site source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, active Phase 0 newsletter gate #63, planned Sprint 9 gate #64, security headers, metadata, authority, and performance budgets.`,
+  `Public site source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, active Phase 0 newsletter gate #63, branch-only Sprint 9 prologue, security headers, metadata, authority, and performance budgets.`,
 );
