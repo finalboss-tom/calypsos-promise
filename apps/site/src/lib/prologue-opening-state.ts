@@ -60,6 +60,8 @@ export type OpeningState = {
   readonly captureMode: CaptureMode | null;
   readonly fixtureId: FixtureId | null;
   readonly correctionId: CorrectionId | null;
+  readonly lanternShoreReached: boolean;
+  readonly draftReviewed: boolean;
   readonly confirmed: boolean;
   readonly chronicleInspected: boolean;
   readonly receiptInspected: boolean;
@@ -73,6 +75,8 @@ export const initialOpeningState: OpeningState = Object.freeze({
   captureMode: null,
   fixtureId: null,
   correctionId: null,
+  lanternShoreReached: false,
+  draftReviewed: false,
   confirmed: false,
   chronicleInspected: false,
   receiptInspected: false,
@@ -189,11 +193,16 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   }
 
   if (transition === "confirm-entry") {
-    return Boolean(state.fixtureId && state.correctionId);
+    return Boolean(state.fixtureId && state.correctionId && state.draftReviewed);
   }
 
   if (transition === "view-synthetic-chronicle") {
-    return Boolean(state.confirmed && state.fixtureId && state.correctionId);
+    return Boolean(
+      state.confirmed &&
+        state.fixtureId &&
+        state.correctionId &&
+        state.draftReviewed,
+    );
   }
 
   if (transition === "view-synthetic-receipt") {
@@ -211,7 +220,9 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
         state.fixtureId &&
         state.correctionId &&
         state.chronicleInspected &&
-        state.receiptInspected,
+        state.receiptInspected &&
+        state.lanternShoreReached &&
+        state.draftReviewed,
     );
   }
 
@@ -279,8 +290,28 @@ function nextEvidenceState(
   transition: OpeningTransition,
   clearCapture: boolean,
 ) {
+  const lanternShoreReached =
+    transition === "replay-arrival"
+      ? false
+      : transition === "begin-opening" ||
+          transition === "skip-opening" ||
+          transition === "return-to-lantern"
+        ? true
+        : state.lanternShoreReached;
+
+  const draftReviewed = clearCapture
+    ? false
+    : transition === "review-draft" || transition === "review-confirmed-entry"
+      ? true
+      : transition === "choose-synthetic-text" ||
+          transition === "choose-synthetic-voice"
+        ? false
+        : state.draftReviewed;
+
   if (clearCapture || transition === "review-confirmed-entry") {
     return {
+      lanternShoreReached,
+      draftReviewed,
       confirmed: false,
       chronicleInspected: false,
       receiptInspected: false,
@@ -289,6 +320,8 @@ function nextEvidenceState(
   }
 
   return {
+    lanternShoreReached,
+    draftReviewed,
     confirmed: transition === "confirm-entry" ? true : state.confirmed,
     chronicleInspected:
       transition === "view-synthetic-chronicle"
