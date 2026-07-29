@@ -1,0 +1,187 @@
+.scene {
+  position: relative;
+  min-height: 34rem;
+  padding: clamp(2rem, 7vw, 5rem);
+}
+
+.scene h2 {
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+}
+
+.scene h2:focus-visible {
+  outline: 0.2rem solid var(--color-focus);
+  outline-offset: 0.35rem;
+}
+
+.lede,
+.sourceDetail,
+.prohibited,
+.selectionStatus,
+.nextBoundary,
+.choiceGrid p,
+.draftDetails dd {
+  color: var(--color-sand-200);
+  font-family: system-ui, sans-serif;
+}
+
+.lede {
+  max-width: 46rem;
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  max-width: 58rem;
+  margin-top: var(--space-6);
+}
+
+.choiceGrid article,
+.draftCard {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-medium);
+  background: rgb(4 17 29 / 0.62);
+  padding: var(--space-5);
+}
+
+.choiceGrid article {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.choiceGrid h3 {
+  margin-top: 0;
+}
+
+.choiceGrid button {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.example {
+  max-width: 44rem;
+  margin: var(--space-6) 0;
+  border-left: 0.2rem solid var(--color-gold-300);
+  background: rgb(4 17 29 / 0.48);
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-gold-300);
+  font-size: 1.14rem;
+}
+
+.draftCard {
+  max-width: 58rem;
+  margin-top: var(--space-5);
+}
+
+.syntheticLabel {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid var(--color-status-experimental);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-status-experimental);
+  font:
+    700 0.72rem/1.4 system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.draftDetails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0 0;
+}
+
+.draftDetails div {
+  border-top: 1px solid rgb(234 215 181 / 0.16);
+  padding-top: var(--space-3);
+}
+
+.draftDetails dt {
+  color: var(--color-gold-300);
+  font:
+    700 0.74rem/1.4 system-ui,
+    sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.draftDetails dd {
+  margin: var(--space-2) 0 0;
+  overflow-wrap: anywhere;
+}
+
+.sourceDetail,
+.prohibited {
+  max-width: 48rem;
+}
+
+.prohibited,
+.nextBoundary {
+  border-left: 0.15rem solid var(--color-gold-300);
+  padding-left: var(--space-4);
+}
+
+.correctionChoices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.correctionChoices button[aria-pressed="true"] {
+  background: var(--color-sea-300);
+  color: var(--color-ink-950);
+}
+
+.selectionStatus {
+  min-height: 1.6rem;
+  margin-top: var(--space-4);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (max-width: 48rem) {
+  .scene {
+    min-height: auto;
+  }
+
+  .choiceGrid,
+  .draftDetails {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .choiceGrid article,
+  .draftCard,
+  .example {
+    border-width: 0.15rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .choiceGrid article,
+  .draftCard,
+  .example,
+  .syntheticLabel {
+    forced-color-adjust: auto;
+  }
+}
