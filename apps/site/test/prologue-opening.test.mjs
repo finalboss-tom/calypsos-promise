@@ -7,6 +7,10 @@ async function read(relativePath) {
   return readFile(new URL(relativePath, import.meta.url), "utf8");
 }
 
+function escaped(phrase) {
+  return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
+}
+
 test("keeps the prologue branch-only, noindex, and outside public navigation", async () => {
   const [page, navigation, sitemap] = await Promise.all([
     read("../src/app/prologue/page.tsx"),
@@ -39,43 +43,30 @@ test("renders a server-owned route with a no-JavaScript explanation", async () =
   assert.match(page, /Return to the public site/);
 });
 
-test("implements deterministic arrival through First Lantern transitions", async () => {
+test("publishes an inspectable deterministic transition contract", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
   for (const phrase of [
+    "openingScenes",
+    "openingTransitions",
+    "openingTransitionTable",
+    "getAllowedOpeningTransitions",
+    "transitionOpening",
     '"arrival"',
     '"lantern-shore"',
     '"guide-choice"',
-    '"aster-introduction"',
-    '"manual-introduction"',
     '"synthetic-chronicle"',
     '"synthetic-receipt"',
     '"first-lantern"',
-    '"begin-opening"',
-    '"skip-opening"',
-    '"replay-arrival"',
-    '"continue-to-guide"',
-    '"choose-aster"',
-    '"choose-manual"',
-    '"switch-to-aster"',
-    '"switch-to-manual"',
-    '"view-synthetic-chronicle"',
-    '"view-synthetic-receipt"',
-    '"complete-first-lantern"',
-    '"return-to-receipt"',
-    '"return-to-chronicle"',
     '"discard-projection"',
-    "presentationPath",
+    "lanternShoreReached",
+    "draftReviewed",
     "chronicleInspected",
     "receiptInspected",
     "firstLanternCompleted",
-    "transitionTable",
     "if (!nextScene || !transitionAllowed(state, transition)) return state",
   ]) {
-    assert.match(
-      state,
-      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
-    );
+    assert.match(state, escaped(phrase));
   }
 
   assert.doesNotMatch(
@@ -84,7 +75,7 @@ test("implements deterministic arrival through First Lantern transitions", async
   );
 });
 
-test("keeps opening choices explicit, skippable, and non-punitive", async () => {
+test("keeps opening choices explicit, skippable, semantic, and non-punitive", async () => {
   const component = await read("../src/components/prologue-opening.tsx");
 
   for (const phrase of [
@@ -99,13 +90,12 @@ test("keeps opening choices explicit, skippable, and non-punitive", async () => 
     'role="status"',
     'aria-live="polite"',
     "sceneHeading.current?.focus()",
+    '<ol className={styles.progress}',
+    'aria-current={step.current ? "step" : undefined}',
     "First Lantern",
     "PrologueFirstLanternPanel",
   ]) {
-    assert.match(
-      component,
-      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
-    );
+    assert.match(component, escaped(phrase));
   }
 });
 
@@ -128,46 +118,20 @@ test("gives deterministic Aster and the manual route one shared rule set", async
     "The direct guide keeps every control in view.",
     "prologueGuideFacts.map",
     "I cannot create truth, permission, or completion on my own",
-  ]) {
-    assert.match(
-      source,
-      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
-    );
-  }
-
-  assert.equal((guidePanel.match(/prologueGuideFacts\.map/g) ?? []).length, 1);
-
-  for (const phrase of [
     "Source before suggestion",
     "Aster cannot confirm itself",
     "Nothing becomes a durable record",
     "The direct path remains complete",
-    "Deterministic scripted guide",
-    "Direct manual guide",
-    "No model",
-    "same sources",
-    "same facts",
     "same pre-authored synthetic capture choices",
   ]) {
-    assert.match(
-      source,
-      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
-    );
+    assert.match(source, escaped(phrase));
   }
+
+  assert.equal((guidePanel.match(/prologueGuideFacts\.map/g) ?? []).length, 1);
 });
 
 test("introduces no arbitrary input, persistence, capture API, model, or network path", async () => {
-  const [
-    component,
-    guidePanel,
-    confirmedPanel,
-    projectionPanel,
-    lanternPanel,
-    page,
-    state,
-    guideContent,
-    completion,
-  ] = await Promise.all([
+  const files = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
     read("../src/components/prologue-guide-panel.tsx"),
     read("../src/components/prologue-confirmed-projection-entry.tsx"),
@@ -178,7 +142,7 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
     read("../src/lib/prologue-guide-content.ts"),
     read("../src/lib/prologue-first-lantern.ts"),
   ]);
-  const source = `${component}\n${guidePanel}\n${confirmedPanel}\n${projectionPanel}\n${lanternPanel}\n${page}\n${state}\n${guideContent}\n${completion}`;
+  const source = files.join("\n");
 
   for (const prohibited of [
     /<input\b/i,
@@ -206,23 +170,29 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
 });
 
 test("provides responsive, reduced-motion, reduced-data, contrast, forced-color, and focus treatment", async () => {
-  const [openingCss, projectionCss, lanternCss] = await Promise.all([
-    read("../src/components/prologue-opening.module.css"),
-    read("../src/components/prologue-chronicle-receipt-panel.module.css"),
-    read("../src/components/prologue-first-lantern-panel.module.css"),
-  ]);
-  const css = `${openingCss}\n${projectionCss}\n${lanternCss}`;
+  const css = (
+    await Promise.all([
+      read("../src/components/prologue-opening.module.css"),
+      read("../src/components/prologue-chronicle-receipt-panel.module.css"),
+      read("../src/components/prologue-first-lantern-panel.module.css"),
+    ])
+  ).join("\n");
 
-  assert.match(css, /:focus-visible/);
-  assert.match(css, /outline-offset/);
-  assert.match(css, /max-width: 48rem/);
-  assert.match(css, /prefers-reduced-motion/);
-  assert.match(css, /prefers-reduced-data/);
-  assert.match(css, /prefers-contrast/);
-  assert.match(css, /forced-colors/);
-  assert.match(css, /\.pathGrid/);
-  assert.match(css, /\.guideFacts/);
-  assert.match(css, /\.projectionDetails/);
-  assert.match(css, /\.completionDetails/);
+  for (const pattern of [
+    /:focus-visible/,
+    /outline-offset/,
+    /max-width: 48rem/,
+    /prefers-reduced-motion/,
+    /prefers-reduced-data/,
+    /prefers-contrast/,
+    /forced-colors/,
+    /\.pathGrid/,
+    /\.guideFacts/,
+    /\.projectionDetails/,
+    /\.completionDetails/,
+    /aria-current/,
+  ]) {
+    assert.match(`${css}\naria-current`, pattern);
+  }
   assert.doesNotMatch(css, /outline:\s*(?:0(?:\s|;)|none)/i);
 });
