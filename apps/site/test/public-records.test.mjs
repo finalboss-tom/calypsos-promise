@@ -33,7 +33,7 @@ test("publishes roadmap support and funding routes", async () => {
   assert.doesNotMatch(source, /["']use client["']/);
 });
 
-test("uses a source-linked typed roadmap registry", async () => {
+test("uses a source-linked typed roadmap registry with reconciled gates", async () => {
   const [page, roadmap, capabilities] = await Promise.all([
     read("../src/app/roadmap/page.tsx"),
     read("../src/lib/public-roadmap.ts"),
@@ -45,10 +45,12 @@ test("uses a source-linked typed roadmap registry", async () => {
     "Evidence decides what comes next.",
     "A roadmap is a sequence of evidence gates",
     "8.7 — Roadmap, status, support, and funding transparency",
-    "8.8 — Signup disposition",
+    "8.8 and Phase 0 — Newsletter disposition",
     "8.9 — Accessibility, performance, security, and route validation",
     "8.10 — Completion and Sprint 9 handoff",
     "Sprint 9 — Public synthetic prologue",
+    "issues/63",
+    "issues/64",
     "sourceHref",
     "sourceLabel",
   ]) {
@@ -61,6 +63,8 @@ test("uses a source-linked typed roadmap registry", async () => {
   for (const status of ["live", "experimental", "planned", "long-horizon"]) {
     assert.match(source, new RegExp(`\\b${status}\\b`));
   }
+  assert.match(roadmap, /id: "sprint-8-10"[\s\S]*status: "live"/);
+  assert.match(roadmap, /id: "sprint-9"[\s\S]*status: "planned"/);
   assert.doesNotMatch(source, /guaranteed release date/i);
 });
 
