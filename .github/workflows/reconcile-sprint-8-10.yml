@@ -31,10 +31,13 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Align fail-closed matcher
+        run: python .github/scripts/patch_reconcile_sprint_8_10.py
       - name: Apply fail-closed status reconciliation
         run: python .github/scripts/reconcile_sprint_8_10.py
       - name: Remove temporary reconciliation files
         run: |
+          rm .github/scripts/patch_reconcile_sprint_8_10.py
           rm .github/scripts/reconcile_sprint_8_10.py
           rm .github/workflows/reconcile-sprint-8-10.yml
           rm .github/trigger-sprint-8-10.txt
