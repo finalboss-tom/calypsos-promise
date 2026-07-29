@@ -10,14 +10,13 @@ function uniqueMatches(source, pattern) {
   return new Set([...source.matchAll(pattern)].map((match) => match[1]));
 }
 
-test("records the complete Sprint 8 readiness package without claiming acceptance", async () => {
+test("preserves the historical Sprint 8 readiness evidence", async () => {
   const [
-    reconciliation,
+    historicalReconciliation,
     controlMap,
     holdpoints,
     releaseHandoff,
     completion,
-    publicRoadmap,
   ] = await Promise.all([
     read(
       "../../../docs/architecture/public-site-sprint-8-cross-contract-reconciliation.md",
@@ -32,22 +31,12 @@ test("records the complete Sprint 8 readiness package without claiming acceptanc
       "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
     ),
     read("../../../docs/roadmap/sprint-8-completion-record.md"),
-    read("../src/lib/public-roadmap.ts"),
   ]);
 
-  assert.match(reconciliation, /READY FOR FOUNDING-STEWARD ACCEPTANCE/);
-  assert.match(
-    reconciliation,
-    /No merge, issue closure, production authorization/,
-  );
+  assert.match(historicalReconciliation, /READY FOR FOUNDING-STEWARD ACCEPTANCE/);
   assert.match(completion, /IMPLEMENTATION PACKAGE COMPLETE/);
-  assert.match(
-    completion,
-    /not accepted, merged, deployed, officially released, or closed/,
-  );
-  assert.match(completion, /issue #63 remains open/i);
+  assert.match(completion, /not accepted, merged, deployed, officially released, or closed/);
   assert.match(releaseHandoff, /not hosted or officially released/i);
-  assert.match(releaseHandoff, /Sprint 9 remains planned and not started/i);
 
   const controls = uniqueMatches(controlMap, /`(CTL-S8-\d{3})`/g);
   const holdpointIds = uniqueMatches(holdpoints, /`(HLD-S8-\d{3})`/g);
@@ -57,20 +46,53 @@ test("records the complete Sprint 8 readiness package without claiming acceptanc
   assert.equal(holdpointIds.size, 20);
   assert.equal(unresolvedIds.size, 20);
   assert.match(holdpoints, /No `HLD-S8-\*` holdpoint is closed/);
+});
 
-  assert.match(publicRoadmap, /id: "sprint-8-10"[\s\S]*status: "experimental"/);
+test("records the accepted, merged, and deployed post-Sprint 8 state", async () => {
+  const [reconciliation, currentStatus, publicRoadmap, vercel] = await Promise.all([
+    read(
+      "../../../docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md",
+    ),
+    read("../../../docs/roadmap/current-status.md"),
+    read("../src/lib/public-roadmap.ts"),
+    read("../vercel.json"),
+  ]);
+  const source = `${reconciliation}\n${currentStatus}\n${publicRoadmap}`;
+
+  for (const phrase of [
+    "20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a",
+    "dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp",
+    "Sprints 0–8 are accepted and merged",
+    "Git-triggered Vercel deployment was then restored to disabled",
+    "Path A — preserve and activate",
+    "issue #63 remains open",
+    "Issue #64",
+    "Sprint 9 implementation remains blocked",
+  ]) {
+    assert.match(
+      source,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
+  }
+
+  assert.match(publicRoadmap, /id: "sprint-8-10"[\s\S]*status: "live"/);
   assert.match(publicRoadmap, /id: "sprint-9"[\s\S]*status: "planned"/);
-  assert.match(publicRoadmap, /It has not started/);
-  assert.doesNotMatch(
-    publicRoadmap,
-    /id: "sprint-9"[\s\S]{0,300}status: "live"/,
-  );
+  assert.doesNotMatch(publicRoadmap, /id: "sprint-9"[\s\S]{0,400}status: "live"/);
+
+  const vercelConfig = JSON.parse(vercel);
+  assert.equal(vercelConfig.framework, "nextjs");
+  assert.equal(vercelConfig.git.deploymentEnabled, false);
 });
 
 test("preserves the bounded Sprint 9 public synthetic prologue handoff", async () => {
-  const handoff = await read(
-    "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
-  );
+  const [handoff, gate] = await Promise.all([
+    read(
+      "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
+    ),
+    read(
+      "../../../docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md",
+    ),
+  ]);
 
   for (const phrase of [
     "No real health data or account is required.",
@@ -88,33 +110,31 @@ test("preserves the bounded Sprint 9 public synthetic prologue handoff", async (
     );
   }
 
-  assert.match(handoff, /Sprint 9 may begin only after/);
-  assert.match(handoff, /explicit founding-steward acceptance of Sprint 8/);
-  assert.match(handoff, /pre-Sprint 9 alignment review/);
-  assert.doesNotMatch(handoff, /Sprint 9 is active/);
+  assert.match(gate, /Issue #64 is the dedicated pre-Sprint 9 alignment gate/);
+  assert.match(gate, /Sprint 9 implementation remains blocked until/);
+  assert.doesNotMatch(gate, /Sprint 9 is active/);
 });
 
-test("keeps merge, deployment, signup, Phase 0, and release as separate gates", async () => {
-  const [completion, releaseHandoff, holdpoints] = await Promise.all([
-    read("../../../docs/roadmap/sprint-8-completion-record.md"),
+test("keeps newsletter, Phase 0, Sprint 9, and specialist approval separate", async () => {
+  const [currentStatus, reconciliation, holdpoints] = await Promise.all([
+    read("../../../docs/roadmap/current-status.md"),
     read(
-      "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
+      "../../../docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md",
     ),
     read(
       "../../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md",
     ),
   ]);
-  const source = `${completion}\n${releaseHandoff}\n${holdpoints}`;
+  const source = `${currentStatus}\n${reconciliation}\n${holdpoints}`;
 
   for (const phrase of [
-    "Git-triggered Vercel deployment remains disabled",
-    "PR #61 remains draft and unmerged",
-    "issue #60 remains open",
     "issue #63 remains open",
-    "institutional Phase 0",
-    "no production or independent specialist holdpoint",
+    "institutional Phase 0 remains active",
+    "Sprint 9 is planned and not started",
     "independent accessibility",
     "field performance",
+    "specialist",
+    "Git-triggered Vercel deployment is disabled",
   ]) {
     assert.match(
       source,
