@@ -1,7 +1,4 @@
-import type {
-  CorrectionId,
-  FixtureId,
-} from "@/lib/prologue-opening-state";
+import type { CorrectionId, FixtureId } from "@/lib/prologue-opening-state";
 
 export type SyntheticDraft = {
   readonly recordId: string;
