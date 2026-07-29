@@ -30,7 +30,10 @@ test("defines two public pre-authored synthetic capture fixtures", async () => {
     assert.match(fixtures, escaped(phrase));
   }
 
-  assert.equal((fixtures.match(/dataClassification: "synthetic"/g) ?? []).length, 2);
+  assert.equal(
+    (fixtures.match(/dataClassification: "synthetic",/g) ?? []).length,
+    2,
+  );
 });
 
 test("keeps synthetic selection, review, correction, and confirmation deterministic", async () => {
