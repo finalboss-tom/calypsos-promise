@@ -1,6 +1,6 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Post-Sprint 8 reconciliation](post-sprint-8-reconciliation-and-sprint-9-preparation.md) · [Sprint sequence](sprints.md) · [Newsletter gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63) · [Sprint 9 alignment #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Accepted alignment #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Newsletter gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63) · [Sprint sequence](sprints.md)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
@@ -12,31 +12,46 @@ Advancement is gate-based rather than calendar-based. A completed sprint or depl
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Post-Sprint 8 Reconciliation and Sprint 9 Preparation](post-sprint-8-reconciliation-and-sprint-9-preparation.md)
-3. [Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
-4. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-5. [Sprint Sequence](sprints.md)
-6. [Sprint 8 Completion Record](sprint-8-completion-record.md)
-7. [Sprint 8 Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md)
-8. [Sprint 8 Cross-Contract Reconciliation](../architecture/public-site-sprint-8-cross-contract-reconciliation.md)
-9. [Sprint 8 Control and Evidence Map](../architecture/public-site-sprint-8-control-and-evidence-map.md)
-10. [Sprint 8 Holdpoints and Unresolved Work](../architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
+2. [Sprint 9 Execution Plan](sprint-9-execution-plan.md)
+3. [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md)
+4. [Sprint 9 Issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67)
+5. [Accepted Pre-Sprint 9 Alignment #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+6. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+7. [Sprint Sequence](sprints.md)
+8. [Post-Sprint 8 Reconciliation and Sprint 9 Preparation](post-sprint-8-reconciliation-and-sprint-9-preparation.md)
+9. [Sprint 8 Completion Record](sprint-8-completion-record.md)
+10. [Sprint 8 Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md)
 11. [Public Website Foundation and Migration Boundary](../architecture/public-website-foundation-and-migration.md)
 12. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Current boundary
 
-Sprints 0–8 are accepted and merged.
+Sprints 0–8 are accepted and merged. Sprint 9 — Public Synthetic Prologue is active through issue #67 and branch `agent/sprint-9-public-synthetic-prologue`.
 
-Sprint 8 was squash merged through PR #61 as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`, deployed through production deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`, and closed through issue #60. Git-triggered deployment was restored to disabled through `a5146237356f58e8d28343e90918b70a418bccbb`.
+Pre-Sprint 9 alignment issue #64 is accepted and closed. It selects:
 
-Current work is deliberately split:
+- `apps/site` as the owner;
+- `/prologue` as the canonical route;
+- memory-only deterministic state;
+- pre-authored public synthetic text and voice demonstrations;
+- deterministic Aster with a complete manual fallback;
+- temporary non-authoritative Chronicle and House of Keys receipt projections;
+- deterministic First Lantern evidence;
+- non-punitive refusal, restart, discard, and exit; and
+- an informational-only future account boundary.
 
-- post-Sprint 8 status, copy, link, validation, and deployment reconciliation;
-- newsletter **Path A — preserve and activate** under issue #63, still open through production verification and acceptance; and
-- pre-Sprint 9 alignment under issue #64, with playable implementation not started.
+Workstream 9.1 is establishing the permanent route, state, lifecycle, fixture, validation, publication, rollback, and holdpoint contracts before a playable route is linked or deployed.
 
-Institutional Phase 0 remains active.
+The newsletter remains a separate Phase 0 gate under issue #63. It cannot become Sprint 9 identity, state, capture, conversion, completion, or progression.
+
+Git-triggered Vercel deployment remains disabled. Institutional Phase 0 remains active.
+
+## Sprint 9 records
+
+- [Sprint 9 Execution Plan](sprint-9-execution-plan.md)
+- [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md)
+- [Accepted Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+- [Sprint 9 Tracking Issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67)
 
 ## Sprint 8 historical evidence
 
