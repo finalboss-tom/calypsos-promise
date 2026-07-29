@@ -2,49 +2,37 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  asterIntroduction,
-  manualIntroduction,
-  prologueGuideFacts,
-} from "@/lib/prologue-guide-content";
+import { PrologueCapturePanel } from "@/components/prologue-capture-panel";
+import { PrologueGuidePanel } from "@/components/prologue-guide-panel";
 import {
   initialOpeningState,
   transitionOpening,
   type OpeningTransition,
-  type PresentationPath,
 } from "@/lib/prologue-opening-state";
 import styles from "./prologue-opening.module.css";
 
-const announcements: Readonly<Record<OpeningTransition, string>> =
-  Object.freeze({
-    "begin-opening": "The opening is complete. Lantern Shore is ready.",
-    "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
-    "replay-arrival": "Returned to the arrival scene.",
-    "continue-to-guide": "Guide choice is ready.",
-    "choose-aster": "Deterministic Aster presentation selected.",
-    "choose-manual": "Direct manual presentation selected.",
-    "return-to-lantern": "Returned to Lantern Shore.",
-    "reconsider-guide": "Returned to the guide choice.",
-    "switch-to-aster": "Switched to deterministic Aster presentation.",
-    "switch-to-manual": "Switched to the direct manual presentation.",
-  });
-
-function GuideFacts() {
-  return (
-    <dl className={styles.guideFacts} aria-label="Shared prologue rules">
-      {prologueGuideFacts.map((fact) => (
-        <div key={fact.id}>
-          <dt>{fact.title}</dt>
-          <dd>{fact.detail}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-function pathLabel(path: PresentationPath) {
-  return path === "aster" ? "Deterministic Aster" : "Direct manual guide";
-}
+const announcements: Readonly<Record<OpeningTransition, string>> = Object.freeze({
+  "begin-opening": "The opening is complete. Lantern Shore is ready.",
+  "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
+  "replay-arrival": "Returned to the arrival scene.",
+  "continue-to-guide": "Guide choice is ready.",
+  "choose-aster": "Deterministic Aster presentation selected.",
+  "choose-manual": "Direct manual presentation selected.",
+  "return-to-lantern": "Returned to Lantern Shore.",
+  "reconsider-guide": "Returned to the guide choice.",
+  "switch-to-aster": "Switched to deterministic Aster presentation.",
+  "switch-to-manual": "Switched to the direct manual presentation.",
+  "continue-to-capture": "Synthetic fixture choices are ready.",
+  "choose-synthetic-text": "Prepared synthetic text fixture selected.",
+  "choose-synthetic-voice": "Prepared synthetic voice transcript selected.",
+  "review-draft": "Synthetic draft review is ready.",
+  "accept-as-written": "The synthetic value will remain as written.",
+  "apply-synthetic-correction": "The prepared synthetic correction is selected.",
+  "confirm-entry": "The synthetic demonstration state is confirmed in page memory only.",
+  "refuse-draft": "The synthetic draft was refused. No information was retained.",
+  "change-synthetic-example": "Returned to the prepared synthetic examples.",
+  "review-confirmed-entry": "Returned to synthetic review and correction.",
+});
 
 export function PrologueOpening() {
   const [state, setState] = useState(initialOpeningState);
@@ -73,6 +61,11 @@ export function PrologueOpening() {
     state.scene === "guide-choice" ||
     state.scene === "aster-introduction" ||
     state.scene === "manual-introduction";
+  const captureIsCurrent =
+    state.scene === "capture-choice" ||
+    state.scene === "synthetic-draft" ||
+    state.scene === "review-and-correction" ||
+    state.scene === "confirmed-entry";
 
   return (
     <section
@@ -87,6 +80,8 @@ export function PrologueOpening() {
         </span>
         <span aria-hidden="true">→</span>
         <span data-current={guideIsCurrent}>Choose a guide</span>
+        <span aria-hidden="true">→</span>
+        <span data-current={captureIsCurrent}>Synthetic review</span>
       </div>
 
       <p className={styles.status} role="status" aria-live="polite">
@@ -100,9 +95,9 @@ export function PrologueOpening() {
             A light waits beyond the mist.
           </h2>
           <p className={styles.lede}>
-            You have reached Ogygia before an account, before a Chronicle, and
-            before any request for personal information. This opening is a
-            public synthetic demonstration. Nothing you choose here is stored.
+            You have reached Ogygia before an account, before a Chronicle, and before
+            any request for personal information. This opening is a public synthetic
+            demonstration. Nothing you choose here is stored.
           </p>
           <div
             className={styles.storyPanel}
@@ -114,8 +109,8 @@ export function PrologueOpening() {
               health, and keep the key.
             </p>
             <p>
-              The path is optional. The same boundary and controls remain
-              available whether you read the narration or skip it.
+              The path is optional. The same boundary and controls remain available
+              whether you read the narration or skip it.
             </p>
           </div>
           <div className={styles.actions} aria-label="Arrival choices">
@@ -147,37 +142,32 @@ export function PrologueOpening() {
             The first lantern illuminates the boundary.
           </h2>
           <p className={styles.lede}>
-            This is the first playable place on Ogygia, but it is not a
-            health-data intake, account, assessment, or durable game state. The
-            shore currently demonstrates arrival, orientation, and meaningful
-            choice only.
+            This is the first playable place on Ogygia, but it is not a health-data
+            intake, account, assessment, or durable game state. The shore currently
+            demonstrates arrival, orientation, and meaningful choice only.
           </p>
 
           <dl className={styles.boundaries}>
             <div>
               <dt>Your state</dt>
-              <dd>
-                Memory-only in this page. Refreshing or leaving starts again.
-              </dd>
+              <dd>Memory-only in this page. Refreshing or leaving starts again.</dd>
             </div>
             <div>
               <dt>Your information</dt>
-              <dd>
-                No personal or health information is requested or accepted.
-              </dd>
+              <dd>No personal or health information is requested or accepted.</dd>
             </div>
             <div>
               <dt>Your choice</dt>
               <dd>
-                You may use Aster framing, use the complete direct guide,
-                replay, or leave.
+                You may use Aster framing, use the complete direct guide, replay, or
+                leave.
               </dd>
             </div>
             <div>
               <dt>Equal paths</dt>
               <dd>
-                Aster and the manual guide expose the same sources, rules, and
-                later controls.
+                Aster and the manual guide expose the same sources, rules, synthetic
+                fixtures, and confirmation controls.
               </dd>
             </div>
           </dl>
@@ -208,154 +198,16 @@ export function PrologueOpening() {
         </article>
       )}
 
-      {state.scene === "guide-choice" && (
-        <article className={styles.scene} data-scene="guide-choice">
-          <p className="eyebrow">Choose a guide</p>
-          <h2 id="prologue-scene-title" ref={sceneHeading} tabIndex={-1}>
-            Two presentations. One set of rules.
-          </h2>
-          <p className={styles.lede}>
-            Both routes use the same repository-authored facts and deterministic
-            controls. Choosing Aster changes the voice of the explanation, not
-            the source, authority, available choices, or later completion path.
-          </p>
-
-          <div className={styles.pathGrid}>
-            <article>
-              <p className="eyebrow">Optional character framing</p>
-              <h3>Meet deterministic Aster</h3>
-              <p>
-                Aster presents a scripted, source-aware introduction. No model,
-                provider, hidden prompt, retrieval service, or remote call is
-                involved.
-              </p>
-              <button
-                className="button button-primary"
-                type="button"
-                onClick={() => move("choose-aster")}
-              >
-                Continue with Aster
-              </button>
-            </article>
-            <article>
-              <p className="eyebrow">Complete non-AI route</p>
-              <h3>Use the direct manual guide</h3>
-              <p>
-                The direct guide presents the same sources, facts, synthetic
-                choices, correction controls, and deterministic evidence without
-                Aster framing.
-              </p>
-              <button
-                className="button button-primary"
-                type="button"
-                onClick={() => move("choose-manual")}
-              >
-                Continue without Aster
-              </button>
-            </article>
-          </div>
-
-          <div className={styles.actions} aria-label="Guide choice exits">
-            <button
-              className="button"
-              type="button"
-              onClick={() => move("return-to-lantern")}
-            >
-              Return to Lantern Shore
-            </button>
-            <Link className="text-action" href="/">
-              Leave the prologue
-            </Link>
-          </div>
-        </article>
-      )}
-
-      {(state.scene === "aster-introduction" ||
-        state.scene === "manual-introduction") &&
-        state.presentationPath && (
-          <article
-            className={styles.scene}
-            data-scene={state.scene}
-            data-presentation={state.presentationPath}
-          >
-            <p className="eyebrow">{pathLabel(state.presentationPath)}</p>
-            <h2 id="prologue-scene-title" ref={sceneHeading} tabIndex={-1}>
-              {state.presentationPath === "aster"
-                ? "Aster can guide the presentation, not the truth."
-                : "The direct guide keeps every control in view."}
-            </h2>
-
-            <section
-              className={styles.guideIntroduction}
-              aria-labelledby="guide-introduction-title"
-            >
-              <h3 id="guide-introduction-title">
-                {state.presentationPath === "aster"
-                  ? asterIntroduction.label
-                  : manualIntroduction.label}
-              </h3>
-              {state.presentationPath === "aster" && (
-                <p className={styles.speaker}>{asterIntroduction.speaker}</p>
-              )}
-              <p>
-                {state.presentationPath === "aster"
-                  ? asterIntroduction.opening
-                  : manualIntroduction.opening}
-              </p>
-            </section>
-
-            <GuideFacts />
-
-            <p className={styles.pathClosing}>
-              {state.presentationPath === "aster"
-                ? asterIntroduction.closing
-                : manualIntroduction.closing}
-            </p>
-            <p className={styles.nextBoundary}>
-              Synthetic text and voice fixture choices are not active yet. They
-              arrive in workstream 9.4 and must remain identical across both
-              presentation paths.
-            </p>
-
-            <div
-              className={styles.actions}
-              aria-label="Guide presentation choices"
-            >
-              <button
-                className="button button-primary"
-                type="button"
-                onClick={() =>
-                  move(
-                    state.presentationPath === "aster"
-                      ? "switch-to-manual"
-                      : "switch-to-aster",
-                  )
-                }
-              >
-                {state.presentationPath === "aster"
-                  ? "Switch to the direct guide"
-                  : "Switch to Aster framing"}
-              </button>
-              <button
-                className="button"
-                type="button"
-                onClick={() => move("reconsider-guide")}
-              >
-                Reconsider the guide choice
-              </button>
-              <button
-                className="button"
-                type="button"
-                onClick={() => move("return-to-lantern")}
-              >
-                Return to Lantern Shore
-              </button>
-              <Link className="text-action" href="/">
-                Leave the prologue
-              </Link>
-            </div>
-          </article>
-        )}
+      <PrologueGuidePanel
+        state={state}
+        move={move}
+        headingRef={sceneHeading}
+      />
+      <PrologueCapturePanel
+        state={state}
+        move={move}
+        headingRef={sceneHeading}
+      />
     </section>
   );
 }
