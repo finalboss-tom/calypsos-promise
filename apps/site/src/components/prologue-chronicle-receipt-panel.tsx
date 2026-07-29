@@ -271,6 +271,13 @@ export function PrologueChronicleReceiptPanel({
         <button
           className="button button-primary"
           type="button"
+          onClick={() => move("complete-first-lantern")}
+        >
+          Light the First Lantern from this evidence
+        </button>
+        <button
+          className="button"
+          type="button"
           onClick={() => move("return-to-chronicle")}
         >
           Return to the synthetic Chronicle view
