@@ -22,7 +22,7 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstream 9\.3 is under review/i);
+  assert.match(page, /workstream 9\.4 is under review/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
@@ -58,7 +58,7 @@ test("implements deterministic arrival, shore, and guide transitions", async () 
     '"switch-to-manual"',
     "presentationPath",
     "transitionTable",
-    "if (!nextScene) return state",
+    "if (!nextScene || !transitionAllowed(state, transition)) return state",
   ]) {
     assert.match(
       state,
@@ -96,11 +96,12 @@ test("keeps opening choices explicit, skippable, and non-punitive", async () => 
 });
 
 test("gives deterministic Aster and the manual route one shared rule set", async () => {
-  const [component, content] = await Promise.all([
+  const [component, guidePanel, content] = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
+    read("../src/components/prologue-guide-panel.tsx"),
     read("../src/lib/prologue-guide-content.ts"),
   ]);
-  const source = `${component}\n${content}`;
+  const source = `${component}\n${guidePanel}\n${content}`;
 
   for (const phrase of [
     "Two presentations. One set of rules.",
@@ -120,7 +121,7 @@ test("gives deterministic Aster and the manual route one shared rule set", async
     );
   }
 
-  assert.equal((component.match(/prologueGuideFacts\.map/g) ?? []).length, 1);
+  assert.equal((guidePanel.match(/prologueGuideFacts\.map/g) ?? []).length, 1);
 
   for (const phrase of [
     "Source before suggestion",
@@ -142,13 +143,14 @@ test("gives deterministic Aster and the manual route one shared rule set", async
 });
 
 test("introduces no arbitrary input, persistence, capture API, model, or network path", async () => {
-  const [component, page, state, guideContent] = await Promise.all([
+  const [component, guidePanel, page, state, guideContent] = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
+    read("../src/components/prologue-guide-panel.tsx"),
     read("../src/app/prologue/page.tsx"),
     read("../src/lib/prologue-opening-state.ts"),
     read("../src/lib/prologue-guide-content.ts"),
   ]);
-  const source = `${component}\n${page}\n${state}\n${guideContent}`;
+  const source = `${component}\n${guidePanel}\n${page}\n${state}\n${guideContent}`;
 
   for (const prohibited of [
     /<input\b/i,
