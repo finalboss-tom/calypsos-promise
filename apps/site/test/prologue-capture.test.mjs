@@ -53,7 +53,8 @@ test("keeps synthetic selection, review, correction, and confirmation determinis
     '"refuse-draft"',
     '"change-synthetic-example"',
     'if (transition === "confirm-entry" && !state.correctionId) return false',
-    'confirmed: transition === "confirm-entry" ? true : false',
+    'if (transition === "confirm-entry") return true',
+    'return state.confirmed',
   ]) {
     assert.match(state, escaped(phrase));
   }
