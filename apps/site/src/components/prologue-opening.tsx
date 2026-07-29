@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { PrologueCapturePanel } from "@/components/prologue-capture-panel";
 import { PrologueChronicleReceiptPanel } from "@/components/prologue-chronicle-receipt-panel";
 import { PrologueConfirmedProjectionEntry } from "@/components/prologue-confirmed-projection-entry";
+import { PrologueFirstLanternPanel } from "@/components/prologue-first-lantern-panel";
 import { PrologueGuidePanel } from "@/components/prologue-guide-panel";
 import {
   initialOpeningState,
@@ -45,6 +46,9 @@ const announcements: Readonly<Record<OpeningTransition, string>> =
     "return-to-chronicle": "Returned to the temporary synthetic Chronicle.",
     "discard-projection":
       "The temporary synthetic projection was discarded from page memory.",
+    "complete-first-lantern":
+      "First Lantern completion evidence is satisfied in page memory only.",
+    "return-to-receipt": "Returned to the receipt evidence explanation.",
   });
 
 export function PrologueOpening() {
@@ -82,6 +86,7 @@ export function PrologueOpening() {
   const projectionIsCurrent =
     state.scene === "synthetic-chronicle" ||
     state.scene === "synthetic-receipt";
+  const completionIsCurrent = state.scene === "first-lantern";
 
   return (
     <section
@@ -100,6 +105,8 @@ export function PrologueOpening() {
         <span data-current={captureIsCurrent}>Synthetic review</span>
         <span aria-hidden="true">→</span>
         <span data-current={projectionIsCurrent}>Chronicle & receipt</span>
+        <span aria-hidden="true">→</span>
+        <span data-current={completionIsCurrent}>First Lantern</span>
       </div>
 
       <p className={styles.status} role="status" aria-live="polite">
@@ -190,8 +197,8 @@ export function PrologueOpening() {
               <dt>Equal paths</dt>
               <dd>
                 Aster and the manual guide expose the same sources, rules,
-                synthetic fixtures, confirmation controls, and temporary
-                projections.
+                synthetic fixtures, confirmation controls, temporary
+                projections, and completion evidence.
               </dd>
             </div>
           </dl>
@@ -236,6 +243,11 @@ export function PrologueOpening() {
         headingRef={sceneHeading}
       />
       <PrologueChronicleReceiptPanel
+        state={state}
+        move={move}
+        headingRef={sceneHeading}
+      />
+      <PrologueFirstLanternPanel
         state={state}
         move={move}
         headingRef={sceneHeading}
