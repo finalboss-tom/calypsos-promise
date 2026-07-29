@@ -13,10 +13,14 @@ const sprintRoadmapUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprints.md";
 const sprint8PlanUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-execution-plan.md";
+const sprint8CompletionUrl =
+  "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/sprint-8-completion-record.md";
 const currentStatusUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/docs/roadmap/current-status.md";
 const institutionalRoadmapUrl =
   "https://github.com/finalboss-tom/calypsos-promise/blob/main/ROADMAP.md";
+const signupGateUrl =
+  "https://github.com/finalboss-tom/calypsos-promise/issues/63";
 
 export const sprint8Roadmap: readonly RoadmapRecord[] = [
   {
@@ -33,36 +37,36 @@ export const sprint8Roadmap: readonly RoadmapRecord[] = [
     title: "8.7 — Roadmap, status, support, and funding transparency",
     status: "experimental",
     summary:
-      "Source-backed public views are being implemented without creating a second roadmap, funding ledger, private support system, or transaction path.",
+      "Source-backed roadmap, public-safe support, and canonical funding-transparency views are implemented without creating a second ledger, private support system, or transaction path.",
     sourceHref: sprint8PlanUrl,
     sourceLabel: "Read the Sprint 8 plan",
   },
   {
     id: "sprint-8-8",
     title: "8.8 — Signup disposition",
-    status: "planned",
+    status: "experimental",
     summary:
-      "The paused signup surface must be deliberately preserved under accepted privacy and operational controls or retired in favor of public repository-following paths.",
-    sourceHref: sprint8PlanUrl,
-    sourceLabel: "Review the signup gate",
+      "The email newsletter or waitlist remains paused and no-intake for Sprint 8. Final safe activation or deliberate retirement remains Phase 0 gate issue #63.",
+    sourceHref: signupGateUrl,
+    sourceLabel: "Review Phase 0 gate #63",
   },
   {
     id: "sprint-8-9",
     title: "8.9 — Accessibility, performance, security, and route validation",
-    status: "planned",
+    status: "experimental",
     summary:
-      "Representative review, route budgets, deployed-header evidence, metadata checks, and full authority validation remain open.",
-    sourceHref: sprint8PlanUrl,
-    sourceLabel: "Review validation deliverables",
+      "Permanent source and isolated local-production-preview validation now covers thirteen routes, security headers, metadata, authority, signup, contrast, and transfer budgets without claiming hosted or independent evidence.",
+    sourceHref: sprint8CompletionUrl,
+    sourceLabel: "Review completion evidence",
   },
   {
     id: "sprint-8-10",
     title: "8.10 — Completion and Sprint 9 handoff",
-    status: "planned",
+    status: "experimental",
     summary:
-      "Sprint 8 still requires cross-contract reconciliation, unresolved-work records, release evidence appropriate to the actual deployment state, and explicit founding-steward acceptance.",
-    sourceHref: sprint8PlanUrl,
-    sourceLabel: "Review the completion gate",
+      "The reconciliation, control map, open holdpoints, release and rollback record, completion package, and bounded Sprint 9 handoff are implemented. Explicit founding-steward acceptance and squash merge remain open.",
+    sourceHref: sprint8CompletionUrl,
+    sourceLabel: "Review the completion package",
   },
 ];
 
@@ -72,7 +76,7 @@ export const futureRoadmap: readonly RoadmapRecord[] = [
     title: "Sprint 9 — Public synthetic prologue",
     status: "planned",
     summary:
-      "A no-account, no-real-health-data playable explanation of the Promise and first public synthetic journey.",
+      "A no-account, no-real-health-data playable explanation of the Promise and first public synthetic journey. It has not started and requires Sprint 8 acceptance, merge, post-merge reconciliation, and a pre-Sprint 9 review.",
     sourceHref: sprintRoadmapUrl,
     sourceLabel: "Read Sprint 9",
   },
