@@ -1,9 +1,9 @@
 name: Reconcile Sprint 8.10 status
 
 on:
-  push:
+  pull_request:
     branches:
-      - agent/sprint-8-public-website-foundation
+      - main
   workflow_dispatch:
 
 permissions:
