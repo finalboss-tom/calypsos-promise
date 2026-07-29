@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { CapabilityStatusGrid } from "@/components/capability-status-grid";
 import { ConnectedLoops } from "@/components/connected-loops";
-import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { PromisePrinciples } from "@/components/promise-principles";
 import { StatusBadge } from "@/components/status-badge";
 import {
@@ -117,23 +116,6 @@ export default function HomePage() {
       </section>
 
       <CapabilityStatusGrid />
-
-      <section
-        className="homepage-section contribution-callout"
-        aria-labelledby="newsletter-title"
-      >
-        <div>
-          <p className="eyebrow">Join the Founding Expedition</p>
-          <h2 id="newsletter-title">Follow the build toward Phase 0 completion.</h2>
-          <p>
-            Receive occasional public project updates and clear opportunities to
-            inspect, play, review, or contribute. Joining the newsletter does not
-            create an account or enroll you in research, governance, fundraising,
-            health-data sharing, or the game.
-          </p>
-        </div>
-        <NewsletterSignupForm />
-      </section>
 
       <section
         className="homepage-section contribution-callout"
