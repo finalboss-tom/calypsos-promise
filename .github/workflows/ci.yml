@@ -127,7 +127,7 @@ jobs:
         with:
           name: site-release-evidence
           path: |
-            site-release-evidence.json
+            apps/site/site-release-evidence.json
             site-preview.log
           if-no-files-found: warn
       - name: Stop preview and remove generated state
@@ -137,7 +137,7 @@ jobs:
             kill "$(cat site-preview.pid)" || true
           fi
           git checkout -- apps/site/tsconfig.json apps/site/next-env.d.ts || true
-          rm -f apps/site/tsconfig.tsbuildinfo site-preview.pid
+          rm -f apps/site/tsconfig.tsbuildinfo apps/site/site-release-evidence.json site-preview.pid
           rm -rf apps/site/.next
       - name: Verify no tracked build mutation
         if: always()
