@@ -1,0 +1,43 @@
+name: Fix Sprint 8.9 preview validator
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/scripts/fix_sprint_8_9_preview_validator.py
+      - .github/workflows/fix-sprint-8-9-preview-validator.yml
+      - apps/site/src/validate-preview.mjs
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-8-public-website-foundation
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: python .github/scripts/fix_sprint_8_9_preview_validator.py
+      - run: pnpm format
+      - name: Remove temporary correction files
+        run: |
+          rm .github/scripts/fix_sprint_8_9_preview_validator.py
+          rm .github/workflows/fix-sprint-8-9-preview-validator.yml
+      - name: Commit corrections
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: correct Sprint 8.9 preview validation"
+          git push origin HEAD:agent/sprint-8-public-website-foundation
