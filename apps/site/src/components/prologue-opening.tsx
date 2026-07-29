@@ -42,10 +42,10 @@ const announcements: Readonly<Record<OpeningTransition, string>> =
     "view-synthetic-chronicle":
       "Temporary synthetic Chronicle projection is ready.",
     "view-synthetic-receipt":
-      "Non-authoritative House of Keys receipt demonstration is ready.",
+      "Non-authoritative House of Keys receipt explanation is ready.",
     "return-to-chronicle": "Returned to the temporary synthetic Chronicle.",
     "discard-projection":
-      "The temporary synthetic projection was discarded from page memory.",
+      "The temporary synthetic state was discarded from page memory.",
     "complete-first-lantern":
       "First Lantern completion evidence is satisfied in page memory only.",
     "return-to-receipt": "Returned to the receipt evidence explanation.",
@@ -87,27 +87,49 @@ export function PrologueOpening() {
     state.scene === "synthetic-chronicle" ||
     state.scene === "synthetic-receipt";
   const completionIsCurrent = state.scene === "first-lantern";
+  const progressSteps = [
+    { id: "arrival", label: "Arrival", current: state.scene === "arrival" },
+    {
+      id: "lantern-shore",
+      label: "Lantern Shore",
+      current: state.scene === "lantern-shore",
+    },
+    { id: "guide", label: "Choose a guide", current: guideIsCurrent },
+    {
+      id: "review",
+      label: "Synthetic review",
+      current: captureIsCurrent,
+    },
+    {
+      id: "projections",
+      label: "Chronicle and receipt",
+      current: projectionIsCurrent,
+    },
+    {
+      id: "first-lantern",
+      label: "First Lantern",
+      current: completionIsCurrent,
+    },
+  ] as const;
 
   return (
     <section
       className={styles.experience}
       aria-labelledby="prologue-scene-title"
     >
-      <div className={styles.progress} aria-label="Prologue progress">
-        <span data-current={state.scene === "arrival"}>Arrival</span>
-        <span aria-hidden="true">→</span>
-        <span data-current={state.scene === "lantern-shore"}>
-          Lantern Shore
-        </span>
-        <span aria-hidden="true">→</span>
-        <span data-current={guideIsCurrent}>Choose a guide</span>
-        <span aria-hidden="true">→</span>
-        <span data-current={captureIsCurrent}>Synthetic review</span>
-        <span aria-hidden="true">→</span>
-        <span data-current={projectionIsCurrent}>Chronicle & receipt</span>
-        <span aria-hidden="true">→</span>
-        <span data-current={completionIsCurrent}>First Lantern</span>
-      </div>
+      <ol className={styles.progress} aria-label="Prologue progress">
+        {progressSteps.map((step, index) => (
+          <li
+            key={step.id}
+            aria-current={step.current ? "step" : undefined}
+          >
+            <span>{step.label}</span>
+            {index < progressSteps.length - 1 && (
+              <span aria-hidden="true">→</span>
+            )}
+          </li>
+        ))}
+      </ol>
 
       <p className={styles.status} role="status" aria-live="polite">
         {announcement}
