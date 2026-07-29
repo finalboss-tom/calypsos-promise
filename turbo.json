@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["SIGNUP_WEBHOOK_URL", "SIGNUP_WEBHOOK_TOKEN"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
