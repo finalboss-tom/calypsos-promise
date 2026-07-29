@@ -10,59 +10,66 @@ function escaped(phrase) {
   return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
 }
 
-test("references the accepted House of Keys contract and synthetic fixture", async () => {
-  const [projection, version, types, fixtures] = await Promise.all([
-    read("../src/lib/prologue-synthetic-projections.ts"),
-    read("../../../packages/house-of-keys/src/version.ts"),
-    read("../../../packages/house-of-keys/src/types.ts"),
-    read("../../../packages/house-of-keys/src/fixtures.ts"),
-  ]);
+test("references the accepted Chronicle and House of Keys contract vocabularies", async () => {
+  const [projection, chronicleVersion, chronicleTypes, keysVersion, keysTypes] =
+    await Promise.all([
+      read("../src/lib/prologue-synthetic-projections.ts"),
+      read("../../../packages/health-schema/src/version.ts"),
+      read("../../../packages/health-schema/src/types.ts"),
+      read("../../../packages/house-of-keys/src/version.ts"),
+      read("../../../packages/house-of-keys/src/types.ts"),
+    ]);
 
-  assert.match(version, /HOUSE_OF_KEYS_CONTRACT_VERSION = "0\.1\.0-pre\.1"/);
-  assert.match(types, /export interface AccessReceipt/);
-  assert.match(fixtures, /id: "receipt\.personal-export\.synthetic"/);
-  assert.match(projection, /contractVersion: "0\.1\.0-pre\.1"/);
-  assert.match(projection, /contractShapeReference: "AccessReceipt"/);
-  assert.match(
-    projection,
-    /acceptedFixtureId: "receipt\.personal-export\.synthetic"/,
-  );
-});
-
-test("projects Chronicle-shaped state only after explicit confirmation", async () => {
-  const [state, projection] = await Promise.all([
-    read("../src/lib/prologue-opening-state.ts"),
-    read("../src/lib/prologue-synthetic-projections.ts"),
-  ]);
+  assert.match(chronicleVersion, /LIVING_CHRONICLE_SCHEMA_VERSION = "0\.1\.0"/);
+  assert.match(chronicleTypes, /export interface ChronicleRecordEnvelope/);
+  assert.match(keysVersion, /HOUSE_OF_KEYS_CONTRACT_VERSION = "0\.1\.0-pre\.1"/);
+  assert.match(keysTypes, /export interface AccessReceipt/);
 
   for (const phrase of [
-    '"synthetic-chronicle"',
-    '"synthetic-receipt"',
-    '"view-synthetic-chronicle"',
-    '"view-synthetic-receipt"',
-    '"return-to-chronicle"',
-    '"discard-projection"',
-    "!state.confirmed || !state.fixtureId || !state.correctionId",
-    "temporary-page-memory-only",
-    "visitor-confirmed-synthetic-demonstration",
+    'schemaVersion: "0.1.0"',
+    'contractShape: "ChronicleRecordEnvelope"',
+    'contractVersion: "0.1.0-pre.1"',
+    'contractShape: "AccessReceipt"',
+    'contractVocabularyUse: "selected-field-explanation-only"',
+  ]) {
+    assert.match(projection, escaped(phrase));
+  }
+
+  assert.doesNotMatch(projection, /receipt\.personal-export\.synthetic/);
+  assert.doesNotMatch(projection, /#L\d+-L\d+/);
+});
+
+test("maps the temporary Chronicle projection to accepted record vocabulary", async () => {
+  const projection = await read("../src/lib/prologue-synthetic-projections.ts");
+
+  for (const phrase of [
+    'projectionStatus: "temporary-page-memory-only"',
+    'dataClassification: "synthetic"',
+    'contractShapeReference: "ChronicleRecordEnvelope"',
+    'chronicleId: "chronicle.prologue.synthetic"',
+    'subjectId: "subject.prologue.synthetic-demonstration"',
+    'recordFamily: "observation"',
+    'assertionClass: "self-report"',
+    'authorityState: "confirmed"',
+    'lifecycleState: "active"',
+    'temporalAssertionKind: "exact-instant"',
+    "variableId: draft.variableId",
+    "valueShape: draft.valueShape",
+    "sourceArtifactId: draft.sourceArtifactId",
+    "sourceVersionId: draft.sourceVersionId",
     'persistence: "none"',
     "explicit-or-navigation-destroys-projection",
   ]) {
-    assert.match(`${state}\n${projection}`, escaped(phrase));
+    assert.match(projection, escaped(phrase));
   }
 
   assert.match(
-    state,
-    /transition === "view-synthetic-chronicle"[\s\S]*!state\.confirmed/,
+    projection,
+    /!state\.confirmed \|\| !state\.fixtureId \|\| !state\.correctionId/,
   );
-  assert.match(
-    state,
-    /transition === "review-confirmed-entry"[\s\S]*return false/,
-  );
-  assert.match(state, /transition === "discard-projection"[\s\S]*return null/);
 });
 
-test("keeps the Chronicle view visibly temporary, correctable, and discardable", async () => {
+test("keeps the Chronicle view visibly temporary, correctable, source-linked, and discardable", async () => {
   const [entry, panel, projection] = await Promise.all([
     read("../src/components/prologue-confirmed-projection-entry.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
@@ -72,17 +79,18 @@ test("keeps the Chronicle view visibly temporary, correctable, and discardable",
 
   for (const phrase of [
     "Temporary synthetic Chronicle projection",
-    "This looks like a Chronicle entry. It is not stored as one.",
+    "Source, correction, and confirmation stay visible.",
+    "Visitor confirmed",
     "Page memory only",
     "Not stored",
     "Original synthetic value",
-    "Correction state",
-    "Confirmation",
-    "Persistence",
+    "Correction and confirmation",
     "Discard behavior",
+    "Inspect the mapped Chronicle vocabulary",
+    "Living Chronicle record contract",
     "Review or correct the synthetic entry",
     "Discard the temporary projection",
-    "This is a temporary UI projection, not a Living Chronicle record.",
+    "not a ChronicleRecordEnvelope or stored Living Chronicle record",
   ]) {
     assert.match(source, escaped(phrase));
   }
@@ -96,9 +104,10 @@ test("renders a receipt-shaped explanation without permission or release authori
   const source = `${panel}\n${projection}`;
 
   for (const phrase of [
-    "House of Keys receipt-shaped demonstration",
-    "This explains receipt fields. It grants no permission.",
+    "House of Keys receipt-shaped explanation",
+    "A receipt explains authority; it does not create it.",
     "illustrative-non-contract-record",
+    "selected-field-explanation-only",
     'decisionOutcome: "not-evaluated"',
     'executionState: "not-applicable"',
     "dataReleaseBoundaryCrossed: false",
@@ -106,9 +115,9 @@ test("renders a receipt-shaped explanation without permission or release authori
     "demo.no-policy-evaluation",
     "demo.no-grant",
     "demo.no-data-release",
-    "No real subject, grant, permission, consent, recipient authority, audit event, or production access exists.",
+    "No House of Keys policy request or evaluation ran",
+    "Not an AccessReceipt",
     "AccessReceipt contract",
-    "synthetic receipt fixture",
   ]) {
     assert.match(source, escaped(phrase));
   }
@@ -116,16 +125,17 @@ test("renders a receipt-shaped explanation without permission or release authori
   assert.doesNotMatch(projection, /decisionOutcome:\s*"allow"/);
   assert.doesNotMatch(projection, /executionState:\s*"complete"/);
   assert.doesNotMatch(projection, /dataReleaseBoundaryCrossed:\s*true/);
+  assert.doesNotMatch(projection, /acceptedFixture/);
 });
 
 test("adds no arbitrary input, persistence, provider, model, or network path", async () => {
-  const [entry, panel, projection, state] = await Promise.all([
+  const files = await Promise.all([
     read("../src/components/prologue-confirmed-projection-entry.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
     read("../src/lib/prologue-synthetic-projections.ts"),
     read("../src/lib/prologue-opening-state.ts"),
   ]);
-  const source = `${entry}\n${panel}\n${projection}\n${state}`;
+  const source = files.join("\n");
 
   for (const prohibited of [
     /<input\b/i,
