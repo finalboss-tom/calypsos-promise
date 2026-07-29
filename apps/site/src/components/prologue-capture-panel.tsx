@@ -269,56 +269,5 @@ export function PrologueCapturePanel({
     );
   }
 
-  if (state.scene === "confirmed-entry") {
-    return (
-      <article className={styles.scene} data-scene="confirmed-entry">
-        <p className="eyebrow">Confirmed synthetic demonstration state</p>
-        <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-          You confirmed the example. Nothing was stored.
-        </h2>
-        <p className={styles.lede}>
-          This confirmation exists only in this page memory. It is not a
-          Chronicle entry, permission, health claim, account record, audit
-          event, or durable game achievement.
-        </p>
-        <DraftDetails state={state} />
-        <p className={styles.nextBoundary}>
-          Workstream 9.5 will project this confirmed synthetic state into a
-          visibly temporary Chronicle view and non-authoritative House of Keys
-          receipt.
-        </p>
-        <div
-          className={styles.actions}
-          aria-label="Confirmed synthetic state choices"
-        >
-          <button
-            className="button button-primary"
-            type="button"
-            onClick={() => move("review-confirmed-entry")}
-          >
-            Review the confirmation again
-          </button>
-          <button
-            className="button"
-            type="button"
-            onClick={() => move("change-synthetic-example")}
-          >
-            Choose another synthetic example
-          </button>
-          <button
-            className="button"
-            type="button"
-            onClick={() => move("reconsider-guide")}
-          >
-            Return to the guide choice
-          </button>
-          <Link className="text-action" href="/">
-            Leave the prologue
-          </Link>
-        </div>
-      </article>
-    );
-  }
-
   return null;
 }
