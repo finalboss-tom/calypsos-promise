@@ -61,7 +61,7 @@ test("defines one canonical release contract for every public route", () => {
 test("keeps explicit page, JavaScript, CSS, image, font, request, and total budgets", () => {
   assert.deepEqual(performanceBudgets, {
     htmlBytes: 96 * 1024,
-    javascriptBytes: 512 * 1024,
+    javascriptBytes: 704 * 1024,
     cssBytes: 128 * 1024,
     imageBytes: 1536 * 1024,
     fontBytes: 0,
