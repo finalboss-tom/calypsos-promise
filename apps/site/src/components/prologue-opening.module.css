@@ -49,10 +49,6 @@
   font-size: clamp(2.5rem, 7vw, 5.6rem);
 }
 
-.scene h2:focus {
-  outline: none;
-}
-
 .scene h2:focus-visible {
   outline: 0.2rem solid var(--color-focus);
   outline-offset: 0.35rem;
