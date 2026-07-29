@@ -48,11 +48,20 @@ test("defines the canonical public route family", () => {
       "/roadmap",
       "/support",
       "/funding",
+      "/prologue",
       "/privacy",
       "/joined",
     ],
   );
-  assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 13);
+  assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 14);
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/prologue")?.noindex,
+    true,
+  );
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/prologue")?.sitemap,
+    false,
+  );
   assert.equal(
     routeContracts.find(({ path }) => path === "/joined")?.noindex,
     true,
@@ -105,6 +114,7 @@ test("keeps permanent isolated production-preview validation", async () => {
   assert.match(previewValidator, /providerContacted: false/);
   assert.match(previewValidator, /bot-field-must-be-ignored/);
   assert.match(sourceValidator, /active Phase 0 newsletter gate #63/);
+  assert.match(sourceValidator, /branch-only Sprint 9 prologue/);
 });
 
 test("validates security headers and CSP", () => {
