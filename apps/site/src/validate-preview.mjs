@@ -23,7 +23,7 @@ function byteLength(value) {
 }
 
 function extractTags(html, tagName) {
-  return html.match(new RegExp(`<${tagName}\b[^>]*>`, "gi")) ?? [];
+  return html.match(new RegExp(`<${tagName}\\b[^>]*>`, "gi")) ?? [];
 }
 
 function parseAttributes(tag) {
@@ -253,7 +253,7 @@ async function resourceMetrics(html, route) {
     }
   }
   for (const tag of extractTags(html, "link")) {
-    const attributes = parseAttributes(tag);
+    const attributes = parseAttributes;
     const href = attributes.get("href");
     if (!href) continue;
 
@@ -416,85 +416,4 @@ if (!missing.body.toString("utf8").includes("This path is not part of Ogygia yet
 const invalidSignup = await fetchResource("/api/join", {
   method: "POST",
   headers: { "content-type": "application/json" },
-  body: JSON.stringify({ email: "invalid", consent: false }),
-});
-if (invalidSignup.response.status !== 400) {
-  fail(`/api/join invalid POST: expected 400, received ${invalidSignup.response.status}`);
-}
-if (invalidSignup.response.headers.get("cache-control") !== "no-store") {
-  fail("/api/join invalid POST: Cache-Control must be no-store");
-}
-if (invalidSignup.response.headers.has("set-cookie")) {
-  fail("/api/join invalid POST: must not set a cookie");
-}
-
-const botSignup = await fetchResource("/api/join", {
-  method: "POST",
-  headers: { "content-type": "application/json" },
-  body: JSON.stringify({
-    email: "synthetic-validator@example.invalid",
-    consent: true,
-    website: "bot-field-must-be-ignored",
-  }),
-});
-if (botSignup.response.status !== 202) {
-  fail(`/api/join honeypot POST: expected 202, received ${botSignup.response.status}`);
-}
-const botJson = JSON.parse(botSignup.body.toString("utf8"));
-if (botJson.ok !== true) {
-  fail("/api/join honeypot POST: ignored success is missing");
-}
-
-const joinGet = await fetchResource("/api/join", { method: "GET" });
-if (joinGet.response.status !== 405) {
-  fail(`/api/join GET: expected 405, received ${joinGet.response.status}`);
-}
-
-const asset = await fetchResource("/assets/compass-mark.svg");
-if (asset.response.status !== 200) {
-  fail("compass asset: expected 200");
-}
-if (asset.response.headers.get("cache-control") !== "public, max-age=0, must-revalidate") {
-  fail("compass asset: mutable asset cache contract changed");
-}
-
-const report = {
-  schema: "calypsos.site-release-evidence.v2",
-  evidenceClass: "isolated-local-production-preview",
-  certification: "repository implementation evidence only",
-  origin: baseUrl,
-  productionCanonicalOrigin: siteOrigin,
-  routeEvidence,
-  budgets: performanceBudgets,
-  contrast: contrastPairs.map((pair) => ({
-    name: pair.name,
-    ratio: Number(contrastRatio(pair.foreground, pair.background).toFixed(2)),
-  })),
-  controls: {
-    sitemap: sitemap.response.status,
-    robots: robots.response.status,
-    notFound: missing.response.status,
-    newsletterRoutes: routeEvidence.length,
-    signupInvalid: invalidSignup.response.status,
-    signupHoneypot: botSignup.response.status,
-    signupGet: joinGet.response.status,
-    asset: asset.response.status,
-  },
-  providerContacted: false,
-  failures,
-};
-
-if (reportPath) {
-  await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
-}
-
-if (failures.length > 0) {
-  console.error(
-    `Site release validation failed:\n${failures
-      .map((failure) => `- ${failure}`)
-      .join("\n")}`,
-  );
-  process.exit(1);
-}
-
-console.log(JSON.stringify(report, null, 2));
+  body: JSON.stringifyÉì•µ…¥°è€‰¥¹Ù…±¥ˆ°½¹Í•¹Ðè™…±Í”ô¤°)ô¤ì)¥˜€¡¥¹Ù…±¥‘M¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ€„ôô€ÐÀÀ¤ì(€™…¥°¡€½…Á¤½©½¥¸¥¹Ù…±¥A=MPè•áÁ•Ñ•€ÐÀÀ°É••¥Ù•€‘í¥¹Ù…±¥‘M¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÍõ€¤ì)ô)¥˜€¡¥¹Ù…±¥‘M¥¹ÕÀ¹É•ÍÁ½¹Í”¹¡•…‘•ÉÌ¹•Ð ‰…¡”µ½¹ÑÉ½°ˆ¤€„ôô€‰¹¼µÍÑ½É”ˆ¤ì(€™…¥° ˆ½…Á¤½©½¥¸¥¹Ù…±¥A=MPè…¡”µ½¹ÑÉ½°µÕÍÐ‰”¹¼µÍÑ½É”ˆ¤ì)ô)¥˜€¡¥¹Ù…±¥‘M¥¹ÕÀ¹É•ÍÁ½¹Í”¹¡•…‘•ÉÌ¹¡…Ì ‰Í•Ðµ½½­¥”ˆ¤¤ì(€™…¥° ˆ½…Á¤½©½¥¸¥¹Ù…±¥A=MPèµÕÍÐ¹½ÐÍ•Ð„½½­¥”ˆ¤ì)ô()½¹ÍÐ‰½ÑM¥¹ÕÀ€ô…Ý…¥Ð™•Ñ¡I•Í½ÕÉ” ˆ½…Á¤½©½¥¸ˆ°ì(€µ•Ñ¡½è€‰A=MPˆ°(€¡•…‘•ÉÌèì€‰½¹Ñ•¹ÐµÑåÁ”ˆè€‰…ÁÁ±¥…Ñ¥½¸½©Í½¸ˆô°(€‰½‘äè)M=8¹ÍÑÉ¥¹¥™ä¡ì(€€€•µ…¥°è€‰Íå¹Ñ¡•Ñ¥ŒµÙ…±¥‘…Ñ½É•á…µÁ±”¹¥¹Ù…±¥ˆ°(€€€½¹Í•¹ÐèÑÉÕ”°(€€€Ý•‰Í¥Ñ”è€‰‰½Ðµ™¥•±µµÕÍÐµ‰”µ¥¹½É•ˆ°(€ô¤°)ô¤ì)¥˜€¡‰½ÑM¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ€„ôô€ÈÀÈ¤ì(€™…¥°¡€½…Á¤½©½¥¸¡½¹•åÁ½ÐA=MPè•áÁ•Ñ•€ÈÀÈ°É••¥Ù•€‘í‰½ÑM¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÍõ€¤ì)ô)½¹ÍÐ‰½Ñ)Í½¸€ô)M=8¹Á…ÉÍ”¡‰½ÑM¥¹ÕÀ¹‰½‘ä¹Ñ½MÑÉ¥¹œ ‰ÕÑ˜àˆ¤¤ì)¥˜€¡‰½Ñ)Í½¸¹½¬€„ôôÑÉÕ”¤ì(€™…¥° ˆ½…Á¤½©½¥¸¡½¹•åÁ½ÐA=MPè¥¹½É•ÍÕ•ÍÌ¥Ìµ¥ÍÍ¥¹œˆ¤ì)ô()½¹ÍÐ©½¥¹•Ð€ô…Ý…¥Ð™•Ñ¡I•Í½ÕÉ” ˆ½…Á¤½©½¥¸ˆ°ìµ•Ñ¡½è€‰Pˆô¤ì)¥˜€¡©½¥¹•Ð¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ€„ôô€ÐÀÔ¤ì(€™…¥°¡€½…Á¤½©½¥¸Pè•áÁ•Ñ•€ÐÀÔ°É••¥Ù•€‘í©½¥¹•Ð¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÍõ€¤ì)ô()½¹ÍÐ…ÍÍ•Ð€ô…Ý…¥Ð™•Ñ¡I•Í½ÕÉ” ˆ½…ÍÍ•ÑÌ½½µÁ…ÍÌµµ…É¬¹ÍÙœˆ¤ì)¥˜€¡…ÍÍ•Ð¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ€„ôô€ÈÀÀ¤ì(€™…¥° ‰½µÁ…ÍÌ…ÍÍ•Ðè•áÁ•Ñ•€ÈÀÀˆ¤ì)ô)¥˜€¡…ÍÍ•Ð¹É•ÍÁ½¹Í”¹¡•…‘•ÉÌ¹•Ð ‰…¡”µ½¹ÑÉ½°ˆ¤€„ôô€‰ÁÕ‰±¥Œ°µ…àµ…”ôÀ°µÕÍÐµÉ•Ù…±¥‘…Ñ”ˆ¤ì(€™…¥° ‰½µÁ…ÍÌ…ÍÍ•ÐèµÕÑ…‰±”…ÍÍ•Ð…¡”½¹ÑÉ…Ð¡…¹•ˆ¤ì)ô()½¹ÍÐÉ•Á½ÉÐ€ôì(€Í¡•µ„è€‰…±åÁÍ½Ì¹Í¥Ñ”µÉ•±•…Í”µ•Ù¥‘•¹”¹ØÈˆ°(€•Ù¥‘•¹•±…ÍÌè€‰¥Í½±…Ñ•µ±½…°µÁÉ½‘ÕÑ¥½¸µÁÉ•Ù¥•Üˆ°(€•ÉÑ¥™¥…Ñ¥½¸è€‰É•Á½Í¥Ñ½Éä¥µÁ±•µ•¹Ñ…Ñ¥½¸•Ù¥‘•¹”½¹±äˆ°(€½É¥¥¸è‰…Í•UÉ°°(€ÁÉ½‘ÕÑ¥½¹…¹½¹¥…±=É¥¥¸èÍ¥Ñ•=É¥¥¸°(€É½ÕÑ•Ù¥‘•¹”°(€‰Õ‘•ÑÌèÁ•É™½Éµ…¹•	Õ‘•ÑÌ°(€½¹ÑÉ…ÍÐè½¹ÑÉ…ÍÑA…¥ÉÌ¹µ…À ¡Á…¥È¤€ôø€¡ì(€€€¹…µ”èÁ…¥È¹¹…µ”°(€€€É…Ñ¥¼è9Õµ‰•È¡½¹ÑÉ…ÍÑI…Ñ¥¼¡Á…¥È¹™½É•É½Õ¹°Á…¥È¹‰…­É½Õ¹¤¹Ñ½¥á• È¤¤°(€ô¤¤°(€½¹ÑÉ½±Ìèì(€€€Í¥Ñ•µ…ÀèÍ¥Ñ•µ…À¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€É½‰½ÑÌèÉ½‰½ÑÌ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€¹½Ñ½Õ¹èµ¥ÍÍ¥¹œ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€¹•ÝÍ±•ÑÑ•ÉI½ÕÑ•ÌèÉ½ÕÑ•Ù¥‘•¹”¹±•¹Ñ °(€€€Í¥¹ÕÁ%¹Ù…±¥è¥¹Ù…±¥‘M¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€Í¥¹ÕÁ!½¹•åÁ½Ðè‰½ÑM¥¹ÕÀ¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€Í¥¹ÕÁ•Ðè©½¥¹•Ð¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€€€…ÍÍ•Ðè…ÍÍ•Ð¹É•ÍÁ½¹Í”¹ÍÑ…ÑÕÌ°(€ô°(€ÁÉ½Ù¥‘•É½¹Ñ…Ñ•è™…±Í”°(€™…¥±ÕÉ•Ì°)ôì()¥˜€¡É•Á½ÉÑA…Ñ ¤ì(€…Ý…¥ÐÝÉ¥Ñ•¥±”¡É•Á½ÉÑA…Ñ °€‘í)M=8¹ÍÑÉ¥¹¥™ä¡É•Á½ÉÐ°¹Õ±°°€È¥õq¹€°€‰ÕÑ˜àˆ¤ì)ô()¥˜€¡™…¥±ÕÉ•Ì¹±•¹Ñ €ø€À¤ì(€½¹Í½±”¹•ÉÉ½È (€€€M¥Ñ”É•±•…Í”Ù…±¥‘…Ñ¥½¸™…¥±•éq¸‘í™…¥±ÕÉ•Ì(€€€€€€¹µ…À ¡™…¥±ÕÉ”¤€ôø€´€‘í™…¥±ÕÉ•õ€¤(€€€€€€¹©½¥¸ ‰q¸ˆ¥õ€°(€€¤ì(€ÁÉ½•ÍÌ¹•á¥Ð Ä¤ì)ô()½¹Í½±”¹±½œ¡)M=8¹ÍÑÉ¥¹¥™ä¡É•Á½ÉÐ°¹Õ±°°€È¤¤
