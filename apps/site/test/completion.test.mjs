@@ -71,7 +71,8 @@ test("preserves the bounded Sprint 9 public synthetic prologue handoff", async (
     assert.match(handoff, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 
-  assert.match(handoff, /after Sprint 8 is explicitly accepted and merged/);
+  assert.match(handoff, /Sprint 9 may begin only after/);
+  assert.match(handoff, /explicit founding-steward acceptance of Sprint 8/);
   assert.match(handoff, /pre-Sprint 9 alignment review/);
   assert.doesNotMatch(handoff, /Sprint 9 is active/);
 });
@@ -90,7 +91,7 @@ test("keeps merge, deployment, signup, Phase 0, and release as separate gates", 
     "issue #60 remains open",
     "issue #63 remains open",
     "institutional Phase 0",
-    "No production or specialist holdpoint",
+    "no production or independent specialist holdpoint",
     "independent accessibility",
     "field performance",
   ]) {
