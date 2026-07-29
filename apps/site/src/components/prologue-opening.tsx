@@ -15,18 +15,19 @@ import {
 } from "@/lib/prologue-opening-state";
 import styles from "./prologue-opening.module.css";
 
-const announcements: Readonly<Record<OpeningTransition, string>> = Object.freeze({
-  "begin-opening": "The opening is complete. Lantern Shore is ready.",
-  "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
-  "replay-arrival": "Returned to the arrival scene.",
-  "continue-to-guide": "Guide choice is ready.",
-  "choose-aster": "Deterministic Aster presentation selected.",
-  "choose-manual": "Direct manual presentation selected.",
-  "return-to-lantern": "Returned to Lantern Shore.",
-  "reconsider-guide": "Returned to the guide choice.",
-  "switch-to-aster": "Switched to deterministic Aster presentation.",
-  "switch-to-manual": "Switched to the direct manual presentation.",
-});
+const announcements: Readonly<Record<OpeningTransition, string>> =
+  Object.freeze({
+    "begin-opening": "The opening is complete. Lantern Shore is ready.",
+    "skip-opening": "Optional narration skipped. Lantern Shore is ready.",
+    "replay-arrival": "Returned to the arrival scene.",
+    "continue-to-guide": "Guide choice is ready.",
+    "choose-aster": "Deterministic Aster presentation selected.",
+    "choose-manual": "Direct manual presentation selected.",
+    "return-to-lantern": "Returned to Lantern Shore.",
+    "reconsider-guide": "Returned to the guide choice.",
+    "switch-to-aster": "Switched to deterministic Aster presentation.",
+    "switch-to-manual": "Switched to the direct manual presentation.",
+  });
 
 function GuideFacts() {
   return (
@@ -316,7 +317,10 @@ export function PrologueOpening() {
               presentation paths.
             </p>
 
-            <div className={styles.actions} aria-label="Guide presentation choices">
+            <div
+              className={styles.actions}
+              aria-label="Guide presentation choices"
+            >
               <button
                 className="button button-primary"
                 type="button"

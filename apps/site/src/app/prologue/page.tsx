@@ -23,14 +23,14 @@ export default function ProloguePage() {
         <h1>A first step through Ogygia, using synthetic information only.</h1>
         <p className="summary">
           This branch-only experience demonstrates arrival, Lantern Shore, and
-          equivalent deterministic Aster and manual guide paths without an account,
-          health-data intake, microphone, model provider, analytics, or durable
-          state. Refreshing or leaving starts the demonstration again.
+          equivalent deterministic Aster and manual guide paths without an
+          account, health-data intake, microphone, model provider, analytics, or
+          durable state. Refreshing or leaving starts the demonstration again.
         </p>
         <p className="source-note">
-          Workstreams 9.1 and 9.2 are validated; workstream 9.3 is under review. The
-          route is noindex, absent from public navigation and the sitemap, and is not
-          deployed through this pull request.
+          Workstreams 9.1 and 9.2 are validated; workstream 9.3 is under review.
+          The route is noindex, absent from public navigation and the sitemap,
+          and is not deployed through this pull request.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a
@@ -49,15 +49,22 @@ export default function ProloguePage() {
       </header>
 
       <noscript>
-        <section className="reading-panel" aria-labelledby="prologue-noscript-title">
-          <h2 id="prologue-noscript-title">The interactive opening needs JavaScript.</h2>
+        <section
+          className="reading-panel"
+          aria-labelledby="prologue-noscript-title"
+        >
+          <h2 id="prologue-noscript-title">
+            The interactive opening needs JavaScript.
+          </h2>
           <p>
             No information has been collected or stored. You can still read the
             direct explanation of the planned experience or return to the public
             site.
           </p>
           <p>
-            <Link href="/how-it-works">Read how the planned experience works</Link>
+            <Link href="/how-it-works">
+              Read how the planned experience works
+            </Link>
             {" · "}
             <Link href="/">Leave the prologue</Link>
           </p>
