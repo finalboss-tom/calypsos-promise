@@ -16,6 +16,12 @@ export const routeContracts = Object.freeze([
   },
   { path: "/support", title: "Support and Contribute", sitemap: true },
   { path: "/funding", title: "Funding Transparency", sitemap: true },
+  {
+    path: "/prologue",
+    title: "Public Synthetic Prologue",
+    sitemap: false,
+    noindex: true,
+  },
   { path: "/privacy", title: "Newsletter privacy", sitemap: true },
   {
     path: "/joined",
