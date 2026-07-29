@@ -1,0 +1,150 @@
+.trust-grid,
+.challenge-grid,
+.forge-tool-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.trust-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.challenge-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trust-card,
+.challenge-card,
+.forge-group,
+.forge-tool-card,
+.receipt-list li {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-medium);
+  background: rgb(11 36 54 / 0.56);
+}
+
+.trust-card,
+.challenge-card,
+.forge-group {
+  padding: var(--space-5);
+}
+
+.trust-card p,
+.challenge-card p,
+.forge-group > p,
+.forge-tool-card p,
+.receipt-list li,
+.ordinary-paths a {
+  color: var(--color-sand-200);
+}
+
+.trust-card > a,
+.challenge-card > a,
+.ordinary-paths a {
+  color: var(--color-gold-300);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
+}
+
+.trust-boundary,
+.forge-boundary {
+  border-top: 1px solid rgb(234 215 181 / 0.14);
+  padding-top: var(--space-4);
+  font-weight: 700;
+}
+
+.challenge-panel {
+  border-block: 1px solid rgb(234 215 181 / 0.18);
+  padding-block: var(--space-7);
+}
+
+.forge-group-list {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.forge-group h3 {
+  max-width: 34ch;
+}
+
+.forge-tool-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--space-5);
+}
+
+.forge-tool-card {
+  min-width: 0;
+  padding: var(--space-4);
+}
+
+.forge-tool-card code {
+  overflow-wrap: anywhere;
+  color: var(--color-sea-300);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.receipt-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.receipt-list li {
+  padding: var(--space-4);
+}
+
+.ordinary-paths {
+  display: grid;
+  gap: var(--space-3);
+  min-width: min(100%, 18rem);
+}
+
+@media (max-width: 64rem) {
+  .challenge-grid,
+  .forge-tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .challenge-grid,
+  .forge-tool-grid,
+  .receipt-list,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .trust-card,
+  .challenge-card,
+  .forge-group,
+  .forge-tool-card {
+    background-image: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .challenge-card,
+  .forge-group,
+  .forge-tool-card,
+  .receipt-list li,
+  .trust-card {
+    border-width: 0.15rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .challenge-card,
+  .forge-group,
+  .forge-tool-card,
+  .receipt-list li,
+  .trust-card {
+    forced-color-adjust: auto;
+  }
+}

@@ -1,0 +1,295 @@
+.guide-page {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+}
+
+.guide-page-header {
+  max-width: var(--content-reading);
+  padding-block: var(--space-5) var(--space-7);
+}
+
+.guide-page-header h1 {
+  max-width: 16ch;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+}
+
+.guide-page p,
+.guide-page li,
+.guide-page blockquote,
+.guide-page span {
+  font-family: system-ui, sans-serif;
+}
+
+.page-status-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-5);
+  color: var(--color-sand-200);
+  font-size: 0.82rem;
+}
+
+.guide-quote {
+  margin: var(--space-5) 0;
+  border-left: 0.2rem solid var(--color-gold-300);
+  padding-left: var(--space-4);
+  color: var(--color-gold-300);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.75rem);
+}
+
+.guide-section {
+  margin-top: var(--space-8);
+}
+
+.law-grid,
+.journey-grid,
+.layer-grid,
+.fallback-grid {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.law-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.law-card,
+.journey-card,
+.layer-card,
+.role-card,
+.boundary-panel,
+.guardrail-panel,
+.return-panel,
+.standards-panel,
+.current-limits,
+.guide-callout {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-medium);
+  background: rgb(11 36 54 / 0.56);
+}
+
+.law-card {
+  padding: var(--space-6);
+}
+
+.law-number,
+.journey-number {
+  color: var(--color-sea-300);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.law-card blockquote {
+  margin: var(--space-4) 0;
+  border-left: 0.15rem solid var(--color-gold-300);
+  padding-left: var(--space-4);
+  color: var(--color-gold-300);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+}
+
+.law-card p,
+.journey-card p,
+.layer-card p,
+.role-card p,
+.boundary-panel li,
+.guardrail-list li,
+.return-panel p,
+.return-panel li,
+.standards-panel p,
+.current-limits li,
+.guide-callout p {
+  color: var(--color-sand-200);
+}
+
+.guide-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-7);
+  margin-top: var(--space-7);
+  padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+.journey-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.journey-card,
+.layer-card,
+.role-card {
+  padding: var(--space-5);
+}
+
+.authority-split {
+  border-block: 1px solid rgb(234 215 181 / 0.18);
+  padding-block: var(--space-7);
+}
+
+.boundary-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.boundary-panel,
+.guardrail-panel,
+.return-panel,
+.standards-panel,
+.current-limits {
+  padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+.boundary-panel ul,
+.current-limits ul,
+.guardrail-list {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
+.inline-list,
+.fallback-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.inline-list li,
+.fallback-grid li {
+  border: 1px solid rgb(135 200 213 / 0.3);
+  border-radius: 999px;
+  background: rgb(4 17 29 / 0.55);
+  padding: 0.45rem 0.75rem;
+}
+
+.guide-principle-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.standards-panel {
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgb(52 131 151 / 0.18),
+      transparent 28rem
+    ),
+    rgb(4 17 29 / 0.72);
+}
+
+.layer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.current-limits {
+  max-width: var(--content-reading);
+  margin-inline: auto;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.role-boundary {
+  border-top: 1px solid rgb(234 215 181 / 0.14);
+  padding-top: var(--space-4);
+  font-weight: 700;
+}
+
+.guardrail-list {
+  columns: 2;
+  column-gap: var(--space-7);
+}
+
+.guardrail-list li {
+  break-inside: avoid;
+  margin-bottom: var(--space-4);
+}
+
+.guide-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+  border-top: 1px solid rgb(234 215 181 / 0.18);
+  padding-top: var(--space-6);
+  color: var(--color-gold-300);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  text-underline-offset: 0.25rem;
+}
+
+@media (max-width: 64rem) {
+  .journey-grid,
+  .layer-grid,
+  .role-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-callout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 42rem) {
+  .boundary-columns,
+  .guide-principle-grid,
+  .journey-grid,
+  .law-grid,
+  .layer-grid,
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guardrail-list {
+    columns: 1;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .standards-panel {
+    background-image: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .boundary-panel,
+  .current-limits,
+  .guardrail-panel,
+  .guide-callout,
+  .journey-card,
+  .law-card,
+  .layer-card,
+  .return-panel,
+  .role-card,
+  .standards-panel {
+    border-width: 0.15rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .boundary-panel,
+  .current-limits,
+  .guardrail-panel,
+  .guide-callout,
+  .inline-list li,
+  .journey-card,
+  .law-card,
+  .layer-card,
+  .return-panel,
+  .role-card,
+  .standards-panel {
+    forced-color-adjust: auto;
+  }
+}
