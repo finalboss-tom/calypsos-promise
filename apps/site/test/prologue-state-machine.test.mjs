@@ -55,19 +55,17 @@ function reachFirstLantern(options) {
   return state;
 }
 
+function reachDeparture(options) {
+  return move(reachFirstLantern(options), "continue-to-departure");
+}
+
 test("declares an exhaustive scene table with known destinations", () => {
   assert.deepEqual(Object.keys(openingTransitionTable), [...openingScenes]);
 
   for (const [scene, transitions] of Object.entries(openingTransitionTable)) {
     for (const [transition, destination] of Object.entries(transitions)) {
-      assert.ok(
-        openingTransitions.includes(transition),
-        `${transition} is declared`,
-      );
-      assert.ok(
-        openingScenes.includes(destination),
-        `${scene} reaches ${destination}`,
-      );
+      assert.ok(openingTransitions.includes(transition), `${transition} is declared`);
+      assert.ok(openingScenes.includes(destination), `${scene} reaches ${destination}`);
     }
   }
 });
@@ -78,6 +76,8 @@ test("invalid or premature actions fail closed without allocating new state", ()
     "view-synthetic-chronicle",
     "view-synthetic-receipt",
     "complete-first-lantern",
+    "continue-to-departure",
+    "complete-without-account",
     "discard-projection",
   ]) {
     assert.strictEqual(
@@ -101,7 +101,7 @@ test("invalid or premature actions fail closed without allocating new state", ()
   );
 });
 
-test("manual text path completes only after explicit review and both inspections", () => {
+test("manual text path completes First Lantern only after explicit review and inspection", () => {
   const state = reachFirstLantern({
     presentation: "manual",
     fixture: "text",
@@ -134,11 +134,9 @@ test("Aster voice path uses the same state and completion authority", () => {
   assert.equal(state.firstLanternCompleted, true);
 });
 
-test("confirmed-state discard is functional and clears all temporary capture evidence", () => {
+test("confirmed-state discard is functional and clears temporary capture evidence", () => {
   const confirmed = reachConfirmedEntry({ correction: "prepared" });
-  assert.ok(
-    getAllowedOpeningTransitions(confirmed).includes("discard-projection"),
-  );
+  assert.ok(getAllowedOpeningTransitions(confirmed).includes("discard-projection"));
 
   const discarded = move(confirmed, "discard-projection");
   assert.equal(discarded.scene, "capture-choice");
@@ -168,7 +166,7 @@ test("refusal and reconsideration are non-punitive and remove hidden state", () 
   assert.equal(state.fixtureId, null);
 });
 
-test("reversing First Lantern removes completion until the explicit rule is run again", () => {
+test("reversing First Lantern removes completion until the rule is run again", () => {
   let state = reachFirstLantern();
   state = move(state, "return-to-receipt");
   assert.equal(state.scene, "synthetic-receipt");
@@ -182,21 +180,91 @@ test("reversing First Lantern removes completion until the explicit rule is run 
   assert.equal(state.firstLanternCompleted, true);
 });
 
-test("every scene exposes at least one currently valid transition", () => {
-  const representativeStates = new Map([
-    ["arrival", initialOpeningState],
-    ["lantern-shore", move(initialOpeningState, "begin-opening")],
-  ]);
+test("departure completes without an account and future-account inspection changes no evidence", () => {
+  let state = reachDeparture({ presentation: "aster", fixture: "voice" });
+  const evidence = {
+    presentationPath: state.presentationPath,
+    fixtureId: state.fixtureId,
+    correctionId: state.correctionId,
+    confirmed: state.confirmed,
+    chronicleInspected: state.chronicleInspected,
+    receiptInspected: state.receiptInspected,
+    firstLanternCompleted: state.firstLanternCompleted,
+  };
 
-  let state = representativeStates.get("lantern-shore");
+  state = move(state, "view-future-account-boundary");
+  assert.equal(state.scene, "future-account");
+  assert.deepEqual(
+    {
+      presentationPath: state.presentationPath,
+      fixtureId: state.fixtureId,
+      correctionId: state.correctionId,
+      confirmed: state.confirmed,
+      chronicleInspected: state.chronicleInspected,
+      receiptInspected: state.receiptInspected,
+      firstLanternCompleted: state.firstLanternCompleted,
+    },
+    evidence,
+  );
+
+  state = move(state, "return-to-departure");
+  state = move(state, "complete-without-account");
+  assert.equal(state.scene, "complete");
+  assert.equal(state.firstLanternCompleted, true);
+  assert.equal(state.presentationPath, "aster");
+});
+
+test("restart from every non-arrival scene returns the exact frozen initial state", () => {
+  const states = [];
+  let state = move(initialOpeningState, "begin-opening");
+  states.push(state);
+  state = move(state, "continue-to-guide");
+  states.push(state);
+  const aster = move(state, "choose-aster");
+  states.push(aster);
+  state = move(state, "choose-manual");
+  states.push(state);
+  state = move(state, "continue-to-capture");
+  states.push(state);
+  state = move(state, "choose-synthetic-text");
+  states.push(state);
+  state = move(state, "review-draft");
+  states.push(state);
+  state = move(state, "accept-as-written");
+  state = move(state, "confirm-entry");
+  states.push(state);
+  state = move(state, "view-synthetic-chronicle");
+  states.push(state);
+  state = move(state, "view-synthetic-receipt");
+  states.push(state);
+  state = move(state, "complete-first-lantern");
+  states.push(state);
+  state = move(state, "continue-to-departure");
+  states.push(state);
+  state = move(state, "view-future-account-boundary");
+  states.push(state);
+  state = move(state, "complete-without-account");
+  states.push(state);
+
+  for (const restartable of states) {
+    assert.strictEqual(
+      transitionOpening(restartable, "restart-prologue"),
+      initialOpeningState,
+      `restart clears ${restartable.scene}`,
+    );
+  }
+});
+
+test("every scene exposes at least one currently valid transition", () => {
+  const representativeStates = new Map([["arrival", initialOpeningState]]);
+
+  let state = move(initialOpeningState, "begin-opening");
+  representativeStates.set("lantern-shore", state);
   state = move(state, "continue-to-guide");
   representativeStates.set("guide-choice", state);
+  representativeStates.set("aster-introduction", move(state, "choose-aster"));
   state = move(state, "choose-manual");
   representativeStates.set("manual-introduction", state);
-  representativeStates.set(
-    "aster-introduction",
-    move(representativeStates.get("guide-choice"), "choose-aster"),
-  );
   state = move(state, "continue-to-capture");
   representativeStates.set("capture-choice", state);
   state = move(state, "choose-synthetic-text");
@@ -212,6 +280,13 @@ test("every scene exposes at least one currently valid transition", () => {
   representativeStates.set("synthetic-receipt", state);
   state = move(state, "complete-first-lantern");
   representativeStates.set("first-lantern", state);
+  state = move(state, "continue-to-departure");
+  representativeStates.set("exit-choice", state);
+  representativeStates.set(
+    "future-account",
+    move(state, "view-future-account-boundary"),
+  );
+  representativeStates.set("complete", move(state, "complete-without-account"));
 
   for (const scene of openingScenes) {
     const representative = representativeStates.get(scene);

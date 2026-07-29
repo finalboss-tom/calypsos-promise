@@ -5,7 +5,7 @@ import { PrologueOpening } from "@/components/prologue-opening";
 export const metadata: Metadata = {
   title: "Public Synthetic Prologue",
   description:
-    "A branch-only, no-account, public synthetic introduction to Ogygia, deterministic draft review, temporary Chronicle and receipt-shaped projections, and explicit First Lantern evidence.",
+    "A branch-only, no-account, public synthetic introduction to Ogygia with deterministic review, temporary contract explanations, First Lantern evidence, and non-punitive departure choices.",
   alternates: {
     canonical: "/prologue",
   },
@@ -24,13 +24,14 @@ export default function ProloguePage() {
         <p className="summary">
           This branch-only experience demonstrates arrival, Lantern Shore,
           equivalent deterministic Aster and manual guides, pre-authored
-          synthetic draft review, temporary Chronicle and receipt-shaped views,
-          and inspectable First Lantern evidence without an account, personal
-          input, microphone, model provider, analytics, or durable state.
-          Refreshing or leaving starts again.
+          synthetic draft review, temporary Chronicle and receipt-shaped
+          explanations, inspectable First Lantern evidence, and departure
+          without account conversion. It accepts no personal input, microphone,
+          model provider, analytics, or durable state. Refreshing, restarting,
+          or leaving begins again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.5 are validated; workstream 9.6 is under review. The
+          Workstreams 9.1–9.6 are validated; workstream 9.7 is under review. The
           route is noindex, absent from public navigation and the sitemap, and
           is not deployed through this pull request.
         </p>

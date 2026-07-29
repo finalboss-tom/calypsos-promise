@@ -11,6 +11,9 @@ export const openingScenes = [
   "synthetic-chronicle",
   "synthetic-receipt",
   "first-lantern",
+  "exit-choice",
+  "future-account",
+  "complete",
 ] as const;
 
 export type OpeningScene = (typeof openingScenes)[number];
@@ -49,6 +52,11 @@ export const openingTransitions = [
   "discard-projection",
   "complete-first-lantern",
   "return-to-receipt",
+  "continue-to-departure",
+  "view-future-account-boundary",
+  "return-to-departure",
+  "complete-without-account",
+  "restart-prologue",
 ] as const;
 
 export type OpeningTransition = (typeof openingTransitions)[number];
@@ -93,35 +101,41 @@ export const openingTransitionTable: Readonly<
   "lantern-shore": Object.freeze({
     "replay-arrival": "arrival",
     "continue-to-guide": "guide-choice",
+    "restart-prologue": "arrival",
   }),
   "guide-choice": Object.freeze({
     "choose-aster": "aster-introduction",
     "choose-manual": "manual-introduction",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
   }),
   "aster-introduction": Object.freeze({
     "switch-to-manual": "manual-introduction",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
     "continue-to-capture": "capture-choice",
+    "restart-prologue": "arrival",
   }),
   "manual-introduction": Object.freeze({
     "switch-to-aster": "aster-introduction",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
     "continue-to-capture": "capture-choice",
+    "restart-prologue": "arrival",
   }),
   "capture-choice": Object.freeze({
     "choose-synthetic-text": "synthetic-draft",
     "choose-synthetic-voice": "synthetic-draft",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
   }),
   "synthetic-draft": Object.freeze({
     "review-draft": "review-and-correction",
     "refuse-draft": "capture-choice",
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
+    "restart-prologue": "arrival",
   }),
   "review-and-correction": Object.freeze({
     "accept-as-written": "review-and-correction",
@@ -130,6 +144,7 @@ export const openingTransitionTable: Readonly<
     "refuse-draft": "capture-choice",
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
+    "restart-prologue": "arrival",
   }),
   "confirmed-entry": Object.freeze({
     "view-synthetic-chronicle": "synthetic-chronicle",
@@ -138,6 +153,7 @@ export const openingTransitionTable: Readonly<
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
   }),
   "synthetic-chronicle": Object.freeze({
     "view-synthetic-receipt": "synthetic-receipt",
@@ -146,6 +162,7 @@ export const openingTransitionTable: Readonly<
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
   }),
   "synthetic-receipt": Object.freeze({
     "complete-first-lantern": "first-lantern",
@@ -155,14 +172,30 @@ export const openingTransitionTable: Readonly<
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
   }),
   "first-lantern": Object.freeze({
+    "continue-to-departure": "exit-choice",
     "return-to-receipt": "synthetic-receipt",
     "review-confirmed-entry": "review-and-correction",
     "discard-projection": "capture-choice",
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
+    "restart-prologue": "arrival",
+  }),
+  "exit-choice": Object.freeze({
+    "view-future-account-boundary": "future-account",
+    "complete-without-account": "complete",
+    "restart-prologue": "arrival",
+  }),
+  "future-account": Object.freeze({
+    "return-to-departure": "exit-choice",
+    "complete-without-account": "complete",
+    "restart-prologue": "arrival",
+  }),
+  complete: Object.freeze({
+    "restart-prologue": "arrival",
   }),
 });
 
@@ -182,8 +215,9 @@ const PRESENTATION_CLEARING_TRANSITIONS = new Set<OpeningTransition>([
 ]);
 
 function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
-  if (transition === "continue-to-capture")
+  if (transition === "continue-to-capture") {
     return Boolean(state.presentationPath);
+  }
 
   if (
     transition === "review-draft" ||
@@ -202,31 +236,38 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   if (transition === "view-synthetic-chronicle") {
     return Boolean(
       state.confirmed &&
-      state.fixtureId &&
-      state.correctionId &&
-      state.draftReviewed,
+        state.fixtureId &&
+        state.correctionId &&
+        state.draftReviewed,
     );
   }
 
   if (transition === "view-synthetic-receipt") {
     return Boolean(
       state.confirmed &&
-      state.fixtureId &&
-      state.correctionId &&
-      state.chronicleInspected,
+        state.fixtureId &&
+        state.correctionId &&
+        state.chronicleInspected,
     );
   }
 
   if (transition === "complete-first-lantern") {
     return Boolean(
       state.confirmed &&
-      state.fixtureId &&
-      state.correctionId &&
-      state.chronicleInspected &&
-      state.receiptInspected &&
-      state.lanternShoreReached &&
-      state.draftReviewed,
+        state.fixtureId &&
+        state.correctionId &&
+        state.chronicleInspected &&
+        state.receiptInspected &&
+        state.lanternShoreReached &&
+        state.draftReviewed,
     );
+  }
+
+  if (
+    transition === "continue-to-departure" ||
+    transition === "complete-without-account"
+  ) {
+    return state.firstLanternCompleted;
   }
 
   return true;
@@ -358,6 +399,7 @@ export function transitionOpening(
 ): OpeningState {
   const nextScene = openingTransitionTable[state.scene][transition];
   if (!nextScene || !transitionAllowed(state, transition)) return state;
+  if (transition === "restart-prologue") return initialOpeningState;
 
   const clearCapture = CAPTURE_CLEARING_TRANSITIONS.has(transition);
   const fixture = nextFixture(state, transition, clearCapture);

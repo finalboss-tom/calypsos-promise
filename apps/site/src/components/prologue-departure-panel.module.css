@@ -1,0 +1,145 @@
+.scene {
+  display: grid;
+  gap: 1.25rem;
+  width: min(100%, 64rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2.4rem);
+  border: 1px solid color-mix(in srgb, var(--color-sea-200) 52%, transparent);
+  border-radius: var(--radius-panel);
+  background:
+    radial-gradient(circle at 84% 18%, rgb(135 200 213 / 14%), transparent 28%),
+    linear-gradient(145deg, rgb(7 31 46 / 96%), rgb(4 17 29 / 99%));
+  box-shadow: var(--shadow-panel);
+}
+
+.lede,
+.boundaryNote {
+  max-width: 52rem;
+  margin: 0;
+  color: var(--color-sand-100);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.statusRow span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-live) 48%, transparent);
+  border-radius: 999px;
+  background: rgb(14 50 44 / 62%);
+  color: var(--color-live);
+  font-size: 0.82rem;
+  font-weight: 760;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.details > div {
+  min-width: 0;
+  padding: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--color-sand-100) 18%, transparent);
+  border-radius: var(--radius-card);
+  background: rgb(5 24 37 / 76%);
+}
+
+.details dt {
+  margin-bottom: 0.3rem;
+  color: var(--color-sea-100);
+  font-size: 0.78rem;
+  font-weight: 780;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--color-sand-50);
+  line-height: 1.55;
+}
+
+.boundaryNote {
+  padding: 1rem;
+  border-left: 0.25rem solid var(--color-gold-300);
+  background: rgb(23 43 52 / 66%);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.actions button:focus-visible,
+.actions a:focus-visible {
+  outline: 0.2rem solid var(--color-focus);
+  outline-offset: 0.2rem;
+}
+
+@media (max-width: 48rem) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions > * {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .scene {
+    background: var(--color-ink-950);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .scene,
+  .statusRow span,
+  .details > div {
+    border-width: 2px;
+  }
+
+  .boundaryNote {
+    border-left-width: 0.4rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .scene,
+  .statusRow span,
+  .details > div,
+  .boundaryNote {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+
+  .actions button:focus-visible,
+  .actions a:focus-visible {
+    outline-color: Highlight;
+  }
+}

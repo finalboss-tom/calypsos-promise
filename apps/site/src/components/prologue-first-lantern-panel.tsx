@@ -170,6 +170,13 @@ export function PrologueFirstLanternPanel({
         <button
           className="button button-primary"
           type="button"
+          onClick={() => move("continue-to-departure")}
+        >
+          Continue to departure choices
+        </button>
+        <button
+          className="button"
+          type="button"
           onClick={() => move("return-to-receipt")}
         >
           Review the receipt evidence again

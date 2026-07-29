@@ -1,28 +1,25 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Sprint 9 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
 - **Accepted numbered sprints:** 0–8
 - **Active numbered sprint:** Sprint 9 — Public synthetic prologue
+- **Sprint 9 completed workstreams:** 9.1–9.6
+- **Sprint 9 accepted aggregate candidate:** `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334
+- **Sprint 9 active workstream:** 9.7 — refusal, restart, discard, exit, and informational account boundary
+- **Sprint 9 unfinished workstreams:** 9.8 and 9.9
+- **Sprint 9.10:** blocked and not started
 - **Sprint 9 tracking:** issue #67 / draft PR #68 / branch `agent/sprint-9-public-synthetic-prologue`
-- **Sprint 9 entry gate:** issue #64 accepted and closed on July 29, 2026
-- **Sprint 9 completed and previously validated workstreams:** 9.1–9.5
-- **Sprint 9 active gate:** 9.6 remediation and exact-candidate validation after the pre-9.10 quality review
-- **Sprint 9 unfinished workstreams:** 9.7, 9.8, and 9.9
-- **Sprint 9.10:** blocked; it has not started
-- **Latest fully validated workstream candidate:** `e819c71f31041632998b5f468c492e8b1c810a44` for 9.5 — CI 1221 / DCO 1300
-- **Quality review:** the initial 9.6 head contained material state, test, cross-contract, canon, and status defects; the remediation is recorded in [`sprint-9-pre-9-10-quality-review.md`](sprint-9-pre-9-10-quality-review.md)
 - **Sprint 8 squash commit:** `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`
-- **Post-Sprint 8 reconciliation and newsletter squash commit:** `032a368bcd4beb999fee9a14fe4118aead0801a5` through PR #66
-- **Production website:** live on the canonical domains through Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`
+- **Post-Sprint 8 reconciliation and newsletter squash commit:** `032a368bcd4beb999fee9a14fe4118aead0801a5`
+- **Production website:** live through Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`
 - **Deployed source commit:** `1b25a2e64ff272927c65afa5e1f16aedc5e448d7`
-- **Release control:** Git-triggered Vercel deployment is disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`
-- **Newsletter:** deployed on every accepted public page under Path A; private provider-delivery verification and final gate acceptance remain open in issue #63
-- **Production health data:** none
-- **Accounts, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, payments, or consequential actions:** none
+- **Release control:** Git-triggered Vercel deployment remains disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`
+- **Newsletter:** deployed on every accepted live public page under Path A; private provider-delivery verification and final gate acceptance remain open in issue #63
+- **Production health data, accounts, private Chronicles, production Aster, providers, connectors, clinical workflows, research enrollment, payments, or consequential actions:** none
 - **Independent specialist review:** not established for the principal product or the website’s accessibility, security, privacy, legal, communications, clinical, interoperability, provider, financial, operational, or research boundaries
 - **Phase 0 exit review:** not completed
 
@@ -38,103 +35,99 @@ Every route, game mechanic, data flow, model, tool, provider, funding relationsh
 
 ## Current position
 
-Sprints 0–8 are accepted, merged, and represented by their accepted completion and handoff records. The public Next.js gateway and bounded newsletter remain live; Sprint 9 remains branch-only and cannot affect production while Git-triggered deployment is disabled.
+Sprints 0–8 are accepted and merged.
 
-Pre-Sprint 9 alignment issue #64 accepted `apps/site` ownership, `/prologue`, memory-only state, pre-authored public synthetic inputs, deterministic Aster with a complete manual fallback, no microphone or free-form health input, temporary Chronicle and receipt-shaped explanations, deterministic First Lantern evidence, non-punitive refusal and exit, and an informational-only future account boundary.
+Sprint 8 established and deployed the public Next.js gateway. PR #61 was squash merged as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`; issue #60 was closed; and the site was deployed to the canonical domains. PR #66 later reconciled production status and restored the bounded newsletter through squash commit `032a368bcd4beb999fee9a14fe4118aead0801a5`.
 
-Workstreams 9.1–9.5 established the contract, arrival and Lantern Shore, deterministic Aster/manual parity, synthetic fixture review and confirmation, and temporary Chronicle and receipt-shaped explanation. Their bounded direction remains accepted.
+The final newsletter release reached `READY` through deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`. Its source commit `1b25a2e64ff272927c65afa5e1f16aedc5e448d7` preserves the server-only webhook environment boundary. Automatic Git deployment was restored to disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`.
 
-A pre-9.10 review compared the actual package against the standards used by Sprints 7 and 8. It found that 9.7–9.9 were not implemented and that the initial 9.6 package contained material defects, including a visible no-op discard action, unreachable duplicate UI, source-string tests that did not execute the state machine, stale House of Keys provenance, a misleading opposite-state receipt fixture reference, an under-mapped Chronicle projection, incomplete First Lantern evidence and quest anatomy, hidden completion after reversal, non-semantic progress steps, unmeasured performance-budget increases, and no under-ten-minute completion evidence.
+Pre-Sprint 9 alignment issue #64 accepted `apps/site` ownership, one `/prologue` route, memory-only interaction state, pre-authored public synthetic inputs, deterministic Aster with a complete manual fallback, no microphone or free-form health input, temporary Chronicle and receipt-shaped explanations, deterministic First Lantern evidence, non-punitive refusal and exit, and an informational-only future account boundary.
 
-The draft branch now contains remediation for the implementation defects and executable state-machine tests. Workstream 9.6 remains under review until the exact remediated candidate passes every required check and the tracking records are reconciled. Workstreams 9.7, 9.8, and 9.9 must then be implemented and validated before 9.10 may begin.
+Workstreams 9.1–9.5 established the contract, arrival and Lantern Shore, Aster/manual parity, synthetic review and confirmation, and temporary Chronicle and receipt-shaped explanations. A pre-9.10 audit then found and corrected a non-functional discard control, unreachable duplicate UI, weak source-only state confidence, stale and misleading cross-contract references, incomplete First Lantern evidence and quest anatomy, hidden completion after reversal, and non-semantic progress steps.
+
+The exact remediated 9.6 candidate `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` passed CI 1253 and DCO 1334. First Lantern now depends on eight inspectable synthetic conditions and creates no account, Chronicle record, permission, reward, rank, canonical unlock, Fourteen Lantern progression, provider status, health outcome, or durable state.
+
+Workstream 9.7 is active. It adds explicit restart and departure states, visible destruction behavior, completion without conversion, and an informational-only future account explanation. It may not create an account, request email, retain state, call the newsletter, authenticate a visitor, or pressure conversion.
+
+Workstream 9.10 remains blocked until 9.7–9.9 are implemented, validated, and reconciled at the same evidence standard used by Sprints 7 and 8.
 
 ## Live public website surface
 
-`apps/site` remains the single public website owner and currently provides:
+`apps/site` is the single public website owner and currently provides:
 
 - the cinematic server-rendered homepage;
-- `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, and `/aster` source-backed product explanations;
-- `/trust` and `/forge` trust and bounded-tool explanations;
-- `/roadmap`, `/support`, and `/funding` public status, contribution, and canonical funding-transparency views;
-- `/privacy`, `/joined`, and `/api/join` as the bounded newsletter surface under Phase 0 gate #63;
-- exactly one shared newsletter opt-in on each accepted live public route;
-- shared direct navigation and an optional narrative path reaching the same essential information;
+- source-backed Promise, Laws, How It Works, Consumer First, Aster, Trust, Forge, roadmap, support, funding, and newsletter routes;
+- exactly one shared newsletter opt-in on each accepted live public page;
+- direct navigation and an optional narrative path to the same essential information;
 - skip links, semantic landmarks, visible focus, keyboard foundations, reduced motion, reduced data, forced colors, contrast, responsive behavior, and image-failure behavior; and
-- canonical metadata, sitemap, robots, not-found, error, security-header, nonce-CSP, caching, route, and transfer-budget controls.
+- canonical metadata, sitemap, robots, error, security-header, nonce-CSP, caching, route, and transfer-budget controls.
 
-The website is live evidence of the public gateway. It is not evidence of a private health product, independent accessibility certification, production-health-data security, clinical safety, provider interoperability, or institutional readiness.
+The website is live evidence of the public gateway. It is not evidence of a private health product, independent certification, production-health-data security, clinical safety, provider interoperability, or institutional readiness.
 
-The Sprint 9 `/prologue` route is not a live public capability. It exists only on draft PR #68, remains noindex, unlinked, outside the sitemap, unmerged, undeployed, and subject to the remaining Sprint 9 workstreams and explicit release acceptance.
+The Sprint 9 `/prologue` route remains branch-only, noindex, unlinked, outside the sitemap, unmerged, and undeployed. Git-triggered deployment remains disabled.
 
 ## Newsletter disposition — Phase 0 gate #63
 
 The founding steward selected **Path A — preserve and activate** for the period leading to Phase 0 completion.
 
-The deployed implementation reuses the existing server-only `SIGNUP_WEBHOOK_URL` and optional `SIGNUP_WEBHOOK_TOKEN` connection to the private Google Apps Script webhook and private Google Sheet. It collects email address, affirmative consent, privacy-policy version, narrow purpose, source, and submission time only.
+The newsletter reuses the existing server-only Google Apps Script and private Google Sheet connection. It accepts email address, affirmative consent, privacy-policy version, narrow purpose, source, and submission time only.
 
 The newsletter cannot become an account, Chronicle identity, research consent, health intake, provider lead system, donation flow, advertising profile, governance electorate, gameplay requirement, or Sprint 9 state store. Issue #63 remains open for private delivery verification, rollback evidence, and final founding-steward acceptance.
 
-## Sprint 9 — Public synthetic prologue
+## Sprint 9 boundary and workstream truth
 
 Sprint 9’s goal is:
 
 > Let anyone understand the product through play before creating an account.
 
-The accepted permanent boundary remains:
+Permanent constraints:
 
-- `apps/site` owns the one `/prologue` route;
-- interactive state is React memory only and is destroyed by refresh, navigation, tab close, restart, discard, or exit;
-- every identity, observation, Chronicle projection, receipt-shaped explanation, timestamp, source, and fixture is public and explicitly synthetic;
-- synthetic text and voice are pre-authored choices, not arbitrary input or microphone capture;
-- Aster is deterministic and optional, with a materially equivalent manual path;
-- the Chronicle and receipt views are temporary explanations and cannot create truth, identity, permission, consent, audit, or production access;
-- First Lantern completion depends only on explicit inspectable synthetic evidence;
-- refusal, skip, restart, discard, leave, and completion without account creation remain non-punitive and functional;
-- future account conversion is informational only and cannot retain state or request email; and
-- no analytics, model provider, external service, secret, storage, or new server endpoint is authorized.
+- one public `/prologue` route inside `apps/site`;
+- public and explicitly synthetic information only;
+- React-memory state destroyed by refresh, navigation, tab close, restart, discard, or exit;
+- no arbitrary text, microphone, file, camera, location, wearable, contact, provider, model, analytics, payment, or private-data intake;
+- deterministic Aster with a materially equivalent manual path;
+- temporary Chronicle and receipt-shaped explanations with no truth or permission authority;
+- deterministic, reversible, non-authoritative First Lantern completion;
+- no conversion requirement or durable progression; and
+- merge, public linking, and deployment remain separate founding-steward decisions.
 
-### Workstream truth
-
-| Workstream | Current state                                                                                                                                  |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 9.1        | completed and previously validated; validation contract strengthened by the quality review                                                     |
-| 9.2        | completed and previously validated; branch-only                                                                                                |
-| 9.3        | completed and previously validated; Aster/manual authority parity retained                                                                     |
-| 9.4        | completed and previously validated; unreachable duplicate UI removed during review                                                             |
-| 9.5        | completed and previously validated; Chronicle/receipt cross-contract mapping corrected during review and awaiting exact-candidate revalidation |
-| 9.6        | implemented, remediated, and under exact-candidate validation                                                                                  |
-| 9.7        | not implemented as a complete workstream                                                                                                       |
-| 9.8        | not implemented as a complete playable validation and measurement record                                                                       |
-| 9.9        | not implemented                                                                                                                                |
-| 9.10       | blocked and not started                                                                                                                        |
-
-The implementation contract, review findings, remaining evidence requirements, release separation, rollback model, and inherited holdpoints are recorded in [Sprint 9 Execution Plan](sprint-9-execution-plan.md), [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md), and [Sprint 9 Pre-9.10 Quality and Coherence Review](sprint-9-pre-9-10-quality-review.md).
-
-Sprint 9 does not authorize the Sprint 10 universal game shell, real accounts, private Chronicles, production Aster, real voice capture, providers, connectors, clinical workflows, research enrollment, payments, donations, analytics, or production health-data operation.
+| Workstream | Current state                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| 9.1        | completed and validated; validation strengthened by executable-state requirements                                 |
+| 9.2        | completed and validated; branch-only arrival and Lantern Shore                                                    |
+| 9.3        | completed and validated; Aster/manual parity retained                                                             |
+| 9.4        | completed and validated; synthetic review, correction, refusal, and confirmation                                 |
+| 9.5        | completed and validated; Chronicle/receipt mappings corrected and revalidated in the 9.6 aggregate               |
+| 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                    |
+| 9.7        | active — restart, departure, completion without conversion, and future-account information                       |
+| 9.8        | not implemented as a complete playable accessibility, security, duration, interaction, and measurement package   |
+| 9.9        | not implemented — stable sources, release, hosted evidence, rollback, and public-status reconciliation remain open |
+| 9.10       | blocked and not started                                                                                            |
 
 ## Permanent authority boundaries
 
 ### Living Chronicle
 
-The Living Chronicle owns longitudinal records, values, temporal assertions, source provenance, correction, conflict, supersession, source artifacts, export, and deletion contracts. A Sprint 9 synthetic projection maps selected vocabulary for explanation only and is not a Chronicle record or durable truth.
+The Living Chronicle owns longitudinal record truth, values, time, provenance, correction, conflict, supersession, export, and deletion. Sprint 9 maps selected vocabulary for explanation only and creates no Chronicle record.
 
 ### House of Keys
 
-The House of Keys owns purpose-specific permission truth. The Sprint 9 receipt-shaped explanation uses selected field meanings only; it is not an `AccessReceipt`, policy decision, grant, consent record, audit event, recipient authority, or data release.
+The House of Keys owns purpose-specific permission truth. Sprint 9’s receipt-shaped explanation is not an `AccessReceipt`, grant, policy decision, consent record, audit event, recipient authority, or data release.
 
 ### Aster
 
-Aster may draft, clarify, explain provenance and uncertainty, route, and prepare narrative presentation. It cannot write canonical records, create permission, confirm itself, invoke authoritative actions, complete quests, grant rewards, diagnose, or convert model or presentation output into truth. Sprint 9 uses deterministic scripted framing with a complete manual fallback and no model provider.
+Aster may draft and explain. It cannot write canonical records, create permission, confirm itself, complete quests, grant rewards, diagnose, or turn model or presentation output into authority. Sprint 9 uses deterministic local framing only.
 
 ### Public website and newsletter
 
-The website explains, navigates, invites contribution, displays status, renders accepted public transparency records, and may host the bounded public synthetic prologue only after acceptance. The newsletter remains a narrow contact list for public project updates and cannot become product or gameplay authority.
+The website may explain and host the bounded prologue after acceptance. The newsletter remains a separate contact list. Neither can create product, permission, gameplay, clinical, funding, legal, or governance authority.
 
 ## Remaining Phase 0 work
 
 Before Phase 0 can close, the project still requires:
 
-- private delivery verification and final acceptance of newsletter gate #63;
+- private newsletter delivery verification and final acceptance of issue #63;
 - completion and acceptance of Sprint 9;
 - key-person, succession, founder-reserved-power, and economic-dependency records;
 - historical governance-source recovery;
@@ -147,4 +140,4 @@ Before Phase 0 can close, the project still requires:
 
 ## Status rule
 
-A capability must remain labeled according to evidence. A passing test, accepted sprint, production deployment, subscriber delivery, preview, provider connection, public page, or playable synthetic interaction proves only what that environment and evidence actually exercise. It does not create independent accessibility, security, privacy, communications, clinical, legal, provider, financial, operational, research, identity, permission, or production-health-data approval.
+A passing test, accepted sprint, deployment, subscriber delivery, preview, provider connection, public page, or playable synthetic interaction proves only what that environment and evidence exercise. It does not create independent accessibility, security, privacy, communications, clinical, legal, provider, financial, operational, research, identity, permission, or production-health-data approval.

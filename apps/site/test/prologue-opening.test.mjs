@@ -26,7 +26,7 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstream 9\.6 is under review/i);
+  assert.match(page, /workstream 9\.7 is under review/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
@@ -43,7 +43,7 @@ test("renders a server-owned route with a no-JavaScript explanation", async () =
   assert.match(page, /Return to the public site/);
 });
 
-test("publishes an inspectable deterministic transition contract", async () => {
+test("publishes an inspectable deterministic transition contract through departure", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
   for (const phrase of [
@@ -58,13 +58,19 @@ test("publishes an inspectable deterministic transition contract", async () => {
     '"synthetic-chronicle"',
     '"synthetic-receipt"',
     '"first-lantern"',
+    '"exit-choice"',
+    '"future-account"',
+    '"complete"',
     '"discard-projection"',
+    '"complete-without-account"',
+    '"restart-prologue"',
     "lanternShoreReached",
     "draftReviewed",
     "chronicleInspected",
     "receiptInspected",
     "firstLanternCompleted",
     "if (!nextScene || !transitionAllowed(state, transition)) return state",
+    'if (transition === "restart-prologue") return initialOpeningState',
   ]) {
     assert.match(state, escaped(phrase));
   }
@@ -75,7 +81,7 @@ test("publishes an inspectable deterministic transition contract", async () => {
   );
 });
 
-test("keeps opening choices explicit, skippable, semantic, and non-punitive", async () => {
+test("keeps choices explicit, skippable, restartable, and non-punitive", async () => {
   const component = await read("../src/components/prologue-opening.tsx");
 
   for (const phrase of [
@@ -85,6 +91,7 @@ test("keeps opening choices explicit, skippable, semantic, and non-punitive", as
     "Replay the arrival",
     "Choose how to continue",
     "Leave the prologue",
+    "Restart the prologue",
     "Nothing you choose here is stored",
     "No personal or health information is requested or accepted",
     'role="status"',
@@ -92,8 +99,9 @@ test("keeps opening choices explicit, skippable, semantic, and non-punitive", as
     "sceneHeading.current?.focus()",
     "<ol className={styles.progress}",
     'aria-current={step.current ? "step" : undefined}',
-    "First Lantern",
+    'label: "Departure"',
     "PrologueFirstLanternPanel",
+    "PrologueDeparturePanel",
   ]) {
     assert.match(component, escaped(phrase));
   }
@@ -130,13 +138,14 @@ test("gives deterministic Aster and the manual route one shared rule set", async
   assert.equal((guidePanel.match(/prologueGuideFacts\.map/g) ?? []).length, 1);
 });
 
-test("introduces no arbitrary input, persistence, capture API, model, or network path", async () => {
+test("introduces no arbitrary input, persistence, capture API, account endpoint, model, or network path", async () => {
   const files = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
     read("../src/components/prologue-guide-panel.tsx"),
     read("../src/components/prologue-confirmed-projection-entry.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
     read("../src/components/prologue-first-lantern-panel.tsx"),
+    read("../src/components/prologue-departure-panel.tsx"),
     read("../src/app/prologue/page.tsx"),
     read("../src/lib/prologue-opening-state.ts"),
     read("../src/lib/prologue-guide-content.ts"),
@@ -161,6 +170,7 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
     /WebSocket/,
     /EventSource/,
     /\/api\/join/,
+    /NewsletterSignupForm/,
     /openai/i,
     /anthropic/i,
     /modelProvider/i,
@@ -175,6 +185,7 @@ test("provides responsive, reduced-motion, reduced-data, contrast, forced-color,
       read("../src/components/prologue-opening.module.css"),
       read("../src/components/prologue-chronicle-receipt-panel.module.css"),
       read("../src/components/prologue-first-lantern-panel.module.css"),
+      read("../src/components/prologue-departure-panel.module.css"),
     ])
   ).join("\n");
 
@@ -190,6 +201,7 @@ test("provides responsive, reduced-motion, reduced-data, contrast, forced-color,
     /\.guideFacts/,
     /\.projectionDetails/,
     /\.completionDetails/,
+    /\.details/,
   ]) {
     assert.match(css, pattern);
   }

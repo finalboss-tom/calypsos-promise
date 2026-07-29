@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { PrologueCapturePanel } from "@/components/prologue-capture-panel";
 import { PrologueChronicleReceiptPanel } from "@/components/prologue-chronicle-receipt-panel";
 import { PrologueConfirmedProjectionEntry } from "@/components/prologue-confirmed-projection-entry";
+import { PrologueDeparturePanel } from "@/components/prologue-departure-panel";
 import { PrologueFirstLanternPanel } from "@/components/prologue-first-lantern-panel";
 import { PrologueGuidePanel } from "@/components/prologue-guide-panel";
 import {
@@ -49,6 +50,14 @@ const announcements: Readonly<Record<OpeningTransition, string>> =
     "complete-first-lantern":
       "First Lantern completion evidence is satisfied in page memory only.",
     "return-to-receipt": "Returned to the receipt evidence explanation.",
+    "continue-to-departure": "Departure choices are ready.",
+    "view-future-account-boundary":
+      "The informational future account boundary is ready.",
+    "return-to-departure": "Returned to departure choices.",
+    "complete-without-account":
+      "The public synthetic prologue is complete without an account.",
+    "restart-prologue":
+      "The prologue restarted. All prior temporary state was discarded.",
   });
 
 export function PrologueOpening() {
@@ -87,6 +96,10 @@ export function PrologueOpening() {
     state.scene === "synthetic-chronicle" ||
     state.scene === "synthetic-receipt";
   const completionIsCurrent = state.scene === "first-lantern";
+  const departureIsCurrent =
+    state.scene === "exit-choice" ||
+    state.scene === "future-account" ||
+    state.scene === "complete";
   const progressSteps = [
     { id: "arrival", label: "Arrival", current: state.scene === "arrival" },
     {
@@ -110,6 +123,11 @@ export function PrologueOpening() {
       label: "First Lantern",
       current: completionIsCurrent,
     },
+    {
+      id: "departure",
+      label: "Departure",
+      current: departureIsCurrent,
+    },
   ] as const;
 
   return (
@@ -131,6 +149,18 @@ export function PrologueOpening() {
       <p className={styles.status} role="status" aria-live="polite">
         {announcement}
       </p>
+
+      {state.scene !== "arrival" && !departureIsCurrent && (
+        <div className={styles.actions} aria-label="Prologue utility controls">
+          <button
+            className="button"
+            type="button"
+            onClick={() => move("restart-prologue")}
+          >
+            Restart the prologue
+          </button>
+        </div>
+      )}
 
       {state.scene === "arrival" && (
         <article className={styles.scene} data-scene="arrival">
@@ -267,6 +297,11 @@ export function PrologueOpening() {
         headingRef={sceneHeading}
       />
       <PrologueFirstLanternPanel
+        state={state}
+        move={move}
+        headingRef={sceneHeading}
+      />
+      <PrologueDeparturePanel
         state={state}
         move={move}
         headingRef={sceneHeading}
