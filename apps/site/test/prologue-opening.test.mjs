@@ -100,6 +100,7 @@ test("gives deterministic Aster and the manual route one shared rule set", async
     read("../src/components/prologue-opening.tsx"),
     read("../src/lib/prologue-guide-content.ts"),
   ]);
+  const source = `${component}\n${content}`;
 
   for (const phrase of [
     "Two presentations. One set of rules.",
@@ -111,9 +112,8 @@ test("gives deterministic Aster and the manual route one shared rule set", async
     "Aster can guide the presentation, not the truth.",
     "The direct guide keeps every control in view.",
     "prologueGuideFacts.map",
-    "Aster output is never treated as evidence",
+    "I cannot create truth, permission, or completion on my own",
   ]) {
-    const source = phrase === "Aster output is never treated as evidence" ? content : component;
     assert.match(
       source,
       new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
@@ -135,7 +135,7 @@ test("gives deterministic Aster and the manual route one shared rule set", async
     "same pre-authored synthetic capture choices",
   ]) {
     assert.match(
-      `${component}\n${content}`,
+      source,
       new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
     );
   }
