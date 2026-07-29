@@ -92,7 +92,9 @@ test("defines deterministic state, confirmation, receipt, and completion rules",
 
   assert.match(source, /Invalid actions fail closed/i);
   assert.match(source, /requires an explicit visitor confirmation action/i);
-  assert.match(source, /cannot create identity, grant, permission, consent/i);
+  assert.match(source, /no real identity exists/i);
+  assert.match(source, /no real grant or recipient exists/i);
+  assert.match(source, /no legal consent or production permission is created/i);
   assert.match(source, /completion does not survive refresh or exit/i);
 });
 
