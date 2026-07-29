@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CapabilityStatusGrid } from "@/components/capability-status-grid";
 import { ConnectedLoops } from "@/components/connected-loops";
+import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { PromisePrinciples } from "@/components/promise-principles";
 import { StatusBadge } from "@/components/status-badge";
 import {
@@ -27,17 +28,17 @@ export default function HomePage() {
         <div className="hero-content">
           <p className="eyebrow">Welcome, seeker.</p>
           <div className="hero-status-line" aria-label="Current project state">
-            <StatusBadge status="experimental" />
-            <span>Public website foundation</span>
+            <StatusBadge status="live" />
+            <span>Public website</span>
             <StatusBadge status="live" />
             <span>Open-source repository</span>
           </div>
           <h1 id="hero-title">Your Odyssey Begins Here.</h1>
           <p className="promise-line">{playerPromise}</p>
           <p className="summary">
-            {missionSummary} The planned game turns brief health actions,
-            learning, reflection, and player-confirmed capture into quests on
-            Ogygia.
+            {missionSummary} The public gateway is live. The planned game turns
+            brief health actions, learning, reflection, and player-confirmed
+            capture into quests on Ogygia.
           </p>
           <div className="actions" aria-label="Primary actions">
             <Link className="button button-primary" href="/promise">
@@ -116,6 +117,23 @@ export default function HomePage() {
       </section>
 
       <CapabilityStatusGrid />
+
+      <section
+        className="homepage-section contribution-callout"
+        aria-labelledby="newsletter-title"
+      >
+        <div>
+          <p className="eyebrow">Join the Founding Expedition</p>
+          <h2 id="newsletter-title">Follow the build toward Phase 0 completion.</h2>
+          <p>
+            Receive occasional public project updates and clear opportunities to
+            inspect, play, review, or contribute. Joining the newsletter does not
+            create an account or enroll you in research, governance, fundraising,
+            health-data sharing, or the game.
+          </p>
+        </div>
+        <NewsletterSignupForm />
+      </section>
 
       <section
         className="homepage-section contribution-callout"
