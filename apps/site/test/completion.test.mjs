@@ -94,6 +94,9 @@ test("keeps merge, deployment, signup, Phase 0, and release as separate gates", 
     "independent accessibility",
     "field performance",
   ]) {
-    assert.match(source, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+    assert.match(
+      source,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
+    );
   }
-}
+});
