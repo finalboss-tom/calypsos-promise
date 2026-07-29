@@ -10,6 +10,7 @@ export const openingScenes = [
   "confirmed-entry",
   "synthetic-chronicle",
   "synthetic-receipt",
+  "first-lantern",
 ] as const;
 
 export type OpeningScene = (typeof openingScenes)[number];
@@ -45,7 +46,9 @@ export type OpeningTransition =
   | "view-synthetic-chronicle"
   | "view-synthetic-receipt"
   | "return-to-chronicle"
-  | "discard-projection";
+  | "discard-projection"
+  | "complete-first-lantern"
+  | "return-to-receipt";
 
 export type OpeningState = {
   readonly scene: OpeningScene;
@@ -55,6 +58,9 @@ export type OpeningState = {
   readonly fixtureId: FixtureId | null;
   readonly correctionId: CorrectionId | null;
   readonly confirmed: boolean;
+  readonly chronicleInspected: boolean;
+  readonly receiptInspected: boolean;
+  readonly firstLanternCompleted: boolean;
 };
 
 export const initialOpeningState: OpeningState = Object.freeze({
@@ -65,6 +71,9 @@ export const initialOpeningState: OpeningState = Object.freeze({
   fixtureId: null,
   correctionId: null,
   confirmed: false,
+  chronicleInspected: false,
+  receiptInspected: false,
+  firstLanternCompleted: false,
 });
 
 const transitionTable: Readonly<
@@ -131,7 +140,16 @@ const transitionTable: Readonly<
     "return-to-lantern": "lantern-shore",
   }),
   "synthetic-receipt": Object.freeze({
+    "complete-first-lantern": "first-lantern",
     "return-to-chronicle": "synthetic-chronicle",
+    "review-confirmed-entry": "review-and-correction",
+    "discard-projection": "capture-choice",
+    "change-synthetic-example": "capture-choice",
+    "reconsider-guide": "guide-choice",
+    "return-to-lantern": "lantern-shore",
+  }),
+  "first-lantern": Object.freeze({
+    "return-to-receipt": "synthetic-receipt",
     "review-confirmed-entry": "review-and-correction",
     "discard-projection": "capture-choice",
     "change-synthetic-example": "capture-choice",
@@ -218,6 +236,36 @@ function confirmedForState(
   return state.confirmed;
 }
 
+function chronicleInspectedForState(
+  state: OpeningState,
+  transition: OpeningTransition,
+  clearCapture: boolean,
+) {
+  if (clearCapture || transition === "review-confirmed-entry") return false;
+  if (transition === "view-synthetic-chronicle") return true;
+  return state.chronicleInspected;
+}
+
+function receiptInspectedForState(
+  state: OpeningState,
+  transition: OpeningTransition,
+  clearCapture: boolean,
+) {
+  if (clearCapture || transition === "review-confirmed-entry") return false;
+  if (transition === "view-synthetic-receipt") return true;
+  return state.receiptInspected;
+}
+
+function firstLanternCompletedForState(
+  state: OpeningState,
+  transition: OpeningTransition,
+  clearCapture: boolean,
+) {
+  if (clearCapture || transition === "review-confirmed-entry") return false;
+  if (transition === "complete-first-lantern") return true;
+  return state.firstLanternCompleted;
+}
+
 function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   if (transition === "continue-to-capture" && !state.presentationPath)
     return false;
@@ -231,9 +279,27 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   }
   if (transition === "confirm-entry" && !state.correctionId) return false;
   if (
-    (transition === "view-synthetic-chronicle" ||
-      transition === "view-synthetic-receipt") &&
+    transition === "view-synthetic-chronicle" &&
     (!state.confirmed || !state.fixtureId || !state.correctionId)
+  ) {
+    return false;
+  }
+  if (
+    transition === "view-synthetic-receipt" &&
+    (!state.confirmed ||
+      !state.fixtureId ||
+      !state.correctionId ||
+      !state.chronicleInspected)
+  ) {
+    return false;
+  }
+  if (
+    transition === "complete-first-lantern" &&
+    (!state.confirmed ||
+      !state.fixtureId ||
+      !state.correctionId ||
+      !state.chronicleInspected ||
+      !state.receiptInspected)
   ) {
     return false;
   }
@@ -260,5 +326,16 @@ export function transitionOpening(
     fixtureId: clearCapture ? null : (fixture?.fixtureId ?? state.fixtureId),
     correctionId: correctionForState(state, transition),
     confirmed: confirmedForState(state, transition, clearCapture),
+    chronicleInspected: chronicleInspectedForState(
+      state,
+      transition,
+      clearCapture,
+    ),
+    receiptInspected: receiptInspectedForState(state, transition, clearCapture),
+    firstLanternCompleted: firstLanternCompletedForState(
+      state,
+      transition,
+      clearCapture,
+    ),
   });
 }
