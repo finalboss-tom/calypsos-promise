@@ -12,6 +12,7 @@ import {
 } from "./preview-validation/shared.mjs";
 import { validateSupportingRoutes } from "./preview-validation/supporting.mjs";
 
+// Honeypot evidence is exercised in supporting.mjs with bot-field-must-be-ignored.
 const routeEvidence = await validatePages();
 for (const pair of contrastPairs) {
   const ratio = contrastRatio(pair.foreground, pair.background);
