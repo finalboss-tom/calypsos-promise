@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.9 record](docs/roadmap/sprint-8-workstream-8-9-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 completion package](docs/roadmap/sprint-8-completion-record.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.9 Record](docs/roadmap/sprint-8-workstream-8-9-record.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Completion Record](docs/roadmap/sprint-8-completion-record.md) → [Release, Rollback, and Sprint 9 Handoff](docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
 - **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
@@ -37,14 +37,13 @@ The goal is:
 - **8.7:** source-backed roadmap and capability views, public-safe support routing, and build-time canonical funding-register transparency with honest empty states and transactions disabled.
 - **8.8:** deliberate paused, no-intake public email-signup state for Sprint 8 with final activation-or-retirement tracked by Phase 0 gate #63.
 - **8.9:** permanent source and isolated local production-preview validation across routes, semantics, accessibility contracts, security headers, metadata, source authority, signup, and transfer budgets.
+- **8.10:** cross-contract reconciliation, 36-control evidence map, 20 open holdpoints, 20 unresolved-work records, truthful release and rollback state, completion record, and bounded Sprint 9 handoff.
 
-The initial normal 8.9 candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed all nine CI jobs in run 1110 and DCO 1192, including production build, rendered route validation, machine-readable evidence, cleanup, and no tracked build mutation.
+### Sprint 8 acceptance gate
 
-### Next workstream: 8.10
+The Sprint 8 implementation package is complete and ready for explicit founding-steward acceptance. Issue #60 remains open and PR #61 remains draft and unmerged until that decision and the directed squash merge occur.
 
-Workstream 8.10 will reconcile controls, evidence, specialist holdpoints, unresolved work, actual release state, rollback, and the bounded Sprint 9 handoff before explicit Sprint 8 acceptance.
-
-It will not activate signup, create a hosted release that does not exist, close Phase 0 gate #63, or begin Sprint 9 gameplay.
+No hosted preview or production deployment is claimed. Git-triggered deployment remains disabled, Phase 0 email-signup gate #63 remains open, and Sprint 9 is planned but has not started.
 
 ## Current public site
 

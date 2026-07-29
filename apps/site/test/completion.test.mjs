@@ -19,18 +19,32 @@ test("records the complete Sprint 8 readiness package without claiming acceptanc
     completion,
     publicRoadmap,
   ] = await Promise.all([
-    read("../../../docs/architecture/public-site-sprint-8-cross-contract-reconciliation.md"),
-    read("../../../docs/architecture/public-site-sprint-8-control-and-evidence-map.md"),
-    read("../../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md"),
-    read("../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md"),
+    read(
+      "../../../docs/architecture/public-site-sprint-8-cross-contract-reconciliation.md",
+    ),
+    read(
+      "../../../docs/architecture/public-site-sprint-8-control-and-evidence-map.md",
+    ),
+    read(
+      "../../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md",
+    ),
+    read(
+      "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
+    ),
     read("../../../docs/roadmap/sprint-8-completion-record.md"),
     read("../src/lib/public-roadmap.ts"),
   ]);
 
   assert.match(reconciliation, /READY FOR FOUNDING-STEWARD ACCEPTANCE/);
-  assert.match(reconciliation, /No merge, issue closure, production authorization/);
+  assert.match(
+    reconciliation,
+    /No merge, issue closure, production authorization/,
+  );
   assert.match(completion, /IMPLEMENTATION PACKAGE COMPLETE/);
-  assert.match(completion, /not accepted, merged, deployed, officially released, or closed/);
+  assert.match(
+    completion,
+    /not accepted, merged, deployed, officially released, or closed/,
+  );
   assert.match(completion, /issue #63 remains open/i);
   assert.match(releaseHandoff, /not hosted or officially released/i);
   assert.match(releaseHandoff, /Sprint 9 remains planned and not started/i);
@@ -68,7 +82,10 @@ test("preserves the bounded Sprint 9 public synthetic prologue handoff", async (
     "A complete manual or deterministic fallback path remains required.",
     "does not automatically authorize",
   ]) {
-    assert.match(handoff, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      handoff,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   assert.match(handoff, /Sprint 9 may begin only after/);
@@ -80,8 +97,12 @@ test("preserves the bounded Sprint 9 public synthetic prologue handoff", async (
 test("keeps merge, deployment, signup, Phase 0, and release as separate gates", async () => {
   const [completion, releaseHandoff, holdpoints] = await Promise.all([
     read("../../../docs/roadmap/sprint-8-completion-record.md"),
-    read("../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md"),
-    read("../../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md"),
+    read(
+      "../../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md",
+    ),
+    read(
+      "../../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md",
+    ),
   ]);
   const source = `${completion}\n${releaseHandoff}\n${holdpoints}`;
 

@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.9 record](sprint-8-workstream-8-9-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 completion package](sprint-8-completion-record.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
@@ -8,8 +8,8 @@
 - **Merged baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
-- **Completed workstreams:** 8.1 through 8.9
-- **Next workstream:** 8.10 — Completion, release evidence, and Sprint 9 handoff
+- **Implementation workstreams:** 8.1 through 8.10 complete
+- **Next action:** explicit founding-steward acceptance and directed squash merge of PR #61; not yet accepted or merged
 - **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
 - **Website runtime:** validated Next.js App Router site with the accepted public route family, permanent source checks, isolated local production-preview validation, explicit transfer budgets, and representative implementation review; not deployed or officially released
@@ -192,6 +192,25 @@ The initial normal validation candidate `24c3c48e6358251708b56452d1fd9019bf67e08
 
 The controlling evidence is [Sprint 8.9 Record](sprint-8-workstream-8-9-record.md), [Review Protocol](sprint-8-workstream-8-9-review-protocol.md), and [Representative Review](sprint-8-workstream-8-9-manual-review.md).
 
+## Workstream 8.10 — completion package ready for acceptance
+
+Workstream 8.10 established:
+
+- cross-contract reconciliation across product, canon, architecture, Chronicle, permission, Aster, Forge, gameplay, provider, funding, support, signup, security, accessibility, performance, metadata, publication, operations, institutional, and Sprint 9 boundaries;
+- thirty-six stable control objectives with explicit evidence levels and revalidation triggers;
+- twenty open specialist, production, release, measurement, implementation, and institutional holdpoints;
+- twenty unresolved-work records;
+- truthful release classification: repository implementation with isolated local-preview evidence, not hosted or officially released;
+- merge, hosted preview, production cutover, and official release as separate attributable decisions;
+- rollback paths before merge, after merge, for hosted preview, and for official cutover;
+- no Sprint 8 database, active signup, payment, provider, private Chronicle, or transaction migration to reverse;
+- a completion record ready for explicit founding-steward acceptance; and
+- a bounded Sprint 9 handoff requiring acceptance, squash merge, issue closure, post-merge reconciliation, and a dedicated pre-Sprint 9 review.
+
+The implementation package is complete, but Sprint 8 remains active. Issue #60 stays open and PR #61 stays draft and unmerged until explicit acceptance and squash merge. Git-triggered deployment remains disabled, signup gate #63 remains open, no hosted release exists, and Sprint 9 is planned but not started.
+
+The controlling evidence is [Sprint 8 Completion Record](sprint-8-completion-record.md), [Cross-Contract Reconciliation](../architecture/public-site-sprint-8-cross-contract-reconciliation.md), [Control and Evidence Map](../architecture/public-site-sprint-8-control-and-evidence-map.md), [Holdpoints and Unresolved Work](../architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md), and [Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md).
+
 ## Current public website surface
 
 `apps/site` now provides:
@@ -216,24 +235,17 @@ It does not yet provide:
 - hosted preview or official production deployment; or
 - any private or production product capability.
 
-## Next workstream
+## Acceptance and merge gate
 
-Workstream 8.10 may now complete the Sprint 8 evidence package through:
+The next decision is whether the founding steward accepts Sprint 8 at the bounded repository implementation, deterministic validation, isolated local-preview, measured-transfer, and representative implementation-review evidence level.
 
-- cross-contract reconciliation across route, authority, security, accessibility, performance, funding, support, and signup boundaries;
-- a control and evidence map;
-- a specialist-holdpoint and unresolved-work register;
-- completion, release-state, rollback, and Sprint 9 handoff records;
-- truthful disposition of hosted preview, production cutover, and official-release evidence according to what actually exists; and
-- final repository, issue, and pull-request reconciliation before explicit founding-steward acceptance.
+If accepted, PR #61 may be squash merged, issue #60 may be closed after the squash commit is verified, and a post-merge reconciliation may begin. Merge does not deploy the site, close gate #63, establish independent certification, complete institutional Phase 0, or start Sprint 9.
 
-It must preserve Phase 0 gate #63, every independent-review limitation, disabled Git-triggered deployment, private-data boundaries, and permanent Sprint 8 non-scope.
-
-It may not convert local preview evidence into a hosted release, close Sprint 8 without explicit acceptance, activate signup, or begin Sprint 9 gameplay.
+Until explicit direction is given, the PR remains draft and unmerged, the issue remains open, deployment remains disabled, and Sprint 9 remains planned but not started.
 
 ## Implemented repository surfaces
 
-- [`apps/site`](../../apps/site) — validated source-backed public website foundation through workstream 8.9 with permanent local-preview CI; not deployed
+- [`apps/site`](../../apps/site) — Sprint 8 implementation package complete and ready for explicit acceptance, with permanent local-preview CI; not merged, deployed, or officially released
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor tooling with ten bounded tools
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures
@@ -276,7 +288,7 @@ Sprint 8 does not activate accounts, authentication, private identity, real heal
 
 ## Remaining Phase 0 work
 
-Before Phase 0 can close, the project still requires key-person and succession records, founder-reserved-power and economic-dependency records, historical governance-source recovery, branch-protection evidence, DCO transition, clean-machine measurements, distributed ownership planning, Decision 0009 disposition, a named specialist-review strategy, the human-readable and machine-readable architecture audit, and an explicit Phase 0 exit review.
+Before Phase 0 can close, the project still requires email-signup disposition gate #63, key-person and succession records, founder-reserved-power and economic-dependency records, historical governance-source recovery, branch-protection evidence, DCO transition, clean-machine measurements, distributed ownership planning, Decision 0009 disposition, a named specialist-review strategy, the human-readable and machine-readable architecture audit, and an explicit Phase 0 exit review.
 
 ## Status rule
 

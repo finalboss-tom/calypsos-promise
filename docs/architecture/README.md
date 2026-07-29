@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.9 record](../roadmap/sprint-8-workstream-8-9-record.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 completion package](../roadmap/sprint-8-completion-record.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -28,6 +28,11 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Sprint 8.8 Paused Email-Signup Record](../roadmap/sprint-8-workstream-8-8-record.md)
 - [Sprint 8.9 Full Website Validation Record](../roadmap/sprint-8-workstream-8-9-record.md)
 - [Sprint 8.9 Representative Implementation Review](../roadmap/sprint-8-workstream-8-9-manual-review.md)
+- [Sprint 8 Cross-Contract Reconciliation](public-site-sprint-8-cross-contract-reconciliation.md)
+- [Sprint 8 Control and Evidence Map](public-site-sprint-8-control-and-evidence-map.md)
+- [Sprint 8 Holdpoints and Unresolved Work](public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 8 Completion Record](../roadmap/sprint-8-completion-record.md)
+- [Release, Rollback, and Sprint 9 Handoff](../roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -102,7 +107,7 @@ It may not own Product Constitution, lore canon, Chronicle truth, permission tru
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.10 is next. It may reconcile accepted website contracts, controls, evidence, holdpoints, unresolved work, actual release state, rollback, and the bounded Sprint 9 handoff. It may not close signup gate #63, claim independent or deployed verification, activate private capabilities, or begin Sprint 9 gameplay.
+Workstream 8.10 has produced the cross-contract reconciliation, 36-control evidence map, 20 open holdpoints, 20 unresolved-work records, truthful release and rollback record, completion record, and bounded Sprint 9 handoff. The package is ready for explicit acceptance but remains unmerged and undeployed; signup gate #63 stays open and Sprint 9 remains planned but not started.
 
 ## Content and story architecture
 

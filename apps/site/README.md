@@ -2,13 +2,17 @@
 
 `apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.9 are complete; workstream 8.10 is next.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.10 have completed their implementation package; explicit founding-steward acceptance and squash merge remain pending.
 
 Controlling records:
 
 - [Sprint 8 Execution Plan](../../docs/roadmap/sprint-8-execution-plan.md)
 - [Public Website Foundation and Migration Boundary](../../docs/architecture/public-website-foundation-and-migration.md)
-- [Workstream 8.9 Record](../../docs/roadmap/sprint-8-workstream-8-9-record.md)
+- [Sprint 8 Completion Record](../../docs/roadmap/sprint-8-completion-record.md)
+- [Cross-Contract Reconciliation](../../docs/architecture/public-site-sprint-8-cross-contract-reconciliation.md)
+- [Control and Evidence Map](../../docs/architecture/public-site-sprint-8-control-and-evidence-map.md)
+- [Holdpoints and Unresolved Work](../../docs/architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
+- [Release, Rollback, and Sprint 9 Handoff](../../docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
 - [Current Project Status](../../docs/roadmap/current-status.md)
 
 ## Current implementation
@@ -155,6 +159,12 @@ The current implementation includes:
 
 These foundations now have permanent source and rendered local-preview validation plus a representative founding-steward implementation review. They are not independent accessibility certification, assistive-technology testing, affected-user validation, or deployed verification.
 
+## Sprint 8 completion package
+
+The repository now includes cross-contract reconciliation, 36 stable controls, 20 open holdpoints, 20 unresolved-work records, truthful release and rollback paths, and a bounded Sprint 9 handoff. The package is ready for explicit acceptance but remains unmerged and undeployed.
+
+PR #61 remains draft, issue #60 remains open, deployment remains disabled, Phase 0 signup gate #63 remains open, and Sprint 9 remains planned but not started.
+
 ## What is not implemented
 
 - final email-signup activation or retirement under Phase 0 gate #63;
@@ -220,6 +230,6 @@ Workstream 8.6 focused candidate `e43d0a47186041599674f6608455752a4e3b7319` pass
 
 Workstream 8.7 focused candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf` passed repository formatting, the production site build, site validator/lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
-Workstream 8.8 records the paused no-intake email state and Phase 0 gate #63. The initial normal 8.9 candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed CI 1110 and DCO 1192, including the permanent production-preview validation job and representative review record.
+Workstream 8.8 records the paused no-intake email state and Phase 0 gate #63. Workstream 8.9 established permanent source and local-preview validation. Workstream 8.10 records the reconciliation, controls, open holdpoints, unresolved work, release and rollback state, completion readiness, and bounded Sprint 9 handoff.
 
-This evidence does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, provider integration, clinical safety, production AI, or production readiness.
+This evidence does not prove hosted deployment, official release, deployed headers or caching, accessibility conformance, assistive-technology or affected-user validation, field performance, provider integration, clinical safety, production AI, or production readiness.

@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.9 record](sprint-8-workstream-8-9-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Sprint 8 completion package](sprint-8-completion-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 through 8.9 complete; workstream 8.10 next
+- **Status:** IMPLEMENTATION PACKAGE COMPLETE — ready for explicit founding-steward acceptance; not accepted, merged, deployed, released, or closed
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -43,7 +43,8 @@ Sprint 8 inherits:
 - [x] **8.7 — Roadmap, capability status, support, and funding transparency**
 - [x] **8.8 — Paused signup disposition and Phase 0 gate**
 - [x] **8.9 — Accessibility, performance, security, route, and authority validation**
-- [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff — NEXT**
+- [x] **8.10 — Completion, release evidence, and Sprint 9 handoff**
+- [ ] **Explicit founding-steward acceptance and squash merge**
 
 ## 8.1 result — website boundary
 
@@ -140,31 +141,17 @@ The [Representative Implementation Review](sprint-8-workstream-8-9-manual-review
 
 The controlling evidence is [Sprint 8.9 Record](sprint-8-workstream-8-9-record.md) and [Review Protocol](sprint-8-workstream-8-9-review-protocol.md).
 
-## 8.10 — completion, release evidence, and Sprint 9 handoff — NEXT
+## 8.10 result — completion package and bounded handoff
 
-Deliverables:
+Workstream 8.10 established the [Cross-Contract Reconciliation](../architecture/public-site-sprint-8-cross-contract-reconciliation.md), [Control and Evidence Map](../architecture/public-site-sprint-8-control-and-evidence-map.md), [Specialist Holdpoints and Unresolved Work](../architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md), [Completion Record](sprint-8-completion-record.md), and [Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md).
 
-- cross-contract reconciliation;
-- control and evidence map;
-- specialist holdpoints and unresolved-work register;
-- completion record;
-- preview, cutover, rollback, and official-release evidence appropriate to the actual deployment state;
-- current-status and navigation reconciliation; and
-- bounded Sprint 9 handoff.
+The package records 36 controls, 20 open holdpoints, and 20 unresolved-work items. It states the actual release condition—repository and isolated local-preview evidence only, no hosted release—and keeps merge, preview, production cutover, official release, signup gate #63, Phase 0 exit, and Sprint 9 start as separate gates.
+
+## Sprint-level readiness conclusion
+
+The implementation package supports every Sprint 8 acceptance criterion at the repository implementation, deterministic source-validation, isolated local-production-preview, measured-transfer, and founding-steward representative-review level. Independent, hosted, deployed, affected-user, assistive-technology, and field evidence remain explicit open holdpoints rather than being silently claimed.
 
 Sprint 8 closes only through explicit founding-steward acceptance and squash merge.
-
-## Sprint-level acceptance criteria
-
-The sprint does not close until:
-
-- live, experimental, planned, and long-horizon claims are visually distinct;
-- all essential information is accessible without animation or story traversal;
-- core pages pass defined accessibility and performance baselines;
-- funding displays derive from canonical public economics records rather than an independent website sponsor model;
-- the consumer-first explanation remains accurate, provider-respectful, and does not represent provider, EHR, connector, clinical, or enterprise capability as live;
-- sponsor and partner recognition remains separate from recommendation, connector ranking, clinical endorsement, permission, safety, and health guidance; and
-- no donation, sponsorship, checkout, payment, charitable, tax-deductible, nonprofit, or public-benefit transaction claim activates without accepted operational evidence.
 
 ## Permanent non-scope
 
