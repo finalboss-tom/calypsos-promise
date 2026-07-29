@@ -184,7 +184,8 @@ function shouldClearCapture(transition: OpeningTransition) {
 }
 
 function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
-  if (transition === "continue-to-capture" && !state.presentationPath) return false;
+  if (transition === "continue-to-capture" && !state.presentationPath)
+    return false;
   if (
     (transition === "review-draft" ||
       transition === "accept-as-written" ||
