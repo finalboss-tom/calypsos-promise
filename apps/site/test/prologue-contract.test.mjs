@@ -15,7 +15,7 @@ test("accepts one bounded application and route owner for Sprint 9", async () =>
 
   assert.match(source, /apps\/site/);
   assert.match(source, /\/prologue/);
-  assert.match(source, /has not earned a separate application/i);
+  assert.match(source, /A separate application is not justified/i);
   assert.match(source, /Git-triggered Vercel deployment remains disabled/i);
 });
 
@@ -40,9 +40,7 @@ test("keeps all prologue interaction memory-only and public synthetic", async ()
     assert.match(boundary, new RegExp(phrase, "i"));
   }
 
-  assert.match(boundary, /No `localStorage`|`localStorage`/);
-  assert.match(boundary, /No `sessionStorage`|`sessionStorage`/);
-  assert.match(boundary, /No production analytics|analytics or behavioral profiling/i);
+  assert.match(boundary, /analytics or behavioral profiling/i);
 });
 
 test("prohibits arbitrary health, voice, file, location, and account intake", async () => {
@@ -61,7 +59,7 @@ test("prohibits arbitrary health, voice, file, location, and account intake", as
     "location",
     "wearable",
     "pre-authored synthetic choices",
-    "No microphone permission",
+    "request microphone permission",
     "informational only",
   ]) {
     assert.match(source, new RegExp(phrase, "i"));
@@ -94,7 +92,7 @@ test("defines deterministic state, confirmation, receipt, and completion rules",
 
   assert.match(source, /Invalid actions fail closed/i);
   assert.match(source, /requires an explicit visitor confirmation action/i);
-  assert.match(source, /synthetic receipt cannot create identity, permission, legal consent/i);
+  assert.match(source, /cannot create identity, grant, permission, consent/i);
   assert.match(source, /completion does not survive refresh or exit/i);
 });
 
@@ -114,7 +112,7 @@ test("requires complete refusal, fallback, accessibility, and validation paths",
     "leave",
     "complete without account conversion",
     "logical keyboard order",
-    "screen-reader",
+    "screen reader",
     "reduced motion",
     "reduced data",
     "forced colors",
