@@ -91,7 +91,7 @@ Render a visibly synthetic temporary Chronicle explanation and a non-authoritati
 
 **State:** completed and previously validated at `e819c71f31041632998b5f468c492e8b1c810a44` — CI 1221 / DCO 1300. Cross-contract corrections from the quality review await validation on the remediated aggregate head.
 
-**Quality-review corrections:** 
+**Quality-review corrections:**
 
 - the Chronicle explanation maps selected `ChronicleRecordEnvelope` vocabulary without claiming to be a record;
 - record, Chronicle, subject, variable, source artifact, and source version identifiers are namespaced and explicitly synthetic;
@@ -203,16 +203,16 @@ Every transition must name its preconditions, visible consequence, reversibility
 
 ## Temporary-data classes
 
-| Class | Example | Location | Lifetime | Destruction |
-| --- | --- | --- | --- | --- |
-| navigation state | current scene and explicit evidence flags | React memory | current page instance | refresh, navigation, discard, restart, tab close |
-| synthetic selection | pre-authored text or voice fixture ID | React memory | current page instance | same as navigation state |
-| deterministic draft | projection from selected fixture | React memory | until correction, confirmation, discard, or exit | review reset, discard, exit, refresh, tab close |
-| correction choice | accept-as-written or prepared correction | React memory | until review reset, discard, or exit | same |
-| synthetic Chronicle explanation | confirmed fixture mapping | React memory | until receipt, completion, review, discard, or exit | same |
-| synthetic receipt explanation | non-authoritative field mapping | React memory | until completion, review, discard, or exit | same |
-| First Lantern evidence | explicit route, review, confirmation, and inspection flags | React memory | until reversal, review, discard, restart, exit, refresh, or tab close | same |
-| accessibility announcements | current transition status | rendered DOM only | current interaction | replacement, navigation, refresh, tab close |
+| Class                           | Example                                                    | Location          | Lifetime                                                              | Destruction                                      |
+| ------------------------------- | ---------------------------------------------------------- | ----------------- | --------------------------------------------------------------------- | ------------------------------------------------ |
+| navigation state                | current scene and explicit evidence flags                  | React memory      | current page instance                                                 | refresh, navigation, discard, restart, tab close |
+| synthetic selection             | pre-authored text or voice fixture ID                      | React memory      | current page instance                                                 | same as navigation state                         |
+| deterministic draft             | projection from selected fixture                           | React memory      | until correction, confirmation, discard, or exit                      | review reset, discard, exit, refresh, tab close  |
+| correction choice               | accept-as-written or prepared correction                   | React memory      | until review reset, discard, or exit                                  | same                                             |
+| synthetic Chronicle explanation | confirmed fixture mapping                                  | React memory      | until receipt, completion, review, discard, or exit                   | same                                             |
+| synthetic receipt explanation   | non-authoritative field mapping                            | React memory      | until completion, review, discard, or exit                            | same                                             |
+| First Lantern evidence          | explicit route, review, confirmation, and inspection flags | React memory      | until reversal, review, discard, restart, exit, refresh, or tab close | same                                             |
+| accessibility announcements     | current transition status                                  | rendered DOM only | current interaction                                                   | replacement, navigation, refresh, tab close      |
 
 No class may enter local storage, session storage, IndexedDB, cookies, query strings, hashes, analytics, server logs, provider logs, newsletter records, databases, remote models, or private destinations.
 

@@ -60,8 +60,14 @@ test("declares an exhaustive scene table with known destinations", () => {
 
   for (const [scene, transitions] of Object.entries(openingTransitionTable)) {
     for (const [transition, destination] of Object.entries(transitions)) {
-      assert.ok(openingTransitions.includes(transition), `${transition} is declared`);
-      assert.ok(openingScenes.includes(destination), `${scene} reaches ${destination}`);
+      assert.ok(
+        openingTransitions.includes(transition),
+        `${transition} is declared`,
+      );
+      assert.ok(
+        openingScenes.includes(destination),
+        `${scene} reaches ${destination}`,
+      );
     }
   }
 });
@@ -74,7 +80,10 @@ test("invalid or premature actions fail closed without allocating new state", ()
     "complete-first-lantern",
     "discard-projection",
   ]) {
-    assert.strictEqual(transitionOpening(initialOpeningState, transition), initialOpeningState);
+    assert.strictEqual(
+      transitionOpening(initialOpeningState, transition),
+      initialOpeningState,
+    );
   }
 
   let review = reachConfirmedEntry();
@@ -127,7 +136,9 @@ test("Aster voice path uses the same state and completion authority", () => {
 
 test("confirmed-state discard is functional and clears all temporary capture evidence", () => {
   const confirmed = reachConfirmedEntry({ correction: "prepared" });
-  assert.ok(getAllowedOpeningTransitions(confirmed).includes("discard-projection"));
+  assert.ok(
+    getAllowedOpeningTransitions(confirmed).includes("discard-projection"),
+  );
 
   const discarded = move(confirmed, "discard-projection");
   assert.equal(discarded.scene, "capture-choice");

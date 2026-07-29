@@ -22,7 +22,10 @@ test("references the accepted Chronicle and House of Keys contract vocabularies"
 
   assert.match(chronicleVersion, /LIVING_CHRONICLE_SCHEMA_VERSION = "0\.1\.0"/);
   assert.match(chronicleTypes, /export interface ChronicleRecordEnvelope/);
-  assert.match(keysVersion, /HOUSE_OF_KEYS_CONTRACT_VERSION = "0\.1\.0-pre\.1"/);
+  assert.match(
+    keysVersion,
+    /HOUSE_OF_KEYS_CONTRACT_VERSION = "0\.1\.0-pre\.1"/,
+  );
   assert.match(keysTypes, /export interface AccessReceipt/);
 
   for (const phrase of [

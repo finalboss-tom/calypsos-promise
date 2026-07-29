@@ -188,7 +188,7 @@ export function PrologueChronicleReceiptPanel({
 
         <p className={styles.sourceDetail}>{chronicle.sourceDetail}</p>
         <p className={styles.contractSources}>
-          Canonical public references: {" "}
+          Canonical public references:{" "}
           <ExternalSourceLink
             href={livingChronicleProjectionReferences.contractSource}
           >
@@ -339,12 +339,16 @@ export function PrologueChronicleReceiptPanel({
       </details>
 
       <p className={styles.contractSources}>
-        Canonical public references: {" "}
-        <ExternalSourceLink href={houseOfKeysProjectionReferences.contractSource}>
+        Canonical public references:{" "}
+        <ExternalSourceLink
+          href={houseOfKeysProjectionReferences.contractSource}
+        >
           AccessReceipt contract
         </ExternalSourceLink>
         {" · "}
-        <ExternalSourceLink href={houseOfKeysProjectionReferences.versionSource}>
+        <ExternalSourceLink
+          href={houseOfKeysProjectionReferences.versionSource}
+        >
           contract version
         </ExternalSourceLink>
       </p>

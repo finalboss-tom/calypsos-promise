@@ -182,7 +182,8 @@ const PRESENTATION_CLEARING_TRANSITIONS = new Set<OpeningTransition>([
 ]);
 
 function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
-  if (transition === "continue-to-capture") return Boolean(state.presentationPath);
+  if (transition === "continue-to-capture")
+    return Boolean(state.presentationPath);
 
   if (
     transition === "review-draft" ||
@@ -193,36 +194,38 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
   }
 
   if (transition === "confirm-entry") {
-    return Boolean(state.fixtureId && state.correctionId && state.draftReviewed);
+    return Boolean(
+      state.fixtureId && state.correctionId && state.draftReviewed,
+    );
   }
 
   if (transition === "view-synthetic-chronicle") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.draftReviewed,
+      state.fixtureId &&
+      state.correctionId &&
+      state.draftReviewed,
     );
   }
 
   if (transition === "view-synthetic-receipt") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.chronicleInspected,
+      state.fixtureId &&
+      state.correctionId &&
+      state.chronicleInspected,
     );
   }
 
   if (transition === "complete-first-lantern") {
     return Boolean(
       state.confirmed &&
-        state.fixtureId &&
-        state.correctionId &&
-        state.chronicleInspected &&
-        state.receiptInspected &&
-        state.lanternShoreReached &&
-        state.draftReviewed,
+      state.fixtureId &&
+      state.correctionId &&
+      state.chronicleInspected &&
+      state.receiptInspected &&
+      state.lanternShoreReached &&
+      state.draftReviewed,
     );
   }
 
@@ -261,7 +264,10 @@ function nextFixture(
       fixtureId: "synthetic-walk-voice-v1",
     } as const;
   }
-  return { captureMode: state.captureMode, fixtureId: state.fixtureId } as const;
+  return {
+    captureMode: state.captureMode,
+    fixtureId: state.fixtureId,
+  } as const;
 }
 
 function nextCorrectionId(

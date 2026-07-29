@@ -28,7 +28,12 @@
   margin-inline: auto;
   border: 0.15rem solid var(--color-gold-200);
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(255 235 173 / 82%), rgb(232 201 130 / 20%) 48%, transparent 72%);
+  background: radial-gradient(
+    circle,
+    rgb(255 235 173 / 82%),
+    rgb(232 201 130 / 20%) 48%,
+    transparent 72%
+  );
   box-shadow: 0 0 3rem rgb(232 201 130 / 28%);
 }
 

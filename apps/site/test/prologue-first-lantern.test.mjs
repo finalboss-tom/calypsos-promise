@@ -70,10 +70,7 @@ test("names the complete inspectable evidence and prohibited inputs", async () =
     completion,
     /!state\.firstLanternCompleted[\s\S]*!state\.lanternShoreReached[\s\S]*!state\.presentationPath[\s\S]*!state\.draftReviewed[\s\S]*!state\.confirmed[\s\S]*!state\.chronicleInspected[\s\S]*!state\.receiptInspected/,
   );
-  assert.equal(
-    (completion.match(/satisfied: true as const/g) ?? []).length,
-    8,
-  );
+  assert.equal((completion.match(/satisfied: true as const/g) ?? []).length, 8);
 });
 
 test("explains why the lantern lit without implying reward, canon, or authority", async () => {

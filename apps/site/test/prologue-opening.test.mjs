@@ -90,7 +90,7 @@ test("keeps opening choices explicit, skippable, semantic, and non-punitive", as
     'role="status"',
     'aria-live="polite"',
     "sceneHeading.current?.focus()",
-    '<ol className={styles.progress}',
+    "<ol className={styles.progress}",
     'aria-current={step.current ? "step" : undefined}',
     "First Lantern",
     "PrologueFirstLanternPanel",

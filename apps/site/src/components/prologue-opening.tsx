@@ -119,10 +119,7 @@ export function PrologueOpening() {
     >
       <ol className={styles.progress} aria-label="Prologue progress">
         {progressSteps.map((step, index) => (
-          <li
-            key={step.id}
-            aria-current={step.current ? "step" : undefined}
-          >
+          <li key={step.id} aria-current={step.current ? "step" : undefined}>
             <span>{step.label}</span>
             {index < progressSteps.length - 1 && (
               <span aria-hidden="true">→</span>

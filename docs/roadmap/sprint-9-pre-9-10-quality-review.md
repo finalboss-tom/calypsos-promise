@@ -50,18 +50,18 @@ Sprint 9 must therefore provide more than a playable route and static source ass
 
 ## Actual workstream state at review start
 
-| Workstream | Repository state at review start | Review disposition |
-| --- | --- | --- |
-| 9.1 | contract and execution-plan package present | directionally sound; validation and status assumptions required correction |
-| 9.2 | arrival and Lantern Shore present | sound bounded implementation; remains branch-only |
-| 9.3 | deterministic Aster and manual paths present | materially coherent and provider-free |
-| 9.4 | synthetic text/voice, review, correction, refusal, and confirmation present | sound direction; dead duplicate UI and source-only test confidence required correction |
-| 9.5 | Chronicle and receipt-shaped projections present | material cross-contract provenance and vocabulary corrections required |
-| 9.6 | First Lantern implementation present but not accepted | material evidence, quest-anatomy, canon, reversal, and test corrections required |
-| 9.7 | not implemented | blocking |
-| 9.8 | not implemented as a complete playable validation record | blocking |
-| 9.9 | not implemented | blocking |
-| 9.10 | not started | correctly blocked |
+| Workstream | Repository state at review start                                            | Review disposition                                                                     |
+| ---------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 9.1        | contract and execution-plan package present                                 | directionally sound; validation and status assumptions required correction             |
+| 9.2        | arrival and Lantern Shore present                                           | sound bounded implementation; remains branch-only                                      |
+| 9.3        | deterministic Aster and manual paths present                                | materially coherent and provider-free                                                  |
+| 9.4        | synthetic text/voice, review, correction, refusal, and confirmation present | sound direction; dead duplicate UI and source-only test confidence required correction |
+| 9.5        | Chronicle and receipt-shaped projections present                            | material cross-contract provenance and vocabulary corrections required                 |
+| 9.6        | First Lantern implementation present but not accepted                       | material evidence, quest-anatomy, canon, reversal, and test corrections required       |
+| 9.7        | not implemented                                                             | blocking                                                                               |
+| 9.8        | not implemented as a complete playable validation record                    | blocking                                                                               |
+| 9.9        | not implemented                                                             | blocking                                                                               |
+| 9.10       | not started                                                                 | correctly blocked                                                                      |
 
 ## Blocking and material findings
 

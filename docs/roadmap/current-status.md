@@ -95,18 +95,18 @@ The accepted permanent boundary remains:
 
 ### Workstream truth
 
-| Workstream | Current state |
-| --- | --- |
-| 9.1 | completed and previously validated; validation contract strengthened by the quality review |
-| 9.2 | completed and previously validated; branch-only |
-| 9.3 | completed and previously validated; Aster/manual authority parity retained |
-| 9.4 | completed and previously validated; unreachable duplicate UI removed during review |
-| 9.5 | completed and previously validated; Chronicle/receipt cross-contract mapping corrected during review and awaiting exact-candidate revalidation |
-| 9.6 | implemented, remediated, and under exact-candidate validation |
-| 9.7 | not implemented as a complete workstream |
-| 9.8 | not implemented as a complete playable validation and measurement record |
-| 9.9 | not implemented |
-| 9.10 | blocked and not started |
+| Workstream | Current state                                                                                                                                  |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9.1        | completed and previously validated; validation contract strengthened by the quality review                                                     |
+| 9.2        | completed and previously validated; branch-only                                                                                                |
+| 9.3        | completed and previously validated; Aster/manual authority parity retained                                                                     |
+| 9.4        | completed and previously validated; unreachable duplicate UI removed during review                                                             |
+| 9.5        | completed and previously validated; Chronicle/receipt cross-contract mapping corrected during review and awaiting exact-candidate revalidation |
+| 9.6        | implemented, remediated, and under exact-candidate validation                                                                                  |
+| 9.7        | not implemented as a complete workstream                                                                                                       |
+| 9.8        | not implemented as a complete playable validation and measurement record                                                                       |
+| 9.9        | not implemented                                                                                                                                |
+| 9.10       | blocked and not started                                                                                                                        |
 
 The implementation contract, review findings, remaining evidence requirements, release separation, rollback model, and inherited holdpoints are recorded in [Sprint 9 Execution Plan](sprint-9-execution-plan.md), [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md), and [Sprint 9 Pre-9.10 Quality and Coherence Review](sprint-9-pre-9-10-quality-review.md).
 
