@@ -22,7 +22,7 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstream 9\.5 is under review/i);
+  assert.match(page, /workstream 9\.6 is under review/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
@@ -39,7 +39,7 @@ test("renders a server-owned route with a no-JavaScript explanation", async () =
   assert.match(page, /Return to the public site/);
 });
 
-test("implements deterministic arrival, guide, review, Chronicle, and receipt transitions", async () => {
+test("implements deterministic arrival through First Lantern transitions", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
   for (const phrase of [
@@ -50,6 +50,7 @@ test("implements deterministic arrival, guide, review, Chronicle, and receipt tr
     '"manual-introduction"',
     '"synthetic-chronicle"',
     '"synthetic-receipt"',
+    '"first-lantern"',
     '"begin-opening"',
     '"skip-opening"',
     '"replay-arrival"',
@@ -60,9 +61,14 @@ test("implements deterministic arrival, guide, review, Chronicle, and receipt tr
     '"switch-to-manual"',
     '"view-synthetic-chronicle"',
     '"view-synthetic-receipt"',
+    '"complete-first-lantern"',
+    '"return-to-receipt"',
     '"return-to-chronicle"',
     '"discard-projection"',
     "presentationPath",
+    "chronicleInspected",
+    "receiptInspected",
+    "firstLanternCompleted",
     "transitionTable",
     "if (!nextScene || !transitionAllowed(state, transition)) return state",
   ]) {
@@ -93,6 +99,8 @@ test("keeps opening choices explicit, skippable, and non-punitive", async () => 
     'role="status"',
     'aria-live="polite"',
     "sceneHeading.current?.focus()",
+    "First Lantern",
+    "PrologueFirstLanternPanel",
   ]) {
     assert.match(
       component,
@@ -154,19 +162,23 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
     guidePanel,
     confirmedPanel,
     projectionPanel,
+    lanternPanel,
     page,
     state,
     guideContent,
+    completion,
   ] = await Promise.all([
     read("../src/components/prologue-opening.tsx"),
     read("../src/components/prologue-guide-panel.tsx"),
     read("../src/components/prologue-confirmed-projection-entry.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
+    read("../src/components/prologue-first-lantern-panel.tsx"),
     read("../src/app/prologue/page.tsx"),
     read("../src/lib/prologue-opening-state.ts"),
     read("../src/lib/prologue-guide-content.ts"),
+    read("../src/lib/prologue-first-lantern.ts"),
   ]);
-  const source = `${component}\n${guidePanel}\n${confirmedPanel}\n${projectionPanel}\n${page}\n${state}\n${guideContent}`;
+  const source = `${component}\n${guidePanel}\n${confirmedPanel}\n${projectionPanel}\n${lanternPanel}\n${page}\n${state}\n${guideContent}\n${completion}`;
 
   for (const prohibited of [
     /<input\b/i,
@@ -193,21 +205,24 @@ test("introduces no arbitrary input, persistence, capture API, model, or network
   }
 });
 
-test("provides responsive, reduced-data, contrast, forced-color, and focus treatment", async () => {
-  const [openingCss, projectionCss] = await Promise.all([
+test("provides responsive, reduced-motion, reduced-data, contrast, forced-color, and focus treatment", async () => {
+  const [openingCss, projectionCss, lanternCss] = await Promise.all([
     read("../src/components/prologue-opening.module.css"),
     read("../src/components/prologue-chronicle-receipt-panel.module.css"),
+    read("../src/components/prologue-first-lantern-panel.module.css"),
   ]);
-  const css = `${openingCss}\n${projectionCss}`;
+  const css = `${openingCss}\n${projectionCss}\n${lanternCss}`;
 
   assert.match(css, /:focus-visible/);
   assert.match(css, /outline-offset/);
   assert.match(css, /max-width: 48rem/);
+  assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /prefers-reduced-data/);
   assert.match(css, /prefers-contrast/);
   assert.match(css, /forced-colors/);
   assert.match(css, /\.pathGrid/);
   assert.match(css, /\.guideFacts/);
   assert.match(css, /\.projectionDetails/);
+  assert.match(css, /\.completionDetails/);
   assert.doesNotMatch(css, /outline:\s*(?:0(?:\s|;)|none)/i);
 });
