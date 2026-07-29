@@ -10,41 +10,42 @@ function escaped(phrase) {
   return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
 }
 
-test("requires confirmed synthetic, Chronicle, and receipt evidence", async () => {
-  const state = await read("../src/lib/prologue-opening-state.ts");
+test("defines First Lantern as a bounded public synthetic quest", async () => {
+  const completion = await read("../src/lib/prologue-first-lantern.ts");
 
   for (const phrase of [
-    '"first-lantern"',
-    '"complete-first-lantern"',
-    '"return-to-receipt"',
-    "chronicleInspected: false",
-    "receiptInspected: false",
-    "firstLanternCompleted: false",
-    'if (transition === "view-synthetic-chronicle") return true',
-    'if (transition === "view-synthetic-receipt") return true',
-    'if (transition === "complete-first-lantern") return true',
+    'id: "quest.prologue.first-lantern"',
+    'publicTitle: "Light the First Lantern"',
+    'inWorldTitle: "The First Light of Lantern Shore"',
+    'zone: "Lantern Shore"',
+    "Deterministic Aster or the direct manual guide",
+    "playerValue",
+    "estimatedTimeMinutes",
+    "accessibilityVariants",
+    "synthetic demonstration data only",
+    'permissionOrPurposeRequirement: "none"',
+    'safetyClassification: "public-synthetic-non-clinical"',
+    'reward: "none"',
+    "unlocks no canonical zone, rank, Fourteen Lantern progression",
+    "not collected in Sprint 9",
   ]) {
-    assert.match(state, escaped(phrase));
+    assert.match(completion, escaped(phrase));
   }
-
-  assert.match(
-    state,
-    /transition === "complete-first-lantern"[\s\S]*!state\.confirmed[\s\S]*!state\.chronicleInspected[\s\S]*!state\.receiptInspected/,
-  );
-  assert.match(
-    state,
-    /transition === "view-synthetic-receipt"[\s\S]*!state\.chronicleInspected/,
-  );
 });
 
-test("names the exact completion evidence and prohibited inputs", async () => {
+test("names the complete inspectable evidence and prohibited inputs", async () => {
   const completion = await read("../src/lib/prologue-first-lantern.ts");
 
   for (const phrase of [
     "first-lantern.prologue.synthetic.v1",
-    "synthetic-fixture-reviewed-and-confirmed",
+    "lantern-shore-reached",
+    "guide-path-selected",
+    "synthetic-fixture-selected-and-labeled",
+    "synthetic-draft-reviewed",
+    "visitor-confirmed-review-choice",
     "temporary-synthetic-chronicle-inspected",
     "non-authoritative-receipt-explanation-inspected",
+    "completion-without-conversion-or-remote-authority",
     "account",
     "email",
     "newsletter submission",
@@ -67,11 +68,15 @@ test("names the exact completion evidence and prohibited inputs", async () => {
 
   assert.match(
     completion,
-    /!state\.firstLanternCompleted[\s\S]*!state\.confirmed[\s\S]*!state\.chronicleInspected[\s\S]*!state\.receiptInspected/,
+    /!state\.firstLanternCompleted[\s\S]*!state\.lanternShoreReached[\s\S]*!state\.presentationPath[\s\S]*!state\.draftReviewed[\s\S]*!state\.confirmed[\s\S]*!state\.chronicleInspected[\s\S]*!state\.receiptInspected/,
+  );
+  assert.equal(
+    (completion.match(/satisfied: true as const/g) ?? []).length,
+    8,
   );
 });
 
-test("explains why the lantern lit without implying reward or authority", async () => {
+test("explains why the lantern lit without implying reward, canon, or authority", async () => {
   const [panel, receiptPanel, completion] = await Promise.all([
     read("../src/components/prologue-first-lantern-panel.tsx"),
     read("../src/components/prologue-chronicle-receipt-panel.tsx"),
@@ -82,45 +87,44 @@ test("explains why the lantern lit without implying reward or authority", async 
   for (const phrase of [
     "Light the First Lantern from this evidence",
     "First Lantern — synthetic completion evidence",
-    "The First Lantern lights because three visible checks are complete.",
+    "eight inspectable checks are complete",
     "Why the lantern lit",
     "What did not count",
+    "What this changes",
     "No durable reward",
+    "No canon unlock",
     "Review the receipt evidence again",
     "Review or correct the synthetic entry",
     "Discard the temporary completion state",
-    "No account, Chronicle record, permission, legal consent, reward, payment, provider status, or health outcome is created.",
+    "not a durable game achievement or canonical Fourteen Lanterns progression",
+    "No account, Chronicle record, permission, legal consent, reward, payment, provider status, health outcome, zone unlock, or rank is created.",
   ]) {
     assert.match(source, escaped(phrase));
   }
 });
 
-test("resets evidence when review or discard invalidates completion", async () => {
+test("keeps completion reversible and evidence invalidation explicit", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
-  for (const functionName of [
-    "chronicleInspectedForState",
-    "receiptInspectedForState",
-    "firstLanternCompletedForState",
+  for (const phrase of [
+    'transition === "return-to-receipt"',
+    'transition === "review-confirmed-entry"',
+    '"discard-projection": "capture-choice"',
+    "firstLanternCompleted: false",
+    "draftReviewed",
+    "lanternShoreReached",
   ]) {
-    assert.match(state, escaped(functionName));
+    assert.match(state, escaped(phrase));
   }
-
-  assert.equal(
-    (state.match(/clearCapture \|\| transition === "review-confirmed-entry"/g) ?? [])
-      .length,
-    4,
-  );
-  assert.match(state, /transition === "discard-projection"[\s\S]*return null/);
 });
 
 test("adds no account, email, payment, model, provider, timer, persistence, or network completion path", async () => {
-  const [panel, completion, state] = await Promise.all([
+  const files = await Promise.all([
     read("../src/components/prologue-first-lantern-panel.tsx"),
     read("../src/lib/prologue-first-lantern.ts"),
     read("../src/lib/prologue-opening-state.ts"),
   ]);
-  const source = `${panel}\n${completion}\n${state}`;
+  const source = files.join("\n");
 
   for (const prohibited of [
     /<input\b/i,
