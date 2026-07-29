@@ -64,7 +64,7 @@ export type SyntheticReceiptProjection = {
   readonly decisionOutcome: "not-evaluated";
   readonly executionState: "not-applicable";
   readonly dataReleaseBoundaryCrossed: false;
-  readonly grantReferences: readonly [];
+  readonly grantReferences: ReadonlyArray<never>;
   readonly reasonCodes: ReadonlyArray<string>;
   readonly limitations: ReadonlyArray<string>;
 };
