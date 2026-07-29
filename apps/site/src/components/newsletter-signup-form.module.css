@@ -10,7 +10,9 @@
   display: block;
   margin-bottom: var(--space-2);
   color: var(--color-sand-100);
-  font: 700 0.85rem/1.4 system-ui, sans-serif;
+  font:
+    700 0.85rem/1.4 system-ui,
+    sans-serif;
 }
 
 .row {
@@ -28,7 +30,9 @@
   background: var(--color-ink-950);
   color: var(--color-sand-100);
   padding: 0.7rem 1rem;
-  font: 0.95rem/1.2 system-ui, sans-serif;
+  font:
+    0.95rem/1.2 system-ui,
+    sans-serif;
 }
 
 .input::placeholder {
@@ -48,7 +52,9 @@
   align-items: flex-start;
   margin-top: var(--space-4);
   color: var(--color-sand-200);
-  font: 0.85rem/1.5 system-ui, sans-serif;
+  font:
+    0.85rem/1.5 system-ui,
+    sans-serif;
 }
 
 .consent input {
@@ -62,7 +68,9 @@
 .status {
   margin: var(--space-4) 0 0;
   color: var(--color-sand-200);
-  font: 0.82rem/1.55 system-ui, sans-serif;
+  font:
+    0.82rem/1.55 system-ui,
+    sans-serif;
 }
 
 .note a {

@@ -31,7 +31,11 @@ export async function validateSupportingRoutes() {
 
   const missing = await request("/route-that-does-not-exist");
   if (missing.response.status !== 404) fail("not-found route: expected 404");
-  if (!missing.body.toString("utf8").includes("This path is not part of Ogygia yet.")) {
+  if (
+    !missing.body
+      .toString("utf8")
+      .includes("This path is not part of Ogygia yet.")
+  ) {
     fail("not-found route: expected public-safe explanation");
   }
 
@@ -41,7 +45,9 @@ export async function validateSupportingRoutes() {
     body: JSON.stringify({ email: "invalid", consent: false }),
   });
   if (invalidSignup.response.status !== 400) {
-    fail(`/api/join invalid POST: expected 400, received ${invalidSignup.response.status}`);
+    fail(
+      `/api/join invalid POST: expected 400, received ${invalidSignup.response.status}`,
+    );
   }
   if (invalidSignup.response.headers.get("cache-control") !== "no-store") {
     fail("/api/join invalid POST: Cache-Control must be no-store");
@@ -60,7 +66,9 @@ export async function validateSupportingRoutes() {
     }),
   });
   if (botSignup.response.status !== 202) {
-    fail(`/api/join honeypot POST: expected 202, received ${botSignup.response.status}`);
+    fail(
+      `/api/join honeypot POST: expected 202, received ${botSignup.response.status}`,
+    );
   }
   if (JSON.parse(botSignup.body.toString("utf8")).ok !== true) {
     fail("/api/join honeypot POST: ignored success is missing");

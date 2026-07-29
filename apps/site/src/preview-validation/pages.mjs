@@ -26,7 +26,8 @@ function validateHeaders(response, route) {
     if (!csp.includes(directive)) fail(`${route}: CSP is missing ${directive}`);
   }
   if (!/nonce-[A-Za-z0-9-]+/.test(csp)) fail(`${route}: CSP nonce is missing`);
-  if (csp.includes("'unsafe-eval'")) fail(`${route}: CSP must not include unsafe-eval`);
+  if (csp.includes("'unsafe-eval'"))
+    fail(`${route}: CSP must not include unsafe-eval`);
 }
 
 function validateMarkup(html, contract) {
@@ -52,7 +53,8 @@ function validateMarkup(html, contract) {
   ];
   for (const [label, pattern] of singular) {
     const count = (html.match(pattern) ?? []).length;
-    if (count !== 1) fail(`${route}: expected exactly one ${label}, found ${count}`);
+    if (count !== 1)
+      fail(`${route}: expected exactly one ${label}, found ${count}`);
   }
 
   const ids = [...html.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]);
@@ -67,14 +69,20 @@ function validateMarkup(html, contract) {
   }
 
   const links = html.match(/<link\b[^>]*>/gi) ?? [];
-  const canonicalTag = links.find((link) => attribute(link, "rel") === "canonical");
-  const actualCanonical = canonicalTag ? attribute(canonicalTag, "href") : undefined;
+  const canonicalTag = links.find(
+    (link) => attribute(link, "rel") === "canonical",
+  );
+  const actualCanonical = canonicalTag
+    ? attribute(canonicalTag, "href")
+    : undefined;
   const expectedCanonical = new URL(route, siteOrigin).toString();
   if (
     !actualCanonical ||
     normalizeUrl(actualCanonical) !== normalizeUrl(expectedCanonical)
   ) {
-    fail(`${route}: canonical ${actualCanonical ?? "missing"} does not match ${expectedCanonical}`);
+    fail(
+      `${route}: canonical ${actualCanonical ?? "missing"} does not match ${expectedCanonical}`,
+    );
   }
 
   if (

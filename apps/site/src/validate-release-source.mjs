@@ -94,7 +94,8 @@ for (const contract of routeContracts) {
   if (!/<h1\b/.test(page)) fail(`${contract.path} source is missing h1`);
   if (contract.path !== "/") {
     const canonical = `canonical: "${contract.path}"`;
-    if (!page.includes(canonical)) fail(`${contract.path} source is missing ${canonical}`);
+    if (!page.includes(canonical))
+      fail(`${contract.path} source is missing ${canonical}`);
   }
   if (contract.noindex && !/index:\s*false/.test(page)) {
     fail(`${contract.path} source must remain noindex`);
@@ -148,13 +149,20 @@ const [
   read("src/lib/public-roadmap.ts"),
 ]);
 
-if (!layout.includes('href="#primary-navigation"') || !layout.includes('href="#main"')) {
+if (
+  !layout.includes('href="#primary-navigation"') ||
+  !layout.includes('href="#main"')
+) {
   fail("layout must retain both visible-on-focus skip links");
 }
 if (!layout.includes('<main id="main"') || !layout.includes('lang="en"')) {
   fail("layout must retain the main landmark and English language declaration");
 }
-if (!`${navigation}\n${navigationComponent}`.includes("No story traversal is required")) {
+if (
+  !`${navigation}\n${navigationComponent}`.includes(
+    "No story traversal is required",
+  )
+) {
   fail("narrative navigation must remain optional");
 }
 for (const route of routeContracts.filter((route) => !route.noindex)) {
@@ -163,7 +171,9 @@ for (const route of routeContracts.filter((route) => !route.noindex)) {
   }
   if (
     route.sitemap &&
-    !sitemap.includes(`\`${"${baseUrl}"}${route.path === "/" ? "/" : route.path}\``)
+    !sitemap.includes(
+      `\`${"${baseUrl}"}${route.path === "/" ? "/" : route.path}\``,
+    )
   ) {
     fail(`sitemap source is missing ${route.path}`);
   }
@@ -194,7 +204,9 @@ for (const phrase of [
 ]) {
   if (!css.includes(phrase)) fail(`accessibility CSS is missing ${phrase}`);
 }
-if (/outline:\s*(?:0|none)(?:;|\s)/i.test(css.replace(/outline:\s*0\.2rem/g, ""))) {
+if (
+  /outline:\s*(?:0|none)(?:;|\s)/i.test(css.replace(/outline:\s*0\.2rem/g, ""))
+) {
   fail("accessibility CSS must not suppress focus outlines");
 }
 
@@ -202,12 +214,17 @@ for (const [header, value] of Object.entries(requiredPageHeaders)) {
   if (!nextConfig.toLowerCase().includes(header)) {
     fail(`next config source is missing ${header}`);
   }
-  if (!nextConfig.includes(value)) fail(`next config source is missing ${header} value`);
+  if (!nextConfig.includes(value))
+    fail(`next config source is missing ${header} value`);
 }
 for (const directive of requiredCspDirectives) {
-  if (!proxy.includes(directive)) fail(`proxy CSP source is missing ${directive}`);
+  if (!proxy.includes(directive))
+    fail(`proxy CSP source is missing ${directive}`);
 }
-if (!proxy.includes("crypto.randomUUID") || !proxy.includes("Content-Security-Policy")) {
+if (
+  !proxy.includes("crypto.randomUUID") ||
+  !proxy.includes("Content-Security-Policy")
+) {
   fail("proxy must retain per-request nonce CSP behavior");
 }
 if (!vercelConfig.includes('"framework": "nextjs"')) {
@@ -244,10 +261,11 @@ for (const phrase of [
   "https:",
   `policyVersion: "${newsletterPolicyVersion}"`,
   "status,",
-  "redirect: \"/joined\"",
+  'redirect: "/joined"',
   '"Cache-Control": "no-store"',
 ]) {
-  if (!joinRoute.includes(phrase)) fail(`active signup route is missing ${phrase}`);
+  if (!joinRoute.includes(phrase))
+    fail(`active signup route is missing ${phrase}`);
 }
 for (const prohibited of [
   "console.log(email",
@@ -260,7 +278,10 @@ for (const prohibited of [
     fail(`active signup route contains prohibited behavior: ${prohibited}`);
   }
 }
-if (!privacyPage.includes(signupGateIssue) || !joinedPage.includes(signupGateIssue)) {
+if (
+  !privacyPage.includes(signupGateIssue) ||
+  !joinedPage.includes(signupGateIssue)
+) {
   fail("newsletter pages must link to Phase 0 gate #63");
 }
 for (const phrase of [
@@ -270,9 +291,13 @@ for (const phrase of [
   "request deletion",
   "Phase 0",
 ]) {
-  if (!privacyPage.includes(phrase)) fail(`newsletter privacy notice is missing ${phrase}`);
+  if (!privacyPage.includes(phrase))
+    fail(`newsletter privacy notice is missing ${phrase}`);
 }
-if (!publicRoadmap.includes(sprint9GateIssue) || !publicRoadmap.includes("status: \"planned\"")) {
+if (
+  !publicRoadmap.includes(sprint9GateIssue) ||
+  !publicRoadmap.includes('status: "planned"')
+) {
   fail("public roadmap must retain Sprint 9 as planned through issue #64");
 }
 
@@ -284,9 +309,12 @@ const sourceFiles = (await filesRecursively(`${app}/src`)).filter((path) => {
     !filename.startsWith("validate-")
   );
 });
-const source = (await Promise.all(sourceFiles.map((path) => readFile(path, "utf8")))).join("\n");
+const source = (
+  await Promise.all(sourceFiles.map((path) => readFile(path, "utf8")))
+).join("\n");
 for (const secret of secretPatterns) {
-  if (secret.pattern.test(source)) fail(`public site source contains ${secret.name}`);
+  if (secret.pattern.test(source))
+    fail(`public site source contains ${secret.name}`);
 }
 if (
   /(?:from\s+|require\()\s*["'](?:stripe|paypal)|\bnew Stripe\(|\bpaypal\.Buttons\(|\bcheckout\.sessions\.create\b|\bpaymentIntents\.create\b/i.test(

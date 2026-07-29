@@ -84,8 +84,7 @@ export const publicCapabilities: readonly CapabilityRecord[] = [
     status: "experimental",
     summary:
       "The preserve-and-activate path uses the existing private server webhook and Google Sheet for email updates only. Gate #63 remains open until merged deployment and manual verification are accepted.",
-    sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/issues/63",
+    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/63",
     sourceLabel: "Review Phase 0 gate #63",
   },
   {
@@ -94,8 +93,7 @@ export const publicCapabilities: readonly CapabilityRecord[] = [
     status: "planned",
     summary:
       "Sprint 9 remains unimplemented. Issue #64 is defining its public-only, no-account, no-real-health-data, temporary-state, refusal, and accessibility boundaries.",
-    sourceHref:
-      "https://github.com/finalboss-tom/calypsos-promise/issues/64",
+    sourceHref: "https://github.com/finalboss-tom/calypsos-promise/issues/64",
     sourceLabel: "Review the pre-Sprint 9 gate",
   },
   {

@@ -20,20 +20,22 @@ export default function JoinedPage() {
       <h1>Your signup was delivered.</h1>
       <p>
         Your email address was sent to the temporary private Phase 0 newsletter
-        list. You may receive occasional public project updates and opportunities
-        to inspect, play, review, or contribute.
+        list. You may receive occasional public project updates and
+        opportunities to inspect, play, review, or contribute.
       </p>
       <p>
         This did not create an account, game identity, Chronicle, research
-        enrollment, provider relationship, governance role, donation, or payment.
+        enrollment, provider relationship, governance role, donation, or
+        payment.
       </p>
       <p>
-        To unsubscribe, correct your address, request access, or request deletion,
-        reply to any project update or email{" "}
+        To unsubscribe, correct your address, request access, or request
+        deletion, reply to any project update or email{" "}
         <a href="mailto:tom@calypsospromise.org">tom@calypsospromise.org</a>.
       </p>
       <p>
-        Read the <Link href="/privacy">newsletter privacy notice</Link> or review{" "}
+        Read the <Link href="/privacy">newsletter privacy notice</Link> or
+        review{" "}
         <a
           href="https://github.com/finalboss-tom/calypsos-promise/issues/63"
           target="_blank"

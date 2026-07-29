@@ -104,7 +104,8 @@ export function NewsletterSignupForm() {
       <p className={styles.note}>
         Submit only an email address. Do not include health or other sensitive
         information. This is not an account, research enrollment, provider
-        intake, or game registration. Read the <a href="/privacy">privacy notice</a>.
+        intake, or game registration. Read the{" "}
+        <a href="/privacy">privacy notice</a>.
       </p>
       <p
         className={styles.status}

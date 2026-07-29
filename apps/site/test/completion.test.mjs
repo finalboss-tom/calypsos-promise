@@ -33,9 +33,15 @@ test("preserves the historical Sprint 8 readiness evidence", async () => {
     read("../../../docs/roadmap/sprint-8-completion-record.md"),
   ]);
 
-  assert.match(historicalReconciliation, /READY FOR FOUNDING-STEWARD ACCEPTANCE/);
+  assert.match(
+    historicalReconciliation,
+    /READY FOR FOUNDING-STEWARD ACCEPTANCE/,
+  );
   assert.match(completion, /IMPLEMENTATION PACKAGE COMPLETE/);
-  assert.match(completion, /not accepted, merged, deployed, officially released, or closed/);
+  assert.match(
+    completion,
+    /not accepted, merged, deployed, officially released, or closed/,
+  );
   assert.match(releaseHandoff, /not hosted or officially released/i);
 
   const controls = uniqueMatches(controlMap, /`(CTL-S8-\d{3})`/g);
@@ -49,14 +55,15 @@ test("preserves the historical Sprint 8 readiness evidence", async () => {
 });
 
 test("records the accepted, merged, and deployed post-Sprint 8 state", async () => {
-  const [reconciliation, currentStatus, publicRoadmap, vercel] = await Promise.all([
-    read(
-      "../../../docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md",
-    ),
-    read("../../../docs/roadmap/current-status.md"),
-    read("../src/lib/public-roadmap.ts"),
-    read("../vercel.json"),
-  ]);
+  const [reconciliation, currentStatus, publicRoadmap, vercel] =
+    await Promise.all([
+      read(
+        "../../../docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md",
+      ),
+      read("../../../docs/roadmap/current-status.md"),
+      read("../src/lib/public-roadmap.ts"),
+      read("../vercel.json"),
+    ]);
   const source = `${reconciliation}\n${currentStatus}\n${publicRoadmap}`;
 
   for (const phrase of [
@@ -77,7 +84,10 @@ test("records the accepted, merged, and deployed post-Sprint 8 state", async () 
 
   assert.match(publicRoadmap, /id: "sprint-8-10"[\s\S]*status: "live"/);
   assert.match(publicRoadmap, /id: "sprint-9"[\s\S]*status: "planned"/);
-  assert.doesNotMatch(publicRoadmap, /id: "sprint-9"[\s\S]{0,400}status: "live"/);
+  assert.doesNotMatch(
+    publicRoadmap,
+    /id: "sprint-9"[\s\S]{0,400}status: "live"/,
+  );
 
   const vercelConfig = JSON.parse(vercel);
   assert.equal(vercelConfig.framework, "nextjs");

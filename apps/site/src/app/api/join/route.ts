@@ -18,9 +18,7 @@ function validateSignup(value: unknown) {
       ? (value as Record<string, unknown>)
       : {};
   const email =
-    typeof record.email === "string"
-      ? record.email.trim().toLowerCase()
-      : "";
+    typeof record.email === "string" ? record.email.trim().toLowerCase() : "";
 
   if (typeof record.website === "string" && record.website.trim()) {
     return { ok: true as const, ignored: true as const };

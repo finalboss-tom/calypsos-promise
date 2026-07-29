@@ -53,8 +53,14 @@ test("defines the canonical public route family", () => {
     ],
   );
   assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 13);
-  assert.equal(routeContracts.find(({ path }) => path === "/joined")?.noindex, true);
-  assert.equal(routeContracts.find(({ path }) => path === "/joined")?.sitemap, false);
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/joined")?.noindex,
+    true,
+  );
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/joined")?.sitemap,
+    false,
+  );
   assert.equal(siteOrigin, "https://www.calypsospromise.org");
 });
 
@@ -78,19 +84,23 @@ test("retains enhanced contrast for accepted token pairs", () => {
 });
 
 test("keeps permanent isolated production-preview validation", async () => {
-  const [workflow, packageJson, previewValidator, sourceValidator] = await Promise.all([
-    read("../../../.github/workflows/ci.yml"),
-    read("../package.json"),
-    read("../src/validate-preview.mjs"),
-    read("../src/validate-release-source.mjs"),
-  ]);
+  const [workflow, packageJson, previewValidator, sourceValidator] =
+    await Promise.all([
+      read("../../../.github/workflows/ci.yml"),
+      read("../package.json"),
+      read("../src/validate-preview.mjs"),
+      read("../src/validate-release-source.mjs"),
+    ]);
 
   assert.match(workflow, /site-release-validation:/);
   assert.match(workflow, /Build production site/);
   assert.match(workflow, /Start isolated local production preview/);
   assert.match(workflow, /site-release-evidence\.json/);
   assert.match(workflow, /git diff --exit-code/);
-  assert.match(packageJson, /"validate:preview": "node src\/validate-preview\.mjs"/);
+  assert.match(
+    packageJson,
+    /"validate:preview": "node src\/validate-preview\.mjs"/,
+  );
   assert.match(packageJson, /validate-release-source\.mjs/);
   assert.match(previewValidator, /providerContacted: false/);
   assert.match(previewValidator, /bot-field-must-be-ignored/);
@@ -100,7 +110,8 @@ test("keeps permanent isolated production-preview validation", async () => {
 test("validates security headers and CSP", () => {
   assert.deepEqual(requiredPageHeaders, {
     "cross-origin-opener-policy": "same-origin",
-    "permissions-policy": "camera=(), geolocation=(), microphone=(), payment=()",
+    "permissions-policy":
+      "camera=(), geolocation=(), microphone=(), payment=()",
     "referrer-policy": "strict-origin-when-cross-origin",
     "x-content-type-options": "nosniff",
     "x-dns-prefetch-control": "off",
@@ -140,9 +151,12 @@ test("implements bounded newsletter Path A without exposing provider configurati
     "AbortController",
     "SIGNUP_NOT_CONFIGURED",
     "SIGNUP_PROVIDER_UNAVAILABLE",
-    "redirect: \"/joined\"",
+    'redirect: "/joined"',
   ]) {
-    assert.match(route, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      route,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
   assert.doesNotMatch(route, /script\.google(?:usercontent)?\.com\/macros/);
   assert.doesNotMatch(route, /console\.(?:log|error)\([^)]*email/i);
@@ -154,7 +168,10 @@ test("implements bounded newsletter Path A without exposing provider configurati
     'aria-live="polite"',
     'href="/privacy"',
   ]) {
-    assert.match(form, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      form,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
   assert.match(privacy, /Google Apps Script/);

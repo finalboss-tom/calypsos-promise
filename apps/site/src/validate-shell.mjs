@@ -211,7 +211,10 @@ for (const phrase of [
   }
 }
 
-if (serverSource.includes('"use client"') || serverSource.includes("'use client'")) {
+if (
+  serverSource.includes('"use client"') ||
+  serverSource.includes("'use client'")
+) {
   throw new Error(
     "Essential routes, navigation, status, trust, roadmap, support, and funding surfaces must remain server-rendered",
   );
@@ -257,12 +260,19 @@ if (!/contains no live opportunity/i.test(fundingOpportunities)) {
 
 const fundingPage = await readFile(`${app}/src/app/funding/page.tsx`, "utf8");
 if (/<(?:form|input|button)\b/i.test(fundingPage)) {
-  throw new Error("Funding transparency must not activate transaction controls");
+  throw new Error(
+    "Funding transparency must not activate transaction controls",
+  );
 }
 if (/stripe|paypal|checkout session|payment intent/i.test(serverSource)) {
   throw new Error("Site must not contain a payment runtime");
 }
-for (const phrase of ["diagnosis", "medical-record", "wallet-address", "health-condition"]) {
+for (const phrase of [
+  "diagnosis",
+  "medical-record",
+  "wallet-address",
+  "health-condition",
+]) {
   if (`${serverSource}\n${newsletter}`.includes(`name="${phrase}"`)) {
     throw new Error(`Site contains prohibited personal-data field: ${phrase}`);
   }

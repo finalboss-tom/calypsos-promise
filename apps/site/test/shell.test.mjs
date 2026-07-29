@@ -107,20 +107,33 @@ test("defines all controlled capability status values", async () => {
 });
 
 test("publishes the source-backed homepage, Promise, and newsletter entry", async () => {
-  const [home, promisePage, promiseData, loops, principles, newsletter, sitemap] =
-    await Promise.all([
-      read("../src/app/page.tsx"),
-      read("../src/app/promise/page.tsx"),
-      read("../src/lib/promise.ts"),
-      read("../src/components/connected-loops.tsx"),
-      read("../src/components/promise-principles.tsx"),
-      read("../src/components/newsletter-signup-form.tsx"),
-      read("../src/app/sitemap.ts"),
-    ]);
+  const [
+    home,
+    promisePage,
+    promiseData,
+    loops,
+    principles,
+    newsletter,
+    sitemap,
+  ] = await Promise.all([
+    read("../src/app/page.tsx"),
+    read("../src/app/promise/page.tsx"),
+    read("../src/lib/promise.ts"),
+    read("../src/components/connected-loops.tsx"),
+    read("../src/components/promise-principles.tsx"),
+    read("../src/components/newsletter-signup-form.tsx"),
+    read("../src/app/sitemap.ts"),
+  ]);
   const serverSource = `${home}\n${promisePage}\n${promiseData}\n${loops}\n${principles}`;
 
-  assert.match(serverSource, /Build your Living Chronicle\. Improve your health\. Keep the key\./);
-  assert.match(serverSource, /The software is open\. The person’s health data is private\./);
+  assert.match(
+    serverSource,
+    /Build your Living Chronicle\. Improve your health\. Keep the key\./,
+  );
+  assert.match(
+    serverSource,
+    /The software is open\. The person’s health data is private\./,
+  );
   assert.match(serverSource, /without agreeing to research/);
   assert.match(serverSource, /Build your health record/);
   assert.match(serverSource, /Improve your health/);
@@ -137,17 +150,25 @@ test("publishes the source-backed homepage, Promise, and newsletter entry", asyn
 });
 
 test("publishes the source-backed guide family", async () => {
-  const [lawsPage, lawsData, howPage, howData, consumerPage, consumerData, asterPage, asterData] =
-    await Promise.all([
-      read("../src/app/laws/page.tsx"),
-      read("../src/lib/seven-laws.ts"),
-      read("../src/app/how-it-works/page.tsx"),
-      read("../src/lib/how-it-works.ts"),
-      read("../src/app/consumer-first/page.tsx"),
-      read("../src/lib/consumer-first.ts"),
-      read("../src/app/aster/page.tsx"),
-      read("../src/lib/aster.ts"),
-    ]);
+  const [
+    lawsPage,
+    lawsData,
+    howPage,
+    howData,
+    consumerPage,
+    consumerData,
+    asterPage,
+    asterData,
+  ] = await Promise.all([
+    read("../src/app/laws/page.tsx"),
+    read("../src/lib/seven-laws.ts"),
+    read("../src/app/how-it-works/page.tsx"),
+    read("../src/lib/how-it-works.ts"),
+    read("../src/app/consumer-first/page.tsx"),
+    read("../src/lib/consumer-first.ts"),
+    read("../src/app/aster/page.tsx"),
+    read("../src/lib/aster.ts"),
+  ]);
   const source = [
     lawsPage,
     lawsData,
@@ -176,9 +197,18 @@ test("publishes the source-backed guide family", async () => {
   assert.match(normalized, /No broken-streak punishment/);
   assert.match(normalized, /Standards at the edges/);
   assert.match(normalized, /No provider or connector capability is live/);
-  assert.match(normalized, /AI proposes\. The player confirms\. The domain service validates and stores\./);
+  assert.match(
+    normalized,
+    /AI proposes\. The player confirms\. The domain service validates and stores\./,
+  );
   assert.match(normalized, /No production Aster capability is live/);
-  for (const role of ["Scribe", "Librarian", "Wayfinder", "Interpreter", "Storykeeper"]) {
+  for (const role of [
+    "Scribe",
+    "Librarian",
+    "Wayfinder",
+    "Interpreter",
+    "Storykeeper",
+  ]) {
     assert.match(normalized, new RegExp(role));
   }
   assert.doesNotMatch(source, /["']use client["']/);
@@ -191,10 +221,11 @@ test("publishes the source-backed Trust Center and Open Forge", async () => {
     read("../src/app/forge/page.tsx"),
     read("../src/lib/open-forge.ts"),
   ]);
-  const normalized = `${trustPage}\n${trustData}\n${forgePage}\n${forgeData}`.replace(
-    /\s+/g,
-    " ",
-  );
+  const normalized =
+    `${trustPage}\n${trustData}\n${forgePage}\n${forgeData}`.replace(
+      /\s+/g,
+      " ",
+    );
 
   for (const phrase of [
     "Trust begins with visible limits.",
