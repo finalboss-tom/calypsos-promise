@@ -36,11 +36,15 @@ export async function request(path, options = {}) {
   return result;
 }
 
+function decodeAttribute(value) {
+  return value?.replaceAll("&amp;", "&").replaceAll("&quot;", '"');
+}
+
 export function attribute(tag, name) {
   const doubleQuoted = tag.match(new RegExp(`${name}="([^"]*)"`, "i"));
-  if (doubleQuoted) return doubleQuoted[1];
+  if (doubleQuoted) return decodeAttribute(doubleQuoted[1]);
   const singleQuoted = tag.match(new RegExp(`${name}='([^']*)'`, "i"));
-  return singleQuoted?.[1];
+  return decodeAttribute(singleQuoted?.[1]);
 }
 
 export function normalizeUrl(value) {
