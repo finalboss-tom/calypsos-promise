@@ -10,6 +10,7 @@ import {
   productConstitutionUrl,
 } from "@/lib/promise";
 
+// RootLayout renders NewsletterSignupForm with “Follow the build toward Phase 0 completion.” on every public route.
 export default function HomePage() {
   return (
     <>
