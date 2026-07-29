@@ -24,6 +24,11 @@ test("defines two public pre-authored synthetic capture fixtures", async () => {
     "It was not entered by a visitor",
     "No audio exists. No microphone is used.",
     "does not describe a real person",
+    'recordId: "record.prologue.synthetic-sleep-001"',
+    'recordId: "record.prologue.synthetic-activity-001"',
+    'variableId: "variable.prologue.synthetic-sleep-duration"',
+    'variableId: "variable.prologue.synthetic-walk-duration"',
+    'valueShape: "duration"',
     "2030-04-12T07:30:00Z",
     "2030-04-12T13:15:00Z",
   ]) {
@@ -36,14 +41,12 @@ test("defines two public pre-authored synthetic capture fixtures", async () => {
   );
 });
 
-test("keeps synthetic selection, review, correction, and confirmation deterministic", async () => {
+test("keeps capture authority inside the exported deterministic state contract", async () => {
   const state = await read("../src/lib/prologue-opening-state.ts");
 
   for (const phrase of [
-    '"capture-choice"',
-    '"synthetic-draft"',
-    '"review-and-correction"',
-    '"confirmed-entry"',
+    "openingTransitionTable",
+    "getAllowedOpeningTransitions",
     '"choose-synthetic-text"',
     '"choose-synthetic-voice"',
     '"review-draft"',
@@ -52,18 +55,11 @@ test("keeps synthetic selection, review, correction, and confirmation determinis
     '"confirm-entry"',
     '"refuse-draft"',
     '"change-synthetic-example"',
-    'if (transition === "confirm-entry" && !state.correctionId) return false',
-    'if (transition === "confirm-entry") return true',
-    "return state.confirmed",
+    "draftReviewed",
+    "confirmed",
   ]) {
     assert.match(state, escaped(phrase));
   }
-
-  assert.match(state, /transition === "refuse-draft"[\s\S]*return null/);
-  assert.match(
-    state,
-    /transition === "change-synthetic-example"[\s\S]*return null/,
-  );
 });
 
 test("gives Aster and the manual route the same fixtures and controls", async () => {
@@ -91,10 +87,14 @@ test("gives Aster and the manual route the same fixtures and controls", async ()
     (panel.match(/Confirm this synthetic demonstration/g) ?? []).length,
     1,
   );
+  assert.doesNotMatch(panel, /state\.scene === "confirmed-entry"/);
 });
 
-test("requires an explicit review choice before confirmation", async () => {
-  const panel = await read("../src/components/prologue-capture-panel.tsx");
+test("requires explicit review and separates confirmation from the projection handoff", async () => {
+  const [panel, confirmedPanel] = await Promise.all([
+    read("../src/components/prologue-capture-panel.tsx"),
+    read("../src/components/prologue-confirmed-projection-entry.tsx"),
+  ]);
 
   for (const phrase of [
     "aria-pressed={accepted}",
@@ -104,20 +104,28 @@ test("requires an explicit review choice before confirmation", async () => {
     'aria-live="polite"',
     "No review choice is selected. Confirmation remains unavailable.",
     "A synthetic review choice is selected. You may now confirm or change it.",
-    "This confirmation exists only in this page memory.",
-    "Nothing was stored.",
   ]) {
     assert.match(panel, escaped(phrase));
+  }
+
+  for (const phrase of [
+    "The confirmation exists only in this page memory",
+    "not a Chronicle record",
+    "Discard the confirmed synthetic state",
+    'move("discard-projection")',
+  ]) {
+    assert.match(confirmedPanel, escaped(phrase));
   }
 });
 
 test("accepts no arbitrary input, capture API, persistence, or network path", async () => {
-  const [panel, fixtures, state] = await Promise.all([
+  const [panel, confirmedPanel, fixtures, state] = await Promise.all([
     read("../src/components/prologue-capture-panel.tsx"),
+    read("../src/components/prologue-confirmed-projection-entry.tsx"),
     read("../src/lib/prologue-synthetic-fixtures.ts"),
     read("../src/lib/prologue-opening-state.ts"),
   ]);
-  const source = `${panel}\n${fixtures}\n${state}`;
+  const source = `${panel}\n${confirmedPanel}\n${fixtures}\n${state}`;
 
   for (const prohibited of [
     /<input\b/i,
