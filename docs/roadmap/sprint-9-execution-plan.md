@@ -1,8 +1,8 @@
 # Sprint 9 Execution Plan — Public Synthetic Prologue
 
-[Current status](current-status.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
+[Current status](current-status.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
 
-- **Status:** ACTIVE — workstreams 9.1–9.4 complete; workstream 9.5 in progress
+- **Status:** ACTIVE — 9.1–9.5 previously validated; 9.6 remediated and under exact-candidate validation; 9.7–9.9 unfinished; 9.10 blocked
 - **Tracking issue:** [#67](https://github.com/finalboss-tom/calypsos-promise/issues/67)
 - **Draft pull request:** [#68](https://github.com/finalboss-tom/calypsos-promise/pull/68)
 - **Branch:** `agent/sprint-9-public-synthetic-prologue`
@@ -11,7 +11,8 @@
 - **Institutional phase:** Phase 0 remains active
 - **Newsletter gate:** [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63) remains separate
 - **Release control:** Git-triggered Vercel deployment remains disabled
-- **Latest validated candidate:** `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283
+- **Latest fully validated workstream candidate:** `e819c71f31041632998b5f468c492e8b1c810a44` for 9.5 — CI 1221 / DCO 1300
+- **Quality gate:** [Sprint 9 Pre-9.10 Quality and Coherence Review](sprint-9-pre-9-10-quality-review.md)
 
 ## Goal
 
@@ -38,12 +39,13 @@ The newsletter remains a distinct Phase 0 contact gate. It cannot become prologu
 - Interactive state remains memory-only and disappears on refresh, navigation, tab close, restart, or explicit discard.
 - Voice and text are demonstrated through pre-authored synthetic choices only.
 - Aster remains deterministic and optional, with a complete manual path.
-- First Lantern completion depends only on explicit synthetic state and player confirmation.
-- The synthetic Chronicle and receipt remain temporary UI projections, not authoritative records or permission.
+- First Lantern completion depends only on explicit, inspectable synthetic evidence and player confirmation.
+- The synthetic Chronicle and receipt remain temporary UI explanations, not authoritative records, grants, permission, consent, or audit evidence.
 - Refusal, skip, restart, discard, exit, and completion without conversion remain functional and non-punitive.
 - Account conversion remains informational only and cannot retain state or request contact information.
+- No workstream may weaken the Product Constitution, frozen lore, gameplay foundation, Chronicle authority, House of Keys authority, Aster boundaries, security baseline, consumer-first doctrine, or manual release controls.
 
-## Workstream order
+## Workstream order and actual state
 
 ### 9.1 — Application, route, state, lifecycle, fixtures, and validation contracts
 
@@ -54,85 +56,133 @@ Deliver:
 - named temporary-data classes and destruction behavior;
 - public synthetic fixture and classification rules;
 - scripted Aster and manual-fallback contract;
-- synthetic Chronicle and House of Keys projection rules;
+- synthetic Chronicle and House of Keys explanation rules;
 - refusal, reset, discard, exit, and future-account boundaries;
 - route, source, storage, network, secret, accessibility, performance, and interaction validation plan; and
 - unresolved holdpoint register.
 
-Acceptance:
+**State:** completed and previously validated at `6bd992f91ea0948fe248ef55817afcd520664205` — CI 1169 / DCO 1247.
 
-- no implementation ambiguity remains about storage, input, model, network, identity, receipt, completion, or release authority;
-- later workstreams can be reviewed against stable state and data contracts; and
-- no playable route is publicly linked before its validation contract passes.
-
-**Status:** complete at `6bd992f91ea0948fe248ef55817afcd520664205` — CI 1169 / DCO 1247.
+**Quality-review inheritance:** the permanent validation contract must include executable state transitions and rendered interaction evidence; source-string checks and static route previews are not sufficient proof of playable behavior.
 
 ### 9.2 — Opening sequence and Lantern Shore
 
 Deliver a direct, skippable opening and the first Lantern Shore scene without required animation, autoplay, or timed progression.
 
-**Status:** complete at `6565fbc43c9356e7b72acaed30b50cbff2907a38` — CI 1180 / DCO 1258.
+**State:** completed and previously validated at `6565fbc43c9356e7b72acaed30b50cbff2907a38` — CI 1180 / DCO 1258.
 
 ### 9.3 — Deterministic Aster and manual fallback
 
 Introduce Aster through scripted public content while exposing an equivalent non-AI explanation and completion path.
 
-**Status:** complete at `72f72223d7a07d460e89ec69b87b2003e84cdd3b` — CI 1188 / DCO 1266.
+**State:** completed and previously validated at `72f72223d7a07d460e89ec69b87b2003e84cdd3b` — CI 1188 / DCO 1266.
 
 ### 9.4 — Synthetic capture, draft, correction, and confirmation
 
 Demonstrate text and voice modalities through pre-authored synthetic choices, produce a deterministic draft, and allow review, correction, confirmation, or refusal without arbitrary input.
 
-**Status:** complete at `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283.
+**State:** completed and previously validated at `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283.
+
+**Quality-review correction:** an unreachable duplicate confirmed-state UI was removed. One component now owns the confirmed-state handoff, and the visible discard action is covered by executable transition tests.
 
 ### 9.5 — Synthetic Chronicle and House of Keys receipt
 
-Render a visibly synthetic temporary Chronicle entry and a non-authoritative receipt projection derived from accepted public contracts where practical.
+Render a visibly synthetic temporary Chronicle explanation and a non-authoritative receipt-shaped explanation derived from accepted public contract vocabulary where practical.
 
-**Status:** active.
+**State:** completed and previously validated at `e819c71f31041632998b5f468c492e8b1c810a44` — CI 1221 / DCO 1300. Cross-contract corrections from the quality review await validation on the remediated aggregate head.
+
+**Quality-review corrections:** 
+
+- the Chronicle explanation maps selected `ChronicleRecordEnvelope` vocabulary without claiming to be a record;
+- record, Chronicle, subject, variable, source artifact, and source version identifiers are namespaced and explicitly synthetic;
+- the receipt explanation uses selected `AccessReceipt` field meanings only;
+- stale source-line anchors were removed;
+- the opposite-state `receipt.personal-export.synthetic` fixture is no longer claimed as the projection source; and
+- no policy request, evaluation, grant, execution, audit event, or data release is implied.
 
 ### 9.6 — First Lantern completion
 
 Tie completion to deterministic confirmed synthetic state and display exactly what evidence caused completion.
 
+**State:** implemented and remediated; not yet accepted as a final workstream candidate.
+
+The corrected rule requires explicit evidence that:
+
+1. Lantern Shore was reached;
+2. Aster or the manual guide was selected;
+3. a visibly synthetic fixture was selected;
+4. the draft was reviewed;
+5. an accept-or-correct choice was explicitly confirmed;
+6. the temporary Chronicle explanation was inspected;
+7. the non-authoritative receipt explanation was inspected; and
+8. completion occurred without account, email, newsletter, model, provider, payment, real health information, real-world action, timer, analytics, or hidden state.
+
+The bounded quest definition now records player value, zone, guide, estimated time, accessibility variants, synthetic-only data category, no permission requirement, non-clinical safety class, feedback, no reward, refusal behavior, and a narrative consequence that creates no Fourteen Lanterns progression, canonical zone unlock, rank, account, or durable game state.
+
 ### 9.7 — Refusal, restart, discard, exit, and future account boundary
 
 Provide complete non-punitive alternatives, destroy temporary state on exit, and explain future account conversion without activating it.
 
+**State:** not implemented as a complete workstream.
+
+Existing local refusal, review, discard, and leave controls are foundations only. Workstream 9.7 still must provide and validate:
+
+- an explicit restart path from later scenes;
+- a complete departure or terminal choice surface;
+- a clear completed-without-conversion path;
+- informational-only future account copy with no email field, account endpoint, state retention, or newsletter coupling;
+- visible destruction behavior for restart, discard, and exit; and
+- non-punitive parity across Aster and manual presentations.
+
 ### 9.8 — Accessibility, security, performance, storage, network, and interaction validation
 
-Add permanent source and isolated production-preview evidence for keyboard, screen reader, focus, reduced motion, reduced data, forced colors, contrast, dialogue, confirmation, errors, receipt, refusal, exit, no persistence, no hidden input, no remote calls, and transfer budgets.
+Add permanent evidence for keyboard, screen reader, focus, reduced motion, reduced data, forced colors, contrast, dialogue, confirmation, errors, receipt, refusal, restart, discard, exit, no persistence, no hidden input, no remote calls, duration, and transfer budgets.
+
+**State:** not implemented as a complete playable validation and measurement workstream.
+
+Required evidence includes:
+
+- executable pure-state coverage of valid and invalid transitions;
+- browser-rendered interaction coverage across Aster/manual and text/voice paths;
+- visible-control-to-valid-transition coverage so no rendered control can silently no-op;
+- representative keyboard and focus review;
+- live-region and screen-reader announcement review, distinguishing scene-change focus from in-scene status updates;
+- reduced-motion, reduced-data, forced-colors, contrast, no-JavaScript, and narrow-screen review;
+- shortest, representative, and longest completion-path action counts and duration measurements;
+- exact route-by-route HTML, JavaScript, CSS, image, total-transfer, and request measurements;
+- written rationale for any budget increase above Sprint 8 rather than normalizing growth;
+- first-party-only resources, zero web-fonts, no secrets, no storage, no analytics, and no provider contact; and
+- a representative manual implementation review comparable to Sprint 8.9.
 
 ### 9.9 — Publication, rollback, hosted evidence, and public-status reconciliation
 
 Define release ownership, manual deployment, domain verification, runtime checks, rollback, correction, and truthful capability labeling.
 
+**State:** not implemented.
+
+Required records include:
+
+- stable `main` or commit-pinned public source links instead of branch-only links;
+- exact release-candidate and squash-commit provenance;
+- explicit separation of merge, public linking, and production deployment authority;
+- manual deployment ownership and Git-trigger restoration to disabled;
+- hosted `/prologue` verification only after explicit founding-steward release direction;
+- canonical-domain, headers, route, runtime-error, newsletter-separation, and no-persistence checks;
+- rollback by entry-link removal, deployment restoration, or commit revert;
+- public capability/status reconciliation; and
+- clear evidence limitations and correction ownership.
+
 ### 9.10 — Cross-contract reconciliation, completion, and Sprint 10 handoff
 
 Publish the control map, unresolved holdpoints, completion record, release evidence, rollback state, and bounded handoff to the universal game shell.
 
-## Validated progress through 9.4
+**State:** blocked and not started.
 
-The branch currently proves:
-
-- one noindex, unlinked, branch-only `/prologue` route;
-- a skippable arrival and Lantern Shore;
-- deterministic Aster framing and a materially equivalent complete manual path;
-- one shared immutable guide fact set and one shared interaction state machine;
-- two pre-authored public synthetic fixtures: text and visual voice transcript;
-- no arbitrary input, microphone, audio, files, camera, location, contact, account, model, provider, analytics, storage, or network dependency;
-- deterministic fixture-to-draft projection;
-- visible source, synthetic classification, timestamp, value, context, and prohibited interpretations;
-- explicit accept-as-written, prepared correction, refusal, alternate-example, and confirmation controls;
-- fail-closed confirmation until a review choice exists;
-- confirmation held only in page memory; and
-- no Chronicle, permission, identity, consent, audit, health, account, or durable-game authority.
-
-The route remains unmerged and undeployed. Passing branch preview evidence is not a public release.
+9.10 may begin only after 9.6 is accepted on an exact fully green candidate and 9.7–9.9 are implemented, validated, and reconciled.
 
 ## Deterministic prologue state model
 
-The accepted state vocabulary is:
+The implemented pre-9.7 state vocabulary is:
 
 1. `arrival`
 2. `lantern-shore`
@@ -146,85 +196,54 @@ The accepted state vocabulary is:
 10. `synthetic-chronicle`
 11. `synthetic-receipt`
 12. `first-lantern`
-13. `exit-choice`
-14. terminal `discarded`, `left`, or `complete`
+
+Workstream 9.7 must add the accepted exit, restart, informational account, and terminal behavior without moving authority into URL state, browser persistence, a remote service, or presentation code.
 
 Every transition must name its preconditions, visible consequence, reversibility, announcement behavior, and destruction behavior. URL, refresh, browser history, hidden network state, model output, newsletter state, or elapsed time may not silently advance the state machine.
 
 ## Temporary-data classes
 
-| Class                          | Example                               | Location          | Lifetime                                         | Destruction                                      |
-| ------------------------------ | ------------------------------------- | ----------------- | ------------------------------------------------ | ------------------------------------------------ |
-| navigation state               | current scene                         | React memory      | current page instance                            | refresh, navigation, discard, restart, tab close |
-| synthetic selection            | pre-authored text or voice example ID | React memory      | current page instance                            | same as navigation state                         |
-| deterministic draft            | UI projection from selected fixture   | React memory      | until correction, confirmation, discard, or exit | reset, discard, exit, refresh, tab close         |
-| correction choice              | selected pre-authored correction      | React memory      | until confirmation or discard                    | reset, discard, exit, refresh, tab close         |
-| synthetic Chronicle projection | confirmed public fixture projection   | React memory      | until receipt, completion, discard, or exit      | reset, discard, exit, refresh, tab close         |
-| synthetic receipt projection   | public non-authoritative receipt view | React memory      | until completion, discard, or exit               | reset, discard, exit, refresh, tab close         |
-| accessibility announcements    | current status text                   | rendered DOM only | current scene                                    | replacement, navigation, refresh, tab close      |
+| Class | Example | Location | Lifetime | Destruction |
+| --- | --- | --- | --- | --- |
+| navigation state | current scene and explicit evidence flags | React memory | current page instance | refresh, navigation, discard, restart, tab close |
+| synthetic selection | pre-authored text or voice fixture ID | React memory | current page instance | same as navigation state |
+| deterministic draft | projection from selected fixture | React memory | until correction, confirmation, discard, or exit | review reset, discard, exit, refresh, tab close |
+| correction choice | accept-as-written or prepared correction | React memory | until review reset, discard, or exit | same |
+| synthetic Chronicle explanation | confirmed fixture mapping | React memory | until receipt, completion, review, discard, or exit | same |
+| synthetic receipt explanation | non-authoritative field mapping | React memory | until completion, review, discard, or exit | same |
+| First Lantern evidence | explicit route, review, confirmation, and inspection flags | React memory | until reversal, review, discard, restart, exit, refresh, or tab close | same |
+| accessibility announcements | current transition status | rendered DOM only | current interaction | replacement, navigation, refresh, tab close |
 
 No class may enter local storage, session storage, IndexedDB, cookies, query strings, hashes, analytics, server logs, provider logs, newsletter records, databases, remote models, or private destinations.
 
-## Synthetic fixture rule
+## Aster and manual parity rule
 
-Every fixture must include:
+Sprint 9 Aster is a deterministic presentation adapter. It may introduce the demonstration, explain source and limitations, and narrate deterministic results. It may not call a model, accept arbitrary personal input, confirm itself, create Chronicle truth or permission, advance completion without domain evidence, or make diagnosis, treatment, provider, or research claims.
 
-- stable public ID;
-- `dataClassification: "synthetic"` or equivalent visible classification;
-- human-readable synthetic label;
-- source and provenance explanation;
-- permitted display and transition uses;
-- explicit prohibited interpretation; and
-- correction and discard behavior.
+The manual path must expose materially equivalent facts, fixtures, controls, correction, refusal, projection, completion, restart, exit, and future-account behavior.
 
-The experience must never invite a visitor to replace a synthetic value with personal information.
+## Pre-9.10 quality gate
 
-## Aster rule
+The [Sprint 9 Pre-9.10 Quality and Coherence Review](sprint-9-pre-9-10-quality-review.md) is a blocking record. It found and corrected material implementation defects while keeping these open gates:
 
-Sprint 9 Aster behavior is a deterministic presentation adapter. It may:
+- final formatting and exact-candidate validation of the aggregate remediation;
+- 9.6 acceptance;
+- full 9.7 implementation;
+- playable and measured 9.8 evidence;
+- 9.9 release, rollback, stable-source, hosted-evidence, and public-status records; and
+- exact agreement among issue #67, PR #68, this plan, current status, roadmap indexes, and persistent roadmap tracking.
 
-- introduce the demonstration;
-- explain source, uncertainty, confirmation, and discard;
-- draft from a selected public synthetic fixture; and
-- narrate the deterministic result.
-
-It may not:
-
-- call a model or remote provider;
-- accept arbitrary personal input;
-- confirm itself;
-- create Chronicle truth or permission;
-- advance completion without deterministic evidence; or
-- make diagnosis, treatment, safety, provider, or research claims.
-
-The manual path must expose materially equivalent information and all required controls.
-
-## Validation package
-
-Workstream 9.8 must prove at minimum:
-
-- `/prologue` has exactly one `h1`, one `main`, canonical metadata, security headers, and one shared newsletter opt-in outside the prologue state machine;
-- the prologue uses no free-form text field, file input, microphone, camera, geolocation, media device, storage API, cookie mutation, analytics, remote fetch, websocket, event source, or third-party runtime resource;
-- deterministic transition functions are pure, exhaustive, serializable for tests, and fail closed on invalid actions;
-- no action reaches `first-lantern` without confirmed synthetic state;
-- refusal, manual fallback, restart, discard, exit, and completion without conversion are tested;
-- focus and announcements follow each scene transition;
-- reduced-motion and reduced-data modes retain complete comprehension and controls;
-- receipt and Chronicle labels remain visibly synthetic and non-authoritative;
-- refresh and navigation do not imply persistence or recovery; and
-- performance remains within an explicitly revised public-site budget.
-
-CI must not contact the real newsletter provider, any model provider, or any external service while validating Sprint 9.
+No completion package may mark these items complete by reference to passing static source tests, an earlier workstream candidate, or the existence of a playable local route.
 
 ## Publication and rollback
 
 - Branch and PR builds remain validation-only while Git-triggered deployment is disabled.
 - Merge does not itself authorize deployment or public linking.
-- A hosted release requires explicit founding-steward direction, exact commit provenance, route verification, runtime-error review, and rollback ownership.
+- A hosted release requires explicit founding-steward direction, exact commit provenance, route verification, runtime-error review, stable source links, and rollback ownership.
 - Rollback may remove the prologue entry link, restore the last accepted deployment, or revert the Sprint 9 squash commit while preserving public-safe evidence.
 - No private-data migration or financial reconciliation exists because Sprint 9 may not persist visitor state.
 
-## Unresolved holdpoints
+## Unresolved inherited holdpoints
 
 Sprint 9 does not close:
 
