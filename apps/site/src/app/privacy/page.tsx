@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const providerDescription =
+  "Google Apps Script webhook into the project’s private Google Sheet";
+
 export const metadata: Metadata = {
   title: "Newsletter privacy",
   description:
@@ -27,8 +30,14 @@ export default function PrivacyPage() {
       <ul>
         <li>the email address you submit;</li>
         <li>your affirmative consent to receive project updates;</li>
-        <li>the privacy-policy version, narrow newsletter purpose, source route, and submission time; and</li>
-        <li>temporary request information needed for bounded abuse prevention and delivery.</li>
+        <li>
+          the privacy-policy version, narrow newsletter purpose, source route,
+          and submission time; and
+        </li>
+        <li>
+          temporary request information needed for bounded abuse prevention and
+          delivery.
+        </li>
       </ul>
       <p>
         Do not submit health, medical, genetic, wearable, location, Chronicle, or
@@ -37,11 +46,10 @@ export default function PrivacyPage() {
 
       <h2>Where it goes</h2>
       <p>
-        The server forwards an accepted signup through the existing private Google
-        Apps Script webhook into the project’s private Google Sheet. The webhook
-        address and any token remain server-only Vercel environment variables.
-        Subscriber addresses are not written to GitHub, public logs, website
-        analytics, or the open-source repository.
+        The server forwards an accepted signup through the existing private{" "}
+        {providerDescription}. The webhook address and any token remain server-only
+        Vercel environment variables. Subscriber addresses are not written to
+        GitHub, public logs, website analytics, or the open-source repository.
       </p>
 
       <h2>Retention, correction, and deletion</h2>
