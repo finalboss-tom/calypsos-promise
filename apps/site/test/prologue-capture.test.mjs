@@ -71,7 +71,6 @@ test("gives Aster and the manual route the same fixtures and controls", async ()
   for (const phrase of [
     "Deterministic Aster presentation",
     "Direct manual presentation",
-    "same deterministic result",
     "Use the synthetic text example",
     "Use the synthetic voice transcript",
     "Review and correct the draft",
@@ -84,6 +83,7 @@ test("gives Aster and the manual route the same fixtures and controls", async ()
   ]) {
     assert.match(panel, escaped(phrase));
   }
+  assert.match(panel, /presents the same\s+deterministic result/i);
 
   assert.equal((panel.match(/function presentationLabel/g) ?? []).length, 1);
   assert.equal(
