@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.6 record](sprint-8-workstream-8-6-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 8 plan](sprint-8-execution-plan.md) · [Workstream 8.7 record](sprint-8-workstream-8-7-record.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
 
 ## Status summary
 
@@ -8,11 +8,11 @@
 - **Merged baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Completed numbered sprints:** 0–7
 - **Active sprint:** Sprint 8 — Public Website Foundation
-- **Completed workstreams:** 8.1 through 8.6
-- **Next workstream:** 8.7 — Roadmap, capability status, support, and canonical funding transparency
+- **Completed workstreams:** 8.1 through 8.7
+- **Next workstream:** 8.8 — Signup preserve-or-retire decision and bounded implementation
 - **Tracking:** issue #60, branch `agent/sprint-8-public-website-foundation`, draft PR #61
 - **Website owner:** `apps/site`
-- **Website runtime:** validated Next.js App Router site with homepage, Promise, Seven Laws, How It Works, consumer-first, Aster, Trust Center, Open Forge, navigation, status, and accessibility foundations; not deployed or officially released
+- **Website runtime:** validated Next.js App Router site with homepage, Promise, Seven Laws, How It Works, consumer-first, Aster, Trust Center, Open Forge, roadmap, support, funding transparency, navigation, status, and accessibility foundations; not deployed or officially released
 - **Production health data:** none
 - **Production AI, private MCP, providers, connectors, accounts, transactions, or consequential actions:** none
 - **Independent specialist review:** not established for the principal product, website accessibility, security, privacy, AI safety, clinical, interoperability, legal, provider, financial, operational, or research boundaries
@@ -146,13 +146,31 @@ The focused validation workflow passed formatting, a production site build, site
 
 The controlling evidence is [Sprint 8.6 Record](sprint-8-workstream-8-6-record.md).
 
+## Workstream 8.7 — validated roadmap, support, and funding transparency
+
+Workstream 8.7 established:
+
+- `/roadmap` with the controlled evidence-status vocabulary, shared capability registry, a typed source-linked Sprint 8 presentation registry, later sprint groupings, and institutional Phase 0 gates;
+- `/support` with public-safe issue, system-challenge, contribution, and status routes plus separate security, conduct, account, and personal-information boundaries;
+- `/funding` with build-time reads of the two canonical public economics registers, fail-closed parsing, honest empty states, permitted and prohibited benefits, conflict and concentration controls, and an explicit disabled transaction boundary;
+- direct and narrative navigation parity, footer links, canonical metadata, and sitemap inclusion for all three routes;
+- server-rendered essential information without a client-component dependency;
+- responsive, reduced-data, contrast, forced-colors, and image-independent presentation; and
+- deterministic roadmap, support, canonical-register, empty-state, transaction-prohibition, signup, and deployment validation.
+
+The initial focused build exposed a Turbopack incompatibility with a module-relative `URL` passed to Node file APIs. The build-time reader was corrected to search upward for two fixed canonical public repository paths using string filesystem paths.
+
+The self-removing focused workflow then passed formatting, the production site build, site validation and lint, typecheck, focused tests, generated-state cleanup, final formatting, and cleanup before producing clean candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf`.
+
+The controlling evidence is [Sprint 8.7 Record](sprint-8-workstream-8-7-record.md).
+
 ## Current public website surface
 
 `apps/site` now provides:
 
 - one pinned Next.js App Router application;
 - a migrated cinematic homepage;
-- `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, and `/forge` source-backed routes;
+- `/promise`, `/laws`, `/how-it-works`, `/consumer-first`, `/aster`, `/trust`, `/forge`, `/roadmap`, `/support`, and `/funding` source-backed routes;
 - shared direct navigation and an optional narrative path;
 - skip links, semantic landmarks, and visible-focus foundations;
 - controlled capability-status primitives with canonical source links;
@@ -165,7 +183,6 @@ The controlling evidence is [Sprint 8.6 Record](sprint-8-workstream-8-6-record.m
 
 It does not yet provide:
 
-- canonical roadmap, support, or funding-transparency pages;
 - final signup disposition;
 - representative accessibility review or certification;
 - defined route-level performance release evidence;
@@ -174,20 +191,18 @@ It does not yet provide:
 
 ## Next workstream
 
-Workstream 8.7 may now implement:
+Workstream 8.8 must choose one evidence-backed signup path:
 
-- roadmap and capability-status views derived from validated site-local presentation records with canonical repository sources;
-- public support and contribution routes that do not become private customer-support, account, provider-intake, research-enrollment, or transaction systems;
-- canonical funding and relationship transparency derived from approved public economics records or honest empty states; and
-- approved and prohibited benefit, conflict, concentration, outcome, correction, and challenge explanations with transactions disabled.
+1. preserve `/api/join`, `/privacy`, and `/joined` only with an approved provider or custody route, narrow purpose, retention, unsubscribe, correction, deletion, proxy-trust, abuse-control, incident, privacy, and rollback evidence; or
+2. retire the signup surface and direct visitors to public repository-following and contribution paths until those gates can be met.
 
-It must preserve the accepted page family, canonical source authority, controlled evidence statuses, funding neutrality, server-rendered essential information, accessibility and resilience foundations, paused signup, disabled deployment, and every permanent Sprint 8 non-scope boundary.
+It must preserve the accepted page family, public/private information separation, canonical source authority, server-rendered essential information, accessibility and resilience foundations, disabled deployment, funding neutrality, and every permanent Sprint 8 boundary.
 
-It may not activate donations, sponsorship checkout, payments, charitable or tax claims, nonprofit or public-benefit claims, provider intake, connector placement, ranking, private support records, or Sprint 9 gameplay.
+The signup surface may not become account creation, health-data intake, research enrollment, donation processing, provider intake, or an undeclared marketing database.
 
 ## Implemented repository surfaces
 
-- [`apps/site`](../../apps/site) — validated source-backed public website foundation through workstream 8.6; not deployed
+- [`apps/site`](../../apps/site) — validated source-backed public website foundation through workstream 8.7; not deployed
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor tooling with ten bounded tools
 - [`packages/content-schema`](../../packages/content-schema) — content contracts, deterministic validation, graph contracts, and JSON Schema
 - [`packages/health-schema`](../../packages/health-schema) — pre-stable Living Chronicle contracts, validation, and public synthetic fixtures

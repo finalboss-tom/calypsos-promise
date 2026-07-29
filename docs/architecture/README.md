@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.6 record](../roadmap/sprint-8-workstream-8-6-record.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.7 record](../roadmap/sprint-8-workstream-8-7-record.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -24,6 +24,7 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Sprint 8.4 Homepage and Promise Record](../roadmap/sprint-8-workstream-8-4-record.md)
 - [Sprint 8.5 Guide Family Record](../roadmap/sprint-8-workstream-8-5-record.md)
 - [Sprint 8.6 Trust Center and Open Forge Record](../roadmap/sprint-8-workstream-8-6-record.md)
+- [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](../roadmap/sprint-8-workstream-8-7-record.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -77,13 +78,24 @@ Workstream 8.6 implemented:
 
 The focused validation workflow passed formatting, a production site build, site lint, typecheck, focused tests, generated-state cleanup, and self-removal before producing clean candidate `e43d0a47186041599674f6608455752a4e3b7319`.
 
+Workstream 8.7 implemented:
+
+- `/roadmap` as a typed source-linked presentation of the shared capability registry, Sprint 8 gates, future sprint groupings, and institutional roadmap;
+- `/support` as public-safe issue, challenge, contribution, and orientation routing with protected security, conduct, account, and personal-information boundaries;
+- `/funding` as a build-time read-only derivative of the two fixed canonical public economics registers with fail-closed parsing, honest empty states, benefit and conflict boundaries, concentration triggers, and transactions disabled;
+- direct and narrative navigation parity, footer links, canonical metadata, and sitemap inclusion;
+- server-rendered essential information and inherited accessibility and resilience behavior; and
+- focused production-build and deterministic source-authority, register, support, transaction, signup, and deployment validation.
+
+The focused workflow passed formatting, the production site build, site lint and validation, typecheck, focused tests, generated-state cleanup, and self-removal before producing clean candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf`.
+
 The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup surface.
 
 It may not own Product Constitution, lore canon, Chronicle truth, permission truth, Aster or Forge authority, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, governance authority, private data, providers, connectors, transactions, or Sprint 9 game state.
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.7 is next. It may implement roadmap, capability-status, support, and canonical funding-transparency views derived from approved public repository records while preserving frozen authority, accepted public routes, direct and narrative navigation parity, controlled status values, source links, funding neutrality, server-rendered essential information, accessibility and resilience foundations, paused signup, disabled deployment, and permanent non-scope boundaries.
+Workstream 8.8 is next. It may preserve the signup surface only under accepted provider or custody, purpose, retention, unsubscribe, correction, deletion, proxy-trust, abuse-control, incident, privacy, and rollback evidence, or retire it in favor of public repository-following paths. It may not create accounts, health-data intake, research enrollment, donation processing, provider intake, or an undeclared marketing database.
 
 ## Content and story architecture
 

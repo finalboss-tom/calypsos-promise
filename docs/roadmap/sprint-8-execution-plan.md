@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.6 record](sprint-8-workstream-8-6-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.7 record](sprint-8-workstream-8-7-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 through 8.6 complete; workstream 8.7 next
+- **Status:** ACTIVE — workstreams 8.1 through 8.7 complete; workstream 8.8 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -40,8 +40,8 @@ Sprint 8 inherits:
 - [x] **8.4 — Homepage and Promise migration**
 - [x] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
 - [x] **8.6 — Trust Center and Open Forge**
-- [ ] **8.7 — Roadmap, capability status, support, and funding transparency — NEXT**
-- [ ] **8.8 — Signup disposition and bounded implementation**
+- [x] **8.7 — Roadmap, capability status, support, and funding transparency**
+- [ ] **8.8 — Signup disposition and bounded implementation — NEXT**
 - [ ] **8.9 — Accessibility, performance, security, route, and authority validation**
 - [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff**
 
@@ -104,16 +104,25 @@ The first full repository pass passed every substantive job and found only canon
 
 The controlling evidence is [Sprint 8.6 Record](sprint-8-workstream-8-6-record.md).
 
-## 8.7 — roadmap, capability status, support, and funding transparency — NEXT
+## 8.7 result — roadmap, capability status, support, and funding transparency
 
-Deliverables:
+Workstream 8.7 established:
 
-- roadmap and capability-status views from a validated site-local registry with canonical source links;
-- build-time funding and relationship views from canonical public economics records or honest empty states;
-- approved and prohibited benefit, conflict, concentration, outcome, correction, and challenge explanations; and
-- disabled transaction handoff with no charitable, tax, nonprofit, payment, or public-benefit claim.
+- `/roadmap` with controlled status definitions, the shared source-linked capability registry, typed Sprint 8 and future-roadmap presentation records, and explicit institutional gates;
+- `/support` with public-safe issue, challenge, contribution, and status routes plus protected security, conduct, account, and personal-information routing;
+- `/funding` with build-time ingestion of the two fixed canonical public funding registers, fail-closed parsing, honest empty states, recognition and conflict rules, concentration triggers, and no transaction handoff;
+- direct and narrative navigation parity, footer links, canonical metadata, and sitemap inclusion;
+- server-rendered essential information without `use client`;
+- responsive public-record layouts with reduced-data, contrast, and forced-colors behavior; and
+- expanded route, source-authority, canonical-register, support-boundary, empty-state, transaction, signup, and deployment validation.
 
-## 8.8 — signup disposition and bounded implementation
+The first full repository pass passed every substantive job and found only canonical formatting differences. The first focused build then exposed a Turbopack `URL` transformation at the canonical-register file boundary. The reader was corrected to search upward for two fixed repository paths using bounded string filesystem paths.
+
+The self-removing focused workflow subsequently passed canonical formatting, the production site build, site validation and lint, typecheck, focused tests, generated-state cleanup, final formatting, and cleanup before producing candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf`.
+
+The controlling evidence is [Sprint 8.7 Record](sprint-8-workstream-8-7-record.md).
+
+## 8.8 — signup disposition and bounded implementation — NEXT
 
 Choose one evidence-backed path:
 
