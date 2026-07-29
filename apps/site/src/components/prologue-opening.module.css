@@ -60,7 +60,12 @@
 
 .lede,
 .storyPanel,
-.boundaries {
+.boundaries,
+.pathGrid,
+.guideIntroduction,
+.guideFacts,
+.pathClosing,
+.nextBoundary {
   position: relative;
   z-index: 1;
 }
@@ -73,14 +78,20 @@
     sans-serif;
 }
 
+.storyPanel,
+.guideIntroduction,
+.pathClosing,
+.nextBoundary {
+  max-width: 44rem;
+  color: var(--color-sand-200);
+  font-family: system-ui, sans-serif;
+}
+
 .storyPanel {
-  max-width: 42rem;
   margin-top: var(--space-6);
   border-left: 0.2rem solid var(--color-gold-300);
   background: rgb(4 17 29 / 0.48);
   padding: var(--space-4) var(--space-5);
-  color: var(--color-sand-200);
-  font-family: system-ui, sans-serif;
 }
 
 .storyPanel p:first-child {
@@ -101,7 +112,8 @@
   margin-top: var(--space-6);
 }
 
-.boundaries {
+.boundaries,
+.guideFacts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
@@ -109,14 +121,17 @@
   margin: var(--space-6) 0 0;
 }
 
-.boundaries div {
+.boundaries div,
+.guideFacts div,
+.pathGrid article {
   border: 1px solid rgb(234 215 181 / 0.16);
   border-radius: var(--radius-medium);
   background: rgb(4 17 29 / 0.58);
   padding: var(--space-4);
 }
 
-.boundaries dt {
+.boundaries dt,
+.guideFacts dt {
   color: var(--color-gold-300);
   font:
     700 0.78rem/1.4 system-ui,
@@ -125,10 +140,74 @@
   text-transform: uppercase;
 }
 
-.boundaries dd {
+.boundaries dd,
+.guideFacts dd {
   margin: var(--space-2) 0 0;
   color: var(--color-sand-200);
   font-family: system-ui, sans-serif;
+}
+
+.pathGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  max-width: 58rem;
+  margin-top: var(--space-6);
+}
+
+.pathGrid article {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.pathGrid h3 {
+  margin-top: 0;
+}
+
+.pathGrid p:not(.eyebrow) {
+  color: var(--color-sand-200);
+  font-family: system-ui, sans-serif;
+}
+
+.pathGrid button {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.guideIntroduction {
+  margin-top: var(--space-6);
+  border-left: 0.2rem solid var(--color-sea-300);
+  background: rgb(4 17 29 / 0.48);
+  padding: var(--space-4) var(--space-5);
+}
+
+.guideIntroduction h3 {
+  margin-top: 0;
+  color: var(--color-sea-300);
+}
+
+.speaker {
+  width: fit-content;
+  margin: 0 0 var(--space-3);
+  border: 1px solid var(--color-gold-300);
+  border-radius: 999px;
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-gold-300);
+  font:
+    700 0.74rem/1.4 system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pathClosing {
+  margin-top: var(--space-5);
+}
+
+.nextBoundary {
+  border-left: 0.15rem solid var(--color-gold-300);
+  padding-left: var(--space-4);
 }
 
 .lantern {
@@ -161,7 +240,9 @@
     min-height: auto;
   }
 
-  .boundaries {
+  .boundaries,
+  .guideFacts,
+  .pathGrid {
     grid-template-columns: 1fr;
   }
 
@@ -183,7 +264,10 @@
 @media (prefers-contrast: more) {
   .experience,
   .boundaries div,
-  .storyPanel {
+  .guideFacts div,
+  .pathGrid article,
+  .storyPanel,
+  .guideIntroduction {
     border-width: 0.15rem;
   }
 }
@@ -191,7 +275,10 @@
 @media (forced-colors: active) {
   .experience,
   .boundaries div,
-  .storyPanel {
+  .guideFacts div,
+  .pathGrid article,
+  .storyPanel,
+  .guideIntroduction {
     forced-color-adjust: auto;
   }
 
