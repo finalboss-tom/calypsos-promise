@@ -22,15 +22,16 @@ export default function ProloguePage() {
         <p className="eyebrow">Sprint 9 public synthetic prologue</p>
         <h1>A first step through Ogygia, using synthetic information only.</h1>
         <p className="summary">
-          This branch-only experience demonstrates arrival, Lantern Shore, equivalent
-          deterministic Aster and manual guides, and pre-authored synthetic draft
-          review without an account, personal input, microphone, model provider,
-          analytics, or durable state. Refreshing or leaving starts again.
+          This branch-only experience demonstrates arrival, Lantern Shore,
+          equivalent deterministic Aster and manual guides, and pre-authored
+          synthetic draft review without an account, personal input, microphone,
+          model provider, analytics, or durable state. Refreshing or leaving
+          starts again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.3 are validated; workstream 9.4 is under review. The route
-          is noindex, absent from public navigation and the sitemap, and is not
-          deployed through this pull request.
+          Workstreams 9.1–9.3 are validated; workstream 9.4 is under review. The
+          route is noindex, absent from public navigation and the sitemap, and
+          is not deployed through this pull request.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a
@@ -49,15 +50,22 @@ export default function ProloguePage() {
       </header>
 
       <noscript>
-        <section className="reading-panel" aria-labelledby="prologue-noscript-title">
-          <h2 id="prologue-noscript-title">The interactive opening needs JavaScript.</h2>
+        <section
+          className="reading-panel"
+          aria-labelledby="prologue-noscript-title"
+        >
+          <h2 id="prologue-noscript-title">
+            The interactive opening needs JavaScript.
+          </h2>
           <p>
             No information has been collected or stored. You can still read the
             direct explanation of the planned experience or return to the public
             site.
           </p>
           <p>
-            <Link href="/how-it-works">Read how the planned experience works</Link>
+            <Link href="/how-it-works">
+              Read how the planned experience works
+            </Link>
             {" · "}
             <Link href="/">Leave the prologue</Link>
           </p>

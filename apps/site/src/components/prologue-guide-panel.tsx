@@ -59,7 +59,8 @@ export function PrologueGuidePanel({
             <h3>Meet deterministic Aster</h3>
             <p>
               Aster presents a scripted, source-aware introduction. No model,
-              provider, hidden prompt, retrieval service, or remote call is involved.
+              provider, hidden prompt, retrieval service, or remote call is
+              involved.
             </p>
             <button
               className="button button-primary"
@@ -73,8 +74,9 @@ export function PrologueGuidePanel({
             <p className="eyebrow">Complete non-AI route</p>
             <h3>Use the direct manual guide</h3>
             <p>
-              The direct guide presents the same sources, facts, synthetic choices,
-              correction controls, and deterministic evidence without Aster framing.
+              The direct guide presents the same sources, facts, synthetic
+              choices, correction controls, and deterministic evidence without
+              Aster framing.
             </p>
             <button
               className="button button-primary"
@@ -150,8 +152,9 @@ export function PrologueGuidePanel({
           : manualIntroduction.closing}
       </p>
       <p className={styles.nextBoundary}>
-        Both paths now continue to the same pre-authored synthetic text and voice
-        fixtures. No arbitrary information or microphone input is available.
+        Both paths now continue to the same pre-authored synthetic text and
+        voice fixtures. No arbitrary information or microphone input is
+        available.
       </p>
 
       <div className={styles.actions} aria-label="Guide presentation choices">

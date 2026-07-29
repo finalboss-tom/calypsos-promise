@@ -87,9 +87,10 @@ export function PrologueCapturePanel({
           Choose a prepared example, not your information.
         </h2>
         <p className={styles.lede}>
-          Both choices are repository-authored public fixtures. There is no text box,
-          microphone, upload, account, contact request, model call, or health-data
-          intake. {presentationLabel(state)} presents the same deterministic result.
+          Both choices are repository-authored public fixtures. There is no text
+          box, microphone, upload, account, contact request, model call, or
+          health-data intake. {presentationLabel(state)} presents the same
+          deterministic result.
         </p>
 
         <div className={styles.choiceGrid}>
@@ -112,8 +113,8 @@ export function PrologueCapturePanel({
             <p className="eyebrow">Synthetic voice transcript</p>
             <h3>Use the prepared walking transcript</h3>
             <p>
-              No audio exists and no microphone is requested. The transcript is a
-              repository-authored visual demonstration only.
+              No audio exists and no microphone is requested. The transcript is
+              a repository-authored visual demonstration only.
             </p>
             <button
               className="button button-primary"
@@ -152,9 +153,9 @@ export function PrologueCapturePanel({
           The fixture becomes a draft, not a fact.
         </h2>
         <p className={styles.lede}>
-          {presentationLabel(state)} applied a fixed local mapping to the selected
-          synthetic fixture. No model generated this draft, and nothing has been
-          confirmed or stored.
+          {presentationLabel(state)} applied a fixed local mapping to the
+          selected synthetic fixture. No model generated this draft, and nothing
+          has been confirmed or stored.
         </p>
         <blockquote className={styles.example}>{fixture.example}</blockquote>
         <DraftDetails state={state} />
@@ -199,14 +200,17 @@ export function PrologueCapturePanel({
           Confirmation requires an explicit choice.
         </h2>
         <p className={styles.lede}>
-          Aster cannot confirm this draft. The manual guide cannot confirm it. Choose
-          whether the prepared synthetic value remains as written or uses the one
-          prepared correction.
+          Aster cannot confirm this draft. The manual guide cannot confirm it.
+          Choose whether the prepared synthetic value remains as written or uses
+          the one prepared correction.
         </p>
 
         <DraftDetails state={state} />
 
-        <div className={styles.correctionChoices} aria-label="Synthetic correction choices">
+        <div
+          className={styles.correctionChoices}
+          aria-label="Synthetic correction choices"
+        >
           <button
             className="button"
             type="button"
@@ -231,7 +235,10 @@ export function PrologueCapturePanel({
             : "No review choice is selected. Confirmation remains unavailable."}
         </p>
 
-        <div className={styles.actions} aria-label="Synthetic confirmation choices">
+        <div
+          className={styles.actions}
+          aria-label="Synthetic confirmation choices"
+        >
           <button
             className="button button-primary"
             type="button"
@@ -270,16 +277,20 @@ export function PrologueCapturePanel({
           You confirmed the example. Nothing was stored.
         </h2>
         <p className={styles.lede}>
-          This confirmation exists only in this page memory. It is not a Chronicle
-          entry, permission, health claim, account record, audit event, or durable
-          game achievement.
+          This confirmation exists only in this page memory. It is not a
+          Chronicle entry, permission, health claim, account record, audit
+          event, or durable game achievement.
         </p>
         <DraftDetails state={state} />
         <p className={styles.nextBoundary}>
-          Workstream 9.5 will project this confirmed synthetic state into a visibly
-          temporary Chronicle view and non-authoritative House of Keys receipt.
+          Workstream 9.5 will project this confirmed synthetic state into a
+          visibly temporary Chronicle view and non-authoritative House of Keys
+          receipt.
         </p>
-        <div className={styles.actions} aria-label="Confirmed synthetic state choices">
+        <div
+          className={styles.actions}
+          aria-label="Confirmed synthetic state choices"
+        >
           <button
             className="button button-primary"
             type="button"
