@@ -35,7 +35,9 @@ export default function JoinedPage() {
         </a>
         .
       </p>
-      <Link href="/support">Use the public support and contribution routes</Link>
+      <Link href="/support">
+        Use the public support and contribution routes
+      </Link>
     </article>
   );
 }

@@ -28,7 +28,8 @@ function extractTags(html, tagName) {
 
 function parseAttributes(tag) {
   const attributes = new Map();
-  const pattern = /([:@A-Za-z_][:@A-Za-z0-9_.-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
+  const pattern =
+    /([:@A-Za-z_][:@A-Za-z0-9_.-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
   let match;
   let first = true;
   while ((match = pattern.exec(tag))) {
@@ -36,7 +37,13 @@ function parseAttributes(tag) {
       first = false;
       continue;
     }
-    attributes.set(match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? "");
+    const value = (match[2] ?? match[3] ?? match[4] ?? "")
+      .replaceAll("&amp;", "&")
+      .replaceAll("&quot;", '"')
+      .replaceAll("&#39;", "'")
+      .replaceAll("&lt;", "<")
+      .replaceAll("&gt;", ">");
+    attributes.set(match[1].toLowerCase(), value);
   }
   return attributes;
 }
@@ -68,9 +75,7 @@ function contrastRatio(foreground, background) {
       .match(/.{2}/g)
       .map((value) => Number.parseInt(value, 16) / 255)
       .map((value) =>
-        value <= 0.04045
-          ? value / 12.92
-          : ((value + 0.055) / 1.055) ** 2.4,
+        value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4,
       );
     return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
   }
@@ -117,11 +122,7 @@ function validateHeadings(html, route) {
 }
 
 function validateIdsAndLabels(html, route) {
-  const ids = extractTags(html, "[A-Za-z][A-Za-z0-9:-]*")
-    .flatMap(() => [])
-    .concat(
-      [...html.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]),
-    );
+  const ids = [...html.matchAll(/\bid="([^"]+)"/gi)].map((match) => match[1]);
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicateIds.length > 0) {
     fail(`${route}: duplicate ids: ${[...new Set(duplicateIds)].join(", ")}`);
@@ -169,18 +170,25 @@ function validatePageStructure(html, contract) {
   }
   exactlyOne(html, /<main\b/gi, "main landmark", route);
   exactlyOne(html, /<h1\b/gi, "h1", route);
-  if (!/href="#primary-navigation"/i.test(html) || !/href="#main"/i.test(html)) {
+  if (
+    !/href="#primary-navigation"/i.test(html) ||
+    !/href="#main"/i.test(html)
+  ) {
     fail(`${route}: both skip links must be present`);
   }
   if (/<(?:form|input|textarea|select)\b/i.test(html)) {
-    fail(`${route}: public informational route unexpectedly contains a form control`);
+    fail(
+      `${route}: public informational route unexpectedly contains a form control`,
+    );
   }
 
   validateHeadings(html, route);
   validateIdsAndLabels(html, route);
   validateImagesAndLinks(html, route);
 
-  const title = stripMarkup(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
+  const title = stripMarkup(
+    html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "",
+  );
   if (!title.includes(contract.title)) {
     fail(`${route}: title does not include ${contract.title}`);
   }
@@ -192,9 +200,20 @@ function validatePageStructure(html, contract) {
   const canonical = canonicalTag
     ? parseAttributes(canonicalTag).get("href")
     : undefined;
+  const normalizeCanonical = (value) => {
+    const url = new URL(value, siteOrigin);
+    return url.pathname === "/"
+      ? url.origin
+      : `${url.origin}${url.pathname.replace(/\/$/, "")}`;
+  };
   const expectedCanonical = new URL(route, siteOrigin).toString();
-  if (canonical !== expectedCanonical) {
-    fail(`${route}: canonical ${canonical ?? "missing"} does not match ${expectedCanonical}`);
+  if (
+    !canonical ||
+    normalizeCanonical(canonical) !== normalizeCanonical(expectedCanonical)
+  ) {
+    fail(
+      `${route}: canonical ${canonical ?? "missing"} does not match ${expectedCanonical}`,
+    );
   }
 
   const description = extractTags(html, "meta").find((tag) => {
@@ -210,7 +229,7 @@ function validatePageStructure(html, contract) {
     return attributes.get("name") === "robots";
   });
   const robotsContent = robots
-    ? parseAttributes(robots).get("content") ?? ""
+    ? (parseAttributes(robots).get("content") ?? "")
     : "";
   if (contract.noindex && !/noindex/i.test(robotsContent)) {
     fail(`${route}: compatibility route must be noindex`);
@@ -256,7 +275,10 @@ async function resourceMetrics(html, route) {
     if (attributes.get("rel") === "stylesheet") {
       resourceUrls.set(new URL(href, baseUrl).toString(), "css");
     }
-    if (attributes.get("rel") === "preload" && attributes.get("as") === "font") {
+    if (
+      attributes.get("rel") === "preload" &&
+      attributes.get("as") === "font"
+    ) {
       resourceUrls.set(new URL(href, baseUrl).toString(), "font");
     }
   }
@@ -268,10 +290,9 @@ async function resourceMetrics(html, route) {
   }
 
   const totals = {
-    javascriptBytes: [...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi)].reduce(
-      (sum, match) => sum + byteLength(match[1]),
-      0,
-    ),
+    javascriptBytes: [
+      ...html.matchAll(/<script\b(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi),
+    ].reduce((sum, match) => sum + byteLength(match[1]), 0),
     cssBytes: [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].reduce(
       (sum, match) => sum + byteLength(match[1]),
       0,
@@ -349,7 +370,11 @@ for (const contract of routeContracts) {
   validatePageStructure(html, contract);
   const metrics = await resourceMetrics(html, contract.path);
   const values = enforceBudgets(contract.path, body.byteLength, metrics);
-  routeEvidence.push({ path: contract.path, status: response.status, ...values });
+  routeEvidence.push({
+    path: contract.path,
+    status: response.status,
+    ...values,
+  });
 }
 
 for (const pair of contrastPairs) {
@@ -423,7 +448,10 @@ if (joinGet.response.status !== 405) {
 
 const asset = await fetchResource("/assets/compass-mark.svg");
 if (asset.response.status !== 200) fail("compass asset: expected 200");
-if (asset.response.headers.get("cache-control") !== "public, max-age=0, must-revalidate") {
+if (
+  asset.response.headers.get("cache-control") !==
+  "public, max-age=0, must-revalidate"
+) {
   fail("compass asset: mutable asset cache contract changed");
 }
 
@@ -455,7 +483,9 @@ if (reportPath) {
 }
 
 if (failures.length > 0) {
-  console.error(`Site release validation failed:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  console.error(
+    `Site release validation failed:\n${failures.map((failure) => `- ${failure}`).join("\n")}`,
+  );
   process.exit(1);
 }
 

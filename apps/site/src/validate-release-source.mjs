@@ -39,9 +39,7 @@ function contrastRatio(foreground, background) {
       .match(/.{2}/g)
       .map((value) => Number.parseInt(value, 16) / 255)
       .map((value) =>
-        value <= 0.04045
-          ? value / 12.92
-          : ((value + 0.055) / 1.055) ** 2.4,
+        value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4,
       );
     return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
   }
@@ -145,13 +143,20 @@ const [
   read("src/app/joined/page.tsx"),
 ]);
 
-if (!layout.includes('href="#primary-navigation"') || !layout.includes('href="#main"')) {
+if (
+  !layout.includes('href="#primary-navigation"') ||
+  !layout.includes('href="#main"')
+) {
   fail("layout must retain both visible-on-focus skip links");
 }
 if (!layout.includes('<main id="main"') || !layout.includes('lang="en"')) {
   fail("layout must retain the main landmark and English language declaration");
 }
-if (!`${navigation}\n${navigationComponent}`.includes("No story traversal is required")) {
+if (
+  !`${navigation}\n${navigationComponent}`.includes(
+    "No story traversal is required",
+  )
+) {
   fail("narrative navigation must remain optional");
 }
 for (const route of routeContracts.filter((route) => !route.noindex)) {
@@ -186,7 +191,9 @@ for (const phrase of [
 ]) {
   if (!css.includes(phrase)) fail(`accessibility CSS is missing ${phrase}`);
 }
-if (/outline:\s*(?:0|none)(?:;|\s)/i.test(css.replace(/outline:\s*0\.2rem/g, ""))) {
+if (
+  /outline:\s*(?:0|none)(?:;|\s)/i.test(css.replace(/outline:\s*0\.2rem/g, ""))
+) {
   fail("accessibility CSS must not suppress focus outlines");
 }
 
@@ -202,12 +209,17 @@ for (const [header, value] of Object.entries(requiredPageHeaders)) {
   ) {
     fail(`next config source is missing ${header}`);
   }
-  if (!nextConfig.includes(value)) fail(`next config source is missing ${header} value`);
+  if (!nextConfig.includes(value))
+    fail(`next config source is missing ${header} value`);
 }
 for (const directive of requiredCspDirectives) {
-  if (!proxy.includes(directive)) fail(`proxy CSP source is missing ${directive}`);
+  if (!proxy.includes(directive))
+    fail(`proxy CSP source is missing ${directive}`);
 }
-if (!proxy.includes("crypto.randomUUID") || !proxy.includes("Content-Security-Policy")) {
+if (
+  !proxy.includes("crypto.randomUUID") ||
+  !proxy.includes("Content-Security-Policy")
+) {
   fail("proxy must retain per-request nonce CSP behavior");
 }
 
@@ -217,7 +229,8 @@ for (const phrase of [
   '"Cache-Control": "no-store"',
   '"Retry-After": "86400"',
 ]) {
-  if (!joinRoute.includes(phrase)) fail(`paused signup route is missing ${phrase}`);
+  if (!joinRoute.includes(phrase))
+    fail(`paused signup route is missing ${phrase}`);
 }
 for (const prohibited of [
   "request.json",
@@ -230,7 +243,10 @@ for (const prohibited of [
     fail(`paused signup route contains prohibited behavior: ${prohibited}`);
   }
 }
-if (!privacyPage.includes(signupGateIssue) || !joinedPage.includes(signupGateIssue)) {
+if (
+  !privacyPage.includes(signupGateIssue) ||
+  !joinedPage.includes(signupGateIssue)
+) {
   fail("paused signup compatibility pages must link to Phase 0 gate #63");
 }
 
@@ -246,7 +262,8 @@ const source = (
   await Promise.all(sourceFiles.map((path) => readFile(path, "utf8")))
 ).join("\n");
 for (const secret of secretPatterns) {
-  if (secret.pattern.test(source)) fail(`public site source contains ${secret.name}`);
+  if (secret.pattern.test(source))
+    fail(`public site source contains ${secret.name}`);
 }
 if (
   /(?:from\s+|require\()\s*["'](?:stripe|paypal)|\bnew Stripe\(|\bpaypal\.Buttons\(|\bcheckout\.sessions\.create\b|\bpaymentIntents\.create\b/i.test(

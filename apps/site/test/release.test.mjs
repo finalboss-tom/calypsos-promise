@@ -22,9 +22,7 @@ function contrastRatio(foreground, background) {
       .match(/.{2}/g)
       .map((value) => Number.parseInt(value, 16) / 255)
       .map((value) =>
-        value <= 0.04045
-          ? value / 12.92
-          : ((value + 0.055) / 1.055) ** 2.4,
+        value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4,
       );
     return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
   };
@@ -53,8 +51,14 @@ test("defines one canonical release contract for every public route", () => {
     ],
   );
   assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 13);
-  assert.equal(routeContracts.find(({ path }) => path === "/joined")?.noindex, true);
-  assert.equal(routeContracts.find(({ path }) => path === "/joined")?.sitemap, false);
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/joined")?.noindex,
+    true,
+  );
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/joined")?.sitemap,
+    false,
+  );
   assert.equal(siteOrigin, "https://www.calypsospromise.org");
 });
 
@@ -94,7 +98,10 @@ test("keeps the permanent CI production-preview evidence job", async () => {
   assert.match(workflow, /Start isolated local production preview/);
   assert.match(workflow, /site-release-evidence\.json/);
   assert.match(workflow, /git diff --exit-code/);
-  assert.match(packageJson, /"validate:preview": "node src\/validate-preview\.mjs"/);
+  assert.match(
+    packageJson,
+    /"validate:preview": "node src\/validate-preview\.mjs"/,
+  );
   assert.match(packageJson, /validate-release-source\.mjs/);
   assert.match(previewValidator, /isolated-local-production-preview/);
   assert.match(sourceValidator, /Sprint 8\.9 source validation/);
@@ -103,7 +110,8 @@ test("keeps the permanent CI production-preview evidence job", async () => {
 test("validates the complete security-header and CSP contract", () => {
   assert.deepEqual(requiredPageHeaders, {
     "cross-origin-opener-policy": "same-origin",
-    "permissions-policy": "camera=(), geolocation=(), microphone=(), payment=()",
+    "permissions-policy":
+      "camera=(), geolocation=(), microphone=(), payment=()",
     "referrer-policy": "strict-origin-when-cross-origin",
     "x-content-type-options": "nosniff",
     "x-dns-prefetch-control": "off",

@@ -35,8 +35,8 @@ export default function PrivacyPage() {
       </p>
       <p>
         This is not game registration, account creation, health-data intake,
-        research enrollment, provider intake, donation processing, or a marketing
-        profile.
+        research enrollment, provider intake, donation processing, or a
+        marketing profile.
       </p>
       <p>
         Follow the{" "}
