@@ -7,7 +7,10 @@ async function read(relativePath) {
 }
 
 function escaped(phrase) {
-  return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
+  const pattern = phrase
+    .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    .replace(/\s+/g, "\\s+");
+  return new RegExp(pattern, "i");
 }
 
 test("provides explicit departure, future-account, completion, and restart scenes", async () => {
