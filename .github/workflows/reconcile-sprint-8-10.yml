@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - agent/sprint-8-public-website-foundation
+  workflow_dispatch:
 
 permissions:
   contents: write
