@@ -22,33 +22,36 @@ export type CorrectionId =
   | "sleep-duration-six-hours"
   | "walk-duration-fifteen-minutes";
 
-export type OpeningTransition =
-  | "begin-opening"
-  | "skip-opening"
-  | "replay-arrival"
-  | "continue-to-guide"
-  | "choose-aster"
-  | "choose-manual"
-  | "return-to-lantern"
-  | "reconsider-guide"
-  | "switch-to-aster"
-  | "switch-to-manual"
-  | "continue-to-capture"
-  | "choose-synthetic-text"
-  | "choose-synthetic-voice"
-  | "review-draft"
-  | "accept-as-written"
-  | "apply-synthetic-correction"
-  | "confirm-entry"
-  | "refuse-draft"
-  | "change-synthetic-example"
-  | "review-confirmed-entry"
-  | "view-synthetic-chronicle"
-  | "view-synthetic-receipt"
-  | "return-to-chronicle"
-  | "discard-projection"
-  | "complete-first-lantern"
-  | "return-to-receipt";
+export const openingTransitions = [
+  "begin-opening",
+  "skip-opening",
+  "replay-arrival",
+  "continue-to-guide",
+  "choose-aster",
+  "choose-manual",
+  "return-to-lantern",
+  "reconsider-guide",
+  "switch-to-aster",
+  "switch-to-manual",
+  "continue-to-capture",
+  "choose-synthetic-text",
+  "choose-synthetic-voice",
+  "review-draft",
+  "accept-as-written",
+  "apply-synthetic-correction",
+  "confirm-entry",
+  "refuse-draft",
+  "change-synthetic-example",
+  "review-confirmed-entry",
+  "view-synthetic-chronicle",
+  "view-synthetic-receipt",
+  "return-to-chronicle",
+  "discard-projection",
+  "complete-first-lantern",
+  "return-to-receipt",
+] as const;
+
+export type OpeningTransition = (typeof openingTransitions)[number];
 
 export type OpeningState = {
   readonly scene: OpeningScene;
@@ -76,7 +79,7 @@ export const initialOpeningState: OpeningState = Object.freeze({
   firstLanternCompleted: false,
 });
 
-const transitionTable: Readonly<
+export const openingTransitionTable: Readonly<
   Record<OpeningScene, Partial<Record<OpeningTransition, OpeningScene>>>
 > = Object.freeze({
   arrival: Object.freeze({
@@ -127,6 +130,7 @@ const transitionTable: Readonly<
   "confirmed-entry": Object.freeze({
     "view-synthetic-chronicle": "synthetic-chronicle",
     "review-confirmed-entry": "review-and-correction",
+    "discard-projection": "capture-choice",
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
@@ -158,6 +162,62 @@ const transitionTable: Readonly<
   }),
 });
 
+const CAPTURE_CLEARING_TRANSITIONS = new Set<OpeningTransition>([
+  "refuse-draft",
+  "change-synthetic-example",
+  "discard-projection",
+  "reconsider-guide",
+  "return-to-lantern",
+  "replay-arrival",
+]);
+
+const PRESENTATION_CLEARING_TRANSITIONS = new Set<OpeningTransition>([
+  "reconsider-guide",
+  "return-to-lantern",
+  "replay-arrival",
+]);
+
+function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
+  if (transition === "continue-to-capture") return Boolean(state.presentationPath);
+
+  if (
+    transition === "review-draft" ||
+    transition === "accept-as-written" ||
+    transition === "apply-synthetic-correction"
+  ) {
+    return Boolean(state.fixtureId);
+  }
+
+  if (transition === "confirm-entry") {
+    return Boolean(state.fixtureId && state.correctionId);
+  }
+
+  if (transition === "view-synthetic-chronicle") {
+    return Boolean(state.confirmed && state.fixtureId && state.correctionId);
+  }
+
+  if (transition === "view-synthetic-receipt") {
+    return Boolean(
+      state.confirmed &&
+        state.fixtureId &&
+        state.correctionId &&
+        state.chronicleInspected,
+    );
+  }
+
+  if (transition === "complete-first-lantern") {
+    return Boolean(
+      state.confirmed &&
+        state.fixtureId &&
+        state.correctionId &&
+        state.chronicleInspected &&
+        state.receiptInspected,
+    );
+  }
+
+  return true;
+}
+
 function nextPresentationPath(
   state: OpeningState,
   transition: OpeningTransition,
@@ -168,174 +228,109 @@ function nextPresentationPath(
   if (transition === "choose-manual" || transition === "switch-to-manual") {
     return "manual";
   }
-  if (transition === "replay-arrival" || transition === "return-to-lantern") {
-    return null;
-  }
+  if (PRESENTATION_CLEARING_TRANSITIONS.has(transition)) return null;
   return state.presentationPath;
 }
 
-function fixtureForTransition(transition: OpeningTransition) {
+function nextFixture(
+  state: OpeningState,
+  transition: OpeningTransition,
+  clearCapture: boolean,
+) {
+  if (clearCapture) return { captureMode: null, fixtureId: null } as const;
   if (transition === "choose-synthetic-text") {
     return {
-      captureMode: "synthetic-text" as const,
-      fixtureId: "synthetic-sleep-text-v1" as const,
-    };
+      captureMode: "synthetic-text",
+      fixtureId: "synthetic-sleep-text-v1",
+    } as const;
   }
   if (transition === "choose-synthetic-voice") {
     return {
-      captureMode: "synthetic-voice" as const,
-      fixtureId: "synthetic-walk-voice-v1" as const,
-    };
+      captureMode: "synthetic-voice",
+      fixtureId: "synthetic-walk-voice-v1",
+    } as const;
   }
-  return null;
+  return { captureMode: state.captureMode, fixtureId: state.fixtureId } as const;
 }
 
-function correctionForState(
+function nextCorrectionId(
   state: OpeningState,
   transition: OpeningTransition,
+  clearCapture: boolean,
 ): CorrectionId | null {
+  if (clearCapture) return null;
+  if (
+    transition === "choose-synthetic-text" ||
+    transition === "choose-synthetic-voice"
+  ) {
+    return null;
+  }
   if (transition === "accept-as-written") return "accept-as-written";
   if (transition === "apply-synthetic-correction") {
     return state.fixtureId === "synthetic-sleep-text-v1"
       ? "sleep-duration-six-hours"
       : "walk-duration-fifteen-minutes";
   }
-  if (
-    transition === "choose-synthetic-text" ||
-    transition === "choose-synthetic-voice" ||
-    transition === "refuse-draft" ||
-    transition === "change-synthetic-example" ||
-    transition === "discard-projection" ||
-    transition === "reconsider-guide" ||
-    transition === "return-to-lantern" ||
-    transition === "replay-arrival"
-  ) {
-    return null;
-  }
   return state.correctionId;
 }
 
-function shouldClearCapture(transition: OpeningTransition) {
-  return (
-    transition === "refuse-draft" ||
-    transition === "change-synthetic-example" ||
-    transition === "discard-projection" ||
-    transition === "reconsider-guide" ||
-    transition === "return-to-lantern" ||
-    transition === "replay-arrival"
-  );
-}
-
-function confirmedForState(
+function nextEvidenceState(
   state: OpeningState,
   transition: OpeningTransition,
   clearCapture: boolean,
 ) {
-  if (clearCapture || transition === "review-confirmed-entry") return false;
-  if (transition === "confirm-entry") return true;
-  return state.confirmed;
+  if (clearCapture || transition === "review-confirmed-entry") {
+    return {
+      confirmed: false,
+      chronicleInspected: false,
+      receiptInspected: false,
+      firstLanternCompleted: false,
+    } as const;
+  }
+
+  return {
+    confirmed: transition === "confirm-entry" ? true : state.confirmed,
+    chronicleInspected:
+      transition === "view-synthetic-chronicle"
+        ? true
+        : state.chronicleInspected,
+    receiptInspected:
+      transition === "view-synthetic-receipt" ? true : state.receiptInspected,
+    firstLanternCompleted:
+      transition === "return-to-receipt"
+        ? false
+        : transition === "complete-first-lantern"
+          ? true
+          : state.firstLanternCompleted,
+  } as const;
 }
 
-function chronicleInspectedForState(
+export function getAllowedOpeningTransitions(
   state: OpeningState,
-  transition: OpeningTransition,
-  clearCapture: boolean,
-) {
-  if (clearCapture || transition === "review-confirmed-entry") return false;
-  if (transition === "view-synthetic-chronicle") return true;
-  return state.chronicleInspected;
-}
-
-function receiptInspectedForState(
-  state: OpeningState,
-  transition: OpeningTransition,
-  clearCapture: boolean,
-) {
-  if (clearCapture || transition === "review-confirmed-entry") return false;
-  if (transition === "view-synthetic-receipt") return true;
-  return state.receiptInspected;
-}
-
-function firstLanternCompletedForState(
-  state: OpeningState,
-  transition: OpeningTransition,
-  clearCapture: boolean,
-) {
-  if (clearCapture || transition === "review-confirmed-entry") return false;
-  if (transition === "complete-first-lantern") return true;
-  return state.firstLanternCompleted;
-}
-
-function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
-  if (transition === "continue-to-capture" && !state.presentationPath)
-    return false;
-  if (
-    (transition === "review-draft" ||
-      transition === "accept-as-written" ||
-      transition === "apply-synthetic-correction") &&
-    !state.fixtureId
-  ) {
-    return false;
-  }
-  if (transition === "confirm-entry" && !state.correctionId) return false;
-  if (
-    transition === "view-synthetic-chronicle" &&
-    (!state.confirmed || !state.fixtureId || !state.correctionId)
-  ) {
-    return false;
-  }
-  if (
-    transition === "view-synthetic-receipt" &&
-    (!state.confirmed ||
-      !state.fixtureId ||
-      !state.correctionId ||
-      !state.chronicleInspected)
-  ) {
-    return false;
-  }
-  if (
-    transition === "complete-first-lantern" &&
-    (!state.confirmed ||
-      !state.fixtureId ||
-      !state.correctionId ||
-      !state.chronicleInspected ||
-      !state.receiptInspected)
-  ) {
-    return false;
-  }
-  return true;
+): readonly OpeningTransition[] {
+  return Object.keys(openingTransitionTable[state.scene]).filter((transition) =>
+    transitionAllowed(state, transition as OpeningTransition),
+  ) as OpeningTransition[];
 }
 
 export function transitionOpening(
   state: OpeningState,
   transition: OpeningTransition,
 ): OpeningState {
-  const nextScene = transitionTable[state.scene][transition];
+  const nextScene = openingTransitionTable[state.scene][transition];
   if (!nextScene || !transitionAllowed(state, transition)) return state;
 
-  const fixture = fixtureForTransition(transition);
-  const clearCapture = shouldClearCapture(transition);
+  const clearCapture = CAPTURE_CLEARING_TRANSITIONS.has(transition);
+  const fixture = nextFixture(state, transition, clearCapture);
+  const evidence = nextEvidenceState(state, transition, clearCapture);
 
   return Object.freeze({
     scene: nextScene,
     transition,
     presentationPath: nextPresentationPath(state, transition),
-    captureMode: clearCapture
-      ? null
-      : (fixture?.captureMode ?? state.captureMode),
-    fixtureId: clearCapture ? null : (fixture?.fixtureId ?? state.fixtureId),
-    correctionId: correctionForState(state, transition),
-    confirmed: confirmedForState(state, transition, clearCapture),
-    chronicleInspected: chronicleInspectedForState(
-      state,
-      transition,
-      clearCapture,
-    ),
-    receiptInspected: receiptInspectedForState(state, transition, clearCapture),
-    firstLanternCompleted: firstLanternCompletedForState(
-      state,
-      transition,
-      clearCapture,
-    ),
+    captureMode: fixture.captureMode,
+    fixtureId: fixture.fixtureId,
+    correctionId: nextCorrectionId(state, transition, clearCapture),
+    ...evidence,
   });
 }
