@@ -52,14 +52,17 @@ test("keeps synthetic selection, review, correction, and confirmation determinis
     '"confirm-entry"',
     '"refuse-draft"',
     '"change-synthetic-example"',
-    "if (transition === \"confirm-entry\" && !state.correctionId) return false",
+    'if (transition === "confirm-entry" && !state.correctionId) return false',
     'confirmed: transition === "confirm-entry" ? true : false',
   ]) {
     assert.match(state, escaped(phrase));
   }
 
   assert.match(state, /transition === "refuse-draft"[\s\S]*return null/);
-  assert.match(state, /transition === "change-synthetic-example"[\s\S]*return null/);
+  assert.match(
+    state,
+    /transition === "change-synthetic-example"[\s\S]*return null/,
+  );
 });
 
 test("gives Aster and the manual route the same fixtures and controls", async () => {
@@ -83,16 +86,19 @@ test("gives Aster and the manual route the same fixtures and controls", async ()
   }
 
   assert.equal((panel.match(/function presentationLabel/g) ?? []).length, 1);
-  assert.equal((panel.match(/Confirm this synthetic demonstration/g) ?? []).length, 1);
+  assert.equal(
+    (panel.match(/Confirm this synthetic demonstration/g) ?? []).length,
+    1,
+  );
 });
 
 test("requires an explicit review choice before confirmation", async () => {
   const panel = await read("../src/components/prologue-capture-panel.tsx");
 
   for (const phrase of [
-    'aria-pressed={accepted}',
-    'aria-pressed={corrected}',
-    'disabled={!state.correctionId}',
+    "aria-pressed={accepted}",
+    "aria-pressed={corrected}",
+    "disabled={!state.correctionId}",
     'role="status"',
     'aria-live="polite"',
     "No review choice is selected. Confirmation remains unavailable.",
