@@ -1,8 +1,14 @@
 import type { CorrectionId, FixtureId } from "@/lib/prologue-opening-state";
 
+type PrologueNamespacedId = `${string}.${string}`;
+
 export type SyntheticDraft = {
-  readonly recordId: string;
+  readonly recordId: PrologueNamespacedId;
+  readonly variableId: PrologueNamespacedId;
+  readonly sourceArtifactId: PrologueNamespacedId;
+  readonly sourceVersionId: PrologueNamespacedId;
   readonly category: "Sleep" | "Activity";
+  readonly valueShape: "duration";
   readonly value: string;
   readonly context: string;
   readonly occurredAt: string;
@@ -40,8 +46,12 @@ export const syntheticCaptureFixtures: Readonly<
     example:
       "Synthetic example: I slept for seven hours and woke feeling rested.",
     draft: Object.freeze({
-      recordId: "synthetic-record-sleep-001",
+      recordId: "record.prologue.synthetic-sleep-001",
+      variableId: "variable.prologue.synthetic-sleep-duration",
+      sourceArtifactId: "source.prologue.synthetic-sleep-text",
+      sourceVersionId: "source-version.prologue.synthetic-sleep-text-v1",
       category: "Sleep",
+      valueShape: "duration",
       value: "7 hours",
       context: "Woke feeling rested",
       occurredAt: "2030-04-12T07:30:00Z",
@@ -66,8 +76,12 @@ export const syntheticCaptureFixtures: Readonly<
     example:
       "Synthetic voice transcript: I took a twenty-minute walk after lunch and felt more alert.",
     draft: Object.freeze({
-      recordId: "synthetic-record-activity-001",
+      recordId: "record.prologue.synthetic-activity-001",
+      variableId: "variable.prologue.synthetic-walk-duration",
+      sourceArtifactId: "source.prologue.synthetic-walk-transcript",
+      sourceVersionId: "source-version.prologue.synthetic-walk-transcript-v1",
       category: "Activity",
+      valueShape: "duration",
       value: "20-minute walk",
       context: "After lunch; felt more alert",
       occurredAt: "2030-04-12T13:15:00Z",
