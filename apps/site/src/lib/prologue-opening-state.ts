@@ -8,6 +8,8 @@ export const openingScenes = [
   "synthetic-draft",
   "review-and-correction",
   "confirmed-entry",
+  "synthetic-chronicle",
+  "synthetic-receipt",
 ] as const;
 
 export type OpeningScene = (typeof openingScenes)[number];
@@ -39,7 +41,11 @@ export type OpeningTransition =
   | "confirm-entry"
   | "refuse-draft"
   | "change-synthetic-example"
-  | "review-confirmed-entry";
+  | "review-confirmed-entry"
+  | "view-synthetic-chronicle"
+  | "view-synthetic-receipt"
+  | "return-to-chronicle"
+  | "discard-projection";
 
 export type OpeningState = {
   readonly scene: OpeningScene;
@@ -110,7 +116,24 @@ const transitionTable: Readonly<
     "reconsider-guide": "guide-choice",
   }),
   "confirmed-entry": Object.freeze({
+    "view-synthetic-chronicle": "synthetic-chronicle",
     "review-confirmed-entry": "review-and-correction",
+    "change-synthetic-example": "capture-choice",
+    "reconsider-guide": "guide-choice",
+    "return-to-lantern": "lantern-shore",
+  }),
+  "synthetic-chronicle": Object.freeze({
+    "view-synthetic-receipt": "synthetic-receipt",
+    "review-confirmed-entry": "review-and-correction",
+    "discard-projection": "capture-choice",
+    "change-synthetic-example": "capture-choice",
+    "reconsider-guide": "guide-choice",
+    "return-to-lantern": "lantern-shore",
+  }),
+  "synthetic-receipt": Object.freeze({
+    "return-to-chronicle": "synthetic-chronicle",
+    "review-confirmed-entry": "review-and-correction",
+    "discard-projection": "capture-choice",
     "change-synthetic-example": "capture-choice",
     "reconsider-guide": "guide-choice",
     "return-to-lantern": "lantern-shore",
@@ -164,6 +187,7 @@ function correctionForState(
     transition === "choose-synthetic-voice" ||
     transition === "refuse-draft" ||
     transition === "change-synthetic-example" ||
+    transition === "discard-projection" ||
     transition === "reconsider-guide" ||
     transition === "return-to-lantern" ||
     transition === "replay-arrival"
@@ -177,10 +201,21 @@ function shouldClearCapture(transition: OpeningTransition) {
   return (
     transition === "refuse-draft" ||
     transition === "change-synthetic-example" ||
+    transition === "discard-projection" ||
     transition === "reconsider-guide" ||
     transition === "return-to-lantern" ||
     transition === "replay-arrival"
   );
+}
+
+function confirmedForState(
+  state: OpeningState,
+  transition: OpeningTransition,
+  clearCapture: boolean,
+) {
+  if (clearCapture || transition === "review-confirmed-entry") return false;
+  if (transition === "confirm-entry") return true;
+  return state.confirmed;
 }
 
 function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
@@ -195,6 +230,13 @@ function transitionAllowed(state: OpeningState, transition: OpeningTransition) {
     return false;
   }
   if (transition === "confirm-entry" && !state.correctionId) return false;
+  if (
+    (transition === "view-synthetic-chronicle" ||
+      transition === "view-synthetic-receipt") &&
+    (!state.confirmed || !state.fixtureId || !state.correctionId)
+  ) {
+    return false;
+  }
   return true;
 }
 
@@ -217,6 +259,6 @@ export function transitionOpening(
       : (fixture?.captureMode ?? state.captureMode),
     fixtureId: clearCapture ? null : (fixture?.fixtureId ?? state.fixtureId),
     correctionId: correctionForState(state, transition),
-    confirmed: transition === "confirm-entry" ? true : false,
+    confirmed: confirmedForState(state, transition, clearCapture),
   });
 }
