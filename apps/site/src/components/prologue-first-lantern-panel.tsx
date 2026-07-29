@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { RefObject } from "react";
 import {
   firstLanternCompletionRule,
+  firstLanternQuestDefinition,
   projectFirstLanternCompletion,
 } from "@/lib/prologue-first-lantern";
 import type {
@@ -30,13 +31,12 @@ export function PrologueFirstLanternPanel({
     <article className={styles.scene} data-scene="first-lantern">
       <p className="eyebrow">First Lantern — synthetic completion evidence</p>
       <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-        The First Lantern lights because three visible checks are complete.
+        The First Lantern lights because eight inspectable checks are complete.
       </h2>
       <p className={styles.lede}>
-        This completion was calculated locally from explicit synthetic state.
-        No model, account, email, newsletter submission, payment, provider,
-        health claim, real-world action, analytics event, elapsed timer, or
-        hidden signal contributed.
+        {firstLanternQuestDefinition.playerValue} The rule was evaluated locally
+        from explicit synthetic state, not from a score, model judgment, timer,
+        account, or remote service.
       </p>
 
       <div className={styles.lantern} aria-hidden="true">
@@ -47,9 +47,36 @@ export function PrologueFirstLanternPanel({
         <span>Synthetic</span>
         <span>Page memory only</span>
         <span>No durable reward</span>
+        <span>No canon unlock</span>
       </div>
 
       <dl className={styles.completionDetails}>
+        <div>
+          <dt>Quest</dt>
+          <dd>
+            {completion.questId} · version {completion.questVersion}
+          </dd>
+        </div>
+        <div>
+          <dt>Zone</dt>
+          <dd>{completion.zone}</dd>
+        </div>
+        <div>
+          <dt>Guide path</dt>
+          <dd>{completion.guidePath}</dd>
+        </div>
+        <div>
+          <dt>Estimated path</dt>
+          <dd>
+            {firstLanternQuestDefinition.estimatedTimeMinutes.minimum}–
+            {firstLanternQuestDefinition.estimatedTimeMinutes.maximum} minutes;
+            target {firstLanternQuestDefinition.estimatedTimeMinutes.target}
+          </dd>
+        </div>
+        <div>
+          <dt>Safety classification</dt>
+          <dd>{firstLanternQuestDefinition.safetyClassification}</dd>
+        </div>
         <div>
           <dt>Completion ID</dt>
           <dd>{completion.completionId}</dd>
@@ -98,7 +125,10 @@ export function PrologueFirstLanternPanel({
         </div>
       </dl>
 
-      <section className={styles.evidence} aria-labelledby="completion-evidence-title">
+      <section
+        className={styles.evidence}
+        aria-labelledby="completion-evidence-title"
+      >
         <h3 id="completion-evidence-title">Why the lantern lit</h3>
         <ol>
           {completion.evidence.map((item) => (
@@ -111,11 +141,23 @@ export function PrologueFirstLanternPanel({
         </ol>
       </section>
 
-      <section className={styles.prohibited} aria-labelledby="completion-prohibitions-title">
+      <section
+        className={styles.prohibited}
+        aria-labelledby="completion-prohibitions-title"
+      >
         <h3 id="completion-prohibitions-title">What did not count</h3>
         <p>
-          The rule explicitly excludes: {firstLanternCompletionRule.prohibitedInputs.join(", ")}.
+          The rule explicitly excludes:{" "}
+          {firstLanternCompletionRule.prohibitedInputs.join(", ")}.
         </p>
+      </section>
+
+      <section
+        className={styles.prohibited}
+        aria-labelledby="completion-consequence-title"
+      >
+        <h3 id="completion-consequence-title">What this changes</h3>
+        <p>{completion.narrativeConsequence}</p>
       </section>
 
       <ul className={styles.limitations} aria-label="First Lantern limitations">
