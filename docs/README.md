@@ -1,6 +1,6 @@
 # Calypso’s Promise Documentation
 
-[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.7 record](roadmap/sprint-8-workstream-8-7-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
+[Repository home](../README.md) · [Vision](../VISION.md) · [Roadmap](../ROADMAP.md) · [Governance](../GOVERNANCE.md) · [Current status](roadmap/current-status.md) · [Sprint 8 plan](roadmap/sprint-8-execution-plan.md) · [Workstream 8.9 record](roadmap/sprint-8-workstream-8-9-record.md) · [Website architecture](architecture/public-website-foundation-and-migration.md) · [Contributing](../CONTRIBUTING.md)
 
 This is the canonical entry point for repository documentation. It should answer four questions quickly:
 
@@ -21,30 +21,33 @@ The directive is constrained by the player promise:
 
 1. [Current Project Status](roadmap/current-status.md)
 2. [Sprint 8 Execution Plan](roadmap/sprint-8-execution-plan.md)
-3. [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](roadmap/sprint-8-workstream-8-7-record.md)
-4. [Sprint 8.6 Trust Center and Open Forge Record](roadmap/sprint-8-workstream-8-6-record.md)
-5. [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](roadmap/sprint-8-workstream-8-5-record.md)
-6. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
-7. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
-8. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
-9. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
-10. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
-11. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
-12. [Sprint Roadmap](roadmap/sprints.md)
-13. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
-14. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
-15. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
-16. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-17. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
-18. [Aster Contract Baseline](product/aster-contract-baseline.md)
-19. [Security Architecture](security/README.md)
-20. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
-21. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
-22. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
-23. [Repository and Module Boundaries](architecture/module-boundaries.md)
-24. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
-25. [Minimum Viable Validation](policies/minimum-viable-validation.md)
-26. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
+3. [Sprint 8.9 Full Website Validation Record](roadmap/sprint-8-workstream-8-9-record.md)
+4. [Sprint 8.9 Representative Implementation Review](roadmap/sprint-8-workstream-8-9-manual-review.md)
+5. [Sprint 8.8 Paused Email-Signup Record](roadmap/sprint-8-workstream-8-8-record.md)
+6. [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](roadmap/sprint-8-workstream-8-7-record.md)
+7. [Sprint 8.6 Trust Center and Open Forge Record](roadmap/sprint-8-workstream-8-6-record.md)
+8. [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](roadmap/sprint-8-workstream-8-5-record.md)
+9. [Sprint 8.4 Homepage and Promise Record](roadmap/sprint-8-workstream-8-4-record.md)
+10. [Sprint 8.3 Navigation, Status, and Accessibility Record](roadmap/sprint-8-workstream-8-3-record.md)
+11. [Sprint 8.2 Next.js Shell Record](roadmap/sprint-8-workstream-8-2-record.md)
+12. [Sprint 8.1 Boundary Record](roadmap/sprint-8-workstream-8-1-record.md)
+13. [Public Website Foundation and Migration Boundary](architecture/public-website-foundation-and-migration.md)
+14. [Pre-Sprint 8 Alignment Review](roadmap/pre-sprint-8-alignment-review.md)
+15. [Sprint Roadmap](roadmap/sprints.md)
+16. [Sprint 7 Completion Record](roadmap/sprint-7-completion-record.md)
+17. [Sprint 7 Cross-Contract Reconciliation](architecture/forge-sprint-7-cross-contract-reconciliation.md)
+18. [Sprint 7 Control and Evidence Map](architecture/forge-sprint-7-control-and-evidence-map.md)
+19. [Sprint 7 Specialist Holdpoints and Unresolved Work](architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
+20. [Sprint 6 Completion Record](roadmap/sprint-6-completion-record.md)
+21. [Aster Contract Baseline](product/aster-contract-baseline.md)
+22. [Security Architecture](security/README.md)
+23. [Phase 0 Funding and Sponsorship Baseline](economics/README.md)
+24. [Decision 0010 — Consumer-First, Provider-Independent Product Boundary](decisions/0010-consumer-first-provider-independent-boundary.md)
+25. [Decision 0011 — Operational Simplicity and Durable Workflows](decisions/0011-operational-simplicity-and-durable-workflows.md)
+26. [Repository and Module Boundaries](architecture/module-boundaries.md)
+27. [Developer Experience and Operability Policy](policies/developer-experience-and-operability.md)
+28. [Minimum Viable Validation](policies/minimum-viable-validation.md)
+29. [Decision 0009 — Health Data Legacy and Post-Mortem Stewardship](decisions/0009-health-data-legacy-and-post-mortem-stewardship.md) — proposed future boundary
 
 ## Mission and non-negotiable boundaries
 
@@ -77,7 +80,7 @@ A lower layer may implement or explain a higher layer. It may not quietly overri
 
 Sprints 0–7 and the pre-Sprint 8 repository reconciliation are complete and merged.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.7 are complete; workstream 8.8 is next.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.9 are complete; workstream 8.10 is next.
 
 The public site now provides:
 
@@ -91,13 +94,13 @@ The public site now provides:
 - reduced-motion, reduced-data, image-failure, contrast, forced-colors, and responsive behavior;
 - paused signup without intake or forwarding;
 - nonce CSP and public security headers; and
-- focused production-build and repository validation evidence.
+- permanent source validation, isolated local production-preview evidence, explicit route budgets, and a representative implementation review.
 
-The 8.7 focused candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
+The initial normal 8.9 candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed CI 1110 and DCO 1192, including permanent source validation and the isolated local production-preview evidence job.
 
-Workstream 8.8 is next. It owns the explicit signup preserve-or-retire decision and the bounded implementation of the accepted path.
+Workstream 8.10 is next. It owns cross-contract reconciliation, control and evidence mapping, specialist holdpoints, unresolved work, actual release-state evidence, rollback, completion, and the bounded Sprint 9 handoff.
 
-The site is not a preview deployment, official release, final signup system, accessibility certification, performance release, payment system, private support system, or private product capability.
+The site is not a hosted preview, official release, final signup system, independent accessibility certification, affected-user validation, field-performance study, payment system, private support system, or private product capability. Phase 0 gate #63 remains open.
 
 ## Accepted strategic baselines
 

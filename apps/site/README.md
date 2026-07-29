@@ -2,13 +2,13 @@
 
 `apps/site` is the single owner of the Calypso’s Promise public website.
 
-Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.7 are complete; workstream 8.8 is next.
+Sprint 8 — Public Website Foundation is active through issue #60 and draft PR #61. Workstreams 8.1 through 8.9 are complete; workstream 8.10 is next.
 
 Controlling records:
 
 - [Sprint 8 Execution Plan](../../docs/roadmap/sprint-8-execution-plan.md)
 - [Public Website Foundation and Migration Boundary](../../docs/architecture/public-website-foundation-and-migration.md)
-- [Workstream 8.7 Record](../../docs/roadmap/sprint-8-workstream-8-7-record.md)
+- [Workstream 8.9 Record](../../docs/roadmap/sprint-8-workstream-8-9-record.md)
 - [Current Project Status](../../docs/roadmap/current-status.md)
 
 ## Current implementation
@@ -28,7 +28,8 @@ The application is a pinned Next.js App Router site with:
 - reduced-motion, reduced-data, higher-contrast, forced-colors, responsive, and image-failure foundations;
 - nonce-bearing CSP and public security headers;
 - metadata, sitemap, robots, not-found, and error presentation;
-- deterministic source, route, authority, signup, and deployment validation; and
+- permanent source, route, authority, signup, security, metadata, and budget validation;
+- isolated local production-preview CI with machine-readable evidence; and
 - disabled Git-triggered Vercel deployment.
 
 The old custom Node page server, HTML-fragment runtime, legacy styles, browser script, signup-forwarding adapter, and parallel server tests remain removed rather than retained as a second website implementation.
@@ -48,14 +49,14 @@ The old custom Node page server, HTML-fragment runtime, legacy styles, browser s
 | `/roadmap`        | evidence-based capability status and source-linked roadmap gates               |
 | `/support`        | public-safe contribution paths and protected-information routing               |
 | `/funding`        | canonical public funding registers, empty states, and anti-capture rules       |
-| `/privacy`        | migration-period signup privacy explanation                                    |
-| `/joined`         | migration-period no-submission confirmation                                    |
+| `/privacy`        | paused no-intake email-signup privacy explanation and Phase 0 gate link        |
+| `/joined`         | no-index no-submission confirmation and Phase 0 gate link                      |
 | `/api/join`       | `503 SIGNUP_MIGRATION_PAUSED`; no address accepted or forwarded                |
 | `/robots.txt`     | App Router metadata route                                                      |
 | `/sitemap.xml`    | metadata route including the accepted public page family                       |
 | `/assets/*`       | repository-owned compatibility assets with revalidation caching                |
 
-Workstream 8.8 owns the final signup preserve-or-retire decision.
+Workstream 8.8 preserves the paused no-intake state for Sprint 8. Final activation or retirement remains Phase 0 gate #63.
 
 ## Source-backed guide family
 
@@ -152,14 +153,13 @@ The current implementation includes:
 - forced-colors behavior; and
 - responsive homepage, navigation, guide, status, loop, principle, and contribution layouts.
 
-These are validated implementation foundations, not accessibility conformance certification or affected-user validation.
+These foundations now have permanent source and rendered local-preview validation plus a representative founding-steward implementation review. They are not independent accessibility certification, assistive-technology testing, affected-user validation, or deployed verification.
 
 ## What is not implemented
 
-- final signup disposition;
-- representative accessibility review or certification;
-- defined route-level performance release evidence;
-- preview deployment or official production cutover;
+- final email-signup activation or retirement under Phase 0 gate #63;
+- independent accessibility certification, assistive-technology or affected-user testing, and field-performance evidence;
+- hosted preview deployment or official production cutover;
 - accounts, authentication, real health-data capture, or private Living Chronicles;
 - production Aster, private MCP, providers, connectors, clinical workflows, research, governance voting, or transactions; or
 - independent accessibility, security, privacy, AI-safety, interoperability, legal, clinical, financial, or production review.
@@ -180,9 +180,7 @@ These are repository implementation controls, not deployed-environment or indepe
 
 ## Signup state
 
-The site does not accept or forward email addresses. `POST /api/join` returns `503 SIGNUP_MIGRATION_PAUSED`.
-
-Workstream 8.8 must either preserve signup under accepted provider, purpose, retention, unsubscribe, correction, deletion, proxy-trust, abuse-control, incident, privacy, and rollback evidence, or retire the surface deliberately.
+The site does not accept, store, or forward email addresses. `POST /api/join` returns `503 SIGNUP_MIGRATION_PAUSED`; `/privacy` and `/joined` link Phase 0 gate #63. Workstream 8.8 is complete for this bounded Sprint 8 interim state, while final activation or retirement remains unresolved for Phase 0 exit.
 
 ## Run locally
 
@@ -206,6 +204,8 @@ pnpm --filter @calypsos-promise/site build
 pnpm --filter @calypsos-promise/site lint
 pnpm --filter @calypsos-promise/site typecheck
 pnpm --filter @calypsos-promise/site test
+# With a production server running on 127.0.0.1:3000:
+pnpm --filter @calypsos-promise/site validate:preview
 ```
 
 Run `pnpm check` from the repository root before review.
@@ -219,5 +219,7 @@ Workstream 8.5 focused candidate `16fe324c508719734b8923a8f99b59fb16712726` pass
 Workstream 8.6 focused candidate `e43d0a47186041599674f6608455752a4e3b7319` passed repository formatting, the production site build, site validator/lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
 
 Workstream 8.7 focused candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf` passed repository formatting, the production site build, site validator/lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
+
+Workstream 8.8 records the paused no-intake email state and Phase 0 gate #63. The initial normal 8.9 candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed CI 1110 and DCO 1192, including the permanent production-preview validation job and representative review record.
 
 This evidence does not prove preview deployment, official release, deployed headers or caching, accessibility conformance, performance targets, provider integration, clinical safety, production AI, or production readiness.

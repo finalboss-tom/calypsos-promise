@@ -118,15 +118,15 @@ The production-preview report recorded:
 
 ## Measured performance evidence
 
-| Metric | Largest measured route or value | Budget |
-| --- | ---: | ---: |
-| HTML | `/roadmap` — 64,830 bytes | 98,304 bytes |
-| JavaScript | `/roadmap` — 689,664 bytes | 720,896 bytes |
-| CSS | all routes — 21,374 bytes | 131,072 bytes |
-| images | `/` — 92,319 bytes | 1,572,864 bytes |
-| web fonts | all routes — 0 bytes | 0 bytes |
-| total transfer | `/` — 850,159 bytes | 2,097,152 bytes |
-| first-party requests | `/` — 14 | 32 |
+| Metric               | Largest measured route or value |          Budget |
+| -------------------- | ------------------------------: | --------------: |
+| HTML                 |       `/roadmap` — 64,830 bytes |    98,304 bytes |
+| JavaScript           |      `/roadmap` — 689,664 bytes |   720,896 bytes |
+| CSS                  |       all routes — 21,374 bytes |   131,072 bytes |
+| images               |              `/` — 92,319 bytes | 1,572,864 bytes |
+| web fonts            |            all routes — 0 bytes |         0 bytes |
+| total transfer       |             `/` — 850,159 bytes | 2,097,152 bytes |
+| first-party requests |                        `/` — 14 |              32 |
 
 These are isolated local production-preview measurements and regression ceilings. They are not field-performance evidence, Core Web Vitals, a slow-device study, or a production CDN measurement.
 

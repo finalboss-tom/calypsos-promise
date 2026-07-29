@@ -55,17 +55,17 @@ This is implementation evidence. Direct keyboard traversal across a representati
 
 Every accepted pair exceeds the enhanced 7:1 threshold:
 
-| Pair | Ratio |
-| --- | ---: |
-| primary text | 16.23:1 |
-| secondary text | 11.28:1 |
-| gold links | 9.93:1 |
-| sea links | 8.53:1 |
-| live status | 9.28:1 |
-| experimental status | 8.69:1 |
-| planned status | 9.93:1 |
-| long-horizon status | 7.86:1 |
-| primary button | 11.88:1 |
+| Pair                |   Ratio |
+| ------------------- | ------: |
+| primary text        | 16.23:1 |
+| secondary text      | 11.28:1 |
+| gold links          |  9.93:1 |
+| sea links           |  8.53:1 |
+| live status         |  9.28:1 |
+| experimental status |  8.69:1 |
+| planned status      |  9.93:1 |
+| long-horizon status |  7.86:1 |
+| primary button      | 11.88:1 |
 
 These calculations validate the accepted solid token pairs. They do not replace visual review of every translucent, composited, image-backed, or browser-rendered state.
 

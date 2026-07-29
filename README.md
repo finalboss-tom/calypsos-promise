@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.7 record](docs/roadmap/sprint-8-workstream-8-7-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 8 plan](docs/roadmap/sprint-8-execution-plan.md) · [Workstream 8.9 record](docs/roadmap/sprint-8-workstream-8-9-record.md) · [Website architecture](docs/architecture/public-website-foundation-and-migration.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,7 +9,7 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
-- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.7 Record](docs/roadmap/sprint-8-workstream-8-7-record.md)
+- **See the active work:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 8 Execution Plan](docs/roadmap/sprint-8-execution-plan.md) → [Sprint 8.9 Record](docs/roadmap/sprint-8-workstream-8-9-record.md)
 - **Inspect the website boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
 - **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
 - **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
@@ -35,14 +35,16 @@ The goal is:
 - **8.5:** source-backed Seven Laws, How It Works, consumer-first/interoperability, and Aster/AI routes with metadata, sitemap inclusion, both navigation paths, explicit status boundaries, production-build evidence, and deterministic validation.
 - **8.6:** source-backed Trust Center and Open Forge routes with truthful rights, security, funding, challenge, tool-registry, provenance, receipt, error, holdpoint, and non-authority explanations.
 - **8.7:** source-backed roadmap and capability views, public-safe support routing, and build-time canonical funding-register transparency with honest empty states and transactions disabled.
+- **8.8:** deliberate paused, no-intake public email-signup state for Sprint 8 with final activation-or-retirement tracked by Phase 0 gate #63.
+- **8.9:** permanent source and isolated local production-preview validation across routes, semantics, accessibility contracts, security headers, metadata, source authority, signup, and transfer budgets.
 
-The 8.7 focused candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf` passed formatting, the production site build, site lint, typecheck, focused tests, generated-state cleanup, and temporary workflow self-removal.
+The initial normal 8.9 candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed all nine CI jobs in run 1110 and DCO 1192, including production build, rendered route validation, machine-readable evidence, cleanup, and no tracked build mutation.
 
-### Next workstream: 8.8
+### Next workstream: 8.10
 
-Workstream 8.8 will make the explicit signup preserve-or-retire decision and implement only the accepted bounded path.
+Workstream 8.10 will reconcile controls, evidence, specialist holdpoints, unresolved work, actual release state, rollback, and the bounded Sprint 9 handoff before explicit Sprint 8 acceptance.
 
-It will not turn signup into account creation, health-data intake, research enrollment, donation processing, provider intake, or an undeclared marketing database.
+It will not activate signup, create a hosted release that does not exist, close Phase 0 gate #63, or begin Sprint 9 gameplay.
 
 ## Current public site
 
@@ -59,9 +61,9 @@ It currently provides:
 - application-local design tokens and responsive presentation styles;
 - reduced-motion, reduced-data, contrast, forced-colors, and image-failure behavior;
 - metadata routes, sitemap, error states, nonce CSP, and public security headers; and
-- production-build, lint, typecheck, validator, and focused-test evidence.
+- permanent source validation and isolated local production-preview evidence with explicit transfer budgets.
 
-It does not yet provide a final signup disposition, representative accessibility review, route-level performance release evidence, preview deployment, official production cutover, or any private product capability.
+It does not yet provide final email-signup activation or retirement, independent accessibility certification or affected-user validation, a hosted preview, official production cutover, or any private product capability.
 
 ## Accepted and merged foundations
 

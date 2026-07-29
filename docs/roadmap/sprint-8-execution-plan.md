@@ -1,8 +1,8 @@
 # Sprint 8 Execution Plan — Public Website Foundation
 
-[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.7 record](sprint-8-workstream-8-7-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
+[Documentation home](../README.md) · [Roadmap index](README.md) · [Current status](current-status.md) · [Workstream 8.9 record](sprint-8-workstream-8-9-record.md) · [Sprint sequence](sprints.md) · [Website architecture](../architecture/public-website-foundation-and-migration.md) · [Tracking issue #60](https://github.com/finalboss-tom/calypsos-promise/issues/60) · [Draft PR #61](https://github.com/finalboss-tom/calypsos-promise/pull/61)
 
-- **Status:** ACTIVE — workstreams 8.1 through 8.7 complete; workstream 8.8 next
+- **Status:** ACTIVE — workstreams 8.1 through 8.9 complete; workstream 8.10 next
 - **Entry baseline:** `main` at accepted pre-Sprint 8 reconciliation squash commit `9da8034220954a1ca50420e71fd94e7795232a35`
 - **Issue:** [#60](https://github.com/finalboss-tom/calypsos-promise/issues/60)
 - **Branch:** `agent/sprint-8-public-website-foundation`
@@ -41,9 +41,9 @@ Sprint 8 inherits:
 - [x] **8.5 — Seven Laws, How It Works, consumer-first explanation, and Aster/AI**
 - [x] **8.6 — Trust Center and Open Forge**
 - [x] **8.7 — Roadmap, capability status, support, and funding transparency**
-- [ ] **8.8 — Signup disposition and bounded implementation — NEXT**
-- [ ] **8.9 — Accessibility, performance, security, route, and authority validation**
-- [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff**
+- [x] **8.8 — Paused signup disposition and Phase 0 gate**
+- [x] **8.9 — Accessibility, performance, security, route, and authority validation**
+- [ ] **8.10 — Completion, release evidence, and Sprint 9 handoff — NEXT**
 
 ## 8.1 result — website boundary
 
@@ -122,32 +122,25 @@ The self-removing focused workflow subsequently passed canonical formatting, the
 
 The controlling evidence is [Sprint 8.7 Record](sprint-8-workstream-8-7-record.md).
 
-## 8.8 — signup disposition and bounded implementation — NEXT
+## 8.8 result — paused email signup and Phase 0 gate
 
-Choose one evidence-backed path:
+Workstream 8.8 preserves `/api/join`, `/privacy`, and `/joined` in a deliberate paused, no-intake compatibility state for Sprint 8. No provider, parser, storage, forwarding, cookie, webhook, database, account, or private destination is active.
 
-1. preserve `/api/join`, `/privacy`, and `/joined` with published provider, purpose, retention, unsubscribe, correction, deletion, proxy-trust, abuse-control, incident, and rollback behavior; or
-2. retire the signup surface and redirect visitors to public repository-following paths until those gates can be met.
+The final safe activation-or-retirement decision is Phase 0 gate [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63). Sprint 8 may complete with the interim state, but institutional Phase 0 cannot close until that gate is accepted and implemented.
 
-The signup surface cannot become account creation, health-data intake, research enrollment, donation processing, or an undeclared marketing database.
+The controlling evidence is [Sprint 8.8 Record](sprint-8-workstream-8-8-record.md).
 
-## 8.9 — accessibility, performance, security, route, and authority validation
+## 8.9 result — full website validation
 
-Deliverables:
+Workstream 8.9 establishes permanent source checks and a permanent isolated local production-preview CI job covering all thirteen accepted routes, semantics, focus and labels, metadata, canonical URLs, sitemap, robots, 404 behavior, security headers, nonce CSP, source authority, funding and support boundaries, paused signup, runtime resources, secret patterns, and explicit transfer budgets.
 
-- semantic and landmark checks;
-- keyboard, focus, label, reading-order, contrast, reduced-motion, responsive, image-failure, and low-bandwidth checks;
-- automated accessibility checks and representative manual review record;
-- page, JavaScript, image, and font budgets;
-- route and redirect checks;
-- security-header and secret-leakage checks;
-- metadata, canonical URL, sitemap, robots, not-found, and error checks;
-- status and funding source-authority checks;
-- signup checks for the selected disposition;
-- full repository validation; and
-- preview evidence without claiming independent certification.
+The initial normal candidate `24c3c48e6358251708b56452d1fd9019bf67e08f` passed CI 1110 and DCO 1192. The production-preview evidence recorded zero failures, thirteen 200 route responses, 404 not-found behavior, 503/405 signup behavior, zero web-font bytes, a largest total route transfer of 850,159 bytes, and all accepted solid token pairs above 7:1.
 
-## 8.10 — completion, release evidence, and Sprint 9 handoff
+The [Representative Implementation Review](sprint-8-workstream-8-9-manual-review.md) passes at founding-steward implementation-review level while preserving explicit independent, assistive-technology, affected-user, deployed, and field-performance limitations.
+
+The controlling evidence is [Sprint 8.9 Record](sprint-8-workstream-8-9-record.md) and [Review Protocol](sprint-8-workstream-8-9-review-protocol.md).
+
+## 8.10 — completion, release evidence, and Sprint 9 handoff — NEXT
 
 Deliverables:
 

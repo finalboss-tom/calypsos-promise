@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.7 record](../roadmap/sprint-8-workstream-8-7-record.md) · [Website foundation](public-website-foundation-and-migration.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Current status](../roadmap/current-status.md) · [Sprint 8 plan](../roadmap/sprint-8-execution-plan.md) · [Workstream 8.9 record](../roadmap/sprint-8-workstream-8-9-record.md) · [Website foundation](public-website-foundation-and-migration.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -25,6 +25,9 @@ The modular monolith remains the default. A new package, service, provider, queu
 - [Sprint 8.5 Guide Family Record](../roadmap/sprint-8-workstream-8-5-record.md)
 - [Sprint 8.6 Trust Center and Open Forge Record](../roadmap/sprint-8-workstream-8-6-record.md)
 - [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](../roadmap/sprint-8-workstream-8-7-record.md)
+- [Sprint 8.8 Paused Email-Signup Record](../roadmap/sprint-8-workstream-8-8-record.md)
+- [Sprint 8.9 Full Website Validation Record](../roadmap/sprint-8-workstream-8-9-record.md)
+- [Sprint 8.9 Representative Implementation Review](../roadmap/sprint-8-workstream-8-9-manual-review.md)
 - [Public Website Foundation and Migration Boundary](public-website-foundation-and-migration.md)
 - [Accepted Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md)
 - [Current Status](../roadmap/current-status.md)
@@ -89,13 +92,17 @@ Workstream 8.7 implemented:
 
 The focused workflow passed formatting, the production site build, site lint and validation, typecheck, focused tests, generated-state cleanup, and self-removal before producing clean candidate `f39176f5f3a842e89ff4681f1d9810a9f2f305cf`.
 
+Workstream 8.8 preserves the public email signup as a paused, no-intake compatibility boundary for Sprint 8 and moves final activation-or-retirement to Phase 0 gate #63.
+
+Workstream 8.9 adds one versioned route and release contract, permanent source validation, a permanent isolated local production-preview CI job, machine-readable route evidence, transfer budgets, contrast evidence, and a representative founding-steward implementation review. The first normal candidate passed CI 1110 and DCO 1192.
+
 The website may own public routes, server-rendered presentation, navigation, metadata, design tokens, validated view models, build-time public-record adapters, public security headers, accessibility and performance budgets, and the separately gated signup surface.
 
 It may not own Product Constitution, lore canon, Chronicle truth, permission truth, Aster or Forge authority, security policy, funding doctrine, provider policy, clinical policy, legal interpretation, governance authority, private data, providers, connectors, transactions, or Sprint 9 game state.
 
 Website status and funding views remain validated read-only derivatives with canonical source links. They cannot become second ledgers or independent truth.
 
-Workstream 8.8 is next. It may preserve the signup surface only under accepted provider or custody, purpose, retention, unsubscribe, correction, deletion, proxy-trust, abuse-control, incident, privacy, and rollback evidence, or retire it in favor of public repository-following paths. It may not create accounts, health-data intake, research enrollment, donation processing, provider intake, or an undeclared marketing database.
+Workstream 8.10 is next. It may reconcile accepted website contracts, controls, evidence, holdpoints, unresolved work, actual release state, rollback, and the bounded Sprint 9 handoff. It may not close signup gate #63, claim independent or deployed verification, activate private capabilities, or begin Sprint 9 gameplay.
 
 ## Content and story architecture
 
