@@ -119,5 +119,5 @@ test("provides reduced-data, contrast, forced-color, and focus treatment", async
   assert.match(css, /prefers-reduced-data/);
   assert.match(css, /prefers-contrast/);
   assert.match(css, /forced-colors/);
-  assert.doesNotMatch(css, /outline:\s*(?:0|none)/i);
+  assert.doesNotMatch(css, /outline:\s*(?:0(?:\s|;)|none)/i);
 });
