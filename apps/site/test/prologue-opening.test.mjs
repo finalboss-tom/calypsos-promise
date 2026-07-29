@@ -51,10 +51,16 @@ test("implements deterministic arrival and Lantern Shore transitions", async () 
     "transitionTable",
     "if (!nextScene) return state",
   ]) {
-    assert.match(state, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      state,
+      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+    );
   }
 
-  assert.doesNotMatch(state, /localStorage|sessionStorage|indexedDB|document\.cookie/);
+  assert.doesNotMatch(
+    state,
+    /localStorage|sessionStorage|indexedDB|document\.cookie/,
+  );
 });
 
 test("keeps opening choices explicit, skippable, and non-punitive", async () => {

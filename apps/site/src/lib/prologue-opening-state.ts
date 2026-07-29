@@ -3,9 +3,7 @@ export const openingScenes = ["arrival", "lantern-shore"] as const;
 export type OpeningScene = (typeof openingScenes)[number];
 
 export type OpeningTransition =
-  | "begin-opening"
-  | "skip-opening"
-  | "replay-arrival";
+  "begin-opening" | "skip-opening" | "replay-arrival";
 
 export type OpeningState = {
   readonly scene: OpeningScene;

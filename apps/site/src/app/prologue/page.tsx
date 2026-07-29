@@ -22,13 +22,15 @@ export default function ProloguePage() {
         <p className="eyebrow">Sprint 9 public synthetic prologue</p>
         <h1>A first step through Ogygia, using synthetic information only.</h1>
         <p className="summary">
-          This branch-only experience demonstrates arrival and Lantern Shore without
-          an account, health-data intake, microphone, model provider, analytics, or
-          durable state. Refreshing or leaving starts the demonstration again.
+          This branch-only experience demonstrates arrival and Lantern Shore
+          without an account, health-data intake, microphone, model provider,
+          analytics, or durable state. Refreshing or leaving starts the
+          demonstration again.
         </p>
         <p className="source-note">
-          Workstream 9.2 is under review. The route is noindex, absent from public
-          navigation and the sitemap, and is not deployed through this pull request.
+          Workstream 9.2 is under review. The route is noindex, absent from
+          public navigation and the sitemap, and is not deployed through this
+          pull request.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a
@@ -47,15 +49,22 @@ export default function ProloguePage() {
       </header>
 
       <noscript>
-        <section className="reading-panel" aria-labelledby="prologue-noscript-title">
-          <h2 id="prologue-noscript-title">The interactive opening needs JavaScript.</h2>
+        <section
+          className="reading-panel"
+          aria-labelledby="prologue-noscript-title"
+        >
+          <h2 id="prologue-noscript-title">
+            The interactive opening needs JavaScript.
+          </h2>
           <p>
             No information has been collected or stored. You can still read the
             direct explanation of the planned experience or return to the public
             site.
           </p>
           <p>
-            <Link href="/how-it-works">Read how the planned experience works</Link>
+            <Link href="/how-it-works">
+              Read how the planned experience works
+            </Link>
             {" · "}
             <Link href="/">Leave the prologue</Link>
           </p>
