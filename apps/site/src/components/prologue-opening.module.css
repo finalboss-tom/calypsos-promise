@@ -18,6 +18,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
+  margin: 0;
   border-bottom: 1px solid rgb(234 215 181 / 0.14);
   padding: var(--space-4) clamp(1.25rem, 5vw, 3rem);
   color: var(--color-sand-200);
@@ -25,10 +26,17 @@
     700 0.76rem/1.4 system-ui,
     sans-serif;
   letter-spacing: 0.06em;
+  list-style: none;
   text-transform: uppercase;
 }
 
-.progress span[data-current="true"] {
+.progress li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.progress li[aria-current="step"] > span:first-child {
   color: var(--color-gold-300);
 }
 
