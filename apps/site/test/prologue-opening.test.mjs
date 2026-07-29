@@ -190,9 +190,8 @@ test("provides responsive, reduced-motion, reduced-data, contrast, forced-color,
     /\.guideFacts/,
     /\.projectionDetails/,
     /\.completionDetails/,
-    /aria-current/,
   ]) {
-    assert.match(`${css}\naria-current`, pattern);
+    assert.match(css, pattern);
   }
   assert.doesNotMatch(css, /outline:\s*(?:0(?:\s|;)|none)/i);
 });
