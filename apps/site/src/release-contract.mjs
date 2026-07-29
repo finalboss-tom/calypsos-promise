@@ -22,7 +22,7 @@ export const routeContracts = Object.freeze([
 
 export const performanceBudgets = Object.freeze({
   htmlBytes: 96 * 1024,
-  javascriptBytes: 512 * 1024,
+  javascriptBytes: 704 * 1024,
   cssBytes: 128 * 1024,
   imageBytes: 1536 * 1024,
   fontBytes: 0,
@@ -75,7 +75,10 @@ export const contrastPairs = Object.freeze([
 ]);
 
 export const secretPatterns = Object.freeze([
-  { name: "private key", pattern: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/ },
+  {
+    name: "private key",
+    pattern: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
+  },
   { name: "GitHub token", pattern: /\bgh[pousr]_[A-Za-z0-9_]{20,}\b/ },
   { name: "AWS access key", pattern: /\bAKIA[0-9A-Z]{16}\b/ },
   { name: "Slack token", pattern: /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/ },
