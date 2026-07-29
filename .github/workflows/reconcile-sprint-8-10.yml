@@ -1,0 +1,49 @@
+name: Reconcile Sprint 8.10 status
+
+on:
+  push:
+    branches:
+      - agent/sprint-8-public-website-foundation
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reconcile-sprint-8-10
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-8-public-website-foundation
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Apply fail-closed status reconciliation
+        run: python .github/scripts/reconcile_sprint_8_10.py
+      - name: Remove temporary reconciliation files
+        run: |
+          rm .github/scripts/reconcile_sprint_8_10.py
+          rm .github/workflows/reconcile-sprint-8-10.yml
+          rm .github/trigger-sprint-8-10.txt
+      - name: Apply canonical formatting
+        run: pnpm format
+      - name: Commit reconciled completion package
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 1
+          git commit -m "docs: reconcile Sprint 8 completion readiness"
+          git push origin HEAD:agent/sprint-8-public-website-foundation
