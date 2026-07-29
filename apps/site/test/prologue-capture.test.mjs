@@ -71,7 +71,7 @@ test("gives Aster and the manual route the same fixtures and controls", async ()
   for (const phrase of [
     "Deterministic Aster presentation",
     "Direct manual presentation",
-    "presents the same deterministic result",
+    "same deterministic result",
     "Use the synthetic text example",
     "Use the synthetic voice transcript",
     "Review and correct the draft",
