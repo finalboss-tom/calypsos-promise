@@ -1,10 +1,11 @@
 import { createHarness as createBaseHarness } from "./cdp.mjs";
 
 const reactHydrationExpression = `(() => {
+  if (document.readyState !== 'complete') return false;
   const target = document.querySelector('[data-scene] button:not([disabled]), [data-scene] summary');
   if (!target) return false;
-  return Object.keys(target).some((key) =>
-    key.startsWith('__reactProps$') && typeof target[key]?.onClick === 'function'
+  return Object.getOwnPropertyNames(target).some((key) =>
+    key.startsWith('__reactFiber$') || key.startsWith('__reactProps$')
   );
 })()`;
 
