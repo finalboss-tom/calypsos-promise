@@ -36,40 +36,45 @@ function DraftDetails({ state }: { readonly state: OpeningState }) {
       <div className={styles.syntheticLabel}>Synthetic demonstration</div>
       <dl className={styles.draftDetails}>
         <div>
-          <dt>Classification</dt>
-          <dd>{fixture.dataClassification}</dd>
-        </div>
-        <div>
           <dt>Source</dt>
           <dd>{fixture.sourceLabel}</dd>
-        </div>
-        <div>
-          <dt>Record ID</dt>
-          <dd>{draft.recordId}</dd>
-        </div>
-        <div>
-          <dt>Category</dt>
-          <dd>{draft.category}</dd>
         </div>
         <div>
           <dt>Value</dt>
           <dd>{draft.value}</dd>
         </div>
         <div>
-          <dt>Context</dt>
-          <dd>{draft.context}</dd>
+          <dt>Classification</dt>
+          <dd>{fixture.dataClassification}</dd>
         </div>
         <div>
-          <dt>Synthetic timestamp</dt>
-          <dd>{draft.occurredAt}</dd>
-        </div>
-        <div>
-          <dt>Demonstration status</dt>
+          <dt>Status</dt>
           <dd>{draft.status}</dd>
         </div>
       </dl>
-      <p className={styles.sourceDetail}>{fixture.sourceDetail}</p>
-      <p className={styles.prohibited}>{fixture.prohibitedInterpretation}</p>
+      <details>
+        <summary>Inspect the synthetic fixture details</summary>
+        <dl className={styles.draftDetails}>
+          <div>
+            <dt>Record ID</dt>
+            <dd>{draft.recordId}</dd>
+          </div>
+          <div>
+            <dt>Category</dt>
+            <dd>{draft.category}</dd>
+          </div>
+          <div>
+            <dt>Context</dt>
+            <dd>{draft.context}</dd>
+          </div>
+          <div>
+            <dt>Synthetic timestamp</dt>
+            <dd>{draft.occurredAt}</dd>
+          </div>
+        </dl>
+        <p className={styles.sourceDetail}>{fixture.sourceDetail}</p>
+        <p className={styles.prohibited}>{fixture.prohibitedInterpretation}</p>
+      </details>
     </div>
   );
 }
@@ -87,20 +92,15 @@ export function PrologueCapturePanel({
           Choose a prepared example, not your information.
         </h2>
         <p className={styles.lede}>
-          Both choices are repository-authored public fixtures. There is no text
-          box, microphone, upload, account, contact request, model call, or
-          health-data intake. {presentationLabel(state)} presents the same
-          deterministic result.
+          Both choices are public fixtures. There is no text box, microphone,
+          upload, account, model call, or health-data intake.
         </p>
 
         <div className={styles.choiceGrid}>
           <article>
             <p className="eyebrow">Synthetic text</p>
             <h3>Use the prepared sleep sentence</h3>
-            <p>
-              The sentence is already written and visibly synthetic. You cannot
-              replace it with personal information.
-            </p>
+            <p>Already written and visibly synthetic.</p>
             <button
               className="button button-primary"
               type="button"
@@ -112,10 +112,7 @@ export function PrologueCapturePanel({
           <article>
             <p className="eyebrow">Synthetic voice transcript</p>
             <h3>Use the prepared walking transcript</h3>
-            <p>
-              No audio exists and no microphone is requested. The transcript is
-              a repository-authored visual demonstration only.
-            </p>
+            <p>No audio exists and no microphone is requested.</p>
             <button
               className="button button-primary"
               type="button"
@@ -153,9 +150,8 @@ export function PrologueCapturePanel({
           The fixture becomes a draft, not a fact.
         </h2>
         <p className={styles.lede}>
-          {presentationLabel(state)} applied a fixed local mapping to the
-          selected synthetic fixture. No model generated this draft, and nothing
-          has been confirmed or stored.
+          {presentationLabel(state)} applied a fixed local mapping. No model was
+          used, and nothing is confirmed or stored.
         </p>
         <blockquote className={styles.example}>{fixture.example}</blockquote>
         <DraftDetails state={state} />
@@ -197,12 +193,11 @@ export function PrologueCapturePanel({
       <article className={styles.scene} data-scene="review-and-correction">
         <p className="eyebrow">Review before confirmation</p>
         <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-          Confirmation requires an explicit choice.
+          Confirmation requires your explicit choice.
         </h2>
         <p className={styles.lede}>
-          Aster cannot confirm this draft. The manual guide cannot confirm it.
-          Choose whether the prepared synthetic value remains as written or uses
-          the one prepared correction.
+          Keep the prepared synthetic value or apply its prepared correction.
+          Neither guide can confirm it for you.
         </p>
 
         <DraftDetails state={state} />
