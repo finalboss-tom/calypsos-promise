@@ -1,33 +1,21 @@
 # Sprint 9 Execution Plan — Public Synthetic Prologue
 
-[Current status](current-status.md) · [Sprint 9.7 record](sprint-9-workstream-9-7-record.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
+[Current status](current-status.md) · [Sprint 9.7 record](sprint-9-workstream-9-7-record.md) · [Sprint 9.8 validation record](sprint-9-workstream-9-8-validation-record.md) · [Sprint 9.8 representative review](sprint-9-workstream-9-8-manual-review.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
 
-- **Status:** ACTIVE — workstreams 9.1–9.6 complete; 9.7 implemented and under exact-candidate validation; 9.8–9.9 unfinished; 9.10 blocked
+- **Status:** ACTIVE — workstreams 9.1–9.7 complete; 9.8 implemented for exact-candidate validation; 9.9 unfinished; 9.10 blocked
 - **Application owner:** `apps/site`
 - **Primary route:** `/prologue`
 - **Data class:** PUBLIC and explicitly synthetic only
 - **Institutional phase:** Phase 0 remains active
 - **Newsletter gate:** issue #63 remains separate
 - **Release control:** Git-triggered Vercel deployment remains disabled
-- **Latest accepted candidate:** `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334
+- **Latest accepted candidate:** `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339
 
 ## Goal
 
 > Let anyone understand the product through play before creating an account.
 
-Sprint 9 proves a bounded public synthetic prologue. It does not establish the universal game shell, an account system, private Chronicle storage, production Aster, real voice capture, provider connectivity, research enrollment, payments, analytics, or production health-data operation.
-
-## Accepted entry baseline
-
-Sprint 9 follows:
-
-- Sprint 8 acceptance and squash merge through PR #61;
-- post-Sprint 8 reconciliation and newsletter implementation through PR #66;
-- production deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp` reaching `READY`;
-- Git-triggered deployment returning to disabled; and
-- acceptance of pre-Sprint 9 issue #64.
-
-A separate application is not justified. `apps/site` remains the owner because the prologue has not earned a separate trust, runtime, scale, legal, release, or ownership boundary.
+Sprint 9 proves a bounded public synthetic prologue. It does not establish the universal game shell, account system, private Chronicle storage, production Aster, real voice capture, provider connectivity, research enrollment, payments, analytics, or production health-data operation.
 
 ## Permanent Sprint 9 boundary
 
@@ -42,92 +30,89 @@ A separate application is not justified. `apps/site` remains the owner because t
 - The future account boundary remains informational only.
 - Merge, public linking, and deployment are separate founding-steward decisions.
 
-## Workstream state
+## Accepted workstreams
 
-### 9.1 — Application, route, state, lifecycle, fixtures, and validation contracts
+### 9.1 — Contracts
 
 **Complete:** `6bd992f91ea0948fe248ef55817afcd520664205` — CI 1169 / DCO 1247.
 
-Established ownership, route, memory lifecycle, synthetic fixtures, deterministic Aster/manual parity, temporary projection limits, validation, release separation, rollback, and holdpoints.
+Established ownership, route, memory lifecycle, synthetic fixtures, deterministic Aster/manual parity, temporary projection limits, validation, release separation, rollback, and holdpoints. Executable state and rendered interaction evidence are permanent requirements.
 
-The quality review strengthened the permanent validation rule: executable state and rendered interaction evidence are required; source-string checks alone cannot prove playable behavior.
-
-### 9.2 — Opening sequence and Lantern Shore
+### 9.2 — Opening and Lantern Shore
 
 **Complete:** `6565fbc43c9356e7b72acaed30b50cbff2907a38` — CI 1180 / DCO 1258.
 
-Provides direct and skippable arrival, Lantern Shore, no required animation, no autoplay, no timed progression, visible exit, scene focus, and memory-only disclosure.
+Provides direct and skippable arrival, Lantern Shore, no required animation, no autoplay, no required timing, visible exit, scene focus, and memory-only disclosure.
 
-### 9.3 — Deterministic Aster and manual fallback
+### 9.3 — Aster and manual fallback
 
 **Complete:** `72f72223d7a07d460e89ec69b87b2003e84cdd3b` — CI 1188 / DCO 1266.
 
 Both paths use the same facts, fixtures, review controls, projections, completion rule, and authority. Aster changes framing, not truth or capability.
 
-### 9.4 — Synthetic capture, draft, correction, and confirmation
+### 9.4 — Synthetic review and confirmation
 
 **Complete:** `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283.
 
 Provides pre-authored synthetic text and voice-transcript choices, deterministic drafts, explicit review, prepared correction, refusal, and confirmation without arbitrary input or microphone use.
 
-### 9.5 — Synthetic Chronicle and House of Keys explanation
+### 9.5 — Chronicle and House of Keys explanations
 
-**Complete:** `e819c71f31041632998b5f468c492e8b1c810a44` — CI 1221 / DCO 1300, with cross-contract corrections revalidated in the 9.6 aggregate.
+**Complete:** `e819c71f31041632998b5f468c492e8b1c810a44` — CI 1221 / DCO 1300, with corrections revalidated in 9.6.
 
-The Chronicle-shaped explanation maps selected `ChronicleRecordEnvelope` vocabulary without creating a record. The receipt-shaped explanation maps selected `AccessReceipt` meanings without a policy request, evaluation, grant, consent, audit event, or data release.
+The Chronicle-shaped explanation maps selected `ChronicleRecordEnvelope` vocabulary without creating a record. The receipt-shaped explanation maps selected `AccessReceipt` meanings without a request, evaluation, grant, consent, audit event, or data release.
 
-### 9.6 — Deterministic First Lantern completion
+### 9.6 — First Lantern
 
 **Complete:** `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334.
 
-The accepted rule requires eight inspectable conditions:
+First Lantern requires Lantern Shore, guide selection, synthetic fixture, draft review, explicit confirmation or correction, Chronicle inspection, receipt inspection, and completion without remote or consequential inputs. It creates no reward, rank, canonical unlock, Fourteen Lantern progression, account, permission, provider status, health outcome, or durable state.
 
-1. Lantern Shore reached;
-2. Aster or manual guide selected;
-3. synthetic fixture selected and visibly labeled;
-4. draft reviewed;
-5. accept-or-correct choice confirmed;
-6. Chronicle-shaped explanation inspected;
-7. receipt-shaped explanation inspected; and
-8. completion without account, email, newsletter, model, provider, payment, real data, real-world action, timer, analytics, or hidden state.
+### 9.7 — Refusal, restart, discard, exit, and future account boundary
 
-First Lantern is reversible and page-memory-only. It creates no reward, rank, canonical unlock, Fourteen Lantern progression, account, permission, provider status, health outcome, or durable state.
+**Complete:** `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339.
 
-### 9.7 — Refusal, restart, discard, exit, and informational account boundary
+Provides `exit-choice`, `future-account`, and `complete`; restart from progressed scenes; exact reset to initial state; departure after First Lantern; completion without an account; and future-account information without email field, signup, sign-in, authentication, `/api/join`, newsletter call, persistence, conversion pressure, or durable progression.
 
-**Implemented and under exact-candidate validation.**
-
-Deliverables:
-
-- `exit-choice`, `future-account`, and `complete` scenes;
-- explicit restart from every non-arrival scene;
-- exact restart to the frozen initial state;
-- departure after First Lantern;
-- completion without an account;
-- future-account explanation without intake or activation;
-- no email field, signup, sign-in, authentication, `/api/join`, newsletter call, persistence, or conversion pressure;
-- direct leave paths that destroy temporary state through navigation; and
-- executable tests across Aster/manual, text/voice, refusal, discard, restart, future-boundary inspection, and completion.
-
-The [Sprint 9.7 Record](sprint-9-workstream-9-7-record.md) controls its evidence and limitations.
+## Active workstream
 
 ### 9.8 — Accessibility, security, performance, storage, network, and interaction validation
 
-**Not implemented as a complete workstream.**
+**Implemented for exact-candidate validation.**
 
-Must add:
+The [validation record](sprint-9-workstream-9-8-validation-record.md) and [representative review](sprint-9-workstream-9-8-manual-review.md) define the package.
 
-- browser-rendered interaction coverage for Aster/manual and text/voice paths;
-- visible-control-to-valid-transition coverage;
-- keyboard, focus, announcement, and screen-reader review;
-- reduced-motion, reduced-data, forced-colors, enhanced-contrast, narrow-screen, and no-JavaScript review;
-- shortest, representative, and longest completion paths and duration measurements;
-- exact route-level HTML, JavaScript, CSS, image, font, total-transfer, and request measurements;
-- written justification for any budget increase above Sprint 8;
-- zero web fonts, first-party-only runtime, no secrets, no storage, no analytics, and no provider contact; and
-- a representative manual implementation review comparable to Sprint 8.9.
+The permanent validator must:
 
-### 9.9 — Publication, rollback, hosted evidence, and public-status reconciliation
+- run the production build in isolated localhost preview;
+- execute shortest manual/text, representative Aster/voice, and longest direct journeys in rendered Chrome or Chromium;
+- activate the shortest and representative paths through keyboard Enter events;
+- exercise every visible scene button and native disclosure;
+- verify logical keyboard order, scene-heading focus, polite announcements, accessible names, and no keyboard trap;
+- verify confirmation remains disabled before review choice;
+- cover refusal, alternate fixture, correction, restart, discard, departure, future-account inspection, public exit, and completion without conversion;
+- exercise reduced motion, reduced data, increased contrast, forced colors, narrow viewport, and no-JavaScript behavior;
+- fail on storage API use, cookies, IndexedDB, Cache Storage, external runtime network calls, `/api/join`, WebSockets, browser errors, or hidden state restoration;
+- model shortest, representative, and longest direct completion paths under ten minutes; and
+- read the static preview report and fail if `/prologue` exceeds the accepted Sprint 8 route ceilings.
+
+Sprint 8 ceilings remain:
+
+- HTML 96 KiB;
+- JavaScript 704 KiB;
+- CSS 128 KiB;
+- images 1,536 KiB;
+- fonts 0;
+- total transfer 2,048 KiB; and
+- first-party requests 32.
+
+The accepted 9.7 evidence places `/prologue` below every ceiling, including 716,199 JavaScript bytes versus the 720,896-byte ceiling. Sprint 9 has not earned a larger route budget.
+
+Workstream 9.8 remains implementation evidence, not independent accessibility, named screen reader, affected-user, cognitive-load, device/browser, or field performance certification.
+
+## Remaining workstreams
+
+### 9.9 — Publication, rollback, hosted evidence, and status reconciliation
 
 **Not implemented.**
 
@@ -139,73 +124,31 @@ Hosted evidence may be created only after explicit founding-steward release dire
 
 **Blocked and not started.**
 
-May begin only after 9.7–9.9 are complete and every issue, PR, status, roadmap, evidence, release, and holdpoint record agrees on the exact state.
+May begin only after 9.8–9.9 are complete and every issue, PR, status, roadmap, evidence, release, and holdpoint record agrees.
 
-## Deterministic state model
+## Deterministic state and refusal rule
 
-The 9.7 candidate uses these scenes:
+Scenes remain `arrival`, `lantern-shore`, `guide-choice`, Aster/manual introduction, capture choice, synthetic draft, review and correction, confirmed entry, Chronicle, receipt, First Lantern, exit choice, future account, and complete.
 
-1. `arrival`
-2. `lantern-shore`
-3. `guide-choice`
-4. `aster-introduction`
-5. `manual-introduction`
-6. `capture-choice`
-7. `synthetic-draft`
-8. `review-and-correction`
-9. `confirmed-entry`
-10. `synthetic-chronicle`
-11. `synthetic-receipt`
-12. `first-lantern`
-13. `exit-choice`
-14. `future-account`
-15. `complete`
+Invalid actions fail closed. Confirmation requires explicit review. Chronicle requires confirmation. Receipt requires Chronicle inspection. First Lantern requires all deterministic evidence. Departure and completion require First Lantern. Restart returns the exact initial object.
 
-Invalid actions fail closed and return the same state object. `confirmed-entry` requires an explicit visitor confirmation action. Chronicle inspection requires confirmation. Receipt inspection requires Chronicle inspection. First Lantern requires all eight deterministic conditions. Departure and completion require First Lantern. Restart returns the exact initial object.
-
-No scene state enters a URL, cookie, browser storage, log, provider, newsletter, database, or remote model.
-
-## Refusal, restart, and departure rule
-
-Visitors may:
-
-- skip optional narration;
-- use the complete manual path;
-- refuse synthetic capture;
-- choose another fixture;
-- review and correct;
-- discard temporary state;
-- restart from any non-arrival scene;
-- leave for the public site;
-- complete without account conversion; and
-- inspect a future account explanation without activating it.
+Visitors may skip optional narration, use the complete manual path, refuse synthetic capture, choose another fixture, review and correct, discard, restart, leave, complete without account conversion, and inspect the future account explanation without activating it.
 
 No path uses countdowns, shame, lost rewards, reduced access, health warnings, repeated contact requests, or manufactured urgency.
 
-## Validation and Actions-conservation mode
-
-GitHub Actions capacity is limited for three days beginning July 29, 2026. During that period:
-
-- each workstream is assembled as one detached Git tree;
-- the branch advances once per complete workstream;
-- one CI/DCO checkpoint is used per workstream;
-- metadata updates do not advance the branch; and
-- work halts before acceptance if the required checks cannot run.
-
-Reduced Actions usage does not reduce the acceptance standard. A workstream is not accepted without its required exact-candidate evidence.
-
-## Publication and rollback
+## Validation and release
 
 - Branch and PR builds remain validation-only.
 - `/prologue` remains noindex, unlinked, outside the sitemap, unmerged, and undeployed.
 - Merge does not authorize public linking or deployment.
+- All generated preview and browser evidence is removed before the tracked-mutation check.
 - Rollback may remove a future entry link, restore the prior deployment, or revert the eventual squash commit.
 - No private-data migration exists because Sprint 9 persists nothing.
 
 ## Unresolved inherited holdpoints
 
-Sprint 9 does not close independent accessibility or assistive-technology review, affected-user evidence, device/browser field performance, real voice privacy, production identity, authentication, recovery, private Chronicle storage, production Aster, legal review of permission presentation, analytics, monitoring, incident operations, or remaining Phase 0 gates.
+Sprint 9 does not close independent accessibility or assistive-technology review, affected-user evidence, named screen reader review, device/browser field performance, real voice privacy, production identity, authentication, recovery, private Chronicle storage, production Aster, legal review of permission presentation, analytics, monitoring, incident operations, or remaining Phase 0 gates.
 
 ## Completion rule
 
-Sprint 9 closes only when all ten workstreams, acceptance criteria, completion evidence, explicit founding-steward acceptance, and directed squash merge are complete. Passing CI, a local playthrough, or a hosted route proves only its bounded evidence.
+Sprint 9 closes only when all ten workstreams, acceptance criteria, completion evidence, explicit founding-steward acceptance, and directed squash merge are complete. Passing CI, a browser playthrough, modeled duration, or a hosted route proves only its bounded evidence.
