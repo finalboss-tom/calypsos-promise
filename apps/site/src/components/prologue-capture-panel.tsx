@@ -150,8 +150,8 @@ export function PrologueCapturePanel({
           The fixture becomes a draft, not a fact.
         </h2>
         <p className={styles.lede}>
-          {presentationLabel(state)} applied a fixed local mapping. No model was
-          used, and nothing is confirmed or stored.
+          {presentationLabel(state)} presents the same deterministic result. No
+          model was used, and nothing is confirmed or stored.
         </p>
         <blockquote className={styles.example}>{fixture.example}</blockquote>
         <DraftDetails state={state} />
