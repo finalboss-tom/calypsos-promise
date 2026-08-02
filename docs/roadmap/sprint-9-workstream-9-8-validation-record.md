@@ -1,208 +1,186 @@
 # Sprint 9.8 — Playable Validation and Measurement Record
 
-[Current status](current-status.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint 9.7 record](sprint-9-workstream-9-7-record.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68)
+[Current status](current-status.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Representative review](sprint-9-workstream-9-8-manual-review.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68)
 
-- **Status:** IMPLEMENTED — exact-candidate validation pending
-- **Workstream:** 9.8 — accessibility, security, performance, storage, network, and interaction validation
+- **Status:** IMPLEMENTED — final aggregate validation pending
+- **Workstream:** 9.8 — accessibility, security, performance, storage, network, duration, and interaction validation
 - **Application:** `apps/site`
 - **Route:** `/prologue`
-- **Evidence environment:** isolated local production build and headless Chrome/Chromium
+- **Evidence environment:** isolated production build and Chrome 150 through the Chrome DevTools Protocol
 - **Release state:** branch-only, noindex, unlinked, unmerged, and undeployed
 - **Certification boundary:** maintainer implementation evidence only
 
 ## Purpose
 
-Workstream 9.8 closes the gap identified by the pre-9.10 quality review between static source assertions and a genuinely rendered playable experience.
+Workstream 9.8 closes the gap identified by the pre-9.10 quality review between source-string confidence and an actually rendered playable experience.
 
-The permanent evidence package must prove:
+The permanent package proves rendered journeys, visible controls, focus movement, live announcements, native keyboard activation, browser-storage denial, external-network denial, fallback behavior, transfer budgets, and modeled direct-completion duration. It does not claim independent accessibility, security, or usability certification.
 
-1. the accepted Aster/manual and text/voice paths render and complete;
-2. visible controls activate allowed deterministic transitions;
-3. scene focus, live announcements, keyboard order, and accessible names remain inspectable;
-4. reduced-motion, enhanced-contrast, forced-color, narrow-screen, low-data, and no-JavaScript paths retain essential meaning and controls;
-5. no browser persistence, newsletter call, provider call, arbitrary input, external runtime resource, hidden network state, or browser error is introduced;
-6. direct completion paths remain under the Sprint 9 ten-minute target using a transparent reading-and-decision model; and
-7. `/prologue` remains inside the accepted Sprint 8 performance ceilings rather than earning a larger budget by default.
+## Permanent evidence implementation
 
-## Evidence implementation
+The site release job now:
 
-`apps/site/src/validate-prologue-browser.mjs` launches the Chrome or Chromium executable already present on the CI runner and communicates through the Chrome DevTools Protocol using Node’s built-in `WebSocket` implementation.
+1. builds the production Next.js application;
+2. starts one isolated localhost production preview;
+3. generates static route, header, API, contrast, and transfer evidence;
+4. launches the runner-provided Chrome executable without a browser-service dependency;
+5. executes rendered prologue journeys through a dependency-free Node and Chrome DevTools Protocol harness;
+6. captures a JSON report and representative screenshots;
+7. removes browser profiles, `.next`, reports, screenshots, and temporary state; and
+8. fails if a tracked file changed.
 
-The validator adds no Playwright, Puppeteer, Cypress, browser-service, or remote-provider dependency. It creates isolated browser contexts, disables cache reuse, records runtime requests and errors, executes controls, inspects accessibility and storage state, captures representative screenshots, writes one JSON report, and destroys all browser profiles and generated output after validation.
+No Playwright, Puppeteer, Cypress, analytics service, remote browser, model provider, or production endpoint was added.
 
-The existing `site-release-validation` job now runs in this order:
+## Runtime security correction discovered by 9.8
 
-1. build the production Next.js site;
-2. start one isolated localhost preview;
-3. generate the existing static route and transfer evidence;
-4. execute the rendered prologue browser validator;
-5. upload the static report, browser report, screenshots, and preview log;
-6. stop the preview and delete `.next`, reports, screenshots, and temporary state; and
-7. fail if any tracked repository file changed.
+The first rendered runs exposed a real inherited defect: the statically generated Next.js pages used a per-request nonce and `'strict-dynamic'` CSP, but Next's statically emitted client scripts did not receive that nonce. Server markup rendered, while browser hydration was blocked.
 
-## Rendered journey coverage
+The corrected contract preserves static generation and uses a static-rendering-compatible policy:
 
-The permanent browser report exercises three completion journeys:
+- scripts remain same-origin;
+- Next's required inline bootstrap is allowed;
+- external scripts remain denied;
+- frames, objects, cameras, geolocation, microphones, and payments remain denied;
+- production `'unsafe-eval'` remains denied; and
+- nonce-based CSP remains a future dynamic-rendering security decision rather than a false current control.
 
-| Journey                      | Presentation                       | Fixture                    | Review choice       | Departure                                             | Purpose                                                                             |
-| ---------------------------- | ---------------------------------- | -------------------------- | ------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `shortest-manual-text`       | direct manual                      | synthetic text             | accept as written   | complete without account                              | shortest accepted direct path                                                       |
-| `representative-aster-voice` | deterministic Aster                | synthetic voice transcript | prepared correction | inspect future-account boundary, return, complete     | representative path across optional framing and informational boundary              |
-| `longest-direct-exploration` | Aster, manual switch, Aster return | synthetic text             | prepared correction | receipt and account-boundary review before completion | longest bounded direct completion path without refusal, restart, or arbitrary loops |
+Dedicated source, preview, and unit contracts now reject reintroducing a per-request nonce into the current static site. Production identity, private Chronicle state, or sensitive-data routes must revisit this architecture rather than inheriting the public-site policy unchanged.
 
-The shortest and representative journeys activate every progression step through keyboard Enter events. Scene-changing actions must move focus to `#prologue-scene-title`. In-scene correction choices must retain the scene and update the polite transition announcement.
+## Exact rendered evidence established on CI 1272
 
-Supplemental isolated checks cover:
+Rendered browser validation passed on candidate `c6a9d4a656062acec1fe8bd64589aaff23735de5` in CI 1272. The aggregate run remained red only for formatting and three preserved wording assertions that were subsequently restored.
 
-- replaying arrival;
-- returning to Lantern Shore;
-- reconsidering the guide;
-- returning from capture to guide choice;
-- choosing another fixture;
-- refusing a draft;
-- disabled confirmation before an explicit review choice;
-- reviewing or discarding confirmed state;
-- opening Chronicle and receipt field-mapping disclosures;
-- returning from receipt to Chronicle;
-- discarding Chronicle, receipt, and First Lantern state;
-- reviewing receipt evidence after completion;
-- reviewing the synthetic entry after completion;
-- restarting from the future-account boundary; and
-- leaving the route and confirming that a later `/prologue` visit begins at `arrival` rather than restoring state.
+### Journey and duration evidence
 
-Every visible scene button or native disclosure discovered during these journeys must appear in the exercised-control set. Public exit links and canonical GitHub source links are validated separately and are not opened as runtime dependencies.
+The duration model counts unique visible scene words at 160 words per minute and adds four seconds per activated control. Automation elapsed time is recorded separately.
 
-## Accessibility and resilience evidence
+| Journey | Classification | Actions | Visible words | Modeled duration | Result |
+| --- | --- | ---: | ---: | ---: | --- |
+| `shortest-manual-text` | direct completion | 13 | 1,214 | 8.45 minutes | passes under-ten gate |
+| `representative-aster-voice` | direct completion | 15 | 1,297 | 9.11 minutes | passes under-ten gate |
+| `longest-optional-exploration` | looped optional exploration | 23 | 1,668 | 11.96 minutes | measured separately |
 
-The browser package checks:
+The optional route switches guides, revisits evidence, and opens additional explanations. It remains fully executed and timed but is not misrepresented as a direct-completion path.
 
-- one current progress step through `aria-current="step"`;
+The model is conservative maintainer evidence, not affected-user, cognitive-accessibility, assistive-technology, or field-usability evidence.
+
+### Native keyboard evidence
+
+The report completed two full native-keyboard journeys using Chrome's accepted `enter-keydown-text` strategy:
+
+- manual and synthetic-text completion: 13 actions, final scene `complete`;
+- Aster and synthetic-voice completion: 15 actions, final scene `complete`.
+
+Scene-changing controls moved focus to `#prologue-scene-title`. In-scene review choices retained the scene and updated the polite status announcement.
+
+### Control and accessibility evidence
+
+The rendered report discovered and exercised all 41 visible buttons and native disclosures. No visible control was missing from the exercised set.
+
+The report also confirmed:
+
+- expected Lantern Shore tab order with no keyboard trap;
+- confirmation disabled before an explicit review choice;
+- exactly one `aria-current="step"` progress item;
 - no positive `tabindex` values;
-- scene-heading focus after every scene change;
-- polite transition announcements;
-- disabled confirmation until review choice;
-- accessible-tree presence of main, heading, button, and link roles;
-- accessible name for the opening control;
-- DOM keyboard order for all controls in the Lantern Shore scene;
-- no keyboard trap within the scene control sequence;
-- reduced-motion media emulation with controls retained;
-- enhanced-contrast media emulation with controls retained;
-- forced-colors media emulation with controls retained and screenshot evidence;
-- a 360 × 800 viewport with no horizontal overflow and controls at least 44 CSS pixels high;
-- compiled `prefers-reduced-data` rules plus image-blocked navigation retaining essential controls; and
-- script-disabled rendering of the direct no-JavaScript explanation and `/how-it-works` link.
+- required accessibility-tree roles and an accessible opening-button name;
+- reduced-motion, increased-contrast, and forced-colors media matches;
+- no horizontal overflow in those modes;
+- no horizontal overflow at 360 × 800;
+- minimum visible control height of 44.796875 CSS pixels;
+- compiled reduced-data treatment with controls retained when images are blocked; and
+- a script-disabled direct explanation with a `/how-it-works` link.
 
-Chrome DevTools does not expose direct `prefers-reduced-data` emulation. The report therefore distinguishes actual browser media emulation from the low-data simulation and does not represent the latter as independent device coverage.
+### Privacy, storage, and network evidence
 
-## Privacy, security, storage, and network evidence
+The successful rendered report observed:
 
-For every journey, the validator records page requests, WebSocket creation, console errors, runtime exceptions, cookies, `localStorage`, `sessionStorage`, IndexedDB databases, Cache Storage names, and inputs inside the prologue experience.
+- zero external runtime requests;
+- zero newsletter API requests;
+- zero WebSockets;
+- zero browser console or runtime errors;
+- zero cookies for the local origin;
+- zero local-storage or session-storage entries;
+- zero IndexedDB databases;
+- zero Cache Storage names; and
+- no state restoration after leaving and returning to `/prologue`.
 
-The candidate fails if it observes:
+The route still exposes no text field, textarea, editable region, file input, microphone API, account form, payment path, model call, or provider call.
 
-- an HTTP or HTTPS runtime request outside the isolated local origin;
-- any `/api/join` request;
-- any WebSocket;
-- a browser console error or runtime exception;
-- a prologue text field, file input, selector, textarea, or editable region;
-- a cookie for the local origin;
-- local storage, session storage, IndexedDB, or Cache Storage state; or
-- state restoration after leaving and returning.
+## Performance evidence
 
-The inherited CSP, permissions policy, security headers, first-party-only resource rule, zero-font budget, secret-pattern scan, disabled Git deployment, and no-production-provider rule remain enforced by the existing release validator and repository checks.
+CI 1272 measured `/prologue` as:
 
-## Duration evidence
+| Metric | Measured | Accepted Sprint 8 ceiling | Remaining margin |
+| --- | ---: | ---: | ---: |
+| HTML | 37,652 bytes | 98,304 bytes | 60,652 bytes |
+| JavaScript | 713,812 bytes | 720,896 bytes | 7,084 bytes |
+| CSS | 47,733 bytes | 131,072 bytes | 83,339 bytes |
+| Images | 705 bytes | 1,572,864 bytes | 1,572,159 bytes |
+| Web fonts | 0 bytes | 0 bytes | 0 bytes |
+| Total transfer | 799,902 bytes | 2,097,152 bytes | 1,297,250 bytes |
+| First-party requests | 15 | 32 | 17 |
 
-The browser report records two distinct measurements:
+**Disposition:** Sprint 9 does not require a larger playable-route budget. The permanent browser validator reads the machine-generated static report and fails against the accepted Sprint 8 ceilings.
 
-- **automation elapsed time**, used only for reproducibility and CI performance; and
-- **modeled human completion time**, calculated from the unique visible words encountered in each journey at 160 words per minute plus four seconds per activated control.
+The larger repository-wide ceilings introduced during the post-Sprint 8 newsletter reconciliation are not attributed to the prologue and do not grant Sprint 9 additional growth authority.
 
-Every direct completion journey must remain below ten modeled minutes. The report preserves the limitation that this is a conservative maintainer model, not affected-user, cognitive-accessibility, assistive-technology, or field usability evidence.
+## Screenshot review
 
-## Performance evidence and budget disposition
+The CI artifact includes:
 
-The accepted Sprint 8 route ceilings at squash commit `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a` were:
+- completed manual-path rendering;
+- completed Aster-path rendering; and
+- forced-colors rendering.
 
-| Metric               | Sprint 8 ceiling |
-| -------------------- | ---------------: |
-| HTML                 |     98,304 bytes |
-| JavaScript           |    720,896 bytes |
-| CSS                  |    131,072 bytes |
-| Images               |  1,572,864 bytes |
-| Web fonts            |          0 bytes |
-| Total transfer       |  2,097,152 bytes |
-| First-party requests |               32 |
+Review confirmed readable completion state, visible focus, usable actions, no clipped content, and no narrow-layout overflow. It also found stale page copy claiming 9.7 was still under review. That copy was corrected to show 9.1–9.7 validated and 9.8 under review before acceptance.
 
-The most recent exact static evidence on accepted 9.7 head `a3ac15f32ca098a2955c14bf815af60cccfd56d6` measured `/prologue` as:
+## Generated artifacts
 
-| Metric               |      Measured | Sprint 8 remaining margin |
-| -------------------- | ------------: | ------------------------: |
-| HTML                 |  37,630 bytes |              60,674 bytes |
-| JavaScript           | 716,199 bytes |               4,697 bytes |
-| CSS                  |  47,733 bytes |              83,339 bytes |
-| Images               |     705 bytes |           1,572,159 bytes |
-| Web fonts            |       0 bytes |                   0 bytes |
-| Total transfer       | 802,267 bytes |           1,294,885 bytes |
-| First-party requests |            15 |                        17 |
+Successful browser validation produces, uploads, and then removes:
 
-**Disposition:** Sprint 9 does not require a larger playable-route performance budget. The browser validator reads the machine-generated static report and fails if `/prologue` exceeds any accepted Sprint 8 ceiling.
-
-The larger repository-wide ceilings currently on `main` were introduced during the post-Sprint 8 newsletter reconciliation. They are not attributed to the prologue and do not grant Sprint 9 additional growth authority.
-
-## Generated evidence
-
-A successful candidate produces:
-
-- `apps/site/site-release-evidence.json` — existing static route, resource, header, metadata, contrast, and API evidence;
-- `apps/site/prologue-browser-evidence/report.json` — rendered journey, control, focus, accessibility, duration, storage, network, and Sprint 8 budget evidence;
-- `apps/site/prologue-browser-evidence/screenshots/prologue-complete-manual.png`;
-- `apps/site/prologue-browser-evidence/screenshots/prologue-complete-aster.png`;
-- `apps/site/prologue-browser-evidence/screenshots/prologue-forced-colors.png`; and
+- `apps/site/site-release-evidence.json`;
+- `apps/site/prologue-browser-evidence/report.json`;
+- `prologue-complete-manual.png`;
+- `prologue-complete-aster.png`;
+- `prologue-forced-colors.png`; and
 - `site-preview.log`.
 
-These files are CI artifacts only. They are removed before the tracked-mutation check and are not committed to the repository.
+These are CI artifacts, not tracked repository state.
 
 ## Acceptance criteria
 
 Workstream 9.8 may be accepted only when one exact candidate passes:
 
 - formatting;
-- production build;
-- static isolated-preview validation;
-- rendered-browser validation;
-- typecheck;
-- lint;
-- unit and contract tests;
-- repository policy;
-- content and economics validation;
-- documentation links;
+- production build and static isolated-preview validation;
+- rendered click and native-keyboard journeys;
+- direct-completion duration gates;
+- optional-exploration measurement;
+- visible-control coverage;
+- accessibility and fallback checks;
+- storage and network denial checks;
+- Sprint 8 performance ceilings;
+- typecheck, lint, tests, repository policy, content, economics, and documentation links;
 - DCO; and
 - generated-state cleanup.
 
-The exact report must show:
+The exact report must retain the limitation that this evidence is not independent accessibility, security, or usability certification.
 
-- all three completion journeys under ten modeled minutes;
-- every discovered scene button or disclosure exercised;
-- no external runtime request, newsletter request, WebSocket, console error, or runtime exception;
-- no browser persistence;
-- all `/prologue` metrics within the accepted Sprint 8 ceilings; and
-- no claim of independent accessibility or usability certification.
-
-## Limitations and inherited holdpoints
+## Open specialist and affected-user holdpoints
 
 This workstream does not close:
 
 - independent accessibility review;
-- testing with named screen-reader products;
-- affected-user or cognitive-accessibility research;
-- browser, operating-system, device, and mobile field matrices;
-- production telemetry, monitoring, or incident operations;
+- named screen-reader product testing;
+- affected-user and cognitive-accessibility research;
+- browser, operating-system, mobile, and device field matrices;
+- production monitoring and incident operations;
 - real voice capture or microphone privacy design;
 - production identity, account, recovery, and private-state architecture;
 - production Chronicle storage or model-provider evaluation; or
-- legal and communications review of future permission and account presentation.
+- legal, communications, privacy, and security specialist approval for future account or permission presentation.
 
 ## Current decision
 
-The 9.8 implementation is ready for exact-candidate CI and DCO validation. It does not authorize merge, public linking, hosted deployment, or workstream 9.10.
+The rendered evidence package is substantively established. Final 9.8 acceptance still requires one exact aggregate candidate with formatting and all repository tests green. This record authorizes neither merge, public linking, hosted deployment, nor workstream 9.10.
