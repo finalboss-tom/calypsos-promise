@@ -368,9 +368,11 @@ export async function createHarness(baseUrl) {
       await client.send(
         "Input.dispatchKeyEvent",
         {
-          type: "rawKeyDown",
+          type: "keyDown",
           key: "Enter",
           code: "Enter",
+          text: "\r",
+          unmodifiedText: "\r",
           windowsVirtualKeyCode: 13,
           nativeVirtualKeyCode: 13,
         },
@@ -396,10 +398,17 @@ export async function createHarness(baseUrl) {
       })()`);
     }
 
-    await page.wait(
-      `document.querySelector('[data-scene]')?.dataset.scene === ${JSON.stringify(expectedScene)}`,
-      expectedScene,
-    );
+    try {
+      await page.wait(
+        `document.querySelector('[data-scene]')?.dataset.scene === ${JSON.stringify(expectedScene)}`,
+        expectedScene,
+      );
+    } catch (error) {
+      const diagnostic = await snapshot(page);
+      throw new Error(
+        `${error.message}; label=${label}; scene=${diagnostic.scene}; active=${diagnostic.active.tag}:${diagnostic.active.text}`,
+      );
+    }
     if (expectedScene !== before.scene) {
       await page.wait(
         "document.activeElement?.id === 'prologue-scene-title'",
@@ -407,9 +416,9 @@ export async function createHarness(baseUrl) {
       );
     } else if (options.announcement) {
       await page.wait(
-        `(document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="stattus"]')?.textContent ?? '').includes(${JSON.stringify(options.announcement)})`,
+        `(document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="status"]')?.textContent ?? '').includes(${JSON.stringify(options.announcement)})`,
         `announcement after ${label}`,
-     );
+      );
     }
     return snapshot(page);
   }
