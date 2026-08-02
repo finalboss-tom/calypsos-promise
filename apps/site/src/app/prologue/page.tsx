@@ -31,7 +31,7 @@ export default function ProloguePage() {
           or leaving begins again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.6 are validated; workstream 9.7 is under review. The
+          Workstreams 9.1–9.7 are validated; workstream 9.8 is under review. The
           route is noindex, absent from public navigation and the sitemap, and
           is not deployed through this pull request.
         </p>
