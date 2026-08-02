@@ -20,7 +20,7 @@ async function runRenderedValidator() {
     'from "./prologue-browser/hydrated-cdp.mjs";',
   );
   const clickOnly = hydratedSource.replace(
-    /keyboard:\s*id\s*!==\s*"longest-direct-exploration",/,
+    /keyboard:\s*id\s*!==\s*"longest-optional-exploration",/,
     "keyboard: false,",
   );
   const transformed = clickOnly.replace(
