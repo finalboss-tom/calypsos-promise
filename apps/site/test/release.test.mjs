@@ -117,7 +117,7 @@ test("keeps permanent isolated production-preview validation", async () => {
   assert.match(sourceValidator, /branch-only Sprint 9 prologue/);
 });
 
-test("validates security headers and CSP", () => {
+test("validates security headers and static-compatible CSP", () => {
   assert.deepEqual(requiredPageHeaders, {
     "cross-origin-opener-policy": "same-origin",
     "permissions-policy":
@@ -132,11 +132,12 @@ test("validates security headers and CSP", () => {
     "base-uri 'none'",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "'strict-dynamic'",
+    "script-src 'self' 'unsafe-inline'",
     "upgrade-insecure-requests",
   ]) {
     assert.ok(requiredCspDirectives.includes(directive));
   }
+  assert.equal(requiredCspDirectives.includes("'strict-dynamic'"), false);
 });
 
 test("implements bounded newsletter Path A without exposing provider configuration", async () => {
