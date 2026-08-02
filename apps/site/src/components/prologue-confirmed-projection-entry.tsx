@@ -30,9 +30,8 @@ export function PrologueConfirmedProjectionEntry({
         You confirmed the example. Nothing was stored.
       </h2>
       <p className={styles.lede}>
-        The confirmation exists only in this page memory. You can now inspect
-        how the confirmed synthetic fixture would be presented as a temporary
-        Chronicle-shaped view before seeing the receipt-shaped explanation.
+        The confirmation exists only in this page. Next, inspect its temporary
+        Chronicle-shaped explanation.
       </p>
 
       <div
@@ -44,41 +43,43 @@ export function PrologueConfirmedProjectionEntry({
         <span>Not stored</span>
       </div>
 
-      <dl className={styles.projectionDetails}>
-        <div>
-          <dt>Selected fixture</dt>
-          <dd>{chronicle.fixtureId}</dd>
-        </div>
-        <div>
-          <dt>Category</dt>
-          <dd>{chronicle.category}</dd>
-        </div>
-        <div>
-          <dt>Confirmed value</dt>
-          <dd>{chronicle.value}</dd>
-        </div>
-        <div>
-          <dt>Correction state</dt>
-          <dd>
-            {chronicle.correctionApplied
-              ? `Prepared correction applied: ${chronicle.correctionId}`
-              : "Accepted as written"}
-          </dd>
-        </div>
-        <div>
-          <dt>Source</dt>
-          <dd>{chronicle.sourceLabel}</dd>
-        </div>
-        <div>
-          <dt>Persistence</dt>
-          <dd>{chronicle.persistence}</dd>
-        </div>
-      </dl>
-
-      <p className={styles.sourceDetail}>
-        This is not a Chronicle record, permission, health claim, account
-        record, audit event, legal consent, or durable game achievement.
-      </p>
+      <details>
+        <summary>Inspect the confirmed synthetic state</summary>
+        <dl className={styles.projectionDetails}>
+          <div>
+            <dt>Selected fixture</dt>
+            <dd>{chronicle.fixtureId}</dd>
+          </div>
+          <div>
+            <dt>Category</dt>
+            <dd>{chronicle.category}</dd>
+          </div>
+          <div>
+            <dt>Confirmed value</dt>
+            <dd>{chronicle.value}</dd>
+          </div>
+          <div>
+            <dt>Correction state</dt>
+            <dd>
+              {chronicle.correctionApplied
+                ? `Prepared correction applied: ${chronicle.correctionId}`
+                : "Accepted as written"}
+            </dd>
+          </div>
+          <div>
+            <dt>Source</dt>
+            <dd>{chronicle.sourceLabel}</dd>
+          </div>
+          <div>
+            <dt>Persistence</dt>
+            <dd>{chronicle.persistence}</dd>
+          </div>
+        </dl>
+        <p className={styles.sourceDetail}>
+          This is not a Chronicle record, permission, health claim, account
+          record, audit event, legal consent, or durable game achievement.
+        </p>
+      </details>
 
       <div
         className={styles.actions}
