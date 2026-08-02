@@ -20,14 +20,17 @@ export type PrologueGuidePanelProps = {
 
 function GuideFacts() {
   return (
-    <dl className={styles.guideFacts} aria-label="Shared prologue rules">
-      {prologueGuideFacts.map((fact) => (
-        <div key={fact.id}>
-          <dt>{fact.title}</dt>
-          <dd>{fact.detail}</dd>
-        </div>
-      ))}
-    </dl>
+    <details>
+      <summary>Review the shared prologue rules</summary>
+      <dl className={styles.guideFacts} aria-label="Shared prologue rules">
+        {prologueGuideFacts.map((fact) => (
+          <div key={fact.id}>
+            <dt>{fact.title}</dt>
+            <dd>{fact.detail}</dd>
+          </div>
+        ))}
+      </dl>
+    </details>
   );
 }
 
@@ -48,9 +51,8 @@ export function PrologueGuidePanel({
           Two presentations. One set of rules.
         </h2>
         <p className={styles.lede}>
-          Both routes use the same repository-authored facts and deterministic
-          controls. Choosing Aster changes the voice of the explanation, not the
-          source, authority, available choices, or later completion path.
+          Aster and the direct guide use the same sources, choices, and
+          completion rule. Only the presentation changes.
         </p>
 
         <div className={styles.pathGrid}>
@@ -58,9 +60,8 @@ export function PrologueGuidePanel({
             <p className="eyebrow">Optional character framing</p>
             <h3>Meet deterministic Aster</h3>
             <p>
-              Aster presents a scripted, source-aware introduction. No model,
-              provider, hidden prompt, retrieval service, or remote call is
-              involved.
+              A scripted local guide. No model, provider, hidden prompt, or
+              remote call is involved.
             </p>
             <button
               className="button button-primary"
@@ -74,9 +75,8 @@ export function PrologueGuidePanel({
             <p className="eyebrow">Complete non-AI route</p>
             <h3>Use the direct manual guide</h3>
             <p>
-              The direct guide presents the same sources, facts, synthetic
-              choices, correction controls, and deterministic evidence without
-              Aster framing.
+              The same sources, synthetic choices, corrections, and evidence
+              without character framing.
             </p>
             <button
               className="button button-primary"
@@ -152,9 +152,8 @@ export function PrologueGuidePanel({
           : manualIntroduction.closing}
       </p>
       <p className={styles.nextBoundary}>
-        Both paths now continue to the same pre-authored synthetic text and
-        voice fixtures. No arbitrary information or microphone input is
-        available.
+        Both paths continue to the same prepared synthetic examples. No text
+        entry or microphone is available.
       </p>
 
       <div className={styles.actions} aria-label="Guide presentation choices">
