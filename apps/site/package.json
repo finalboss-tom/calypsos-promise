@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "node src/validate-shell.mjs && node src/validate-release-source.mjs",
     "validate:preview": "node src/validate-preview.mjs",
+    "validate:prologue-browser": "node src/validate-prologue-browser.mjs",
     "typecheck": "tsc --noEmit",
     "test": "node --test test/*.test.mjs"
   },
