@@ -90,12 +90,12 @@ export function PrologueDeparturePanel({
 
         <dl className={styles.details}>
           <div>
-            <dt>Account creation and authentication</dt>
+            <dt>Identity and authentication</dt>
             <dd>future separately reviewed boundaries</dd>
           </div>
           <div>
             <dt>Private Chronicle storage</dt>
-            <dd>none in this prologue</dd>
+            <dd>none created in this prologue</dd>
           </div>
           <div>
             <dt>Current state</dt>
