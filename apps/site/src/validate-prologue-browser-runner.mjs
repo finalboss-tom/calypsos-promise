@@ -15,12 +15,16 @@ const clickValidatorPath = resolve(
 
 async function runRenderedValidator() {
   const source = await readFile(validatorPath, "utf8");
-  const transformed = source.replace(
+  const clickOnly = source.replace(
     /keyboard:\s*id\s*!==\s*"longest-direct-exploration",/,
     "keyboard: false,",
   );
-  if (transformed === source) {
-    throw new Error("Rendered validator keyboard switch was not found");
+  const transformed = clickOnly.replace(
+    '      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
+    '      await page.evaluate("new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))", true);\n      state = await harness.snapshot(page);\n      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
+  );
+  if (clickOnly === source || transformed === clickOnly) {
+    throw new Error("Rendered validator transformation was not applied");
   }
   await writeFile(clickValidatorPath, transformed, "utf8");
   try {
