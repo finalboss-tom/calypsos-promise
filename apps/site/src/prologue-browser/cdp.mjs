@@ -190,12 +190,25 @@ export async function createHarness(baseUrl) {
           message.sessionId === sessionId &&
           message.params.entry.level === "error"
         ) {
+          if (
+            options.blockedUrls &&
+            /ERR_(?:BLOCKED_BY_CLIENT|FAILED)/.test(message.params.entry.text)
+          ) {
+            return;
+          }
           state.browserErrors.push(message.params.entry.text);
         }
       }),
     ];
 
-    for (const domain of ["Page", "Runtime", "Network", "Log", "Accessibility"]) {
+    for (const domain of [
+      "Page",
+      "Runtime",
+      "Network",
+      "Log",
+      "DOM",
+      "Accessibility",
+    ]) {
       await client.send(`${domain}.enable`, {}, sessionId);
     }
     await client.send(
