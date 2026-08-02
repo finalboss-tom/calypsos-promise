@@ -98,6 +98,14 @@ export function PrologueDeparturePanel({
             <dd>none created in this prologue</dd>
           </div>
           <div>
+            <dt>Recovery and deletion</dt>
+            <dd>not applicable because no account or private state exists</dd>
+          </div>
+          <div>
+            <dt>Email and newsletter</dt>
+            <dd>not account identity or game state</dd>
+          </div>
+          <div>
             <dt>Current state</dt>
             <dd>
               destroyed by leaving or restart; navigation destroys the current
@@ -105,6 +113,12 @@ export function PrologueDeparturePanel({
             </dd>
           </div>
         </dl>
+
+        <p className={styles.boundaryNote}>
+          This is an honest stopping point. Inspecting it gives no progression,
+          access, priority, eligibility, reward, health benefit, or governance
+          authority.
+        </p>
 
         <div className={styles.actions} aria-label="Future account choices">
           <button
