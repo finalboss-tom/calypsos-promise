@@ -30,8 +30,8 @@ export function PrologueConfirmedProjectionEntry({
         You confirmed the example. Nothing was stored.
       </h2>
       <p className={styles.lede}>
-        The confirmation exists only in this page. Next, inspect its temporary
-        Chronicle-shaped explanation.
+        The confirmation exists only in this page memory. Next, inspect its
+        temporary Chronicle-shaped explanation.
       </p>
 
       <div
