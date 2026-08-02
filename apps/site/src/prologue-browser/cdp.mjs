@@ -21,8 +21,7 @@ function findChrome() {
       const result = spawnSync("sh", ["-lc", `command -v ${candidate}`], {
         encoding: "utf8",
       });
-      if (result.status === 0 && result.stdout.trim())
-        return result.stdout.trim();
+      if (result.status === 0 && result.stdout.trim()) return result.stdout.trim();
     }
   }
   throw new Error("Chrome or Chromium was not found");
@@ -48,8 +47,7 @@ class Client {
         const pending = this.pending.get(message.id);
         if (!pending) return;
         this.pending.delete(message.id);
-        if (message.error)
-          pending.reject(new Error(JSON.stringify(message.error)));
+        if (message.error) pending.reject(new Error(JSON.stringify(message.error)));
         else pending.resolve(message.result);
         return;
       }
@@ -70,10 +68,7 @@ class Client {
   }
 
   on(method, listener) {
-    this.listeners.set(method, [
-      ...(this.listeners.get(method) ?? []),
-      listener,
-    ]);
+    this.listeners.set(method, [...(this.listeners.get(method) ?? []), listener]);
     return () => {
       this.listeners.set(
         method,
@@ -125,9 +120,7 @@ export async function createHarness(baseUrl) {
   for (let attempt = 0; attempt < 200; attempt += 1) {
     try {
       port = Number(
-        (await readFile(join(profile, "DevToolsActivePort"), "utf8")).split(
-          /\s+/,
-        )[0],
+        (await readFile(join(profile, "DevToolsActivePort"), "utf8")).split(/\s+/)[0],
       );
       if (port) break;
     } catch {
@@ -157,9 +150,7 @@ export async function createHarness(baseUrl) {
   };
 
   async function createPage(options = {}) {
-    const { browserContextId } = await client.send(
-      "Target.createBrowserContext",
-    );
+    const { browserContextId } = await client.send("Target.createBrowserContext");
     const { targetId } = await client.send("Target.createTarget", {
       url: "about:blank",
       browserContextId,
@@ -181,9 +172,7 @@ export async function createHarness(baseUrl) {
         if (url.includes("/api/join")) state.newsletterRequests.push(url);
       }),
       client.on("Network.webSocketCreated", (message) => {
-        if (message.sessionId === sessionId) {
-          state.webSockets.push(message.params.url);
-        }
+        if (message.sessionId === sessionId) state.webSockets.push(message.params.url);
       }),
       client.on("Runtime.exceptionThrown", (message) => {
         if (message.sessionId === sessionId) {
@@ -219,6 +208,12 @@ export async function createHarness(baseUrl) {
     ]) {
       await client.send(`${domain}.enable`, {}, sessionId);
     }
+    await client.send("Page.bringToFront", {}, sessionId);
+    await client.send(
+      "Emulation.setFocusEmulationEnabled",
+      { enabled: true },
+      sessionId,
+    );
     await client.send(
       "Network.setCacheDisabled",
       { cacheDisabled: true },
