@@ -26,7 +26,8 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstream 9\.7 is under review/i);
+  assert.match(page, /workstreams 9\.1–9\.7 are validated/i);
+  assert.match(page, /workstream 9\.8 is under review/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
