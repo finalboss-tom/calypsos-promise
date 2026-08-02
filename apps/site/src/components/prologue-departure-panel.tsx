@@ -84,8 +84,8 @@ export function PrologueDeparturePanel({
           A future account could hold private state. It does not exist here.
         </h2>
         <p className={styles.lede}>
-          This screen creates no account, identity, storage, recovery promise,
-          email request, newsletter call, access, or reward.
+          Account creation is unavailable in Sprint 9. This screen creates no
+          identity, storage, email request, newsletter call, access, or reward.
         </p>
 
         <dl className={styles.details}>
@@ -100,8 +100,8 @@ export function PrologueDeparturePanel({
           <div>
             <dt>Current state</dt>
             <dd>
-              navigation destroys the current temporary state; restart does the
-              same
+              destroyed by leaving or restart; navigation destroys the current
+              temporary state
             </dd>
           </div>
         </dl>
