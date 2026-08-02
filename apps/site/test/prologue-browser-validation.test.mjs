@@ -36,7 +36,7 @@ test("covers rendered paths, controls, focus, storage, network, and fallback evi
   for (const phrase of [
     "shortest-manual-text",
     "representative-aster-voice",
-    "longest-direct-exploration",
+    "longest-optional-exploration",
     "visible button controls were not exercised",
     "prologue-scene-title",
     "Accessibility.getFullAXTree",
@@ -84,12 +84,18 @@ test("holds the playable route to the accepted Sprint 8 performance ceilings", a
   }
 });
 
-test("models all direct completion paths under ten minutes without overstating usability evidence", async () => {
+test("models direct completion under ten minutes and measures optional exploration separately", async () => {
   const validator = await read("../src/validate-prologue-browser.mjs");
 
   assert.match(validator, /words \/ 160/);
   assert.match(validator, /steps\.length \* \(4 \/ 60\)/);
-  assert.match(validator, /modeled completion time/);
+  assert.match(validator, /durationTarget && modeledMinutes >= 10/);
+  assert.match(validator, /durationTarget: false/);
+  assert.match(validator, /longest-optional-exploration/);
+  assert.match(
+    validator,
+    /optional exploration measured separately/,
+  );
   assert.match(
     validator,
     /not affected-user or assistive-technology timing evidence/,
