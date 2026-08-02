@@ -1,7 +1,7 @@
 import { readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { createHarness } from "./prologue-browser/cdp.mjs";
+import { createHarness } from "./prologue-browser/hydrated-cdp.mjs";
 import { representative, shortest } from "./prologue-browser/scenarios.mjs";
 
 const baseUrl = process.env.SITE_BASE_URL ?? "http://127.0.0.1:3000";
@@ -15,7 +15,11 @@ const clickValidatorPath = resolve(
 
 async function runRenderedValidator() {
   const source = await readFile(validatorPath, "utf8");
-  const clickOnly = source.replace(
+  const hydratedSource = source.replace(
+    'from "./prologue-browser/cdp.mjs";',
+    'from "./prologue-browser/hydrated-cdp.mjs";',
+  );
+  const clickOnly = hydratedSource.replace(
     /keyboard:\s*id\s*!==\s*"longest-direct-exploration",/,
     "keyboard: false,",
   );
@@ -23,7 +27,11 @@ async function runRenderedValidator() {
     '      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
     '      await page.evaluate("new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))", true);\n      state = await harness.snapshot(page);\n      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
   );
-  if (clickOnly === source || transformed === clickOnly) {
+  if (
+    hydratedSource === source ||
+    clickOnly === hydratedSource ||
+    transformed === clickOnly
+  ) {
     throw new Error("Rendered validator transformation was not applied");
   }
   await writeFile(clickValidatorPath, transformed, "utf8");
