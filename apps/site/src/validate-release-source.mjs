@@ -230,10 +230,17 @@ for (const directive of requiredCspDirectives) {
     fail(`proxy CSP source is missing ${directive}`);
 }
 if (
-  !proxy.includes("crypto.randomUUID") ||
+  proxy.includes("crypto.randomUUID") ||
+  proxy.includes("x-nonce") ||
+  proxy.includes("'strict-dynamic'")
+) {
+  fail("static site CSP must not depend on per-request nonce behavior");
+}
+if (
+  !proxy.includes("script-src 'self' 'unsafe-inline'") ||
   !proxy.includes("Content-Security-Policy")
 ) {
-  fail("proxy must retain per-request nonce CSP behavior");
+  fail("proxy must retain the static-rendering-compatible CSP");
 }
 if (!vercelConfig.includes('"framework": "nextjs"')) {
   fail("Vercel configuration must retain the Next.js framework override");
@@ -342,5 +349,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `Public site source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, active Phase 0 newsletter gate #63, branch-only Sprint 9 prologue, security headers, metadata, authority, and performance budgets.`,
+  `Public site source validation passed for ${routeContracts.length} public routes, ${contrastPairs.length} contrast pairs, active Phase 0 newsletter gate #63, branch-only Sprint 9 prologue, static-compatible security headers, metadata, authority, and performance budgets.`,
 );
