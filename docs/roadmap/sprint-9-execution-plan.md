@@ -2,7 +2,7 @@
 
 [Current status](current-status.md) · [Sprint 9.7 record](sprint-9-workstream-9-7-record.md) · [Sprint 9.8 validation record](sprint-9-workstream-9-8-validation-record.md) · [Sprint 9.8 representative review](sprint-9-workstream-9-8-manual-review.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint sequence](sprints.md) · [Accepted alignment issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Public synthetic prologue boundary](../architecture/public-synthetic-prologue-boundary.md)
 
-- **Status:** ACTIVE — workstreams 9.1–9.7 complete; 9.8 implemented for exact-candidate validation; 9.9 unfinished; 9.10 blocked
+- **Status:** ACTIVE — workstreams 9.1–9.7 complete; 9.8 substantively validated with final aggregate pending; 9.9 unfinished; 9.10 blocked
 - **Application owner:** `apps/site`
 - **Primary route:** `/prologue`
 - **Data class:** PUBLIC and explicitly synthetic only
@@ -78,23 +78,25 @@ Provides `exit-choice`, `future-account`, and `complete`; restart from progresse
 
 ### 9.8 — Accessibility, security, performance, storage, network, and interaction validation
 
-**Implemented for exact-candidate validation.**
+**Substantive rendered evidence established; final aggregate validation pending.**
 
 The [validation record](sprint-9-workstream-9-8-validation-record.md) and [representative review](sprint-9-workstream-9-8-manual-review.md) define the package.
 
 The permanent validator must:
 
 - run the production build in isolated localhost preview;
-- execute shortest manual/text, representative Aster/voice, and longest direct journeys in rendered Chrome or Chromium;
-- activate the shortest and representative paths through keyboard Enter events;
+- execute shortest manual/text and representative Aster/voice direct-completion journeys plus a looped optional exploration in rendered Chrome or Chromium;
+- complete the two direct paths through native keyboard events;
 - exercise every visible scene button and native disclosure;
 - verify logical keyboard order, scene-heading focus, polite announcements, accessible names, and no keyboard trap;
 - verify confirmation remains disabled before review choice;
 - cover refusal, alternate fixture, correction, restart, discard, departure, future-account inspection, public exit, and completion without conversion;
 - exercise reduced motion, reduced data, increased contrast, forced colors, narrow viewport, and no-JavaScript behavior;
 - fail on storage API use, cookies, IndexedDB, Cache Storage, external runtime network calls, `/api/join`, WebSockets, browser errors, or hidden state restoration;
-- model shortest, representative, and longest direct completion paths under ten minutes; and
+- hold the shortest and representative direct-completion paths under ten modeled minutes while timing optional exploration separately; and
 - read the static preview report and fail if `/prologue` exceeds the accepted Sprint 8 route ceilings.
+
+Rendered validation also discovered and corrected an inherited static-site CSP defect that blocked Next.js hydration. The current static site uses a static-rendering-compatible CSP; future identity, private Chronicle, or sensitive-data routes must reopen rendering and CSP architecture rather than inheriting this public-site policy without review.
 
 Sprint 8 ceilings remain:
 
@@ -106,9 +108,11 @@ Sprint 8 ceilings remain:
 - total transfer 2,048 KiB; and
 - first-party requests 32.
 
-The accepted 9.7 evidence places `/prologue` below every ceiling, including 716,199 JavaScript bytes versus the 720,896-byte ceiling. Sprint 9 has not earned a larger route budget.
+CI 1272 measured `/prologue` below every ceiling, including 713,812 JavaScript bytes against the 720,896-byte ceiling and 799,902 total bytes against 2,097,152. Sprint 9 has not earned a larger route budget.
 
-Workstream 9.8 remains implementation evidence, not independent accessibility, named screen reader, affected-user, cognitive-load, device/browser, or field performance certification.
+The same artifact measured direct completion at 8.45 minutes for manual/text and 9.11 minutes for Aster/voice. The deliberately looped 23-action exploration measured 11.96 minutes and remains evidence, not a direct-completion claim.
+
+Workstream 9.8 remains implementation evidence, not independent accessibility, named screen-reader, affected-user, cognitive-load, device/browser, or field-performance certification.
 
 ## Remaining workstreams
 
@@ -147,7 +151,7 @@ No path uses countdowns, shame, lost rewards, reduced access, health warnings, r
 
 ## Unresolved inherited holdpoints
 
-Sprint 9 does not close independent accessibility or assistive-technology review, affected-user evidence, named screen reader review, device/browser field performance, real voice privacy, production identity, authentication, recovery, private Chronicle storage, production Aster, legal review of permission presentation, analytics, monitoring, incident operations, or remaining Phase 0 gates.
+Sprint 9 does not close independent accessibility or assistive-technology review, affected-user evidence, named screen-reader review, device/browser field performance, real voice privacy, production identity, authentication, recovery, private Chronicle storage, production Aster, legal review of permission presentation, analytics, monitoring, incident operations, or remaining Phase 0 gates.
 
 ## Completion rule
 
