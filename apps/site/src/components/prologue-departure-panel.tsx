@@ -90,7 +90,7 @@ export function PrologueDeparturePanel({
 
         <dl className={styles.details}>
           <div>
-            <dt>Account and authentication</dt>
+            <dt>Account creation and authentication</dt>
             <dd>future separately reviewed boundaries</dd>
           </div>
           <div>
@@ -99,7 +99,10 @@ export function PrologueDeparturePanel({
           </div>
           <div>
             <dt>Current state</dt>
-            <dd>destroyed by leaving or restart</dd>
+            <dd>
+              navigation destroys the current temporary state; restart does the
+              same
+            </dd>
           </div>
         </dl>
 
