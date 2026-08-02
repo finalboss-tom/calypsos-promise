@@ -31,7 +31,7 @@ export function PrologueFirstLanternPanel({
     <article className={styles.scene} data-scene="first-lantern">
       <p className="eyebrow">First Lantern — synthetic completion evidence</p>
       <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-        Eight inspectable checks light the First Lantern.
+        The First Lantern lights because eight inspectable checks are complete.
       </h2>
       <p className={styles.lede}>
         The rule used explicit synthetic page state—not a score, model, timer,
