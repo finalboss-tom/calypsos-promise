@@ -77,6 +77,11 @@ export const supplemental = Object.freeze([
     target: ["Replay the arrival", "arrival"],
   },
   {
+    id: "restart-lantern-shore",
+    setup: shortest.slice(0, 1),
+    target: ["Restart the prologue", "arrival"],
+  },
+  {
     id: "return-to-lantern",
     setup: shortest.slice(0, 2),
     target: ["Return to Lantern Shore", "lantern-shore"],
