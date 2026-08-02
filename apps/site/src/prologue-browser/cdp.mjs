@@ -327,7 +327,7 @@ export async function createHarness(baseUrl) {
         text: scene?.innerText ?? '',
         status: root?.querySelector(':scope > [role="status"]')?.textContent?.replace(/\\s+/g, ' ').trim() ?? '',
         active: describe(document.activeElement),
-        controls: scene ? [...scene.querySelectorAll('button, summary')].filter(visible).map(describe) : [],
+        controls: scene ? [...document.querySelectorAll('[data-scene] button, [data-scene] summary, [aria-label="Prologue utility controls"] button')].filter(visible).map(describe) : [],
         links: scene ? [...scene.querySelectorAll('a')].filter(visible).map(describe) : [],
         inputs: root ? [...root.querySelectorAll('input, textarea, select, [contenteditable="true"]')].map(describe) : [],
         positiveTabIndexes: [...document.querySelectorAll('[tabindex]')].filter((element) => element.tabIndex > 0).map(describe),
@@ -347,7 +347,7 @@ export async function createHarness(baseUrl) {
     const before = await snapshot(page);
     const found = await page.evaluate(`(() => {
       const normalize = (value) => String(value ?? '').replace(/\\s+/g, ' ').trim();
-      const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary')]
+      const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary, [aria-label="Prologue utility controls"] button:not([disabled])')]
         .find((element) => normalize(element.textContent) === ${JSON.stringify(label)});
       if (!target) return false;
       target.focus();
@@ -367,7 +367,7 @@ export async function createHarness(baseUrl) {
     } else {
       await page.evaluate(`(() => {
         const normalize = (value) => String(value ?? '').replace(/\\s+/g, ' ').trim();
-        const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary')]
+        const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary, [aria-label="Prologue utility controls"] button:not([disabled])')]
           .find((element) => normalize(element.textContent) === ${JSON.stringify(label)});
         target.click();
       })()`);
