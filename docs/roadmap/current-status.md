@@ -80,18 +80,18 @@ Permanent constraints:
 - no required timing or conversion pressure;
 - merge, public linking, and deployment remain separate founding-steward decisions.
 
-| Workstream | Current state |
-| --- | --- |
-| 9.1 | completed and validated; executable-state requirements added by quality review |
-| 9.2 | completed and validated; branch-only arrival and Lantern Shore |
-| 9.3 | completed and validated; Aster/manual parity |
-| 9.4 | completed and validated; synthetic review, correction, refusal, and confirmation |
-| 9.5 | completed and validated; corrected Chronicle and receipt-shaped explanations |
-| 9.6 | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334 |
-| 9.7 | completed and validated at `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339 |
-| 9.8 | implemented for exact-candidate validation; rendered browser, duration, storage, network, accessibility, and Sprint 8 budget evidence |
-| 9.9 | not implemented; stable source, release, hosted evidence, rollback, and public-status work remains open |
-| 9.10 | blocked and not started |
+| Workstream | Current state                                                                                                                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 9.1        | completed and validated; executable-state requirements added by quality review                                                        |
+| 9.2        | completed and validated; branch-only arrival and Lantern Shore                                                                        |
+| 9.3        | completed and validated; Aster/manual parity                                                                                          |
+| 9.4        | completed and validated; synthetic review, correction, refusal, and confirmation                                                      |
+| 9.5        | completed and validated; corrected Chronicle and receipt-shaped explanations                                                          |
+| 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                                            |
+| 9.7        | completed and validated at `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339                                            |
+| 9.8        | implemented for exact-candidate validation; rendered browser, duration, storage, network, accessibility, and Sprint 8 budget evidence |
+| 9.9        | not implemed; stable source, release, hosted evidence, rollback, and public-status work remains open                               |
+| 9.10       | blocked and not started                                                                                                               |
 
 ## Workstream 9.8 evidence boundary
 

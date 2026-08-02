@@ -21,7 +21,8 @@ function findChrome() {
       const result = spawnSync("sh", ["-lc", `command -v ${candidate}`], {
         encoding: "utf8",
       });
-      if (result.status === 0 && result.stdout.trim()) return result.stdout.trim();
+      if (result.status === 0 && result.stdout.trim())
+        return result.stdout.trim();
     }
   }
   throw new Error("Chrome or Chromium was not found");
@@ -47,7 +48,8 @@ class Client {
         const pending = this.pending.get(message.id);
         if (!pending) return;
         this.pending.delete(message.id);
-        if (message.error) pending.reject(new Error(JSON.stringify(message.error)));
+        if (message.error)
+          pending.reject(new Error(JSON.stringify(message.error)));
         else pending.resolve(message.result);
         return;
       }
@@ -68,7 +70,10 @@ class Client {
   }
 
   on(method, listener) {
-    this.listeners.set(method, [...(this.listeners.get(method) ?? []), listener]);
+    this.listeners.set(method, [
+      ...(this.listeners.get(method) ?? []),
+      listener,
+    ]);
     return () => {
       this.listeners.set(
         method,
@@ -152,7 +157,9 @@ export async function createHarness(baseUrl) {
   };
 
   async function createPage(options = {}) {
-    const { browserContextId } = await client.send("Target.createBrowserContext");
+    const { browserContextId } = await client.send(
+      "Target.createBrowserContext",
+    );
     const { targetId } = await client.send("Target.createTarget", {
       url: "about:blank",
       browserContextId,
@@ -161,6 +168,7 @@ export async function createHarness(baseUrl) {
       targetId,
       flatten: true,
     });
+    await client.send("Target.activateTarget", { targetId });
     const requests = [];
     const stops = [
       client.on("Network.requestWillBeSent", (message) => {
@@ -357,13 +365,28 @@ export async function createHarness(baseUrl) {
     state.usedControls.add(label);
 
     if (options.keyboard) {
-      for (const type of ["keyDown", "keyUp"]) {
-        await client.send(
-          "Input.dispatchKeyEvent",
-          { type, key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 },
-          page.sessionId,
-        );
-      }
+      await client.send(
+        "Input.dispatchKeyEvent",
+        {
+          type: "rawKeyDown",
+          key: "Enter",
+          code: "Enter",
+          windowsVirtualKeyCode: 13,
+          nativeVirtualKeyCode: 13,
+        },
+        page.sessionId,
+      );
+      await client.send(
+        "Input.dispatchKeyEvent",
+        {
+          type: "keyUp",
+          key: "Enter",
+          code: "Enter",
+          windowsVirtualKeyCode: 13,
+          nativeVirtualKeyCode: 13,
+        },
+        page.sessionId,
+      );
     } else {
       await page.evaluate(`(() => {
         const normalize = (value) => String(value ?? '').replace(/\\s+/g, ' ').trim();
@@ -384,9 +407,9 @@ export async function createHarness(baseUrl) {
       );
     } else if (options.announcement) {
       await page.wait(
-        `(document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="status"]')?.textContent ?? '').includes(${JSON.stringify(options.announcement)})`,
+        `(document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="stattus"]')?.textContent ?? '').includes(${JSON.stringify(options.announcement)})`,
         `announcement after ${label}`,
-      );
+     );
     }
     return snapshot(page);
   }

@@ -44,11 +44,11 @@ The existing `site-release-validation` job now runs in this order:
 
 The permanent browser report exercises three completion journeys:
 
-| Journey | Presentation | Fixture | Review choice | Departure | Purpose |
-| --- | --- | --- | --- | --- | --- |
-| `shortest-manual-text` | direct manual | synthetic text | accept as written | complete without account | shortest accepted direct path |
-| `representative-aster-voice` | deterministic Aster | synthetic voice transcript | prepared correction | inspect future-account boundary, return, complete | representative path across optional framing and informational boundary |
-| `longest-direct-exploration` | Aster, manual switch, Aster return | synthetic text | prepared correction | receipt and account-boundary review before completion | longest bounded direct completion path without refusal, restart, or arbitrary loops |
+| Journey                      | Presentation                       | Fixture                    | Review choice       | Departure                                             | Purpose                                                                             |
+| ---------------------------- | ---------------------------------- | -------------------------- | ------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `shortest-manual-text`       | direct manual                      | synthetic text             | accept as written   | complete without account                              | shortest accepted direct path                                                       |
+| `representative-aster-voice` | deterministic Aster                | synthetic voice transcript | prepared correction | inspect future-account boundary, return, complete     | representative path across optional framing and informational boundary              |
+| `longest-direct-exploration` | Aster, manual switch, Aster return | synthetic text             | prepared correction | receipt and account-boundary review before completion | longest bounded direct completion path without refusal, restart, or arbitrary loops |
 
 The shortest and representative journeys activate every progression step through keyboard Enter events. Scene-changing actions must move focus to `#prologue-scene-title`. In-scene correction choices must retain the scene and update the polite transition announcement.
 
@@ -124,27 +124,27 @@ Every direct completion journey must remain below ten modeled minutes. The repor
 
 The accepted Sprint 8 route ceilings at squash commit `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a` were:
 
-| Metric | Sprint 8 ceiling |
-| --- | ---: |
-| HTML | 98,304 bytes |
-| JavaScript | 720,896 bytes |
-| CSS | 131,072 bytes |
-| Images | 1,572,864 bytes |
-| Web fonts | 0 bytes |
-| Total transfer | 2,097,152 bytes |
-| First-party requests | 32 |
+| Metric               | Sprint 8 ceiling |
+| -------------------- | ---------------: |
+| HTML                 |     98,304 bytes |
+| JavaScript           |    720,896 bytes |
+| CSS                  |    131,072 bytes |
+| Images               |  1,572,864 bytes |
+| Web fonts            |          0 bytes |
+| Total transfer       |  2,097,152 bytes |
+| First-party requests |               32 |
 
 The most recent exact static evidence on accepted 9.7 head `a3ac15f32ca098a2955c14bf815af60cccfd56d6` measured `/prologue` as:
 
-| Metric | Measured | Sprint 8 remaining margin |
-| --- | ---: | ---: |
-| HTML | 37,630 bytes | 60,674 bytes |
-| JavaScript | 716,199 bytes | 4,697 bytes |
-| CSS | 47,733 bytes | 83,339 bytes |
-| Images | 705 bytes | 1,572,159 bytes |
-| Web fonts | 0 bytes | 0 bytes |
-| Total transfer | 802,267 bytes | 1,294,885 bytes |
-| First-party requests | 15 | 17 |
+| Metric               |      Measured | Sprint 8 remaining margin |
+| -------------------- | ------------: | ------------------------: |
+| HTML                 |  37,630 bytes |              60,674 bytes |
+| JavaScript           | 716,199 bytes |               4,697 bytes |
+| CSS                  |  47,733 bytes |              83,339 bytes |
+| Images               |     705 bytes |           1,572,159 bytes |
+| Web fonts            |       0 bytes |                   0 bytes |
+| Total transfer       | 802,267 bytes |           1,294,885 bytes |
+| First-party requests |            15 |                        17 |
 
 **Disposition:** Sprint 9 does not require a larger playable-route performance budget. The browser validator reads the machine-generated static report and fails if `/prologue` exceeds any accepted Sprint 8 ceiling.
 

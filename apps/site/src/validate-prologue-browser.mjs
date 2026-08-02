@@ -22,7 +22,10 @@ const sprint8Budgets = Object.freeze({
   totalBytes: 2048 * 1024,
   firstPartyRequests: 32,
 });
-const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim();
+const normalize = (value) =>
+  String(value ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
 const fail = (message) => failures.push(message);
 
 async function capture(page, name) {
@@ -44,20 +47,23 @@ async function runJourney(id, steps, screenshot) {
   try {
     await page.navigate();
     let state = await harness.snapshot(page);
-    sceneWords.set(state.scene, normalize(state.text).split(" ").filter(Boolean).length);
+    sceneWords.set(
+      state.scene,
+      normalize(state.text).split(" ").filter(Boolean).length,
+    );
 
     for (const [label, scene, announcement] of steps) {
       state = await harness.activate(page, label, scene, {
         keyboard: id !== "longest-direct-exploration",
         announcement,
       });
-      if (!sceneWords.has(state.scene)) {
-        sceneWords.set(
-          state.scene,
-          normalize(state.text).split(" ").filter(Boolean).length,
-        );
-      }
-      if (state.inputs.length) fail(`${id}: prologue input found in ${state.scene}`);
+      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;
+      sceneWords.set(
+        state.scene,
+        Math.max(sceneWords.get(state.scene) ?? 0, visibleWords),
+      );
+      if (state.inputs.length)
+        fail(`${id}: prologue input found in ${state.scene}`);
       if (state.positiveTabIndexes.length) {
         fail(`${id}: positive tabindex found in ${state.scene}`);
       }
@@ -74,10 +80,17 @@ async function runJourney(id, steps, screenshot) {
       });
     }
 
-    const words = [...sceneWords.values()].reduce((total, value) => total + value, 0);
-    const modeledMinutes = Number((words / 160 + steps.length * (4 / 60)).toFixed(2));
+    const words = [...sceneWords.values()].reduce(
+      (total, value) => total + value,
+      0,
+    );
+    const modeledMinutes = Number(
+      (words / 160 + steps.length * (4 / 60)).toFixed(2),
+    );
     if (modeledMinutes >= 10) {
-      fail(`${id}: modeled completion time ${modeledMinutes} is not under ten minutes`);
+      fail(
+        `${id}: modeled completion time ${modeledMinutes} is not under ten minutes`,
+      );
     }
 
     const storage = await page.evaluate(
@@ -143,7 +156,11 @@ async function verifyTabOrder() {
   const page = await harness.createPage();
   try {
     await page.navigate();
-    await harness.activate(page, "Skip directly to Lantern Shore", "lantern-shore");
+    await harness.activate(
+      page,
+      "Skip directly to Lantern Shore",
+      "lantern-shore",
+    );
     const expected = await page.evaluate(`(() => {
       const visible = (element) => {
         const style = getComputedStyle(element);
@@ -155,7 +172,9 @@ async function verifyTabOrder() {
         .filter(visible)
         .map((element) => normalize(element.textContent));
     })()`);
-    await page.evaluate(`document.querySelector('[data-scene] button:not([disabled]), [data-scene] summary, [data-scene] a[href]')?.focus()`);
+    await page.evaluate(
+      `document.querySelector('[data-scene] button:not([disabled]), [data-scene] summary, [data-scene] a[href]')?.focus()`,
+    );
     const observed = [
       await page.evaluate(
         `String(document.activeElement?.textContent ?? '').replace(/\\s+/g, ' ').trim()`,
@@ -166,12 +185,12 @@ async function verifyTabOrder() {
         "Input.dispatchKeyEvent",
         { type: "keyDown", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 },
         page.sessionId,
-      );
+     );
       await harness.client.send(
         "Input.dispatchKeyEvent",
         { type: "keyUp", key: "Tab", code: "Tab", windowsVirtualKeyCode: 9 },
         page.sessionId,
-      );
+     );
       observed.push(
         await page.evaluate(
           `String(document.activeElement?.textContent ?? '').replace(/\\s+/g, ' ').trim()`,
@@ -179,7 +198,9 @@ async function verifyTabOrder() {
       );
     }
     if (JSON.stringify(observed) !== JSON.stringify(expected)) {
-      fail(`keyboard tab order differed: expected ${expected.join(" → ")}; observed ${observed.join(" → ")}`);
+      fail(
+        `keyboard tab order differed: expected ${expected.join(" ’")}; observed ${observed.join(" → ")}`,
+      );
     }
     return { expected, observed, keyboardTrapDetected: false };
   } finally {
@@ -200,7 +221,8 @@ async function verifyAccessibility() {
         .find((element) => element.textContent.includes('Confirm this synthetic demonstration'))
         ?.disabled === true`,
     );
-    if (!disabledConfirmation) fail("confirmation enabled before review choice");
+    if (!disabledConfirmation)
+      fail("confirmation enabled before review choice");
   } finally {
     await reviewPage.close();
   }
@@ -229,7 +251,11 @@ async function verifyAccessibility() {
       const matches = await page.evaluate(
         `matchMedia(${JSON.stringify(query)}).matches`,
       );
-      await harness.activate(page, "Skip directly to Lantern Shore", "lantern-shore");
+      await harness.activate(
+        page,
+        "Skip directly to Lantern Shore",
+        "lantern-shore",
+      );
       const state = await harness.snapshot(page);
       if (!matches || state.horizontalOverflow > 1) {
         fail(`${id}: media mode or layout failed`);
@@ -258,7 +284,10 @@ async function verifyAccessibility() {
       horizontalOverflow: state.horizontalOverflow,
       minimumTargetHeight: Math.min(...heights),
     };
-    if (narrow.horizontalOverflow > 1 || heights.some((height) => height < 44)) {
+    if (
+      narrow.horizontalOverflow > 1 ||
+      heights.some((height) => height < 44)
+    ) {
       fail("narrow viewport overflowed or exposed a control shorter than 44px");
     }
   } finally {
@@ -282,10 +311,13 @@ async function verifyAccessibility() {
         .filter((url) => url.includes('.css'))`,
     );
     const css = (
-      await Promise.all(cssUrls.map((url) => fetch(url).then((response) => response.text())))
+      await Promise.all(
+        cssUrls.map((url) => fetch(url).then((response) => response.text())),
+      )
     ).join("\n");
     lowData = {
-      controlsAvailable: (await harness.snapshot(lowDataPage)).controls.length > 0,
+      controlsAvailable:
+        (await harness.snapshot(lowDataPage)).controls.length > 0,
       reducedDataRulePresent: css.includes("prefers-reduced-data"),
     };
     if (!lowData.controlsAvailable || !lowData.reducedDataRulePresent) {
@@ -310,7 +342,9 @@ async function verifyAccessibility() {
       noJavaScriptPage.sessionId,
     );
     noJavaScript = {
-      fallbackPresent: outerHTML.includes("interactive opening needs JavaScript"),
+      fallbackPresent: outerHTML.includes(
+        "interactive opening needs JavaScript",
+      ),
       directLink: outerHTML.includes('href="/how-it-works"'),
     };
     if (!noJavaScript.fallbackPresent || !noJavaScript.directLink) {
@@ -362,8 +396,14 @@ async function verifyExitLifecycle() {
   const page = await harness.createPage();
   try {
     await page.navigate();
-    await harness.activate(page, "Skip directly to Lantern Shore", "lantern-shore");
-    await page.evaluate(`document.querySelector('[data-scene] a[href="/"]').click()`);
+    await harness.activate(
+      page,
+      "Skip directly to Lantern Shore",
+      "lantern-shore",
+    );
+    await page.evaluate(
+      `document.querySelector('[data-scene] a[href="/"]').click()`,
+    );
     await page.wait("location.pathname === '/'", "public exit");
     await page.navigate();
     const state = await harness.snapshot(page);
@@ -380,7 +420,9 @@ async function readStaticEvidence() {
     const report = JSON.parse(
       await readFile(resolve(process.cwd(), staticReportPath), "utf8"),
     );
-    const route = report.routeEvidence.find((item) => item.path === "/prologue");
+    const route = report.routeEvidence.find(
+      (item) => item.path === "/prologue",
+    );
     for (const [metric, budget] of Object.entries(sprint8Budgets)) {
       if (route[metric] > budget) {
         fail(`/prologue ${metric} exceeds the accepted Sprint 8 ceiling`);
@@ -418,9 +460,13 @@ try {
     (control) => !harness.state.usedControls.has(control),
   );
   if (missingControls.length) {
-    fail(`visible button controls were not exercised: ${missingControls.join(", ")}`);
+    fail(
+      `visible button controls were not exercised: ${missingControls.join(", ")}`,
+    );
   }
-  const visibleLinks = [...harness.state.seenLinks.entries()].map(([text, href]) => ({ text, href }));
+  const visibleLinks = [...harness.state.seenLinks.entries()].map(
+    ([text, href]) => ({ text, href }),
+  );
   const invalidLinks = visibleLinks.filter(({ href }) => {
     const url = new URL(href);
     return !(
@@ -430,7 +476,9 @@ try {
     );
   });
   if (invalidLinks.length) {
-    fail(`unexpected visible links: ${invalidLinks.map(({ href }) => href).join(", ")}`);
+    fail(
+      `unexpected visible links: ${invalidLinks.map(({ href }) => href).join(", ")}`,
+    );
   }
   if (harness.state.externalRequests.size) {
     fail(
@@ -438,7 +486,9 @@ try {
     );
   }
   if (harness.state.newsletterRequests.length) {
-    fail(`newsletter API requests: ${harness.state.newsletterRequests.join(", ")}`);
+    fail(
+      `newsletter API requests: ${harness.state.newsletterRequests.join(", ")}`,
+    );
   }
   if (harness.state.webSockets.length) {
     fail(`WebSockets opened: ${harness.state.webSockets.join(", ")}`);
