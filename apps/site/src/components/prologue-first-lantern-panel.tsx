@@ -31,11 +31,10 @@ export function PrologueFirstLanternPanel({
     <article className={styles.scene} data-scene="first-lantern">
       <p className="eyebrow">First Lantern — synthetic completion evidence</p>
       <h2 id="prologue-scene-title" ref={headingRef} tabIndex={-1}>
-        The First Lantern lights because eight inspectable checks are complete.
+        Eight inspectable checks light the First Lantern.
       </h2>
       <p className={styles.lede}>
-        {firstLanternQuestDefinition.playerValue} The rule was evaluated locally
-        from explicit synthetic state, not from a score, model judgment, timer,
+        The rule used explicit synthetic page state—not a score, model, timer,
         account, or remote service.
       </p>
 
@@ -49,81 +48,6 @@ export function PrologueFirstLanternPanel({
         <span>No durable reward</span>
         <span>No canon unlock</span>
       </div>
-
-      <dl className={styles.completionDetails}>
-        <div>
-          <dt>Quest</dt>
-          <dd>
-            {completion.questId} · version {completion.questVersion}
-          </dd>
-        </div>
-        <div>
-          <dt>Zone</dt>
-          <dd>{completion.zone}</dd>
-        </div>
-        <div>
-          <dt>Guide path</dt>
-          <dd>{completion.guidePath}</dd>
-        </div>
-        <div>
-          <dt>Estimated path</dt>
-          <dd>
-            {firstLanternQuestDefinition.estimatedTimeMinutes.minimum}–
-            {firstLanternQuestDefinition.estimatedTimeMinutes.maximum} minutes;
-            target {firstLanternQuestDefinition.estimatedTimeMinutes.target}
-          </dd>
-        </div>
-        <div>
-          <dt>Safety classification</dt>
-          <dd>{firstLanternQuestDefinition.safetyClassification}</dd>
-        </div>
-        <div>
-          <dt>Completion ID</dt>
-          <dd>{completion.completionId}</dd>
-        </div>
-        <div>
-          <dt>Rule</dt>
-          <dd>
-            {completion.ruleId} · version {completion.ruleVersion}
-          </dd>
-        </div>
-        <div>
-          <dt>Status</dt>
-          <dd>{completion.status}</dd>
-        </div>
-        <div>
-          <dt>Fixture</dt>
-          <dd>{completion.fixtureId}</dd>
-        </div>
-        <div>
-          <dt>Review choice</dt>
-          <dd>{completion.correctionId}</dd>
-        </div>
-        <div>
-          <dt>Chronicle evidence</dt>
-          <dd>{completion.chronicleProjectionId}</dd>
-        </div>
-        <div>
-          <dt>Receipt evidence</dt>
-          <dd>{completion.receiptProjectionId}</dd>
-        </div>
-        <div>
-          <dt>Reward</dt>
-          <dd>{completion.reward}</dd>
-        </div>
-        <div>
-          <dt>Durable progression</dt>
-          <dd>{completion.durableProgression ? "yes" : "no"}</dd>
-        </div>
-        <div>
-          <dt>Authority</dt>
-          <dd>{completion.authority}</dd>
-        </div>
-        <div>
-          <dt>Persistence</dt>
-          <dd>{completion.persistence}</dd>
-        </div>
-      </dl>
 
       <section
         className={styles.evidence}
@@ -141,30 +65,115 @@ export function PrologueFirstLanternPanel({
         </ol>
       </section>
 
-      <section
-        className={styles.prohibited}
-        aria-labelledby="completion-prohibitions-title"
-      >
-        <h3 id="completion-prohibitions-title">What did not count</h3>
-        <p>
-          The rule explicitly excludes:{" "}
-          {firstLanternCompletionRule.prohibitedInputs.join(", ")}.
-        </p>
-      </section>
+      <details>
+        <summary>Inspect the First Lantern rule and limitations</summary>
+        <dl className={styles.completionDetails}>
+          <div>
+            <dt>Quest</dt>
+            <dd>
+              {completion.questId} · version {completion.questVersion}
+            </dd>
+          </div>
+          <div>
+            <dt>Player value</dt>
+            <dd>{firstLanternQuestDefinition.playerValue}</dd>
+          </div>
+          <div>
+            <dt>Zone</dt>
+            <dd>{completion.zone}</dd>
+          </div>
+          <div>
+            <dt>Guide path</dt>
+            <dd>{completion.guidePath}</dd>
+          </div>
+          <div>
+            <dt>Estimated path</dt>
+            <dd>
+              {firstLanternQuestDefinition.estimatedTimeMinutes.minimum}–
+              {firstLanternQuestDefinition.estimatedTimeMinutes.maximum} minutes;
+              target {firstLanternQuestDefinition.estimatedTimeMinutes.target}
+            </dd>
+          </div>
+          <div>
+            <dt>Safety classification</dt>
+            <dd>{firstLanternQuestDefinition.safetyClassification}</dd>
+          </div>
+          <div>
+            <dt>Completion ID</dt>
+            <dd>{completion.completionId}</dd>
+          </div>
+          <div>
+            <dt>Rule</dt>
+            <dd>
+              {completion.ruleId} · version {completion.ruleVersion}
+            </dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>{completion.status}</dd>
+          </div>
+          <div>
+            <dt>Fixture</dt>
+            <dd>{completion.fixtureId}</dd>
+          </div>
+          <div>
+            <dt>Review choice</dt>
+            <dd>{completion.correctionId}</dd>
+          </div>
+          <div>
+            <dt>Chronicle evidence</dt>
+            <dd>{completion.chronicleProjectionId}</dd>
+          </div>
+          <div>
+            <dt>Receipt evidence</dt>
+            <dd>{completion.receiptProjectionId}</dd>
+          </div>
+          <div>
+            <dt>Reward</dt>
+            <dd>{completion.reward}</dd>
+          </div>
+          <div>
+            <dt>Durable progression</dt>
+            <dd>{completion.durableProgression ? "yes" : "no"}</dd>
+          </div>
+          <div>
+            <dt>Authority</dt>
+            <dd>{completion.authority}</dd>
+          </div>
+          <div>
+            <dt>Persistence</dt>
+            <dd>{completion.persistence}</dd>
+          </div>
+        </dl>
 
-      <section
-        className={styles.prohibited}
-        aria-labelledby="completion-consequence-title"
-      >
-        <h3 id="completion-consequence-title">What this changes</h3>
-        <p>{completion.narrativeConsequence}</p>
-      </section>
+        <section
+          className={styles.prohibited}
+          aria-labelledby="completion-prohibitions-title"
+        >
+          <h3 id="completion-prohibitions-title">What did not count</h3>
+          <p>
+            The rule explicitly excludes:{" "}
+            {firstLanternCompletionRule.prohibitedInputs.join(", ")}.
+          </p>
+        </section>
 
-      <ul className={styles.limitations} aria-label="First Lantern limitations">
-        {completion.limitations.map((limitation) => (
-          <li key={limitation}>{limitation}</li>
-        ))}
-      </ul>
+        <section
+          className={styles.prohibited}
+          aria-labelledby="completion-consequence-title"
+        >
+          <h3 id="completion-consequence-title">What this changes</h3>
+          <p>{completion.narrativeConsequence}</p>
+        </section>
+
+        <ul
+          className={styles.limitations}
+          aria-label="First Lantern limitations"
+        >
+          {completion.limitations.map((limitation) => (
+            <li key={limitation}>{limitation}</li>
+          ))}
+        </ul>
+      </details>
 
       <div className={styles.actions} aria-label="First Lantern choices">
         <button
