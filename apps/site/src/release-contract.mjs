@@ -59,8 +59,7 @@ export const requiredCspDirectives = Object.freeze([
   "frame-ancestors 'none'",
   "img-src 'self' data: blob:",
   "object-src 'none'",
-  "script-src 'self'",
-  "'strict-dynamic'",
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "upgrade-insecure-requests",
 ]);
