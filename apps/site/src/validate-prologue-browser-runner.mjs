@@ -16,7 +16,7 @@ const clickValidatorPath = resolve(
 async function runRenderedValidator() {
   const source = await readFile(validatorPath, "utf8");
   const transformed = source.replace(
-    'keyboard: id !== "longest-direct-exploration",',
+    /keyboard:\s*id\s*!==\s*"longest-direct-exploration",/,
     "keyboard: false,",
   );
   if (transformed === source) {
