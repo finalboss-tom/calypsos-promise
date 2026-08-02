@@ -196,8 +196,8 @@ export function PrologueCapturePanel({
           Confirmation requires your explicit choice.
         </h2>
         <p className={styles.lede}>
+          Aster cannot confirm this draft. The manual guide cannot confirm it.
           Keep the prepared synthetic value or apply its prepared correction.
-          Neither guide can confirm it for you.
         </p>
 
         <DraftDetails state={state} />
