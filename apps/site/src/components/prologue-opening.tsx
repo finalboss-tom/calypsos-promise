@@ -65,8 +65,13 @@ export function PrologueOpening() {
   const [announcement, setAnnouncement] = useState(
     "Arrival scene. Choose the narrated opening or skip directly to Lantern Shore.",
   );
+  const [hydrated, setHydrated] = useState(false);
   const sceneHeading = useRef<HTMLHeadingElement>(null);
   const initialized = useRef(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   useEffect(() => {
     if (!initialized.current) {
@@ -134,6 +139,7 @@ export function PrologueOpening() {
     <section
       className={styles.experience}
       aria-labelledby="prologue-scene-title"
+      data-hydrated={hydrated ? "true" : "false"}
     >
       <ol className={styles.progress} aria-label="Prologue progress">
         {progressSteps.map((step, index) => (
