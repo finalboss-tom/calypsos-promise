@@ -25,7 +25,9 @@ function validateHeaders(response, route) {
   for (const directive of requiredCspDirectives) {
     if (!csp.includes(directive)) fail(`${route}: CSP is missing ${directive}`);
   }
-  if (!/nonce-[A-Za-z0-9-]+/.test(csp)) fail(`${route}: CSP nonce is missing`);
+  if (/nonce-[A-Za-z0-9-]+/.test(csp) || csp.includes("'strict-dynamic'")) {
+    fail(`${route}: static CSP must not depend on per-request nonces`);
+  }
   if (csp.includes("'unsafe-eval'"))
     fail(`${route}: CSP must not include unsafe-eval`);
 }
