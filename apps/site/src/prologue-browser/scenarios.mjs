@@ -92,6 +92,11 @@ export const supplemental = Object.freeze([
     target: ["Reconsider the guide choice", "guide-choice"],
   },
   {
+    id: "inspect-guide-rules",
+    setup: shortest.slice(0, 3),
+    target: ["Review the shared prologue rules", "manual-introduction"],
+  },
+  {
     id: "return-to-guide",
     setup: shortest.slice(0, 4),
     target: ["Return to the guide choice", "guide-choice"],
@@ -102,9 +107,19 @@ export const supplemental = Object.freeze([
     target: ["Choose another synthetic example", "capture-choice"],
   },
   {
+    id: "inspect-fixture-details",
+    setup: shortest.slice(0, 5),
+    target: ["Inspect the synthetic fixture details", "synthetic-draft"],
+  },
+  {
     id: "refuse-draft",
     setup: shortest.slice(0, 5),
     target: ["Refuse this synthetic draft", "capture-choice"],
+  },
+  {
+    id: "inspect-confirmed-state",
+    setup: shortest.slice(0, 8),
+    target: ["Inspect the confirmed synthetic state", "confirmed-entry"],
   },
   {
     id: "review-confirmed",
@@ -125,6 +140,11 @@ export const supplemental = Object.freeze([
     id: "discard-receipt",
     setup: shortest.slice(0, 10),
     target: ["Discard the temporary projection", "capture-choice"],
+  },
+  {
+    id: "inspect-first-lantern-rule",
+    setup: shortest.slice(0, 11),
+    target: ["Inspect the First Lantern rule and limitations", "first-lantern"],
   },
   {
     id: "review-after-completion",
