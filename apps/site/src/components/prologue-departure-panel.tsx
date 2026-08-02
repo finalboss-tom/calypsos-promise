@@ -41,10 +41,8 @@ export function PrologueDeparturePanel({
           Leave with the explanation, not an obligation.
         </h2>
         <p className={styles.lede}>
-          The bounded public synthetic prologue is complete. You may end here,
-          inspect what a future account boundary would need to protect, restart,
-          or return to the public site. No option asks for contact information
-          or changes your completion evidence.
+          End here, inspect the future account boundary, restart, or leave. No
+          choice requests contact information or changes the evidence.
         </p>
 
         <div className={styles.statusRow} aria-label="Departure status">
@@ -53,25 +51,6 @@ export function PrologueDeparturePanel({
           <span>No state retained</span>
           <span>No conversion reward</span>
         </div>
-
-        <dl className={styles.details}>
-          <div>
-            <dt>Completion</dt>
-            <dd>First Lantern evidence satisfied in this page memory only</dd>
-          </div>
-          <div>
-            <dt>Account</dt>
-            <dd>not required and not available</dd>
-          </div>
-          <div>
-            <dt>Newsletter</dt>
-            <dd>separate from the prologue and not called here</dd>
-          </div>
-          <div>
-            <dt>Leaving</dt>
-            <dd>navigation destroys the current temporary state</dd>
-          </div>
-        </dl>
 
         <div className={styles.actions} aria-label="Departure choices">
           <button
@@ -105,45 +84,24 @@ export function PrologueDeparturePanel({
           A future account could hold private state. It does not exist here.
         </h2>
         <p className={styles.lede}>
-          This screen explains a future separation of responsibility. It does
-          not create an account, authenticate anyone, retain the prologue,
-          request an email address, call the newsletter, or promise that account
-          architecture is complete.
+          This screen creates no account, identity, storage, recovery promise,
+          email request, newsletter call, access, or reward.
         </p>
 
         <dl className={styles.details}>
           <div>
-            <dt>Account creation</dt>
-            <dd>unavailable in Sprint 9</dd>
-          </div>
-          <div>
-            <dt>Identity and authentication</dt>
-            <dd>future separately reviewed system boundaries</dd>
+            <dt>Account and authentication</dt>
+            <dd>future separately reviewed boundaries</dd>
           </div>
           <div>
             <dt>Private Chronicle storage</dt>
             <dd>none in this prologue</dd>
           </div>
           <div>
-            <dt>Recovery and deletion</dt>
-            <dd>future acceptance gates, not implied by this explanation</dd>
-          </div>
-          <div>
-            <dt>Email and newsletter</dt>
-            <dd>
-              separate contact purpose; not account identity or game state
-            </dd>
-          </div>
-          <div>
-            <dt>Current temporary state</dt>
-            <dd>still page-memory-only and destroyed by leaving or restart</dd>
+            <dt>Current state</dt>
+            <dd>destroyed by leaving or restart</dd>
           </div>
         </dl>
-
-        <p className={styles.boundaryNote}>
-          Inspecting this boundary gives no progression, access, priority,
-          eligibility, reward, health benefit, or governance authority.
-        </p>
 
         <div className={styles.actions} aria-label="Future account choices">
           <button
@@ -178,9 +136,8 @@ export function PrologueDeparturePanel({
         Nothing follows you off this page.
       </h2>
       <p className={styles.lede}>
-        You completed the explanation without creating an account, providing an
-        email address, entering real health information, selecting a provider,
-        calling a model, making a payment, or accepting a conversion offer.
+        You finished without an account, email, real health information,
+        provider, model, payment, or conversion offer.
       </p>
 
       <div
@@ -193,29 +150,9 @@ export function PrologueDeparturePanel({
         <span>No durable progression</span>
       </div>
 
-      <dl className={styles.details}>
-        <div>
-          <dt>Scope completed</dt>
-          <dd>bounded public synthetic prologue only</dd>
-        </div>
-        <div>
-          <dt>Persistence</dt>
-          <dd>none</dd>
-        </div>
-        <div>
-          <dt>Account</dt>
-          <dd>none created</dd>
-        </div>
-        <div>
-          <dt>Next choice</dt>
-          <dd>restart locally or return to the public project</dd>
-        </div>
-      </dl>
-
       <p className={styles.boundaryNote}>
-        This is an honest stopping point. It is not a rank, reward, canonical
-        unlock, Fourteen Lantern progression, health outcome, or production
-        account state.
+        This is not a rank, reward, canonical unlock, Fourteen Lantern
+        progression, health outcome, or production account state.
       </p>
 
       <div className={styles.actions} aria-label="Completed prologue choices">
