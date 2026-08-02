@@ -70,9 +70,9 @@ export function PrologueChronicleReceiptPanel({
           Source, correction, and confirmation stay visible.
         </h2>
         <p className={styles.lede}>
-          This page-memory view maps selected terms from the accepted Living
-          Chronicle contract so a visitor can see what provenance and authority
-          would need to remain inspectable. It is not a stored Chronicle record.
+          This page-memory view shows the value, source, correction, and
+          confirmation that a real Chronicle would need to preserve. It is not
+          a stored record.
         </p>
 
         <div
@@ -105,14 +105,6 @@ export function PrologueChronicleReceiptPanel({
           <div>
             <dt>Source</dt>
             <dd>{chronicle.sourceLabel}</dd>
-          </div>
-          <div>
-            <dt>Synthetic timestamp</dt>
-            <dd>{chronicle.occurredAt}</dd>
-          </div>
-          <div>
-            <dt>Discard behavior</dt>
-            <dd>{chronicle.discardBehavior}</dd>
           </div>
         </dl>
 
@@ -180,28 +172,35 @@ export function PrologueChronicleReceiptPanel({
               <dd>{chronicle.sourceVersionId}</dd>
             </div>
             <div>
+              <dt>Synthetic timestamp</dt>
+              <dd>{chronicle.occurredAt}</dd>
+            </div>
+            <div>
+              <dt>Discard behavior</dt>
+              <dd>{chronicle.discardBehavior}</dd>
+            </div>
+            <div>
               <dt>Persistence</dt>
               <dd>{chronicle.persistence}</dd>
             </div>
           </dl>
+          <p className={styles.sourceDetail}>{chronicle.sourceDetail}</p>
+          <p className={styles.contractSources}>
+            Canonical public references:{" "}
+            <ExternalSourceLink
+              href={livingChronicleProjectionReferences.contractSource}
+            >
+              Living Chronicle record contract
+            </ExternalSourceLink>
+            {" · "}
+            <ExternalSourceLink
+              href={livingChronicleProjectionReferences.versionSource}
+            >
+              schema version
+            </ExternalSourceLink>
+          </p>
+          <ProjectionLimits limitations={chronicle.limitations} />
         </details>
-
-        <p className={styles.sourceDetail}>{chronicle.sourceDetail}</p>
-        <p className={styles.contractSources}>
-          Canonical public references:{" "}
-          <ExternalSourceLink
-            href={livingChronicleProjectionReferences.contractSource}
-          >
-            Living Chronicle record contract
-          </ExternalSourceLink>
-          {" · "}
-          <ExternalSourceLink
-            href={livingChronicleProjectionReferences.versionSource}
-          >
-            schema version
-          </ExternalSourceLink>
-        </p>
-        <ProjectionLimits limitations={chronicle.limitations} />
 
         <div
           className={styles.actions}
@@ -245,9 +244,8 @@ export function PrologueChronicleReceiptPanel({
         A receipt explains authority; it does not create it.
       </h2>
       <p className={styles.lede}>
-        This illustrative view uses selected field meanings from the accepted
-        public House of Keys AccessReceipt contract. No policy request or
-        evaluation ran, no grant exists, and no data crossed a release boundary.
+        No policy request ran, no grant exists, and no data crossed a release
+        boundary. This view only explains selected AccessReceipt meanings.
       </p>
 
       <div className={styles.statusRow} aria-label="Receipt projection status">
@@ -275,11 +273,7 @@ export function PrologueChronicleReceiptPanel({
           <dd>{receipt.decisionOutcome}</dd>
         </div>
         <div>
-          <dt>Execution state</dt>
-          <dd>{receipt.executionState}</dd>
-        </div>
-        <div>
-          <dt>Data release boundary crossed</dt>
+          <dt>Data release</dt>
           <dd>{receipt.dataReleaseBoundaryCrossed ? "yes" : "no"}</dd>
         </div>
       </dl>
@@ -328,6 +322,10 @@ export function PrologueChronicleReceiptPanel({
             <dd>{receipt.action.id}</dd>
           </div>
           <div>
+            <dt>Execution state</dt>
+            <dd>{receipt.executionState}</dd>
+          </div>
+          <div>
             <dt>Grant references</dt>
             <dd>none</dd>
           </div>
@@ -336,23 +334,22 @@ export function PrologueChronicleReceiptPanel({
             <dd>{receipt.reasonCodes.join(", ")}</dd>
           </div>
         </dl>
+        <p className={styles.contractSources}>
+          Canonical public references:{" "}
+          <ExternalSourceLink
+            href={houseOfKeysProjectionReferences.contractSource}
+          >
+            AccessReceipt contract
+          </ExternalSourceLink>
+          {" · "}
+          <ExternalSourceLink
+            href={houseOfKeysProjectionReferences.versionSource}
+          >
+            contract version
+          </ExternalSourceLink>
+        </p>
+        <ProjectionLimits limitations={receipt.limitations} />
       </details>
-
-      <p className={styles.contractSources}>
-        Canonical public references:{" "}
-        <ExternalSourceLink
-          href={houseOfKeysProjectionReferences.contractSource}
-        >
-          AccessReceipt contract
-        </ExternalSourceLink>
-        {" · "}
-        <ExternalSourceLink
-          href={houseOfKeysProjectionReferences.versionSource}
-        >
-          contract version
-        </ExternalSourceLink>
-      </p>
-      <ProjectionLimits limitations={receipt.limitations} />
 
       <div className={styles.actions} aria-label="Synthetic receipt choices">
         <button
