@@ -1,13 +1,6 @@
 import { createHarness as createBaseHarness } from "./cdp.mjs";
 
-const reactHydrationExpression = `(() => {
-  if (document.readyState !== 'complete') return false;
-  const target = document.querySelector('[data-scene] button:not([disabled]), [data-scene] summary');
-  if (!target) return false;
-  return Object.getOwnPropertyNames(target).some((key) =>
-    key.startsWith('__reactFiber$') || key.startsWith('__reactProps$')
-  );
-})()`;
+const reactHydrationExpression = `document.readyState === 'complete' && Boolean(document.querySelector('[data-hydrated="true"]'))`;
 
 export async function createHarness(baseUrl) {
   const harness = await createBaseHarness(baseUrl);
