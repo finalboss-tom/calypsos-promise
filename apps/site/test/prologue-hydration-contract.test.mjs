@@ -13,9 +13,15 @@ test("exposes one inert client-ready signal for rendered validation", async () =
   ]);
 
   assert.match(opening, /const \[hydrated, setHydrated\] = useState\(false\)/);
-  assert.match(opening, /useEffect\(\(\) => \{\s*setHydrated\(true\);\s*\}, \[\]\)/);
+  assert.match(
+    opening,
+    /useEffect\(\(\) => \{\s*setHydrated\(true\);\s*\}, \[\]\)/,
+  );
   assert.match(opening, /data-hydrated=\{hydrated \? "true" : "false"\}/);
   assert.match(hydratedHarness, /\[data-hydrated=\\?"true\\?"\]/);
   assert.doesNotMatch(hydratedHarness, /__reactFiber|__reactProps/);
-  assert.doesNotMatch(opening, /localStorage|sessionStorage|indexedDB|document\.cookie/);
+  assert.doesNotMatch(
+    opening,
+    /localStorage|sessionStorage|indexedDB|document\.cookie/,
+  );
 });

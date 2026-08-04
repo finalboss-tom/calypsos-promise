@@ -71,8 +71,8 @@ export function PrologueChronicleReceiptPanel({
         </h2>
         <p className={styles.lede}>
           This page-memory view shows the value, source, correction, and
-          confirmation that a real Chronicle would need to preserve. It is not
-          a stored record.
+          confirmation that a real Chronicle would need to preserve. It is not a
+          stored record.
         </p>
 
         <div

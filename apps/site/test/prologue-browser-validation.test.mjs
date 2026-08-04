@@ -92,10 +92,7 @@ test("models direct completion under ten minutes and measures optional explorati
   assert.match(validator, /durationTarget && modeledMinutes >= 10/);
   assert.match(validator, /durationTarget: false/);
   assert.match(validator, /longest-optional-exploration/);
-  assert.match(
-    validator,
-    /optional exploration measured separately/,
-  );
+  assert.match(validator, /optional exploration measured separately/);
   assert.match(
     validator,
     /not affected-user or assistive-technology timing evidence/,

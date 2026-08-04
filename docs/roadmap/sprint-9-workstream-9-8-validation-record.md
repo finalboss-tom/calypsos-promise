@@ -54,11 +54,11 @@ Rendered browser validation passed on candidate `c6a9d4a656062acec1fe8bd64589aaf
 
 The duration model counts unique visible scene words at 160 words per minute and adds four seconds per activated control. Automation elapsed time is recorded separately.
 
-| Journey | Classification | Actions | Visible words | Modeled duration | Result |
-| --- | --- | ---: | ---: | ---: | --- |
-| `shortest-manual-text` | direct completion | 13 | 1,214 | 8.45 minutes | passes under-ten gate |
-| `representative-aster-voice` | direct completion | 15 | 1,297 | 9.11 minutes | passes under-ten gate |
-| `longest-optional-exploration` | looped optional exploration | 23 | 1,668 | 11.96 minutes | measured separately |
+| Journey                        | Classification              | Actions | Visible words | Modeled duration | Result                |
+| ------------------------------ | --------------------------- | ------: | ------------: | ---------------: | --------------------- |
+| `shortest-manual-text`         | direct completion           |      13 |         1,214 |     8.45 minutes | passes under-ten gate |
+| `representative-aster-voice`   | direct completion           |      15 |         1,297 |     9.11 minutes | passes under-ten gate |
+| `longest-optional-exploration` | looped optional exploration |      23 |         1,668 |    11.96 minutes | measured separately   |
 
 The optional route switches guides, revisits evidence, and opens additional explanations. It remains fully executed and timed but is not misrepresented as a direct-completion path.
 
@@ -111,15 +111,15 @@ The route still exposes no text field, textarea, editable region, file input, mi
 
 CI 1272 measured `/prologue` as:
 
-| Metric | Measured | Accepted Sprint 8 ceiling | Remaining margin |
-| --- | ---: | ---: | ---: |
-| HTML | 37,652 bytes | 98,304 bytes | 60,652 bytes |
-| JavaScript | 713,812 bytes | 720,896 bytes | 7,084 bytes |
-| CSS | 47,733 bytes | 131,072 bytes | 83,339 bytes |
-| Images | 705 bytes | 1,572,864 bytes | 1,572,159 bytes |
-| Web fonts | 0 bytes | 0 bytes | 0 bytes |
-| Total transfer | 799,902 bytes | 2,097,152 bytes | 1,297,250 bytes |
-| First-party requests | 15 | 32 | 17 |
+| Metric               |      Measured | Accepted Sprint 8 ceiling | Remaining margin |
+| -------------------- | ------------: | ------------------------: | ---------------: |
+| HTML                 |  37,652 bytes |              98,304 bytes |     60,652 bytes |
+| JavaScript           | 713,812 bytes |             720,896 bytes |      7,084 bytes |
+| CSS                  |  47,733 bytes |             131,072 bytes |     83,339 bytes |
+| Images               |     705 bytes |           1,572,864 bytes |  1,572,159 bytes |
+| Web fonts            |       0 bytes |                   0 bytes |          0 bytes |
+| Total transfer       | 799,902 bytes |           2,097,152 bytes |  1,297,250 bytes |
+| First-party requests |            15 |                        32 |               17 |
 
 **Disposition:** Sprint 9 does not require a larger playable-route budget. The permanent browser validator reads the machine-generated static report and fails against the accepted Sprint 8 ceilings.
 

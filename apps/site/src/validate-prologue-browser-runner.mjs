@@ -38,7 +38,9 @@ async function runRenderedValidator() {
   try {
     await import(`${pathToFileURL(clickValidatorPath).href}?run=${Date.now()}`);
     if (process.exitCode) {
-      throw new Error("Rendered click validation failed before keyboard evidence");
+      throw new Error(
+        "Rendered click validation failed before keyboard evidence",
+      );
     }
   } finally {
     await rm(clickValidatorPath, { force: true });
@@ -129,14 +131,20 @@ async function focusControl(page, label) {
   })()`);
 }
 
-async function transitionObserved(page, beforeScene, expectedScene, announcement) {
+async function transitionObserved(
+  page,
+  beforeScene,
+  expectedScene,
+  announcement,
+) {
   const deadline = Date.now() + 1_200;
   while (Date.now() < deadline) {
     const state = await page.evaluate(`(() => ({
       scene: document.querySelector('[data-scene]')?.dataset.scene ?? null,
       status: document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="status"]')?.textContent?.replace(/\\s+/g, ' ').trim() ?? '',
     }))()`);
-    if (expectedScene !== beforeScene && state.scene === expectedScene) return true;
+    if (expectedScene !== beforeScene && state.scene === expectedScene)
+      return true;
     if (
       expectedScene === beforeScene &&
       announcement &&
@@ -183,12 +191,7 @@ async function activateKeyboard(
     }
     await dispatch(page, strategy);
     if (
-      await transitionObserved(
-        page,
-        before.scene,
-        expectedScene,
-        announcement,
-      )
+      await transitionObserved(page, before.scene, expectedScene, announcement)
     ) {
       if (expectedScene !== before.scene) {
         await page.wait(
@@ -253,7 +256,9 @@ try {
   );
 
   if (!reportPath) {
-    throw new Error("PROLOGUE_BROWSER_REPORT is required for keyboard evidence");
+    throw new Error(
+      "PROLOGUE_BROWSER_REPORT is required for keyboard evidence",
+    );
   }
   const absoluteReportPath = resolve(process.cwd(), reportPath);
   const report = JSON.parse(await readFile(absoluteReportPath, "utf8"));

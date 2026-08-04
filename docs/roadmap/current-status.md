@@ -90,7 +90,7 @@ Permanent constraints:
 | 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                                            |
 | 9.7        | completed and validated at `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339                                            |
 | 9.8        | implemented for exact-candidate validation; rendered browser, duration, storage, network, accessibility, and Sprint 8 budget evidence |
-| 9.9        | not implemed; stable source, release, hosted evidence, rollback, and public-status work remains open                               |
+| 9.9        | not implemed; stable source, release, hosted evidence, rollback, and public-status work remains open                                  |
 | 9.10       | blocked and not started                                                                                                               |
 
 ## Workstream 9.8 evidence boundary

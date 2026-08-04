@@ -25,7 +25,10 @@ test("keeps the CSP compatible with static Next.js rendering", async () => {
   assert.match(contract, /script-src 'self' 'unsafe-inline'/);
   assert.doesNotMatch(contract, /'strict-dynamic'/);
 
-  assert.match(previewValidation, /static CSP must not depend on per-request nonces/);
+  assert.match(
+    previewValidation,
+    /static CSP must not depend on per-request nonces/,
+  );
   assert.match(sourceValidation, /static-rendering-compatible CSP/);
   assert.match(sourceValidation, /per-request nonce behavior/);
 });

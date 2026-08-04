@@ -21,7 +21,8 @@ function findChrome() {
       const result = spawnSync("sh", ["-lc", `command -v ${candidate}`], {
         encoding: "utf8",
       });
-      if (result.status === 0 && result.stdout.trim()) return result.stdout.trim();
+      if (result.status === 0 && result.stdout.trim())
+        return result.stdout.trim();
     }
   }
   throw new Error("Chrome or Chromium was not found");
@@ -47,7 +48,8 @@ class Client {
         const pending = this.pending.get(message.id);
         if (!pending) return;
         this.pending.delete(message.id);
-        if (message.error) pending.reject(new Error(JSON.stringify(message.error)));
+        if (message.error)
+          pending.reject(new Error(JSON.stringify(message.error)));
         else pending.resolve(message.result);
         return;
       }
@@ -68,7 +70,10 @@ class Client {
   }
 
   on(method, listener) {
-    this.listeners.set(method, [...(this.listeners.get(method) ?? []), listener]);
+    this.listeners.set(method, [
+      ...(this.listeners.get(method) ?? []),
+      listener,
+    ]);
     return () => {
       this.listeners.set(
         method,
@@ -120,7 +125,9 @@ export async function createHarness(baseUrl) {
   for (let attempt = 0; attempt < 200; attempt += 1) {
     try {
       port = Number(
-        (await readFile(join(profile, "DevToolsActivePort"), "utf8")).split(/\s+/)[0],
+        (await readFile(join(profile, "DevToolsActivePort"), "utf8")).split(
+          /\s+/,
+        )[0],
       );
       if (port) break;
     } catch {
@@ -150,7 +157,9 @@ export async function createHarness(baseUrl) {
   };
 
   async function createPage(options = {}) {
-    const { browserContextId } = await client.send("Target.createBrowserContext");
+    const { browserContextId } = await client.send(
+      "Target.createBrowserContext",
+    );
     const { targetId } = await client.send("Target.createTarget", {
       url: "about:blank",
       browserContextId,
@@ -172,7 +181,8 @@ export async function createHarness(baseUrl) {
         if (url.includes("/api/join")) state.newsletterRequests.push(url);
       }),
       client.on("Network.webSocketCreated", (message) => {
-        if (message.sessionId === sessionId) state.webSockets.push(message.params.url);
+        if (message.sessionId === sessionId)
+          state.webSockets.push(message.params.url);
       }),
       client.on("Runtime.exceptionThrown", (message) => {
         if (message.sessionId === sessionId) {
@@ -328,113 +338,97 @@ export async function createHarness(baseUrl) {
       return {
         scene: scene?.dataset.scene ?? null,
         text: scene?.innerText ?? '',
-        status: root?.querySelector(':scope > [role="status"]')?.textContent?.replace(/\\s+/g, ' ').trim() ?? '',
-        active: describe(document.activeElement),
-        controls: scene ? [...document.querySelectorAll('[data-scene] button, [data-scene] summary, [aria-label="Prologue utility controls"] button')].filter(visible).map(describe) : [],
-        links: scene ? [...scene.querySelectorAll('a')].filter(visible).map(describe) : [],
-        inputs: root ? [...root.querySelectorAll('input, textarea, select, [contenteditable="true"]')].map(describe) : [],
-        positiveTabIndexes: [...document.querySelectorAll('[tabindex]')].filter((element) => element.tabIndex > 0).map(describe),
-        currentSteps: root?.querySelectorAll('[aria-current="step"]').length ?? 0,
-        horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-        localStorageLength: localStorage.length,
-        sessionStorageLength: sessionStorage.length,
-        cookie: document.cookie,
-      };
-    })()`);
-    result.controls.forEach((control) => state.seenControls.add(control.text));
-    result.links.forEach((link) => state.seenLinks.set(link.text, link.href));
-    return result;
-  }
+        status: root?.querySelectoЉ	ОњШЫЬH€Ь›ЫOHњЭ]\И—IКOЛќ^ЫЫќ[ќЛњ™\XЩJЧКЛЩЛ	И	КKќљ[J
+HПИ	ЙЛ€XЭ]™N€\ШЬљX™JШЭ[Y[ќXЭ]™Q[[Y[ќ
+K€ЫЫќ›ЫО€ШЩ[™HИЛ‹‹™ШЭ[Y[ќњ]Y\ћTЩ[XЭЬђ[
+	ЦЩ]K\ШЩ[™WHќ]Ы‹Щ]K\ШЩ[™WHЭ[[X\ћKШ\љXK[X™[H”›ЫЩЭYH][]HЫЫќ›ЫИ—Hќ]Ы‰КWK™љ[\Љљ\ЪX›JK›X\
+\ШЬљX™JH€ЧK€[љЬО€ШЩ[™HИЛ‹‹њШЩ[™Kњ]Y\ћTЩ[XЭЬђ[
+	ШIКWK™љ[\Љљ\ЪX›JK›X\
+\ШЬљX™JH€ЧK€[њ]О€›ЫЭИЛ‹‹њ›ЫЭњ]Y\ћTЩ[XЭЬђ[
+	Ъ[њ]^\™XKЩ[XЭШЫЫќ[ќY]X›OHќќYH—IКWK›X\
+\ШЬљX™JH€ЧK€ЬЪ]]™UX’[™^\О€Л‹‹™ШЭ[Y[ќњ]Y\ћTЩ[XЭЬђ[
+	ЦЭXљ[™^IКWK™љ[\Љ
+[[Y[ќ
+HO€[[Y[ќќX’[™^€
+K›X\
+\ШЬљX™JK€Э\њ™[ќЭ\О€›ЫЭЛњ]Y\ћTЩ[XЭЬђ[
+	ЦШ\љXKXЭ\њ™[ќHњЭ\—IКK›[™ЭПИ€Ьљ^›Ыќ[Э™\™›ЭО€ШЭ[Y[ќ™ШЭ[Y[ќ[[Y[ќњШЬ›ЫЪYHШЭ[Y[ќ™ШЭ[Y[ќ[[Y[ќЫY[ќЪY€ШШ[ЭЬYЩS[™Э€ШШ[ЭЬYЩK›[™Э€Щ\ЬЪ[Ы”ЭЬYЩS[™Э€Щ\ЬЪ[Ы”ЭЬYЩK›[™Э€ЫЫЪЪYN€ШЭ[Y[ќЫЫЪЪYK€NВ€JJ
+X
+NВ€™\Э[ЫЫќ›ЫЛ™›Ь‘XXЪ
 
-  async function activate(page, label, expectedScene, options = {}) {
-    const before = await snapshot(page);
-    const found = await page.evaluate(`(() => {
-      const normalize = (value) => String(value ?? '').replace(/\\s+/g, ' ').trim();
-      const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary, [aria-label="Prologue utility controls"] button:not([disabled])')]
-        .find((element) => normalize(element.textContent) === ${JSON.stringify(label)});
-      if (!target) return false;
-      target.focus();
-      return true;
-    })()`);
-    if (!found) throw new Error(`Missing control ${label} in ${before.scene}`);
-    state.usedControls.add(label);
+ЫЫќ›Ы
+HO€Э]KњЩY[ђЫЫќ›ЫЛY
+ЫЫќ›Ыќ^
+JNВ€™\Э[›[љЬЛ™›Ь‘XXЪ
 
-    if (options.keyboard) {
-      await client.send(
-        "Input.dispatchKeyEvent",
-        {
-          type: "keyDown",
-          key: "Enter",
-          code: "Enter",
-          text: "\r",
-          unmodifiedText: "\r",
-          windowsVirtualKeyCode: 13,
-          nativeVirtualKeyCode: 13,
-        },
-        page.sessionId,
-      );
-      await client.send(
-        "Input.dispatchKeyEvent",
-        {
-          type: "keyUp",
-          key: "Enter",
-          code: "Enter",
-          windowsVirtualKeyCode: 13,
-          nativeVirtualKeyCode: 13,
-        },
-        page.sessionId,
-      );
-    } else {
-      await page.evaluate(`(() => {
-        const normalize = (value) => String(value ?? '').replace(/\\s+/g, ' ').trim();
-        const target = [...document.querySelectorAll('[data-scene] button:not([disabled]), [data-scene] summary, [aria-label="Prologue utility controls"] button:not([disabled])')]
-          .find((element) => normalize(element.textContent) === ${JSON.stringify(label)});
-        target.click();
-      })()`);
-    }
+[љКHO€Э]KњЩY[“[љЬЛњЩ]
+[љЛќ^[љЛљ™YЉJNВ€™]\›€™\Э[В€B‚€\Ю[Иќ[Э[Ы€XЭ]]JYЩKX™[^XЭYШЩ[™KЬ[ЫњИHЯJHВ€ЫЫњЭ™Y›Ь™HH]ШZ]Ы\ЪЭ
+YЩJNВ€ЫЫњЭ›Э[™H]ШZ]YЩK™][X]J
 
-    try {
-      await page.wait(
-        `document.querySelector('[data-scene]')?.dataset.scene === ${JSON.stringify(expectedScene)}`,
-        expectedScene,
-      );
-    } catch (error) {
-      const diagnostic = await snapshot(page);
-      throw new Error(
-        `${error.message}; label=${label}; scene=${diagnostic.scene}; active=${diagnostic.active.tag}:${diagnostic.active.text}`,
-      );
-    }
-    if (expectedScene !== before.scene) {
-      await page.wait(
-        "document.activeElement?.id === 'prologue-scene-title'",
-        `focus after ${label}`,
-      );
-    } else if (options.announcement) {
-      await page.wait(
-        `(document.querySelector('[data-scene]')?.closest('section')?.querySelector(':scope > [role="status"]')?.textContent ?? '').includes(${JSON.stringify(options.announcement)})`,
-        `announcement after ${label}`,
-      );
-    }
-    return snapshot(page);
-  }
 
-  return {
-    executable,
-    version,
-    client,
-    state,
-    createPage,
-    snapshot,
-    activate,
-    async close() {
-      try {
-        await client.send("Browser.close");
-      } catch {
-        process.kill("SIGTERM");
-      }
-      await delay(100);
-      if (process.exitCode === null) process.kill("SIGKILL");
-      await rm(profile, { recursive: true, force: true });
-    },
-  };
-}
+HO€В€ЫЫњЭ›Ь›X[^™HH
+[YJHO€Эљ[™К[YHПИ	ЙКKњ™\XЩJЧКЛЩЛ	И	КKќљ[J
+NВ€ЫЫњЭ\™Щ]HЛ‹‹™ШЭ[Y[ќњ]Y\ћTЩ[XЭЬђ[
+	ЦЩ]K\ШЩ[™WHќ]ЫЋ››Э
+Щ\ШX›YJKЩ]K\ШЩ[™WHЭ[[X\ћKШ\љXK[X™[H”›ЫЩЭYH][]HЫЫќ›ЫИ—Hќ]ЫЋ››Э
+Щ\ШX›YJIКWB€™љ[™
+
+[[Y[ќ
+HO€›Ь›X[^™J[[Y[ќќ^ЫЫќ[ќ
+HOOH	Т”УУ‹њЭљ[™ЪYћJX™[
+_JNВ€Y€
+]\™Щ]
+H™]\›€[ЩNВ€\™Щ]™›ШЭ\К
+NВ€™]\›€ќYNВ€JJ
+X
+NВ€Y€
+Y›Э[™
+H›ЭИ™]И\њ›ЬЉZ\ЬЪ[™ИЫЫќ›Ы	ЫX™[H[€	Ш™Y›Ь™KњШЩ[™_X
+NВ€Э]Kќ\ЩYЫЫќ›ЫЛY
+X™[
+NВ‚€Y€
+Ь[ЫњЛљЩ^X›Ш\™
+HВ€]ШZ]ЫY[ќњЩ[™
+€’[њ]™\Ь]ЪЩ^Q]™[ќ‹€В€\N€љЩ^QЭЫ€‹€Щ^N€‘[ќ\€‹€ЫЩN€‘[ќ\€‹€^€—€‹€[›[ЩYљYY^€—€‹€Ъ[™ЭЬХљ\ќX[Щ^PЫЩN€LЛ€]]™Uљ\ќX[Щ^PЫЩN€LЛ€K€YЩKњЩ\ЬЪ[Ы’Y€
+NВ€]ШZ]ЫY[ќњЩ[™
+€’[њ]™\Ь]ЪЩ^Q]™[ќ‹€В€\N€љЩ^U\‹€Щ^N€‘[ќ\€‹€ЫЩN€‘[ќ\€‹€Ъ[™ЭЬХљ\ќX[Щ^PЫЩN€LЛ€]]™Uљ\ќX[Щ^PЫЩN€LЛ€K€YЩKњЩ\ЬЪ[Ы’Y€
+NВ€H[ЩHВ€]ШZ]YЩK™][X]J
+
+
+HO€В€ЫЫњЭ›Ь›X[^™HH
+[YJHO€Эљ[™К[YHПИ	ЙКKњ™\XЩJЧКЛЩЛ	И	КKќљ[J
+NВ€ЫЫњЭ\™Щ]HЛ‹‹™ШЭ[Y[ќњ]Y\ћTЩ[XЭЬђ[
+	ЦЩ]K\ШЩ[™WHќ]ЫЋ››Э
+Щ\ШX›YJKЩ]K\ШЩ[™WHЭ[[X\ћKШ\љXK[X™[H”›ЫЩЭYH][]HЫЫќ›ЫИ—Hќ]ЫЋ››Э
+Щ\ШX›YJIКWB€™љ[™
+
+[[Y[ќ
+HO€›Ь›X[^™J[[Y[ќќ^ЫЫќ[ќ
+HOOH	Т”УУ‹њЭљ[™ЪYћJX™[
+_JNВ€\™Щ]ЫXЪК
+NВ€JJ
+X
+NВ€B‚€ћHВ€]ШZ]YЩKќШZ]
+€ШЭ[Y[ќњ]Y\ћTЩ[XЭЬЉ	ЦЩ]K\ШЩ[™WIКOЛ™]\Щ]њШЩ[™HOOH	Т”УУ‹њЭљ[™ЪYћJ^XЭYШЩ[™J_X€^XЭYШЩ[™K€
+NВ€HШ]Ъ
+\њ›ЬЉHВ€ЫЫњЭXYЫ›ЬЭXИH]ШZ]Ы\ЪЭ
+YЩJNВ€›ЭИ™]И\њ›ЬЉ€	Щ\њ›Ь‹›Y\ЬШYЩ_NИX™[IЫX™[NИШЩ[™OIЩXYЫ›ЬЭXЛњШЩ[™_NИXЭ]™OIЩXYЫ›ЬЭXЛXЭ]™KќYЯN‰ЩXYЫ›ЬЭXЛXЭ]™Kќ^X€
+NВ€B€Y€
+^XЭYШЩ[™HOOH™Y›Ь™KњШЩ[™JHВ€]ШZ]YЩKќШZ]
+€™ШЭ[Y[ќXЭ]™Q[[Y[ќЛљYOOH	Ь›ЫЩЭYK\ШЩ[™K]]IИ‹€›ШЭ\ИYќ\€	ЫX™[X€
+NВ€H[ЩHY€
+Ь[ЫњЛ[››Э[Щ[Y[ќ
+HВ€]ШZ]YЩKќШZ]
+€
+ШЭ[Y[ќњ]Y\ћTЩ[XЭЬЉ	ЦЩ]K\ШЩ[™WIКOЛЫЬЩ\Э
+	ЬЩXЭ[Ы‰КOЛњ]Y\ћTЩ[XЭЬЉ	ОњШЫЬH€Ь›ЫOHњЭ]\И—IКOЛќ^ЫЫќ[ќПИ	ЙКKљ[ЫY\К	Т”УУ‹њЭљ[™ЪYћJЬ[ЫњЛ[››Э[Щ[Y[ќ
+_JX€[››Э[Щ[Y[ќYќ\€	ЫX™[X€
+NВ€B€™]\›€Ы\ЪЭ
+YЩJNВ€B‚€™]\›€В€^XЭ]X›K€™\њЪ[Ы‹€ЫY[ќ€Э]K€Ь™X]TYЩK€Ы\ЪЭ€XЭ]]K€\Ю[ИЫЬЩJ
+HВ€ћHВ€]ШZ]ЫY[ќњЩ[™
+ђњ›ЭЬЩ\‹ЫЬЩHЉNВ€HШ]ЪВ€›ШЩ\ЬЛљЪ[
+”ТQХT“HЉNВ€B€]ШZ][^JL
+NВ€Y€
+›ШЩ\ЬЛ™^]ЫЩHOOHќ[
+H›ШЩ\ЬЛљЪ[
+”ТQТТSЉNВ€]ШZ]›J›Щљ[KИ™XЭ\њЪ]™N€ќYK›ЬЩN€ќYHJNВ€K€NВџB

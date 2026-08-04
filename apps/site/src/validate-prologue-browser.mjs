@@ -62,7 +62,9 @@ async function runJourney(
         keyboard: id !== "longest-optional-exploration",
         announcement,
       });
-      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;
+      const visibleWords = normalize(state.text)
+        .split(" ")
+        .filter(Boolean).length;
       sceneWords.set(
         state.scene,
         Math.max(sceneWords.get(state.scene) ?? 0, visibleWords),
@@ -454,12 +456,9 @@ try {
       representative,
       "prologue-complete-aster.png",
     ),
-    await runJourney(
-      "longest-optional-exploration",
-      longest,
-      undefined,
-      { durationTarget: false },
-    ),
+    await runJourney("longest-optional-exploration", longest, undefined, {
+      durationTarget: false,
+    }),
   ];
   const supplementalChecks = await runSupplemental();
   const keyboardOrder = await verifyTabOrder();

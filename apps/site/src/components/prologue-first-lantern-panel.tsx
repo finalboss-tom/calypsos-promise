@@ -90,8 +90,9 @@ export function PrologueFirstLanternPanel({
             <dt>Estimated path</dt>
             <dd>
               {firstLanternQuestDefinition.estimatedTimeMinutes.minimum}–
-              {firstLanternQuestDefinition.estimatedTimeMinutes.maximum} minutes;
-              target {firstLanternQuestDefinition.estimatedTimeMinutes.target}
+              {firstLanternQuestDefinition.estimatedTimeMinutes.maximum}{" "}
+              minutes; target{" "}
+              {firstLanternQuestDefinition.estimatedTimeMinutes.target}
             </dd>
           </div>
           <div>
