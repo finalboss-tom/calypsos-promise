@@ -31,10 +31,11 @@ export default function ProloguePage() {
           or leaving begins again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.7 are validated; workstream 9.8 is accepted.
-          Workstream 9.9 established protected hosted-preview evidence without a
-          production cutover. The route remains noindex, absent from public
-          navigation and the sitemap, and is not a production capability.
+          Workstreams 9.1–9.9 are accepted; the 9.10 completion package is ready
+          for founding-steward review. Protected hosted-preview evidence exists
+          without a production cutover. The route remains noindex, absent from
+          public navigation and the sitemap, and is not a production
+          capability.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a

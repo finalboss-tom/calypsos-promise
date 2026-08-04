@@ -26,8 +26,8 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstreams 9\.1–9\.7 are validated/i);
-  assert.match(page, /workstream 9\.8 is accepted/i);
+  assert.match(page, /workstreams 9\.1–9\.9 are accepted/i);
+  assert.match(page, /9\.10 completion package is ready/i);
   assert.match(page, /protected hosted-preview evidence/i);
   assert.match(page, /not a production capability/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
