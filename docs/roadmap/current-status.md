@@ -92,18 +92,18 @@ Permanent constraints:
 - stable source links and exact release provenance;
 - merge, preview, public linking, indexing, production deployment, announcement, and institutional acceptance remain separate decisions.
 
-| Workstream | Current state |
-| --- | --- |
-| 9.1 | accepted — contracts, ownership, lifecycle, fixtures, and validation |
-| 9.2 | accepted — arrival and Lantern Shore |
-| 9.3 | accepted — deterministic Aster and complete manual route |
-| 9.4 | accepted — synthetic text/voice draft, review, correction, refusal, and confirmation |
-| 9.5 | accepted — temporary Chronicle and receipt-shaped explanations |
-| 9.6 | accepted — deterministic First Lantern |
-| 9.7 | accepted — restart, discard, departure, completion, and informational account boundary |
-| 9.8 | accepted at `b1fdba193e1ebaa8096695192ddd5f6965255529` — CI 1280 / DCO 1365 |
-| 9.9 | accepted through `3d7c02f303e052c07fb023ff39673a15c1d62349` — CI 1286 / DCO 1371 |
-| 9.10 | implementation package complete; exact-head aggregate and founding-steward acceptance remain controlling |
+| Workstream | Current state                                                                                            |
+| ---------- | -------------------------------------------------------------------------------------------------------- |
+| 9.1        | accepted — contracts, ownership, lifecycle, fixtures, and validation                                     |
+| 9.2        | accepted — arrival and Lantern Shore                                                                     |
+| 9.3        | accepted — deterministic Aster and complete manual route                                                 |
+| 9.4        | accepted — synthetic text/voice draft, review, correction, refusal, and confirmation                     |
+| 9.5        | accepted — temporary Chronicle and receipt-shaped explanations                                           |
+| 9.6        | accepted — deterministic First Lantern                                                                   |
+| 9.7        | accepted — restart, discard, departure, completion, and informational account boundary                   |
+| 9.8        | accepted at `b1fdba193e1ebaa8096695192ddd5f6965255529` — CI 1280 / DCO 1365                              |
+| 9.9        | accepted through `3d7c02f303e052c07fb023ff39673a15c1d62349` — CI 1286 / DCO 1371                         |
+| 9.10       | implementation package complete; exact-head aggregate and founding-steward acceptance remain controlling |
 
 ## Evidence established
 

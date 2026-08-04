@@ -33,9 +33,7 @@ test("assembles the complete Sprint 9 reconciliation package", async () => {
     read(
       "../../../docs/architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md",
     ),
-    read(
-      "../../../docs/roadmap/sprint-9-pre-9-10-quality-gate-closure.md",
-    ),
+    read("../../../docs/roadmap/sprint-9-pre-9-10-quality-gate-closure.md"),
     read(
       "../../../docs/roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md",
     ),
@@ -75,9 +73,7 @@ test("pins the Sprint 9 evidence inventory and quality dispositions", async () =
     read(
       "../../../docs/architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md",
     ),
-    read(
-      "../../../docs/roadmap/sprint-9-pre-9-10-quality-gate-closure.md",
-    ),
+    read("../../../docs/roadmap/sprint-9-pre-9-10-quality-gate-closure.md"),
   ]);
 
   assert.equal(uniqueMatches(controlMap, /`(CTL-S9-\d{3})`/g).size, 48);
@@ -175,7 +171,7 @@ test("keeps newsletter, funding, providers, and private capabilities outside Spr
 
   for (const phrase of [
     "issue #63 remains open",
-    "newsletter remains a separate",
+    "newsletter as prologue identity",
     "funding",
     "sponsorship",
     "provider",
