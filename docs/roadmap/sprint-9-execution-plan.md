@@ -8,7 +8,7 @@
 - **Data class:** PUBLIC and explicitly synthetic only
 - **Institutional phase:** Phase 0 remains active
 - **Newsletter gate:** issue #63 remains separate
-- **Release control:** Git-triggered Vercel deployment is disabled
+- **Release control:** Git-triggered Vercel deployment remains disabled
 - **Latest accepted technical candidate:** `0ac02609dc18ab7ff1f2b4f55ba058b6536f505c` — CI 1284 / DCO 1369
 
 ## Goal
@@ -19,7 +19,7 @@ Sprint 9 proves a bounded public synthetic prologue. It does not establish the u
 
 ## Permanent boundary
 
-- No account, authentication, email requirement, arbitrary health text, microphone, file, camera, location, wearable, provider, connector, clinical, research, payment, donation, analytics, or private-data requirement.
+- No account, authentication, email requirement, free-form health text, microphone, file, camera, location, wearable, provider, connector, clinical, research, payment, donation, analytics, or private-data requirement.
 - All content and state are public or explicitly synthetic.
 - Interaction state remains React memory only and disappears on refresh, navigation, tab close, restart, discard, or exit.
 - Voice and text use pre-authored synthetic choices only.
