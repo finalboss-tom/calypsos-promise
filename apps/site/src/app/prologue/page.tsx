@@ -5,7 +5,7 @@ import { PrologueOpening } from "@/components/prologue-opening";
 export const metadata: Metadata = {
   title: "Public Synthetic Prologue",
   description:
-    "A branch-only, no-account, public synthetic introduction to Ogygia with deterministic review, temporary contract explanations, First Lantern evidence, and non-punitive departure choices.",
+    "A no-account public synthetic introduction to Ogygia with deterministic review, temporary contract explanations, First Lantern evidence, and non-punitive departure choices.",
   alternates: {
     canonical: "/prologue",
   },
@@ -22,7 +22,7 @@ export default function ProloguePage() {
         <p className="eyebrow">Sprint 9 public synthetic prologue</p>
         <h1>A first step through Ogygia, using synthetic information only.</h1>
         <p className="summary">
-          This branch-only experience demonstrates arrival, Lantern Shore,
+          This bounded experience demonstrates arrival, Lantern Shore,
           equivalent deterministic Aster and manual guides, pre-authored
           synthetic draft review, temporary Chronicle and receipt-shaped
           explanations, inspectable First Lantern evidence, and departure
@@ -31,14 +31,15 @@ export default function ProloguePage() {
           or leaving begins again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.7 are validated; workstream 9.8 is under review. The
-          route is noindex, absent from public navigation and the sitemap, and
-          is not deployed through this pull request.
+          Workstreams 9.1–9.8 are accepted. Workstream 9.9 is running a
+          founding-steward-authorized hosted preview. The route remains noindex,
+          absent from public navigation and the sitemap, and is not a production
+          capability.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a
             className="button"
-            href="https://github.com/finalboss-tom/calypsos-promise/blob/agent/sprint-9-public-synthetic-prologue/docs/architecture/public-synthetic-prologue-boundary.md"
+            href="https://github.com/finalboss-tom/calypsos-promise/blob/b1fdba193e1ebaa8096695192ddd5f6965255529/docs/architecture/public-synthetic-prologue-boundary.md"
             target="_blank"
             rel="noreferrer"
           >

@@ -2,6 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "git": {
-    "deploymentEnabled": false
+    "deploymentEnabled": {
+      "agent/sprint-9-public-synthetic-prologue": true,
+      "*": false
+    }
   }
 }
