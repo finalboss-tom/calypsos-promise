@@ -2,8 +2,9 @@
 
 [Current status](current-status.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Sprint 9.8 validation](sprint-9-workstream-9-8-validation-record.md) · [Site deployment policy](../../apps/site/DEPLOYMENT.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68)
 
-- **Status:** IMPLEMENTED — restored-control aggregate validation pending
-- **Workstream:** 9.9 — publication, rollback, hosted evidence, and public-status reconciliation
+- **Status:** ACCEPTED
+- **Accepted technical candidate:** `0ac02609dc18ab7ff1f2b4f55ba058b6536f505c`
+- **Validation:** CI 1284 / DCO 1369
 - **Hosted evidence class:** protected branch preview
 - **Production impact:** none
 - **Public linking:** none
@@ -13,18 +14,9 @@
 
 ## Decision
 
-The founding steward directed workstream 9.9 to proceed after accepting the 9.8 evidence package. The least-authority release action was selected: create one protected branch preview, verify its exact provenance and runtime state, then restore the repository-wide Git deployment lock.
+The founding steward directed workstream 9.9 to proceed after accepting the 9.8 evidence package. The least-authority release action was selected: create one protected branch preview, verify exact provenance and runtime state, then restore the repository-wide Git deployment lock.
 
-This action did **not** authorize:
-
-- merge of PR #68;
-- a link from the production website;
-- sitemap inclusion;
-- search indexing;
-- production-domain aliasing;
-- a production deployment;
-- account, identity, private Chronicle, model-provider, analytics, payment, or health-data operation; or
-- workstream 9.10 before the restored-control candidate passes its full aggregate.
+This action did not authorize merge of PR #68, a production-site link, sitemap inclusion, search indexing, production-domain aliasing, a production deployment, account or identity operation, private Chronicle storage, a model provider, analytics, payment, health-data operation, or workstream 9.10 before the restored-control aggregate passed.
 
 ## Exact provenance
 
@@ -35,7 +27,7 @@ This action did **not** authorize:
 - DCO: 1365 — success
 - Purpose: accepted 9.8 rendered-browser, accessibility, storage, network, duration, interaction, and performance evidence
 
-The prologue page uses a commit-pinned link to the accepted public-synthetic boundary at this revision. It no longer depends on the continued existence of the Sprint 9 branch.
+The prologue page uses a commit-pinned link to the accepted public-synthetic boundary at this revision. It does not depend on the continued existence of the Sprint 9 branch.
 
 ### Hosted preview candidate
 
@@ -49,6 +41,14 @@ The prologue page uses a commit-pinned link to the accepted public-synthetic bou
 - Region: `iad1`
 
 Vercel metadata binds the deployment to the exact Git commit and PR #68. The build produced all expected routes, including `/prologue`, and completed successfully under Next.js 16.2.12.
+
+### Restored-control acceptance candidate
+
+- Commit: `0ac02609dc18ab7ff1f2b4f55ba058b6536f505c`
+- CI: 1284 — success
+- DCO: 1369 — success
+
+This candidate contains the hosted evidence record, truthful status contract, bounded-preview procedure, exact formatter output, and permanent `git.deploymentEnabled: false` state.
 
 ## Release-control procedure
 
@@ -65,11 +65,11 @@ After the preview reached `READY`, the repository control was restored to:
 "deploymentEnabled": false
 ```
 
-The trigger commit is operational evidence, not the accepted permanent repository baseline. The commit containing this record must pass the complete CI and DCO aggregate with the global lock restored.
+The trigger commit is operational evidence, not the permanent repository baseline. The restored control passed the complete repository aggregate.
 
 ## Hosted verification
 
-### Build and route verification
+### Build and route evidence
 
 Vercel build output confirmed:
 
@@ -83,32 +83,32 @@ Vercel build output confirmed:
 
 The known Turbopack NFT trace warning for funding-transparency source loading remained a warning, not a build or runtime failure. This workstream does not silently close that inherited optimization opportunity.
 
-### Protection and indexing state
+### Protection and indexing evidence
 
-The preview is protected by Vercel authentication. An unauthenticated request to `/prologue` returned a Vercel SSO redirect and included:
-
-- `x-robots-tag: noindex`;
-- `x-frame-options: DENY`;
-- `strict-transport-security`; and
-- `cache-control: no-store, max-age=0` on the protection response.
+The preview is protected by Vercel authentication. An unauthenticated request to `/prologue` returned a Vercel SSO redirect and included `x-robots-tag: noindex`, `x-frame-options: DENY`, strict transport security, and a no-store cache policy on the protection response.
 
 Because the preview is protected, it is hosted evidence for maintainers rather than a public gameplay release. No expiring share URL is stored in the repository.
 
-### Runtime review
+### Runtime and application evidence
 
-Vercel reported no runtime error clusters for `/prologue` during the verification window. The exact candidate also passed the permanent isolated-preview and rendered-browser job, including full manual/text and Aster/voice completion, all visible controls, storage and network denial, accessibility modes, and generated-state cleanup.
+Vercel reported no runtime error cluster for `/prologue` during the verification window.
 
-The temporary trigger candidate's CI was intentionally not accepted as a repository baseline because permanent tests correctly objected to the temporary deployment exception and newly advanced status wording. All substantive application jobs passed, including:
+The exact restored-control candidate passed:
 
 - formatting;
-- production build and static preview;
-- rendered prologue journeys;
-- typecheck;
+- production build and isolated local preview;
+- rendered manual/text and Aster/voice journeys;
+- native keyboard evidence;
+- accessibility and fallback modes;
+- storage and network denial;
+- Sprint 8 performance ceilings;
+- typecheck and lint;
+- tests;
 - repository policy;
-- content and economics validation; and
-- documentation links.
-
-The restored-control candidate is the acceptance gate.
+- content and economics validation;
+- documentation links;
+- DCO; and
+- generated-state cleanup.
 
 ## Production isolation
 
@@ -123,15 +123,14 @@ No production alias was moved. No production environment variable was changed. N
 
 ## Capability labels
 
-The hosted preview must be described as:
+The hosted preview is:
 
-- public and explicitly synthetic content;
-- no account required;
-- deterministic and memory-only;
-- no arbitrary personal input;
-- no microphone, model provider, analytics, payment, or durable state;
-- Chronicle- and receipt-shaped explanations only;
-- no production permission, record, health, or gameplay authority;
+- public and explicitly synthetic in content;
+- no-account and deterministic;
+- memory-only;
+- free of arbitrary personal input, microphone, model provider, analytics, payment, and durable state;
+- Chronicle- and receipt-shaped explanation only;
+- without production permission, record, health, or gameplay authority;
 - protected preview evidence; and
 - not a production capability.
 
@@ -139,51 +138,23 @@ It must not be described as a production game, live account flow, health-data pr
 
 ## Rollback and correction ownership
 
-### Hosted preview rollback
+The primary release rollback is complete: `git.deploymentEnabled` is restored to `false`, preventing later branch pushes from creating additional deployments.
 
-The primary rollback has already been applied: restore `git.deploymentEnabled` to `false`. That prevents subsequent branch pushes from creating additional deployments.
+If the protected preview must be withdrawn, the founding steward or an authorized Vercel project owner may remove its alias or deployment through the Vercel control plane. The production domain does not need rollback because it never changed.
 
-If the protected preview itself must be withdrawn, the founding steward or an authorized Vercel project owner may remove its alias or deployment through the Vercel control plane. The production domain does not need rollback because it was never changed.
+Before merge, repository rollback may move the Sprint 9 branch back to the accepted 9.8 commit or revert the 9.9 release-control and record commits. After an eventual squash merge, rollback may revert the squash commit and remove any separately authorized production entry point. No data migration or deletion procedure is required because the prologue stores no user state.
 
-### Repository rollback
+Ownership remains:
 
-Before merge, rollback may move the Sprint 9 branch back to the accepted 9.8 commit or revert the 9.9 release-control and record commits. After an eventual squash merge, rollback may revert the squash commit and remove any separately authorized production entry point.
-
-No data migration or deletion procedure is required because the prologue stores no user state.
-
-### Correction ownership
-
-- **Founding steward:** authorizes preview, production, linking, merge, and rollback decisions.
-- **Repository maintainers:** correct source, tests, capability claims, stable links, and release records through ordinary review.
-- **Vercel project owners:** execute deployment, alias, and platform rollback actions after authorization.
-- **Specialist reviewers:** remain required for independent accessibility, security, privacy, legal, communications, and affected-user claims not established here.
+- **Founding steward:** preview, production, linking, merge, and rollback authorization.
+- **Repository maintainers:** source, tests, capability claims, stable links, and release-record corrections through ordinary review.
+- **Vercel project owners:** deployment, alias, and platform rollback actions after authorization.
+- **Specialist reviewers:** independent accessibility, security, privacy, legal, communications, and affected-user claims not established here.
 
 ## Open holdpoints
 
-This workstream does not close:
+9.9 does not close independent accessibility certification, named screen-reader testing, affected-user and cognitive-load research, device/browser field performance, public production linking or indexing, production monitoring, production identity and recovery, private Chronicle storage, real voice, model-provider architecture, legal approval of production permission presentation, final Sprint 9 cross-contract reconciliation, or the founding-steward-directed squash merge.
 
-- independent accessibility certification;
-- named screen-reader and assistive-technology testing;
-- affected-user, cognitive-load, browser, device, and field-performance evidence;
-- public production linking or indexing;
-- production monitoring and incident operations;
-- production identity, recovery, private Chronicle, real voice, or model-provider architecture;
-- legal or communications approval of future production permission presentation;
-- final Sprint 9 cross-contract reconciliation; or
-- founding-steward-directed squash merge.
+## Disposition
 
-## Acceptance gate
-
-Workstream 9.9 may be accepted when the exact restored-control candidate passes:
-
-- formatting;
-- build and isolated-preview evidence;
-- rendered browser validation;
-- typecheck and lint;
-- tests;
-- repository policy;
-- content, economics, and documentation validation;
-- DCO; and
-- confirmation that `apps/site/vercel.json` again disables all Git-triggered deployments.
-
-Only after that gate may workstream 9.10 begin.
+Workstream 9.9 is accepted. Workstream 9.10 may begin the final cross-contract reconciliation and completion package. The protected preview remains evidence only; production, public linking, indexing, merge, and Phase 0 completion remain separately gated.

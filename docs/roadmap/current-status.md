@@ -1,28 +1,25 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Sprint 9.8 validation record](sprint-9-workstream-9-8-validation-record.md) · [Sprint 9.8 representative review](sprint-9-workstream-9-8-manual-review.md) · [Sprint 9 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md) · [Governance](../../GOVERNANCE.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Sprint 9 execution plan](sprint-9-execution-plan.md) · [Sprint 9.8 validation](sprint-9-workstream-9-8-validation-record.md) · [Sprint 9.9 publication and rollback](sprint-9-workstream-9-9-publication-and-rollback.md) · [Pre-9.10 quality review](sprint-9-pre-9-10-quality-review.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
 - **Institutional phase:** Phase 0 — Constitutional and open-source foundations
 - **Institutional Phase 0 remains active.**
 - **Accepted numbered sprints:** 0–8
-- **Active numbered sprint:** Sprint 9 — Public synthetic prologue
-- **Sprint 9 completed workstreams:** 9.1–9.7
-- **Latest accepted Sprint 9 candidate:** `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339
-- **Sprint 9 active workstream:** 9.8 — playable accessibility, security, duration, interaction, and performance evidence
-- **Sprint 9 unfinished workstream:** 9.9 — publication, rollback, hosted evidence, and public-status reconciliation
-- **Sprint 9.10:** blocked and not started
-- **Sprint 9 tracking:** issue #67 / draft PR #68 / branch `agent/sprint-9-public-synthetic-prologue`
-- **Sprint 8 squash commit:** `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`
-- **Post-Sprint 8 reconciliation and newsletter squash commit:** `032a368bcd4beb999fee9a14fe4118aead0801a5`
-- **Production website:** live through Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`
-- **Deployed source commit:** `1b25a2e64ff272927c65afa5e1f16aedc5e448d7`
-- **Release control:** Git-triggered Vercel deployment is disabled through `6be7d20fbfe1079881a0717f30760b0e48b265b5`
-- **Newsletter:** deployed on accepted live public pages under Path A; issue #63 remains open for private provider-delivery verification and final acceptance
+- **Active numbered sprint:** Sprint 9 — Public Synthetic Prologue
+- **Accepted Sprint 9 workstreams:** 9.1–9.9
+- **Next workstream:** 9.10 — cross-contract reconciliation, completion, and Sprint 10 handoff; planned and not started
+- **Sprint 9 tracking:** issue #67, draft PR #68, branch `agent/sprint-9-public-synthetic-prologue`
+- **Accepted 9.8 evidence:** `b1fdba193e1ebaa8096695192ddd5f6965255529` — CI 1280 / DCO 1365
+- **Accepted 9.9 technical baseline:** `0ac02609dc18ab7ff1f2b4f55ba058b6536f505c` — CI 1284 / DCO 1369
+- **Protected hosted preview:** Vercel deployment `dpl_DwkovAeCrLjWq2brifBxYXu2UJ7M`, sourced from `66979c71732f0bc343000fe143485d06e0bc7fec`
+- **Production website:** Vercel deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`, sourced from `1b25a2e64ff272927c65afa5e1f16aedc5e448d7`
+- **Git-triggered Vercel deployment is disabled.**
+- **Newsletter:** Path A — preserve and activate; issue #63 remains open for private provider-delivery verification and final acceptance
 - **Production health data, accounts, private Chronicles, production Aster, providers, connectors, clinical workflows, research enrollment, payments, or consequential actions:** none
-- **Independent specialist review:** not established for accessibility, security, privacy, legal, communications, clinical, interoperability, provider, financial, operational, or research boundaries
-- **Field performance and affected-user evidence:** not established
+- **Independent accessibility, affected-user, device/browser, and field performance evidence:** not established
+- **Specialist approval:** not established for accessibility, security, privacy, legal, communications, clinical, interoperability, provider, financial, operational, or research boundaries
 - **Phase 0 exit review:** not completed
 
 ## Primary directive
@@ -39,111 +36,55 @@ Every route, mechanic, data flow, model, tool, provider, funding relationship, n
 
 Sprints 0–8 are accepted and merged.
 
-Sprint 8 established and deployed the public Next.js gateway. PR #61 was squash merged as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`; PR #66 later reconciled production status and restored the bounded newsletter through squash commit `032a368bcd4beb999fee9a14fe4118aead0801a5`.
+Sprint 8 established the public Next.js gateway. The accepted Sprint 8 squash commit is `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`. Its first production release was recorded as `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`; the later newsletter release is the current production deployment. Git-triggered Vercel deployment was then restored to disabled.
 
-The final newsletter release reached `READY` through deployment `dpl_5TMd8mtFNBRsT4sq5dMU85kg6dVp`. Automatic Git deployment was restored to disabled. The newsletter remains a separate Phase 0 contact surface and cannot become prologue identity, state, completion, research consent, Chronicle intake, or gameplay progression.
+Issue #64 accepted the Sprint 9 architecture: one `/prologue` route in `apps/site`, public synthetic information only, memory-only interaction state, deterministic optional Aster with a complete manual path, no arbitrary health or voice intake, temporary Chronicle- and receipt-shaped explanations, deterministic First Lantern evidence, non-punitive refusal and exit, and an informational future-account boundary.
 
-Issue #64 accepted the Sprint 9 architecture: `apps/site` ownership, one `/prologue` route, memory-only interaction state, pre-authored public synthetic inputs, deterministic Aster with a complete manual path, no microphone or free-form health input, temporary Chronicle and receipt-shaped explanations, deterministic First Lantern evidence, non-punitive refusal and exit, and an informational-only future account boundary.
+Workstreams 9.1–9.7 established and corrected the complete deterministic prologue. Workstream 9.8 added rendered browser, native keyboard, accessibility-mode, duration, storage, network, performance, and cleanup evidence. Workstream 9.9 established exact source provenance, protected hosted-preview evidence, capability labels, production isolation, release ownership, correction ownership, and rollback procedures, then restored the permanent deployment lock.
 
-Workstreams 9.1–9.6 established the route, opening, Aster/manual parity, synthetic review and confirmation, corrected Chronicle and receipt mappings, and a deterministic First Lantern. The pre-9.10 review corrected a non-functional discard control, dead duplicate UI, source-only interaction confidence, stale cross-contract references, incomplete completion evidence and quest anatomy, hidden completion after reversal, and non-semantic progress.
+## Hosted and production surfaces
 
-Workstream 9.7 is accepted on `a3ac15f32ca098a2955c14bf815af60cccfd56d6`, which passed CI 1257 and DCO 1339. It provides explicit restart, discard, departure, completion without an account, and an informational-only future-account explanation without email intake, newsletter coupling, authentication, persistence, conversion reward, or durable progression.
+The production domain remains `https://www.calypsospromise.org`. No production alias, environment variable, or production source revision changed during 9.9.
 
-Workstream 9.8 is active. It adds a dependency-free Chrome DevTools Protocol harness to the isolated production-preview job. The harness executes rendered Aster/manual and text/voice journeys, exercises visible controls, checks focus and announcements, validates accessibility and resilience modes, proves no storage or external network behavior, models shortest through longest direct completion time, and compares `/prologue` against the accepted Sprint 8 performance ceilings.
+The Sprint 9 preview was built from commit `66979c71732f0bc343000fe143485d06e0bc7fec` and reached `READY` as deployment `dpl_DwkovAeCrLjWq2brifBxYXu2UJ7M`. It is protected by Vercel authentication, returns a noindex protection response, and is not a public release.
 
-Workstream 9.10 remains blocked until 9.8 and 9.9 are accepted and all repository, issue, PR, release, measurement, and holdpoint records agree.
+The `/prologue` route remains:
 
-## Live and branch-only surfaces
+- outside public navigation and the sitemap;
+- noindex and nofollow;
+- unmerged;
+- absent from the production domain;
+- public and explicitly synthetic in content;
+- deterministic and memory-only; and
+- not a production capability.
 
-`apps/site` owns the live public website and the branch-only prologue.
+The route has no account, email, arbitrary text, microphone, file, camera, location, wearable, provider, model, analytics, payment, private-data, or durable-state path. Chronicle and receipt-shaped views remain explanations without truth, permission, consent, audit, release, or clinical authority.
 
-The live site provides the public gateway, source-backed product and trust explanations, canonical funding and roadmap views, the bounded newsletter, navigation, accessibility foundations, metadata, security headers, CSP, caching, and static release evidence.
+## Sprint 9 workstream truth
 
-The Sprint 9 `/prologue` route remains branch-only, noindex, unlinked, outside the sitemap, unmerged, and undeployed. Passing branch CI does not make it a live capability. Git-triggered Vercel deployment is disabled.
+- **9.1:** contracts accepted at `6bd992f91ea0948fe248ef55817afcd520664205` — CI 1169 / DCO 1247.
+- **9.2:** opening and Lantern Shore accepted at `6565fbc43c9356e7b72acaed30b50cbff2907a38` — CI 1180 / DCO 1258.
+- **9.3:** Aster/manual parity accepted at `72f72223d7a07d460e89ec69b87b2003e84cdd3b` — CI 1188 / DCO 1266.
+- **9.4:** synthetic review and confirmation accepted at `bed6ef4ed58ac5dcf918e2f05751586e2e0b293a` — CI 1205 / DCO 1283.
+- **9.5:** Chronicle and receipt explanations accepted at `e819c71f31041632998b5f468c492e8b1c810a44` — CI 1221 / DCO 1300, with later corrections.
+- **9.6:** First Lantern aggregate accepted at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334.
+- **9.7:** refusal, restart, discard, departure, and future-account boundaries accepted at `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339.
+- **9.8:** playable validation accepted at `b1fdba193e1ebaa8096695192ddd5f6965255529` — CI 1280 / DCO 1365.
+- **9.9:** protected hosted evidence and restored release controls accepted at `0ac02609dc18ab7ff1f2b4f55ba058b6536f505c` — CI 1284 / DCO 1369.
+- **9.10:** planned and not started. It may now perform final cross-contract reconciliation and assemble the founding-steward completion decision; it may not silently merge, link, or deploy the prologue.
 
-## Sprint 9 boundary and workstream truth
+## Evidence boundaries
 
-Sprint 9’s goal is:
+The 9.8 package completed manual/text and Aster/voice direct paths in 8.45 and 9.11 modeled minutes. It exercised all 41 visible controls, native keyboard completion, scene focus, announcements, reduced motion, reduced data, increased contrast, forced colors, narrow viewport, no-JavaScript behavior, and Sprint 8 route budgets. It observed no external runtime request, newsletter request, WebSocket, browser error, cookie, local or session storage, IndexedDB, Cache Storage, or hidden state restoration.
 
-> Let anyone understand the product through play before creating an account.
+The 9.9 package proved that the exact preview candidate built successfully on Vercel, that `/prologue` existed in the hosted artifact, that the preview was protected and noindex, that no runtime error cluster was found during review, and that the production deployment remained untouched. The permanent repository state again disables Git-triggered deployment for every branch.
 
-Permanent constraints:
-
-- one public `/prologue` route inside `apps/site`;
-- public and explicitly synthetic information only;
-- React-memory state destroyed by refresh, navigation, tab close, restart, discard, or exit;
-- no arbitrary text, microphone, file, camera, location, wearable, contact, provider, model, analytics, payment, or private-data intake;
-- deterministic Aster with a materially equivalent complete manual path;
-- temporary Chronicle and receipt-shaped explanations with no truth or permission authority;
-- deterministic, reversible, non-authoritative First Lantern completion;
-- refusal, restart, discard, leave, and completion without account conversion;
-- no required timing or conversion pressure;
-- merge, public linking, and deployment remain separate founding-steward decisions.
-
-| Workstream | Current state                                                                                                                         |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 9.1        | completed and validated; executable-state requirements added by quality review                                                        |
-| 9.2        | completed and validated; branch-only arrival and Lantern Shore                                                                        |
-| 9.3        | completed and validated; Aster/manual parity                                                                                          |
-| 9.4        | completed and validated; synthetic review, correction, refusal, and confirmation                                                      |
-| 9.5        | completed and validated; corrected Chronicle and receipt-shaped explanations                                                          |
-| 9.6        | completed and validated at `4d1fa7fdec3e83f282ee8ed8f16292e509d514fa` — CI 1253 / DCO 1334                                            |
-| 9.7        | completed and validated at `a3ac15f32ca098a2955c14bf815af60cccfd56d6` — CI 1257 / DCO 1339                                            |
-| 9.8        | implemented for exact-candidate validation; rendered browser, duration, storage, network, accessibility, and Sprint 8 budget evidence |
-| 9.9        | not implemed; stable source, release, hosted evidence, rollback, and public-status work remains open                                  |
-| 9.10       | blocked and not started                                                                                                               |
-
-## Workstream 9.8 evidence boundary
-
-The 9.8 package includes:
-
-- browser-rendered shortest manual/text, representative Aster/voice, and longest direct journeys;
-- keyboard activation, logical keyboard order, scene focus, polite announcements, accessible names, and no keyboard trap evidence;
-- disabled confirmation before explicit review choice;
-- refusal, restart, discard, departure, future-account, exit, and completion controls;
-- reduced motion, reduced data, increased contrast, forced colors, narrow viewport, and no-JavaScript evidence;
-- storage API use, cookie, IndexedDB, Cache Storage, network calls, `/api/join`, WebSocket, browser error, and external-resource checks;
-- completion without explicit confirmation prohibited by the state and browser evidence;
-- modeled direct completion paths under ten minutes; and
-- exact route metrics compared to the accepted Sprint 8 ceilings.
-
-The most recent accepted static evidence measures `/prologue` at 37,630 HTML bytes, 716,199 JavaScript bytes, 47,733 CSS bytes, 705 image bytes, zero font bytes, 802,267 total bytes, and 15 first-party requests. These values fit every Sprint 8 ceiling; Sprint 9 does not require a larger route budget.
-
-This evidence is maintainer implementation evidence. Independent accessibility, named screen reader, affected-user, cognitive-load, device/browser, and field performance review remain open specialist holdpoints.
-
-## Permanent authority boundaries
-
-### Living Chronicle
-
-The Living Chronicle owns longitudinal truth, values, time, provenance, correction, conflict, supersession, export, and deletion. Sprint 9 maps selected vocabulary for explanation only and creates no Chronicle record.
-
-### House of Keys
-
-The House of Keys owns purpose-specific permission truth. Sprint 9’s receipt-shaped explanation is not an `AccessReceipt`, grant, evaluation, consent record, audit event, recipient authority, or data release.
-
-### Aster
-
-Aster may draft and explain. It cannot write canonical records, create permission, confirm itself, complete quests, grant rewards, diagnose, or turn presentation output into authority. Sprint 9 uses deterministic local framing only.
-
-### Public website and newsletter
-
-The website may explain and host the bounded prologue after acceptance. The newsletter remains a separate contact list. Neither can create product, permission, gameplay, clinical, funding, legal, or governance authority.
+This is maintainer implementation and release evidence. It is not independent accessibility certification, named screen-reader testing, affected-user research, legal approval, production security authorization, or field performance evidence.
 
 ## Remaining Phase 0 work
 
-Before Phase 0 can close, the project still requires:
-
-- private newsletter delivery verification and final acceptance of issue #63;
-- completion and acceptance of Sprint 9;
-- key-person, succession, founder-reserved-power, and economic-dependency records;
-- historical governance-source recovery;
-- branch-protection and DCO-transition evidence;
-- clean-machine measurements and distributed ownership planning;
-- Decision 0009 disposition;
-- a named specialist-review strategy;
-- the human-readable and machine-readable architecture audit; and
-- an explicit Phase 0 exit review.
+Before Phase 0 can close, the project still requires completion and acceptance of Sprint 9, private newsletter delivery verification under issue #63, key-person and succession records, founder-reserved-power and economic-dependency records, historical governance-source recovery, branch-protection and DCO-transition evidence, clean-machine and distributed-ownership planning, Decision 0009 disposition, a named specialist-review strategy, the human-readable and machine-readable architecture audit, and an explicit Phase 0 exit review.
 
 ## Status rule
 
-A passing test, browser journey, modeled duration, preview, deployment, subscriber delivery, or public page proves only what that environment and evidence exercise. It does not create independent accessibility, security, privacy, communications, clinical, legal, provider, financial, operational, research, identity, permission, or production-health-data approval.
+A passing test, browser journey, modeled duration, protected preview, deployment, subscriber delivery, or public page proves only what that environment and evidence exercised. It does not create independent accessibility, security, privacy, communications, clinical, legal, provider, financial, operational, research, identity, permission, or production-health-data approval.
