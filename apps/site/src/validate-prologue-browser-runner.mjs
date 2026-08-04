@@ -23,9 +23,18 @@ async function runRenderedValidator() {
     /keyboard:\s*id\s*!==\s*"longest-optional-exploration",/,
     "keyboard: false,",
   );
+  const visibleWordsPattern =
+    /      const visibleWords = normalize\(state\.text\)\s*\.split\(" "\)\s*\.filter\(Boolean\)\.length;/;
   const transformed = clickOnly.replace(
-    '      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
-    '      await page.evaluate("new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))", true);\n      state = await harness.snapshot(page);\n      const visibleWords = normalize(state.text).split(" ").filter(Boolean).length;',
+    visibleWordsPattern,
+    `      await page.evaluate(
+        "new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))",
+        true,
+      );
+      state = await harness.snapshot(page);
+      const visibleWords = normalize(state.text)
+        .split(" ")
+        .filter(Boolean).length;`,
   );
   if (
     hydratedSource === source ||
