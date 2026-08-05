@@ -32,7 +32,9 @@ async function workerQuery<T extends object>(
   });
 
   if (!response.ok) {
-    throw new Error(`Supporter worker database request failed: ${response.status}`);
+    throw new Error(
+      `Supporter worker database request failed: ${response.status}`,
+    );
   }
   return parseNeonResult<T>((await response.json()) as NeonRawResult);
 }
@@ -167,8 +169,7 @@ export async function recordSupporterEmailProviderEvent(input: {
   reasonCode?: string;
   receivedAt: Date;
 }): Promise<
-  | Readonly<{ result_duplicate: boolean; result_matched: boolean }>
-  | undefined
+  Readonly<{ result_duplicate: boolean; result_matched: boolean }> | undefined
 > {
   const rows = await workerQuery<{
     result_duplicate: boolean;
