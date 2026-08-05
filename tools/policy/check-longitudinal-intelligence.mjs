@@ -62,6 +62,8 @@ const sprintTenOnePath =
   "docs/roadmap/sprint-10.1-application-toolchain-foundation.md";
 const sprintTenTwoPath =
   "docs/roadmap/sprint-10.2-versioned-game-content-package.md";
+const sprintTenThreePath =
+  "docs/roadmap/sprint-10.3-universal-shell-and-navigation.md";
 const currentStatusPath = "docs/roadmap/current-status.md";
 
 const schema = await loadJson(schemaPath);
@@ -74,6 +76,7 @@ const holdpoints = await loadText(holdpointPath);
 const alignment = await loadText(alignmentPath);
 const sprintTenOne = await loadText(sprintTenOnePath);
 const sprintTenTwo = await loadText(sprintTenTwoPath);
+const sprintTenThree = await loadText(sprintTenThreePath);
 const currentStatus = await loadText(currentStatusPath);
 
 if (schema) {
@@ -294,15 +297,30 @@ for (const [path, content, required] of [
     ],
   ],
   [
+    sprintTenThreePath,
+    sprintTenThree,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "island map",
+      "Hearth",
+      "direct and narrative",
+      "Sprint 10.4",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
     currentStatusPath,
     currentStatus,
     [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
       "Sprint 10 is active through issue #80",
-      "Sprint 10.1 and Sprint 10.2 are complete as validated internal checkpoints",
+      "Sprint 10.1 through Sprint 10.3 are complete as validated internal checkpoints",
       "PR #79 remains draft for workstreams 10.1 through 10.10",
-      "Sprint 10.3 through Sprint 10.10",
+      "Sprint 10.4 through Sprint 10.10",
       "LI-V1 through LI-V8 remain inactive",
     ],
   ],

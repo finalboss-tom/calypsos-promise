@@ -1,19 +1,19 @@
 # Sprint 10.3 — Universal shell and navigation
 
-**Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION  
+**Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10  
 **Parent:** Sprint 10 — universal game shell  
 **Tracker:** issue #80  
 **Implementation:** draft PR #79
 
 ## Decision
 
-Establish the first universal no-account application shell over the accepted `packages/game-content` contract.
+Establish the first universal no-account application shell in `apps/game` over the accepted `packages/game-content` contract.
 
 The shell provides arrival, island-map, Hearth, direct-information, unavailable-destination, and unknown-route paths across browser, iOS, and Android. It remains presentation navigation only. It does not implement the generic scene, dialogue, quest, state, offline, authentication, release, or authority behavior assigned to Sprint 10.4 through Sprint 10.9.
 
 ## Implemented boundary
 
-1. The public synthetic application opens without an account and gives equal prominence to narrative, direct, and map entry paths.
+1. The public synthetic application opens without an account and gives equal prominence to direct and narrative entry paths, with the island map equally available.
 2. One shared shell layout exposes visible navigation to the island map, Hearth, and direct path.
 3. The island map identifies Lantern Shore and the Hearth as available while future places are explicitly planned and inactive rather than behaviorally locked.
 4. The Hearth presents pre-authored package content through a narrative route without a model provider or generic scene renderer.
@@ -43,9 +43,21 @@ Both paths disclose that accounts, private Chronicles, production Aster/model pr
 
 Generic scene/dialogue rendering, quest cards, Wayfinder Orb behavior, deterministic interaction execution, and content-driven route generation remain assigned to Sprint 10.4.
 
-## Validation target
+## Validated checkpoint
 
-The exact 10.3 checkpoint will be recorded after frozen installation, shell-contract validation, formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, tests, existing site release validation, browser/iOS/Android credential-free export, generated-state cleanup, CI, and DCO complete.
+Exact clean checkpoint: `1e3139333c469b9d0bfec41532b38165119c6938`
+
+- CI 1421: success
+- DCO 1518: success
+- frozen Node 24 / pnpm 10.13.1 installation: success
+- dedicated shell-contract validation and focused navigation tests: success
+- formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, and tests: success
+- existing production-site build and rendered prologue validation: success
+- browser, iOS, and Android credential-free Expo export: success
+- generated-state cleanup and no tracked build mutation: success
+- temporary implementation transport tooling: removed before final checkpoint validation
+
+This is maintainer implementation and CI evidence inside active Sprint 10. It is not independent accessibility, security, privacy, legal, affected-user, field, or device certification; deployment or distribution authorization; personal-data readiness; authority to begin Sprint 11; activation of LI-V1 through LI-V8; or institutional Phase 0 exit.
 
 ## Holdpoints preserved
 
