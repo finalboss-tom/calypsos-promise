@@ -18,7 +18,11 @@ type ViewState =
   | Readonly<{ status: "reading"; message: string }>
   | Readonly<{ status: "loading"; message: string }>
   | Readonly<{ status: "ready"; record: ManagementRecord }>
-  | Readonly<{ status: "submitting"; record: ManagementRecord; message: string }>
+  | Readonly<{
+      status: "submitting";
+      record: ManagementRecord;
+      message: string;
+    }>
   | Readonly<{ status: "success"; message: string }>
   | Readonly<{ status: "error"; message: string }>;
 
@@ -80,11 +84,17 @@ export function SupporterManagementClient() {
                 ? result.foundingNumber
                 : null,
             displayName:
-              typeof result.displayName === "string" ? result.displayName : null,
+              typeof result.displayName === "string"
+                ? result.displayName
+                : null,
             profileSlug:
-              typeof result.profileSlug === "string" ? result.profileSlug : null,
+              typeof result.profileSlug === "string"
+                ? result.profileSlug
+                : null,
             broadRegion:
-              typeof result.broadRegion === "string" ? result.broadRegion : null,
+              typeof result.broadRegion === "string"
+                ? result.broadRegion
+                : null,
             whyISigned:
               typeof result.whyISigned === "string" ? result.whyISigned : null,
             expiresAt:
@@ -288,7 +298,10 @@ export function SupporterManagementClient() {
             </form>
           </section>
 
-          <section className={styles.actionCard} aria-labelledby="private-title">
+          <section
+            className={styles.actionCard}
+            aria-labelledby="private-title"
+          >
             <div>
               <p className="eyebrow">Privacy control</p>
               <h2 id="private-title">Return this supporter to private</h2>
