@@ -319,15 +319,15 @@ Every funded or organizational relationship remains subject to ordinary issue, r
 
 ## Claim and authority ladder
 
-| Level | Permitted result | Required evidence | Prohibited escalation |
-| --- | --- | --- | --- |
-| **LI-C0 — Chronicle fact** | Person-confirmed observation or sourced record | Provenance, correction, lifecycle, authority validation | No inference or causality |
-| **LI-C1 — Descriptive pattern** | Change, frequency, co-occurrence, missingness, contradiction | Reproducible calculations and complete limitations | No causal language |
-| **LI-C2 — Hypothesis** | Possible explanation or question | Source-linked reasoning, alternatives, explicit uncertainty | No optimized action |
-| **LI-C3 — Provisional personal choice** | Person selects a reviewed low-consequence option | Consequence review, explanation, player confirmation | No causal or efficacy claim |
-| **LI-C4 — Qualified personal experiment result** | Bounded result for one protocol, outcome, context, and horizon | Qualified measurement, protocol, missingness, burden, and analysis | No indefinite or clinical authority |
-| **LI-C5 — Current bounded decision support** | Result may inform a present low-consequence decision | Current relevance, applicability, consequence, and expiry checks | No general “works for you” claim |
-| **LI-C6 — Clinical or research authority** | Regulated or professionally governed action | Separate clinical, legal, research, and institutional authorization | Cannot arise from product analytics or self-experimentation alone |
+| Level                                            | Permitted result                                               | Required evidence                                                   | Prohibited escalation                                             |
+| ------------------------------------------------ | -------------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **LI-C0 — Chronicle fact**                       | Person-confirmed observation or sourced record                 | Provenance, correction, lifecycle, authority validation             | No inference or causality                                         |
+| **LI-C1 — Descriptive pattern**                  | Change, frequency, co-occurrence, missingness, contradiction   | Reproducible calculations and complete limitations                  | No causal language                                                |
+| **LI-C2 — Hypothesis**                           | Possible explanation or question                               | Source-linked reasoning, alternatives, explicit uncertainty         | No optimized action                                               |
+| **LI-C3 — Provisional personal choice**          | Person selects a reviewed low-consequence option               | Consequence review, explanation, player confirmation                | No causal or efficacy claim                                       |
+| **LI-C4 — Qualified personal experiment result** | Bounded result for one protocol, outcome, context, and horizon | Qualified measurement, protocol, missingness, burden, and analysis  | No indefinite or clinical authority                               |
+| **LI-C5 — Current bounded decision support**     | Result may inform a present low-consequence decision           | Current relevance, applicability, consequence, and expiry checks    | No general “works for you” claim                                  |
+| **LI-C6 — Clinical or research authority**       | Regulated or professionally governed action                    | Separate clinical, legal, research, and institutional authorization | Cannot arise from product analytics or self-experimentation alone |
 
 Every result must display its claim level. Aster presentation cannot raise it.
 
