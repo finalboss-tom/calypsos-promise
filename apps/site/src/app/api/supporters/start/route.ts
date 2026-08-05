@@ -9,7 +9,6 @@ import {
   serializeEncryptedValue,
 } from "@/lib/supporters/crypto";
 import {
-  completeSupporterEmail,
   consumeSupporterAttempt,
   getPublishedPromise,
   startSupporterEnrollment,
@@ -20,6 +19,8 @@ import {
   unavailableResponse,
 } from "@/lib/supporters/feature";
 import { validateEnrollmentInput } from "@/lib/supporters/input";
+import { recordSupporterEmailAttempt } from "@/lib/supporters/outbox-database";
+import { SupporterEmailDeliveryError } from "@/lib/supporters/resend-email";
 import {
   clientBucketHmac,
   isHoneypotTriggered,
@@ -162,32 +163,39 @@ export async function POST(request: Request) {
       url.hash = new URLSearchParams({ token }).toString();
 
       try {
-        await sendSupporterVerification({
+        const delivery = await sendSupporterVerification({
           apiKey: config.resendApiKey,
           from: config.fromEmail,
           to: validated.value.email,
           verificationUrl: url.toString(),
           promiseVersionLabel: promise.version_label,
           expiresInMinutes: 30,
+          idempotencyKey: `supporter-outbox/${ids.outboxId}`,
         });
-      } catch {
-        await completeSupporterEmail({
+        await recordSupporterEmailAttempt({
+          databaseUrl: config.databaseUrl,
           outboxId: ids.outboxId,
-          sent: false,
-          errorCode: "provider_delivery_failed",
+          outcome: "sent",
+          providerMessageId: delivery.providerMessageId,
           now: new Date(),
         }).catch(() => undefined);
-        return Response.json(genericAccepted, {
-          status: 202,
-          headers: noStoreHeaders,
-        });
+      } catch (error) {
+        const deliveryError =
+          error instanceof SupporterEmailDeliveryError
+            ? error
+            : new SupporterEmailDeliveryError({
+                code: "verification_delivery_error",
+                retryable: true,
+              });
+        await recordSupporterEmailAttempt({
+          databaseUrl: config.databaseUrl,
+          outboxId: ids.outboxId,
+          outcome: deliveryError.retryable ? "retry" : "dead_letter",
+          errorCode: deliveryError.code,
+          retryAfterSeconds: deliveryError.retryAfterSeconds,
+          now: new Date(),
+        }).catch(() => undefined);
       }
-
-      await completeSupporterEmail({
-        outboxId: ids.outboxId,
-        sent: true,
-        now: new Date(),
-      }).catch(() => undefined);
     }
   } catch {
     // Deliberately preserve one response shape for duplicate contacts and
