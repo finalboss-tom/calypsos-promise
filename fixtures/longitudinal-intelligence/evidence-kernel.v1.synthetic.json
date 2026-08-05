@@ -1,0 +1,193 @@
+{
+  "$schema": "../../docs/architecture/longitudinal-intelligence-evidence-kernel.v1.schema.json",
+  "schema_version": "1.0.0",
+  "evidence_packet_id": "LI-EVP-LI-V0-CLOSURE-SYNTHETIC",
+  "revision": 1,
+  "information_class": "SYNTHETIC",
+  "synthetic": true,
+  "created_at": "2026-08-05T04:30:00Z",
+  "repository_revision": "6b89b1435d4bfc00ba93262fa197b69d8ea23fd7",
+  "validation_stage": "LI-V0",
+  "claim_level": "NONE",
+  "status": "candidate",
+  "authority": {
+    "ceiling": "architecture-and-documentation-direction-only",
+    "permitted_claims": [
+      "The doctrine and staged validation plan are represented in repository records.",
+      "LI-V0 may be reviewed as a bounded documentation and evidence-kernel candidate."
+    ],
+    "prohibited_claims": [
+      "production-private-data-authority",
+      "qualified-measurement",
+      "personal-causal-validity",
+      "generalized-what-works-for-you",
+      "diagnosis",
+      "treatment-recommendation",
+      "clinical-decision-support",
+      "research-enrollment-authority",
+      "automatic-LI-V1-activation"
+    ],
+    "player_confirmation_required": true,
+    "ai_authority": "advisory-only",
+    "provider_independent": true
+  },
+  "subject_scope": {
+    "scope_class": "none"
+  },
+  "sources": [
+    {
+      "source_id": "product-constitution",
+      "source_class": "constitution",
+      "revision": "main@6b89b1435d4bfc00ba93262fa197b69d8ea23fd7",
+      "canonical": true,
+      "provenance_uri": "docs/frozen/product-constitution.md"
+    },
+    {
+      "source_id": "longitudinal-intelligence-doctrine",
+      "source_class": "doctrine",
+      "revision": "main@6b89b1435d4bfc00ba93262fa197b69d8ea23fd7",
+      "canonical": true,
+      "provenance_uri": "docs/architecture/longitudinal-intelligence-doctrine.md"
+    },
+    {
+      "source_id": "longitudinal-intelligence-validation-plan",
+      "source_class": "roadmap",
+      "revision": "main@6b89b1435d4bfc00ba93262fa197b69d8ea23fd7",
+      "canonical": true,
+      "provenance_uri": "docs/roadmap/longitudinal-intelligence-validation-plan.md"
+    },
+    {
+      "source_id": "li-v0-completion-record",
+      "source_class": "review",
+      "revision": "candidate",
+      "canonical": false,
+      "provenance_uri": "docs/roadmap/longitudinal-intelligence-li-v0-completion-record.md"
+    },
+    {
+      "source_id": "pre-sprint-10-alignment",
+      "source_class": "review",
+      "revision": "candidate",
+      "canonical": false,
+      "provenance_uri": "docs/roadmap/pre-sprint-10-alignment-review.md"
+    }
+  ],
+  "measurement": {
+    "qualification_status": "not-applicable",
+    "construct": "",
+    "instrument_id": "",
+    "instrument_version": "",
+    "temporal_unit": "repository-revision",
+    "recall_period": "",
+    "scorer_id": "",
+    "scorer_revision": "",
+    "calibration_reference": "",
+    "uncertainty": "No measurement package is qualified by LI-V0.",
+    "comparison_status": "not-applicable"
+  },
+  "time_scope": {
+    "temporal_unit": "repository-revision",
+    "source_interval": "Accepted doctrine baseline through the LI-V0 closure candidate.",
+    "information_cutoff": "2026-08-05T04:30:00Z",
+    "target_horizon": "Founding-steward acceptance decision for LI-V0 and pre-Sprint 10 alignment.",
+    "prospective_fraction": 1,
+    "authority_expiry": "Any material doctrine, schema, validation-stage, or Sprint 10 boundary change."
+  },
+  "protocol": {
+    "qualification_status": "not-applicable"
+  },
+  "preferences": {
+    "status": "not-applicable",
+    "elicitation_method": "",
+    "value_envelope": {},
+    "person_confirmed": false
+  },
+  "result": {
+    "state": "validation-stage-candidate-complete",
+    "summary": "LI-V0 documentation, traceability, machine-readable evidence-kernel, holdpoint, roadmap, and pre-Sprint 10 alignment artifacts are represented as a synthetic candidate pending founding-steward acceptance.",
+    "assumptions": [
+      "The accepted Product Constitution, architecture, doctrine, and staged validation plan remain controlling.",
+      "No later Longitudinal Intelligence stage is activated by accepting LI-V0.",
+      "Sprint 10 remains a public and synthetic universal-shell implementation unless later gates separately authorize more."
+    ],
+    "uncertainty": [
+      "Independent measurement, statistical, clinical, privacy, security, accessibility, legal, and affected-user evidence remain unavailable for Longitudinal Intelligence.",
+      "Sprint 10 implementation evidence does not yet exist.",
+      "LI-V1 measurement selection remains unresolved and inactive."
+    ],
+    "counterevidence": [
+      "Synthetic deliberation is not empirical personal-value evidence.",
+      "A coherent architecture does not establish personal causal validity.",
+      "Cross-platform shell completion cannot authorize private Chronicles or Longitudinal Intelligence."
+    ],
+    "plain_language_explanation": "This packet demonstrates the shape of evidence and authority records. It does not contain a person's health data and does not say that any intervention works."
+  },
+  "rights": {
+    "meaningful_refusal": true,
+    "correction": true,
+    "deletion": true,
+    "export": true,
+    "non_ai_fallback": true,
+    "provider_exit": true
+  },
+  "reviews": [
+    {
+      "domain": "founding-steward",
+      "status": "pending",
+      "scope": "LI-V0 completion and pre-Sprint 10 alignment candidate"
+    },
+    {
+      "domain": "independent-specialist-review",
+      "status": "pending",
+      "scope": "Later-stage measurement, inference, accessibility, privacy, security, clinical, legal, and research evidence"
+    }
+  ],
+  "holdpoints": [
+    {
+      "id": "HLD-LI-001",
+      "status": "open",
+      "description": "No exact measurement package is qualified.",
+      "release_condition": "Complete and accept LI-V1 for one exact measurement package."
+    },
+    {
+      "id": "HLD-LI-002",
+      "status": "open",
+      "description": "No private Longitudinal Intelligence data path is authorized.",
+      "release_condition": "Satisfy applicable institutional, privacy, security, legal, identity, storage, deletion, incident, provider, and player-control gates."
+    },
+    {
+      "id": "HLD-LI-003",
+      "status": "open",
+      "description": "No personal protocol family is qualified.",
+      "release_condition": "Complete the applicable LI-V3 through LI-V7 evidence and review gates."
+    },
+    {
+      "id": "HLD-LI-004",
+      "status": "open",
+      "description": "No affected-user comprehension or accessibility evidence exists for Longitudinal Intelligence.",
+      "release_condition": "Complete and accept LI-V4 evidence."
+    },
+    {
+      "id": "HLD-LI-005",
+      "status": "open",
+      "description": "No production or clinical Longitudinal Intelligence authority exists.",
+      "release_condition": "Complete separately authorized LI-V5 through LI-V8 and any required clinical, legal, regulatory, and institutional gates."
+    },
+    {
+      "id": "HLD-LI-006",
+      "status": "carried",
+      "description": "Sprint 10 must not implement or imply LI-V1 through LI-V8.",
+      "release_condition": "Remain carried throughout Sprint 10; later release only through explicit validation-stage acceptance."
+    }
+  ],
+  "revalidation_triggers": [
+    "Product Constitution or Longitudinal Intelligence doctrine changes",
+    "evidence-kernel schema changes",
+    "validation-stage or claim-level changes",
+    "Sprint 10 scope or application ownership changes",
+    "private data or authentication capability is proposed",
+    "measurement, inference, experimentation, analytics, or model-provider capability is proposed",
+    "provider, sponsor, or institutional relationship could affect authority"
+  ],
+  "supersedes": [],
+  "superseded_by": null
+}
