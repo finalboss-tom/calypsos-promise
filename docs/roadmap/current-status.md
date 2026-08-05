@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -11,8 +11,9 @@
 - **Accepted LI-V0 closure and pre-Sprint 10 alignment:** PR #76 squash merged as `ade349abb70ce698a376b41213d2d505036379fc` from validated head `f6ae85b1466d44e0b4db960c510bc19124894344` — CI 1317 / DCO 1397.
 - **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
-- **Sprint 10 is authorized with named holdpoints.**
-- **Sprint 10 remains authorized but implementation has not started.**
+- **Sprint 10 is authorized with named holdpoints and tracked through issue #80.**
+- **Sprint 10.1 validated implementation candidate:** PR #79 at `4efcb0888f9038816dc504a59e0b59e937d9daed` — CI 1354 / DCO 1447; pending founding-steward acceptance.
+- **Sprint 10.2 through Sprint 10.10:** not started.
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -164,7 +165,20 @@ The accepted direction establishes:
 - LI-V1 through LI-V8 remaining inactive; and
 - a bounded Sprint 10.1 through Sprint 10.10 implementation sequence.
 
-Sprint 10 is authorized with these boundaries, but no implementation issue, branch, application scaffold, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun through this acceptance.
+Sprint 10 is active through issue #80. Workstream 10.1 has produced a validated implementation candidate in PR #79; no later workstream, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun.
+
+## Sprint 10.1 validated candidate
+
+Workstream 10.1 establishes the application and toolchain foundation only:
+
+- `apps/game` is a separate Expo Router workspace for browser, iOS, and Android;
+- exact Expo SDK 57, Expo Router, React Native, React, React Native Web, Worklets, TypeScript, Node, and pnpm compatibility is inspectable and enforced;
+- unsigned credential-free exports pass for all three platforms;
+- generated `ios/` and `android/` projects, EAS configuration, credentials, provider SDKs, analytics, authentication, private Chronicle data, and production deployment configuration remain absent;
+- `apps/site` remains the canonical public-site and production-prologue owner; and
+- formatting, documentation, policy, content, economics, lint, typecheck, tests, site release validation, generated-state cleanup, and no-mutation checks pass.
+
+The exact candidate is `4efcb0888f9038816dc504a59e0b59e937d9daed` with CI 1354 and DCO 1447. This is maintainer implementation and CI evidence, not founding-steward acceptance, deployment authorization, mobile distribution, independent specialist certification, or authority to begin Sprint 10.2.
 
 ## Sprint 10 named holdpoints
 
@@ -201,13 +215,12 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-LI-V0 is complete and Sprint 10 is authorized with named holdpoints.
+LI-V0 is complete, Sprint 10 is active under issue #80, and workstream 10.1 is validated in PR #79.
 
-The next separate decision is whether to create the Sprint 10 implementation tracker and branch and begin workstream 10.1.
+The next separate decision is founding-steward acceptance of workstream 10.1 and whether to proceed to workstream 10.2. Until that direction:
 
-Until that direction:
-
-- Sprint 10 implementation remains unstarted;
+- Sprint 10.1 remains unaccepted and unmerged;
+- Sprint 10.2 through Sprint 10.10 remain unstarted;
 - LI-V1 through LI-V8 remain inactive;
 - no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized; and
 - all named Phase 0 and specialist holdpoints remain open.
