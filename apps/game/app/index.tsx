@@ -1,102 +1,251 @@
-import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  GAME_CONTENT_MANIFEST,
+  getGameContentEntry,
+} from "@calypsos-promise/game-content";
+import { useLocalSearchParams } from "expo-router";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const platformLabel =
-  Platform.OS === "web"
-    ? "Browser"
-    : Platform.OS === "ios"
-      ? "iOS"
-      : Platform.OS === "android"
-        ? "Android"
-        : Platform.OS;
+import { ActionLink } from "../src/components/ActionLink";
+import { BoundaryNotice } from "../src/components/BoundaryNotice";
+import { colors, radii, spacing } from "../src/theme";
 
-export default function FoundationScreen() {
+const zoneEntry = getGameContentEntry("zone.lantern-shore.synthetic");
+const zoneSummary =
+  zoneEntry?.content.kind === "zone"
+    ? zoneEntry.content.playerValue
+    : "Explore a public synthetic shell with direct, narrative, refusal, and exit paths.";
+
+export default function ArrivalScreen() {
+  const { status } = useLocalSearchParams<{ status?: string | string[] }>();
+  const statusLabel = Array.isArray(status) ? status[0] : status;
+
   return (
-    <ScrollView contentContainerStyle={styles.page}>
-      <View accessibilityRole="summary" style={styles.card}>
-        <Text accessibilityRole="header" style={styles.eyebrow}>
-          CALYPSO&apos;S PROMISE
-        </Text>
-        <Text accessibilityRole="header" style={styles.title}>
-          Universal shell foundation
-        </Text>
-        <Text style={styles.body}>
-          Sprint 10.1 establishes one credential-free application toolchain for
-          browser, iOS, and Android while the public website remains
-          independently owned by apps/site.
-        </Text>
-        <View style={styles.boundary}>
-          <Text style={styles.boundaryLabel}>Current platform</Text>
-          <Text style={styles.boundaryValue}>{platformLabel}</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.page}>
+        <View style={styles.frame}>
+          <View style={styles.brandRow}>
+            <View style={styles.mark} accessibilityElementsHidden>
+              <View style={styles.markCore} />
+            </View>
+            <View style={styles.brandCopy}>
+              <Text style={styles.brand}>CALYPSO&apos;S PROMISE</Text>
+              <Text style={styles.release}>Universal shell · Sprint 10</Text>
+            </View>
+          </View>
+
+          <View style={styles.hero}>
+            <View style={styles.heroCopy}>
+              <Text style={styles.eyebrow}>NO ACCOUNT REQUIRED</Text>
+              <Text accessibilityRole="header" style={styles.title}>
+                Arrive at Ogygia on your terms.
+              </Text>
+              <Text style={styles.intro}>{zoneSummary}</Text>
+              <View style={styles.actions}>
+                <ActionLink
+                  href="/hearth"
+                  label="Enter through the story"
+                  description="Meet the Hearth through bundled synthetic narrative content."
+                  accessibilityHint="Opens the narrative Hearth route."
+                />
+                <ActionLink
+                  href="/direct"
+                  label="Use the direct path"
+                  description="Read the same essential boundary information without story traversal."
+                  accessibilityHint="Opens the direct information route."
+                  variant="secondary"
+                />
+                <ActionLink
+                  href="/map"
+                  label="Open the island map"
+                  description="See available and explicitly inactive places."
+                  accessibilityHint="Opens the public synthetic island map."
+                  variant="quiet"
+                />
+              </View>
+            </View>
+
+            <View
+              accessibilityLabel="Abstract island marker"
+              style={styles.islandCard}
+            >
+              <View style={styles.orbitOuter}>
+                <View style={styles.orbitInner}>
+                  <View style={styles.islandShape}>
+                    <View style={styles.lantern} />
+                  </View>
+                </View>
+              </View>
+              <Text style={styles.islandLabel}>Lantern Shore</Text>
+              <Text style={styles.islandMeta}>
+                Public · Synthetic · Temporary
+              </Text>
+            </View>
+          </View>
+
+          {statusLabel ? (
+            <BoundaryNotice title="Temporary session cleared" tone="dark">
+              Your previous synthetic navigation state was discarded. No
+              account, Chronicle record, preference, progress, or reward was
+              created.
+            </BoundaryNotice>
+          ) : null}
+
+          <BoundaryNotice tone="dark">
+            Package {GAME_CONTENT_MANIFEST.version} contains public synthetic
+            content only. Accounts, private Chronicles, analytics, production
+            AI, permissions, personal progress, and authoritative rewards are
+            inactive.
+          </BoundaryNotice>
         </View>
-        <Text style={styles.note}>
-          This surface contains no private Chronicle data, authentication,
-          analytics, model providers, durable progression, or production
-          deployment configuration.
-        </Text>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.night,
+  },
   page: {
     flexGrow: 1,
     alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 24,
-    paddingVertical: 48,
-    backgroundColor: "#f3efe6",
+    paddingHorizontal: spacing.large,
+    paddingVertical: spacing.xlarge,
   },
-  card: {
+  frame: {
     width: "100%",
-    maxWidth: 720,
-    padding: 32,
+    maxWidth: 1120,
+    gap: spacing.xlarge,
+  },
+  brandRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.medium,
+  },
+  mark: {
+    width: 42,
+    height: 42,
+    borderRadius: radii.pill,
     borderWidth: 1,
-    borderColor: "#c9c0ae",
-    borderRadius: 24,
-    backgroundColor: "#fffdf8",
-    gap: 18,
+    borderColor: colors.goldSoft,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  eyebrow: {
-    color: "#5d5548",
-    fontSize: 13,
-    fontWeight: "700",
-    letterSpacing: 1.8,
+  markCore: {
+    width: 14,
+    height: 20,
+    borderRadius: radii.pill,
+    backgroundColor: colors.gold,
   },
-  title: {
-    color: "#1e1d1a",
-    fontSize: 38,
-    fontWeight: "700",
-    lineHeight: 44,
-  },
-  body: {
-    color: "#35322d",
-    fontSize: 18,
-    lineHeight: 28,
-  },
-  boundary: {
-    alignSelf: "flex-start",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 14,
-    backgroundColor: "#e7e0d3",
+  brandCopy: {
     gap: 2,
   },
-  boundaryLabel: {
-    color: "#655d51",
+  brand: {
+    color: colors.white,
+    fontSize: 13,
+    fontWeight: "800",
+    letterSpacing: 1.7,
+  },
+  release: {
+    color: colors.foam,
     fontSize: 12,
-    fontWeight: "600",
-    textTransform: "uppercase",
-    letterSpacing: 1,
   },
-  boundaryValue: {
-    color: "#1e1d1a",
+  hero: {
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: colors.oceanBright,
+    backgroundColor: colors.nightSoft,
+    padding: spacing.xlarge,
+    gap: spacing.xlarge,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+  },
+  heroCopy: {
+    flexGrow: 1,
+    flexBasis: 480,
+    gap: spacing.medium,
+  },
+  eyebrow: {
+    color: colors.goldSoft,
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 1.5,
+  },
+  title: {
+    color: colors.white,
+    fontSize: 48,
+    fontWeight: "800",
+    lineHeight: 54,
+    maxWidth: 680,
+  },
+  intro: {
+    color: colors.foam,
     fontSize: 18,
-    fontWeight: "700",
+    lineHeight: 28,
+    maxWidth: 680,
   },
-  note: {
-    color: "#5d5548",
-    fontSize: 14,
-    lineHeight: 21,
+  actions: {
+    gap: spacing.small,
+    marginTop: spacing.small,
+  },
+  islandCard: {
+    flexGrow: 1,
+    flexBasis: 280,
+    minHeight: 360,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: radii.large,
+    backgroundColor: colors.ocean,
+    padding: spacing.large,
+    gap: spacing.medium,
+  },
+  orbitOuter: {
+    width: 220,
+    height: 220,
+    borderRadius: 110,
+    borderWidth: 1,
+    borderColor: colors.oceanBright,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  orbitInner: {
+    width: 164,
+    height: 164,
+    borderRadius: 82,
+    borderWidth: 1,
+    borderColor: colors.goldSoft,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  islandShape: {
+    width: 92,
+    height: 116,
+    borderTopLeftRadius: 48,
+    borderTopRightRadius: 34,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 52,
+    backgroundColor: colors.parchment,
+    alignItems: "center",
+    justifyContent: "center",
+    transform: [{ rotate: "8deg" }],
+  },
+  lantern: {
+    width: 20,
+    height: 32,
+    borderRadius: radii.pill,
+    backgroundColor: colors.gold,
+  },
+  islandLabel: {
+    color: colors.white,
+    fontSize: 20,
+    fontWeight: "800",
+  },
+  islandMeta: {
+    color: colors.foam,
+    fontSize: 13,
+    textAlign: "center",
   },
 });
