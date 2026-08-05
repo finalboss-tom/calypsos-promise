@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { NewsletterSignupForm } from "@/components/newsletter-signup-form";
 import { SiteNavigation } from "@/components/site-navigation";
+import { supporterMovementEnabled } from "@/lib/supporters/feature";
 import "./globals.css";
 import "./homepage.css";
 import "./guide-pages.css";
@@ -58,6 +59,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const supportersEnabled = supporterMovementEnabled();
+
   return (
     <html lang="en">
       <body>
@@ -116,6 +119,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <p>The software is open. The person’s health data is private.</p>
           <nav aria-label="Footer navigation">
             <Link href="/promise">The Promise</Link>
+            {supportersEnabled ? (
+              <Link href="/supporters">Support the Promise</Link>
+            ) : null}
             <Link href="/trust">Trust Center</Link>
             <Link href="/forge">Open Forge</Link>
             <Link href="/roadmap">Roadmap</Link>
