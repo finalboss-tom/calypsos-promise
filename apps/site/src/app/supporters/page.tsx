@@ -9,7 +9,9 @@ import {
   supporterMovementEnabled,
   supporterPagesShouldBeIndexed,
 } from "@/lib/supporters/feature";
+import managementStyles from "./management.module.css";
 import { SupporterEnrollmentForm } from "./supporter-enrollment-form";
+import { SupporterManagementRequestForm } from "./supporter-management-request-form";
 import styles from "./supporters.module.css";
 
 export const dynamic = "force-dynamic";
@@ -192,6 +194,21 @@ export default async function SupportersPage() {
           </p>
         </div>
         <SupporterEnrollmentForm promiseVersionLabel={promise.version_label} />
+      </section>
+
+      <section
+        className={managementStyles.requestSection}
+        aria-labelledby="management-request-title"
+      >
+        <div className={managementStyles.requestIntro}>
+          <p className="eyebrow">Already a supporter?</p>
+          <h2 id="management-request-title">Manage your supporter record</h2>
+          <p>
+            Request a single-use email-control link to edit public fields,
+            switch between public and private visibility, or withdraw support.
+          </p>
+        </div>
+        <SupporterManagementRequestForm />
       </section>
     </article>
   );

@@ -7,6 +7,8 @@ const files = [
   "0002_supporter_commands_and_outbox.sql",
   "0003_supporter_runtime.sql",
   "0004_supporter_public_runtime_reads.sql",
+  "0005_fix_activation_output_name_collision.sql",
+  "0006_supporter_management.sql",
 ];
 
 const joined = files
@@ -23,8 +25,13 @@ const required = [
   "CREATE OR REPLACE FUNCTION supporter_private.get_published_promise",
   "CREATE OR REPLACE FUNCTION supporter_private.get_movement_totals",
   "CREATE OR REPLACE FUNCTION supporter_private.list_public_supporters",
+  "CREATE OR REPLACE FUNCTION supporter_private.start_supporter_management",
+  "CREATE OR REPLACE FUNCTION supporter_private.get_supporter_management_state",
+  "CREATE OR REPLACE FUNCTION supporter_private.apply_supporter_management",
   "GRANT EXECUTE ON FUNCTION supporter_private.get_published_promise(uuid)",
   "GRANT EXECUTE ON FUNCTION supporter_private.get_movement_totals()",
+  "GRANT EXECUTE ON FUNCTION supporter_private.start_supporter_management",
+  "GRANT EXECUTE ON FUNCTION supporter_private.apply_supporter_management",
   "REVOKE EXECUTE ON FUNCTION supporter_private.withdraw_supporter",
   "REVOKE ALL ON ALL TABLES IN SCHEMA supporter_private FROM PUBLIC",
 ];

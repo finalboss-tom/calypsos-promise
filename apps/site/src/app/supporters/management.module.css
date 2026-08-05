@@ -1,0 +1,200 @@
+.requestSection,
+.manageHero,
+.recordSummary,
+.actionCard {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-large);
+  background: rgb(6 23 37 / 0.78);
+  box-shadow: var(--shadow-deep);
+}
+
+.requestSection {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  gap: var(--space-7);
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.requestIntro h2,
+.manageHero h1,
+.recordSummary h2,
+.actionCard h2 {
+  margin: 0;
+  line-height: 1.08;
+}
+
+.requestIntro p:last-child,
+.manageHero > p:last-child,
+.actionCard > div > p:last-child {
+  color: var(--color-sand-200);
+}
+
+.requestForm,
+.actionForm,
+.managementWorkspace {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.managePage {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-7) var(--space-8);
+}
+
+.manageHero {
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.manageHero h1 {
+  max-width: 12ch;
+  font-size: clamp(2.7rem, 7vw, 5.4rem);
+}
+
+.manageHero > p:last-child {
+  max-width: 48rem;
+}
+
+.recordSummary,
+.actionCard {
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.recordSummary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr);
+  gap: var(--space-6);
+}
+
+.recordSummary dl,
+.recordSummary dd {
+  margin: 0;
+}
+
+.recordSummary dl {
+  display: grid;
+  gap: var(--space-3);
+  font-family: system-ui, sans-serif;
+}
+
+.recordSummary dl div {
+  border-left: 0.2rem solid var(--color-sea-500);
+  padding-left: var(--space-3);
+}
+
+.recordSummary dt {
+  color: var(--color-sea-300);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.actionCard {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+  gap: var(--space-6);
+}
+
+.dangerCard {
+  border-color: rgb(255 181 173 / 0.45);
+}
+
+.field,
+.fieldGrid {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.fieldGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.field label {
+  font-family: system-ui, sans-serif;
+  font-weight: 750;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid rgb(234 215 181 / 0.28);
+  border-radius: var(--radius-small);
+  background: var(--color-ink-950);
+  color: var(--color-sand-100);
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field small {
+  color: var(--color-sand-200);
+  font-family: system-ui, sans-serif;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  border-radius: var(--radius-small);
+  padding: var(--space-2);
+  font-family: system-ui, sans-serif;
+}
+
+.checkboxLabel:hover {
+  background: rgb(135 200 213 / 0.06);
+}
+
+.checkboxLabel input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.status,
+.managementStatus {
+  min-height: 1.6em;
+  margin: 0;
+  color: var(--color-status-live);
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+}
+
+.managementStatus {
+  border: 1px solid rgb(234 215 181 / 0.18);
+  border-radius: var(--radius-medium);
+  padding: var(--space-5);
+  background: rgb(11 36 54 / 0.72);
+  font-size: 1.05rem;
+}
+
+.error {
+  color: #ffb5ad;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 54rem) {
+  .requestSection,
+  .recordSummary,
+  .actionCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 38rem) {
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+}

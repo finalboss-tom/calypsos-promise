@@ -7,8 +7,10 @@ This directory contains the database contract and operator-facing runbook for th
 - The website uses only `SUPPORTER_RUNTIME_DATABASE_URL`, backed by the least-privilege `supporter_runtime_login` role.
 - The Neon integration-managed `SUPPORTER_DATABASE_URL` remains migration-owner infrastructure and is never consumed by public runtime code.
 - Contacts are encrypted with AES-256-GCM and located for duplicate prevention through a separate HMAC.
-- Verification tokens are random, peppered before storage, single-use, and placed in URL fragments so the token is not sent with the initial page request.
+- Verification and management tokens are random, peppered before storage, single-use, and placed in URL fragments so the token is not sent with the initial page request.
 - Public listing is optional and separately consented. Private supporters are counted without appearing in the public profile projection.
+- Supporter self-management is email-controlled, revision-bound, and authorizes one reviewed action per link.
+- Withdrawing support retires a Founding Supporter number permanently; the counter is not decremented and the number is never reassigned.
 - Resend is outbound-only through `SUPPORTER_EMAIL_RESEND_API_KEY`; inbound receiving is not required.
 
 ## Migration order
@@ -19,10 +21,18 @@ Apply these files as the Neon database owner, in order:
 2. `database/migrations/0002_supporter_commands_and_outbox.sql`
 3. `database/migrations/0003_supporter_runtime.sql`
 4. `database/migrations/0004_supporter_public_runtime_reads.sql`
+5. `database/migrations/0005_fix_activation_output_name_collision.sql`
+6. `database/migrations/0006_supporter_management.sql`
 
-Migrations 0001–0003 have already been validated on the isolated Neon branch. Migration 0004 adds the three narrow read commands required by the public page and must be applied before the first protected Preview deployment.
+Run the read-only checks under `database/verification/` after migration. `0200_runtime_read_checks.sql` should be executed through `SET ROLE supporter_runtime_login` when Neon’s SQL Editor cannot select the role directly.
 
-Run the read-only checks under `database/verification/` after migration. Run `0200_runtime_read_checks.sql` as `supporter_runtime_login`; the final privilege result must be `true, true, true, false, false`.
+Migration 0006 grants only three narrow management commands to the runtime role:
+
+- issue a generic, cooldown-protected management challenge;
+- inspect state through a valid management token;
+- apply one revision-bound visibility, profile, or withdrawal action.
+
+The broad operator withdrawal function remains unavailable to the website runtime.
 
 ## Required runtime variables
 
@@ -46,11 +56,12 @@ All secrets and connection strings live in Vercel, never in the repository.
 
 ## Deployment gates
 
-1. Apply and verify migration 0004 on the isolated validation branch.
+1. Apply and verify migrations 0001–0006 on the isolated validation branch.
 2. Keep Production flags false.
 3. Set `SUPPORTER_MOVEMENT_ENABLED=true` only for the feature-branch Preview.
-4. Create a new protected Preview deployment.
-5. Complete synthetic private and public enrollment, email verification, idempotency, numbering, and privilege checks.
-6. Implement and validate supporter management/withdrawal before production enablement.
-7. Seed the accepted production Promise version and create a separate production secret set.
-8. Enable Production only through an explicit reviewed deployment.
+4. Create a bounded protected Preview deployment, then immediately restore the repository-wide Git deployment lock.
+5. Complete synthetic private and public enrollment, email verification, duplicate-contact, idempotency, numbering, and privilege checks.
+6. Complete management-link, public/private visibility, public-profile editing, withdrawal, and permanent-number-retirement acceptance.
+7. Keep contact recovery, retry-worker observability, and moderation as separate gates.
+8. Seed the accepted production Promise version and create a separate production secret set.
+9. Enable Production only through an explicit reviewed deployment.
