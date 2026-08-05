@@ -1,6 +1,6 @@
 # Sprint 10.5 — State and authority boundaries
 
-**Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION  
+**Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10  
 **Parent:** Sprint 10 — universal game shell  
 **Tracker:** issue #80  
 **Implementation:** draft PR #79
@@ -10,6 +10,8 @@
 Establish a versioned, deterministic, public/synthetic session-state contract for `apps/game` and make the client authority ceiling executable.
 
 The implementation extends the 10.4 renderer without adding persistence or production authority. It makes pending, failed, stale, corrected, superseded, conflict, deferred, refused, and discarded states explicit while denying every client claim to completion, reward, permission, Chronicle truth, personal progress, health results, authentic preference, or Longitudinal Intelligence.
+
+There is no client-authoritative completion or rewards. Every client claim remains presentation evidence only and fails closed.
 
 ## Implemented boundary
 
@@ -83,9 +85,22 @@ Sprint 10.5 does not authorize:
 - deployment, indexing, public navigation, mobile distribution, official release, Sprint 11, or institutional Phase 0 exit; or
 - independent accessibility, security, privacy, legal, affected-user, field, or device certification.
 
-## Validation target
+## Validated checkpoint
 
-The exact 10.5 checkpoint will be recorded after frozen installation, state-authority validation, formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, tests, existing site release validation, browser/iOS/Android credential-free export, generated-state cleanup, CI, and DCO complete.
+Exact clean implementation checkpoint: `ff40e9840328151fc9b3d63623ab6e217dca8ad8`
+
+- CI 1444: success
+- DCO 1543: success
+- frozen Node 24 / pnpm 10.13.1 installation: success
+- exact implementation archive integrity and focused state-authority validation: success
+- deterministic state-machine, authority-denial, quest-evidence, blocked-interaction, and unknown-claim tests: success
+- formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, and tests: success
+- existing production-site build and rendered prologue validation: success
+- browser, iOS, and Android credential-free Expo export: success
+- generated-state cleanup and no tracked build mutation: success
+- temporary implementation tooling: removed before final checkpoint validation
+
+This is maintainer implementation and CI evidence inside active Sprint 10. It is not independent accessibility, security, privacy, legal, affected-user, field, or device certification; persistence or private-data readiness; deployment or distribution authorization; authority to begin Sprint 11; activation of LI-V1 through LI-V8; or institutional Phase 0 exit.
 
 ## Sprint-level gate
 
