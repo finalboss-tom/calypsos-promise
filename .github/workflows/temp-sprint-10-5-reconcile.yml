@@ -37,6 +37,24 @@ jobs:
       - name: Reconcile Sprint 10.5 status and policy
         run: python tools/temp-sprint-10-5-reconcile.py
 
+      - name: Make client-authority prohibition explicit
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("docs/roadmap/sprint-10.5-state-and-authority-boundaries.md")
+          source = path.read_text()
+          marker = "\n\n## Implemented boundary"
+          replacement = (
+              "\n\nThere is no client-authoritative completion or rewards. "
+              "Every client claim remains presentation evidence only and fails closed."
+              "\n\n## Implemented boundary"
+          )
+          if source.count(marker) != 1:
+              raise SystemExit("expected one implemented-boundary marker")
+          path.write_text(source.replace(marker, replacement, 1))
+          PY
+
       - name: Format reconciled records
         run: >-
           pnpm exec prettier --write
