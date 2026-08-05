@@ -20,9 +20,10 @@
 | React Native | 0.86.2 |
 | React / React DOM | 19.2.3 |
 | React Native Web | 0.21.0 |
+| React Native Worklets | 0.10.1 |
 | TypeScript for `apps/game` | 6.0.3 |
 
-The repository's Node 24 requirement is stricter than Expo SDK 57's Node minimum and is therefore the effective development and CI runtime.
+The repository's Node 24 requirement is stricter than Expo SDK 57's Node minimum and is therefore the effective development and CI runtime. React Native Worklets is explicitly pinned because Expo 57's strict peer range does not accept the newer 0.11 line.
 
 ## Commands
 
