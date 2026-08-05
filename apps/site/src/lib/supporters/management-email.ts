@@ -1,7 +1,4 @@
-import {
-  sendResendEmail,
-  type SupporterEmailDelivery,
-} from "./resend-email";
+import { sendResendEmail, type SupporterEmailDelivery } from "./resend-email";
 
 export async function sendSupporterManagementEmail(input: {
   apiKey: string;
