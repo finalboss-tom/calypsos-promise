@@ -138,12 +138,18 @@ test("delivery observability stores no webhook recipient payload", () => {
   const webhook = read(
     "src/app/api/supporters/outbox/webhook/resend/route.ts",
   );
+  const eventTable = migration
+    .split("CREATE TABLE IF NOT EXISTS supporter_private.email_delivery_events", 2)[1]
+    ?.split("CREATE INDEX IF NOT EXISTS email_delivery_events_provider_message", 1)[0];
 
-  assert.match(migration, /email_delivery_events/);
-  assert.match(migration, /provider_message_id/);
+  assert.ok(eventTable);
+  assert.match(eventTable, /provider_message_id/);
   assert.match(migration, /result_duplicate/);
   assert.match(migration, /result_matched/);
-  assert.doesNotMatch(migration, /raw_payload|recipient_email|encrypted_contact/);
+  assert.doesNotMatch(
+    eventTable,
+    /raw_payload|recipient_email|encrypted_contact|encrypted_token/,
+  );
   assert.match(webhook, /svix-id/);
   assert.match(webhook, /verifyResendWebhook/);
   assert.match(webhook, /readRawPayload/);
