@@ -26,7 +26,10 @@ test("keeps the production-hosted prologue noindex and outside public navigation
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /Sprint 9 is accepted, squash merged, and manually deployed/i);
+  assert.match(
+    page,
+    /Sprint 9 is accepted, squash merged, and manually deployed/i,
+  );
   assert.match(page, /production-hosted public synthetic prologue/i);
   assert.match(page, /not an account/i);
   assert.match(page, /health-data\s+capability/i);

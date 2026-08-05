@@ -137,18 +137,15 @@ test("keeps newsletter, Phase 0, Sprint 9, and specialist approval separate", as
   ]);
   const source = `${currentStatus}\n${reconciliation}\n${holdpoints}`;
 
-  for (const phrase of [
-    "issue #63 remains open",
-    "institutional Phase 0 remains active",
-    "planned and not started",
-    "independent accessibility",
-    "field performance",
-    "specialist",
-    "Git-triggered Vercel deployment is disabled",
+  for (const pattern of [
+    /issue #63 remains open/i,
+    /institutional Phase 0 remains active/i,
+    /planned and not started/i,
+    /independent accessibility/i,
+    /field[- ]performance/i,
+    /specialist/i,
+    /Git-triggered(?: Vercel)? deployment(?: is| remains)? disabled/i,
   ]) {
-    assert.match(
-      source,
-      new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"),
-    );
+    assert.match(source, pattern);
   }
 });

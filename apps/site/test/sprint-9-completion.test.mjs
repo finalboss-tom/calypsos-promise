@@ -143,17 +143,17 @@ test("preserves the accepted playable evidence and its limitations", async () =>
     assert.match(source, new RegExp(phrase, "i"));
   }
 
-  for (const phrase of [
-    "independent accessibility",
-    "named screen-reader",
-    "affected-user",
-    "device",
-    "field performance",
-    "legal",
-    "privacy",
-    "security",
+  for (const pattern of [
+    /independent accessibility/i,
+    /named screen-reader/i,
+    /affected-user/i,
+    /device/i,
+    /field[- ]performance/i,
+    /legal/i,
+    /privacy/i,
+    /security/i,
   ]) {
-    assert.match(source, new RegExp(phrase, "i"));
+    assert.match(source, pattern);
   }
 });
 
