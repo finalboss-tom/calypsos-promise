@@ -38,7 +38,9 @@ export function verifyResendWebhook(input: {
     } catch {
       return false;
     }
-    return actual.length === expected.length && timingSafeEqual(actual, expected);
+    return (
+      actual.length === expected.length && timingSafeEqual(actual, expected)
+    );
   });
 }
 
@@ -72,7 +74,12 @@ export function resendEventReason(
       ? (data.suppressed as Record<string, unknown>)
       : {};
 
-  const candidates = [failed.reason, bounce.subType, bounce.type, suppressed.reason];
+  const candidates = [
+    failed.reason,
+    bounce.subType,
+    bounce.type,
+    suppressed.reason,
+  ];
   const value = candidates.find((candidate) => typeof candidate === "string");
   if (typeof value !== "string") return undefined;
   const normalized = value
