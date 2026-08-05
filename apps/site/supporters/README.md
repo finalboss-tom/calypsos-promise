@@ -4,13 +4,12 @@ This directory contains the database contract and operator-facing runbook for th
 
 ## Runtime boundaries
 
-- The website uses only `SUPPORTER_RUNTIME_DATABASE_URL`, backed by the least-privilege `supporter_runtime_login` role.
-- The Neon integration-managed `SUPPORTER_DATABASE_URL` remains migration-owner infrastructure and is never consumed by public runtime code.
+- The public website uses only `SUPPORTER_RUNTIME_DATABASE_URL`, backed by the least-privilege `supporter_runtime_login` role.
+- The outbox worker and Resend webhook use only `SUPPORTER_OUTBOX_WORKER_DATABASE_URL`, backed by a separate login inheriting the `supporter_outbox_worker` NOLOGIN role.
+- The Neon integration-managed `SUPPORTER_DATABASE_URL` remains migration-owner infrastructure and is never consumed by public or worker runtime code.
 - Contacts are encrypted with AES-256-GCM and located for duplicate prevention through a separate HMAC.
-- Verification and management tokens are random, peppered before storage, single-use, and placed in URL fragments so the token is not sent with the initial page request.
+- Verification and management tokens are random, peppered before lookup, single-use, and placed in URL fragments so the secret is not sent with the initial page request.
 - Public listing is optional and separately consented. Private supporters are counted without appearing in the public profile projection.
-- Supporter self-management is email-controlled, revision-bound, and authorizes one reviewed action per link.
-- Withdrawing support retires a Founding Supporter number permanently; the counter is not decremented and the number is never reassigned.
 - Resend is outbound-only through `SUPPORTER_EMAIL_RESEND_API_KEY`; inbound receiving is not required.
 
 ## Migration order
@@ -23,20 +22,55 @@ Apply these files as the Neon database owner, in order:
 4. `database/migrations/0004_supporter_public_runtime_reads.sql`
 5. `database/migrations/0005_fix_activation_output_name_collision.sql`
 6. `database/migrations/0006_supporter_management.sql`
+7. `database/migrations/0007_supporter_outbox_reliability.sql`
 
-Run the read-only checks under `database/verification/` after migration. `0200_runtime_read_checks.sql` should be executed through `SET ROLE supporter_runtime_login` when Neon’s SQL Editor cannot select the role directly.
+Run the read-only checks under `database/verification/` after migration. The public runtime must retain only its reviewed supporter commands. The outbox worker must be able to claim, complete, observe, and record provider events without `SELECT` on private tables.
 
-Migration 0006 grants only three narrow management commands to the runtime role:
+## Email outbox behavior
 
-- issue a generic, cooldown-protected management challenge;
-- inspect state through a valid management token;
-- apply one revision-bound visibility, profile, or withdrawal action.
+Every verification or management email is inserted transactionally before provider delivery. The initial request attempts delivery immediately using the stable idempotency key `supporter-outbox/<outbox UUID>`. If the provider call or completion write fails, the worker can safely retry the same payload.
 
-The broad operator withdrawal function remains unavailable to the website runtime.
+Migration 0007 adds:
+
+- claim tokens and expiring leases, with stale-claim recovery
+- bounded exponential backoff and provider `Retry-After` support
+- five-attempt dead-lettering inside the active challenge window
+- provider message IDs and idempotent Resend event ingestion
+- aggregate health counters without contact, token, or identity exposure
+- a dedicated `supporter_outbox_worker` capability role
+- signed-webhook replay protection through stored `svix-id` values
+
+Dead-letter records remain operator-visible. Expired, consumed, or revoked challenges are cancelled and their encrypted retry tokens are destroyed.
+
+## Scheduling boundary
+
+The worker endpoint is scheduler-neutral and authenticated with `SUPPORTER_OUTBOX_WORKER_SECRET_B64`. It should be invoked at least every five minutes after Production enablement. No Vercel Cron entry is committed yet: Hobby cron jobs can run only once daily, which is incompatible with 30-minute supporter links. The launch gate must explicitly select either a sufficiently frequent Vercel plan or another reviewed scheduler before Production is enabled.
+
+## Resend delivery events
+
+Configure one Resend webhook for:
+
+- `email.sent`
+- `email.delivery_delayed`
+- `email.delivered`
+- `email.bounced`
+- `email.complained`
+- `email.suppressed`
+- `email.failed`
+
+Point it to:
+
+```text
+/api/supporters/outbox/webhook/resend
+```
+
+Store the endpoint signing secret as `SUPPORTER_EMAIL_RESEND_WEBHOOK_SECRET`. The route verifies the raw Svix-signed payload, rejects stale signatures, deduplicates by `svix-id`, and stores only provider IDs, event types, timestamps, and a bounded reason code. Recipient addresses and raw webhook bodies are never persisted.
 
 ## Required runtime variables
 
 All secrets and connection strings live in Vercel, never in the repository.
+
+Public supporter runtime:
 
 - `SUPPORTER_RUNTIME_DATABASE_URL`
 - `SUPPORTER_EMAIL_RESEND_API_KEY`
@@ -52,16 +86,23 @@ All secrets and connection strings live in Vercel, never in the repository.
 - `SUPPORTER_MOVEMENT_ENABLED`
 - `SUPPORTER_ADMIN_ENABLED`
 
-`SUPPORTER_PUBLIC_BASE_URL` is optional on Vercel Preview because the runtime uses the trusted `VERCEL_URL`. It should be explicitly set to the canonical HTTPS origin for production.
+Outbox worker and provider events:
+
+- `SUPPORTER_OUTBOX_WORKER_DATABASE_URL`
+- `SUPPORTER_OUTBOX_WORKER_SECRET_B64`
+- `SUPPORTER_OUTBOX_WORKER_ENABLED`
+- `SUPPORTER_EMAIL_RESEND_WEBHOOK_SECRET`
+
+`SUPPORTER_PUBLIC_BASE_URL` is optional on a bounded Vercel Preview because the runtime uses the trusted `VERCEL_URL`. It must be explicitly set to the canonical HTTPS origin for Production so every retry reproduces the original provider payload and stable link origin.
 
 ## Deployment gates
 
-1. Apply and verify migrations 0001–0006 on the isolated validation branch.
+1. Apply and verify all migrations on the isolated validation branch.
 2. Keep Production flags false.
-3. Set `SUPPORTER_MOVEMENT_ENABLED=true` only for the feature-branch Preview.
-4. Create a bounded protected Preview deployment, then immediately restore the repository-wide Git deployment lock.
-5. Complete synthetic private and public enrollment, email verification, duplicate-contact, idempotency, numbering, and privilege checks.
-6. Complete management-link, public/private visibility, public-profile editing, withdrawal, and permanent-number-retirement acceptance.
-7. Keep contact recovery, retry-worker observability, and moderation as separate gates.
-8. Seed the accepted production Promise version and create a separate production secret set.
+3. Enable the supporter movement and outbox worker only for the feature-branch Preview.
+4. Create a protected Preview deployment.
+5. Complete synthetic enrollment, management, email retry, idempotency, dead-letter, delivery-event, numbering, and privilege checks.
+6. Select and test a scheduler that invokes the worker at least every five minutes.
+7. Configure the signed Resend webhook and accept event replay/out-of-order behavior.
+8. Seed the accepted Production Promise version and create a separate Production secret set.
 9. Enable Production only through an explicit reviewed deployment.
