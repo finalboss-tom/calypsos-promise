@@ -41,6 +41,20 @@ jobs:
           tar -xzf /tmp/sprint-10-6.tar.gz
           python tools/apply-sprint-10-6.py
 
+      - name: Preserve shell source boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("apps/game/src/components/OfflineResiliencePanel.tsx")
+          source = path.read_text()
+          old = "Android. AsyncStorage is unencrypted and is restricted here to"
+          new = "Android. The offline storage adapter is unencrypted and is restricted here to"
+          if source.count(old) != 1:
+              raise SystemExit("expected OfflineResiliencePanel storage disclosure was not found exactly once")
+          path.write_text(source.replace(old, new, 1))
+          PY
+
       - name: Reconcile exact dependency and lockfile
         run: pnpm install --no-frozen-lockfile
 
