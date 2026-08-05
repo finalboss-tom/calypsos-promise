@@ -31,10 +31,11 @@ export default function ProloguePage() {
           or leaving begins again.
         </p>
         <p className="source-note">
-          Workstreams 9.1–9.9 are accepted; the 9.10 completion package is ready
-          for founding-steward review. Protected hosted-preview evidence exists
-          without a production cutover. The route remains noindex, absent from
-          public navigation and the sitemap, and is not a production capability.
+          Sprint 9 is accepted, squash merged, and manually deployed. This route
+          remains noindex and absent from public navigation and the sitemap. It
+          is a production-hosted public synthetic prologue, not an account,
+          private Chronicle, permission system, production Aster, or health-data
+          capability.
         </p>
         <div className="actions" aria-label="Prologue sources and exits">
           <a
