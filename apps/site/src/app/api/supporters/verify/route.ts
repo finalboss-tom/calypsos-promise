@@ -9,10 +9,7 @@ import {
   supporterMovementEnabled,
   unavailableResponse,
 } from "@/lib/supporters/feature";
-import {
-  clientBucketHmac,
-  readBoundedJson,
-} from "@/lib/supporters/request";
+import { clientBucketHmac, readBoundedJson } from "@/lib/supporters/request";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

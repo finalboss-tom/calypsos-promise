@@ -147,7 +147,9 @@ export async function POST(request: Request) {
       whyISigned: validated.value.whyISigned,
       signaturePolicyVersion: "promise-signature-v1",
       visibilityPolicyVersion:
-        validated.value.visibility === "public" ? "public-listing-v1" : undefined,
+        validated.value.visibility === "public"
+          ? "public-listing-v1"
+          : undefined,
       tokenHash: hashVerificationToken(token, config.verificationTokenPepper),
       encryptedToken,
       tokenEncryptionKeyVersion: config.outboxTokenEncryptionKeyVersion,

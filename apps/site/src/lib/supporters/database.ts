@@ -51,22 +51,24 @@ function parseNeonColumn(value: string | null, dataTypeID: number): unknown {
     case 3802:
       return JSON.parse(value) as unknown;
     case 17:
-      return Buffer.from(value.startsWith("\\x") ? value.slice(2) : value, "hex");
+      return Buffer.from(
+        value.startsWith("\\x") ? value.slice(2) : value,
+        "hex",
+      );
     default:
       return value;
   }
 }
 
-export function parseNeonResult<T extends object>(
-  result: NeonRawResult,
-): T[] {
-  return result.rows.map((row) =>
-    Object.fromEntries(
-      result.fields.map((field, index) => [
-        field.name,
-        parseNeonColumn(row[index] ?? null, field.dataTypeID),
-      ]),
-    ) as T,
+export function parseNeonResult<T extends object>(result: NeonRawResult): T[] {
+  return result.rows.map(
+    (row) =>
+      Object.fromEntries(
+        result.fields.map((field, index) => [
+          field.name,
+          parseNeonColumn(row[index] ?? null, field.dataTypeID),
+        ]),
+      ) as T,
   );
 }
 
@@ -92,7 +94,9 @@ export async function supporterQuery<T extends object>(
   });
 
   if (!response.ok) {
-    throw new Error(`Supporter database request failed with HTTP ${response.status}`);
+    throw new Error(
+      `Supporter database request failed with HTTP ${response.status}`,
+    );
   }
   return parseNeonResult<T>((await response.json()) as NeonRawResult);
 }

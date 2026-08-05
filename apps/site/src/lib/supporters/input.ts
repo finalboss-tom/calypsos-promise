@@ -34,7 +34,8 @@ export function validateEnrollmentInput(
     };
   }
 
-  const email = typeof body.email === "string" ? normalizeEmail(body.email) : "";
+  const email =
+    typeof body.email === "string" ? normalizeEmail(body.email) : "";
   if (
     email.length < 3 ||
     email.length > 254 ||
@@ -60,7 +61,9 @@ export function validateEnrollmentInput(
   const whyISigned = optionalString(body.whyISigned, 1_000);
   const profileSlugRaw = optionalString(body.profileSlug, 64);
   const profileSlug =
-    typeof profileSlugRaw === "string" ? profileSlugRaw.toLowerCase() : profileSlugRaw;
+    typeof profileSlugRaw === "string"
+      ? profileSlugRaw.toLowerCase()
+      : profileSlugRaw;
 
   if (
     typeof displayName !== "string" ||

@@ -46,7 +46,10 @@ test("supporter module is disabled by default and uses scoped credentials", () =
   assert.match(feature, /SUPPORTER_MOVEMENT_ENABLED.*=== "true"/s);
   assert.match(config, /SUPPORTER_RUNTIME_DATABASE_URL/);
   assert.match(config, /SUPPORTER_EMAIL_RESEND_API_KEY/);
-  assert.match(config, /must not use the Marketplace owner database connection/);
+  assert.match(
+    config,
+    /must not use the Marketplace owner database connection/,
+  );
   assert.doesNotMatch(database, /SUPPORTER_DATABASE_URL/);
   assert.match(database, /Neon-Connection-String/);
   assert.ok(database.includes('replace(/^[^.]+\\./, "api.")'));
@@ -68,7 +71,10 @@ test("verification token is handed off in the URL fragment", () => {
   const start = read("src/app/api/supporters/start/route.ts");
   const verify = read("src/app/supporters/verification-client.tsx");
 
-  assert.match(start, /url\.hash = new URLSearchParams\(\{ token \}\)\.toString\(\)/);
+  assert.match(
+    start,
+    /url\.hash = new URLSearchParams\(\{ token \}\)\.toString\(\)/,
+  );
   assert.match(verify, /window\.location\.hash\.slice\(1\)/);
   assert.match(verify, /window\.history\.replaceState/);
   assert.doesNotMatch(start, /searchParams\.set\([^)]*token/);

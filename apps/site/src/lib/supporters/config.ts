@@ -24,7 +24,8 @@ function key(name: KeyVariable): Buffer {
 
 function resolvePublicBaseUrl(): string {
   const explicit = process.env.SUPPORTER_PUBLIC_BASE_URL?.trim();
-  const candidate = explicit ||
+  const candidate =
+    explicit ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "");
   if (!candidate) {
     throw new Error(
@@ -82,9 +83,7 @@ export function getSupporterEnrollmentConfig(): SupporterEnrollmentConfig {
     ),
     contactLookupHmacKey: key("SUPPORTER_CONTACT_LOOKUP_HMAC_KEY_B64"),
     verificationTokenPepper: key("SUPPORTER_VERIFICATION_TOKEN_PEPPER_B64"),
-    outboxTokenEncryptionKey: key(
-      "SUPPORTER_OUTBOX_TOKEN_ENCRYPTION_KEY_B64",
-    ),
+    outboxTokenEncryptionKey: key("SUPPORTER_OUTBOX_TOKEN_ENCRYPTION_KEY_B64"),
     outboxTokenEncryptionKeyVersion: required(
       "SUPPORTER_OUTBOX_TOKEN_ENCRYPTION_KEY_VERSION",
     ),
