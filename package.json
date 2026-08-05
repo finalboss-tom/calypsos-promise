@@ -15,7 +15,8 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "docs:check": "node tools/docs/check-links.mjs",
-    "policy:check": "node tools/policy/check-repository.mjs",
+    "policy:check": "node tools/policy/check-repository.mjs && pnpm li:check",
+    "li:check": "node tools/policy/check-longitudinal-intelligence.mjs",
     "content:check": "pnpm --filter @calypsos-promise/content-schema validate:content",
     "check": "pnpm format:check && pnpm docs:check && pnpm policy:check && pnpm economics:check && pnpm content:check && pnpm lint && pnpm typecheck && pnpm test",
     "economics:check": "node tools/policy/check-funding-records.mjs"

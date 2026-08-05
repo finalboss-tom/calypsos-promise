@@ -145,22 +145,30 @@ test("keeps newsletter and Aster maintenance boundaries separate", async () => {
 });
 
 test("retains the accepted Sprint 10 goal without starting implementation", async () => {
-  const [sprints, status, reconciliation] = await Promise.all([
+  const [sprints, status, reconciliation, alignment] = await Promise.all([
     read("../../../docs/roadmap/sprints.md"),
     read("../../../docs/roadmap/current-status.md"),
     read(
       "../../../docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md",
     ),
+    read("../../../docs/roadmap/pre-sprint-10-alignment-review.md"),
   ]);
-  const source = `${sprints}\n${status}\n${reconciliation}`;
+  const source = `${sprints}\n${status}\n${reconciliation}\n${alignment}`;
 
   assert.match(source, /Sprint 10 — Universal game shell/);
   assert.match(
     source,
     /Establish the browser, iOS, and Android playable application/,
   );
-  assert.match(source, /Sprint 10(?:\s|\*|:)*planned and not started/i);
-  assert.match(source, /dedicated pre-Sprint 10 alignment review/i);
-  assert.match(source, /authentication only after the prologue/i);
-  assert.match(source, /no gameplay authority depends on client-side trust/i);
+  assert.match(source, /Sprint 10 remains planned and not started/i);
+  assert.match(alignment, /Pre-Sprint 10 Alignment Review/i);
+  assert.match(alignment, /AUTHORIZED WITH NAMED HOLDPOINTS/i);
+  assert.match(alignment, /apps\/game/);
+  assert.match(alignment, /packages\/game-content/);
+  assert.match(alignment, /LI-V1 through LI-V8/);
+  assert.match(source, /authentication(?: only)? after the prologue/i);
+  assert.match(
+    source,
+    /no gameplay (?:rule|authority) depends on client-side trust/i,
+  );
 });

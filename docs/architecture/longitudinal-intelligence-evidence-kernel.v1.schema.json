@@ -1,0 +1,535 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://calypsospromise.org/schemas/longitudinal-intelligence-evidence-kernel.v1.schema.json",
+  "title": "Calypso's Promise Longitudinal Intelligence Evidence Kernel v1",
+  "description": "Machine-readable evidence and authority envelope for bounded Longitudinal Intelligence validation. This schema does not create Chronicle truth, permission, causal validity, clinical authority, or production authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_packet_id",
+    "revision",
+    "information_class",
+    "synthetic",
+    "created_at",
+    "repository_revision",
+    "validation_stage",
+    "claim_level",
+    "status",
+    "authority",
+    "sources",
+    "time_scope",
+    "result",
+    "rights",
+    "holdpoints",
+    "revalidation_triggers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "evidence_packet_id": {
+      "type": "string",
+      "pattern": "^LI-EVP-[A-Z0-9][A-Z0-9._-]{2,63}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "information_class": {
+      "enum": ["PUBLIC", "SYNTHETIC", "PRIVATE", "PROTECTED"]
+    },
+    "synthetic": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "repository_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "validation_stage": {
+      "enum": [
+        "LI-V0",
+        "LI-V1",
+        "LI-V2",
+        "LI-V3",
+        "LI-V4",
+        "LI-V5",
+        "LI-V6",
+        "LI-V7",
+        "LI-V8"
+      ]
+    },
+    "claim_level": {
+      "enum": [
+        "NONE",
+        "LI-C0",
+        "LI-C1",
+        "LI-C2",
+        "LI-C3",
+        "LI-C4",
+        "LI-C5",
+        "LI-C6"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "candidate",
+        "accepted",
+        "active",
+        "inactive",
+        "qualified",
+        "blocked",
+        "inconclusive",
+        "mixed",
+        "retired",
+        "superseded"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ceiling",
+        "permitted_claims",
+        "prohibited_claims",
+        "player_confirmation_required",
+        "ai_authority",
+        "provider_independent"
+      ],
+      "properties": {
+        "ceiling": {
+          "type": "string",
+          "minLength": 1
+        },
+        "permitted_claims": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "prohibited_claims": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "player_confirmation_required": {
+          "type": "boolean"
+        },
+        "ai_authority": {
+          "const": "advisory-only"
+        },
+        "provider_independent": {
+          "const": true
+        }
+      }
+    },
+    "subject_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope_class"],
+      "properties": {
+        "scope_class": {
+          "enum": ["none", "synthetic-person", "private-person", "cohort"]
+        },
+        "subject_reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "source_class",
+          "revision",
+          "canonical",
+          "provenance_uri"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_class": {
+            "enum": [
+              "constitution",
+              "doctrine",
+              "roadmap",
+              "chronicle-record",
+              "measurement",
+              "protocol",
+              "analysis",
+              "preference",
+              "review",
+              "synthetic-fixture",
+              "external-source"
+            ]
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonical": {
+            "type": "boolean"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "provenance_uri": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualification_status",
+        "construct",
+        "instrument_id",
+        "instrument_version",
+        "temporal_unit",
+        "scorer_id",
+        "scorer_revision",
+        "comparison_status"
+      ],
+      "properties": {
+        "qualification_status": {
+          "enum": [
+            "not-applicable",
+            "unqualified",
+            "candidate",
+            "qualified",
+            "expired"
+          ]
+        },
+        "construct": {
+          "type": "string"
+        },
+        "instrument_id": {
+          "type": "string"
+        },
+        "instrument_version": {
+          "type": "string"
+        },
+        "temporal_unit": {
+          "type": "string"
+        },
+        "recall_period": {
+          "type": "string"
+        },
+        "scorer_id": {
+          "type": "string"
+        },
+        "scorer_revision": {
+          "type": "string"
+        },
+        "calibration_reference": {
+          "type": "string"
+        },
+        "uncertainty": {
+          "type": "string"
+        },
+        "comparison_status": {
+          "enum": [
+            "not-applicable",
+            "comparable",
+            "qualified-with-limits",
+            "not-comparable",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "time_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["temporal_unit", "information_cutoff", "authority_expiry"],
+      "properties": {
+        "temporal_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_interval": {
+          "type": "string"
+        },
+        "information_cutoff": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "target_horizon": {
+          "type": "string"
+        },
+        "prospective_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "authority_expiry": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["qualification_status"],
+      "properties": {
+        "qualification_status": {
+          "enum": [
+            "not-applicable",
+            "unqualified",
+            "synthetic-qualified",
+            "pilot-qualified",
+            "expired"
+          ]
+        },
+        "protocol_id": {
+          "type": "string"
+        },
+        "protocol_version": {
+          "type": "string"
+        },
+        "primary_outcome": {
+          "type": "string"
+        },
+        "assignment_rule": {
+          "type": "string"
+        },
+        "stopping_rule": {
+          "type": "string"
+        },
+        "missingness_rule": {
+          "type": "string"
+        },
+        "refusal_rule": {
+          "type": "string"
+        },
+        "carryover_rule": {
+          "type": "string"
+        },
+        "order_rule": {
+          "type": "string"
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "person_confirmed"],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-applicable",
+            "unknown",
+            "incomplete",
+            "approximately-tied",
+            "method-sensitive",
+            "frame-sensitive",
+            "stable",
+            "revised"
+          ]
+        },
+        "elicitation_method": {
+          "type": "string"
+        },
+        "elicited_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "value_envelope": {
+          "type": "object"
+        },
+        "person_confirmed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "summary",
+        "assumptions",
+        "uncertainty",
+        "counterevidence"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "no-personal-claim",
+            "chronicle-fact",
+            "descriptive-pattern",
+            "hypothesis",
+            "provisional-choice",
+            "benefit",
+            "harm",
+            "mixed",
+            "inconclusive",
+            "measurement-invalid",
+            "observation-invalid",
+            "current-applicability-unknown",
+            "historically-informative-only",
+            "preference-ambiguous",
+            "preference-revised",
+            "validation-stage-candidate-complete",
+            "blocked",
+            "retired"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimate": {
+          "type": "object"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "counterevidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "plain_language_explanation": {
+          "type": "string"
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meaningful_refusal",
+        "correction",
+        "deletion",
+        "export",
+        "non_ai_fallback",
+        "provider_exit"
+      ],
+      "properties": {
+        "meaningful_refusal": {
+          "type": "boolean"
+        },
+        "correction": {
+          "type": "boolean"
+        },
+        "deletion": {
+          "type": "boolean"
+        },
+        "export": {
+          "type": "boolean"
+        },
+        "non_ai_fallback": {
+          "type": "boolean"
+        },
+        "provider_exit": {
+          "type": "boolean"
+        }
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "status", "scope"],
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "not-required",
+              "pending",
+              "completed",
+              "expired",
+              "blocked"
+            ]
+          },
+          "scope": {
+            "type": "string"
+          },
+          "reviewer_reference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "holdpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "description", "release_condition"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^HLD-LI-[0-9]{3}$"
+          },
+          "status": {
+            "enum": ["open", "satisfied", "carried", "retired"]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "release_condition": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "revalidation_triggers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "superseded_by": {
+      "type": ["string", "null"]
+    }
+  }
+}

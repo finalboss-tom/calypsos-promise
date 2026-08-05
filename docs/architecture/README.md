@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Sprint 9 completion](../roadmap/sprint-9-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 10 alignment](../roadmap/pre-sprint-10-alignment-review.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -18,9 +18,23 @@ The modular monolith remains the default. A new package, application, service, p
 
 ## Longitudinal Intelligence
 
+### Governing baseline
+
 - [Longitudinal Intelligence Doctrine](longitudinal-intelligence-doctrine.md)
 - [Staged Validation Plan](../roadmap/longitudinal-intelligence-validation-plan.md)
+- [LI-V0 Completion Candidate](../roadmap/longitudinal-intelligence-li-v0-completion-record.md)
 - [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
+
+### Evidence kernel and controls
+
+- [Evidence Kernel v1 JSON Schema](longitudinal-intelligence-evidence-kernel.v1.schema.json)
+- [Public Synthetic Evidence Packet](../../fixtures/longitudinal-intelligence/evidence-kernel.v1.synthetic.json)
+- [Protected-Invariant Traceability](longitudinal-intelligence-li-v0-traceability.md)
+- [Holdpoints and Unresolved Work](longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md)
+- [Deterministic Validator](../../tools/policy/check-longitudinal-intelligence.mjs)
+
+### Related Chronicle and Aster foundations
+
 - [Living Chronicle Identity and Authority](living-chronicle-identity-authority.md)
 - [Living Chronicle Record Model](living-chronicle-record-model.md)
 - [Provenance and Source Chain](living-chronicle-provenance-source-chain.md)
@@ -28,9 +42,9 @@ The modular monolith remains the default. A new package, application, service, p
 - [Export and Deletion Lifecycle](living-chronicle-export-deletion-lifecycle.md)
 - [Aster Contract Boundary](aster-contract-boundary.md)
 
-The doctrine is an accepted BASELINE architecture direction. It does not activate production measurement, private-data analysis, personal experimentation, causal health claims, clinical behavior, or a production model or provider.
+The doctrine is an accepted BASELINE architecture direction. The LI-V0 closure candidate adds machine-readable evidence, traceability, holdpoints, validation, and Sprint 10 inheritance. It does not activate production measurement, private-data analysis, personal experimentation, causal health claims, clinical behavior, or a production model or provider.
 
-LI-V0 — doctrine and evidence-kernel consolidation — is the only active Longitudinal Intelligence validation stage. LI-V1 through LI-V8 remain inactive until separately accepted.
+LI-V1 through LI-V8 remain inactive until separately accepted.
 
 The architecture requires the following distinctions to remain visible:
 
@@ -70,18 +84,9 @@ It does not own Product Constitution, lore canon, Chronicle truth, House of Keys
 
 Sprint 9 and its post-merge reconciliation are accepted and merged. Production deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` hosts `/prologue` on the canonical domains.
 
-The prologue remains:
+The prologue remains public and explicitly synthetic, no-account, React-memory only, deterministic, reversible, `noindex, nofollow`, absent from public navigation and the sitemap, and non-authoritative for Chronicle truth, permission, identity, health outcomes, Longitudinal Intelligence, rewards, or durable gameplay.
 
-- public and explicitly synthetic;
-- no-account and React-memory only;
-- destroyed by refresh, navigation, tab close, restart, discard, or exit;
-- deterministic and fail-closed;
-- complete through Aster framing or a materially equivalent manual path;
-- non-authoritative for Chronicle truth, permission, identity, consent, audit, health outcome, Longitudinal Intelligence, rewards, or durable gameplay;
-- `noindex, nofollow` and absent from public navigation and the sitemap; and
-- free of real health input, arbitrary text, microphone, model provider, analytics, payment, research, and private state.
-
-The protected preview is retained as access-controlled historical evidence, not an active release channel.
+The protected preview remains access-controlled historical evidence rather than an active release channel.
 
 ## Authority boundaries demonstrated by Sprint 9
 
@@ -110,7 +115,7 @@ The receipt-shaped prologue view creates no request, evaluation, grant, consent,
 
 Aster changes framing, not authority. It cannot confirm itself, create truth, grant permission, choose a person’s authentic preference, establish causality, or complete the prologue without deterministic player evidence.
 
-Sprint 9 does not import or consume the `@calypsos-promise/aster` package public API. Maintainability issue #50 therefore remains inactive until an actual package consumer produces concrete ergonomics evidence.
+Sprint 9 does not consume the `@calypsos-promise/aster` package public API. Maintainability issue #50 remains inactive until an actual package consumer produces concrete ergonomics evidence.
 
 > AI proposes. The player confirms. The domain service validates and stores.
 
@@ -144,22 +149,24 @@ Forge remains local-only, public/synthetic-only, allowlisted, provider-independe
 
 Narrative presentation cannot create Chronicle truth, permission, canon approval, quest authority, Longitudinal Intelligence authority, rewards, clinical authority, or governance authority.
 
-## Sprint 10 entry boundary
+## Pre-Sprint 10 entry boundary
 
-Sprint 10 may establish the browser, iOS, and Android playable shell only after a dedicated alignment review is accepted.
+- [Pre-Sprint 10 Alignment Review](../roadmap/pre-sprint-10-alignment-review.md)
+- [Alignment Issue #75](https://github.com/finalboss-tom/calypsos-promise/issues/75)
 
-The review must resolve:
+The candidate review recommends `AUTHORIZED WITH NAMED HOLDPOINTS` and proposes:
 
-- application and package ownership;
-- one versioned content package across platforms;
-- server-authoritative versus local presentation state;
-- offline, pending, synchronized, failed, stale, corrected, and conflict behavior;
-- authentication only after the prologue;
-- keyboard, screen-reader, touch, switch, reduced-motion, reduced-data, zoom, reflow, and low-bandwidth paths;
-- release, signing, distribution, rollback, monitoring, and incident boundaries; and
-- the rule that no gameplay rule depends on client-side trust.
+- `apps/game` as the Expo and Expo Router universal application owner;
+- `apps/site` remaining the public site and prologue owner;
+- `packages/game-content` as one earned public/synthetic content package;
+- no generic shared UI package without a second real consumer;
+- public/synthetic local presentation and deterministic session state only;
+- no client-authoritative completion, rewards, permission, Chronicle truth, LI claims, or canonical progression;
+- discard-by-default temporary state at the future authentication boundary;
+- explicit accessibility, offline, release, rollback, monitoring, incident, and provider-replacement requirements; and
+- LI-V1 through LI-V8 remaining inactive.
 
-Sprint 10 does not automatically authorize private Chronicles, production House of Keys, production Aster, Longitudinal Intelligence beyond LI-V0, real health or voice capture, providers, connectors, analytics, payments, research, or production health-data operation.
+Sprint 10 remains planned and not started until the alignment candidate is explicitly accepted and squash merged.
 
 ## Operational simplicity, provider independence, and succession
 

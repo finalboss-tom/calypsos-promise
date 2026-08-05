@@ -20,35 +20,44 @@ The directive is constrained by the player promise:
 ## Current orientation
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [Longitudinal Intelligence Doctrine](architecture/longitudinal-intelligence-doctrine.md)
-3. [Longitudinal Intelligence Staged Validation Plan](roadmap/longitudinal-intelligence-validation-plan.md)
-4. [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
-5. [Post-Sprint 9 Repository and Production Reconciliation](roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
-6. [Sprint 9 Completion Record](roadmap/sprint-9-completion-record.md)
-7. [Sprint 9 Release, Rollback, and Sprint 10 Handoff](roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md)
-8. [Sprint 9 Cross-Contract Reconciliation](architecture/public-synthetic-prologue-sprint-9-cross-contract-reconciliation.md)
-9. [Sprint 9 Control and Evidence Map](architecture/public-synthetic-prologue-sprint-9-control-and-evidence-map.md)
-10. [Sprint 9 Holdpoints and Unresolved Work](architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md)
-11. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-12. [Sprint Roadmap](roadmap/sprints.md)
-13. [Architecture Index](architecture/README.md)
-14. [Security Architecture](security/README.md)
-15. [Funding and Sponsorship Baseline](economics/README.md)
-16. [Repository and Module Boundaries](architecture/module-boundaries.md)
+2. [LI-V0 Completion Candidate](roadmap/longitudinal-intelligence-li-v0-completion-record.md)
+3. [Pre-Sprint 10 Alignment Review](roadmap/pre-sprint-10-alignment-review.md)
+4. [Longitudinal Intelligence Doctrine](architecture/longitudinal-intelligence-doctrine.md)
+5. [Longitudinal Intelligence Staged Validation Plan](roadmap/longitudinal-intelligence-validation-plan.md)
+6. [LI Evidence Kernel v1](architecture/longitudinal-intelligence-evidence-kernel.v1.schema.json)
+7. [LI Protected-Invariant Traceability](architecture/longitudinal-intelligence-li-v0-traceability.md)
+8. [LI Holdpoints and Unresolved Work](architecture/longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md)
+9. [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
+10. [Pre-Sprint 10 Tracking Issue #75](https://github.com/finalboss-tom/calypsos-promise/issues/75)
+11. [Post-Sprint 9 Repository and Production Reconciliation](roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
+12. [Sprint 9 Completion Record](roadmap/sprint-9-completion-record.md)
+13. [Sprint 9 Release, Rollback, and Sprint 10 Handoff](roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md)
+14. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+15. [Sprint Roadmap](roadmap/sprints.md)
+16. [Architecture Index](architecture/README.md)
+17. [Security Architecture](security/README.md)
+18. [Funding and Sponsorship Baseline](economics/README.md)
+19. [Repository and Module Boundaries](architecture/module-boundaries.md)
 
 ## Current state
 
-Sprints 0–9 and the post-Sprint 9 repository and production reconciliation are accepted and merged.
+Sprints 0–9, the post-Sprint 9 repository and production reconciliation, and the Longitudinal Intelligence doctrine and staged validation baseline are accepted and merged.
 
-The accepted default-branch doctrine baseline is `58d32608f9e3b337478b91a508af0963ef255502`. It records the founding-steward-approved Longitudinal Intelligence doctrine without activating private data, personal experimentation, causal health claims, clinical behavior, or production Longitudinal Intelligence.
+Accepted Longitudinal Intelligence revisions include:
 
-LI-V0 — doctrine and evidence-kernel consolidation — is the active non-numbered Phase 0 Longitudinal Intelligence workstream under issue #73. LI-V1 through LI-V8 remain inactive.
+- doctrine substantive baseline `58d32608f9e3b337478b91a508af0963ef255502`;
+- doctrine formatting normalization `6e714238a80d4b965d1bb827b4fd3662c91195c1`; and
+- staged validation integration `6b89b1435d4bfc00ba93262fa197b69d8ea23fd7`.
+
+LI-V0 closure and the mandatory pre-Sprint 10 alignment review are implemented as a candidate on `agent/li-v0-closure-and-pre-sprint-10-alignment` under issues #73 and #75. Founding-steward acceptance remains pending.
+
+LI-V1 through LI-V8 remain inactive. Sprint 10 remains planned and not started.
 
 Sprint 9 was squash merged through PR #68 as `b22c32ad8f40610dc95a5b49a745da5adb9c1341`, closed through issue #67, and production hosted through deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6`.
 
 The live `/prologue` route remains `noindex, nofollow`, absent from public navigation and the sitemap, public and explicitly synthetic, no-account, memory-only, and non-authoritative. Git-triggered deployment remains disabled for every branch.
 
-Sprint 10 remains planned and not started. Institutional Phase 0 remains active. Newsletter gate #63, specialist review, succession and key-person controls, distributed ownership, architecture audits, Longitudinal Intelligence validation, and explicit Phase 0 exit remain open.
+Institutional Phase 0 remains active. Newsletter gate #63, specialist review, succession and key-person controls, distributed ownership, whole-architecture audits, Longitudinal Intelligence later-stage evidence, and explicit Phase 0 exit remain open.
 
 ## Authority and conflict order
 
@@ -90,19 +99,27 @@ The prologue creates no account, private Chronicle, House of Keys permission, pr
 
 ### Longitudinal Intelligence
 
-The accepted doctrine is architecture authority only. The staged plan keeps LI-V1 through LI-V8 inactive until their exact entry gates are satisfied.
+The accepted doctrine is architecture authority only. The LI-V0 candidate adds machine-readable evidence, traceability, holdpoints, and validation without activating later stages.
 
 No current repository state authorizes production measurement, descriptive analysis over private Chronicles, personal experimentation, “what works for you” claims, diagnosis, treatment, medication changes, clinical decision support, or research enrollment.
+
+### Pre-Sprint 10 alignment
+
+The candidate review recommends `AUTHORIZED WITH NAMED HOLDPOINTS` for one public/synthetic universal shell:
+
+- proposed application owner: `apps/game`;
+- continuing public site and prologue owner: `apps/site`;
+- proposed shared content owner: `packages/game-content`;
+- no generic shared UI package without a second real consumer;
+- no client-authoritative progression, permission, Chronicle truth, LI claim, or reward;
+- no production authentication, analytics, private data, app-store release, or LI-V1 through LI-V8; and
+- explicit accessibility, offline, release, rollback, monitoring, incident, and provider-replacement boundaries.
+
+Sprint 10 remains blocked until the candidate is accepted and squash merged.
 
 ### Newsletter
 
 The newsletter is a separate narrow Phase 0 contact surface. It accepts email plus explicit consent only and cannot become product identity, Chronicle intake, research consent, provider lead generation, fundraising, governance, advertising, profiling, or gameplay eligibility.
-
-### Sprint 10
-
-Sprint 10’s accepted goal remains the universal browser, iOS, and Android game shell. A dedicated pre-Sprint 10 alignment review remains required before implementation.
-
-Sprint 10 does not automatically authorize private Chronicles, production House of Keys, production Aster, real health or voice capture, providers, connectors, analytics, payments, research, clinical workflows, or production health-data operation.
 
 ## Accepted strategic baselines
 
@@ -125,4 +142,4 @@ Only public repository records and explicitly synthetic evidence belong in publi
 
 ## Status rule
 
-Status follows evidence. A doctrine, merged contract, passing test, simulation, preview, deployment, subscriber delivery, production route, study, or model result proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, communications, AI-safety, clinical, interoperability, legal, provider, financial, operational, research, institutional, causal-inference, or production-health-data approval.
+Status follows evidence. A doctrine, schema, fixture, merged contract, passing test, simulation, preview, deployment, subscriber delivery, production route, study, or model result proves only the claims and environment it actually exercises. It does not create independent accessibility, security, privacy, communications, AI-safety, clinical, interoperability, legal, provider, financial, operational, research, institutional, causal-inference, or production-health-data approval.
