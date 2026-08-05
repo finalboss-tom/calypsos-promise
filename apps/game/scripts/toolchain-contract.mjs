@@ -8,7 +8,7 @@ export const TOOLCHAIN = Object.freeze({
   reactNative: "0.86.2",
   reactNativeWeb: "0.21.0",
   reactNativeWorklets: "0.10.1",
-  typescript: "6.0.3"
+  typescript: "6.0.3",
 });
 
 export const PLATFORMS = Object.freeze(["ios", "android", "web"]);
@@ -23,5 +23,5 @@ export const FORBIDDEN_RUNTIME_DEPENDENCY_PATTERNS = Object.freeze([
   /posthog/i,
   /resend/i,
   /sentry/i,
-  /supabase/i
+  /supabase/i,
 ]);

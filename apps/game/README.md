@@ -10,18 +10,18 @@
 
 ## Pinned compatibility
 
-| Layer | Sprint 10.1 pin |
-| --- | --- |
-| Node repository runtime | 24 |
-| Minimum supported Expo runtime | 22.13.0 |
-| Package manager | pnpm 10.13.1 |
-| Expo | 57.0.10 |
-| Expo Router | 57.0.10 |
-| React Native | 0.86.2 |
-| React / React DOM | 19.2.3 |
-| React Native Web | 0.21.0 |
-| React Native Worklets | 0.10.1 |
-| TypeScript for `apps/game` | 6.0.3 |
+| Layer                          | Sprint 10.1 pin |
+| ------------------------------ | --------------- |
+| Node repository runtime        | 24              |
+| Minimum supported Expo runtime | 22.13.0         |
+| Package manager                | pnpm 10.13.1    |
+| Expo                           | 57.0.10         |
+| Expo Router                    | 57.0.10         |
+| React Native                   | 0.86.2          |
+| React / React DOM              | 19.2.3          |
+| React Native Web               | 0.21.0          |
+| React Native Worklets          | 0.10.1          |
+| TypeScript for `apps/game`     | 6.0.3           |
 
 The repository's Node 24 requirement is stricter than Expo SDK 57's Node minimum and is therefore the effective development and CI runtime. React Native Worklets is explicitly pinned because Expo 57's strict peer range does not accept the newer 0.11 line.
 
@@ -53,11 +53,11 @@ The all-platform export checks JavaScript and asset bundling for iOS, Android, a
 
 ## Platform boundaries
 
-| Platform | Included in 10.1 | Explicitly deferred |
-| --- | --- | --- |
-| Browser | Local Metro startup and static export | Production route, hosting, indexing, canonical-site migration |
-| iOS | Expo local entry point and unsigned bundle export | Generated `ios/`, signing, credentials, TestFlight/App Store submission |
-| Android | Expo local entry point and unsigned bundle export | Generated `android/`, signing, credentials, Play Console submission |
+| Platform | Included in 10.1                                  | Explicitly deferred                                                     |
+| -------- | ------------------------------------------------- | ----------------------------------------------------------------------- |
+| Browser  | Local Metro startup and static export             | Production route, hosting, indexing, canonical-site migration           |
+| iOS      | Expo local entry point and unsigned bundle export | Generated `ios/`, signing, credentials, TestFlight/App Store submission |
+| Android  | Expo local entry point and unsigned bundle export | Generated `android/`, signing, credentials, Play Console submission     |
 
 ## Security and data boundary
 

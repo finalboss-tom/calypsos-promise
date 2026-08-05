@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import {
   FORBIDDEN_RUNTIME_DEPENDENCY_PATTERNS,
   PLATFORMS,
-  TOOLCHAIN
+  TOOLCHAIN,
 } from "./toolchain-contract.mjs";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
@@ -28,9 +28,15 @@ const gamePackage = readJson(join(gameRoot, "package.json"));
 const appConfig = readJson(join(gameRoot, "app.json"));
 const rootPackage = readJson(join(repositoryRoot, "package.json"));
 const sitePackage = readJson(join(repositoryRoot, "apps/site/package.json"));
-const nodeVersion = readFileSync(join(repositoryRoot, ".node-version"), "utf8").trim();
+const nodeVersion = readFileSync(
+  join(repositoryRoot, ".node-version"),
+  "utf8",
+).trim();
 const npmrc = readFileSync(join(repositoryRoot, ".npmrc"), "utf8");
-const workspace = readFileSync(join(repositoryRoot, "pnpm-workspace.yaml"), "utf8");
+const workspace = readFileSync(
+  join(repositoryRoot, "pnpm-workspace.yaml"),
+  "utf8",
+);
 
 assert.equal(gamePackage.name, "@calypsos-promise/game");
 assert.equal(gamePackage.main, "expo-router/entry");
@@ -50,17 +56,21 @@ const expectedDependencies = {
   "react-dom": TOOLCHAIN.react,
   "react-native": TOOLCHAIN.reactNative,
   "react-native-web": TOOLCHAIN.reactNativeWeb,
-  "react-native-worklets": TOOLCHAIN.reactNativeWorklets
+  "react-native-worklets": TOOLCHAIN.reactNativeWorklets,
 };
 
 for (const [name, version] of Object.entries(expectedDependencies)) {
-  assert.equal(gamePackage.dependencies[name], version, `${name} must remain pinned to ${version}`);
+  assert.equal(
+    gamePackage.dependencies[name],
+    version,
+    `${name} must remain pinned to ${version}`,
+  );
 }
 assert.equal(gamePackage.devDependencies.typescript, TOOLCHAIN.typescript);
 
 for (const [name, version] of Object.entries({
   ...gamePackage.dependencies,
-  ...gamePackage.devDependencies
+  ...gamePackage.devDependencies,
 })) {
   assert.match(version, /^\d+\.\d+\.\d+$/, `${name} must use an exact version`);
 }
@@ -82,7 +92,7 @@ for (const script of [
   "clean",
   "lint",
   "test",
-  "typecheck"
+  "typecheck",
 ]) {
   assert.ok(gamePackage.scripts[script], `missing required script: ${script}`);
 }
@@ -92,13 +102,17 @@ for (const pattern of FORBIDDEN_RUNTIME_DEPENDENCY_PATTERNS) {
   assert.equal(
     dependencyNames.some((name) => pattern.test(name)),
     false,
-    `forbidden runtime dependency matched ${pattern}`
+    `forbidden runtime dependency matched ${pattern}`,
   );
 }
 
 for (const forbiddenPath of ["android", "ios", "eas.json"]) {
   const entries = new Set(readdirSync(gameRoot));
-  assert.equal(entries.has(forbiddenPath), false, `${forbiddenPath} is outside Sprint 10.1`);
+  assert.equal(
+    entries.has(forbiddenPath),
+    false,
+    `${forbiddenPath} is outside Sprint 10.1`,
+  );
 }
 
 for (const sourceFile of listFiles(join(gameRoot, "app"))) {
@@ -106,7 +120,7 @@ for (const sourceFile of listFiles(join(gameRoot, "app"))) {
   assert.doesNotMatch(
     source,
     /process\.env|EXPO_PUBLIC_|apiKey|accessToken|secret/i,
-    `${relative(gameRoot, sourceFile)} must remain credential-free`
+    `${relative(gameRoot, sourceFile)} must remain credential-free`,
   );
 }
 
@@ -116,7 +130,11 @@ assert.equal(sitePackage.scripts.build, "next build");
 
 console.log("Sprint 10.1 toolchain contract validated:");
 console.log(`- Expo ${TOOLCHAIN.expo} / Expo Router ${TOOLCHAIN.expoRouter}`);
-console.log(`- React Native ${TOOLCHAIN.reactNative} / React ${TOOLCHAIN.react}`);
+console.log(
+  `- React Native ${TOOLCHAIN.reactNative} / React ${TOOLCHAIN.react}`,
+);
 console.log(`- Node ${TOOLCHAIN.nodeRepository} / ${TOOLCHAIN.packageManager}`);
 console.log(`- platforms: ${PLATFORMS.join(", ")}`);
-console.log("- apps/site ownership preserved; no credentials or provider SDKs introduced");
+console.log(
+  "- apps/site ownership preserved; no credentials or provider SDKs introduced",
+);

@@ -8,9 +8,15 @@ import { PLATFORMS, TOOLCHAIN } from "../scripts/toolchain-contract.mjs";
 
 const gameRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const repositoryRoot = resolve(gameRoot, "../..");
-const gamePackage = JSON.parse(readFileSync(resolve(gameRoot, "package.json"), "utf8"));
-const appConfig = JSON.parse(readFileSync(resolve(gameRoot, "app.json"), "utf8"));
-const sitePackage = JSON.parse(readFileSync(resolve(repositoryRoot, "apps/site/package.json"), "utf8"));
+const gamePackage = JSON.parse(
+  readFileSync(resolve(gameRoot, "package.json"), "utf8"),
+);
+const appConfig = JSON.parse(
+  readFileSync(resolve(gameRoot, "app.json"), "utf8"),
+);
+const sitePackage = JSON.parse(
+  readFileSync(resolve(repositoryRoot, "apps/site/package.json"), "utf8"),
+);
 
 test("pins the supported universal toolchain", () => {
   assert.equal(gamePackage.dependencies.expo, TOOLCHAIN.expo);
