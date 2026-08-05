@@ -50,7 +50,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = await readBoundedJson(request).catch(() => ({}));
+  const body: Record<string, unknown> = await readBoundedJson(request).catch(
+    () => ({}),
+  );
   const token = typeof body.token === "string" ? body.token : "";
   if (!/^[A-Za-z0-9_-]{40,200}$/.test(token)) {
     return Response.json(
@@ -69,10 +71,7 @@ export async function POST(request: Request) {
 
   try {
     const result = await applySupporterManagement({
-      tokenHash: hashVerificationToken(
-        token,
-        config.verificationTokenPepper,
-      ),
+      tokenHash: hashVerificationToken(token, config.verificationTokenPepper),
       now,
       expectedRevision: validated.value.expectedRevision,
       action: validated.value.action,
@@ -82,8 +81,12 @@ export async function POST(request: Request) {
         ? {
             displayName: validated.value.profile.displayName,
             profileSlug: validated.value.profile.profileSlug,
-            broadRegion: validated.value.profile.broadRegion,
-            whyISigned: validated.value.profile.whyISigned,
+            ...(validated.value.profile.broadRegion
+              ? { broadRegion: validated.value.profile.broadRegion }
+              : {}),
+            ...(validated.value.profile.whyISigned
+              ? { whyISigned: validated.value.profile.whyISigned }
+              : {}),
           }
         : {}),
       ...(validated.value.action === "set_public"
