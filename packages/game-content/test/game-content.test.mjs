@@ -25,10 +25,7 @@ test("the public synthetic package satisfies schema and package contracts", () =
 });
 
 test("stable IDs resolve with deterministic locale fallback", () => {
-  const entry = getGameContentEntry(
-    "scene.hearth.welcome.synthetic",
-    "fr-FR",
-  );
+  const entry = getGameContentEntry("scene.hearth.welcome.synthetic", "fr-FR");
   assert.equal(entry?.content.locale, "en-US");
   assert.equal(resolveGameContentLocale("fr-FR"), "en-US");
   assert.equal(listGameContentEntries({ kind: "scene" }).length, 2);
@@ -71,7 +68,9 @@ test("validator fails closed for protected fields and broken references", () => 
   );
   assert.equal(
     result.issues.some((issue) =>
-      issue.message.includes("Unknown content reference scene.missing.synthetic"),
+      issue.message.includes(
+        "Unknown content reference scene.missing.synthetic",
+      ),
     ),
     true,
   );

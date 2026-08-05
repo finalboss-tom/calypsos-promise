@@ -99,10 +99,7 @@ const sharedBase = {
   tags: ["public", "synthetic", "sprint-10"],
   owner: "Calypso's Promise maintainers",
   reviewRequirements: ["editorial", "canon", "accessibility", "safety"] as (
-    | "editorial"
-    | "canon"
-    | "accessibility"
-    | "safety"
+    "editorial" | "canon" | "accessibility" | "safety"
   )[],
   reviewApprovals: [],
   authorship: {
@@ -186,8 +183,7 @@ const welcomeDialogue: CalypsoContent = {
   canonReferences: ["canon.ogygia.aster", "canon.ogygia.lantern-shore"],
   dependencies: ["character.aster.synthetic-guide"],
   speakerId: "character.aster.synthetic-guide",
-  text:
-    "Welcome to Lantern Shore. This is a public synthetic demonstration. Nothing here becomes your Chronicle, a permission grant, or lasting progress.",
+  text: "Welcome to Lantern Shore. This is a public synthetic demonstration. Nothing here becomes your Chronicle, a permission grant, or lasting progress.",
   plainLanguageText:
     "This is a demonstration. It does not save health data, grant permission, or create lasting progress.",
   emotionalIntent: "calm, transparent, and non-coercive",
@@ -203,8 +199,7 @@ const choiceDialogue: CalypsoContent = {
   canonReferences: ["canon.ogygia.aster"],
   dependencies: ["character.aster.synthetic-guide"],
   speakerId: "character.aster.synthetic-guide",
-  text:
-    "You may continue through the story, switch to the direct explanation, pause, refuse, or leave. No choice is treated as a health preference or evidence about you.",
+  text: "You may continue through the story, switch to the direct explanation, pause, refuse, or leave. No choice is treated as a health preference or evidence about you.",
   plainLanguageText:
     "You can continue, read the direct explanation, pause, say no, or leave. Your choice is not health data.",
   emotionalIntent: "agency-preserving and pressure-free",
@@ -220,8 +215,7 @@ const directDialogue: CalypsoContent = {
   canonReferences: ["canon.ogygia.aster"],
   dependencies: ["character.aster.synthetic-guide"],
   speakerId: "character.aster.synthetic-guide",
-  text:
-    "The Sprint 10 shell uses bundled public synthetic content and temporary presentation state. Accounts, private Chronicles, production AI, analytics, permissions, and authoritative rewards are inactive.",
+  text: "The Sprint 10 shell uses bundled public synthetic content and temporary presentation state. Accounts, private Chronicles, production AI, analytics, permissions, and authoritative rewards are inactive.",
   plainLanguageText:
     "The app uses demonstration content and temporary screen state. It has no accounts, private health records, production AI, analytics, permissions, or real rewards.",
   emotionalIntent: "direct, factual, and reassuring",
@@ -419,14 +413,12 @@ const authorityLesson: CalypsoContent = {
     "Identify refusal, correction, discard, and exit as valid paths.",
     "Recognize that client state cannot create authoritative progress or permission.",
   ],
-  body:
-    "Sprint 10 packages public synthetic content for consistent presentation across browser, iOS, and Android. Package identity can prove which public content revision was shown. It cannot prove a personal health fact, permission grant, Chronicle record, reward, or Longitudinal Intelligence result.",
+  body: "Sprint 10 packages public synthetic content for consistent presentation across browser, iOS, and Android. Package identity can prove which public content revision was shown. It cannot prove a personal health fact, permission grant, Chronicle record, reward, or Longitudinal Intelligence result.",
   plainLanguageBody:
     "The same demonstration content can appear on web, iPhone, and Android. The app can identify that content, but it cannot create health facts, permissions, private records, real rewards, or personal conclusions.",
   claims: [
     {
-      text:
-        "Public package identity is not personal, permission, clinical, or causal authority.",
+      text: "Public package identity is not personal, permission, clinical, or causal authority.",
       evidenceClass: "general-education",
       sourceReferences: [],
     },
@@ -547,9 +539,8 @@ const entries: GameContentEntry[] = [
   ),
 ];
 
-export const GAME_CONTENT_ENTRIES: readonly GameContentEntry[] = deepFreeze(
-  entries,
-);
+export const GAME_CONTENT_ENTRIES: readonly GameContentEntry[] =
+  deepFreeze(entries);
 
 export const GAME_CONTENT_MANIFEST: GameContentPackageManifest = deepFreeze({
   id: GAME_CONTENT_PACKAGE_ID,

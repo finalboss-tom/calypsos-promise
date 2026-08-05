@@ -1,7 +1,4 @@
-import {
-  GAME_CONTENT_ENTRIES,
-  GAME_CONTENT_MANIFEST,
-} from "../dist/index.js";
+import { GAME_CONTENT_ENTRIES, GAME_CONTENT_MANIFEST } from "../dist/index.js";
 import { validateGameContentPackage } from "../dist/validate.js";
 
 const result = validateGameContentPackage(
