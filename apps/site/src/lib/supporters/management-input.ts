@@ -20,8 +20,7 @@ export type SupporterManagementActionInput = Readonly<{
 }>;
 
 export type ManagementValidation<T> =
-  | Readonly<{ ok: true; value: T }>
-  | Readonly<{ ok: false; message: string }>;
+  Readonly<{ ok: true; value: T }> | Readonly<{ ok: false; message: string }>;
 
 function validEmail(value: unknown): string | undefined {
   const email = typeof value === "string" ? normalizeEmail(value) : "";
@@ -149,10 +148,7 @@ export function validateManagementActionInput(
       : profile;
   }
 
-  if (
-    action === "set_private" &&
-    body.privateVisibilityConfirmation !== true
-  ) {
+  if (action === "set_private" && body.privateVisibilityConfirmation !== true) {
     return {
       ok: false,
       message: "Confirm that the public profile should be removed.",
