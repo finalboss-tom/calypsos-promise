@@ -70,10 +70,7 @@ export async function getSupporterManagementState(input: {
 }
 
 export type SupporterManagementAction =
-  | "set_private"
-  | "set_public"
-  | "update_public_profile"
-  | "withdraw";
+  "set_private" | "set_public" | "update_public_profile" | "withdraw";
 
 export async function applySupporterManagement(input: {
   tokenHash: Buffer;
