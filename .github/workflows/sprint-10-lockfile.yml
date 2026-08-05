@@ -24,11 +24,24 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-      - name: Generate lockfile
-        run: pnpm install --lockfile-only --no-frozen-lockfile
-      - name: Upload generated lockfile
+      - name: Generate lockfile and capture resolver output
+        id: generate
+        shell: bash
+        run: |
+          set +e
+          pnpm install --lockfile-only --no-frozen-lockfile > lockfile-generation.log 2>&1
+          status=$?
+          cat lockfile-generation.log
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload lockfile and resolver evidence
         uses: actions/upload-artifact@v7
         with:
-          name: sprint-10-pnpm-lock
-          path: pnpm-lock.yaml
+          name: sprint-10-lockfile-evidence
+          path: |
+            pnpm-lock.yaml
+            lockfile-generation.log
           if-no-files-found: error
+      - name: Fail when lockfile generation did not succeed
+        if: steps.generate.outputs.status != '0'
+        run: exit 1
