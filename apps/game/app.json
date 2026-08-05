@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Calypso's Promise",
+    "slug": "calypsos-promise-game",
+    "version": "0.0.0",
+    "orientation": "default",
+    "scheme": "calypsospromise",
+    "userInterfaceStyle": "automatic",
+    "platforms": ["ios", "android", "web"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
