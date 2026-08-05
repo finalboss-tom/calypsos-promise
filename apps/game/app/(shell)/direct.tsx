@@ -65,11 +65,12 @@ export default function DirectPathScreen() {
 
       <View style={styles.grid}>
         <View style={styles.activeCard}>
-          <Text style={styles.cardKicker}>ACTIVE IN 10.3</Text>
+          <Text style={styles.cardKicker}>ACTIVE IN 10.4</Text>
           <Text style={styles.cardTitle}>Presentation navigation</Text>
           <Text style={styles.cardBody}>
-            The app can identify its public content revision and move between
-            arrival, map, Hearth, direct, unavailable, and fallback routes.
+            The app can identify its public content revision, render bundled
+            scenes and dialogue choices, present a synthetic quest card, and
+            move through temporary presentation-only routes.
           </Text>
         </View>
         <View style={styles.inactiveCard}>
@@ -87,9 +88,18 @@ export default function DirectPathScreen() {
 
       <View style={styles.actions}>
         <ActionLink
+          href={{
+            pathname: "/play",
+            params: { scene: "scene.hearth.direct-path.synthetic" },
+          }}
+          label="Open the direct scene renderer"
+          description="See the same package-driven renderer without narrative traversal."
+        />
+        <ActionLink
           href="/map"
           label="Open the island map"
           description="Review available and planned places."
+          variant="secondary"
         />
         <ActionLink
           href="/hearth"

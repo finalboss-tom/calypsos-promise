@@ -7,21 +7,39 @@
 - **10.1:** exact Expo Router toolchain and credential-free all-platform exports.
 - **10.2:** versioned `@calypsos-promise/game-content` package containing public synthetic content only.
 - **10.3:** no-account arrival, island map, Hearth narrative route, direct-information route, and fail-closed fallback navigation.
+- **10.4:** generic package-driven zone and scene renderer, dialogue choices, quest card, Wayfinder Orb, and deterministic synthetic interaction.
 
-The application does not yet implement the generic scene, dialogue, quest, state, offline, authentication, release, or production-authority work assigned to later Sprint 10 workstreams.
+The application does not yet implement the durable state, offline persistence, authentication boundary, accessibility certification, release, or production-authority work assigned to later Sprint 10 workstreams.
 
 ## Route contract
 
-| Route          | Purpose                                   |
-| -------------- | ----------------------------------------- |
-| `/`            | no-account public synthetic arrival       |
-| `/map`         | island map and availability orientation   |
-| `/hearth`      | pre-authored narrative presentation       |
-| `/direct`      | direct essential-information presentation |
-| `/unavailable` | planned/inactive destination explanation  |
-| `+not-found`   | unknown-route fail-closed return          |
+| Route          | Purpose                                                    |
+| -------------- | ---------------------------------------------------------- |
+| `/`            | no-account public synthetic arrival                        |
+| `/map`         | island map and availability orientation                    |
+| `/hearth`      | pre-authored narrative preview                             |
+| `/direct`      | direct essential-information preview                       |
+| `/play`        | generic zone, scene, dialogue, quest, and Wayfinder render |
+| `/unavailable` | planned/inactive destination explanation                   |
+| `+not-found`   | unknown-route fail-closed return                           |
 
-Navigation is temporary presentation state. It creates no account, Chronicle record, permission, profile, analytics event, durable progress, reward, health claim, or Longitudinal Intelligence result.
+Navigation and interaction are temporary presentation state. They create no account, Chronicle record, permission, profile, analytics event, durable progress, reward, health claim, or Longitudinal Intelligence result.
+
+## Presentation contract
+
+The `/play` route consumes the same versioned public synthetic package on browser, iOS, and Android.
+
+It provides:
+
+- zone and scene presentation from stable package identifiers;
+- pre-authored dialogue and plain-language alternatives;
+- every declared continue, defer, refuse, and exit choice;
+- deterministic choice resolution without time, randomness, network, or provider state;
+- a synthetic quest card that explicitly lacks completion and reward authority;
+- a Wayfinder Orb that navigates presentation only; and
+- fail-closed behavior for missing or mismatched package content.
+
+The renderer may identify which public content revision and scene were shown in the current React-memory session. It cannot establish personal truth, permission, authentic preference, canonical completion, durable progress, or a health result.
 
 ## Pinned compatibility
 
@@ -50,10 +68,11 @@ pnpm game:validate
 pnpm game:web
 ```
 
-Focused shell validation:
+Focused validation:
 
 ```bash
 pnpm --filter @calypsos-promise/game validate:shell
+pnpm --filter @calypsos-promise/game validate:presentation
 ```
 
 Platform entry points:
@@ -76,4 +95,4 @@ The all-platform export checks JavaScript and asset bundling for iOS, Android, a
 
 No environment variables, credentials, persistence, authentication, analytics, telemetry provider, model provider, private Chronicle data, House of Keys runtime, durable progression, or production Aster integration are required or permitted.
 
-Run `pnpm --filter @calypsos-promise/game validate:toolchain` and `pnpm --filter @calypsos-promise/game validate:shell` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
+Run `validate:toolchain`, `validate:shell`, and `validate:presentation` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.

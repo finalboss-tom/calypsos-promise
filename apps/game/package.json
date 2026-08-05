@@ -17,9 +17,10 @@
     "build:ios": "expo export --platform ios --output-dir dist/ios",
     "build:web": "expo export --platform web --output-dir dist/web",
     "clean": "node scripts/clean-generated.mjs",
-    "lint": "node scripts/validate-toolchain.mjs && node scripts/validate-shell.mjs",
+    "lint": "node scripts/validate-toolchain.mjs && node scripts/validate-shell.mjs && node scripts/validate-presentation.mjs",
     "test": "node --test test/*.test.mjs",
     "typecheck": "tsc --noEmit",
+    "validate:presentation": "node scripts/validate-presentation.mjs",
     "validate:shell": "node scripts/validate-shell.mjs",
     "validate:toolchain": "node scripts/validate-toolchain.mjs"
   },

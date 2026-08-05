@@ -36,7 +36,7 @@ export default function HearthScreen() {
     <ShellPage
       eyebrow="THE HEARTH · NARRATIVE PATH"
       title="A warm place to begin, with every exit still visible."
-      intro="This route presents bundled story framing only. A generic scene engine, quest execution, and durable state remain outside 10.3."
+      intro="This route previews the bundled narrative. Sprint 10.4 also provides a generic package-driven scene, dialogue, quest, and Wayfinder presentation route."
       tone="dark"
       aside={
         <BoundaryNotice tone="dark">
@@ -64,9 +64,18 @@ export default function HearthScreen() {
 
       <View style={styles.actions}>
         <ActionLink
+          href={{
+            pathname: "/play",
+            params: { scene: "scene.hearth.welcome.synthetic" },
+          }}
+          label="Open the interactive scene presentation"
+          description="Use the generic zone, dialogue-choice, quest-card, and Wayfinder renderer."
+        />
+        <ActionLink
           href="/map"
           label="Open the island map"
           description="Continue through presentation-only shell navigation."
+          variant="secondary"
         />
         <ActionLink
           href="/direct"
