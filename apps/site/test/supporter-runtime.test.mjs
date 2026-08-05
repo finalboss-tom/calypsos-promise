@@ -6,9 +6,14 @@ import {
   contactLookupHmac,
   decryptValue,
   encryptValue,
+  hashPromiseText,
   hashVerificationToken,
   normalizeEmail,
 } from "../src/lib/supporters/crypto.ts";
+import {
+  readBoundedJson,
+  supporterRequestBodyLimit,
+} from "../src/lib/supporters/request.ts";
 
 const siteRoot = resolve(import.meta.dirname, "..");
 const read = (path) => readFileSync(resolve(siteRoot, path), "utf8");
@@ -25,7 +30,7 @@ test("supporter contact encryption round trips and lookup is normalized", () => 
   assert.equal(normalizeEmail(" Person@Example.org "), "person@example.org");
 });
 
-test("verification lookup is peppered and deterministic", () => {
+test("verification lookup is HMAC-peppered and deterministic", () => {
   const pepper = Buffer.alloc(32, 3);
   assert.deepEqual(
     hashVerificationToken("token-value", pepper),
@@ -35,6 +40,35 @@ test("verification lookup is peppered and deterministic", () => {
     hashVerificationToken("token-value", pepper),
     hashVerificationToken("different-token", pepper),
   );
+  assert.throws(
+    () => hashVerificationToken("token-value", Buffer.alloc(31)),
+    /must be 32 bytes/,
+  );
+});
+
+test("Promise content hashing is stable", () => {
+  assert.equal(
+    hashPromiseText("abc"),
+    "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+  );
+});
+
+test("JSON request bodies are bounded while streaming", async () => {
+  const valid = new Request("https://example.test/api/supporters/start", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "person@example.org" }),
+  });
+  assert.deepEqual(await readBoundedJson(valid), {
+    email: "person@example.org",
+  });
+
+  const oversized = new Request("https://example.test/api/supporters/start", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ value: "x".repeat(supporterRequestBodyLimit) }),
+  });
+  await assert.rejects(readBoundedJson(oversized), /BODY_TOO_LARGE/);
 });
 
 test("supporter module is disabled by default and uses scoped credentials", () => {
@@ -53,6 +87,7 @@ test("supporter module is disabled by default and uses scoped credentials", () =
   assert.doesNotMatch(database, /SUPPORTER_DATABASE_URL/);
   assert.match(database, /Neon-Connection-String/);
   assert.ok(database.includes('replace(/^[^.]+\\./, "api.")'));
+  assert.match(database, /Published Promise content failed its integrity check/);
   assert.match(email, /https:\/\/api\.resend\.com\/emails/);
 });
 

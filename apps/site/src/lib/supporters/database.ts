@@ -1,3 +1,4 @@
+import { hashPromiseText } from "./crypto";
 import { getSupporterReadConfig } from "./config";
 
 type NeonField = Readonly<{ name: string; dataTypeID: number }>;
@@ -124,7 +125,17 @@ export async function getPublishedPromise(
     "SELECT * FROM supporter_private.get_published_promise($1::uuid)",
     [id],
   );
-  return rows[0];
+  const promise = rows[0];
+  if (!promise) return undefined;
+
+  const storedHash = promise.content_hash.toLowerCase();
+  if (
+    !/^[a-f0-9]{64}$/.test(storedHash) ||
+    hashPromiseText(promise.canonical_text) !== storedHash
+  ) {
+    throw new Error("Published Promise content failed its integrity check");
+  }
+  return promise;
 }
 
 export async function getMovementTotals(): Promise<MovementTotals> {

@@ -67,5 +67,12 @@ export function createVerificationToken(): string {
 }
 
 export function hashVerificationToken(token: string, pepper: Buffer): Buffer {
-  return createHash("sha256").update(pepper).update(token, "utf8").digest();
+  if (pepper.length !== 32) {
+    throw new Error("Verification token pepper must be 32 bytes");
+  }
+  return createHmac("sha256", pepper).update(token, "utf8").digest();
+}
+
+export function hashPromiseText(canonicalText: string): string {
+  return createHash("sha256").update(canonicalText, "utf8").digest("hex");
 }

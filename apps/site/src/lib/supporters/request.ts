@@ -18,10 +18,26 @@ export async function readBoundedJson(
   if (Number.isFinite(declared) && declared > supporterRequestBodyLimit) {
     throw new Error("BODY_TOO_LARGE");
   }
-  const raw = await request.text();
-  if (new TextEncoder().encode(raw).byteLength > supporterRequestBodyLimit) {
-    throw new Error("BODY_TOO_LARGE");
+
+  if (!request.body) throw new Error("EMPTY_BODY");
+
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder("utf-8", { fatal: true });
+  let byteLength = 0;
+  let raw = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    byteLength += value.byteLength;
+    if (byteLength > supporterRequestBodyLimit) {
+      await reader.cancel("BODY_TOO_LARGE");
+      throw new Error("BODY_TOO_LARGE");
+    }
+    raw += decoder.decode(value, { stream: true });
   }
+  raw += decoder.decode();
+
   const value: unknown = JSON.parse(raw);
   return typeof value === "object" && value !== null
     ? (value as Record<string, unknown>)
