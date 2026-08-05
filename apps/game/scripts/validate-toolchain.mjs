@@ -25,6 +25,9 @@ function listFiles(directory) {
 }
 
 const gamePackage = readJson(join(gameRoot, "package.json"));
+const gameContentPackage = readJson(
+  join(repositoryRoot, "packages/game-content/package.json"),
+);
 const appConfig = readJson(join(gameRoot, "app.json"));
 const rootPackage = readJson(join(repositoryRoot, "package.json"));
 const sitePackage = readJson(join(repositoryRoot, "apps/site/package.json"));
@@ -48,6 +51,7 @@ assert.match(npmrc, /^engine-strict=true$/m);
 assert.match(npmrc, /^save-exact=true$/m);
 assert.match(npmrc, /^strict-peer-dependencies=true$/m);
 assert.match(workspace, /^\s*- apps\/\*$/m);
+assert.match(workspace, /^\s*- packages\/\*$/m);
 
 const expectedDependencies = {
   expo: TOOLCHAIN.expo,
@@ -67,12 +71,35 @@ for (const [name, version] of Object.entries(expectedDependencies)) {
   );
 }
 assert.equal(gamePackage.devDependencies.typescript, TOOLCHAIN.typescript);
+assert.equal(
+  gamePackage.dependencies["@calypsos-promise/game-content"],
+  "workspace:*",
+  "the universal game must consume the earned workspace content package",
+);
+assert.equal(gameContentPackage.name, "@calypsos-promise/game-content");
+assert.match(
+  gameContentPackage.version,
+  /^\d+\.\d+\.\d+$/,
+  "the game-content package must publish an exact package version",
+);
 
 for (const [name, version] of Object.entries({
   ...gamePackage.dependencies,
   ...gamePackage.devDependencies,
 })) {
-  assert.match(version, /^\d+\.\d+\.\d+$/, `${name} must use an exact version`);
+  if (name.startsWith("@calypsos-promise/")) {
+    assert.equal(
+      version,
+      "workspace:*",
+      `${name} must resolve through the repository workspace`,
+    );
+  } else {
+    assert.match(
+      version,
+      /^\d+\.\d+\.\d+$/,
+      `${name} must use an exact version`,
+    );
+  }
 }
 
 assert.deepEqual(appConfig.expo.platforms, PLATFORMS);
@@ -111,7 +138,7 @@ for (const forbiddenPath of ["android", "ios", "eas.json"]) {
   assert.equal(
     entries.has(forbiddenPath),
     false,
-    `${forbiddenPath} is outside Sprint 10.1`,
+    `${forbiddenPath} is outside the current Sprint 10 boundary`,
   );
 }
 
@@ -128,13 +155,16 @@ assert.equal(sitePackage.name, "@calypsos-promise/site");
 assert.equal(sitePackage.scripts.dev, "next dev");
 assert.equal(sitePackage.scripts.build, "next build");
 
-console.log("Sprint 10.1 toolchain contract validated:");
+console.log("Sprint 10 application toolchain contract validated:");
 console.log(`- Expo ${TOOLCHAIN.expo} / Expo Router ${TOOLCHAIN.expoRouter}`);
 console.log(
   `- React Native ${TOOLCHAIN.reactNative} / React ${TOOLCHAIN.react}`,
 );
 console.log(`- Node ${TOOLCHAIN.nodeRepository} / ${TOOLCHAIN.packageManager}`);
 console.log(`- platforms: ${PLATFORMS.join(", ")}`);
+console.log(
+  `- game content: ${gameContentPackage.version} through the local workspace`,
+);
 console.log(
   "- apps/site ownership preserved; no credentials or provider SDKs introduced",
 );
