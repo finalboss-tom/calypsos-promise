@@ -1,8 +1,11 @@
 # Post-Sprint 9 Repository and Production Reconciliation
 
-[Current status](current-status.md) · [Sprint 9 completion record](sprint-9-completion-record.md) · [Sprint 9 release, rollback, and Sprint 10 handoff](sprint-9-release-rollback-and-sprint-10-handoff.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Current status](current-status.md) · [Sprint 9 completion record](sprint-9-completion-record.md) · [Sprint 9 release, rollback, and Sprint 10 handoff](sprint-9-release-rollback-and-sprint-10-handoff.md) · [Sprint sequence](sprints.md) · [Issue #71](https://github.com/finalboss-tom/calypsos-promise/issues/71) · [Draft PR #72](https://github.com/finalboss-tom/calypsos-promise/pull/72)
 
-- **Status:** ACTIVE — repository and production reconciliation after accepted Sprint 9 release
+- **Status:** ACTIVE — implementation candidate under repository validation
+- **Tracking issue:** [#71](https://github.com/finalboss-tom/calypsos-promise/issues/71)
+- **Draft pull request:** [#72](https://github.com/finalboss-tom/calypsos-promise/pull/72)
+- **Branch:** `agent/post-sprint-9-reconciliation-and-sprint-10-prep`
 - **Entry repository baseline:** `main` at `54aa3f43462a0daef2173481aca4e1aef38d3f41`
 - **Accepted Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`
 - **Accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374
@@ -15,11 +18,9 @@
 
 Reconcile the repository, production site, release evidence, status surfaces, open holdpoints, and next-sprint entry state after Sprint 9 was explicitly accepted, squash merged, manually deployed, corrected, and verified.
 
-This work does not reopen the accepted Sprint 9 implementation package. It distinguishes immutable historical evidence from canonical present-tense status and repairs only the records intended to describe the current repository or production state.
+This work does not reopen the accepted Sprint 9 implementation package. It distinguishes immutable historical evidence from canonical present-tense status and repairs only records intended to describe the current repository or production state.
 
 ## Accepted release chain
-
-The accepted release sequence is:
 
 1. Sprint 9 implementation candidate `f976987fbac6dd0e448ac2c10dfbb63025f018cc` passed CI 1288 and DCO 1374.
 2. The founding steward explicitly accepted the bounded Sprint 9 package.
@@ -76,30 +77,38 @@ The following remain immutable time-specific evidence and may continue to descri
 - PR #68’s pre-merge description; and
 - issue comments tied to exact historical candidates.
 
-Current status, repository indexes, roadmap orientation, application documentation, and the persistent roadmap issue supersede those time-sensitive statements without rewriting history.
+Current status, repository indexes, roadmap orientation, application documentation, and accepted post-merge reconciliation records supersede those time-sensitive statements without rewriting history.
 
-## Repository reconciliation scope
+## Repository findings
 
-The reconciliation must verify and, where needed, repair:
+The initial audit found material present-tense drift in:
 
-- root and documentation entry points;
-- roadmap and architecture indexes;
-- current status and sprint sequence;
-- application and deployment documentation;
-- persistent roadmap issue #2;
-- Sprint 9 issue and PR closure links;
-- production deployment and restored-lock provenance;
-- current capability labels and non-authority boundaries;
-- protected-preview disposition;
-- newsletter separation;
-- open specialist, Phase 0, and institutional gates; and
-- the exact pre-Sprint 10 entry boundary.
+- the root README;
+- the documentation index;
+- the roadmap index;
+- the architecture index;
+- `apps/site/README.md`;
+- the site deployment record;
+- persistent roadmap issue #2; and
+- newsletter gate issue #63.
+
+Those surfaces described Sprint 9 as planned or active, the prologue as absent from production, or the newsletter as paused even though later accepted evidence superseded those statements.
+
+The reconciliation candidate updates current-facing records while preserving historical Sprint 8 and Sprint 9 evidence unchanged.
 
 ## Aster maintainability trigger
 
 Issue #50 remains open and inactive.
 
-Sprint 9 presents deterministic Aster framing but does not import or consume the `@calypsos-promise/aster` package public surface. The issue’s activation trigger therefore has not been met by package-consumer evidence. A later universal shell or private vertical slice may activate it when an actual package consumer identifies concrete friction.
+Sprint 9 presents deterministic Aster framing but does not import or consume the `@calypsos-promise/aster` package public surface. The issue’s activation trigger has not been met by package-consumer evidence. A later universal shell or private vertical slice may activate it when an actual package consumer identifies concrete friction.
+
+## Newsletter reconciliation
+
+The newsletter remains a separate narrow Phase 0 contact surface.
+
+Issue #63 must describe the deployed preserve-and-activate state rather than the historical paused state, while remaining open until final founding-steward acceptance and any unresolved privacy, security, communications, deletion, unsubscribe, incident, and operations limitations are explicitly disposed.
+
+The newsletter cannot become prologue identity, consent, state, completion, progression, research enrollment, provider intake, payment, or Chronicle data.
 
 ## Sprint 10 entry assessment
 
@@ -122,7 +131,7 @@ Sprint 10 implementation remains blocked until a dedicated alignment review reso
 - keyboard, screen-reader, touch, switch, reduced-motion, reduced-data, zoom, reflow, and low-bandwidth paths;
 - cross-platform performance and release evidence;
 - content, design-token, and accessibility ownership;
-- preview, distribution, signing, store, rollback, and incident boundaries; and
+- preview, distribution, signing, store, rollback, monitoring, and incident boundaries; and
 - explicit non-scope for private Chronicles, production Aster, House of Keys, real health capture, providers, connectors, analytics, payments, and research.
 
 ## Remaining gates
@@ -145,18 +154,20 @@ This reconciliation does not close:
 
 ## Acceptance criteria
 
-- [ ] Repository and production provenance agree on the accepted Sprint 9 result.
-- [ ] Current-facing status and navigation surfaces no longer describe Sprint 9 as active, draft, unmerged, or absent from production.
-- [ ] Historical records remain preserved as time-specific evidence.
-- [ ] `/prologue` remains production hosted, noindex, unlinked, synthetic, no-account, memory-only, and non-authoritative.
-- [ ] Canonical domains, deployment identity, route behavior, headers, indexing, and runtime-error state are recorded.
-- [ ] Git-triggered deployment remains disabled for every branch.
-- [ ] The protected preview has an explicit disposition.
-- [ ] Newsletter, provider, funding, identity, Chronicle, permission, Aster, analytics, research, and payment boundaries remain separate.
-- [ ] Issue #50 activation status is decided from actual package-consumer evidence.
-- [ ] Sprint 10 remains planned and blocked behind a dedicated alignment review.
-- [ ] All open specialist, institutional, and Phase 0 gates remain visible.
-- [ ] Repository validation passes on the exact reconciliation candidate.
+- [x] Repository and production provenance agree on the accepted Sprint 9 result.
+- [x] Production deployment identity, canonical aliases, route behavior, headers, indexing, and runtime-error state are recorded.
+- [x] Git-triggered deployment remains disabled for every branch.
+- [x] The protected preview has an explicit disposition.
+- [x] Historical records remain preserved as time-specific evidence.
+- [x] Current-facing root, documentation, roadmap, architecture, application, and deployment surfaces are reconciled in the branch candidate.
+- [x] `/prologue` remains production hosted, noindex, unlinked, synthetic, no-account, memory-only, and non-authoritative.
+- [x] Newsletter, provider, funding, identity, Chronicle, permission, Aster, analytics, research, and payment boundaries remain separate.
+- [x] Issue #50 activation status is decided from actual package-consumer evidence.
+- [x] Sprint 10 remains planned and blocked behind a dedicated alignment review.
+- [x] All open specialist, institutional, and Phase 0 gates remain visible.
+- [ ] Persistent roadmap issue #2 and newsletter issue #63 are reconciled.
+- [ ] Permanent drift validation passes.
+- [ ] Full repository CI and DCO pass on the exact reconciliation candidate.
 
 ## Completion rule
 

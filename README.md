@@ -1,71 +1,49 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Post-Sprint 8 reconciliation](docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md) · [Sprint 8 completion](docs/roadmap/sprint-8-completion-record.md) · [Sprint 9 alignment](https://github.com/finalboss-tom/calypsos-promise/issues/64) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Post-Sprint 9 reconciliation](docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md) · [Sprint 9 completion](docs/roadmap/sprint-9-completion-record.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
-**Build your Living Chronicle. Improve your health. Keep the key.**
+> **Build your Living Chronicle. Improve your health. Keep the key.**
 
-Calypso’s Promise is an open-source, narrative-driven health platform intended to help people build, understand, improve, and control a longitudinal record of their lives. Ogygia turns brief health actions, data capture, learning, and reflection into quests while keeping private health data separate from the open-source codebase.
+Calypso’s Promise is an open-source, narrative-driven health platform intended to help people build, understand, improve, and control a longitudinal account of their health and lived experience. Ogygia turns brief capture, learning, reflection, sovereignty, and constructive action into play while keeping private health data separate from the public codebase.
 
 ## Start here
 
-- **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Public Promise page](apps/site/src/app/promise/page.tsx) → [Seven Laws](apps/site/src/app/laws/page.tsx) → [Vision](VISION.md)
-- **See the current state:** [Current Project Status](docs/roadmap/current-status.md) → [Post-Sprint 8 Reconciliation](docs/roadmap/post-sprint-8-reconciliation-and-sprint-9-preparation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
-- **Prepare Sprint 9:** [Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64) → [Sprint 8 Release and Handoff](docs/roadmap/sprint-8-release-rollback-and-sprint-9-handoff.md)
-- **Inspect the live site boundary:** [Public Website Foundation](docs/architecture/public-website-foundation-and-migration.md) → [`apps/site`](apps/site)
-- **Review merged Forge:** [Sprint 7 Completion](docs/roadmap/sprint-7-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/forge-sprint-7-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/forge-sprint-7-specialist-holdpoint-and-unresolved-work-register.md)
-- **Review merged Aster:** [Sprint 6 Completion](docs/roadmap/sprint-6-completion-record.md) → [Aster Contract Baseline](docs/product/aster-contract-baseline.md)
-- **Apply core decisions:** [Operational Simplicity](docs/decisions/0011-operational-simplicity-and-durable-workflows.md) · [Consumer-First Boundary](docs/decisions/0010-consumer-first-provider-independent-boundary.md) · [Funding Baseline](docs/economics/README.md)
+- **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Gameplay Foundation](docs/product/gameplay-foundation.md)
+- **See current truth:** [Current Project Status](docs/roadmap/current-status.md) → [Post-Sprint 9 Reconciliation](docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Inspect Sprint 9 evidence:** [Completion Record](docs/roadmap/sprint-9-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/public-synthetic-prologue-sprint-9-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md)
+- **Inspect the live application boundary:** [`apps/site`](apps/site) → [Deployment Policy](apps/site/DEPLOYMENT.md)
 - **Build safely:** [Contributing](CONTRIBUTING.md) → [Module Boundaries](docs/architecture/module-boundaries.md) → [Development Policy](docs/policies/development.md) → [Security](SECURITY.md)
 
 ## Project status
 
 Calypso’s Promise remains in **institutional Phase 0 — Constitutional and open-source foundations** until an explicit phase-exit review is accepted.
 
-**Sprints 0–8 are accepted and merged.** Sprint 8 was squash merged through PR #61 as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a` and closed through issue #60.
+**Sprints 0–9 are accepted and merged.** Sprint 9 was squash merged through PR #68 as `b22c32ad8f40610dc95a5b49a745da5adb9c1341` and closed through issue #67.
 
-The accepted Next.js public gateway is live on the canonical domains through production deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`. Git-triggered Vercel deployment was restored to disabled through `a5146237356f58e8d28343e90918b70a418bccbb`, so ordinary repository commits do not automatically create releases.
+The canonical domains serve production deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6`. Git-triggered Vercel deployment remains disabled for every branch, so repository commits and production releases remain separate attributable actions.
 
-Current work is:
+Current governed work is:
 
-- post-Sprint 8 repository and public-copy reconciliation;
-- Phase 0 newsletter preserve-and-activate gate [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63); and
-- pre-Sprint 9 public synthetic prologue alignment gate [#64](https://github.com/finalboss-tom/calypsos-promise/issues/64).
+- post-Sprint 9 repository and production reconciliation under [issue #71](https://github.com/finalboss-tom/calypsos-promise/issues/71) and [draft PR #72](https://github.com/finalboss-tom/calypsos-promise/pull/72);
+- the separate Phase 0 newsletter gate [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63); and
+- preparation for a dedicated pre-Sprint 10 alignment review.
 
-Sprint 9 implementation has **not** started.
+Sprint 10 implementation has **not** started.
 
 ## Live public site
 
-[`apps/site`](apps/site) provides:
+[`apps/site`](apps/site) owns the live Next.js public website. It provides:
 
-- a cinematic server-rendered homepage;
-- The Promise, Seven Laws, How It Works, Consumer First, and Aster/AI explanations;
-- Trust Center and Open Forge explanations;
-- public roadmap, support, and canonical funding-transparency views;
-- direct and optional narrative navigation reaching the same essential destinations;
-- controlled evidence statuses and canonical source links;
-- metadata, sitemap, robots, not-found, error, nonce-CSP, security-header, and cache controls;
-- responsive, keyboard, focus, reduced-motion, reduced-data, contrast, forced-colors, and image-failure foundations; and
-- permanent source and isolated local production-preview validation with explicit transfer budgets.
+- the cinematic public gateway and source-backed Promise;
+- Seven Laws, How It Works, Consumer First, Aster, Trust Center, Open Forge, roadmap, support, funding, and privacy views;
+- a bounded Founding Expedition newsletter opt-in;
+- direct and optional narrative navigation reaching the same essential information;
+- metadata, sitemap, robots, error, security-header, accessibility, resilience, and transfer-budget controls; and
+- the production-hosted public synthetic prologue at `/prologue`.
 
-The live site does not activate accounts, private Chronicles, production Aster, private MCP, providers, connectors, clinical workflows, research enrollment, donations, payments, or production health-data operation.
+The prologue remains `noindex, nofollow`, absent from public navigation and the sitemap, public and explicitly synthetic, no-account, memory-only, and non-authoritative. It accepts no real health data, arbitrary text, microphone, provider, model, analytics, payment, research enrollment, permission, private Chronicle, or durable progression.
 
-## Phase 0 newsletter
-
-The founding steward selected **Path A — preserve and activate** for narrow project updates leading up to Phase 0 completion.
-
-The implementation reuses the existing private server webhook and Google Sheet connection. It accepts an email address plus explicit consent only and cannot create an account, game identity, Chronicle record, research enrollment, provider lead, donation, or advertising profile.
-
-Issue #63 remains open until the implementation is merged, deployed, tested end to end, reconciled with its limitations and rollback, and explicitly accepted. Real subscriber addresses, webhook URLs, credentials, and protected incident evidence never belong in this repository.
-
-## Sprint 9 boundary
-
-Sprint 9’s accepted goal is:
-
-> Let anyone understand the product through play before creating an account.
-
-Issue #64 must resolve application ownership, temporary synthetic data, deterministic state, Aster fallback, refusal and exit, accessibility, security, performance, publication, rollback, and completion evidence before implementation begins.
-
-Sprint 9 remains public and explicitly synthetic only. It cannot require an account, email, real health data, production model provider, institutional connection, payment, donation, or durable private progression.
+The live site does not activate production health-data operation, accounts, private Chronicles, production House of Keys, production Aster, private MCP, providers, connectors, clinical workflows, research, donations, or payments.
 
 ## Accepted and merged foundations
 
@@ -81,24 +59,23 @@ Sprint 9 remains public and explicitly synthetic only. It cannot require an acco
 - Sprint 6 — pre-stable provider-independent Aster contracts
 - Sprint 7 — bounded local public/synthetic Forge MCP
 - Sprint 8 — accepted and deployed public website foundation
+- Sprint 9 — accepted, merged, and production-hosted public synthetic prologue
 
-These foundations remain contract, policy, local implementation, public website, and public/synthetic evidence. They do not establish production health-data operation or independent certification.
+These foundations remain bounded contract, policy, implementation, public-site, and public/synthetic evidence. They do not establish production private-data capability or independent certification.
 
 ## Frozen foundations
 
-- Product thesis and player promise
 - First player: people—any human may begin
-- Ogygia world, Seven Laws, Seven Tides, Fourteen Lanterns, principal cast, and canonical zones
-- Illustrated, map-based narrative play rather than a conventional 3D game
 - Open code and synthetic fixtures; private production health data
 - AI proposes, the player confirms, and deterministic domain services validate and store
 - Structured records remain authoritative
-- MCP exposes selected bounded capabilities; it is not the product database or core protocol
-- Personal value before secondary use, deterministic incentives, meaningful refusal, and non-punitive return
+- Personal value before secondary use
+- Meaningful refusal and non-punitive return
+- Provider and sponsor replaceability
 - Progressive decentralization toward a self-sustaining, founder-independent institution
 
 ## Core rule
 
 > The software is open. The person’s health data is private.
 
-No contributor workflow, public demo, newsletter, test environment, website, model, MCP client, provider, sponsor, connector, or possible scientific value changes that rule.
+No contributor workflow, public demo, newsletter, test environment, website, model, MCP client, provider, sponsor, connector, deployment, or possible scientific value changes that rule.
