@@ -13,8 +13,7 @@ function decodeBase64(value: unknown, field: string): Buffer {
   }
   const decoded = Buffer.from(value, "base64");
   if (
-    decoded.toString("base64").replace(/=+$/u, "") !==
-    value.replace(/=+$/u, "")
+    decoded.toString("base64").replace(/=+$/u, "") !== value.replace(/=+$/u, "")
   ) {
     throw new Error(`Invalid encrypted ${field}`);
   }
@@ -27,7 +26,9 @@ export function deserializeEncryptedValue(
 ): EncryptedValue {
   let parsed: SerializedEncryptedValue;
   try {
-    parsed = JSON.parse(serialized.toString("utf8")) as SerializedEncryptedValue;
+    parsed = JSON.parse(
+      serialized.toString("utf8"),
+    ) as SerializedEncryptedValue;
   } catch {
     throw new Error("Encrypted value could not be parsed");
   }
