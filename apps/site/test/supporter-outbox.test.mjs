@@ -135,12 +135,16 @@ test("delivery observability stores no webhook recipient payload", () => {
   const migration = read(
     "supporters/database/migrations/0007_supporter_outbox_reliability.sql",
   );
-  const webhook = read(
-    "src/app/api/supporters/outbox/webhook/resend/route.ts",
-  );
+  const webhook = read("src/app/api/supporters/outbox/webhook/resend/route.ts");
   const eventTable = migration
-    .split("CREATE TABLE IF NOT EXISTS supporter_private.email_delivery_events", 2)[1]
-    ?.split("CREATE INDEX IF NOT EXISTS email_delivery_events_provider_message", 1)[0];
+    .split(
+      "CREATE TABLE IF NOT EXISTS supporter_private.email_delivery_events",
+      2,
+    )[1]
+    ?.split(
+      "CREATE INDEX IF NOT EXISTS email_delivery_events_provider_message",
+      1,
+    )[0];
 
   assert.ok(eventTable);
   assert.match(eventTable, /provider_message_id/);
