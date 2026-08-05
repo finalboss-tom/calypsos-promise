@@ -193,6 +193,35 @@ export function transitionSyntheticSession(state, event) {
           event.notice ??
           "The temporary synthetic session restarted from bundled content. No history was retained.",
       });
+    case "offline-restored": {
+      const restored = event.state;
+      if (
+        restored?.version !== SYNTHETIC_SESSION_STATE_VERSION ||
+        !SYNTHETIC_SESSION_STATUSES.includes(restored.status) ||
+        typeof restored.sceneId !== "string" ||
+        !Array.isArray(restored.presentedSceneIds) ||
+        restored.presentedSceneIds.some((id) => typeof id !== "string")
+      ) {
+        return nextState(state, {
+          status: "failed",
+          notice:
+            "Stored synthetic session state was invalid and failed closed. No completion, reward, permission, or progress was created.",
+          failureReason: "invalid-offline-state",
+        });
+      }
+
+      return Object.freeze({
+        ...createSyntheticSessionState(restored.sceneId),
+        revision: state.revision + 1,
+        status: restored.status,
+        sceneId: restored.sceneId,
+        presentedSceneIds: freezeList(restored.presentedSceneIds.slice(0, 32)),
+        notice:
+          event.notice ??
+          "Stored public/synthetic session state was restored explicitly. No authority transferred.",
+        authority: CLIENT_AUTHORITY_CEILING,
+      });
+    }
     default:
       return nextState(state, {
         status: "failed",

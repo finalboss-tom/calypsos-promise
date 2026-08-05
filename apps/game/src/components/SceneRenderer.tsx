@@ -2,6 +2,7 @@ import { useRouter } from "expo-router";
 import { useMemo, useReducer } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { clearStoredSyntheticSession } from "../offline/async-offline-storage";
 import {
   DIRECT_SCENE_ID,
   PRESENTATION_AUTHORITY,
@@ -19,6 +20,7 @@ import {
 } from "../state/synthetic-session-state.mjs";
 import { colors, radii, spacing } from "../theme";
 import { DialogueChoices } from "./DialogueChoices";
+import { OfflineResiliencePanel } from "./OfflineResiliencePanel";
 import { QuestCard } from "./QuestCard";
 import { StateAuthorityPanel } from "./StateAuthorityPanel";
 import { WayfinderOrb } from "./WayfinderOrb";
@@ -56,6 +58,7 @@ export function SceneRenderer({
   }
 
   function restart() {
+    void clearStoredSyntheticSession();
     dispatch({
       type: "restart",
       sceneId: WELCOME_SCENE_ID,
@@ -83,6 +86,7 @@ export function SceneRenderer({
     }
 
     if (outcome.kind === "exit") {
+      void clearStoredSyntheticSession();
       dispatch({ type: "discarded", notice: outcome.announcement });
       return;
     }
@@ -216,6 +220,18 @@ export function SceneRenderer({
         session={session}
         onDemonstrate={demonstrateState}
         onRestart={restart}
+      />
+
+      <OfflineResiliencePanel
+        session={session}
+        onRestore={(restoredState) =>
+          dispatch({
+            type: "offline-restored",
+            state: restoredState,
+            notice:
+              "Stored public/synthetic session state was restored explicitly. No authority transferred.",
+          })
+        }
       />
 
       <View style={styles.scene}>

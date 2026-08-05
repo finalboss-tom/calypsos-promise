@@ -9,8 +9,9 @@
 - **10.3:** no-account arrival, island map, Hearth narrative route, direct-information route, and fail-closed fallback navigation.
 - **10.4:** generic package-driven zone and scene renderer, dialogue choices, quest card, Wayfinder Orb, and deterministic synthetic interaction.
 - **10.5:** versioned synthetic session-state machine, explicit pending/failed/stale/corrected/superseded/conflict states, and executable denial of every client-authority claim.
+- **10.6:** bundled public-content fallback plus versioned, expiring, clearable, migratable temporary PUBLIC_SYNTHETIC storage with corruption, conflict, quota, and adapter-failure handling.
 
-The application does not yet implement offline persistence, authentication, accessibility certification, release, or production-authority work assigned to later Sprint 10 workstreams.
+The application implements only bounded offline storage for public packaged content and minimal temporary synthetic-session state. Authentication, accessibility certification, release, and production-authority work remain assigned to later Sprint 10 workstreams.
 
 ## Route contract
 
@@ -47,6 +48,19 @@ Every client claim for scene completion, quest completion, reward, restoration, 
 
 No transition uses device time, randomness, persistence, network state, provider output, analytics, hidden flags, or optimistic completion.
 
+## Offline and resilience contract
+
+The accepted public content package is bundled into browser, iOS, and Android output and remains the essential offline fallback. AsyncStorage `2.2.0` is an unencrypted replaceable adapter used only for:
+
+- an optional `PUBLIC_SYNTHETIC` public-content cache with a 30-day expiry; and
+- a minimal synthetic-session envelope with a 24-hour expiry.
+
+The session envelope stores only state version, temporary revision, bounded status, current bundled scene ID, and bundled scene IDs shown. It does not store notices, arbitrary UI input, authority objects, accounts, credentials, private Chronicle data, permission, health data, analytics, research, payment, or provider output.
+
+Expired, corrupt, stale, unsupported, oversized, or conflicting records fail closed. Low storage evicts the optional public cache once before falling back to memory-only session state. Public content remains available from the app bundle even if storage is cleared, unavailable, full, or replaced.
+
+Restore is explicit, restart and discard clear the stored session, and every restored state receives the same immutable client-authority ceiling.
+
 ## Presentation contract
 
 The `/play` route consumes the same versioned public synthetic package on browser, iOS, and Android.
@@ -73,6 +87,7 @@ The renderer may identify which public content revision and scene were shown in 
 | Package manager                | pnpm 10.13.1  |
 | Expo                           | 57.0.10       |
 | Expo Router                    | 57.0.10       |
+| AsyncStorage                   | 2.2.0         |
 | React Native                   | 0.86.2        |
 | React / React DOM              | 19.2.3        |
 | React Native Web               | 0.21.0        |
@@ -97,6 +112,7 @@ Focused validation:
 pnpm --filter @calypsos-promise/game validate:shell
 pnpm --filter @calypsos-promise/game validate:presentation
 pnpm --filter @calypsos-promise/game validate:state-authority
+pnpm --filter @calypsos-promise/game validate:offline-resilience
 ```
 
 Platform entry points:
@@ -117,6 +133,6 @@ The all-platform export checks JavaScript and asset bundling for iOS, Android, a
 
 ## Security and data boundary
 
-No environment variables, credentials, persistence, authentication, analytics, telemetry provider, model provider, private Chronicle data, House of Keys runtime, durable progression, or production Aster integration are required or permitted.
+No environment variables, credentials, authentication, analytics, telemetry provider, model provider, private Chronicle data, House of Keys runtime, durable progression, or production Aster integration are required or permitted. Persistence is limited to the versioned PUBLIC_SYNTHETIC records defined by the 10.6 offline contract.
 
-Run `validate:toolchain`, `validate:shell`, `validate:presentation`, and `validate:state-authority` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
+Run `validate:toolchain`, `validate:shell`, `validate:presentation`, `validate:state-authority`, and `validate:offline-resilience` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.

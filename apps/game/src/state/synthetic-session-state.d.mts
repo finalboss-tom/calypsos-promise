@@ -67,7 +67,12 @@ export type SyntheticSessionEvent =
   | { type: "deferred"; notice?: string }
   | { type: "refused"; notice?: string }
   | { type: "discarded"; notice?: string }
-  | { type: "restart"; sceneId: string; notice?: string };
+  | { type: "restart"; sceneId: string; notice?: string }
+  | {
+      type: "offline-restored";
+      state: SyntheticSessionState;
+      notice?: string;
+    };
 
 export const SYNTHETIC_SESSION_STATE_VERSION: "0.1.0";
 export const SYNTHETIC_SESSION_STATUSES: readonly SyntheticSessionStatus[];

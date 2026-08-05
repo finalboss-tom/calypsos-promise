@@ -107,5 +107,5 @@ console.log(
   "- direct and narrative package paths remain materially equivalent",
 );
 console.log(
-  "- no persistence, provider, analytics, reward, or authority expansion",
+  "- presentation remains provider-free and analytics-free; bounded 10.6 storage cannot create reward or authority",
 );

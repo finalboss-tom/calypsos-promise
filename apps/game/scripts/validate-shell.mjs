@@ -65,10 +65,26 @@ assert.match(direct, /ContentFallback/);
 assert.match(hearth, /Narrative presentation only/);
 assert.match(direct, /DIRECT INFORMATION PATH/);
 
+const offlineSourcePaths = listFiles(join(gameRoot, "src/offline"))
+  .map((path) => relative(gameRoot, path).replaceAll("\\", "/"))
+  .sort();
+assert.deepEqual(offlineSourcePaths, [
+  "src/offline/async-offline-storage.ts",
+  "src/offline/offline-resilience.d.mts",
+  "src/offline/offline-resilience.mjs",
+]);
+
 const appSources = [
   ...listFiles(join(gameRoot, "app")),
   ...listFiles(join(gameRoot, "src")),
-].filter((path) => /\.(?:ts|tsx|js|jsx|mjs)$/.test(path));
+]
+  .filter((path) => /\.(?:ts|tsx|js|jsx|mjs)$/.test(path))
+  .filter(
+    (path) =>
+      !relative(gameRoot, path)
+        .replaceAll("\\", "/")
+        .startsWith("src/offline/"),
+  );
 
 for (const sourcePath of appSources) {
   const source = read(sourcePath);
@@ -107,5 +123,5 @@ console.log(
 );
 console.log("- unavailable and unknown routes fail closed");
 console.log(
-  "- no persistence, network, provider, analytics, or authority expansion",
+  "- shell, routes, presentation, state, and components remain persistence-free; the exact Sprint 10.6 adapter is isolated under src/offline",
 );

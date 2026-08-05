@@ -1,4 +1,5 @@
 export const TOOLCHAIN = Object.freeze({
+  asyncStorage: "2.2.0",
   expo: "57.0.10",
   expoRouter: "57.0.10",
   nodeMinimum: "22.13.0",

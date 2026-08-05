@@ -145,5 +145,5 @@ console.log(
   "- every client completion, reward, permission, Chronicle, preference, health, and progress claim is denied",
 );
 console.log(
-  "- no persistence, clock, randomness, provider, analytics, or ambient authority is introduced",
+  "- the state reducer remains clock-free, random-free, provider-free, analytics-free, and isolated from the bounded 10.6 storage adapter",
 );

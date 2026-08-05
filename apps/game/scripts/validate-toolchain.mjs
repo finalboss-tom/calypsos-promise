@@ -54,6 +54,7 @@ assert.match(workspace, /^\s*- apps\/\*$/m);
 assert.match(workspace, /^\s*- packages\/\*$/m);
 
 const expectedDependencies = {
+  "@react-native-async-storage/async-storage": TOOLCHAIN.asyncStorage,
   expo: TOOLCHAIN.expo,
   "expo-router": TOOLCHAIN.expoRouter,
   react: TOOLCHAIN.react,
@@ -157,6 +158,9 @@ assert.equal(sitePackage.scripts.build, "next build");
 
 console.log("Sprint 10 application toolchain contract validated:");
 console.log(`- Expo ${TOOLCHAIN.expo} / Expo Router ${TOOLCHAIN.expoRouter}`);
+console.log(
+  `- AsyncStorage ${TOOLCHAIN.asyncStorage} for bounded PUBLIC_SYNTHETIC offline records`,
+);
 console.log(
   `- React Native ${TOOLCHAIN.reactNative} / React ${TOOLCHAIN.react}`,
 );
