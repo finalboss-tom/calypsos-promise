@@ -7,6 +7,7 @@ export const TOOLCHAIN = Object.freeze({
   react: "19.2.3",
   reactNative: "0.86.2",
   reactNativeWeb: "0.21.0",
+  reactNativeWorklets: "0.10.1",
   typescript: "6.0.3"
 });
 
