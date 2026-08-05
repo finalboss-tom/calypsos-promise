@@ -1,6 +1,6 @@
 # Sprint 10.4 — Scene, dialogue, and quest presentation
 
-**Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION  
+**Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10  
 **Parent:** Sprint 10 — universal game shell  
 **Tracker:** issue #80  
 **Implementation:** draft PR #79
@@ -50,9 +50,22 @@ Browser, iOS, and Android export the same renderer and package revision. Essenti
 
 Platform-specific interaction polish remains allowed later, but no platform may receive exclusive essential information, rights, choices, progress, reward, or account conversion.
 
-## Validation target
+## Validated checkpoint
 
-The exact 10.4 checkpoint will be recorded after frozen installation, presentation-contract validation, formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, tests, existing site release validation, browser/iOS/Android credential-free export, generated-state cleanup, CI, and DCO complete.
+Exact clean checkpoint: `5115690810c570111fca10e14070152f0cbb1404`
+
+- CI 1432: success
+- DCO 1530: success
+- frozen Node 24 / pnpm 10.13.1 installation: success
+- exact implementation archive integrity and focused presentation-contract validation: success
+- generic zone, scene, dialogue-choice, quest-card, and Wayfinder Orb tests: success
+- formatting, documentation, repository policy, Longitudinal Intelligence coherence, content validation, economics, lint, typecheck, and tests: success
+- existing production-site build and rendered prologue validation: success
+- browser, iOS, and Android credential-free Expo export: success
+- generated-state cleanup and no tracked build mutation: success
+- temporary implementation tooling: removed before final checkpoint validation
+
+This is maintainer implementation and CI evidence inside active Sprint 10. It is not independent accessibility, security, privacy, legal, affected-user, field, or device certification; deployment or distribution authorization; personal-data readiness; authority to begin Sprint 11; activation of LI-V1 through LI-V8; or institutional Phase 0 exit.
 
 ## Holdpoints preserved
 
