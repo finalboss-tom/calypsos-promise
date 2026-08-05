@@ -38,7 +38,7 @@ test("management is one-action, revision-bound, and email-controlled", () => {
   assert.match(migration, /get_supporter_management_state/);
   assert.match(migration, /apply_supporter_management/);
   assert.match(migration, /supporter\.revision <> p_expected_revision/);
-  assert.match(migration, /challenge\.consumed_at = p_now/);
+  assert.match(migration, /SET consumed_at = p_now/);
   assert.match(migration, /challenge\.purpose = 'manage_supporter'/);
   assert.match(apply, /expectedRevision/);
 });
