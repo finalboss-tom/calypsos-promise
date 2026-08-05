@@ -11,7 +11,7 @@ function escaped(phrase) {
   return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
 }
 
-test("keeps the prologue branch-only, noindex, and outside public navigation", async () => {
+test("keeps the production-hosted prologue noindex and outside public navigation", async () => {
   const [page, navigation, sitemap] = await Promise.all([
     read("../src/app/prologue/page.tsx"),
     read("../src/lib/navigation.ts"),
@@ -26,10 +26,10 @@ test("keeps the prologue branch-only, noindex, and outside public navigation", a
   assert.match(page, /canonical: "\/prologue"/);
   assert.match(page, /index: false/);
   assert.match(page, /follow: false/);
-  assert.match(page, /workstreams 9\.1–9\.9 are accepted/i);
-  assert.match(page, /9\.10 completion package is ready/i);
-  assert.match(page, /protected hosted-preview evidence/i);
-  assert.match(page, /not a production capability/i);
+  assert.match(page, /Sprint 9 is accepted, squash merged, and manually deployed/i);
+  assert.match(page, /production-hosted public synthetic prologue/i);
+  assert.match(page, /not an account/i);
+  assert.match(page, /health-data\s+capability/i);
   assert.doesNotMatch(navigation, /href: "\/prologue"/);
   assert.doesNotMatch(sitemap, /\/prologue/);
 });
