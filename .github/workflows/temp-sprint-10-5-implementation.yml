@@ -45,6 +45,7 @@ jobs:
           pnpm exec prettier --write
           apps/game
           docs/roadmap/sprint-10.5-state-and-authority-boundaries.md
+          tools/temp-sprint-10-5/README.md
 
       - name: Validate state and authority contract
         run: pnpm --filter @calypsos-promise/game validate:state-authority
