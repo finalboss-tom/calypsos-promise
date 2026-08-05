@@ -19,9 +19,10 @@ This implementation accepts the pre-Sprint 10 alignment review without expanding
 - React Native: 0.86.2
 - React and React DOM: 19.2.3
 - React Native Web: 0.21.0
+- React Native Worklets: 0.10.1
 - game-local TypeScript: 6.0.3
 
-The game package uses exact direct-dependency versions under the repository's `save-exact` and strict-peer-dependency policy. The repository's Node 24 baseline exceeds Expo SDK 57's Node 22.13 minimum.
+The game package uses exact direct-dependency versions under the repository's `save-exact` and strict-peer-dependency policy. The repository's Node 24 baseline exceeds Expo SDK 57's Node 22.13 minimum. React Native Worklets remains on the Expo-compatible 0.10 line rather than the incompatible 0.11 line selected by unconstrained peer auto-installation.
 
 ## Implemented boundary
 
