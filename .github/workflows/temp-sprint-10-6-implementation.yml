@@ -1,0 +1,72 @@
+name: Temporary Sprint 10.6 implementation
+
+on:
+  push:
+    branches:
+      - agent/sprint-10-1-application-toolchain
+    paths:
+      - .github/workflows/temp-sprint-10-6-implementation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  implement-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Sprint 10 branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-10-1-application-toolchain
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install frozen workspace
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply bounded Sprint 10.6 implementation
+        run: |
+          cat tools/temp-sprint-10-6/archive-*.b64 | tr -d '\n' | base64 --decode > /tmp/sprint-10-6.tar.gz
+          echo "a84485cbbc072c69e16974c02b2a8b6208a1fc1b9ee82609d8148ed50136f74b  /tmp/sprint-10-6.tar.gz" | sha256sum --check
+          tar -xzf /tmp/sprint-10-6.tar.gz
+          python tools/apply-sprint-10-6.py
+
+      - name: Reconcile exact dependency and lockfile
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Format Sprint 10.6 implementation
+        run: >-
+          pnpm exec prettier --write
+          apps/game
+          docs/roadmap/sprint-10.6-offline-resilience-behavior.md
+
+      - name: Validate offline and resilience contract
+        run: pnpm --filter @calypsos-promise/game validate:offline-resilience
+
+      - name: Run permanent repository validation
+        run: pnpm check
+
+      - name: Export browser, iOS, and Android bundles
+        run: pnpm --filter @calypsos-promise/game build
+
+      - name: Remove generated application state
+        run: pnpm --filter @calypsos-promise/game clean
+
+      - name: Commit validated implementation
+        run: |
+          git status --short
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/game docs/roadmap/sprint-10.6-offline-resilience-behavior.md pnpm-lock.yaml
+          git commit -s -m "feat: implement Sprint 10.6 offline resilience"
+          git push origin HEAD:agent/sprint-10-1-application-toolchain
