@@ -1,8 +1,9 @@
 # Sprint 10.1 — Application and toolchain foundation
 
-**Status:** IMPLEMENTED — PENDING FOUNDING-STEWARD ACCEPTANCE  
+**Status:** IMPLEMENTED AND VALIDATED — PENDING FOUNDING-STEWARD ACCEPTANCE  
 **Parent:** Sprint 10 — universal application shell  
-**Issue:** #75
+**Tracker:** issue #80  
+**Implementation:** PR #79
 
 ## Decision
 
@@ -33,17 +34,21 @@ The game package uses exact direct-dependency versions under the repository's `s
 5. No `ios/`, `android/`, `eas.json`, credentials, provider SDKs, analytics, authentication, private Chronicle data, or production deployment configuration are introduced.
 6. `apps/site` remains unchanged and retains its existing build and release validation.
 
-## Acceptance evidence
+## Validated evidence
 
-Required before acceptance:
+Validated implementation source: `4efcb0888f9038816dc504a59e0b59e937d9daed`
 
-- `pnpm install --frozen-lockfile`
-- `pnpm --filter @calypsos-promise/game validate:toolchain`
-- `pnpm --filter @calypsos-promise/game typecheck`
-- `pnpm --filter @calypsos-promise/game test`
-- `pnpm --filter @calypsos-promise/game build`
-- repository formatting, policy, lint, typecheck, and test checks
-- clean tracked state after generated artifacts are removed
+- CI 1354: success
+- DCO 1447: success
+- `pnpm install --frozen-lockfile`: success under Node 24 and pnpm 10.13.1
+- `pnpm --filter @calypsos-promise/game validate:toolchain`: success
+- `pnpm --filter @calypsos-promise/game typecheck`: success
+- `pnpm --filter @calypsos-promise/game test`: success
+- `pnpm --filter @calypsos-promise/game build`: browser, iOS, and Android exports succeeded without credentials
+- repository formatting, documentation, policy, economics, content, lint, typecheck, tests, and existing site release validation: success
+- generated-state cleanup and no tracked build mutation: success
+
+This evidence proves the named maintainer and CI implementation boundary only. It is not founding-steward acceptance, independent specialist review, deployment authorization, mobile distribution authorization, production readiness, or authority to begin Sprint 10.2.
 
 ## Holdpoints preserved
 
@@ -55,3 +60,7 @@ Sprint 10.1 does not authorize:
 - analytics, telemetry providers, model providers, production Aster integration, or durable progression
 - shared game content or shell behavior assigned to Sprint 10.2 and later
 - Longitudinal Intelligence stages beyond the already accepted LI-V0 baseline
+
+## Acceptance gate
+
+Workstream 10.1 remains unaccepted and unmerged until the founding steward explicitly accepts the validated candidate. Acceptance of 10.1 does not automatically authorize merge, deployment, indexing, public navigation, mobile distribution, workstream 10.2, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
