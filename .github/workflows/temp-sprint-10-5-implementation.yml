@@ -40,6 +40,20 @@ jobs:
           echo "cc8737b81a239f0349422ee34bdef128651b93ba88c2011cc106d77c4cbae14e  /tmp/sprint-10-5.tar.gz" | sha256sum --check
           tar -xzf /tmp/sprint-10-5.tar.gz
 
+      - name: Preserve existing presentation disclosure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("apps/game/src/components/SceneRenderer.tsx")
+          source = path.read_text()
+          expected = '"The temporary synthetic session restarted from bundled welcome content. No history was retained."'
+          replacement = '"Nothing has been recorded. The temporary synthetic session restarted from bundled welcome content, and no history was retained."'
+          if expected not in source:
+              raise SystemExit("expected SceneRenderer restart disclosure was not found")
+          path.write_text(source.replace(expected, replacement, 1))
+          PY
+
       - name: Format Sprint 10.5 implementation
         run: >-
           pnpm exec prettier --write
