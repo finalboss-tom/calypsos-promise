@@ -40,6 +40,19 @@ jobs:
           echo "ce6bd2f3a3f99db14e020c4b3756f666df819bd6378ee18104a1a227d25e4e4d  /tmp/sprint-10-4.tar.gz" | sha256sum --check
           tar -xzf /tmp/sprint-10-4.tar.gz
 
+      - name: Use supported Wayfinder accessibility role
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("apps/game/src/components/WayfinderOrb.tsx")
+          text = path.read_text()
+          old = 'accessibilityRole="navigation"'
+          if old not in text:
+              raise SystemExit("missing Wayfinder navigation role")
+          path.write_text(text.replace(old, 'accessibilityRole="toolbar"', 1))
+          PY
+
       - name: Format Sprint 10.4 implementation
         run: >-
           pnpm exec prettier --write
