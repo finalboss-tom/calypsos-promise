@@ -150,10 +150,7 @@ test("activation migration qualifies output-name collisions", () => {
     migration,
     /WHERE profile\.supporter_id = v_supporter\.supporter_id/,
   );
-  assert.match(
-    migration,
-    /ON CONFLICT ON CONSTRAINT supporter_profiles_pkey/,
-  );
+  assert.match(migration, /ON CONFLICT ON CONSTRAINT supporter_profiles_pkey/);
   assert.doesNotMatch(migration, /WHERE supporter_id =/);
   assert.doesNotMatch(migration, /WHERE signature_id =/);
 });
