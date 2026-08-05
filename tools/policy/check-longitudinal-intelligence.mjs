@@ -68,6 +68,8 @@ const sprintTenFourPath =
   "docs/roadmap/sprint-10.4-scene-dialogue-quest-presentation.md";
 const sprintTenFivePath =
   "docs/roadmap/sprint-10.5-state-and-authority-boundaries.md";
+const sprintTenSixPath =
+  "docs/roadmap/sprint-10.6-offline-resilience-behavior.md";
 const currentStatusPath = "docs/roadmap/current-status.md";
 
 const schema = await loadJson(schemaPath);
@@ -83,6 +85,7 @@ const sprintTenTwo = await loadText(sprintTenTwoPath);
 const sprintTenThree = await loadText(sprintTenThreePath);
 const sprintTenFour = await loadText(sprintTenFourPath);
 const sprintTenFive = await loadText(sprintTenFivePath);
+const sprintTenSix = await loadText(sprintTenSixPath);
 const currentStatus = await loadText(currentStatusPath);
 
 if (schema) {
@@ -354,15 +357,34 @@ for (const [path, content, required] of [
     ],
   ],
   [
+    sprintTenSixPath,
+    sprintTenSix,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "AsyncStorage",
+      "PUBLIC_SYNTHETIC",
+      "30 days",
+      "24 hours",
+      "corrupt",
+      "conflict",
+      "low-storage",
+      "Sprint 10.7",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
     currentStatusPath,
     currentStatus,
     [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
       "Sprint 10 is active through issue #80",
-      "Sprint 10.1 through Sprint 10.5 are complete as validated internal checkpoints",
+      "Sprint 10.1 through Sprint 10.6 are complete as validated internal checkpoints",
       "PR #79 remains draft for workstreams 10.1 through 10.10",
-      "Sprint 10.6 through Sprint 10.10",
+      "Sprint 10.7 through Sprint 10.10",
       "LI-V1 through LI-V8 remain inactive",
     ],
   ],
