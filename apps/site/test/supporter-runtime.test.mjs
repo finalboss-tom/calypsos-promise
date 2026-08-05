@@ -132,3 +132,28 @@ test("public supporter reads expose only consented projection fields", () => {
     /REVOKE EXECUTE ON FUNCTION supporter_private\.withdraw_supporter/,
   );
 });
+
+test("activation migration qualifies output-name collisions", () => {
+  const migration = read(
+    "supporters/database/migrations/0005_fix_activation_output_name_collision.sql",
+  );
+
+  assert.match(
+    migration,
+    /WHERE supporter\.supporter_id = v_challenge\.supporter_id/,
+  );
+  assert.match(
+    migration,
+    /WHERE signature\.signature_id = v_challenge\.signature_id/,
+  );
+  assert.match(
+    migration,
+    /WHERE profile\.supporter_id = v_supporter\.supporter_id/,
+  );
+  assert.match(
+    migration,
+    /ON CONFLICT ON CONSTRAINT supporter_profiles_pkey/,
+  );
+  assert.doesNotMatch(migration, /WHERE supporter_id =/);
+  assert.doesNotMatch(migration, /WHERE signature_id =/);
+});
