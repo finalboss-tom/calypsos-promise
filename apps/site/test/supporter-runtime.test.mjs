@@ -87,7 +87,10 @@ test("supporter module is disabled by default and uses scoped credentials", () =
   assert.doesNotMatch(database, /SUPPORTER_DATABASE_URL/);
   assert.match(database, /Neon-Connection-String/);
   assert.ok(database.includes('replace(/^[^.]+\\./, "api.")'));
-  assert.match(database, /Published Promise content failed its integrity check/);
+  assert.match(
+    database,
+    /Published Promise content failed its integrity check/,
+  );
   assert.match(email, /https:\/\/api\.resend\.com\/emails/);
 });
 
