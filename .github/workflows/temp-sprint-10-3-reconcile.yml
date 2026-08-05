@@ -68,7 +68,6 @@ jobs:
 
       - name: Commit reconciliation
         run: |
-          git diff --check
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/roadmap/sprint-10.3-universal-shell-and-navigation.md docs/roadmap/current-status.md tools/policy/check-longitudinal-intelligence.mjs
