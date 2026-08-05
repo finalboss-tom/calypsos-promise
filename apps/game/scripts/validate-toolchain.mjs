@@ -49,7 +49,8 @@ const expectedDependencies = {
   react: TOOLCHAIN.react,
   "react-dom": TOOLCHAIN.react,
   "react-native": TOOLCHAIN.reactNative,
-  "react-native-web": TOOLCHAIN.reactNativeWeb
+  "react-native-web": TOOLCHAIN.reactNativeWeb,
+  "react-native-worklets": TOOLCHAIN.reactNativeWorklets
 };
 
 for (const [name, version] of Object.entries(expectedDependencies)) {
