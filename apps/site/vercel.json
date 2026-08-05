@@ -2,9 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "git": {
-    "deploymentEnabled": {
-      "feat/supporter-movement": true,
-      "*": false
-    }
+    "deploymentEnabled": false
   }
 }
