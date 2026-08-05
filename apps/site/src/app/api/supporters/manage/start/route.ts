@@ -115,10 +115,7 @@ export async function POST(request: Request) {
         validated.value.email,
         config.contactLookupHmacKey,
       ),
-      tokenHash: hashVerificationToken(
-        token,
-        config.verificationTokenPepper,
-      ),
+      tokenHash: hashVerificationToken(token, config.verificationTokenPepper),
       encryptedToken,
       tokenEncryptionKeyVersion: config.outboxTokenEncryptionKeyVersion,
       expiresAt,
