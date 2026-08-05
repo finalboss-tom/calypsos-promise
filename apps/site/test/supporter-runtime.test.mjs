@@ -76,6 +76,7 @@ test("supporter module is disabled by default and uses scoped credentials", () =
   const config = read("src/lib/supporters/config.ts");
   const database = read("src/lib/supporters/database.ts");
   const email = read("src/lib/supporters/email.ts");
+  const provider = read("src/lib/supporters/resend-email.ts");
 
   assert.match(feature, /SUPPORTER_MOVEMENT_ENABLED.*=== "true"/s);
   assert.match(config, /SUPPORTER_RUNTIME_DATABASE_URL/);
@@ -91,7 +92,8 @@ test("supporter module is disabled by default and uses scoped credentials", () =
     database,
     /Published Promise content failed its integrity check/,
   );
-  assert.match(email, /https:\/\/api\.resend\.com\/emails/);
+  assert.match(email, /sendResendEmail/);
+  assert.match(provider, /https:\/\/api\.resend\.com\/emails/);
 });
 
 test("signature, adult, and public-listing consent remain separate", () => {
