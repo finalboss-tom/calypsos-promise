@@ -265,13 +265,15 @@ for (const [path, content, required] of [
     sprintTenOnePath,
     sprintTenOne,
     [
-      "IMPLEMENTED AND VALIDATED — PENDING FOUNDING-STEWARD ACCEPTANCE",
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
       "issue #80",
-      "PR #79",
+      "draft PR #79",
+      "single draft implementation pull request",
       "apps/game",
       "apps/site",
       "LI-V0",
       "Sprint 10.2",
+      "not a separate founding-steward acceptance or merge gate",
     ],
   ],
   [
@@ -281,8 +283,8 @@ for (const [path, content, required] of [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
       "Sprint 10 is active through issue #80",
-      "Sprint 10.1 validated implementation candidate",
-      "Sprint 10.2 through Sprint 10.10",
+      "Sprint 10.1 is complete as a validated internal checkpoint",
+      "PR #79 remains draft for workstreams 10.1 through 10.10",
       "LI-V1 through LI-V8 remain inactive",
     ],
   ],
@@ -302,5 +304,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10.1 boundary, roadmap status, and pre-Sprint 10 alignment are coherent.",
+  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10 execution boundary, roadmap status, and pre-Sprint 10 alignment are coherent.",
 );
