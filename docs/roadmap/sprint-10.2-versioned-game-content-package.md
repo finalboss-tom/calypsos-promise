@@ -1,6 +1,6 @@
 # Sprint 10.2 — Versioned game-content package
 
-**Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION  
+**Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10  
 **Parent:** Sprint 10 — universal game shell  
 **Tracker:** issue #80  
 **Implementation:** draft PR #79
@@ -50,9 +50,20 @@ Essential comprehension is available as text. No fixture requires audio, imagery
 
 Quest and scene states remain content-shaped presentation fixtures only. Their IDs, requirements, choices, rewards, and state labels cannot establish personal completion, Chronicle truth, permission, durable progress, health results, or Longitudinal Intelligence.
 
-## Validation target
+## Validated checkpoint
 
-The exact 10.2 checkpoint will be recorded after frozen installation, package validation, formatting, documentation, repository policy, content validation, economics, lint, typecheck, tests, existing site release validation, game toolchain validation, all-platform credential-free export, generated-state cleanup, CI, and DCO complete.
+Exact implementation source: `d207fcd42b2d781dd60ae5d752bb25f44970842c`
+
+- CI 1402: success
+- DCO 1498: success
+- frozen Node 24 / pnpm 10.13.1 installation: success
+- `@calypsos-promise/content-schema` and game-content package validation: success
+- formatting, documentation, repository policy, Longitudinal Intelligence coherence, economics, lint, typecheck, and tests: success
+- existing production-site build and rendered prologue validation: success
+- browser, iOS, and Android credential-free Expo export: success
+- generated-state cleanup and no tracked build mutation: success
+
+This is maintainer implementation and CI evidence inside active Sprint 10. It is not independent specialist certification, deployment or distribution authorization, personal-data readiness, authority to begin Sprint 11, activation of LI-V1 through LI-V8, or institutional Phase 0 exit.
 
 ## Holdpoints preserved
 

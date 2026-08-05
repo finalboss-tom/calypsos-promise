@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -12,9 +12,11 @@
 - **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
 - **Sprint 10 is authorized with named holdpoints and active through issue #80.**
-- **Sprint 10.1 is complete as a validated internal checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
+- **Sprint 10.1 and Sprint 10.2 are complete as validated internal checkpoints.**
+- **Sprint 10.1 checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
+- **Sprint 10.2 checkpoint:** `d207fcd42b2d781dd60ae5d752bb25f44970842c` — CI 1402 / DCO 1498.
 - **PR #79 remains draft for workstreams 10.1 through 10.10.**
-- **Sprint 10.2 through Sprint 10.10:** not started.
+- **Sprint 10.3 through Sprint 10.10:** not started.
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -166,7 +168,7 @@ The accepted direction establishes:
 - LI-V1 through LI-V8 remaining inactive; and
 - a bounded Sprint 10.1 through Sprint 10.10 implementation sequence.
 
-Sprint 10 is active through issue #80. PR #79 is the single draft implementation pull request for the entire sprint. Workstream 10.1 is complete as a validated internal checkpoint; no later workstream, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun.
+Sprint 10 is active through issue #80. PR #79 is the single draft implementation pull request for the entire sprint. Workstreams 10.1 and 10.2 are complete as validated internal checkpoints; no later workstream, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun.
 
 ## Sprint 10.1 validated checkpoint
 
@@ -180,6 +182,20 @@ Workstream 10.1 establishes the application and toolchain foundation only:
 - formatting, documentation, policy, content, economics, lint, typecheck, tests, site release validation, generated-state cleanup, and no-mutation checks pass.
 
 The latest fully validated checkpoint is `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` with CI 1367 and DCO 1465. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize deployment, mobile distribution, independent specialist certification, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.2 validated checkpoint
+
+Workstream 10.2 establishes the earned versioned public/synthetic content package only:
+
+- `packages/game-content` is a private workspace package and `apps/game` is its first real consumer;
+- package, API, accepted content-schema, locale, provenance, accessibility, compatibility, migration, and authority contracts are explicit;
+- nine `PUBLIC_SYNTHETIC` `en-US` fixtures cover one guide, one zone, three dialogues, two scenes, one quest-card fixture, and one authority-boundary lesson;
+- content and package validation fail closed on unsupported versions, broken internal references, missing accessibility alternatives, protected fields, or authority expansion;
+- unknown package versions restart temporary synthetic session state rather than preserving or converting it;
+- browser, iOS, and Android credential-free exports pass with no network or model-provider requirement; and
+- no shared UI package, private Chronicle content, identity, permission, analytics, provider, durable reward, personal progression, deployment, or LI-V1 through LI-V8 capability is introduced.
+
+The validated checkpoint is `d207fcd42b2d781dd60ae5d752bb25f44970842c` with CI 1402 and DCO 1498. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize rendering beyond later workstreams, deployment, mobile distribution, private capability, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
 
 ## Sprint 10 pull-request model
 
@@ -225,12 +241,12 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-LI-V0 is complete, Sprint 10 is active under issue #80, and Sprint 10.1 is complete as a validated internal checkpoint. PR #79 remains draft for workstreams 10.1 through 10.10.
+LI-V0 is complete, Sprint 10 is active under issue #80, and Sprint 10.1 and Sprint 10.2 are complete as validated internal checkpoints. PR #79 remains draft for workstreams 10.1 through 10.10.
 
-The next implementation step is Sprint 10.2 on the same branch and PR. No separate founding-steward acceptance or merge occurs for Sprint 10.1. Until the complete Sprint 10 package reaches workstream 10.10:
+The next implementation step is Sprint 10.3 on the same branch and PR. No separate founding-steward acceptance or merge occurs for Sprint 10.1 or Sprint 10.2. Until the complete Sprint 10 package reaches workstream 10.10:
 
 - PR #79 remains draft and unmerged;
-- Sprint 10.2 through Sprint 10.10 remain unstarted until entered in sequence;
+- Sprint 10.3 through Sprint 10.10 remain unstarted until entered in sequence;
 - LI-V1 through LI-V8 remain inactive;
 - no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized;
 - Sprint 11 remains unstarted; and
