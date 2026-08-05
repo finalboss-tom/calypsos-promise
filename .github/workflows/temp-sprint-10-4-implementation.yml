@@ -43,19 +43,7 @@ jobs:
       - name: Format Sprint 10.4 implementation
         run: >-
           pnpm exec prettier --write
-          apps/game/README.md
-          apps/game/package.json
-          apps/game/app/(shell)/direct.tsx
-          apps/game/app/(shell)/hearth.tsx
-          apps/game/app/(shell)/play.tsx
-          apps/game/src/components/DialogueChoices.tsx
-          apps/game/src/components/QuestCard.tsx
-          apps/game/src/components/SceneRenderer.tsx
-          apps/game/src/components/WayfinderOrb.tsx
-          apps/game/src/presentation/synthetic-presentation.ts
-          apps/game/scripts/presentation-contract.mjs
-          apps/game/scripts/validate-presentation.mjs
-          apps/game/test/presentation.test.mjs
+          apps/game
           docs/roadmap/sprint-10.4-scene-dialogue-quest-presentation.md
 
       - name: Validate presentation contract
