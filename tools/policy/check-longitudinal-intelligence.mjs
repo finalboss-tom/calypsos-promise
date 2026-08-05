@@ -58,6 +58,8 @@ const traceabilityPath =
 const holdpointPath =
   "docs/architecture/longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md";
 const alignmentPath = "docs/roadmap/pre-sprint-10-alignment-review.md";
+const sprintTenOnePath =
+  "docs/roadmap/sprint-10.1-application-toolchain-foundation.md";
 const currentStatusPath = "docs/roadmap/current-status.md";
 
 const schema = await loadJson(schemaPath);
@@ -68,6 +70,7 @@ const completion = await loadText(completionPath);
 const traceability = await loadText(traceabilityPath);
 const holdpoints = await loadText(holdpointPath);
 const alignment = await loadText(alignmentPath);
+const sprintTenOne = await loadText(sprintTenOnePath);
 const currentStatus = await loadText(currentStatusPath);
 
 if (schema) {
@@ -259,12 +262,28 @@ for (const [path, content, required] of [
     ],
   ],
   [
+    sprintTenOnePath,
+    sprintTenOne,
+    [
+      "IMPLEMENTED AND VALIDATED — PENDING FOUNDING-STEWARD ACCEPTANCE",
+      "issue #80",
+      "PR #79",
+      "apps/game",
+      "apps/site",
+      "LI-V0",
+      "Sprint 10.2",
+    ],
+  ],
+  [
     currentStatusPath,
     currentStatus,
     [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
-      "Sprint 10 remains authorized but implementation has not started",
+      "Sprint 10 is active through issue #80",
+      "Sprint 10.1 validated implementation candidate",
+      "Sprint 10.2 through Sprint 10.10",
+      "LI-V1 through LI-V8 remain inactive",
     ],
   ],
 ]) {
@@ -283,5 +302,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, roadmap status, and pre-Sprint 10 alignment are coherent.",
+  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10.1 boundary, roadmap status, and pre-Sprint 10 alignment are coherent.",
 );
