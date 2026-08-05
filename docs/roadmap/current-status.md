@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion candidate](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment candidate](pre-sprint-10-alignment-review.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -8,9 +8,11 @@
 - **Accepted and merged numbered sprints:** 0–9.
 - **Accepted post-Sprint 9 reconciliation:** PR #72 squash merged as `71ff5a3edfea4477f8142acea953cdd8ecfb1f15`.
 - **Accepted Longitudinal Intelligence baseline:** doctrine and staged validation merged through PR #74 as `6b89b1435d4bfc00ba93262fa197b69d8ea23fd7`.
-- **LI-V0 closure candidate:** implemented on `agent/li-v0-closure-and-pre-sprint-10-alignment` under issue #73; founding-steward acceptance remains pending.
-- **Pre-Sprint 10 alignment candidate:** implemented on the same branch under issue #75; recommended decision is `AUTHORIZED WITH NAMED HOLDPOINTS`, pending founding-steward acceptance.
+- **Accepted LI-V0 closure and pre-Sprint 10 alignment:** PR #76 squash merged as `ade349abb70ce698a376b41213d2d505036379fc` from validated head `f6ae85b1466d44e0b4db960c510bc19124894344` — CI 1317 / DCO 1397.
+- **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
+- **Sprint 10 is authorized with named holdpoints.**
+- **Sprint 10 remains authorized but implementation has not started.**
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -18,7 +20,6 @@
 - **Protected preview:** `dpl_DwkovAeCrLjWq2brifBxYXu2UJ7M` is retained as access-controlled historical evidence, not an active release channel.
 - **Release control:** Git-triggered deployment remains disabled for every branch.
 - **Newsletter:** remains a separate bounded Phase 0 contact surface; issue #63 remains open.
-- **Sprint 10 remains planned and not started.**
 - **Production health data, accounts, private Chronicles, production House of Keys, production Aster, providers, connectors, clinical workflows, research enrollment, analytics, payments, personal experiments, causal health conclusions, or consequential health actions:** none.
 - **Independent accessibility, affected-user, measurement-science, statistical, legal, privacy, security, clinical, device/browser, and field-performance evidence:** not established for Longitudinal Intelligence.
 - **Phase 0 exit review:** not completed.
@@ -49,9 +50,11 @@ The accepted doctrine establishes that:
 
 The doctrine is architecture and product authority only. It does not establish empirical personal value, qualified measurement, personal causal inference, production private-data processing, clinical behavior, or a production model or provider.
 
-## LI-V0 closure candidate
+## Accepted LI-V0 closure
 
-Issue #73 is represented by a bounded candidate package containing:
+LI-V0 is accepted and complete through issue #73 and PR #76.
+
+The accepted package includes:
 
 - the accepted doctrine and LI-V0 through LI-V8 staged plan;
 - LI-C0 through LI-C6 claim levels;
@@ -63,11 +66,11 @@ Issue #73 is represented by a bounded candidate package containing:
 - an LI-V0 completion record; and
 - Phase 0 and future sprint inheritance.
 
-The candidate recommends accepting LI-V0 as complete. Acceptance does not activate LI-V1, qualify a measure, authorize private data, create personal causal validity, close Phase 0, or start Sprint 10 by itself.
+The evidence kernel is an architecture and validation envelope. It does not create Chronicle truth, permission, qualified measurement, personal causal validity, clinical authority, private-data readiness, or production authorization.
 
 ## Longitudinal Intelligence stage status
 
-- **LI-V0 — doctrine and evidence-kernel consolidation:** closure candidate ready for review.
+- **LI-V0 — doctrine and evidence-kernel consolidation:** accepted and complete.
 - **LI-V1 — exact measurement qualification:** inactive.
 - **LI-V2 — descriptive Longitudinal Intelligence:** inactive.
 - **LI-V3 — synthetic protocol-family qualification:** inactive.
@@ -113,7 +116,7 @@ Live `/prologue` verification established:
 - accepted deployment-status language; and
 - no runtime error cluster during the recorded release verification window.
 
-The release used one-shot `main` deployment authorization and then restored `git.deploymentEnabled: false` for every branch. Merge, deployment, public navigation, indexing, accounts, private capability, Longitudinal Intelligence, and next-sprint authorization remain distinct decisions.
+The release used one-shot `main` deployment authorization and then restored `git.deploymentEnabled: false` for every branch. Merge, deployment, public navigation, indexing, accounts, private capability, Longitudinal Intelligence, and next-sprint implementation remain distinct decisions.
 
 ## Permanent authority boundaries
 
@@ -131,7 +134,7 @@ Aster changes presentation, not authority. It cannot confirm itself, create trut
 
 ### Longitudinal Intelligence
 
-The doctrine, validation plan, evidence kernel, synthetic fixture, and LI-V0 candidate create no production runtime. AI, models, scores, protocols, simulations, priors, utility weights, providers, or sponsors cannot create Chronicle truth, personal causal authority, clinical authority, or current decision authority without the exact accepted evidence and player confirmation required by the doctrine.
+The doctrine, validation plan, evidence kernel, synthetic fixture, and LI-V0 completion create no production runtime. AI, models, scores, protocols, simulations, priors, utility weights, providers, or sponsors cannot create Chronicle truth, personal causal authority, clinical authority, or current decision authority without the exact accepted evidence and player confirmation required by the doctrine.
 
 ### First Lantern
 
@@ -141,15 +144,15 @@ First Lantern is a reversible public synthetic demonstration. It creates no dura
 
 The newsletter remains separate from identity, consent, capture, conversion, completion, progression, research, Longitudinal Intelligence, and prologue state.
 
-## Pre-Sprint 10 alignment candidate
+## Accepted Sprint 10 authorization
 
-Issue #75 resolves the required alignment direction and recommends:
+The pre-Sprint 10 alignment review is accepted through issue #75 and PR #76 with the decision:
 
 > **AUTHORIZED WITH NAMED HOLDPOINTS**
 
-The candidate establishes:
+The accepted direction establishes:
 
-- `apps/game` as the proposed Expo and Expo Router universal application owner;
+- `apps/game` as the Expo and Expo Router universal application owner;
 - `apps/site` as the continuing public institutional site and prologue owner;
 - `packages/game-content` as one earned versioned public/synthetic content package;
 - no generic shared UI package until a second real consumer earns it;
@@ -161,7 +164,7 @@ The candidate establishes:
 - LI-V1 through LI-V8 remaining inactive; and
 - a bounded Sprint 10.1 through Sprint 10.10 implementation sequence.
 
-Sprint 10 remains planned and not started until the candidate is explicitly accepted, squash merged, issues #73 and #75 are reconciled, and the accepted current status is verified.
+Sprint 10 is authorized with these boundaries, but no implementation issue, branch, application scaffold, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun through this acceptance.
 
 ## Sprint 10 named holdpoints
 
@@ -193,19 +196,20 @@ Before institutional Phase 0 can close, the project still requires:
 - a named specialist-review strategy;
 - the human-readable and machine-readable whole-architecture audit;
 - the frontier-model-first architecture audit and lifetime-context work;
-- accepted LI-V0 closure and explicit Phase 0 treatment of later LI stages; and
+- explicit Phase 0 treatment of LI-V1 through LI-V8; and
 - an explicit Phase 0 exit review.
 
 ## Current next decision
 
-The current governed decision is whether to accept and squash merge the LI-V0 closure and pre-Sprint 10 alignment candidate.
+LI-V0 is complete and Sprint 10 is authorized with named holdpoints.
 
-Until that decision:
+The next separate decision is whether to create the Sprint 10 implementation tracker and branch and begin workstream 10.1.
 
-- issues #73 and #75 remain open;
-- Sprint 10 remains unstarted;
+Until that direction:
+
+- Sprint 10 implementation remains unstarted;
 - LI-V1 through LI-V8 remain inactive;
-- no production deployment or provider choice is authorized; and
+- no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized; and
 - all named Phase 0 and specialist holdpoints remain open.
 
 ## Status rule

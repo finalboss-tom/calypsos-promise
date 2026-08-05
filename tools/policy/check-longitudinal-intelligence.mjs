@@ -262,9 +262,9 @@ for (const [path, content, required] of [
     currentStatusPath,
     currentStatus,
     [
-      "LI-V0 closure candidate",
-      "Pre-Sprint 10 alignment candidate",
-      "Sprint 10 remains planned and not started",
+      "LI-V0 is accepted and complete",
+      "Sprint 10 is authorized with named holdpoints",
+      "Sprint 10 remains authorized but implementation has not started",
     ],
   ],
 ]) {
