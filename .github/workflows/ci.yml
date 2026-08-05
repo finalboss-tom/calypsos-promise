@@ -90,7 +90,7 @@ jobs:
   site-release-validation:
     name: site-release-validation
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6
@@ -121,6 +121,13 @@ jobs:
           SITE_BASE_URL: http://127.0.0.1:3000
           SITE_RELEASE_REPORT: site-release-evidence.json
         run: pnpm --filter @calypsos-promise/site validate:preview
+      - name: Validate rendered prologue journeys
+        env:
+          SITE_BASE_URL: http://127.0.0.1:3000
+          SITE_RELEASE_REPORT: site-release-evidence.json
+          PROLOGUE_BROWSER_REPORT: prologue-browser-evidence/report.json
+          PROLOGUE_SCREENSHOT_DIR: prologue-browser-evidence/screenshots
+        run: pnpm --filter @calypsos-promise/site validate:prologue-browser
       - name: Upload local preview evidence
         if: always()
         uses: actions/upload-artifact@v7
@@ -128,6 +135,7 @@ jobs:
           name: site-release-evidence
           path: |
             apps/site/site-release-evidence.json
+            apps/site/prologue-browser-evidence
             site-preview.log
           if-no-files-found: warn
       - name: Stop preview and remove generated state
@@ -138,7 +146,7 @@ jobs:
           fi
           git checkout -- apps/site/tsconfig.json apps/site/next-env.d.ts || true
           rm -f apps/site/tsconfig.tsbuildinfo apps/site/site-release-evidence.json site-preview.pid
-          rm -rf apps/site/.next
+          rm -rf apps/site/.next apps/site/prologue-browser-evidence
       - name: Verify no tracked build mutation
         if: always()
         run: git diff --exit-code

@@ -48,11 +48,20 @@ test("defines the canonical public route family", () => {
       "/roadmap",
       "/support",
       "/funding",
+      "/prologue",
       "/privacy",
       "/joined",
     ],
   );
-  assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 13);
+  assert.equal(new Set(routeContracts.map(({ path }) => path)).size, 14);
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/prologue")?.noindex,
+    true,
+  );
+  assert.equal(
+    routeContracts.find(({ path }) => path === "/prologue")?.sitemap,
+    false,
+  );
   assert.equal(
     routeContracts.find(({ path }) => path === "/joined")?.noindex,
     true,
@@ -105,9 +114,10 @@ test("keeps permanent isolated production-preview validation", async () => {
   assert.match(previewValidator, /providerContacted: false/);
   assert.match(previewValidator, /bot-field-must-be-ignored/);
   assert.match(sourceValidator, /active Phase 0 newsletter gate #63/);
+  assert.match(sourceValidator, /branch-only Sprint 9 prologue/);
 });
 
-test("validates security headers and CSP", () => {
+test("validates security headers and static-compatible CSP", () => {
   assert.deepEqual(requiredPageHeaders, {
     "cross-origin-opener-policy": "same-origin",
     "permissions-policy":
@@ -122,11 +132,12 @@ test("validates security headers and CSP", () => {
     "base-uri 'none'",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "'strict-dynamic'",
+    "script-src 'self' 'unsafe-inline'",
     "upgrade-insecure-requests",
   ]) {
     assert.ok(requiredCspDirectives.includes(directive));
   }
+  assert.equal(requiredCspDirectives.includes("'strict-dynamic'"), false);
 });
 
 test("implements bounded newsletter Path A without exposing provider configuration", async () => {

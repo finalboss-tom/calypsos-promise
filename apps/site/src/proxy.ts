@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-function contentSecurityPolicy(nonce: string): string {
+function contentSecurityPolicy(): string {
   const developmentScriptSource =
     process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
 
@@ -13,27 +13,15 @@ function contentSecurityPolicy(nonce: string): string {
     "frame-ancestors 'none'",
     "img-src 'self' data: blob:",
     "object-src 'none'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${developmentScriptSource}`,
+    `script-src 'self' 'unsafe-inline'${developmentScriptSource}`,
     "style-src 'self' 'unsafe-inline'",
     "upgrade-insecure-requests",
   ].join("; ");
 }
 
-export function proxy(request: NextRequest) {
-  const nonce = crypto.randomUUID().replaceAll("-", "");
-  const policy = contentSecurityPolicy(nonce);
-  const requestHeaders = new Headers(request.headers);
-
-  requestHeaders.set("x-nonce", nonce);
-  requestHeaders.set("content-security-policy", policy);
-
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
-
-  response.headers.set("Content-Security-Policy", policy);
+export function proxy(_request: NextRequest) {
+  const response = NextResponse.next();
+  response.headers.set("Content-Security-Policy", contentSecurityPolicy());
   return response;
 }
 

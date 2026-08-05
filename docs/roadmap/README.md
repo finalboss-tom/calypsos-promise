@@ -1,62 +1,91 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Post-Sprint 8 reconciliation](post-sprint-8-reconciliation-and-sprint-9-preparation.md) · [Sprint sequence](sprints.md) · [Newsletter gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63) · [Sprint 9 alignment #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint sequence](sprints.md) · [Sprint 9 issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67) · [Draft PR #68](https://github.com/finalboss-tom/calypsos-promise/pull/68) · [Newsletter gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
 
 Calypso’s Promise uses two coordinated roadmaps:
 
-- the root [Public Institutional Roadmap](../../ROADMAP.md) defines evidence-gated product, organizational, economic, governance, and founder-independence phases;
-- [Sprints](sprints.md) defines the design-to-build sequence and its non-numbered institutional constraints.
+- the root [Public Institutional Roadmap](../../ROADMAP.md) defines evidence-gated product, organizational, economic, governance, and founder-independence phases; and
+- [Sprints](sprints.md) defines the design-to-build sequence and non-numbered institutional constraints.
 
-Advancement is gate-based rather than calendar-based. A completed sprint or deployment proves only its bounded evidence; it does not activate private product capability, independent certification, institutional phase completion, or the next sprint.
+Advancement is gate-based rather than calendar-based. A completed workstream, passing CI run, merge, preview, or deployment proves only its bounded evidence. It does not activate private capability, independent certification, institutional phase completion, or the next sprint.
 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Post-Sprint 8 Reconciliation and Sprint 9 Preparation](post-sprint-8-reconciliation-and-sprint-9-preparation.md)
-3. [Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
-4. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-5. [Sprint Sequence](sprints.md)
-6. [Sprint 8 Completion Record](sprint-8-completion-record.md)
-7. [Sprint 8 Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md)
-8. [Sprint 8 Cross-Contract Reconciliation](../architecture/public-site-sprint-8-cross-contract-reconciliation.md)
-9. [Sprint 8 Control and Evidence Map](../architecture/public-site-sprint-8-control-and-evidence-map.md)
-10. [Sprint 8 Holdpoints and Unresolved Work](../architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
-11. [Public Website Foundation and Migration Boundary](../architecture/public-website-foundation-and-migration.md)
-12. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 9 Completion Record](sprint-9-completion-record.md)
+3. [Sprint 9 Release, Rollback, and Sprint 10 Handoff](sprint-9-release-rollback-and-sprint-10-handoff.md)
+4. [Sprint 9 Cross-Contract Reconciliation](../architecture/public-synthetic-prologue-sprint-9-cross-contract-reconciliation.md)
+5. [Sprint 9 Control and Evidence Map](../architecture/public-synthetic-prologue-sprint-9-control-and-evidence-map.md)
+6. [Sprint 9 Holdpoints and Unresolved Work](../architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md)
+7. [Sprint 9 Pre-9.10 Quality-Gate Closure](sprint-9-pre-9-10-quality-gate-closure.md)
+8. [Sprint 9 Execution Plan](sprint-9-execution-plan.md)
+9. [Sprint 9.9 Publication, Hosted Evidence, and Rollback](sprint-9-workstream-9-9-publication-and-rollback.md)
+10. [Sprint 9.8 Playable Validation and Measurement Record](sprint-9-workstream-9-8-validation-record.md)
+11. [Sprint 9.8 Representative Implementation Review](sprint-9-workstream-9-8-manual-review.md)
+12. [Historical Pre-9.10 Quality and Coherence Review](sprint-9-pre-9-10-quality-review.md)
+13. [Sprint 9.7 Refusal, Restart, Departure, and Account-Boundary Record](sprint-9-workstream-9-7-record.md)
+14. [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md)
+15. [Sprint 9 Issue #67](https://github.com/finalboss-tom/calypsos-promise/issues/67)
+16. [Accepted Pre-Sprint 9 Alignment Issue #64](https://github.com/finalboss-tom/calypsos-promise/issues/64)
+17. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+18. [Sprint Sequence](sprints.md)
+19. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Current boundary
 
-Sprints 0–8 are accepted and merged.
+Sprints 0–8 are accepted and merged. Sprint 9 remains active on draft PR #68.
 
-Sprint 8 was squash merged through PR #61 as `20e2c95c96670f0ef6b972c9ebf7b482f7f9cf1a`, deployed through production deployment `dpl_3V2e76y1fwrR19j1BzUFpo9U9kjp`, and closed through issue #60. Git-triggered deployment was restored to disabled through `a5146237356f58e8d28343e90918b70a418bccbb`.
+Workstreams 9.1–9.9 are accepted. Workstream 9.10 has assembled the final reconciliation, 48-control evidence map, 24 open holdpoints, 24 unresolved-work records, completion record, release and rollback record, and Sprint 10 handoff.
 
-Current work is deliberately split:
+The Sprint 9 implementation package is ready for exact-head validation and founding-steward acceptance. Sprint 9 is not yet accepted, squash merged, publicly linked, indexed, deployed to production, officially released, or closed.
 
-- post-Sprint 8 status, copy, link, validation, and deployment reconciliation;
-- newsletter **Path A — preserve and activate** under issue #63, still open through production verification and acceptance; and
-- pre-Sprint 9 alignment under issue #64, with playable implementation not started.
+The `/prologue` route remains `noindex`, absent from public navigation and the sitemap, unmerged, and absent from the production domain. Workstream 9.9 created one Vercel-auth-protected hosted preview for maintainer evidence, then restored Git-triggered deployment to disabled for every branch. The preview is not a production or public gameplay release.
 
-Institutional Phase 0 remains active.
+The newsletter remains a separate Phase 0 contact gate and cannot become prologue identity, state, conversion, completion, consent, or progression.
 
-## Sprint 8 historical evidence
+Sprint 10 remains planned and not started. It requires Sprint 9 acceptance, squash merge, issue closure, preview disposition, post-merge reconciliation, and a dedicated alignment review.
 
-The following records describe the state and evidence produced before Sprint 8 acceptance. They remain historical artifacts and should not be rewritten to pretend they were created after deployment:
+## Sprint 9 completion package
+
+- [Sprint 9 Completion Record](sprint-9-completion-record.md)
+- [Sprint 9 Release, Rollback, and Sprint 10 Handoff](sprint-9-release-rollback-and-sprint-10-handoff.md)
+- [Sprint 9 Cross-Contract Reconciliation](../architecture/public-synthetic-prologue-sprint-9-cross-contract-reconciliation.md)
+- [Sprint 9 Control and Evidence Map](../architecture/public-synthetic-prologue-sprint-9-control-and-evidence-map.md)
+- [Sprint 9 Holdpoints and Unresolved Work](../architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 9 Pre-9.10 Quality-Gate Closure](sprint-9-pre-9-10-quality-gate-closure.md)
+- [Sprint 9 Execution Plan](sprint-9-execution-plan.md)
+- [Sprint 9.9 Publication, Hosted Evidence, and Rollback](sprint-9-workstream-9-9-publication-and-rollback.md)
+- [Sprint 9.8 Playable Validation and Measurement Record](sprint-9-workstream-9-8-validation-record.md)
+- [Sprint 9.8 Representative Implementation Review](sprint-9-workstream-9-8-manual-review.md)
+- [Sprint 9.7 Refusal, Restart, Departure, and Account-Boundary Record](sprint-9-workstream-9-7-record.md)
+- [Public Synthetic Prologue Boundary](../architecture/public-synthetic-prologue-boundary.md)
+
+Sprint 9 evidence remains bounded branch implementation and protected-preview evidence. It is not a production release, private product, independent accessibility certification, affected-user usability result, production-health-data security review, or institutional phase acceptance.
+
+## Sprint 8 accepted evidence
+
+The following records preserve the accepted public-website foundation and its pre-acceptance history:
 
 - [Sprint 8 Execution Plan](sprint-8-execution-plan.md)
 - [Sprint 8.1 Boundary Record](sprint-8-workstream-8-1-record.md)
 - [Sprint 8.2 Next.js Shell Record](sprint-8-workstream-8-2-record.md)
 - [Sprint 8.3 Navigation, Status, and Accessibility Record](sprint-8-workstream-8-3-record.md)
 - [Sprint 8.4 Homepage and Promise Record](sprint-8-workstream-8-4-record.md)
-- [Sprint 8.5 Laws, Experience, Interoperability, and Aster Record](sprint-8-workstream-8-5-record.md)
+- [Sprint 8.5 Guide Family Record](sprint-8-workstream-8-5-record.md)
 - [Sprint 8.6 Trust Center and Open Forge Record](sprint-8-workstream-8-6-record.md)
-- [Sprint 8.7 Roadmap, Support, and Funding Transparency Record](sprint-8-workstream-8-7-record.md)
-- [Sprint 8.8 Paused Email-Signup Record](sprint-8-workstream-8-8-record.md)
-- [Sprint 8.9 Full Website Validation Record](sprint-8-workstream-8-9-record.md)
-- [Sprint 8.9 Representative Implementation Review](sprint-8-workstream-8-9-manual-review.md)
+- [Sprint 8.7 Roadmap, Support, and Funding Record](sprint-8-workstream-8-7-record.md)
+- [Sprint 8.8 Email-Signup Record](sprint-8-workstream-8-8-record.md)
+- [Sprint 8.9 Full Website Validation](sprint-8-workstream-8-9-record.md)
+- [Sprint 8.9 Representative Review](sprint-8-workstream-8-9-manual-review.md)
 - [Sprint 8.10 Validation](sprint-8-workstream-8-10-validation.md)
 - [Sprint 8 Completion Record](sprint-8-completion-record.md)
+- [Sprint 8 Release, Rollback, and Sprint 9 Handoff](sprint-8-release-rollback-and-sprint-9-handoff.md)
+- [Post-Sprint 8 Reconciliation and Sprint 9 Preparation](post-sprint-8-reconciliation-and-sprint-9-preparation.md)
+- [Sprint 8 Cross-Contract Reconciliation](../architecture/public-site-sprint-8-cross-contract-reconciliation.md)
+- [Sprint 8 Control and Evidence Map](../architecture/public-site-sprint-8-control-and-evidence-map.md)
+- [Sprint 8 Holdpoints and Unresolved Work](../architecture/public-site-sprint-8-specialist-holdpoint-and-unresolved-work-register.md)
 
-The post-merge reconciliation supersedes their time-sensitive status statements without erasing their historical evidence.
+Historical records remain evidence of what was true at their recorded revision. Current status supersedes their time-sensitive statements without rewriting history.
 
 ## Earlier completion records and plans
 
@@ -66,18 +95,15 @@ The post-merge reconciliation supersedes their time-sensitive status statements 
 - [Sprint 4 Plan](sprint-4-plan.md) and [Completion](sprint-4-completion-record.md)
 - [Pre-Sprint 5 Alignment Review](pre-sprint-5-alignment-review.md)
 - [Sprint 5 Plan](sprint-5-plan.md) and [Completion](sprint-5-completion-record.md)
+- [Sprint 6 Completion Record](sprint-6-completion-record.md)
+- [Sprint 7 Execution Plan](sprint-7-execution-plan.md) and [Completion](sprint-7-completion-record.md)
+- [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
+- [Pre-Sprint 8 Reconciliation Validation](pre-sprint-8-reconciliation-validation.md)
 - [Phase 0 Funding Completion Record](../economics/phase-0-funding-completion-record.md)
 - [Consumer-First and Provider-Independent Workstream](consumer-first-provider-independent-workstream.md)
 - [Operational Simplicity Workstream](operational-simplicity-workstream.md)
-- [Pre-Sprint 6 Alignment Review](pre-sprint-6-alignment-review.md)
-- [Sprint 6 Completion Record](sprint-6-completion-record.md)
-- [Pre-Sprint 7 Alignment Review](pre-sprint-7-alignment-review.md)
-- [Sprint 7 Execution Plan](sprint-7-execution-plan.md)
-- [Sprint 7 Completion Record](sprint-7-completion-record.md)
-- [Pre-Sprint 8 Alignment Review](pre-sprint-8-alignment-review.md)
-- [Pre-Sprint 8 Reconciliation Validation](pre-sprint-8-reconciliation-validation.md)
 - [Proposed Health Data Legacy Workstream](health-data-legacy-workstream.md)
 
 ## Status rule
 
-The [Current Project Status](current-status.md) is the canonical integrated status record. Update it whenever a sprint, deployment, signup disposition, phase gate, material relationship, specialist holdpoint, or capability status changes. Historical plans and completion records remain evidence of what was true at their recorded revision.
+The [Current Project Status](current-status.md) is the canonical integrated status record. Update it whenever a sprint, workstream, deployment, signup disposition, phase gate, material relationship, specialist holdpoint, or capability status changes. Historical plans and completion records remain evidence of their recorded state.

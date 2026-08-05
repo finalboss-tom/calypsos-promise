@@ -16,6 +16,12 @@ export const routeContracts = Object.freeze([
   },
   { path: "/support", title: "Support and Contribute", sitemap: true },
   { path: "/funding", title: "Funding Transparency", sitemap: true },
+  {
+    path: "/prologue",
+    title: "Public Synthetic Prologue",
+    sitemap: false,
+    noindex: true,
+  },
   { path: "/privacy", title: "Newsletter privacy", sitemap: true },
   {
     path: "/joined",
@@ -53,8 +59,7 @@ export const requiredCspDirectives = Object.freeze([
   "frame-ancestors 'none'",
   "img-src 'self' data: blob:",
   "object-src 'none'",
-  "script-src 'self'",
-  "'strict-dynamic'",
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "upgrade-insecure-requests",
 ]);
