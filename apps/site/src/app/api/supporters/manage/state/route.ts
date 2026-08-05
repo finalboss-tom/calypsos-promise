@@ -61,10 +61,7 @@ export async function POST(request: Request) {
 
   try {
     const state = await getSupporterManagementState({
-      tokenHash: hashVerificationToken(
-        token,
-        config.verificationTokenPepper,
-      ),
+      tokenHash: hashVerificationToken(token, config.verificationTokenPepper),
       now,
     });
     if (!state) {
