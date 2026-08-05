@@ -1,0 +1,34 @@
+name: Sprint 10 lockfile generation
+
+on:
+  pull_request:
+    paths:
+      - apps/game/package.json
+      - package.json
+      - pnpm-lock.yaml
+      - .github/workflows/sprint-10-lockfile.yml
+
+permissions:
+  contents: read
+
+jobs:
+  generate-lockfile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Generate lockfile
+        run: pnpm install --lockfile-only --no-frozen-lockfile
+      - name: Upload generated lockfile
+        uses: actions/upload-artifact@v7
+        with:
+          name: sprint-10-pnpm-lock
+          path: pnpm-lock.yaml
+          if-no-files-found: error
