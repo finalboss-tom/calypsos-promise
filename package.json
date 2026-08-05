@@ -19,7 +19,10 @@
     "li:check": "node tools/policy/check-longitudinal-intelligence.mjs",
     "content:check": "pnpm --filter @calypsos-promise/content-schema validate:content",
     "check": "pnpm format:check && pnpm docs:check && pnpm policy:check && pnpm economics:check && pnpm content:check && pnpm lint && pnpm typecheck && pnpm test",
-    "economics:check": "node tools/policy/check-funding-records.mjs"
+    "economics:check": "node tools/policy/check-funding-records.mjs",
+    "game:start": "pnpm --filter @calypsos-promise/game start",
+    "game:web": "pnpm --filter @calypsos-promise/game web",
+    "game:validate": "pnpm --filter @calypsos-promise/game validate:toolchain"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
