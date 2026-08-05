@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
+import { useMemo, useReducer } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import {
@@ -9,56 +9,63 @@ import {
   resolvePresentationScene,
   resolveSyntheticChoice,
 } from "../presentation/synthetic-presentation";
+import {
+  canInteractWithSyntheticSession,
+  createPresentedSyntheticSessionState,
+  isTerminalSyntheticSession,
+  transitionSyntheticSession,
+  type SyntheticSessionState,
+  type SyntheticSessionStatus,
+} from "../state/synthetic-session-state.mjs";
 import { colors, radii, spacing } from "../theme";
 import { DialogueChoices } from "./DialogueChoices";
 import { QuestCard } from "./QuestCard";
+import { StateAuthorityPanel } from "./StateAuthorityPanel";
 import { WayfinderOrb } from "./WayfinderOrb";
 
 interface SceneRendererProps {
   initialSceneId?: string;
 }
 
+type DemonstrableStatus = Extract<
+  SyntheticSessionStatus,
+  "pending" | "failed" | "stale" | "corrected" | "superseded" | "conflict"
+>;
+
 export function SceneRenderer({
   initialSceneId = WELCOME_SCENE_ID,
 }: SceneRendererProps) {
   const router = useRouter();
-  const [sceneId, setSceneId] = useState(initialSceneId);
-  const [announcement, setAnnouncement] = useState(
-    "Synthetic presentation ready. Nothing has been recorded.",
-  );
-  const [terminal, setTerminal] = useState<
-    "deferred" | "refused" | "discarded" | null
-  >(null);
-  const [presentedSceneIds, setPresentedSceneIds] = useState<readonly string[]>(
-    [initialSceneId],
+  const [session, dispatch] = useReducer(
+    transitionSyntheticSession,
+    initialSceneId,
+    createPresentedSyntheticSessionState,
   );
 
   const resolution = useMemo(
-    () => resolvePresentationScene(sceneId),
-    [sceneId],
+    () => resolvePresentationScene(session.sceneId),
+    [session.sceneId],
   );
 
-  function openScene(nextSceneId: string, message: string) {
-    setSceneId(nextSceneId);
-    setTerminal(null);
-    setAnnouncement(message);
-    setPresentedSceneIds((current) =>
-      current.includes(nextSceneId) ? current : [...current, nextSceneId],
-    );
+  function openScene(nextSceneId: string, notice: string) {
+    dispatch({
+      type: "scene-presented",
+      sceneId: nextSceneId,
+      notice,
+    });
   }
 
   function restart() {
-    setSceneId(WELCOME_SCENE_ID);
-    setTerminal(null);
-    setPresentedSceneIds([WELCOME_SCENE_ID]);
-    setAnnouncement(
-      "The temporary synthetic presentation restarted. No history was retained.",
-    );
+    dispatch({
+      type: "restart",
+      sceneId: WELCOME_SCENE_ID,
+      notice:
+        "Nothing has been recorded. The temporary synthetic session restarted from bundled welcome content, and no history was retained.",
+    });
   }
 
   function choose(choiceId: string) {
-    const outcome = resolveSyntheticChoice(sceneId, choiceId);
-    setAnnouncement(outcome.announcement);
+    const outcome = resolveSyntheticChoice(session.sceneId, choiceId);
 
     if (outcome.kind === "scene") {
       openScene(outcome.nextSceneId, outcome.announcement);
@@ -71,35 +78,107 @@ export function SceneRenderer({
     }
 
     if (outcome.kind === "message") {
-      setTerminal(outcome.status);
+      dispatch({ type: outcome.status, notice: outcome.announcement });
       return;
     }
 
     if (outcome.kind === "exit") {
-      setTerminal(outcome.status);
+      dispatch({ type: "discarded", notice: outcome.announcement });
+      return;
+    }
+
+    dispatch({
+      type: "failed",
+      reason: "invalid-choice-outcome",
+      notice: outcome.announcement,
+    });
+  }
+
+  function demonstrateState(status: DemonstrableStatus) {
+    switch (status) {
+      case "pending":
+        dispatch({
+          type: "scene-requested",
+          sceneId: session.sceneId,
+          notice:
+            "Pending was demonstrated without optimistic completion, reward, or personal progress.",
+        });
+        return;
+      case "failed":
+        dispatch({
+          type: "failed",
+          reason: "synthetic-demonstration",
+          notice:
+            "Failure was demonstrated. The renderer stopped authority instead of inventing success.",
+        });
+        return;
+      case "stale":
+        dispatch({
+          type: "stale",
+          notice:
+            "Stale presentation evidence was demonstrated. It cannot support current completion or progress.",
+        });
+        return;
+      case "corrected":
+        dispatch({
+          type: "corrected",
+          notice:
+            "A correction was demonstrated. The correction is visible but still cannot create authority.",
+        });
+        return;
+      case "superseded":
+        dispatch({
+          type: "superseded",
+          replacementSceneId: DIRECT_SCENE_ID,
+          notice:
+            "Supersession was demonstrated. Prior presentation evidence cannot retain completion authority.",
+        });
+        return;
+      case "conflict":
+        dispatch({
+          type: "conflict",
+          reason: "two synthetic presentation claims disagree",
+          notice:
+            "Conflict was demonstrated. The client failed closed and requires an explicit restart or correction.",
+        });
     }
   }
 
   if (!resolution.ok) {
+    const failedSession = transitionSyntheticSession(session, {
+      type: "failed",
+      reason: resolution.reason,
+      notice:
+        "The requested package scene failed closed. No completion, reward, permission, or progress was created.",
+    });
+
     return (
-      <View accessibilityRole="alert" style={styles.fallback}>
-        <Text accessibilityRole="header" style={styles.fallbackTitle}>
-          Scene package unavailable
-        </Text>
-        <Text style={styles.fallbackBody}>{resolution.reason}</Text>
-        <Text style={styles.fallbackDetail}>
-          Missing: {resolution.missingIds.join(", ") || "unknown package entry"}
-        </Text>
-        <Pressable
-          accessibilityRole="button"
-          onPress={restart}
-          style={({ pressed }: { pressed: boolean }) => [
-            styles.restartButton,
-            pressed && styles.pressed,
-          ]}
-        >
-          <Text style={styles.restartText}>Restart from bundled welcome</Text>
-        </Pressable>
+      <View style={styles.renderer}>
+        <StateAuthorityPanel
+          session={failedSession}
+          onDemonstrate={demonstrateState}
+          onRestart={restart}
+        />
+        <View accessibilityRole="alert" style={styles.fallback}>
+          <Text accessibilityRole="header" style={styles.fallbackTitle}>
+            Scene package unavailable
+          </Text>
+          <Text style={styles.fallbackBody}>{resolution.reason}</Text>
+          <Text style={styles.fallbackDetail}>
+            Missing:{" "}
+            {resolution.missingIds.join(", ") || "unknown package entry"}
+          </Text>
+          <Pressable
+            accessibilityRole="button"
+            onPress={restart}
+            style={({ pressed }: { pressed: boolean }) => [
+              styles.restartButton,
+              pressed && styles.pressed,
+            ]}
+          >
+            <Text style={styles.restartText}>Restart from bundled welcome</Text>
+          </Pressable>
+        </View>
       </View>
     );
   }
@@ -108,9 +187,8 @@ export function SceneRenderer({
   const speakerById = new Map(
     speakers.map((speaker) => [speaker.id, speaker.displayName] as const),
   );
-  const scenePresented = presentedSceneIds.includes(
-    "scene.hearth.direct-path.synthetic",
-  );
+  const interactionAllowed = canInteractWithSyntheticSession(session);
+  const terminal = isTerminalSyntheticSession(session);
 
   return (
     <View style={styles.renderer}>
@@ -131,6 +209,12 @@ export function SceneRenderer({
             "The Wayfinder Orb opened the bundled direct scene. No progress or preference was created.",
           )
         }
+        onRestart={restart}
+      />
+
+      <StateAuthorityPanel
+        session={session}
+        onDemonstrate={demonstrateState}
         onRestart={restart}
       />
 
@@ -168,37 +252,30 @@ export function SceneRenderer({
         </View>
 
         {terminal ? (
-          <View accessibilityRole="alert" style={styles.terminal}>
-            <Text style={styles.terminalTitle}>
-              Synthetic session state: {terminal}
-            </Text>
-            <Text style={styles.terminalBody}>{announcement}</Text>
-            <Text style={styles.terminalBody}>
-              Essential information remains available. This state is temporary,
-              non-authoritative, and clearable.
-            </Text>
-            <Pressable
-              accessibilityRole="button"
-              onPress={restart}
-              style={({ pressed }: { pressed: boolean }) => [
-                styles.restartButton,
-                pressed && styles.pressed,
-              ]}
-            >
-              <Text style={styles.restartText}>Restart presentation</Text>
-            </Pressable>
-          </View>
-        ) : (
+          <StateMessage
+            title={`Synthetic session state: ${session.status}`}
+            notice={session.notice}
+            detail="Essential information remains available. This state is temporary, non-authoritative, and clearable."
+            onRestart={restart}
+          />
+        ) : interactionAllowed ? (
           <DialogueChoices choices={scene.choices} onChoose={choose} />
+        ) : (
+          <StateMessage
+            title={`Interaction paused: ${session.status}`}
+            notice={session.notice}
+            detail="The scene remains readable, but choices cannot create or bypass authority while this state is unresolved."
+            onRestart={restart}
+          />
         )}
 
         <Text accessibilityLiveRegion="polite" style={styles.announcement}>
-          {announcement}
+          {session.notice}
         </Text>
       </View>
 
       {quest ? (
-        <QuestCard quest={quest} scenePresented={scenePresented} />
+        <QuestCard quest={quest} session={session} />
       ) : (
         <View accessibilityRole="alert" style={styles.fallback}>
           <Text style={styles.fallbackTitle}>Quest card unavailable</Text>
@@ -208,6 +285,36 @@ export function SceneRenderer({
           </Text>
         </View>
       )}
+    </View>
+  );
+}
+
+function StateMessage({
+  title,
+  notice,
+  detail,
+  onRestart,
+}: {
+  title: string;
+  notice: string;
+  detail: string;
+  onRestart: () => void;
+}) {
+  return (
+    <View accessibilityRole="alert" style={styles.terminal}>
+      <Text style={styles.terminalTitle}>{title}</Text>
+      <Text style={styles.terminalBody}>{notice}</Text>
+      <Text style={styles.terminalBody}>{detail}</Text>
+      <Pressable
+        accessibilityRole="button"
+        onPress={onRestart}
+        style={({ pressed }: { pressed: boolean }) => [
+          styles.restartButton,
+          pressed && styles.pressed,
+        ]}
+      >
+        <Text style={styles.restartText}>Restart presentation</Text>
+      </Pressable>
     </View>
   );
 }

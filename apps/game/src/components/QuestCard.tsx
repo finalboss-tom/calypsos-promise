@@ -1,14 +1,20 @@
 import type { QuestContent } from "../presentation/synthetic-presentation";
+import {
+  getQuestPresentationEvidence,
+  type SyntheticSessionState,
+} from "../state/synthetic-session-state.mjs";
 import { StyleSheet, Text, View } from "react-native";
 
 import { colors, radii, spacing } from "../theme";
 
 interface QuestCardProps {
   quest: QuestContent;
-  scenePresented: boolean;
+  session: SyntheticSessionState;
 }
 
-export function QuestCard({ quest, scenePresented }: QuestCardProps) {
+export function QuestCard({ quest, session }: QuestCardProps) {
+  const evidence = getQuestPresentationEvidence(session);
+
   return (
     <View accessibilityRole="summary" style={styles.card}>
       <View style={styles.heading}>
@@ -22,22 +28,43 @@ export function QuestCard({ quest, scenePresented }: QuestCardProps) {
       <Text style={styles.body}>{quest.objective}</Text>
 
       <View style={styles.status}>
-        <Text style={styles.statusLabel}>Presentation state</Text>
-        <Text style={styles.statusValue}>
-          {scenePresented ? "Scene shown in this session" : "Not yet shown"}
+        <Text style={styles.statusLabel}>Temporary presentation evidence</Text>
+        <Text style={styles.statusValue}>{evidence.label}</Text>
+        <Text style={styles.statusDetail}>
+          Session status: {evidence.sessionStatus} · authoritative: no
         </Text>
       </View>
 
+      <View style={styles.authorityGrid}>
+        <AuthorityItem label="Completed" value={evidence.completed} />
+        <AuthorityItem label="Rewarded" value={evidence.rewarded} />
+        <AuthorityItem label="Restored" value={evidence.restored} />
+        <AuthorityItem label="Unlocked" value={evidence.unlocked} />
+        <AuthorityItem
+          label="Personal progress"
+          value={evidence.personalProgress}
+        />
+      </View>
+
       <Text style={styles.boundary}>
-        This card may describe temporary synthetic presentation evidence. It
-        cannot complete a quest, grant a reward, restore a canonical place, or
-        create personal progress.
+        This card describes temporary synthetic presentation evidence only. No
+        client event, displayed scene, animation, local flag, device time, or
+        optimistic state can complete this quest or create a reward.
       </Text>
 
       <View style={styles.paths}>
         <Text style={styles.pathText}>Defer: {quest.deferralPath}</Text>
         <Text style={styles.pathText}>Refuse: {quest.refusalPath}</Text>
       </View>
+    </View>
+  );
+}
+
+function AuthorityItem({ label, value }: { label: string; value: false }) {
+  return (
+    <View style={styles.authorityItem}>
+      <Text style={styles.authorityLabel}>{label}</Text>
+      <Text style={styles.authorityValue}>{value ? "yes" : "no"}</Text>
     </View>
   );
 }
@@ -91,6 +118,36 @@ const styles = StyleSheet.create({
     color: colors.ink,
     fontSize: 15,
     fontWeight: "700",
+  },
+  statusDetail: {
+    color: colors.inkSoft,
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  authorityGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.small,
+  },
+  authorityItem: {
+    flexGrow: 1,
+    flexBasis: 135,
+    borderRadius: radii.small,
+    borderWidth: 1,
+    borderColor: colors.border,
+    padding: spacing.small,
+    gap: 2,
+  },
+  authorityLabel: {
+    color: colors.inkSoft,
+    fontSize: 11,
+    fontWeight: "700",
+  },
+  authorityValue: {
+    color: colors.coral,
+    fontSize: 15,
+    fontWeight: "800",
+    textTransform: "uppercase",
   },
   boundary: {
     color: colors.inkSoft,

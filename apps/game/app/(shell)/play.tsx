@@ -12,16 +12,16 @@ export default function PlayPresentationScreen() {
 
   return (
     <ShellPage
-      eyebrow="SCENE, DIALOGUE, AND QUEST PRESENTATION"
-      title="A deterministic synthetic scene, with authority kept outside the client."
-      intro="This renderer consumes the versioned public package. Choices can change only the temporary presentation shown on this screen."
+      eyebrow="STATE AND AUTHORITY BOUNDARIES"
+      title="A deterministic synthetic session where every client-authority claim fails closed."
+      intro="The renderer exposes pending, failed, stale, corrected, superseded, conflict, deferred, refused, and discarded states without treating any of them as completion or personal truth."
       tone="dark"
       aside={
         <BoundaryNotice tone="dark">
-          Scene presentation, dialogue choices, quest cards, and the Wayfinder
-          Orb are non-authoritative. They cannot create Chronicle truth,
-          permission, durable completion, rewards, authentic preferences, or
-          health results.
+          Scene presentation, dialogue choices, quest cards, the Wayfinder Orb,
+          and local session state are non-authoritative. They cannot create
+          Chronicle truth, permission, durable completion, rewards, authentic
+          preferences, health results, or progress with authority.
         </BoundaryNotice>
       }
     >
