@@ -3,18 +3,17 @@ import { getSupporterEnrollmentConfig } from "@/lib/supporters/config";
 import {
   contactLookupHmac,
   createVerificationToken,
-  hashVerificationToken,
   encryptValue,
+  hashVerificationToken,
   serializeEncryptedValue,
 } from "@/lib/supporters/crypto";
-import {
-  completeSupporterEmail,
-  consumeSupporterAttempt,
-} from "@/lib/supporters/database";
+import { consumeSupporterAttempt } from "@/lib/supporters/database";
 import { decryptSerializedValue } from "@/lib/supporters/management-crypto";
 import { startSupporterManagement } from "@/lib/supporters/management-database";
 import { sendSupporterManagementEmail } from "@/lib/supporters/management-email";
 import { validateManagementRequestInput } from "@/lib/supporters/management-input";
+import { recordSupporterEmailAttempt } from "@/lib/supporters/outbox-database";
+import { SupporterEmailDeliveryError } from "@/lib/supporters/resend-email";
 import {
   supporterMovementEnabled,
   unavailableResponse,
@@ -115,7 +114,10 @@ export async function POST(request: Request) {
         validated.value.email,
         config.contactLookupHmacKey,
       ),
-      tokenHash: hashVerificationToken(token, config.verificationTokenPepper),
+      tokenHash: hashVerificationToken(
+        token,
+        config.verificationTokenPepper,
+      ),
       encryptedToken,
       tokenEncryptionKeyVersion: config.outboxTokenEncryptionKeyVersion,
       expiresAt,
@@ -138,23 +140,35 @@ export async function POST(request: Request) {
       url.hash = new URLSearchParams({ token }).toString();
 
       try {
-        await sendSupporterManagementEmail({
+        const delivery = await sendSupporterManagementEmail({
           apiKey: config.resendApiKey,
           from: config.fromEmail,
           to: contact,
           managementUrl: url.toString(),
           expiresInMinutes: 30,
+          idempotencyKey: `supporter-outbox/${ids.outboxId}`,
         });
-        await completeSupporterEmail({
+        await recordSupporterEmailAttempt({
+          databaseUrl: config.databaseUrl,
           outboxId: ids.outboxId,
-          sent: true,
+          outcome: "sent",
+          providerMessageId: delivery.providerMessageId,
           now: new Date(),
-        });
-      } catch {
-        await completeSupporterEmail({
+        }).catch(() => undefined);
+      } catch (error) {
+        const deliveryError =
+          error instanceof SupporterEmailDeliveryError
+            ? error
+            : new SupporterEmailDeliveryError({
+                code: "management_delivery_error",
+                retryable: true,
+              });
+        await recordSupporterEmailAttempt({
+          databaseUrl: config.databaseUrl,
           outboxId: ids.outboxId,
-          sent: false,
-          errorCode: "provider_delivery_failed",
+          outcome: deliveryError.retryable ? "retry" : "dead_letter",
+          errorCode: deliveryError.code,
+          retryAfterSeconds: deliveryError.retryAfterSeconds,
           now: new Date(),
         }).catch(() => undefined);
       }
