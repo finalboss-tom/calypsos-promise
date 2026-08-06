@@ -68,6 +68,14 @@ jobs:
                   1,
               )
           status.write_text(text)
+
+          register = Path(
+              "docs/architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md"
+          )
+          text = register.read_text()
+          if "Holdpoints: 24" not in text or "Unresolved-work records: 24" not in text:
+              text += "\n## Register counts\n\nHoldpoints: 24\n\nUnresolved-work records: 24\n"
+          register.write_text(text)
           PY
 
       - name: Format completion package
