@@ -1,6 +1,6 @@
 # Calypso’s Promise
 
-[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Post-Sprint 9 reconciliation](docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md) · [Sprint 9 completion](docs/roadmap/sprint-9-completion-record.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
+[Documentation](docs/README.md) · [Vision](VISION.md) · [Current status](docs/roadmap/current-status.md) · [Sprint 10 alignment](docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](docs/roadmap/sprint-10-completion-record.md) · [Architecture](docs/architecture/README.md) · [Roadmap](ROADMAP.md) · [Governance](GOVERNANCE.md) · [Contributing](CONTRIBUTING.md)
 
 > **Build your Living Chronicle. Improve your health. Keep the key.**
 
@@ -9,9 +9,9 @@ Calypso’s Promise is an open-source, narrative-driven health platform intended
 ## Start here
 
 - **Understand the Promise:** [Product Constitution](docs/frozen/product-constitution.md) → [Vision](VISION.md) → [Gameplay Foundation](docs/product/gameplay-foundation.md)
-- **See current truth:** [Current Project Status](docs/roadmap/current-status.md) → [Post-Sprint 9 Reconciliation](docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
-- **Inspect Sprint 9 evidence:** [Completion Record](docs/roadmap/sprint-9-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/public-synthetic-prologue-sprint-9-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/public-synthetic-prologue-sprint-9-specialist-holdpoint-and-unresolved-work-register.md)
-- **Inspect the live application boundary:** [`apps/site`](apps/site) → [Deployment Policy](apps/site/DEPLOYMENT.md)
+- **See current truth:** [Current Project Status](docs/roadmap/current-status.md) → [Sprint 10 Pre-Acceptance Alignment](docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) → [Sprint Roadmap](docs/roadmap/sprints.md)
+- **Inspect Sprint 10 evidence:** [Completion Record](docs/roadmap/sprint-10-completion-record.md) → [Cross-Contract Reconciliation](docs/architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) → [Open Holdpoints](docs/architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
+- **Inspect application boundaries:** [`apps/site`](apps/site) retains the institutional site and production `/prologue`; [`apps/game`](apps/game) owns the unmerged browser, iOS, and Android universal shell
 - **Build safely:** [Contributing](CONTRIBUTING.md) → [Module Boundaries](docs/architecture/module-boundaries.md) → [Development Policy](docs/policies/development.md) → [Security](SECURITY.md)
 
 ## Project status
@@ -22,13 +22,15 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 The canonical domains serve production deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6`. Git-triggered Vercel deployment remains disabled for every branch, so repository commits and production releases remain separate attributable actions.
 
+The Sprint 10 implementation package is complete on [issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80) and [PR #79](https://github.com/finalboss-tom/calypsos-promise/pull/79). It remains unaccepted, unmerged, undeployed, undistributed, and blocked from Sprint 11 until the founding-steward gate, directed squash merge, post-merge reconciliation, and dedicated pre-Sprint 11 alignment are complete.
+
 Current governed work is:
 
-- post-Sprint 9 repository and production reconciliation under [issue #71](https://github.com/finalboss-tom/calypsos-promise/issues/71) and [draft PR #72](https://github.com/finalboss-tom/calypsos-promise/pull/72);
+- final Sprint 10 pre-acceptance alignment, acceptance, and merge disposition;
 - the separate Phase 0 newsletter gate [#63](https://github.com/finalboss-tom/calypsos-promise/issues/63); and
-- preparation for a dedicated pre-Sprint 10 alignment review.
+- the remaining specialist, succession, ownership, architecture-audit, and Phase 0 exit gates.
 
-Sprint 10 implementation has **not** started.
+Sprint 11 remains unstarted.
 
 ## Live public site
 
@@ -62,6 +64,21 @@ The live site does not activate production health-data operation, accounts, priv
 - Sprint 9 — accepted, merged, and production-hosted public synthetic prologue
 
 These foundations remain bounded contract, policy, implementation, public-site, and public/synthetic evidence. They do not establish production private-data capability or independent certification.
+
+## Complete unmerged Sprint 10 candidate
+
+Sprint 10 establishes the public/synthetic universal game foundation through:
+
+- `apps/game` for browser, iOS, and Android;
+- `packages/game-content` as the one earned versioned playable-content package;
+- island map, Hearth, direct and narrative routes, scene/dialogue/quest presentation, and Wayfinder navigation;
+- deterministic non-authoritative state;
+- bounded public/synthetic offline resilience;
+- an informational authentication-after-prologue boundary;
+- accessibility and platform-parity contracts; and
+- reproducible unsigned build, rollback, and operations evidence.
+
+It creates no production account, private Chronicle, permission, model-provider egress, analytics, authoritative reward or progress, hosted preview, deployment, signing, store distribution, official release, LI activation, or Sprint 11 authority.
 
 ## Frozen foundations
 

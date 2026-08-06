@@ -41,6 +41,12 @@ External clinical, claims, laboratory, pharmacy, device, EHR, payer, and researc
 
 For the underlying permission models, use the [House of Keys architecture index](../architecture/README.md#house-of-keys-architecture).
 
+## Current universal-shell implementation
+
+Sprint 10 implements the bounded public/synthetic product surface through [`apps/game`](../../apps/game) and [`packages/game-content`](../../packages/game-content). The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) verifies the shell against the Product Constitution, Gameplay Foundation, incentive model, prior sprints, and current quality gates.
+
+The shell preserves direct and narrative parity, refusal, deferral, discard, exit, deterministic non-authority, no-account access, provider independence, and accessibility. It intentionally creates no private Chronicle, production permission, authoritative completion, reward, restoration, progression, analytics, or secondary-use incentive.
+
 ## Product rule
 
 A schema, mapping, connector, provider integration, quest, reward, notification, narrative flow, permission request, policy decision, or receipt must preserve personal value first, meaningful refusal, non-punitive return, purpose-specific permission, visible uncertainty, accessibility, source provenance, provider replaceability, and the separation between authoritative records and AI-generated proposals.

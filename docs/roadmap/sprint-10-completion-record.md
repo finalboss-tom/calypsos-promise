@@ -1,6 +1,6 @@
 # Sprint 10 Completion Record — Universal Game Shell
 
-[Current status](current-status.md) · [Sprint sequence](sprints.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Final reconciliation and Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+[Current status](current-status.md) · [Pre-acceptance alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint sequence](sprints.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Final reconciliation and Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
 - **Status:** IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE; not accepted, squash merged, deployed, distributed, officially released, or used to begin Sprint 11
 - **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — remains open
@@ -104,6 +104,12 @@ Workstream 10.10 adds:
 The exact final durable candidate must pass frozen installation, formatting, documentation links, repository and LI policy, Sprint 10 completion policy, economics and content validation, lint, typecheck, tests, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, source-bound artifact evidence, generated-state cleanup, no tracked mutation, and DCO.
 
 The exact final head, CI, DCO, review state, acceptance, and merge disposition are recorded in issue #80 and PR #79 after this completion package passes permanent validation.
+
+## Pre-acceptance full alignment
+
+The [Sprint 10 Pre-Acceptance Full Alignment Reconciliation](sprint-10-pre-acceptance-alignment-reconciliation.md) compares the complete package against frozen mission, vision, player rights, gameplay, incentives, architecture, provider independence, operational simplicity, prior Sprints 6 through 9, LI-V0, and repository quality standards.
+
+It found no material implementation blocker. It did find contradictory canonical orientation in repository, documentation, architecture, module, and application entry points. Those records and the permanent validator are corrected before the final acceptance candidate is restored to ready-for-review state.
 
 ## Acceptance and merge rule
 

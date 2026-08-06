@@ -1,10 +1,11 @@
 # Repository and Module Boundaries
 
-[Architecture index](README.md) · [Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 8 review](../roadmap/pre-sprint-8-alignment-review.md)
+[Architecture index](README.md) · [Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Current status](../roadmap/current-status.md) · [Sprint 10 alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md)
 
 - **Status:** BASELINE repository architecture guidance
 - **Authority:** implements the frozen Architecture Foundation and accepted Decisions 0010 and 0011 without changing the selected stack or domain boundaries
 - **Reviewed baseline:** `main` at Sprint 7 squash commit `f28f054fe16d550fad37663cf234e06c5622dd42`
+- **Current reconciliation:** Sprint 10 pre-acceptance full alignment; the baseline rules remain unchanged while the implemented application and package inventory is updated
 
 ## Purpose
 
@@ -57,10 +58,11 @@ An application must not become the canonical home for reusable domain rules, pro
 
 Current applications:
 
-- [`apps/site`](../../apps/site) — Website Track 0A public repository gateway; Sprint 8 will migrate this application in place into the public website foundation
+- [`apps/site`](../../apps/site) — accepted Next.js institutional website, newsletter surface, and production-hosted public synthetic `/prologue`
+- [`apps/game`](../../apps/game) — complete unmerged Expo / React Native / Expo Router public/synthetic browser, iOS, and Android universal shell from Sprint 10
 - [`apps/mcp-forge`](../../apps/mcp-forge) — accepted local public/synthetic contributor-tool application from Sprint 7
 
-Planned applications such as `apps/game`, `apps/api`, and `apps/mcp-chronicle` must not be created as empty placeholders.
+Planned applications such as `apps/api` and `apps/mcp-chronicle` must not be created as empty placeholders.
 
 ### `packages/`
 
@@ -75,8 +77,9 @@ Current packages:
 - [`health-schema`](../../packages/health-schema) — Living Chronicle contracts, versioning, deterministic validation, and synthetic fixtures
 - [`house-of-keys`](../../packages/house-of-keys) — purpose-specific permission contracts, lifecycle, explanation evidence, receipts, deterministic validation, pure policy evaluation, and public synthetic fixtures
 - [`aster`](../../packages/aster) — provider-independent Aster role, proposal, source, memory, work, provider-governance, compatibility, migration, and local synthetic contracts
+- [`game-content`](../../packages/game-content) — versioned public/synthetic playable-content records and deterministic validation consumed by `apps/game`; not gameplay authority, private content, or a generic UI package
 
-Do not extract a website package merely because Sprint 8 introduces shared components inside `apps/site`. A package requires a second real consumer or an independently changing contract boundary.
+Do not extract a website or universal UI package merely because applications contain internal shared components. A package requires a second real consumer or an independently changing contract boundary.
 
 ### `services/`
 
@@ -186,10 +189,39 @@ It may summarize and render accepted public records. It does not own:
 - account identity or private data;
 - production Aster or private MCP;
 - provider or connector operation;
-- fundraising transactions; or
-- Sprint 9 gameplay.
+- fundraising transactions;
+- the universal application shell; or
+- private or authoritative gameplay.
 
 Website status and funding views must remain read-only derivatives with canonical source links and validation. They cannot become independent authority.
+
+### Universal game shell
+
+`apps/game` owns browser, iOS, and Android presentation composition for the bounded universal shell.
+
+It may compose:
+
+- versioned public/synthetic game content;
+- shell routes and navigation;
+- scene, dialogue, quest-card, and Wayfinder presentation;
+- temporary deterministic synthetic-session state;
+- bounded public/synthetic offline storage;
+- informational account-boundary presentation;
+- accessibility and platform adapters; and
+- unsigned build and operations evidence.
+
+It does not own:
+
+- private Chronicle truth;
+- production identity, authentication, recovery, or sessions;
+- House of Keys grants, receipts, or execution;
+- production Aster, model providers, memory, retrieval, or tools;
+- authoritative quest completion, rewards, restoration, unlocks, or progression;
+- analytics, inferred preference, research, payments, clinical operation, or connectors;
+- canonical public-site routes, newsletter state, or production `/prologue`; or
+- deployment, signing, store distribution, official release, LI activation, or Sprint 11 authority.
+
+`packages/game-content` supplies validated public/synthetic content. Client rendering, storage, navigation, animation, device time, and local events remain presentation evidence only.
 
 ### Access receipts and protected audit
 
@@ -256,13 +288,13 @@ Split a file or internal module when one or more of these conditions appear:
 
 Line count alone is not the rule, but very large files are a signal to inspect cohesion.
 
-## Sprint 8 boundary
+## Historical Sprint 8 boundary
 
-Sprint 8 should migrate `apps/site` in place.
+Sprint 8 migrated `apps/site` in place and the accepted boundary remains controlling.
 
 It may add internal components, routes, typed site-local public data, build-time adapters, tests, and design tokens inside the application.
 
-It should not create:
+The accepted Sprint 8 change did not create:
 
 - a second site;
 - a shared website package without a second consumer;
@@ -271,6 +303,14 @@ It should not create:
 - a Sprint 9 prologue surface.
 
 The [Pre-Sprint 8 Alignment Review](../roadmap/pre-sprint-8-alignment-review.md) is the controlling handoff.
+
+## Sprint 10 boundary
+
+Sprint 10 earned `apps/game` and `packages/game-content` because both have a current deliverable, bounded responsibility, explicit owner, public API, synthetic fixtures, focused tests, all-platform validation, operability, provider-exit behavior, and rollback boundaries.
+
+It did not earn a generic shared UI package, backend service, production identity service, database, queue, CMS, analytics runtime, model provider, connector, deployment surface, or authoritative gameplay domain.
+
+The [Sprint 10 pre-acceptance alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) is the controlling current inventory review. Sprint 11 remains separately gated.
 
 ## Pull-request review checklist
 

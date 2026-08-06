@@ -20,24 +20,27 @@ The directive is constrained by the player promise:
 ## Current orientation
 
 1. [Current Project Status](roadmap/current-status.md)
-2. [LI-V0 Completion Candidate](roadmap/longitudinal-intelligence-li-v0-completion-record.md)
-3. [Pre-Sprint 10 Alignment Review](roadmap/pre-sprint-10-alignment-review.md)
-4. [Longitudinal Intelligence Doctrine](architecture/longitudinal-intelligence-doctrine.md)
-5. [Longitudinal Intelligence Staged Validation Plan](roadmap/longitudinal-intelligence-validation-plan.md)
-6. [LI Evidence Kernel v1](architecture/longitudinal-intelligence-evidence-kernel.v1.schema.json)
-7. [LI Protected-Invariant Traceability](architecture/longitudinal-intelligence-li-v0-traceability.md)
-8. [LI Holdpoints and Unresolved Work](architecture/longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md)
-9. [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
-10. [Pre-Sprint 10 Tracking Issue #75](https://github.com/finalboss-tom/calypsos-promise/issues/75)
-11. [Post-Sprint 9 Repository and Production Reconciliation](roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
-12. [Sprint 9 Completion Record](roadmap/sprint-9-completion-record.md)
-13. [Sprint 9 Release, Rollback, and Sprint 10 Handoff](roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md)
-14. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-15. [Sprint Roadmap](roadmap/sprints.md)
-16. [Architecture Index](architecture/README.md)
-17. [Security Architecture](security/README.md)
-18. [Funding and Sponsorship Baseline](economics/README.md)
-19. [Repository and Module Boundaries](architecture/module-boundaries.md)
+2. [Sprint 10 Pre-Acceptance Full Alignment](roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md)
+3. [Sprint 10 Completion Record](roadmap/sprint-10-completion-record.md)
+4. [Sprint 10 Cross-Contract Reconciliation](architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md)
+5. [LI-V0 Completion Record](roadmap/longitudinal-intelligence-li-v0-completion-record.md)
+6. [Accepted Pre-Sprint 10 Alignment Review](roadmap/pre-sprint-10-alignment-review.md)
+7. [Longitudinal Intelligence Doctrine](architecture/longitudinal-intelligence-doctrine.md)
+8. [Longitudinal Intelligence Staged Validation Plan](roadmap/longitudinal-intelligence-validation-plan.md)
+9. [LI Evidence Kernel v1](architecture/longitudinal-intelligence-evidence-kernel.v1.schema.json)
+10. [LI Protected-Invariant Traceability](architecture/longitudinal-intelligence-li-v0-traceability.md)
+11. [LI Holdpoints and Unresolved Work](architecture/longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md)
+12. [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
+13. [Pre-Sprint 10 Tracking Issue #75](https://github.com/finalboss-tom/calypsos-promise/issues/75)
+14. [Post-Sprint 9 Repository and Production Reconciliation](roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
+15. [Sprint 9 Completion Record](roadmap/sprint-9-completion-record.md)
+16. [Sprint 9 Release, Rollback, and Sprint 10 Handoff](roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md)
+17. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+18. [Sprint Roadmap](roadmap/sprints.md)
+19. [Architecture Index](architecture/README.md)
+20. [Security Architecture](security/README.md)
+21. [Funding and Sponsorship Baseline](economics/README.md)
+22. [Repository and Module Boundaries](architecture/module-boundaries.md)
 
 ## Current state
 
@@ -49,9 +52,9 @@ Accepted Longitudinal Intelligence revisions include:
 - doctrine formatting normalization `6e714238a80d4b965d1bb827b4fd3662c91195c1`; and
 - staged validation integration `6b89b1435d4bfc00ba93262fa197b69d8ea23fd7`.
 
-LI-V0 closure and the mandatory pre-Sprint 10 alignment review are implemented as a candidate on `agent/li-v0-closure-and-pre-sprint-10-alignment` under issues #73 and #75. Founding-steward acceptance remains pending.
+LI-V0 closure and the mandatory pre-Sprint 10 alignment review are accepted and merged through PR #76. LI-V0 is accepted and complete; LI-V1 through LI-V8 remain inactive.
 
-LI-V1 through LI-V8 remain inactive. Sprint 10 remains planned and not started.
+The Sprint 10 implementation package is complete on PR #79 and has passed its workstream-level completion suite. The pre-acceptance full alignment reconciliation corrects canonical status drift and requires one new exact candidate to pass permanent validation before PR #79 returns to ready-for-review state. Sprint 10 remains unaccepted and unmerged. Sprint 11 remains unstarted.
 
 Sprint 9 was squash merged through PR #68 as `b22c32ad8f40610dc95a5b49a745da5adb9c1341`, closed through issue #67, and production hosted through deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6`.
 
@@ -103,19 +106,25 @@ The accepted doctrine is architecture authority only. The LI-V0 candidate adds m
 
 No current repository state authorizes production measurement, descriptive analysis over private Chronicles, personal experimentation, “what works for you” claims, diagnosis, treatment, medication changes, clinical decision support, or research enrollment.
 
-### Pre-Sprint 10 alignment
+### Sprint 10 universal shell
 
-The candidate review recommends `AUTHORIZED WITH NAMED HOLDPOINTS` for one public/synthetic universal shell:
+The accepted pre-Sprint 10 review authorized one bounded public/synthetic universal shell with named holdpoints. The complete unmerged package now establishes:
 
-- proposed application owner: `apps/game`;
-- continuing public site and prologue owner: `apps/site`;
-- proposed shared content owner: `packages/game-content`;
+- `apps/game` as the browser, iOS, and Android application owner;
+- `apps/site` as the continuing institutional site, newsletter, and production `/prologue` owner;
+- `packages/game-content` as the one earned versioned public/synthetic content package;
 - no generic shared UI package without a second real consumer;
-- no client-authoritative progression, permission, Chronicle truth, LI claim, or reward;
-- no production authentication, analytics, private data, app-store release, or LI-V1 through LI-V8; and
-- explicit accessibility, offline, release, rollback, monitoring, incident, and provider-replacement boundaries.
+- deterministic presentation and synthetic-session state with no client-authoritative progression, permission, Chronicle truth, LI claim, or reward;
+- bounded public/synthetic offline storage;
+- an informational, provider-free, discard-by-default account boundary;
+- explicit accessibility, release, rollback, incident, and provider-replacement evidence; and
+- no production authentication, analytics, private data, deployment, store release, or LI-V1 through LI-V8.
 
-Sprint 10 remains blocked until the candidate is accepted and squash merged.
+The package remains unaccepted, unmerged, undeployed, and undistributed until the final founding-steward gate.
+
+### Sprint 11 boundary
+
+Sprint 11 remains unstarted. Its private-value-loop goal requires Sprint 10 acceptance and merge, post-merge reconciliation, and a dedicated alignment decision covering identity, private Chronicle authority, House of Keys, capture, authentication, export, deletion, backup, recovery, offline synchronization, security, privacy, accessibility, operations, providers, and specialist holdpoints.
 
 ### Newsletter
 

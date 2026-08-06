@@ -1,6 +1,6 @@
 # Sprint 10 Cross-Contract Reconciliation — Universal Game Shell
 
-[Architecture index](README.md) · [Control and evidence map](universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Completion record](../roadmap/sprint-10-completion-record.md) · [Final reconciliation and Sprint 11 handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+[Architecture index](README.md) · [Pre-acceptance full alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Control and evidence map](universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Completion record](../roadmap/sprint-10-completion-record.md) · [Final reconciliation and Sprint 11 handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
 - **Status:** IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE; not accepted, squash merged, deployed, distributed, officially released, or used to start Sprint 11
 - **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
@@ -226,6 +226,12 @@ The sprint does not claim phase completion or close specialist/governance work.
 The exact roadmap goal and deliverables are preserved without implementation.
 
 **Residual boundary:** Sprint 11 remains unstarted and private capability remains blocked.
+
+## Pre-acceptance alignment follow-up
+
+A later full alignment pass found no product, architecture, incentive, authority, privacy, provider, or release-boundary contradiction in this reconciliation. It did find that several canonical entry points retained obsolete current-state language from LI-V0, pre-Sprint 10, Sprint 8, or post-Sprint 9 while also linking this completion package.
+
+The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) corrects that status and module-inventory drift and strengthens permanent validation to reject the same contradiction class. The PR remains draft until the corrected exact candidate is green.
 
 ## Release classification
 

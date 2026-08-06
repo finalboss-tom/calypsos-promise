@@ -5,13 +5,15 @@
 Controlling current records:
 
 - [Current Project Status](../../docs/roadmap/current-status.md)
-- [Post-Sprint 9 Repository and Production Reconciliation](../../docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
+- [Sprint 10 Pre-Acceptance Alignment](../../docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md)
+- [Sprint 10 Completion Record](../../docs/roadmap/sprint-10-completion-record.md)
+- [Sprint 10 Final Reconciliation and Sprint 11 Handoff](../../docs/roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md)
 - [Sprint 9 Completion Record](../../docs/roadmap/sprint-9-completion-record.md)
-- [Sprint 9 Release, Rollback, and Sprint 10 Handoff](../../docs/roadmap/sprint-9-release-rollback-and-sprint-10-handoff.md)
+- [Post-Sprint 9 Repository and Production Reconciliation](../../docs/roadmap/post-sprint-9-reconciliation-and-sprint-10-preparation.md)
 - [Public Synthetic Prologue Boundary](../../docs/architecture/public-synthetic-prologue-boundary.md)
 - [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-- [Post-Sprint 9 Reconciliation Issue #71](https://github.com/finalboss-tom/calypsos-promise/issues/71)
-- [Draft Reconciliation PR #72](https://github.com/finalboss-tom/calypsos-promise/pull/72)
+- [Sprint 10 Issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
+- [Sprint 10 PR #79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
 
 ## Current implementation
 
@@ -66,7 +68,11 @@ Current production and rollback evidence is recorded in [DEPLOYMENT.md](DEPLOYME
 
 ## Sprint 10 boundary
 
-Sprint 10 remains planned and not started. A dedicated alignment review must resolve application ownership, one browser/iOS/Android content package, cross-platform accessibility, offline and synchronization states, authentication after the prologue, authority, release, distribution, rollback, monitoring, and incident behavior before implementation begins.
+The complete unmerged Sprint 10 package establishes `apps/game` as the browser, iOS, and Android universal shell and `packages/game-content` as its versioned public/synthetic content source. `apps/site` retains the institutional website, newsletter, canonical public routes, and production `/prologue`.
+
+No route ownership, public navigation, sitemap, indexing, domain, deployment, newsletter, or production-prologue state changed through Sprint 10. Any future consolidation or public game release remains a separately attributable decision with current security, accessibility, operations, and rollback evidence.
+
+Sprint 11 remains unstarted.
 
 ## Run locally
 

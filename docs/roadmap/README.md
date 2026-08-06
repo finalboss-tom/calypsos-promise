@@ -1,26 +1,27 @@
 # Roadmap Documentation
 
-[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint sequence](sprints.md) · [LI validation plan](longitudinal-intelligence-validation-plan.md)
+[Documentation home](../README.md) · [Institutional roadmap](../../ROADMAP.md) · [Current status](current-status.md) · [Sprint 10 alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint sequence](sprints.md) · [LI validation plan](longitudinal-intelligence-validation-plan.md)
 
 Calypso's Promise uses coordinated evidence-gated roadmaps. A completed workstream, passing CI run, merge, schema, simulation, preview, deployment, production route, study, or model result proves only its bounded evidence. It does not automatically activate private capability, causal authority, independent certification, institutional phase completion, public release, or the next sprint or LI stage.
 
 ## Current orientation
 
 1. [Current Project Status](current-status.md)
-2. [Sprint 10 Completion Record](sprint-10-completion-record.md)
-3. [Sprint 10 Final Reconciliation and Sprint 11 Handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md)
-4. [Sprint 10.10 Workstream Record](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
-5. [Sprint 10 Cross-Contract Reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md)
-6. [Sprint 10 Control and Evidence Map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md)
-7. [Sprint 10 Holdpoints and Unresolved Work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
-8. [Sprint 10 Tracking Issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
-9. [Sprint 10 Pull Request #79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
-10. [LI-V0 Completion Record](longitudinal-intelligence-li-v0-completion-record.md)
-11. [Longitudinal Intelligence Doctrine](../architecture/longitudinal-intelligence-doctrine.md)
-12. [Longitudinal Intelligence Validation Plan](longitudinal-intelligence-validation-plan.md)
-13. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
-14. [Sprint Sequence](sprints.md)
-15. [Public Institutional Roadmap](../../ROADMAP.md)
+2. [Sprint 10 Pre-Acceptance Full Alignment](sprint-10-pre-acceptance-alignment-reconciliation.md)
+3. [Sprint 10 Completion Record](sprint-10-completion-record.md)
+4. [Sprint 10 Final Reconciliation and Sprint 11 Handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md)
+5. [Sprint 10.10 Workstream Record](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+6. [Sprint 10 Cross-Contract Reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md)
+7. [Sprint 10 Control and Evidence Map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md)
+8. [Sprint 10 Holdpoints and Unresolved Work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
+9. [Sprint 10 Tracking Issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
+10. [Sprint 10 Pull Request #79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
+11. [LI-V0 Completion Record](longitudinal-intelligence-li-v0-completion-record.md)
+12. [Longitudinal Intelligence Doctrine](../architecture/longitudinal-intelligence-doctrine.md)
+13. [Longitudinal Intelligence Validation Plan](longitudinal-intelligence-validation-plan.md)
+14. [Phase 0 Newsletter Gate #63](https://github.com/finalboss-tom/calypsos-promise/issues/63)
+15. [Sprint Sequence](sprints.md)
+16. [Public Institutional Roadmap](../../ROADMAP.md)
 
 ## Current boundary
 
@@ -32,6 +33,7 @@ Sprint 11 remains unstarted. Phase 0 remains active.
 
 ## Sprint 10 completion package
 
+- [Sprint 10 Pre-Acceptance Full Alignment](sprint-10-pre-acceptance-alignment-reconciliation.md)
 - [Sprint 10.1 Application and Toolchain](sprint-10.1-application-toolchain-foundation.md)
 - [Sprint 10.2 Versioned Game Content](sprint-10.2-versioned-game-content-package.md)
 - [Sprint 10.3 Universal Shell](sprint-10.3-universal-shell-and-navigation.md)
