@@ -1,0 +1,111 @@
+name: Temporary Sprint 10 alignment evidence reconciliation
+
+on:
+  push:
+    branches:
+      - agent/sprint-10-1-application-toolchain
+    paths:
+      - .github/workflows/temp-sprint-10-alignment-evidence.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      CI: true
+      EXPO_NO_TELEMETRY: 1
+      SPRINT10_ALLOW_TEMP_TRANSPORT: 1
+    steps:
+      - name: Check out Sprint 10 branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-10-1-application-toolchain
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install frozen workspace
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply validated alignment evidence
+        run: |
+          python tools/temp-sprint-10-alignment-evidence.py
+          rm tools/temp-sprint-10-alignment-evidence.py
+          test ! -e tools/temp-sprint-10-alignment-evidence.py
+
+      - name: Format reconciled evidence
+        run: >-
+          pnpm exec prettier --write
+          docs/architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md
+          docs/roadmap/current-status.md
+          docs/roadmap/sprint-10-completion-record.md
+          docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md
+          tools/policy/check-sprint-10-completion.mjs
+
+      - name: Validate complete repository
+        run: pnpm check
+
+      - name: Validate production site and rendered prologue
+        run: |
+          pnpm --filter @calypsos-promise/site build
+          pnpm --filter @calypsos-promise/site exec next start -H 127.0.0.1 -p 3000 > site-preview.log 2>&1 &
+          echo $! > site-preview.pid
+          ready=0
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" != 1 ]; then
+            cat site-preview.log
+            exit 1
+          fi
+          SITE_BASE_URL=http://127.0.0.1:3000 SITE_RELEASE_REPORT=site-release-evidence.json pnpm --filter @calypsos-promise/site validate:preview
+          SITE_BASE_URL=http://127.0.0.1:3000 SITE_RELEASE_REPORT=site-release-evidence.json PROLOGUE_BROWSER_REPORT=prologue-browser-evidence/report.json PROLOGUE_SCREENSHOT_DIR=prologue-browser-evidence/screenshots pnpm --filter @calypsos-promise/site validate:prologue-browser
+          if [ -f site-preview.pid ]; then
+            kill "$(cat site-preview.pid)" || true
+          fi
+          git checkout -- apps/site/tsconfig.json apps/site/next-env.d.ts || true
+          rm -f apps/site/tsconfig.tsbuildinfo apps/site/site-release-evidence.json site-preview.pid site-preview.log
+          rm -rf apps/site/.next apps/site/prologue-browser-evidence
+
+      - name: Create signed local evidence candidate
+        run: |
+          git config user.name "Tom"
+          git config user.email "109227940+finalboss-tom@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "docs: record Sprint 10 alignment evidence" -m "Signed-off-by: Tom <109227940+finalboss-tom@users.noreply.github.com>"
+
+      - name: Export and validate universal application evidence
+        run: |
+          pnpm --filter @calypsos-promise/game build
+          SOURCE_REVISION="$(git rev-parse HEAD)"
+          pnpm --filter @calypsos-promise/game build:evidence -- --source "$SOURCE_REVISION"
+          test -f apps/game/dist/build-evidence.json
+          pnpm --filter @calypsos-promise/game validate:build-evidence -- --path dist/build-evidence.json --source "$SOURCE_REVISION"
+          pnpm --filter @calypsos-promise/game clean
+          test ! -e apps/game/dist
+          test ! -e apps/game/.expo
+          test ! -e apps/game/android
+          test ! -e apps/game/ios
+
+      - name: Verify clean candidate and publish
+        run: |
+          git diff --exit-code
+          git pull --rebase origin agent/sprint-10-1-application-toolchain
+          git push origin HEAD:agent/sprint-10-1-application-toolchain
