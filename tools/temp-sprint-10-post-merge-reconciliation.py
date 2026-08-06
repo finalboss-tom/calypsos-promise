@@ -1055,6 +1055,14 @@ replace_once(
     "LI validator current accepted",
 )
 
+
+replace_once(
+    "docs/roadmap/sprint-10-completion-record.md",
+    "The merge places the repository implementation on `main` only. It does not deploy, distribute, officially release, start Sprint 11, activate LI, create private capability, or close institutional Phase 0.\n\n## Post-merge reconciliation",
+    "The merge places the repository implementation on `main` only. It does not deploy, distribute, officially release, start Sprint 11, activate LI, create private capability, or close institutional Phase 0.\n\nSprint 11 remains unstarted.\n\n## Post-merge reconciliation",
+    "completion Sprint 11 state",
+)
+
 # Final post-merge sanity checks.
 for path in [
     "README.md",
