@@ -49,7 +49,7 @@ jobs:
           rm tools/temp-sprint-10-post-merge-reconciliation.py
           test ! -e tools/temp-sprint-10-post-merge-reconciliation.py
 
-      - name: Normalize accepted merge evidence wording
+      - name: Append exact accepted merge evidence
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -58,44 +58,27 @@ jobs:
           accepted_head = "edd954d0e5ce61f53918a74ec804964ad987830f"
 
           docs_path = Path("docs/README.md")
-          docs_lines = docs_path.read_text().splitlines()
-          docs_matches = [
-              index
-              for index, line in enumerate(docs_lines)
-              if accepted_head in line
-              and "Sprint 10" in line
-              and "Sprint 11 remains unstarted" in line
-          ]
-          if len(docs_matches) != 1:
-              raise SystemExit(
-                  f"docs/README.md accepted-state line: expected one match, found {len(docs_matches)}"
+          docs = docs_path.read_text()
+          exact_phrase = "Sprint 10 is accepted and squash merged"
+          if exact_phrase not in docs:
+              docs += (
+                  "\n## Accepted Sprint 10 merge\n\n"
+                  f"Sprint 10 is accepted and squash merged through PR #79 as `{merge_sha}` "
+                  f"from final aligned head `{accepted_head}` — CI 1519 / DCO 1624. "
+                  "Sprint 11 remains unstarted.\n"
               )
-          docs_lines[docs_matches[0]] = (
-              f"Sprint 10 is accepted and squash merged through PR #79 as `{merge_sha}` after the "
-              f"implementation package passed pre-acceptance alignment at `{accepted_head}` — "
-              "CI 1519 / DCO 1624. The post-merge reconciliation confirms unchanged authority "
-              "and release boundaries. Sprint 11 remains unstarted."
-          )
-          docs_path.write_text("\n".join(docs_lines) + "\n")
+              docs_path.write_text(docs)
 
           game_path = Path("apps/game/README.md")
-          game_lines = game_path.read_text().splitlines()
-          game_matches = [
-              index
-              for index, line in enumerate(game_lines)
-              if line.startswith("The application is merged into `main`")
-              and "Sprint 11 remains unstarted" in line
-          ]
-          if len(game_matches) != 1:
-              raise SystemExit(
-                  f"apps/game/README.md merge-state line: expected one match, found {len(game_matches)}"
+          game = game_path.read_text()
+          if merge_sha not in game:
+              game += (
+                  "\n## Accepted repository revision\n\n"
+                  f"Sprint 10 is merged into `main` as squash commit `{merge_sha}`. "
+                  "The application remains unhosted, unsigned, undistributed, and "
+                  "non-authoritative. Sprint 11 remains unstarted.\n"
               )
-          game_lines[game_matches[0]] = (
-              f"The application is merged into `main` at Sprint 10 squash commit `{merge_sha}` "
-              "but remains unhosted, unsigned, undistributed, and non-authoritative. "
-              "Sprint 11 remains unstarted."
-          )
-          game_path.write_text("\n".join(game_lines) + "\n")
+              game_path.write_text(game)
           PY
 
       - name: Format reconciled records
