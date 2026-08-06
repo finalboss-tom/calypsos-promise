@@ -1,5 +1,5 @@
 import { supporterMovementEnabled } from "@/lib/supporters/feature";
-import { bearerAuthorized } from "@/lib/supporters/outbox-auth";
+import { bearerAuthorizedByAny } from "@/lib/supporters/outbox-auth";
 import {
   getSupporterOutboxWorkerConfig,
   supporterOutboxWorkerEnabled,
@@ -27,7 +27,12 @@ async function handle(request: Request) {
     );
   }
 
-  if (!bearerAuthorized(request, config.workerBearerToken)) {
+  if (
+    !bearerAuthorizedByAny(request, [
+      config.workerBearerToken,
+      config.cronBearerToken,
+    ])
+  ) {
     return Response.json(
       { error: "Unauthorized" },
       { status: 401, headers: noStoreHeaders },
