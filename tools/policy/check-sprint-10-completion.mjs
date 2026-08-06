@@ -140,6 +140,7 @@ for (const [path, content, required] of [
     [
       "Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints",
       "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+      "23dffb031657181d9c0ca42457b95128520f7870",
       "Sprint 11 remains unstarted",
       "explicit founding-steward acceptance",
     ],
@@ -172,6 +173,8 @@ for (const [path, content, required] of [
       "Operational simplicity and developer experience",
       "Material corrections applied",
       "No material implementation blocker remains",
+      "23dffb031657181d9c0ca42457b95128520f7870",
+      "CI 1513 / DCO 1618",
       "Sprint 11 remains unstarted",
     ],
   ],
@@ -180,6 +183,7 @@ for (const [path, content, required] of [
     texts.rootReadme,
     [
       "Sprint 10 implementation package is complete",
+
       "Complete unmerged Sprint 10 candidate",
       "apps/game",
       "packages/game-content",
@@ -402,6 +406,7 @@ for (const directory of [".github/workflows", "tools"]) {
           [
             "temp-sprint-10-10-implementation.yml",
             "temp-sprint-10-alignment-reconciliation.yml",
+            "temp-sprint-10-alignment-evidence.yml",
           ].includes(entry);
         if (!permitted)
           fail(

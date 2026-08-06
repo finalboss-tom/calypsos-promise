@@ -109,7 +109,9 @@ The exact final head, CI, DCO, review state, acceptance, and merge disposition a
 
 The [Sprint 10 Pre-Acceptance Full Alignment Reconciliation](sprint-10-pre-acceptance-alignment-reconciliation.md) compares the complete package against frozen mission, vision, player rights, gameplay, incentives, architecture, provider independence, operational simplicity, prior Sprints 6 through 9, LI-V0, and repository quality standards.
 
-It found no material implementation blocker. It did find contradictory canonical orientation in repository, documentation, architecture, module, and application entry points. Those records and the permanent validator are corrected before the final acceptance candidate is restored to ready-for-review state.
+It found no material implementation blocker. It did find contradictory canonical orientation in repository, documentation, architecture, module, and application entry points. Those records and the permanent validator were corrected and passed at clean alignment checkpoint `23dffb031657181d9c0ca42457b95128520f7870` — CI 1513 / DCO 1618.
+
+The exact final durable head and PR review state after evidence-record reconciliation are recorded in issue #80 and PR #79.
 
 ## Acceptance and merge rule
 

@@ -14,7 +14,7 @@
 - **Sprint 10 is authorized with named holdpoints and active through issue #80.**
 - **Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints.**
 - **Sprint 10 implementation package is complete and ready for founding-steward acceptance.**
-- **Pre-acceptance full alignment found and corrected canonical status and module-inventory drift; one new exact candidate must pass permanent validation before review readiness is restored.**
+- **Pre-acceptance full alignment is complete and validated at clean checkpoint `23dffb031657181d9c0ca42457b95128520f7870` — CI 1513 / DCO 1618; canonical status and module-inventory drift are corrected.**
 - **Sprint 10.1 checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
 - **Sprint 10.2 checkpoint:** `d207fcd42b2d781dd60ae5d752bb25f44970842c` — CI 1402 / DCO 1498.
 - **Sprint 10.3 checkpoint:** `1e3139333c469b9d0bfec41532b38165119c6938` — CI 1421 / DCO 1518.

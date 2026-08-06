@@ -231,7 +231,7 @@ The exact roadmap goal and deliverables are preserved without implementation.
 
 A later full alignment pass found no product, architecture, incentive, authority, privacy, provider, or release-boundary contradiction in this reconciliation. It did find that several canonical entry points retained obsolete current-state language from LI-V0, pre-Sprint 10, Sprint 8, or post-Sprint 9 while also linking this completion package.
 
-The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) corrects that status and module-inventory drift and strengthens permanent validation to reject the same contradiction class. The PR remains draft until the corrected exact candidate is green.
+The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) corrects that status and module-inventory drift and strengthens permanent validation to reject the same contradiction class. Clean alignment checkpoint `23dffb031657181d9c0ca42457b95128520f7870` passed CI 1513 and DCO 1618; the exact final durable head and PR review state are recorded in GitHub.
 
 ## Release classification
 

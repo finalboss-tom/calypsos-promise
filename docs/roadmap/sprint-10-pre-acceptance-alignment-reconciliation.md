@@ -2,7 +2,7 @@
 
 [Current status](current-status.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md)
 
-- **Status:** ALIGNMENT RECONCILIATION COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE AFTER EXACT-CANDIDATE VALIDATION; no acceptance or merge occurs through this record
+- **Status:** ALIGNMENT RECONCILIATION COMPLETE AND VALIDATED — READY FOR FOUNDING-STEWARD ACCEPTANCE; no acceptance or merge occurs through this record
 - **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
 - **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
 - **Audited predecessor:** `02ff089b4dbc1a17bf2602ff9a79bc2f00f5199e` — CI 1508 / DCO 1612
@@ -258,6 +258,14 @@ This reconciliation updates current-orientation records so they no longer contra
 - Sprint 10 cross-contract reconciliation.
 
 The permanent `sprint10:check` policy now requires the mission, vision, product, incentive, prior-sprint, module, and application orientation to remain coherent and rejects the stale statements found by this audit.
+
+## Validated alignment checkpoint
+
+Clean durable alignment checkpoint: `23dffb031657181d9c0ca42457b95128520f7870` — CI 1513 / DCO 1618.
+
+The complete permanent repository suite, strengthened Sprint 10 alignment policy, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, source-bound unsigned artifact evidence, generated-state cleanup, no tracked mutation, and DCO passed after temporary alignment transport was removed.
+
+The exact final durable head and PR review state after evidence-record reconciliation are recorded in issue #80 and PR #79. This checkpoint creates no acceptance, merge, deployment, distribution, release, private capability, Sprint 11 entry, LI activation, or Phase 0 exit.
 
 ## Quality conclusion
 
