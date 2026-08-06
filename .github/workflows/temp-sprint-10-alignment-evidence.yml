@@ -49,43 +49,66 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           path = Path("tools/policy/check-sprint-10-completion.mjs")
           text = path.read_text()
           checkpoint = "23dffb031657181d9c0ca42457b95128520f7870"
 
-          old = f'''      "Sprint 10 implementation package is complete",
-                "{checkpoint}",
-                "Complete unmerged Sprint 10 candidate",'''
-          new = '''      "Sprint 10 implementation package is complete",
-                "Complete unmerged Sprint 10 candidate",'''
-          if text.count(old) != 1:
+          root_pattern = re.compile(
+              r'(paths\.rootReadme,\s*texts\.rootReadme,\s*\[\s*'
+              r'"Sprint 10 implementation package is complete",\s*)'
+              + re.escape(f'"{checkpoint}",')
+          )
+          text, count = root_pattern.subn(r'\1', text, count=1)
+          if count != 1:
               raise SystemExit(
-                  f"root README checkpoint placement: expected one match, found {text.count(old)}"
+                  f"root README checkpoint placement: expected one match, found {count}"
               )
-          text = text.replace(old, new, 1)
 
-          old = '''      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
-                "Sprint 11 remains unstarted",'''
-          new = f'''      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
-                "{checkpoint}",
-                "Sprint 11 remains unstarted",'''
-          if text.count(old) != 1:
+          status_pattern = re.compile(
+              r'(paths\.status,\s*texts\.status,\s*\[.*?'
+              r'"Sprint 10 implementation package is complete and ready for founding-steward acceptance",)'
+              r'(\s*)'
+              r'("Sprint 11 remains unstarted",)',
+              re.S,
+          )
+          text, count = status_pattern.subn(
+              lambda match: (
+                  match.group(1)
+                  + match.group(2)
+                  + f'"{checkpoint}",'
+                  + match.group(2)
+                  + match.group(3)
+              ),
+              text,
+              count=1,
+          )
+          if count != 1:
               raise SystemExit(
-                  f"current-status checkpoint placement: expected one match, found {text.count(old)}"
+                  f"current-status checkpoint placement: expected one match, found {count}"
               )
-          text = text.replace(old, new, 1)
 
-          old = '''            "temp-sprint-10-10-implementation.yml",
-                  "temp-sprint-10-alignment-reconciliation.yml",'''
-          new = '''            "temp-sprint-10-10-implementation.yml",
-                  "temp-sprint-10-alignment-reconciliation.yml",
-                  "temp-sprint-10-alignment-evidence.yml",'''
-          if text.count(old) != 1:
+          allowlist_pattern = re.compile(
+              r'("temp-sprint-10-alignment-reconciliation\.yml",\s*)'
+              r'(\]\.includes\(entry\);)'
+          )
+          text, count = allowlist_pattern.subn(
+              lambda match: (
+                  match.group(1)
+                  + '          "temp-sprint-10-alignment-evidence.yml",\n'
+                  + "        "
+                  + match.group(2)
+              ),
+              text,
+              count=1,
+          )
+          if count != 1:
               raise SystemExit(
-                  f"temporary evidence allowlist: expected one match, found {text.count(old)}"
+                  f"temporary evidence allowlist: expected one match, found {count}"
               )
-          path.write_text(text.replace(old, new, 1))
+
+          path.write_text(text)
           PY
 
       - name: Format reconciled evidence
