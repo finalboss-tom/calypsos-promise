@@ -44,7 +44,18 @@ Dead-letter records remain operator-visible. Expired, consumed, or revoked chall
 
 ## Scheduling boundary
 
-The worker endpoint is scheduler-neutral and authenticated with `SUPPORTER_OUTBOX_WORKER_SECRET_B64`. It should be invoked at least every five minutes after Production enablement. No Vercel Cron entry is committed yet: Hobby cron jobs can run only once daily, which is incompatible with 30-minute supporter links. The launch gate must explicitly select either a sufficiently frequent Vercel plan or another reviewed scheduler before Production is enabled.
+The worker endpoint remains scheduler-neutral and supports manual or operator validation with `SUPPORTER_OUTBOX_WORKER_SECRET_B64`. For the current Vercel Pro deployment adapter, `vercel.json` declares a Production cron invocation every five minutes:
+
+```text
+/api/supporters/outbox/worker
+*/5 * * * *
+```
+
+Vercel Cron is active only on Production deployments. The declaration therefore remains dormant while the repository-wide Git deployment lock is active and no approved Production deployment contains it.
+
+Vercel supplies `Authorization: Bearer <CRON_SECRET>` to the scheduled request. The worker accepts that separate 256-bit credential or the manual worker credential through timing-safe comparison. `CRON_SECRET` must not be reused as the manual worker secret and must be created only in the Production environment during the Production-secret gate.
+
+The scheduler supplies timing only. Neon remains authoritative for eligibility, leases, retries, cancellation, idempotency, and terminal state.
 
 ## Resend delivery events
 
@@ -93,6 +104,10 @@ Outbox worker and provider events:
 - `SUPPORTER_OUTBOX_WORKER_ENABLED`
 - `SUPPORTER_EMAIL_RESEND_WEBHOOK_SECRET`
 
+Production scheduler:
+
+- `CRON_SECRET`
+
 `SUPPORTER_PUBLIC_BASE_URL` is optional on a bounded Vercel Preview because the runtime uses the trusted `VERCEL_URL`. It must be explicitly set to the canonical HTTPS origin for Production so every retry reproduces the original provider payload and stable link origin.
 
 ## Deployment gates
@@ -102,7 +117,8 @@ Outbox worker and provider events:
 3. Enable the supporter movement and outbox worker only for the feature-branch Preview.
 4. Create a protected Preview deployment.
 5. Complete synthetic enrollment, management, email retry, idempotency, dead-letter, delivery-event, numbering, and privilege checks.
-6. Select and test a scheduler that invokes the worker at least every five minutes.
+6. Retain the accepted five-minute Vercel Pro cron declaration while Production remains deployment-locked.
 7. Configure the signed Resend webhook and accept event replay/out-of-order behavior.
-8. Seed the accepted Production Promise version and create a separate Production secret set.
+8. Seed the accepted Production Promise version and create a separate Production secret set, including `CRON_SECRET`.
 9. Enable Production only through an explicit reviewed deployment.
+10. Confirm the deployed cron definition and two consecutive successful invocations before declaring the scheduler operational.
