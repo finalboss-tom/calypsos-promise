@@ -39,7 +39,7 @@ jobs:
       - name: Install frozen workspace
         run: pnpm install --frozen-lockfile
 
-      - name: Narrow redundant validator additions
+      - name: Limit validator mutation to temporary allowlist
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -47,19 +47,19 @@ jobs:
           path = Path("tools/temp-sprint-10-closure-reconciliation.py")
           text = path.read_text()
           start_marker = "# Strengthen permanent validation for the fully closed tracker state."
-          phrase = '"Complete unmerged Sprint 10 candidate"'
-          if text.count(start_marker) != 1 or text.count(phrase) < 1:
+          allow_label = '"validator temporary closure workflow"'
+          if text.count(start_marker) != 1 or text.count(allow_label) != 1:
               raise SystemExit(
-                  f"closure validator markers: start={text.count(start_marker)} phrase={text.count(phrase)}"
+                  f"closure validator markers: start={text.count(start_marker)} allow={text.count(allow_label)}"
               )
           start = text.index(start_marker)
-          phrase_index = text.rindex(phrase)
-          end = text.rfind("replace_once(", start, phrase_index)
+          label_index = text.index(allow_label, start)
+          end = text.rfind("replace_once(", start, label_index)
           if end < start:
-              raise SystemExit("closure validator block start was not found")
+              raise SystemExit("temporary allowlist patch start was not found")
           text = (
               text[:start]
-              + "# Permanent validation adds stale-closure prohibitions and the temporary allowlist only.\n"
+              + "# Permanent validator changes are limited to the temporary workflow allowlist.\n"
               + text[end:]
           )
           path.write_text(text)
