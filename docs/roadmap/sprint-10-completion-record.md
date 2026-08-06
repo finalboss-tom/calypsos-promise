@@ -3,9 +3,10 @@
 [Current status](current-status.md) · [Post-merge reconciliation](post-sprint-10-reconciliation-and-sprint-11-preparation.md) · [Pre-acceptance alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint sequence](sprints.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Final reconciliation and Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
 - **Status:** ACCEPTED AND SQUASH MERGED — repository implementation complete; no preview, deployment, distribution, official release, private capability, LI activation, Sprint 11 start, or Phase 0 exit
-- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — closes after post-merge verification
+- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — closed as completed
 - **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79) — squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`
 - **Accepted aligned head:** `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624
+- **Post-merge reconciliation:** PR #82 squash merged as `0119e22e7ba21ec409e5521df44e38a16224d3b4` from validated head `0dc72c6ee35e6209cd06c9a3786cf3a0f1592788` — CI 1522 / DCO 1627
 - **Entry baseline:** `main` at `d2a4cc792e113c0fef824fff8ac73d5ee46a2d22`
 - **Validated pre-10.10 head:** `23ec622ec6dfdb4e3a13f42ee30c679222661cd0` — CI 1500 / DCO 1604
 - **Applications:** `apps/game` universal shell; `apps/site` retains institutional site, newsletter, and production `/prologue`

@@ -22,7 +22,7 @@ Calypso’s Promise remains in **institutional Phase 0 — Constitutional and op
 
 The canonical domains serve production deployment `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6`. Git-triggered Vercel deployment remains disabled for every branch, so repository commits and production releases remain separate attributable actions.
 
-The Sprint 10 implementation package is accepted and merged through [PR #79](https://github.com/finalboss-tom/calypsos-promise/pull/79) as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. [Issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80) closes after post-merge verification. The shell remains unhosted, unsigned, undistributed, and blocked from Sprint 11 until a dedicated pre-Sprint 11 alignment is accepted.
+The Sprint 10 implementation package is accepted and merged through [PR #79](https://github.com/finalboss-tom/calypsos-promise/pull/79) as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. [Issue #80](https://github.com/finalboss-tom/calypsos-promise/issues/80) is closed as completed. Post-merge reconciliation PR #82 was squash merged as `0119e22e7ba21ec409e5521df44e38a16224d3b4` from validated head `0dc72c6ee35e6209cd06c9a3786cf3a0f1592788` — CI 1522 / DCO 1627. The shell remains unhosted, unsigned, undistributed, and blocked from Sprint 11 until a dedicated pre-Sprint 11 alignment is accepted.
 
 Current governed work is:
 

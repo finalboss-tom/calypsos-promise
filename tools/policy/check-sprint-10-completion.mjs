@@ -454,6 +454,7 @@ for (const directory of [".github/workflows", "tools"]) {
             "temp-sprint-10-alignment-reconciliation.yml",
             "temp-sprint-10-alignment-evidence.yml",
             "temp-sprint-10-post-merge-reconciliation.yml",
+            "temp-sprint-10-closure-reconciliation.yml",
           ].includes(entry);
         if (!permitted)
           fail(
