@@ -11,7 +11,7 @@
 - **Accepted LI-V0 closure and pre-Sprint 10 alignment:** PR #76 squash merged as `ade349abb70ce698a376b41213d2d505036379fc` from validated head `f6ae85b1466d44e0b4db960c510bc19124894344` — CI 1317 / DCO 1397.
 - **LI-V0 is accepted and complete.**
 - **LI-V1 through LI-V8 remain inactive.**
-- **Sprint 10 is accepted and squash merged through PR #79 as `28bb5a7ae268d28a67d737777cafdd760c796cd1`; issue #80 closes after post-merge verification.**
+- **Sprint 10 is accepted and squash merged through PR #79 as `28bb5a7ae268d28a67d737777cafdd760c796cd1`; issue #80 is closed as completed.**
 - **Sprint 10.1 through Sprint 10.10 are complete, accepted, and merged as one bounded package.**
 - **Sprint 10 implementation package is accepted and merged.**
 - **Pre-acceptance full alignment is complete and validated at clean checkpoint `23dffb031657181d9c0ca42457b95128520f7870` — CI 1513 / DCO 1618; canonical status and module-inventory drift are corrected.**
@@ -25,7 +25,7 @@
 - **Sprint 10.8 checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
 - **Sprint 10.9 checkpoint:** `7ef342452d3561151203605a1d6401133d28c86d` — CI 1496 / DCO 1600.
 - **PR #79 is squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1` from accepted aligned head `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624.**
-- **Post-Sprint 10 repository reconciliation is complete; no site redeploy, game deployment, distribution, private capability, LI activation, Sprint 11 start, or Phase 0 exit occurred.**
+- **Post-Sprint 10 repository reconciliation is complete through PR #82 as `0119e22e7ba21ec409e5521df44e38a16224d3b4` from validated head `0dc72c6ee35e6209cd06c9a3786cf3a0f1592788` — CI 1522 / DCO 1627; no site redeploy, game deployment, distribution, private capability, LI activation, Sprint 11 start, or Phase 0 exit occurred.**
 - **Sprint 11 remains unstarted.**
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
@@ -336,7 +336,7 @@ PR #79 was the single implementation pull request for workstreams 10.1 through 1
 - Accepted squash commit: `28bb5a7ae268d28a67d737777cafdd760c796cd1`.
 - The squash tree matches the accepted aligned-head tree.
 - No preview, deployment, route migration, indexing, signing, store submission, distribution, private capability, LI activation, Sprint 11 start, or Phase 0 exit occurred.
-- Issue #80 closes after post-merge reconciliation verification.
+- Issue #80 is closed as completed after post-merge reconciliation verification.
 
 ## Sprint 10 named holdpoints
 
@@ -373,7 +373,7 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-Sprint 10 is complete, accepted, merged, and reconciled. Issue #80 closes as completed after post-merge verification.
+Sprint 10 is complete, accepted, merged, and reconciled. Issue #80 is closed as completed. Post-merge reconciliation PR #82 is squash merged as `0119e22e7ba21ec409e5521df44e38a16224d3b4`.
 
 The next authorized work is a dedicated pre-Sprint 11 alignment review. Sprint 11 implementation remains unstarted and requires explicit treatment of identity, private Chronicle authority, House of Keys, real capture, export, deletion, backup, recovery, private offline and synchronization behavior, security, privacy, accessibility, operations, providers, applicable specialist holdpoints, and a new bounded issue and pull-request plan.
 

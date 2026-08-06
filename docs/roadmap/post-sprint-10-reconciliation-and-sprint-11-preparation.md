@@ -6,7 +6,10 @@
 - **Accepted pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
 - **Accepted aligned head:** `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624
 - **Accepted squash commit:** `28bb5a7ae268d28a67d737777cafdd760c796cd1`
-- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — closed after this reconciliation
+- **Post-merge reconciliation pull request:** [#82](https://github.com/finalboss-tom/calypsos-promise/pull/82)
+- **Validated reconciliation head:** `0dc72c6ee35e6209cd06c9a3786cf3a0f1592788` — CI 1522 / DCO 1627
+- **Post-merge reconciliation squash commit:** `0119e22e7ba21ec409e5521df44e38a16224d3b4`
+- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — closed as completed
 - **Institutional phase:** Phase 0 remains active
 - **Information boundary:** public repository source and explicitly synthetic evidence only
 
@@ -24,8 +27,9 @@ The accepted implementation remains a public/synthetic universal shell. It does 
 
 - PR #79 was accepted by the founding steward and squash merged.
 - The accepted aligned head was `edd954d0e5ce61f53918a74ec804964ad987830f` with CI 1519 and DCO 1624.
-- The squash commit is `28bb5a7ae268d28a67d737777cafdd760c796cd1`.
-- The squash tree is required to match the accepted aligned-head tree before this reconciliation is published.
+- The Sprint 10 squash commit is `28bb5a7ae268d28a67d737777cafdd760c796cd1`.
+- The squash tree exactly matches the accepted aligned-head tree.
+- Post-merge reconciliation PR #82 was validated at `0dc72c6ee35e6209cd06c9a3786cf3a0f1592788` — CI 1522 / DCO 1627 — and squash merged as `0119e22e7ba21ec409e5521df44e38a16224d3b4`.
 - Workstreams 10.1 through 10.10 remain one accepted Sprint 10 package rather than separate accepted releases.
 
 The merge changes repository state only. It does not authorize deployment, signing, distribution, indexing, route ownership migration, private capability, LI progression, or the next numbered sprint.
@@ -96,7 +100,7 @@ The 24 Sprint 10 holdpoints and 24 unresolved-work records remain open unless a 
 
 ## Validation and cleanup
 
-This reconciliation must pass:
+This reconciliation passed:
 
 - frozen-lockfile installation;
 - formatting and documentation links;
@@ -109,12 +113,12 @@ This reconciliation must pass:
 - no tracked mutation; and
 - DCO.
 
-Temporary reconciliation scripts and workflows must be removed before the durable checkpoint.
+Temporary reconciliation scripts and workflows were removed before the durable checkpoint.
 
 ## Issue and branch disposition
 
 - PR #79 is merged.
-- Issue #80 closes as completed after post-merge verification.
+- Issue #80 is closed as completed after post-merge verification.
 - The Sprint 10 implementation branch is historical evidence and is no longer the active implementation branch.
 - The persistent roadmap ledger records Sprint 10 as accepted and merged.
 
