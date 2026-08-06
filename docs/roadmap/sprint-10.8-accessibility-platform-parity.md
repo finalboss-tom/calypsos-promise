@@ -1,6 +1,6 @@
 # Sprint 10.8 — Accessibility and platform parity
 
-- **Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION
+- **Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10
 - **Parent:** Sprint 10 — universal game shell
 - **Tracker:** issue #80
 - **Implementation:** draft PR #79
@@ -68,6 +68,27 @@ Sprint 10.8 does not authorize claims of WCAG conformance, independent certifica
 
 The exact implementation checkpoint must pass modality coverage, platform matrix, contrast, reflow, direct-path parity, motion/audio/haptic/gesture absence, focused tests, the complete permanent repository suite, existing production-site validation, browser/iOS/Android credential-free export, cleanup, and no tracked build mutation.
 
+## Validated checkpoint
+
+Exact clean implementation checkpoint: `c04161860eed4ab6ecf55d4c48c0f9a363a4e058`
+
+- CI 1480: success
+- DCO 1582: success
+- focused accessibility and platform-parity validation: success
+- fourteen required modality classes across browser, iOS, and Android: success
+- named normal-text contrast pairs at or above 4.5:1: success
+- responsive scaling, wrapping, compact-width title, scroll, and reflow contracts: success
+- direct and narrative essential-concept parity: success
+- no essential animation, audio, haptic, gesture-only, storage-write, or network dependency: success
+- residual independent-testing limitations remain explicit: success
+- complete permanent repository suite: success
+- existing production-site validation: success
+- browser, iOS, and Android credential-free Expo export: success
+- generated-state cleanup and no tracked build mutation: success
+- temporary implementation and repair transport: removed before clean checkpoint validation
+
+Sprint 10.8 shares this atomic clean checkpoint with the repaired 10.7 predecessor. The checkpoint proves source, deterministic-contract, CI, and unsigned-export parity only. It does not establish WCAG conformance, independent certification, affected-user comprehension, assistive-technology field performance, device support, or release authorization.
+
 ## Sprint-level gate
 
-This workstream is an internal Sprint 10 checkpoint in the single draft PR #79. It creates no separate founding-steward acceptance or merge gate. After exact validation is recorded, the next implementation step is Sprint 10.9 on the same branch and PR.
+This workstream is an internal Sprint 10 checkpoint in the single draft PR #79. It creates no separate founding-steward acceptance or merge gate. The next implementation step is Sprint 10.9 on the same branch and PR.
