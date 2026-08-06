@@ -2,7 +2,8 @@
 
 [Current status](current-status.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md)
 
-- **Status:** ALIGNMENT RECONCILIATION COMPLETE AND VALIDATED — READY FOR FOUNDING-STEWARD ACCEPTANCE; no acceptance or merge occurs through this record
+- **Status:** ALIGNMENT RECONCILIATION COMPLETE AND ACCEPTED THROUGH SPRINT 10 MERGE; no preview, deployment, distribution, private capability, LI activation, Sprint 11 start, or Phase 0 exit occurs through this record
+- **Accepted squash commit:** `28bb5a7ae268d28a67d737777cafdd760c796cd1`
 - **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
 - **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
 - **Audited predecessor:** `02ff089b4dbc1a17bf2602ff9a79bc2f00f5199e` — CI 1508 / DCO 1612
@@ -23,7 +24,7 @@ After the corrected exact candidate passes permanent validation, the recommendat
 
 > **READY FOR FOUNDING-STEWARD ACCEPTANCE AND DIRECTED SQUASH MERGE**
 
-No material implementation blocker remains after canonical-status corrections. Acceptance, merge, issue closure, post-merge reconciliation, preview, deployment, distribution, official release, private capability, Sprint 11 entry, LI activation, and Phase 0 exit remain separate decisions.
+No material implementation blocker remained after canonical-status corrections. The founding steward accepted the package and PR #79 was squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. Preview, deployment, distribution, official release, private capability, Sprint 11 entry, LI activation, and Phase 0 exit remain separate decisions.
 
 ## Authority and review order
 
@@ -265,7 +266,7 @@ Clean durable alignment checkpoint: `23dffb031657181d9c0ca42457b95128520f7870` �
 
 The complete permanent repository suite, strengthened Sprint 10 alignment policy, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, source-bound unsigned artifact evidence, generated-state cleanup, no tracked mutation, and DCO passed after temporary alignment transport was removed.
 
-The exact final durable head and PR review state after evidence-record reconciliation are recorded in issue #80 and PR #79. This checkpoint creates no acceptance, merge, deployment, distribution, release, private capability, Sprint 11 entry, LI activation, or Phase 0 exit.
+Final durable aligned head: `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624. The founding steward accepted the package and PR #79 was squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. This record creates no deployment, distribution, release, private capability, Sprint 11 entry, LI activation, or Phase 0 exit.
 
 ## Quality conclusion
 
@@ -286,8 +287,8 @@ The implementation meets or exceeds the repository quality pattern established b
 
 No material implementation blocker remains after canonical-status corrections.
 
-The corrected exact candidate must pass frozen installation, formatting, documentation links, repository policy, LI policy, strengthened Sprint 10 alignment policy, economics, content, lint, typecheck, tests, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, artifact evidence, generated-state cleanup, no tracked mutation, and DCO.
+The corrected exact candidate `edd954d0e5ce61f53918a74ec804964ad987830f` passed frozen installation, formatting, documentation links, repository policy, LI policy, strengthened Sprint 10 alignment policy, economics, content, lint, typecheck, tests, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, artifact evidence, generated-state cleanup, no tracked mutation, and DCO.
 
-The final exact candidate, CI, DCO, PR review state, and founding-steward disposition are recorded in issue #80 and PR #79 after validation.
+The final exact candidate, CI, DCO, founding-steward acceptance, squash commit, and post-merge disposition are recorded in issue #80, PR #79, and the post-Sprint 10 reconciliation.
 
 Sprint 11 remains unstarted.

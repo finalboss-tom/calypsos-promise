@@ -1,8 +1,10 @@
 # Sprint 10 Cross-Contract Reconciliation — Universal Game Shell
 
-[Architecture index](README.md) · [Pre-acceptance full alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Control and evidence map](universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Completion record](../roadmap/sprint-10-completion-record.md) · [Final reconciliation and Sprint 11 handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+[Architecture index](README.md) · [Post-merge reconciliation](../roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md) · [Pre-acceptance full alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Control and evidence map](universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Completion record](../roadmap/sprint-10-completion-record.md) · [Final reconciliation and Sprint 11 handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
-- **Status:** IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE; not accepted, squash merged, deployed, distributed, officially released, or used to start Sprint 11
+- **Status:** ACCEPTED AND SQUASH MERGED — repository implementation complete; not hosted, deployed, distributed, officially released, privately operational, or used to start Sprint 11
+- **Accepted aligned head:** `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624
+- **Accepted squash commit:** `28bb5a7ae268d28a67d737777cafdd760c796cd1`
 - **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80)
 - **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79)
 - **Entry baseline:** `main` at `d2a4cc792e113c0fef824fff8ac73d5ee46a2d22`
@@ -18,7 +20,7 @@ The accepted goal is satisfied at the named evidence level:
 
 > Establish the browser, iOS, and Android playable application.
 
-The package is ready for explicit founding-steward acceptance and a directed squash merge. This decision does not authorize a hosted preview, canonical-route migration, deployment, indexing, signing, store submission, beta, update channel, official release, production authentication, private Chronicle, production House of Keys, production Aster, analytics, real capture, LI-V1 through LI-V8, institutional Phase 0 exit, or Sprint 11 implementation.
+The founding steward accepted the package and PR #79 was squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. This decision does not authorize a hosted preview, canonical-route migration, deployment, indexing, signing, store submission, beta, update channel, official release, production authentication, private Chronicle, production House of Keys, production Aster, analytics, real capture, LI-V1 through LI-V8, institutional Phase 0 exit, or Sprint 11 implementation.
 
 ## Review authority
 
@@ -231,13 +233,13 @@ The exact roadmap goal and deliverables are preserved without implementation.
 
 A later full alignment pass found no product, architecture, incentive, authority, privacy, provider, or release-boundary contradiction in this reconciliation. It did find that several canonical entry points retained obsolete current-state language from LI-V0, pre-Sprint 10, Sprint 8, or post-Sprint 9 while also linking this completion package.
 
-The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) corrects that status and module-inventory drift and strengthens permanent validation to reject the same contradiction class. Clean alignment checkpoint `23dffb031657181d9c0ca42457b95128520f7870` passed CI 1513 and DCO 1618; the exact final durable head and PR review state are recorded in GitHub.
+The [pre-acceptance full alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) corrects that status and module-inventory drift and strengthens permanent validation to reject the same contradiction class. Clean alignment checkpoint `23dffb031657181d9c0ca42457b95128520f7870` passed CI 1513 and DCO 1618. Final durable aligned head `edd954d0e5ce61f53918a74ec804964ad987830f` passed CI 1519 and DCO 1624 before acceptance and squash merge.
 
 ## Release classification
 
-> **Complete unmerged Sprint 10 repository implementation package, ready for founding-steward acceptance; no hosted game preview, deployment, distribution, production private capability, official release, or Sprint 11 implementation.**
+> **Accepted and merged Sprint 10 repository implementation package; no hosted game preview, deployment, distribution, production private capability, official release, LI activation, or Sprint 11 implementation.**
 
-Acceptance, squash merge, issue closure, post-merge reconciliation, preview decision, route migration, deployment, signing, distribution, official release, Phase 0 exit, and Sprint 11 authorization remain separate attributable decisions.
+Acceptance and squash merge are complete. Issue closure and post-merge reconciliation are recorded separately; preview, route migration, deployment, signing, distribution, official release, Phase 0 exit, LI activation, and Sprint 11 authorization remain separate attributable decisions.
 
 ## Final reconciliation outcome
 
@@ -249,4 +251,4 @@ Acceptance, squash merge, issue closure, post-merge reconciliation, preview deci
 - Every named holdpoint remains open unless a later versioned record explicitly closes it.
 - Sprint 11 remains unstarted.
 
-The final exact durable candidate, CI, DCO, review state, acceptance, and merge disposition are recorded in issue #80 and PR #79 after the complete package itself passes permanent validation.
+The final exact durable candidate, CI, DCO, acceptance, squash commit, issue closure, and post-merge disposition are recorded in issue #80, PR #79, and the post-Sprint 10 reconciliation.
