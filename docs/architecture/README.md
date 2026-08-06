@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Pre-Sprint 10 alignment](../roadmap/pre-sprint-10-alignment-review.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Sprint 10 alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](../roadmap/sprint-10-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -22,7 +22,7 @@ The modular monolith remains the default. A new package, application, service, p
 
 - [Longitudinal Intelligence Doctrine](longitudinal-intelligence-doctrine.md)
 - [Staged Validation Plan](../roadmap/longitudinal-intelligence-validation-plan.md)
-- [LI-V0 Completion Candidate](../roadmap/longitudinal-intelligence-li-v0-completion-record.md)
+- [LI-V0 Completion Record](../roadmap/longitudinal-intelligence-li-v0-completion-record.md)
 - [LI-V0 Tracking Issue #73](https://github.com/finalboss-tom/calypsos-promise/issues/73)
 
 ### Evidence kernel and controls
@@ -42,7 +42,7 @@ The modular monolith remains the default. A new package, application, service, p
 - [Export and Deletion Lifecycle](living-chronicle-export-deletion-lifecycle.md)
 - [Aster Contract Boundary](aster-contract-boundary.md)
 
-The doctrine is an accepted BASELINE architecture direction. The LI-V0 closure candidate adds machine-readable evidence, traceability, holdpoints, validation, and Sprint 10 inheritance. It does not activate production measurement, private-data analysis, personal experimentation, causal health claims, clinical behavior, or a production model or provider.
+The doctrine is an accepted BASELINE architecture direction. LI-V0 closure is accepted and complete with machine-readable evidence, traceability, holdpoints, validation, and Sprint inheritance. It does not activate production measurement, private-data analysis, personal experimentation, causal health claims, clinical behavior, or a production model or provider.
 
 LI-V1 through LI-V8 remain inactive until separately accepted.
 
@@ -71,6 +71,14 @@ The site currently owns:
 - isolated local and deployed release evidence.
 
 It does not own Product Constitution, lore canon, Chronicle truth, House of Keys permission truth, Aster authority, Longitudinal Intelligence causal authority, gameplay authority, provider policy, funding doctrine, clinical policy, legal interpretation, governance authority, private data, accounts, providers, connectors, analytics, research, or payments.
+
+## Current universal game architecture
+
+`apps/game` owns the complete unmerged Sprint 10 browser, iOS, and Android shell. `packages/game-content` owns the one earned versioned public/synthetic playable-content package. `apps/site` retains the institutional website, newsletter, and production `/prologue`.
+
+The universal shell composes public/synthetic content, deterministic presentation and state, a bounded offline adapter, accessibility and platform contracts, and provider-neutral build evidence. It creates no private Chronicle, production identity, permission runtime, model-provider egress, analytics, authoritative reward or progression, deployment, signing, or distribution.
+
+The [pre-acceptance alignment reconciliation](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) verifies this surface against frozen mission, vision, gameplay, incentives, prior sprints, and repository quality requirements.
 
 ## Sprint 9 — public synthetic prologue
 
@@ -149,24 +157,14 @@ Forge remains local-only, public/synthetic-only, allowlisted, provider-independe
 
 Narrative presentation cannot create Chronicle truth, permission, canon approval, quest authority, Longitudinal Intelligence authority, rewards, clinical authority, or governance authority.
 
-## Pre-Sprint 10 entry boundary
+## Accepted pre-Sprint 10 boundary
 
-- [Pre-Sprint 10 Alignment Review](../roadmap/pre-sprint-10-alignment-review.md)
+- [Accepted Pre-Sprint 10 Alignment Review](../roadmap/pre-sprint-10-alignment-review.md)
 - [Alignment Issue #75](https://github.com/finalboss-tom/calypsos-promise/issues/75)
 
-The candidate review recommends `AUTHORIZED WITH NAMED HOLDPOINTS` and proposes:
+The accepted decision was `AUTHORIZED WITH NAMED HOLDPOINTS`. Sprint 10 implements that bounded direction through `apps/game`, retained `apps/site` ownership, one earned `packages/game-content` package, public/synthetic state, no client authority, discard-by-default future account handoff, accessibility and offline contracts, release separation, provider replacement, and inactive LI-V1 through LI-V8.
 
-- `apps/game` as the Expo and Expo Router universal application owner;
-- `apps/site` remaining the public site and prologue owner;
-- `packages/game-content` as one earned public/synthetic content package;
-- no generic shared UI package without a second real consumer;
-- public/synthetic local presentation and deterministic session state only;
-- no client-authoritative completion, rewards, permission, Chronicle truth, LI claims, or canonical progression;
-- discard-by-default temporary state at the future authentication boundary;
-- explicit accessibility, offline, release, rollback, monitoring, incident, and provider-replacement requirements; and
-- LI-V1 through LI-V8 remaining inactive.
-
-Sprint 10 remains planned and not started until the alignment candidate is explicitly accepted and squash merged.
+The complete implementation package remains unaccepted and unmerged pending the final alignment candidate, founding-steward acceptance, and directed squash merge.
 
 ## Operational simplicity, provider independence, and succession
 
@@ -177,3 +175,14 @@ Sprint 10 remains planned and not started until the alignment candidate is expli
 - [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 Provider, queue, scheduler, model, measurement service, storage, analytics, observability, CMS, and infrastructure choices remain replaceable adapters rather than domain authority. Historical, succession, measurement, inference, and personal-experiment capabilities remain separately gated.
+
+## Sprint 10 universal game shell completion package
+
+- [Sprint 10 Cross-Contract Reconciliation](universal-game-shell-sprint-10-cross-contract-reconciliation.md)
+- [Sprint 10 Control and Evidence Map](universal-game-shell-sprint-10-control-and-evidence-map.md)
+- [Sprint 10 Specialist Holdpoints and Unresolved Work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 10 Completion Record](../roadmap/sprint-10-completion-record.md)
+- [Sprint 10 Final Reconciliation and Sprint 11 Handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md)
+- [Sprint 10.10 Workstream Record](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+
+The package reconciles the complete public/synthetic browser, iOS, and Android shell at maintainer repository and CI evidence level. It does not establish acceptance, merge, hosted operation, distribution, private capability, independent certification, LI activation, Sprint 11 entry, or institutional Phase 0 exit.

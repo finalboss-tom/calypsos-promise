@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 10.3 shell](sprint-10.3-universal-shell-and-navigation.md) · [Sprint 10.4 presentation](sprint-10.4-scene-dialogue-quest-presentation.md) · [Sprint 10.5 state and authority](sprint-10.5-state-and-authority-boundaries.md) · [Sprint 10.6 offline resilience](sprint-10.6-offline-resilience-behavior.md) · [Sprint 10.7 authentication boundary](sprint-10.7-authentication-after-prologue-boundary.md) · [Sprint 10.8 accessibility parity](sprint-10.8-accessibility-platform-parity.md) · [Sprint 10.9 operations evidence](sprint-10.9-build-release-rollback-operations-evidence.md) · [Sprint 10.10 final reconciliation](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint 10 pre-acceptance alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -11,8 +11,21 @@
 - **Accepted LI-V0 closure and pre-Sprint 10 alignment:** PR #76 squash merged as `ade349abb70ce698a376b41213d2d505036379fc` from validated head `f6ae85b1466d44e0b4db960c510bc19124894344` — CI 1317 / DCO 1397.
 - **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
-- **Sprint 10 is authorized with named holdpoints.**
-- **Sprint 10 remains authorized but implementation has not started.**
+- **Sprint 10 is authorized with named holdpoints and active through issue #80.**
+- **Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints.**
+- **Sprint 10 implementation package is complete and ready for founding-steward acceptance.**
+- **Pre-acceptance full alignment is complete and validated at clean checkpoint `23dffb031657181d9c0ca42457b95128520f7870` — CI 1513 / DCO 1618; canonical status and module-inventory drift are corrected.**
+- **Sprint 10.1 checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
+- **Sprint 10.2 checkpoint:** `d207fcd42b2d781dd60ae5d752bb25f44970842c` — CI 1402 / DCO 1498.
+- **Sprint 10.3 checkpoint:** `1e3139333c469b9d0bfec41532b38165119c6938` — CI 1421 / DCO 1518.
+- **Sprint 10.4 checkpoint:** `5115690810c570111fca10e14070152f0cbb1404` — CI 1432 / DCO 1530.
+- **Sprint 10.5 checkpoint:** `ff40e9840328151fc9b3d63623ab6e217dca8ad8` — CI 1444 / DCO 1543.
+- **Sprint 10.6 checkpoint:** `b792a88bdff49283a304fe0f6939306c18cdd049` — CI 1461 / DCO 1561.
+- **Sprint 10.7 repaired checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
+- **Sprint 10.8 checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
+- **Sprint 10.9 checkpoint:** `7ef342452d3561151203605a1d6401133d28c86d` — CI 1496 / DCO 1600.
+- **PR #79 is the complete unmerged Sprint 10 candidate; exact review state and final candidate evidence are recorded in GitHub.**
+- **Sprint 11 remains unstarted.**
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -164,7 +177,164 @@ The accepted direction establishes:
 - LI-V1 through LI-V8 remaining inactive; and
 - a bounded Sprint 10.1 through Sprint 10.10 implementation sequence.
 
-Sprint 10 is authorized with these boundaries, but no implementation issue, branch, application scaffold, provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun through this acceptance.
+Sprint 10 is active through issue #80. PR #79 is the single draft implementation pull request for the entire sprint. Workstreams 10.1 through 10.9 are complete as validated internal checkpoints. Workstream 10.7 was repaired because its prior reported completion had not landed durable implementation. No hosted game preview, provider selection, deployment, indexing change, signing, store submission, update channel, official release, or Sprint 11 work has begun.
+
+## Sprint 10.1 validated checkpoint
+
+Workstream 10.1 establishes the application and toolchain foundation only:
+
+- `apps/game` is a separate Expo Router workspace for browser, iOS, and Android;
+- exact Expo SDK 57, Expo Router, React Native, React, React Native Web, Worklets, TypeScript, Node, and pnpm compatibility is inspectable and enforced;
+- unsigned credential-free exports pass for all three platforms;
+- generated `ios/` and `android/` projects, EAS configuration, credentials, provider SDKs, analytics, authentication, private Chronicle data, and production deployment configuration remain absent;
+- `apps/site` remains the canonical public-site and production-prologue owner; and
+- formatting, documentation, policy, content, economics, lint, typecheck, tests, site release validation, generated-state cleanup, and no-mutation checks pass.
+
+The latest fully validated checkpoint is `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` with CI 1367 and DCO 1465. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize deployment, mobile distribution, independent specialist certification, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.2 validated checkpoint
+
+Workstream 10.2 establishes the earned versioned public/synthetic content package only:
+
+- `packages/game-content` is a private workspace package and `apps/game` is its first real consumer;
+- package, API, accepted content-schema, locale, provenance, accessibility, compatibility, migration, and authority contracts are explicit;
+- nine `PUBLIC_SYNTHETIC` `en-US` fixtures cover one guide, one zone, three dialogues, two scenes, one quest-card fixture, and one authority-boundary lesson;
+- content and package validation fail closed on unsupported versions, broken internal references, missing accessibility alternatives, protected fields, or authority expansion;
+- unknown package versions restart temporary synthetic session state rather than preserving or converting it;
+- browser, iOS, and Android credential-free exports pass with no network or model-provider requirement; and
+- no shared UI package, private Chronicle content, identity, permission, analytics, provider, durable reward, personal progression, deployment, or LI-V1 through LI-V8 capability is introduced.
+
+The validated checkpoint is `d207fcd42b2d781dd60ae5d752bb25f44970842c` with CI 1402 and DCO 1498. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize rendering beyond later workstreams, deployment, mobile distribution, private capability, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.3 validated checkpoint
+
+Workstream 10.3 establishes the universal no-account shell and navigation boundary only:
+
+- `apps/game` exposes public synthetic arrival, island-map, Hearth, direct-information, unavailable-destination, and unknown-route paths;
+- narrative, direct, and map entry paths receive equal prominence without account creation or conversion pressure;
+- Lantern Shore and the Hearth are available while future places are explicitly planned and inactive rather than behaviorally locked;
+- the Hearth uses pre-authored versioned package content without a model provider or generic scene renderer;
+- the direct route presents materially equivalent essential authority information without story traversal;
+- missing content, inactive destinations, and unknown routes fail closed with visible return and discard paths;
+- navigation remains temporary and in memory with no persistence, network request, analytics, identity, permission, progress, reward, Chronicle record, or Longitudinal Intelligence result; and
+- generic scene, dialogue, quest, Wayfinder Orb, and deterministic interaction execution remain assigned to Sprint 10.4.
+
+The validated clean checkpoint is `1e3139333c469b9d0bfec41532b38165119c6938` with CI 1421 and DCO 1518. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize deployment, mobile distribution, private capability, generic content execution, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.4 validated checkpoint
+
+Workstream 10.4 establishes package-driven scene, dialogue, and quest presentation only:
+
+- `apps/game` resolves and renders versioned public/synthetic zones, scenes, dialogue, speakers, choices, and quest cards;
+- incomplete or kind-mismatched packages fail closed without provider or generated-content fallback;
+- every declared choice remains visible and resolves through a pure deterministic interaction function;
+- continue may move only to a valid bundled scene or allowlisted shell route;
+- defer, refuse, and exit remain visible, temporary, non-punitive, and non-inferential;
+- the quest card identifies objective and presentation status while explicitly withholding completion, reward, restoration, unlock, and progress authority;
+- the accessible Wayfinder Orb can open the direct scene, restart presentation, or return to the map without choosing for the player or unlocking content;
+- direct and narrative scene entry use the same package and present materially equivalent essential authority information;
+- browser, iOS, and Android export the same essential content and interaction contract; and
+- all interaction remains React-memory presentation with no persistence, networking, analytics, identity, permission, Chronicle, personal progress, reward, health result, or Longitudinal Intelligence result.
+
+The validated clean checkpoint is `5115690810c570111fca10e14070152f0cbb1404` with CI 1432 and DCO 1530. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize durable state, gameplay authority, deployment, mobile distribution, private capability, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.5 validated checkpoint
+
+Workstream 10.5 establishes deterministic public/synthetic session-state and executable client-authority boundaries only:
+
+- `apps/game` uses a versioned `0.1.0` pure state machine for pending, presented, failed, stale, corrected, superseded, conflict, deferred, refused, and discarded states;
+- state transitions use no clock, randomness, persistence, network, provider, analytics, hidden flags, or ambient authority;
+- only presented and corrected states permit temporary dialogue interaction;
+- pending, failed, stale, superseded, and conflict states leave essential content readable while blocking interaction authority;
+- deferred, refused, and discarded are visible, non-punitive, clearable terminal states;
+- correction, supersession, conflict, restart, and unknown events cannot preserve or expand completion, reward, permission, Chronicle, health, preference, or progress claims;
+- the quest card derives presentation evidence from session state and always reports completion, reward, restoration, unlock, and personal progress as false;
+- the State Authority Panel makes required states and the complete client-authority deny list inspectable; and
+- persistence, offline storage, private data, identity, permission runtime, durable progress, rewards, health results, and Longitudinal Intelligence remain inactive.
+
+The validated clean checkpoint is `ff40e9840328151fc9b3d63623ab6e217dca8ad8` with CI 1444 and DCO 1543. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize persistence, deployment, mobile distribution, private capability, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.6 validated checkpoint
+
+Workstream 10.6 establishes bounded offline and resilience behavior for public packaged content and temporary synthetic-session state only:
+
+- the accepted `@calypsos-promise/game-content` revision remains bundled and is the essential offline fallback across browser, iOS, and Android;
+- AsyncStorage `2.2.0` is isolated under the exact three-file `src/offline` boundary and used only for `PUBLIC_SYNTHETIC` records;
+- the optional public-content cache expires after 30 days and the minimized temporary synthetic-session record expires after 24 hours;
+- records are versioned, byte-limited, clearable, migratable, and checked for accidental corruption;
+- expired, stale, corrupt, unsupported, oversized, conflicting, quota-limited, and unavailable storage fails closed;
+- low storage evicts the optional public cache once before falling back to memory-only session state;
+- restore is explicit, and restart or discard clears the stored session;
+- no health, voice, private Chronicle, account, credential, permission, inference, analytics, research, payment, provider, or protected clinical data is eligible for storage; and
+- stored or restored state cannot create completion, reward, restoration, unlock, permission, Chronicle truth, personal progress, health evidence, authentic preference, or Longitudinal Intelligence.
+
+The validated clean checkpoint is `b792a88bdff49283a304fe0f6939306c18cdd049` with CI 1461 and DCO 1561. This is maintainer implementation and CI evidence inside the active Sprint 10 PR. It is not a separate founding-steward acceptance or merge gate and does not authorize protected persistence, production authentication, deployment, mobile distribution, private capability, Sprint 11, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.7 validated checkpoint
+
+Workstream 10.7 establishes the authentication-after-prologue explanation boundary only:
+
+- the public synthetic experience remains completable without an account;
+- the future-account explanation appears only after the public presentation route;
+- no identity provider, account, credential, token, recovery flow, or production session is present;
+- temporary and synthetic state is discarded by default and never transfers silently;
+- any future transfer candidate requires explicit disclosure, review, player confirmation, provenance, purpose, correction, and deletion behavior;
+- even a complete seven-requirement review creates no transfer authority in Sprint 10; and
+- authentication cannot convert public presentation, dialogue choices, First Lantern or Aster framing, offline state, refusal, direct-path selection, or unknown client claims into Chronicle evidence, permission, progression, completion, rewards, personal progress, health truth, authentic preference, or Longitudinal Intelligence.
+
+The exact clean checkpoint is `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` with CI 1480 and DCO 1582. The prior reported 10.7 completion had not landed durable implementation; this checkpoint repairs the predecessor explicitly before recording 10.8. This is maintainer source and CI evidence, not production authentication readiness or independent specialist certification.
+
+## Sprint 10.8 validated checkpoint
+
+Workstream 10.8 establishes accessibility and platform-parity source and CI evidence only:
+
+- browser, iOS, and Android expose the same bundled essential content, deterministic rules, direct path, authority ceiling, and account boundary;
+- the executable matrix covers keyboard, screen reader, touch, switch access, scaling, reflow, contrast, orientation, reduced motion, reduced data, low bandwidth, audio-to-text alternatives, haptic alternatives, and gesture alternatives;
+- semantic headings, lists, summaries, alerts, labels, hints, live-region text, and standard buttons or links keep essential actions inspectable;
+- named normal-text contrast pairs meet at least 4.5:1;
+- scroll containers, flexible bases, wrapping rows, compact-width title treatment, and non-fixed-height essential text support reflow;
+- narrative and direct routes retain no-account entry, authority, refusal, inactive-account, and discard-by-default concepts without changing access or progress; and
+- no essential action depends on animation, audio, haptics, swipe, drag, pinch, long press, multi-touch, successful storage, or a network request.
+
+The exact clean checkpoint is `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` with CI 1480 and DCO 1582. Independent browser, assistive-technology, VoiceOver, TalkBack, switch-access, external-keyboard, orientation, scaling, affected-user, device, security, privacy, legal, and field evidence remains open. This is not a WCAG conformance or independent accessibility certification claim.
+
+## Sprint 10.9 validated checkpoint
+
+Workstream 10.9 establishes build provenance, release decision gates, provider replacement, public/synthetic incident ownership, rollback, and generated-state cleanup evidence only:
+
+- permanent CI exports browser, iOS, and Android without credentials and validates the complete 10.1 through 10.9 contract set;
+- a temporary versioned build manifest binds exact source revision, lockfile SHA-256, pinned toolchain versions, platform set, sorted artifact paths, byte sizes, and artifact SHA-256 digests;
+- the clean checkpoint validated 76 real exported artifacts while recording `signed: false`, `credentialsUsed: false`, `releaseAuthorized: false`, and `distributionAuthorized: false`;
+- no hosted game preview exists, and any future preview must separately record source, provider/project, access, discovery, configuration/secrets, limitations, data classes, monitoring and incident ownership, expiry/teardown, and rollback;
+- merge, hosted preview, browser deployment, canonical routing, public navigation, indexing, signing, store submission or approval, public beta, over-the-air updates, official release, account activation, private capability, and Longitudinal Intelligence activation remain separate closed gates;
+- Expo, EAS, Apple, Google, Vercel, package registries, and monitoring services remain replaceable adapters with manual fallback and no authority;
+- current incident ownership covers repository and CI evidence for the public/synthetic shell only, while protected logs, credentials, private provider records, and sensitive incident evidence remain outside the public repository;
+- repository, hosted-preview, browser-production, and mobile-distribution rollback scenarios are explicit, with only repository rollback currently applicable; and
+- `.expo`, `dist`, generated `android`, and generated `ios` state is removed after validation with no tracked build mutation.
+
+The validated clean checkpoint is `7ef342452d3561151203605a1d6401133d28c86d` with CI 1496 and DCO 1600. This is maintainer repository, CI, unsigned-export, provenance, and operations-contract evidence. It is not a hosted preview, production or distribution readiness, signing or store qualification, multi-host byte-for-byte reproducibility, a monitoring or on-call program, independent specialist certification, Sprint 11 authorization, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
+## Sprint 10.10 final reconciliation and completion package
+
+Workstream 10.10 completes implementation and reconciliation only:
+
+- 24 cross-contract findings reconcile mission, rights, ownership, content, shell, presentation, client authority, offline state, authentication boundary, Chronicle, House of Keys, Aster, accessibility, security, privacy, build provenance, release gates, provider independence, incidents, rollback, funding, newsletter, LI, Phase 0, and Sprint 11 inheritance;
+- 60 stable controls map objectives to owning evidence and revalidation triggers;
+- 24 holdpoints and 24 unresolved-work records preserve acceptance, release, production, specialist, measurement, institutional, LI, and Sprint 11 entry gates;
+- the completion record classifies the package as ready for founding-steward acceptance but not accepted, merged, deployed, distributed, released, privately operational, or authorized to begin Sprint 11;
+- permanent `sprint10:check` policy prevents drift in counts, status, release boundaries, generated-state cleanup, and the private-value-loop handoff; and
+- the exact final durable head, CI, DCO, review state, acceptance, and merge disposition are recorded in issue #80 and PR #79.
+
+The validated predecessor entering 10.10 is `23ec622ec6dfdb4e3a13f42ee30c679222661cd0` with CI 1500 and DCO 1604. Sprint 10 acceptance and merge remain pending.
+
+## Sprint 10 pull-request model
+
+PR #79 remains draft for workstreams 10.1 through 10.10.
+
+- Each workstream records focused implementation and validation evidence on the same branch and PR.
+- Workstream completion does not create an independent acceptance or merge decision.
+- Workstream 10.10 performs final cross-contract reconciliation and complete permanent validation.
+- Only the complete Sprint 10 candidate is marked ready for review and presented once for founding-steward acceptance and directed squash merge.
 
 ## Sprint 10 named holdpoints
 
@@ -201,17 +371,23 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-LI-V0 is complete and Sprint 10 is authorized with named holdpoints.
+Sprint 10 implementation and reconciliation are complete. PR #79 is the single complete unmerged candidate.
 
-The next separate decision is whether to create the Sprint 10 implementation tracker and branch and begin workstream 10.1.
+The next decision is explicit founding-steward acceptance of the complete Sprint 10 package and, if accepted, a directed squash merge. Workstream 10.10 does not self-accept or merge the sprint.
 
-Until that direction:
+Until that decision:
 
-- Sprint 10 implementation remains unstarted;
-- LI-V1 through LI-V8 remain inactive;
-- no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized; and
-- all named Phase 0 and specialist holdpoints remain open.
+- PR #79 remains unmerged;
+- no hosted game preview, route migration, deployment, indexing, signing, store submission, beta, update channel, or official release is authorized;
+- no production authentication, private Chronicle, House of Keys, Aster/provider, analytics, real capture, payment, research, clinical workflow, or LI-V1 through LI-V8 capability is active;
+- Sprint 11 remains unstarted;
+- institutional Phase 0 remains active; and
+- every named specialist, affected-user, device, security, privacy, legal, operational, provider, funding, governance, and LI holdpoint remains open.
+
+After an accepted squash merge, a post-merge repository reconciliation and issue #80 closure are required. Sprint 11 additionally requires a dedicated pre-Sprint 11 alignment decision.
+
+- **Longitudinal Intelligence activation:** LI-V1 through LI-V8 remain inactive.
 
 ## Status rule
 
-A doctrine, schema, fixture, passing test, simulation, browser journey, modeled duration, preview, deployment, subscriber delivery, public page, study, model output, or completion record proves only the named environment and evidence class. It does not create independent accessibility, security, privacy, communications, measurement, statistical, clinical, legal, provider, financial, operational, research, identity, permission, causal-inference, production-health-data, institutional, or next-stage approval.
+A doctrine, schema, fixture, passing test, simulation, browser journey, modeled duration, preview, deployment, subscriber delivery, public page, study, model output, workstream checkpoint, or completion record proves only the named environment and evidence class. It does not create independent accessibility, security, privacy, communications, measurement, statistical, clinical, legal, provider, financial, operational, research, identity, permission, causal-inference, production-health-data, institutional, or next-stage approval.

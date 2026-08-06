@@ -87,6 +87,43 @@ jobs:
       - name: Run ${{ matrix.check.name }}
         run: ${{ matrix.check.command }}
 
+  game-toolchain-validation:
+    name: game-toolchain-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CI: true
+      EXPO_NO_TELEMETRY: 1
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Validate application and toolchain boundary
+        run: pnpm --filter @calypsos-promise/game validate:toolchain
+      - name: Validate build, release, rollback, and operations evidence
+        run: pnpm --filter @calypsos-promise/game validate:operations
+      - name: Export browser, iOS, and Android bundles without credentials
+        run: pnpm --filter @calypsos-promise/game build
+      - name: Write deterministic unsigned build evidence
+        run: pnpm --filter @calypsos-promise/game build:evidence -- --source "$GITHUB_SHA"
+      - name: Validate deterministic unsigned build evidence
+        run: |
+          test -f apps/game/dist/build-evidence.json
+          pnpm --filter @calypsos-promise/game validate:build-evidence -- --path dist/build-evidence.json --source "$GITHUB_SHA"
+      - name: Remove generated application state
+        if: always()
+        run: pnpm --filter @calypsos-promise/game clean
+      - name: Verify no tracked build mutation
+        if: always()
+        run: git diff --exit-code
+
   site-release-validation:
     name: site-release-validation
     runs-on: ubuntu-latest

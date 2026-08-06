@@ -58,6 +58,29 @@ const traceabilityPath =
 const holdpointPath =
   "docs/architecture/longitudinal-intelligence-li-v0-holdpoint-and-unresolved-work-register.md";
 const alignmentPath = "docs/roadmap/pre-sprint-10-alignment-review.md";
+const sprintTenOnePath =
+  "docs/roadmap/sprint-10.1-application-toolchain-foundation.md";
+const sprintTenTwoPath =
+  "docs/roadmap/sprint-10.2-versioned-game-content-package.md";
+const sprintTenThreePath =
+  "docs/roadmap/sprint-10.3-universal-shell-and-navigation.md";
+const sprintTenFourPath =
+  "docs/roadmap/sprint-10.4-scene-dialogue-quest-presentation.md";
+const sprintTenFivePath =
+  "docs/roadmap/sprint-10.5-state-and-authority-boundaries.md";
+const sprintTenSixPath =
+  "docs/roadmap/sprint-10.6-offline-resilience-behavior.md";
+const sprintTenSevenPath =
+  "docs/roadmap/sprint-10.7-authentication-after-prologue-boundary.md";
+const sprintTenEightPath =
+  "docs/roadmap/sprint-10.8-accessibility-platform-parity.md";
+const sprintTenNinePath =
+  "docs/roadmap/sprint-10.9-build-release-rollback-operations-evidence.md";
+const sprintTenTenPath =
+  "docs/roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md";
+const sprintTenCompletionPath = "docs/roadmap/sprint-10-completion-record.md";
+const sprintElevenHandoffPath =
+  "docs/roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md";
 const currentStatusPath = "docs/roadmap/current-status.md";
 
 const schema = await loadJson(schemaPath);
@@ -68,6 +91,18 @@ const completion = await loadText(completionPath);
 const traceability = await loadText(traceabilityPath);
 const holdpoints = await loadText(holdpointPath);
 const alignment = await loadText(alignmentPath);
+const sprintTenOne = await loadText(sprintTenOnePath);
+const sprintTenTwo = await loadText(sprintTenTwoPath);
+const sprintTenThree = await loadText(sprintTenThreePath);
+const sprintTenFour = await loadText(sprintTenFourPath);
+const sprintTenFive = await loadText(sprintTenFivePath);
+const sprintTenSix = await loadText(sprintTenSixPath);
+const sprintTenSeven = await loadText(sprintTenSevenPath);
+const sprintTenEight = await loadText(sprintTenEightPath);
+const sprintTenNine = await loadText(sprintTenNinePath);
+const sprintTenTen = await loadText(sprintTenTenPath);
+const sprintTenCompletion = await loadText(sprintTenCompletionPath);
+const sprintElevenHandoff = await loadText(sprintElevenHandoffPath);
 const currentStatus = await loadText(currentStatusPath);
 
 if (schema) {
@@ -259,12 +294,208 @@ for (const [path, content, required] of [
     ],
   ],
   [
+    sprintTenOnePath,
+    sprintTenOne,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "single draft implementation pull request",
+      "apps/game",
+      "apps/site",
+      "LI-V0",
+      "Sprint 10.2",
+      "not a separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenTwoPath,
+    sprintTenTwo,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "packages/game-content",
+      "PUBLIC_SYNTHETIC",
+      "@calypsos-promise/content-schema",
+      "Sprint 10.3",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenThreePath,
+    sprintTenThree,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "island map",
+      "Hearth",
+      "direct and narrative",
+      "Sprint 10.4",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenFourPath,
+    sprintTenFour,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "generic package-driven zone",
+      "dialogue-choice",
+      "quest-card",
+      "Wayfinder Orb",
+      "deterministic public/synthetic interaction",
+      "Sprint 10.5",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenFivePath,
+    sprintTenFive,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "pending",
+      "failed",
+      "stale",
+      "corrected",
+      "superseded",
+      "conflict",
+      "no client-authoritative completion or rewards",
+      "Sprint 10.6",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenSixPath,
+    sprintTenSix,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "apps/game",
+      "AsyncStorage",
+      "PUBLIC_SYNTHETIC",
+      "30 days",
+      "24 hours",
+      "corrupt",
+      "conflict",
+      "low-storage",
+      "Sprint 10.7",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenSevenPath,
+    sprintTenSeven,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "discard",
+      "silently",
+      "disclosure",
+      "review",
+      "player confirmation",
+      "provenance",
+      "purpose",
+      "correction",
+      "deletion",
+      "no identity provider",
+      "Sprint 10.8",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenEightPath,
+    sprintTenEight,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "browser",
+      "iOS",
+      "Android",
+      "keyboard",
+      "screen reader",
+      "switch access",
+      "reduced motion",
+      "low bandwidth",
+      "Direct-path parity",
+      "Residual limitations",
+      "Sprint 10.9",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenNinePath,
+    sprintTenNine,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "issue #80",
+      "draft PR #79",
+      "Build provenance",
+      "unsigned",
+      "hosted preview",
+      "Signing and distribution",
+      "Provider replacement",
+      "Monitoring and incident ownership",
+      "Rollback",
+      "Generated-state cleanup",
+      "Sprint 10.10",
+      "no separate founding-steward acceptance or merge gate",
+    ],
+  ],
+  [
+    sprintTenTenPath,
+    sprintTenTen,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "IMPLEMENTATION PACKAGE READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "24 cross-contract findings",
+      "60 stable controls",
+      "Sprint 11: unstarted",
+      "no new gameplay, private data, identity, permission, model, analytics, provider, deployment, signing, distribution, or LI capability",
+    ],
+  ],
+  [
+    sprintTenCompletionPath,
+    sprintTenCompletion,
+    [
+      "IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "LI-V1 through LI-V8",
+      "Sprint 11 implementation",
+      "24 holdpoints and 24 unresolved records",
+    ],
+  ],
+  [
+    sprintElevenHandoffPath,
+    sprintElevenHandoff,
+    [
+      "Goal: Prove the complete private value loop",
+      "Sprint 11 remains unstarted",
+      "dedicated pre-Sprint 11 alignment review",
+      "LI-V1 through LI-V8",
+    ],
+  ],
+  [
     currentStatusPath,
     currentStatus,
     [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
-      "Sprint 10 remains authorized but implementation has not started",
+      "Sprint 10 is active through issue #80",
+      "Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints",
+      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+      "Sprint 11 remains unstarted",
+      "LI-V1 through LI-V8 remain inactive",
     ],
   ],
 ]) {
@@ -283,5 +514,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, roadmap status, and pre-Sprint 10 alignment are coherent.",
+  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10 completion boundary, roadmap status, bounded Sprint 11 handoff, and pre-Sprint 10 alignment are coherent.",
 );

@@ -15,11 +15,16 @@
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "docs:check": "node tools/docs/check-links.mjs",
-    "policy:check": "node tools/policy/check-repository.mjs && pnpm li:check",
+    "policy:check": "node tools/policy/check-repository.mjs && pnpm li:check && pnpm sprint10:check",
     "li:check": "node tools/policy/check-longitudinal-intelligence.mjs",
-    "content:check": "pnpm --filter @calypsos-promise/content-schema validate:content",
+    "content:check": "pnpm --filter @calypsos-promise/content-schema validate:content && pnpm game:content:validate",
     "check": "pnpm format:check && pnpm docs:check && pnpm policy:check && pnpm economics:check && pnpm content:check && pnpm lint && pnpm typecheck && pnpm test",
-    "economics:check": "node tools/policy/check-funding-records.mjs"
+    "economics:check": "node tools/policy/check-funding-records.mjs",
+    "game:start": "pnpm --filter @calypsos-promise/game start",
+    "game:web": "pnpm --filter @calypsos-promise/game web",
+    "game:validate": "pnpm --filter @calypsos-promise/game validate:toolchain && pnpm --filter @calypsos-promise/game validate:operations",
+    "game:content:validate": "pnpm --filter @calypsos-promise/game-content validate:package",
+    "sprint10:check": "node tools/policy/check-sprint-10-completion.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
