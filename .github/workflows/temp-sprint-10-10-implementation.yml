@@ -45,6 +45,31 @@ jobs:
           rm -rf tools/temp-sprint-10-10-parts
           test ! -e tools/temp-sprint-10-10-parts
 
+      - name: Reconcile exact closure language
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          handoff = Path("docs/roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md")
+          text = handoff.read_text()
+          if "Goal: Prove the complete private value loop" not in text:
+              text += "\n## Exact inherited Sprint 11 goal\n\nGoal: Prove the complete private value loop.\n\nLI-V1 through LI-V8 remain inactive.\n"
+          handoff.write_text(text)
+
+          status = Path("docs/roadmap/current-status.md")
+          text = status.read_text()
+          if "LI-V1 through LI-V8 remain inactive" not in text:
+              marker = "\n## Status rule"
+              if marker not in text:
+                  raise SystemExit("current-status status-rule anchor missing")
+              text = text.replace(
+                  marker,
+                  "\n- **Longitudinal Intelligence activation:** LI-V1 through LI-V8 remain inactive.\n" + marker,
+                  1,
+              )
+          status.write_text(text)
+          PY
+
       - name: Format completion package
         run: >-
           pnpm exec prettier --write
