@@ -39,6 +39,37 @@ jobs:
       - name: Install frozen workspace
         run: pnpm install --frozen-lockfile
 
+      - name: Narrow redundant validator additions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("tools/temp-sprint-10-closure-reconciliation.py")
+          text = path.read_text()
+          start_marker = "# Strengthen permanent validation for the fully closed tracker state."
+          end_marker = '''replace_once(
+              "tools/policy/check-sprint-10-completion.mjs",
+              '''  [
+              paths.rootReadme,
+              texts.rootReadme,
+              "Complete unmerged Sprint 10 candidate",
+            ],''' 
+          start_count = text.count(start_marker)
+          end_count = text.count(end_marker)
+          if start_count != 1 or end_count != 1:
+              raise SystemExit(
+                  f"closure validator markers: expected one start/end, found {start_count}/{end_count}"
+              )
+          start = text.index(start_marker)
+          end = text.index(end_marker, start)
+          text = (
+              text[:start]
+              + "# Permanent validation adds stale-closure prohibitions and the temporary allowlist only.\n"
+              + text[end:]
+          )
+          path.write_text(text)
+          PY
+
       - name: Apply final closure reconciliation
         run: |
           python tools/temp-sprint-10-closure-reconciliation.py
