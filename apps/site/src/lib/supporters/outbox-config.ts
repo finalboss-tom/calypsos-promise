@@ -15,12 +15,23 @@ function secret(name: string): string {
   return encoded;
 }
 
+function optionalSecret(name: string): string | undefined {
+  const encoded = process.env[name]?.trim();
+  if (!encoded) return undefined;
+  const bytes = Buffer.from(encoded, "base64");
+  if (bytes.length !== 32) {
+    throw new Error(`${name} must decode to exactly 32 bytes`);
+  }
+  return encoded;
+}
+
 export type SupporterOutboxWorkerConfig = ReturnType<
   typeof getSupporterEnrollmentConfig
 > &
   Readonly<{
     workerDatabaseUrl: string;
     workerBearerToken: string;
+    cronBearerToken: string | undefined;
   }>;
 
 export function supporterOutboxWorkerEnabled(): boolean {
@@ -39,10 +50,12 @@ export function getSupporterOutboxWorkerConfig(): SupporterOutboxWorkerConfig {
     );
   }
   const workerBearerToken = secret("SUPPORTER_OUTBOX_WORKER_SECRET_B64");
+  const cronBearerToken = optionalSecret("CRON_SECRET");
   return {
     ...enrollment,
     workerDatabaseUrl,
     workerBearerToken,
+    cronBearerToken,
   };
 }
 
