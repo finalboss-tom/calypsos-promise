@@ -1,0 +1,59 @@
+name: Temporary Sprint 10.7 archive inspection
+
+on:
+  push:
+    branches:
+      - agent/sprint-10-1-application-toolchain
+    paths:
+      - .github/workflows/temp-sprint-10-7-inspect.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Sprint 10 branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-10-1-application-toolchain
+          fetch-depth: 0
+
+      - name: Validate and inspect implementation archive
+        run: |
+          python - <<'PY'
+          import base64
+          import gzip
+          import hashlib
+          import io
+          import tarfile
+          from pathlib import Path, PurePosixPath
+
+          source = Path("tools/temp-sprint-10-7/archive.b64")
+          encoded = "".join(source.read_text().split())
+          payload = base64.b64decode(encoded, validate=True)
+          print(f"archive_sha256={hashlib.sha256(payload).hexdigest()}")
+          print(f"archive_bytes={len(payload)}")
+
+          with gzip.GzipFile(fileobj=io.BytesIO(payload), mode="rb") as stream:
+              tar_bytes = stream.read()
+
+          with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:") as archive:
+              members = archive.getmembers()
+              if not members:
+                  raise SystemExit("archive is empty")
+              for member in members:
+                  path = PurePosixPath(member.name)
+                  if path.is_absolute() or ".." in path.parts:
+                      raise SystemExit(f"unsafe archive path: {member.name}")
+                  if member.issym() or member.islnk() or member.isdev():
+                      raise SystemExit(f"unsupported archive member type: {member.name}")
+                  if path.parts[:2] == (".github", "workflows"):
+                      raise SystemExit(f"workflow files are not allowed in the implementation archive: {member.name}")
+                  if path.parts[:2] == ("tools", "temp-sprint-10-7"):
+                      raise SystemExit(f"nested transport files are not allowed: {member.name}")
+                  if not (member.isfile() or member.isdir()):
+                      raise SystemExit(f"unsupported archive member: {member.name}")
+                  print(f"member={member.name}\ttype={'file' if member.isfile() else 'dir'}\tbytes={member.size}")
+          PY
