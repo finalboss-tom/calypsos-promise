@@ -4,6 +4,10 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import test from "node:test";
 import {
+  bearerAuthorized,
+  bearerAuthorizedByAny,
+} from "../src/lib/supporters/outbox-auth.ts";
+import {
   classifyResendFailure,
   SupporterEmailDeliveryError,
 } from "../src/lib/supporters/resend-email.ts";
@@ -77,6 +81,39 @@ test("Resend webhook verification checks signature and timestamp", () => {
       webhookSecret,
       now: new Date((Number(svixTimestamp) + 301) * 1000),
     }),
+    false,
+  );
+});
+
+test("bearer authorization accepts only an explicitly configured credential", () => {
+  const manualSecret = Buffer.alloc(32, 21).toString("base64");
+  const cronSecret = Buffer.alloc(32, 22).toString("base64");
+  const manualRequest = new Request("https://example.test", {
+    headers: { authorization: `Bearer ${manualSecret}` },
+  });
+  const cronRequest = new Request("https://example.test", {
+    headers: { authorization: `Bearer ${cronSecret}` },
+  });
+  const invalidRequest = new Request("https://example.test", {
+    headers: { authorization: "Bearer invalid" },
+  });
+
+  assert.equal(bearerAuthorized(manualRequest, manualSecret), true);
+  assert.equal(bearerAuthorized(cronRequest, manualSecret), false);
+  assert.equal(
+    bearerAuthorizedByAny(manualRequest, [manualSecret, cronSecret]),
+    true,
+  );
+  assert.equal(
+    bearerAuthorizedByAny(cronRequest, [manualSecret, cronSecret]),
+    true,
+  );
+  assert.equal(
+    bearerAuthorizedByAny(invalidRequest, [manualSecret, cronSecret]),
+    false,
+  );
+  assert.equal(
+    bearerAuthorizedByAny(cronRequest, [manualSecret, undefined]),
     false,
   );
 });
@@ -159,17 +196,28 @@ test("delivery observability stores no webhook recipient payload", () => {
   assert.match(webhook, /readRawPayload/);
 });
 
-test("worker and health endpoints require scoped bearer authorization", () => {
+test("worker endpoints and native cron retain scoped authorization", () => {
   const worker = read("src/app/api/supporters/outbox/worker/route.ts");
   const health = read("src/app/api/supporters/outbox/health/route.ts");
+  const outboxConfig = read("src/lib/supporters/outbox-config.ts");
   const turbo = readFileSync(resolve(repoRoot, "turbo.json"), "utf8");
-  const vercel = read("vercel.json");
+  const vercel = JSON.parse(read("vercel.json"));
 
-  assert.match(worker, /bearerAuthorized/);
+  assert.match(worker, /bearerAuthorizedByAny/);
+  assert.match(worker, /workerBearerToken/);
+  assert.match(worker, /cronBearerToken/);
   assert.match(worker, /supporterOutboxWorkerEnabled/);
   assert.match(worker, /maxDuration = 30/);
   assert.match(health, /bearerAuthorized/);
+  assert.match(outboxConfig, /optionalSecret\("CRON_SECRET"\)/);
   assert.match(turbo, /SUPPORTER_OUTBOX_WORKER_SECRET_B64/);
   assert.match(turbo, /SUPPORTER_EMAIL_RESEND_WEBHOOK_SECRET/);
-  assert.doesNotMatch(vercel, /"crons"/);
+  assert.match(turbo, /"CRON_SECRET"/);
+  assert.deepEqual(vercel.crons, [
+    {
+      path: "/api/supporters/outbox/worker",
+      schedule: "*/5 * * * *",
+    },
+  ]);
+  assert.equal(vercel.git.deploymentEnabled, false);
 });
