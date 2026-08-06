@@ -52,6 +52,8 @@ const paths = {
   architectureIndex: "docs/architecture/README.md",
   alignment:
     "docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md",
+  postMerge:
+    "docs/roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md",
   rootReadme: "README.md",
   docsIndex: "docs/README.md",
   productIndex: "docs/product/README.md",
@@ -77,7 +79,8 @@ for (const [path, content, required] of [
     paths.cross,
     texts.cross,
     [
-      "IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "ACCEPTED AND SQUASH MERGED",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "Sprint 11 remains unstarted",
       "No workstream silently expanded",
     ],
@@ -106,11 +109,13 @@ for (const [path, content, required] of [
     paths.completion,
     texts.completion,
     [
-      "IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "ACCEPTED AND SQUASH MERGED",
+      "edd954d0e5ce61f53918a74ec804964ad987830f",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "one cross-contract reconciliation with 24 findings",
       "60 stable controls",
       "24 holdpoints and 24 unresolved records",
-      "Sprint 10 becomes accepted and merged only after",
+      "Acceptance and merge outcome",
     ],
   ],
   [
@@ -138,18 +143,23 @@ for (const [path, content, required] of [
     paths.status,
     texts.status,
     [
-      "Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints",
-      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+      "Accepted and merged numbered sprints:** 0–10",
+      "Sprint 10.1 through Sprint 10.10 are complete, accepted, and merged as one bounded package",
+      "Sprint 10 implementation package is accepted and merged",
       "23dffb031657181d9c0ca42457b95128520f7870",
+      "edd954d0e5ce61f53918a74ec804964ad987830f",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "Sprint 11 remains unstarted",
-      "explicit founding-steward acceptance",
+      "dedicated pre-Sprint 11 alignment review",
     ],
   ],
   [
     paths.roadmapIndex,
     texts.roadmapIndex,
     [
-      "Sprint 10 completion package",
+      "Post-Sprint 10 Repository Reconciliation",
+      "Sprint 10 is accepted and squash merged",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "Sprint 11 remains unstarted",
       "Phase 0 remains active",
     ],
@@ -159,6 +169,8 @@ for (const [path, content, required] of [
     texts.architectureIndex,
     [
       "Sprint 10 universal game shell completion package",
+      "accepted and squash merged",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "universal-game-shell-sprint-10-cross-contract-reconciliation.md",
     ],
   ],
@@ -182,9 +194,9 @@ for (const [path, content, required] of [
     paths.rootReadme,
     texts.rootReadme,
     [
-      "Sprint 10 implementation package is complete",
-
-      "Complete unmerged Sprint 10 candidate",
+      "Sprints 0–10 are accepted and merged",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
+      "Accepted and merged Sprint 10 foundation",
       "apps/game",
       "packages/game-content",
       "Sprint 11 remains unstarted",
@@ -194,8 +206,9 @@ for (const [path, content, required] of [
     paths.docsIndex,
     texts.docsIndex,
     [
-      "Sprint 10 Pre-Acceptance Full Alignment",
-      "Sprint 10 implementation package is complete",
+      "Post-Sprint 10 Repository Reconciliation",
+      "Sprint 10 is accepted and squash merged",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
       "Sprint 10 universal shell",
       "Sprint 11 remains unstarted",
     ],
@@ -218,8 +231,10 @@ for (const [path, content, required] of [
     paths.siteReadme,
     texts.siteReadme,
     [
-      "Sprint 10 Pre-Acceptance Alignment",
-      "complete unmerged Sprint 10 package",
+      "Post-Sprint 10 Reconciliation",
+      "accepted and merged Sprint 10 package",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
+      "No site redeploy",
       "apps/game",
       "Sprint 11 remains unstarted",
     ],
@@ -231,8 +246,23 @@ for (const [path, content, required] of [
       "10.9",
       "10.10",
       "/operations",
-      "Sprint 10 completion and alignment",
+      "Sprint 10 completion, merge, and reconciliation",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
+      "merged into `main`",
       "Sprint 11 remains unstarted",
+    ],
+  ],
+  [
+    paths.postMerge,
+    texts.postMerge,
+    [
+      "COMPLETE AND VALIDATED",
+      "edd954d0e5ce61f53918a74ec804964ad987830f",
+      "28bb5a7ae268d28a67d737777cafdd760c796cd1",
+      "No Calypso's Promise public-site redeploy is justified",
+      "Issue #80",
+      "Sprint 11 remains unstarted",
+      "LI-V1 through LI-V8 remain inactive",
     ],
   ],
   [
@@ -298,6 +328,22 @@ for (const [path, content, required] of [
 }
 
 for (const [path, content, forbidden] of [
+  [paths.rootReadme, texts.rootReadme, "Complete unmerged Sprint 10 candidate"],
+  [paths.rootReadme, texts.rootReadme, "It remains unaccepted, unmerged"],
+  [
+    paths.docsIndex,
+    texts.docsIndex,
+    "Sprint 10 remains unaccepted and unmerged",
+  ],
+  [paths.roadmapIndex, texts.roadmapIndex, "not yet accepted or merged"],
+  [
+    paths.architectureIndex,
+    texts.architectureIndex,
+    "complete unmerged Sprint 10",
+  ],
+  [paths.siteReadme, texts.siteReadme, "complete unmerged Sprint 10 package"],
+  [paths.gameReadme, texts.gameReadme, "The application remains unmerged"],
+  [paths.status, texts.status, "Sprint 10 acceptance and merge remain pending"],
   [
     paths.rootReadme,
     texts.rootReadme,
@@ -407,6 +453,7 @@ for (const directory of [".github/workflows", "tools"]) {
             "temp-sprint-10-10-implementation.yml",
             "temp-sprint-10-alignment-reconciliation.yml",
             "temp-sprint-10-alignment-evidence.yml",
+            "temp-sprint-10-post-merge-reconciliation.yml",
           ].includes(entry);
         if (!permitted)
           fail(
@@ -427,5 +474,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Sprint 10 completion and alignment package validated: frozen mission and incentive inheritance, current canonical orientation, 24 findings, 60 controls, 24 holdpoints, 24 unresolved records, closed release gates, and bounded Sprint 11 handoff.",
+  "Sprint 10 accepted and post-merge-reconciled package validated: frozen mission and incentive inheritance, current canonical orientation, 24 findings, 60 controls, 24 holdpoints, 24 unresolved records, closed release gates, no site redeploy, and bounded Sprint 11 handoff.",
 );

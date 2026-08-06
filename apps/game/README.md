@@ -2,7 +2,7 @@
 
 `apps/game` is the universal browser, iOS, and Android application established during Sprint 10. It remains separate from `apps/site`, which continues to own the canonical public website, newsletter, and production `/prologue`.
 
-## Current Sprint 10 boundary
+## Accepted Sprint 10 boundary
 
 - **10.1:** exact Expo Router toolchain and credential-free all-platform exports.
 - **10.2:** versioned `@calypsos-promise/game-content` package containing public synthetic content only.
@@ -15,7 +15,7 @@
 - **10.9:** source-bound unsigned export evidence, closed release gates, provider replacement, incident scope, rollback, and generated-state cleanup.
 - **10.10:** cross-contract reconciliation, 60 controls, 24 holdpoints, 24 unresolved-work records, completion evidence, and bounded Sprint 11 handoff.
 
-The application implements only bounded offline storage for public packaged content and minimal temporary synthetic-session state. Production authentication, independent accessibility certification, hosted operation, release, and production-authority work remain separately gated. Sprint 10.7 implements only the informational account boundary, Sprint 10.8 implements maintainer source and CI parity evidence, Sprint 10.9 implements unsigned operations evidence, and Sprint 10.10 closes the unmerged repository package without activating Sprint 11.
+The application implements only bounded offline storage for public packaged content and minimal temporary synthetic-session state. Production authentication, independent accessibility certification, hosted operation, release, and production-authority work remain separately gated. Sprint 10.7 implements only the informational account boundary, Sprint 10.8 implements maintainer source and CI parity evidence, Sprint 10.9 implements unsigned operations evidence, and Sprint 10.10 closes the repository package without activating Sprint 11; the complete package is accepted and merged but remains unhosted and undistributed.
 
 ## Route contract
 
@@ -147,14 +147,18 @@ No environment variables, credentials, authentication, analytics, telemetry prov
 
 Run `validate:toolchain`, `validate:shell`, `validate:presentation`, `validate:state-authority`, `validate:offline-resilience`, `validate:authentication-boundary`, `validate:accessibility-parity`, and `validate:operations` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
 
-## Sprint 10 completion and alignment
+## Sprint 10 completion, merge, and reconciliation
 
-The complete implementation package is documented in the [Sprint 10 completion record](../../docs/roadmap/sprint-10-completion-record.md), [cross-contract reconciliation](../../docs/architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md), and [pre-acceptance full alignment reconciliation](../../docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md).
+The complete implementation package is documented in the [Sprint 10 completion record](../../docs/roadmap/sprint-10-completion-record.md), [cross-contract reconciliation](../../docs/architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md), [pre-acceptance full alignment reconciliation](../../docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md), and [post-merge reconciliation](../../docs/roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md).
 
-The application remains unmerged, unhosted, unsigned, undistributed, and non-authoritative. Sprint 11 remains unstarted.
+The application is merged into `main` but remains unhosted, unsigned, undistributed, and non-authoritative. Sprint 11 remains unstarted.
 
 ## Sprint 10.9 build and operations evidence
 
 `/operations` exposes the public/synthetic build, release-gate, provider-replacement, incident, rollback, and cleanup contract. CI exports all three platforms without credentials, writes and validates a source-bound SHA-256 artifact manifest, removes generated state, and proves no tracked mutation.
 
 This is unsigned maintainer build evidence. It is not a hosted preview, signing configuration, store artifact, update channel, production deployment, monitoring service, public beta, or official release.
+
+## Accepted repository revision
+
+Sprint 10 is merged into `main` as squash commit `28bb5a7ae268d28a67d737777cafdd760c796cd1`. The application remains unhosted, unsigned, undistributed, and non-authoritative. Sprint 11 remains unstarted.

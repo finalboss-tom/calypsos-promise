@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Sprint 10 alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](../roadmap/sprint-10-completion-record.md)
+[Documentation home](../README.md) · [Frozen architecture](../frozen/architecture.md) · [Module boundaries](module-boundaries.md) · [Longitudinal Intelligence](longitudinal-intelligence-doctrine.md) · [Current status](../roadmap/current-status.md) · [Post-Sprint 10 reconciliation](../roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md) · [Sprint 10 alignment](../roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint 10 completion](../roadmap/sprint-10-completion-record.md)
 
 This directory contains versioned architecture baselines that implement the frozen [Architecture Foundation](../frozen/architecture.md). These records may refine contracts and sequencing, but they may not weaken player rights, private-data boundaries, deterministic authority, provider replaceability, the consumer-first product center, operational legibility, or the rule that AI proposes while people and domain services control authoritative changes.
 
@@ -74,7 +74,7 @@ It does not own Product Constitution, lore canon, Chronicle truth, House of Keys
 
 ## Current universal game architecture
 
-`apps/game` owns the complete unmerged Sprint 10 browser, iOS, and Android shell. `packages/game-content` owns the one earned versioned public/synthetic playable-content package. `apps/site` retains the institutional website, newsletter, and production `/prologue`.
+`apps/game` owns the accepted and merged Sprint 10 browser, iOS, and Android shell from squash commit `28bb5a7ae268d28a67d737777cafdd760c796cd1`. `packages/game-content` owns the one earned versioned public/synthetic playable-content package. `apps/site` retains the institutional website, newsletter, and production `/prologue`.
 
 The universal shell composes public/synthetic content, deterministic presentation and state, a bounded offline adapter, accessibility and platform contracts, and provider-neutral build evidence. It creates no private Chronicle, production identity, permission runtime, model-provider egress, analytics, authoritative reward or progression, deployment, signing, or distribution.
 
@@ -164,7 +164,7 @@ Narrative presentation cannot create Chronicle truth, permission, canon approval
 
 The accepted decision was `AUTHORIZED WITH NAMED HOLDPOINTS`. Sprint 10 implements that bounded direction through `apps/game`, retained `apps/site` ownership, one earned `packages/game-content` package, public/synthetic state, no client authority, discard-by-default future account handoff, accessibility and offline contracts, release separation, provider replacement, and inactive LI-V1 through LI-V8.
 
-The complete implementation package remains unaccepted and unmerged pending the final alignment candidate, founding-steward acceptance, and directed squash merge.
+The complete implementation package was accepted after final alignment and squash merged through PR #79 as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. It remains unhosted, unsigned, and undistributed.
 
 ## Operational simplicity, provider independence, and succession
 
@@ -178,6 +178,7 @@ Provider, queue, scheduler, model, measurement service, storage, analytics, obse
 
 ## Sprint 10 universal game shell completion package
 
+- [Post-Sprint 10 Repository Reconciliation](../roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md)
 - [Sprint 10 Cross-Contract Reconciliation](universal-game-shell-sprint-10-cross-contract-reconciliation.md)
 - [Sprint 10 Control and Evidence Map](universal-game-shell-sprint-10-control-and-evidence-map.md)
 - [Sprint 10 Specialist Holdpoints and Unresolved Work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
@@ -185,4 +186,4 @@ Provider, queue, scheduler, model, measurement service, storage, analytics, obse
 - [Sprint 10 Final Reconciliation and Sprint 11 Handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md)
 - [Sprint 10.10 Workstream Record](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
-The package reconciles the complete public/synthetic browser, iOS, and Android shell at maintainer repository and CI evidence level. It does not establish acceptance, merge, hosted operation, distribution, private capability, independent certification, LI activation, Sprint 11 entry, or institutional Phase 0 exit.
+The package reconciles the complete public/synthetic browser, iOS, and Android shell at maintainer repository and CI evidence level and was accepted and squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`. It does not establish hosted operation, distribution, private capability, independent certification, LI activation, Sprint 11 entry, or institutional Phase 0 exit.

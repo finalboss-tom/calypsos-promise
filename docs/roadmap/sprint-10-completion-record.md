@@ -1,29 +1,30 @@
 # Sprint 10 Completion Record — Universal Game Shell
 
-[Current status](current-status.md) · [Pre-acceptance alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint sequence](sprints.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Final reconciliation and Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+[Current status](current-status.md) · [Post-merge reconciliation](post-sprint-10-reconciliation-and-sprint-11-preparation.md) · [Pre-acceptance alignment](sprint-10-pre-acceptance-alignment-reconciliation.md) · [Sprint sequence](sprints.md) · [Cross-contract reconciliation](../architecture/universal-game-shell-sprint-10-cross-contract-reconciliation.md) · [Control and evidence map](../architecture/universal-game-shell-sprint-10-control-and-evidence-map.md) · [Holdpoints and unresolved work](../architecture/universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md) · [Final reconciliation and Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Workstream 10.10](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
 
-- **Status:** IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE; not accepted, squash merged, deployed, distributed, officially released, or used to begin Sprint 11
-- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — remains open
-- **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79) — remains unmerged
+- **Status:** ACCEPTED AND SQUASH MERGED — repository implementation complete; no preview, deployment, distribution, official release, private capability, LI activation, Sprint 11 start, or Phase 0 exit
+- **Tracking issue:** [#80](https://github.com/finalboss-tom/calypsos-promise/issues/80) — closes after post-merge verification
+- **Implementation pull request:** [#79](https://github.com/finalboss-tom/calypsos-promise/pull/79) — squash merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`
+- **Accepted aligned head:** `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624
 - **Entry baseline:** `main` at `d2a4cc792e113c0fef824fff8ac73d5ee46a2d22`
 - **Validated pre-10.10 head:** `23ec622ec6dfdb4e3a13f42ee30c679222661cd0` — CI 1500 / DCO 1604
 - **Applications:** `apps/game` universal shell; `apps/site` retains institutional site, newsletter, and production `/prologue`
 - **Content:** `packages/game-content` version `0.1.0`
 - **Scope:** complete public/synthetic browser, iOS, and Android shell, deterministic non-authoritative gameplay foundation, offline resilience, authentication explanation boundary, accessibility parity, operations evidence, final reconciliation, and Sprint 11 handoff
 
-## Readiness decision
+## Acceptance and merge decision
 
 The Sprint 10 implementation package is complete for the accepted goal:
 
 > Establish the browser, iOS, and Android playable application.
 
-It is ready for explicit founding-steward acceptance and a directed squash merge.
+The founding steward accepted the complete package and directed the squash merge of PR #79. Sprint 10 is merged as `28bb5a7ae268d28a67d737777cafdd760c796cd1`.
 
 Readiness applies at the repository, deterministic contract, public/synthetic content, isolated site-preview, rendered prologue, credential-free browser/iOS/Android export, artifact-provenance, generated-state-cleanup, and permanent CI level.
 
 It does not authorize a hosted `apps/game` preview, canonical route migration, deployment, indexing, signing, store submission, public beta, update channel, official release, accounts, authentication, private Chronicles, House of Keys operation, Aster/model egress, analytics, real capture, LI-V1 through LI-V8, Phase 0 exit, or Sprint 11 implementation.
 
-Sprint 10 becomes accepted and merged only after the founding steward explicitly accepts the complete package and directs the squash merge of PR #79.
+Sprint 10 is accepted and merged. The merge changes repository state only and does not authorize any hosted, production, distribution, private-data, LI, Sprint 11, or Phase 0 capability.
 
 ## Completed workstreams
 
@@ -101,9 +102,9 @@ Workstream 10.10 adds:
 
 ## Validation package
 
-The exact final durable candidate must pass frozen installation, formatting, documentation links, repository and LI policy, Sprint 10 completion policy, economics and content validation, lint, typecheck, tests, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, source-bound artifact evidence, generated-state cleanup, no tracked mutation, and DCO.
+The final aligned candidate `edd954d0e5ce61f53918a74ec804964ad987830f` passed frozen installation, formatting, documentation links, repository and LI policy, Sprint 10 completion policy, economics and content validation, lint, typecheck, tests, production-site and rendered-prologue validation, browser/iOS/Android credential-free export, source-bound artifact evidence, generated-state cleanup, no tracked mutation, and DCO. The squash commit `28bb5a7ae268d28a67d737777cafdd760c796cd1` preserves the same repository tree.
 
-The exact final head, CI, DCO, review state, acceptance, and merge disposition are recorded in issue #80 and PR #79 after this completion package passes permanent validation.
+The exact final head, CI, DCO, acceptance, squash commit, post-merge disposition, and issue closure are recorded in issue #80, PR #79, and the post-Sprint 10 reconciliation.
 
 ## Pre-acceptance full alignment
 
@@ -113,8 +114,18 @@ It found no material implementation blocker. It did find contradictory canonical
 
 The exact final durable head and PR review state after evidence-record reconciliation are recorded in issue #80 and PR #79.
 
-## Acceptance and merge rule
+## Acceptance and merge outcome
 
-Acceptance of the implementation package does not itself deploy, distribute, release, start Sprint 11, activate LI, or close Phase 0.
+The founding steward accepted the complete Sprint 10 implementation and directed one squash merge of PR #79.
 
-After explicit acceptance, the founding steward may direct one squash merge. The accepted squash commit must then receive a post-merge repository reconciliation before issue #80 is closed or any later preview, release, or Sprint 11 decision proceeds.
+Accepted aligned head: `edd954d0e5ce61f53918a74ec804964ad987830f` — CI 1519 / DCO 1624.
+
+Accepted squash commit: `28bb5a7ae268d28a67d737777cafdd760c796cd1`.
+
+The merge places the repository implementation on `main` only. It does not deploy, distribute, officially release, start Sprint 11, activate LI, create private capability, or close institutional Phase 0.
+
+Sprint 11 remains unstarted.
+
+## Post-merge reconciliation
+
+The [Post-Sprint 10 Repository Reconciliation and Sprint 11 Preparation](post-sprint-10-reconciliation-and-sprint-11-preparation.md) verifies merge state, tree identity, current documentation, tracker disposition, generated-state absence, dependency integrity, unchanged deployment state, and continuing release, specialist, LI, Sprint 11, and Phase 0 holdpoints.

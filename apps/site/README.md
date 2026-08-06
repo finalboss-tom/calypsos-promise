@@ -5,6 +5,7 @@
 Controlling current records:
 
 - [Current Project Status](../../docs/roadmap/current-status.md)
+- [Post-Sprint 10 Reconciliation](../../docs/roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md)
 - [Sprint 10 Pre-Acceptance Alignment](../../docs/roadmap/sprint-10-pre-acceptance-alignment-reconciliation.md)
 - [Sprint 10 Completion Record](../../docs/roadmap/sprint-10-completion-record.md)
 - [Sprint 10 Final Reconciliation and Sprint 11 Handoff](../../docs/roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md)
@@ -68,9 +69,9 @@ Current production and rollback evidence is recorded in [DEPLOYMENT.md](DEPLOYME
 
 ## Sprint 10 boundary
 
-The complete unmerged Sprint 10 package establishes `apps/game` as the browser, iOS, and Android universal shell and `packages/game-content` as its versioned public/synthetic content source. `apps/site` retains the institutional website, newsletter, canonical public routes, and production `/prologue`.
+The accepted and merged Sprint 10 package establishes `apps/game` as the browser, iOS, and Android universal shell at squash commit `28bb5a7ae268d28a67d737777cafdd760c796cd1` and `packages/game-content` as its versioned public/synthetic content source. `apps/site` retains the institutional website, newsletter, canonical public routes, and production `/prologue`.
 
-No route ownership, public navigation, sitemap, indexing, domain, deployment, newsletter, or production-prologue state changed through Sprint 10. Any future consolidation or public game release remains a separately attributable decision with current security, accessibility, operations, and rollback evidence.
+No route ownership, public navigation, sitemap, indexing, domain, deployment, newsletter, or production-prologue state changed through Sprint 10. No site redeploy was performed because PR #79 changed only this README within `apps/site` and did not change the deployable site artifact. Any future consolidation or public game release remains a separately attributable decision with current security, accessibility, operations, and rollback evidence.
 
 Sprint 11 remains unstarted.
 
