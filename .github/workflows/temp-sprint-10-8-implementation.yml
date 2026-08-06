@@ -37,6 +37,48 @@ jobs:
       - name: Apply bounded 10.7 and 10.8 implementation
         run: python tools/temp-sprint-10-8-apply.py
 
+      - name: Reconcile React Native accessibility types
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          panel = Path("apps/game/src/components/AccessibilityParityPanel.tsx")
+          source = panel.read_text()
+          old = '''  const currentPlatform: AccessibilityPlatform =
+              Platform.OS === "web" ? "browser" : Platform.OS;'''
+          new = '''  const currentPlatform: AccessibilityPlatform =
+              Platform.OS === "ios"
+                ? "ios"
+                : Platform.OS === "android"
+                  ? "android"
+                  : "browser";'''
+          if old not in source:
+              old = '''  const currentPlatform: AccessibilityPlatform =
+            Platform.OS === "web" ? "browser" : Platform.OS;'''
+          if old not in source:
+              old = '''  const currentPlatform: AccessibilityPlatform =
+            Platform.OS === "web" ? "browser" : Platform.OS;'''
+          if old not in source:
+              raise SystemExit("current platform expression anchor missing")
+          source = source.replace(old, new, 1)
+          panel.write_text(source)
+
+          for path in [
+              Path("apps/game/src/components/AccessibilityParityPanel.tsx"),
+              Path("apps/game/src/components/AccountBoundaryPanel.tsx"),
+          ]:
+              source = path.read_text()
+              source, count = re.subn(
+                  r'\s+accessibilityRole="listitem"',
+                  "",
+                  source,
+              )
+              if count == 0:
+                  raise SystemExit(f"{path}: expected listitem attributes")
+              path.write_text(source)
+          PY
+
       - name: Format implementation
         run: >-
           pnpm exec prettier --write
