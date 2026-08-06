@@ -50,8 +50,12 @@ The worker uses:
 - dead-letter visibility when the active challenge window or attempt budget is exhausted
 - signed, replay-deduplicated provider events for accepted, delayed, delivered, bounced, complained, suppressed, and failed states
 
-The worker endpoint is independently authenticated and disabled by default. Scheduling is a launch-time infrastructure decision. A scheduler must run frequently enough for the 30-minute verification and management windows; a once-daily job is not acceptable.
+The worker endpoint is independently authenticated and disabled by default. The current deployment adapter is a five-minute native Vercel Pro cron that calls the same bounded endpoint used by manual validation. Vercel contributes timing and an authenticated request only; it does not own work eligibility, retries, delivery state, consent, or supporter truth.
+
+Vercel Cron is Production-only. Its committed declaration remains inactive until an explicitly reviewed Production deployment. The platform-supplied `CRON_SECRET` is separate from the manual worker bearer secret, and both are checked with timing-safe comparison. Neon remains the durable authority for claim leases, duplicate safety, retry policy, cancellation, and dead-letter state.
 
 ## Release boundary
 
-The module is disabled by default. Feature-branch Preview can enable it against an isolated Neon branch and synthetic Promise version. Production remains disabled until management and withdrawal, accessibility, abuse handling, email retry and event observability, scheduler selection, migration, rollback, and Production-secret gates are accepted.
+The module is disabled by default. Feature-branch Preview can enable it against an isolated Neon branch and synthetic Promise version. Production remains disabled until management and withdrawal, accessibility, abuse handling, email retry and event observability, Production cron-secret configuration, migration, rollback, and Production-secret gates are accepted.
+
+The cron declaration does not itself authorize release. Scheduler acceptance requires confirmation of the deployed Production definition and two consecutive successful five-minute invocations after the separate Production launch gate.
