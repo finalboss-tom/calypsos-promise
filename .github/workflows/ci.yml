@@ -107,8 +107,16 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Validate application and toolchain boundary
         run: pnpm --filter @calypsos-promise/game validate:toolchain
+      - name: Validate build, release, rollback, and operations evidence
+        run: pnpm --filter @calypsos-promise/game validate:operations
       - name: Export browser, iOS, and Android bundles without credentials
         run: pnpm --filter @calypsos-promise/game build
+      - name: Write deterministic unsigned build evidence
+        run: pnpm --filter @calypsos-promise/game build:evidence -- --source "$GITHUB_SHA"
+      - name: Validate deterministic unsigned build evidence
+        run: |
+          test -f apps/game/dist/build-evidence.json
+          pnpm --filter @calypsos-promise/game validate:build-evidence -- --path dist/build-evidence.json --source "$GITHUB_SHA"
       - name: Remove generated application state
         if: always()
         run: pnpm --filter @calypsos-promise/game clean
