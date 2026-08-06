@@ -37,7 +37,7 @@ jobs:
       - name: Apply bounded 10.7 and 10.8 implementation
         run: python tools/temp-sprint-10-8-apply.py
 
-      - name: Reconcile React Native accessibility types
+      - name: Reconcile React Native types and shell route contract
         run: |
           python - <<'PY'
           import re
@@ -53,9 +53,6 @@ jobs:
                 : Platform.OS === "android"
                   ? "android"
                   : "browser";'''
-          if old not in source:
-              old = '''  const currentPlatform: AccessibilityPlatform =
-            Platform.OS === "web" ? "browser" : Platform.OS;'''
           if old not in source:
               old = '''  const currentPlatform: AccessibilityPlatform =
             Platform.OS === "web" ? "browser" : Platform.OS;'''
@@ -77,6 +74,28 @@ jobs:
               if count == 0:
                   raise SystemExit(f"{path}: expected listitem attributes")
               path.write_text(source)
+
+          shell_test = Path("apps/game/test/shell-navigation.test.mjs")
+          source = shell_test.read_text()
+          old = '''  assert.equal(new Set(SHELL_ROUTES.map(({ route }) => route)).size, 6);'''
+          new = '''  const routes = SHELL_ROUTES.map(({ route }) => route);
+            assert.equal(new Set(routes).size, 8);
+            assert.deepEqual(
+              [...routes].sort(),
+              [
+                "/",
+                "/accessibility",
+                "/account",
+                "/direct",
+                "/hearth",
+                "/map",
+                "/unavailable",
+                "+not-found",
+              ].sort(),
+            );'''
+          if old not in source:
+              raise SystemExit("shell route count anchor missing")
+          shell_test.write_text(source.replace(old, new, 1))
           PY
 
       - name: Format implementation
