@@ -1,0 +1,89 @@
+name: Temporary Sprint 10.9 implementation
+
+on:
+  push:
+    branches:
+      - agent/sprint-10-1-application-toolchain
+    paths:
+      - .github/workflows/temp-sprint-10-9-implementation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Sprint 10 branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-10-1-application-toolchain
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install frozen workspace
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply bounded Sprint 10.9 implementation
+        run: python tools/temp-sprint-10-9-apply.py
+
+      - name: Format implementation
+        run: >-
+          pnpm exec prettier --write
+          .github/workflows/ci.yml
+          apps/game
+          docs/roadmap/sprint-10.9-build-release-rollback-operations-evidence.md
+          package.json
+
+      - name: Run focused operations validation
+        run: pnpm --filter @calypsos-promise/game validate:operations
+
+      - name: Run complete permanent repository suite
+        run: pnpm check
+
+      - name: Export browser, iOS, and Android bundles without credentials
+        run: pnpm --filter @calypsos-promise/game build
+
+      - name: Write and validate unsigned build evidence
+        run: |
+          SOURCE_REVISION="$(git rev-parse HEAD)"
+          pnpm --filter @calypsos-promise/game build:evidence -- --source "$SOURCE_REVISION"
+          test -f apps/game/dist/build-evidence.json
+          pnpm --filter @calypsos-promise/game validate:build-evidence -- --path dist/build-evidence.json --source "$SOURCE_REVISION"
+
+      - name: Remove generated application state
+        run: pnpm --filter @calypsos-promise/game clean
+
+      - name: Verify generated state is absent
+        run: |
+          test ! -e apps/game/dist
+          test ! -e apps/game/.expo
+          test ! -e apps/game/android
+          test ! -e apps/game/ios
+
+      - name: Remove temporary implementation transport
+        run: |
+          rm -f tools/temp-sprint-10-9-apply.py
+          rm -f .github/workflows/temp-sprint-10-9-implementation.yml
+          test ! -e tools/temp-sprint-10-9-apply.py
+          test ! -e .github/workflows/temp-sprint-10-9-implementation.yml
+
+      - name: Commit durable implementation
+        run: |
+          git config user.name "Tom"
+          git config user.email "109227940+finalboss-tom@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "feat: implement Sprint 10.9 operations evidence" -m "Signed-off-by: Tom <109227940+finalboss-tom@users.noreply.github.com>"
+          git pull --rebase origin agent/sprint-10-1-application-toolchain
+          git push origin HEAD:agent/sprint-10-1-application-toolchain
