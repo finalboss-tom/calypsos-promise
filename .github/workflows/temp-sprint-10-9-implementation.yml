@@ -37,6 +37,67 @@ jobs:
       - name: Apply bounded Sprint 10.9 implementation
         run: python tools/temp-sprint-10-9-apply.py
 
+      - name: Reconcile permanent CI anchor
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path(".github/workflows/ci.yml")
+          source = path.read_text()
+          old = '''      - name: Validate application and toolchain boundary
+                run: pnpm --filter @calypsos-promise/game validate:toolchain
+              - name: Export browser, iOS, and Android bundles without credentials
+                run: pnpm --filter @calypsos-promise/game build
+          '''
+          if old not in source:
+              old = '''      - name: Validate application and toolchain boundary
+                  run: pnpm --filter @calypsos-promise/game validate:toolchain
+                - name: Export browser, iOS, and Android bundles without credentials
+                  run: pnpm --filter @calypsos-promise/game build
+          '''
+          if old not in source:
+              old = '''      - name: Validate application and toolchain boundary
+                  run: pnpm --filter @calypsos-promise/game validate:toolchain
+              - name: Export browser, iOS, and Android bundles without credentials
+                  run: pnpm --filter @calypsos-promise/game build
+          '''
+          if old not in source:
+              old = '''      - name: Validate application and toolchain boundary
+                  run: pnpm --filter @calypsos-promise/game validate:toolchain
+                - name: Export browser, iOS, and Android bundles without credentials
+                  run: pnpm --filter @calypsos-promise/game build
+          '''
+          # Use the exact unindented block after normal YAML indentation is inspected.
+          exact = '''      - name: Validate application and toolchain boundary
+                  run: pnpm --filter @calypsos-promise/game validate:toolchain
+                - name: Export browser, iOS, and Android bundles without credentials
+                  run: pnpm --filter @calypsos-promise/game build
+          '''
+          actual = '''      - name: Validate application and toolchain boundary
+                run: pnpm --filter @calypsos-promise/game validate:toolchain
+              - name: Export browser, iOS, and Android bundles without credentials
+                run: pnpm --filter @calypsos-promise/game build
+          '''
+          # Avoid depending on Python literal indentation by locating the two step markers.
+          start = source.index("      - name: Validate application and toolchain boundary")
+          end_marker = "      - name: Remove generated application state"
+          end = source.index(end_marker, start)
+          replacement = '''      - name: Validate application and toolchain boundary
+        run: pnpm --filter @calypsos-promise/game validate:toolchain
+      - name: Validate build, release, rollback, and operations evidence
+        run: pnpm --filter @calypsos-promise/game validate:operations
+      - name: Export browser, iOS, and Android bundles without credentials
+        run: pnpm --filter @calypsos-promise/game build
+      - name: Write deterministic unsigned build evidence
+        run: pnpm --filter @calypsos-promise/game build:evidence -- --source "$GITHUB_SHA"
+      - name: Validate deterministic unsigned build evidence
+        run: |
+          test -f apps/game/dist/build-evidence.json
+          pnpm --filter @calypsos-promise/game validate:build-evidence -- --path dist/build-evidence.json --source "$GITHUB_SHA"
+'''
+          path.write_text(source[:start] + replacement + source[end:])
+          PY
+
       - name: Format implementation
         run: >-
           pnpm exec prettier --write
