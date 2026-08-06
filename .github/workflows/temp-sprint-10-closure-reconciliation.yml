@@ -1,0 +1,72 @@
+name: Temporary Sprint 10 closure reconciliation
+
+on:
+  push:
+    branches:
+      - agent/sprint-10-closure-reconciliation
+    paths:
+      - .github/workflows/temp-sprint-10-closure-reconciliation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: true
+      EXPO_NO_TELEMETRY: 1
+      SPRINT10_ALLOW_TEMP_TRANSPORT: 1
+    steps:
+      - name: Check out closure branch
+        uses: actions/checkout@v7
+        with:
+          ref: agent/sprint-10-closure-reconciliation
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.13.1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install frozen workspace
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply final closure reconciliation
+        run: |
+          python tools/temp-sprint-10-closure-reconciliation.py
+          rm tools/temp-sprint-10-closure-reconciliation.py
+          test ! -e tools/temp-sprint-10-closure-reconciliation.py
+
+      - name: Format closure records
+        run: >-
+          pnpm exec prettier --write
+          README.md
+          docs/roadmap/current-status.md
+          docs/roadmap/post-sprint-10-reconciliation-and-sprint-11-preparation.md
+          docs/roadmap/sprint-10-completion-record.md
+          tools/policy/check-sprint-10-completion.mjs
+
+      - name: Validate repository
+        run: pnpm check
+
+      - name: Create signed closure candidate
+        run: |
+          git config user.name "Tom"
+          git config user.email "109227940+finalboss-tom@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "docs: finalize Sprint 10 closure state" -m "Signed-off-by: Tom <109227940+finalboss-tom@users.noreply.github.com>"
+
+      - name: Publish clean candidate
+        run: |
+          git diff --exit-code
+          git pull --rebase origin agent/sprint-10-closure-reconciliation
+          git push origin HEAD:agent/sprint-10-closure-reconciliation
