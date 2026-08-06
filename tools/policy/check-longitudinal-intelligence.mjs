@@ -76,6 +76,11 @@ const sprintTenEightPath =
   "docs/roadmap/sprint-10.8-accessibility-platform-parity.md";
 const sprintTenNinePath =
   "docs/roadmap/sprint-10.9-build-release-rollback-operations-evidence.md";
+const sprintTenTenPath =
+  "docs/roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md";
+const sprintTenCompletionPath = "docs/roadmap/sprint-10-completion-record.md";
+const sprintElevenHandoffPath =
+  "docs/roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md";
 const currentStatusPath = "docs/roadmap/current-status.md";
 
 const schema = await loadJson(schemaPath);
@@ -95,6 +100,9 @@ const sprintTenSix = await loadText(sprintTenSixPath);
 const sprintTenSeven = await loadText(sprintTenSevenPath);
 const sprintTenEight = await loadText(sprintTenEightPath);
 const sprintTenNine = await loadText(sprintTenNinePath);
+const sprintTenTen = await loadText(sprintTenTenPath);
+const sprintTenCompletion = await loadText(sprintTenCompletionPath);
+const sprintElevenHandoff = await loadText(sprintElevenHandoffPath);
 const currentStatus = await loadText(currentStatusPath);
 
 if (schema) {
@@ -446,15 +454,47 @@ for (const [path, content, required] of [
     ],
   ],
   [
+    sprintTenTenPath,
+    sprintTenTen,
+    [
+      "COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10",
+      "IMPLEMENTATION PACKAGE READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "24 cross-contract findings",
+      "60 stable controls",
+      "Sprint 11: unstarted",
+      "no new gameplay, private data, identity, permission, model, analytics, provider, deployment, signing, distribution, or LI capability",
+    ],
+  ],
+  [
+    sprintTenCompletionPath,
+    sprintTenCompletion,
+    [
+      "IMPLEMENTATION PACKAGE COMPLETE — READY FOR FOUNDING-STEWARD ACCEPTANCE",
+      "LI-V1 through LI-V8",
+      "Sprint 11 implementation",
+      "24 holdpoints and 24 unresolved records",
+    ],
+  ],
+  [
+    sprintElevenHandoffPath,
+    sprintElevenHandoff,
+    [
+      "Goal: Prove the complete private value loop",
+      "Sprint 11 remains unstarted",
+      "dedicated pre-Sprint 11 alignment review",
+      "LI-V1 through LI-V8",
+    ],
+  ],
+  [
     currentStatusPath,
     currentStatus,
     [
       "LI-V0 is accepted and complete",
       "Sprint 10 is authorized with named holdpoints",
       "Sprint 10 is active through issue #80",
-      "Sprint 10.1 through Sprint 10.9 are complete as validated internal checkpoints",
-      "PR #79 remains draft for workstreams 10.1 through 10.10",
-      "Sprint 10.10",
+      "Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints",
+      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+      "Sprint 11 remains unstarted",
       "LI-V1 through LI-V8 remain inactive",
     ],
   ],
@@ -474,5 +514,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10 execution boundary, roadmap status, and pre-Sprint 10 alignment are coherent.",
+  "Longitudinal Intelligence validation passed: doctrine, LI-V0 closure, evidence kernel, synthetic packet, traceability, holdpoints, Sprint 10 completion boundary, roadmap status, bounded Sprint 11 handoff, and pre-Sprint 10 alignment are coherent.",
 );

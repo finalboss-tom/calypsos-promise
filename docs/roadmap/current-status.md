@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 10.3 shell](sprint-10.3-universal-shell-and-navigation.md) · [Sprint 10.4 presentation](sprint-10.4-scene-dialogue-quest-presentation.md) · [Sprint 10.5 state and authority](sprint-10.5-state-and-authority-boundaries.md) · [Sprint 10.6 offline resilience](sprint-10.6-offline-resilience-behavior.md) · [Sprint 10.7 authentication boundary](sprint-10.7-authentication-after-prologue-boundary.md) · [Sprint 10.8 accessibility parity](sprint-10.8-accessibility-platform-parity.md) · [Sprint 10.9 operations evidence](sprint-10.9-build-release-rollback-operations-evidence.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 10.3 shell](sprint-10.3-universal-shell-and-navigation.md) · [Sprint 10.4 presentation](sprint-10.4-scene-dialogue-quest-presentation.md) · [Sprint 10.5 state and authority](sprint-10.5-state-and-authority-boundaries.md) · [Sprint 10.6 offline resilience](sprint-10.6-offline-resilience-behavior.md) · [Sprint 10.7 authentication boundary](sprint-10.7-authentication-after-prologue-boundary.md) · [Sprint 10.8 accessibility parity](sprint-10.8-accessibility-platform-parity.md) · [Sprint 10.9 operations evidence](sprint-10.9-build-release-rollback-operations-evidence.md) · [Sprint 10.10 final reconciliation](sprint-10.10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint 10 completion](sprint-10-completion-record.md) · [Sprint 11 handoff](sprint-10-final-reconciliation-and-sprint-11-handoff.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -12,7 +12,8 @@
 - **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
 - **Sprint 10 is authorized with named holdpoints and active through issue #80.**
-- **Sprint 10.1 through Sprint 10.9 are complete as validated internal checkpoints.**
+- **Sprint 10.1 through Sprint 10.10 are complete as validated internal checkpoints.**
+- **Sprint 10 implementation package is complete and ready for founding-steward acceptance.**
 - **Sprint 10.1 checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
 - **Sprint 10.2 checkpoint:** `d207fcd42b2d781dd60ae5d752bb25f44970842c` — CI 1402 / DCO 1498.
 - **Sprint 10.3 checkpoint:** `1e3139333c469b9d0bfec41532b38165119c6938` — CI 1421 / DCO 1518.
@@ -22,8 +23,8 @@
 - **Sprint 10.7 repaired checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
 - **Sprint 10.8 checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
 - **Sprint 10.9 checkpoint:** `7ef342452d3561151203605a1d6401133d28c86d` — CI 1496 / DCO 1600.
-- **PR #79 remains draft for workstreams 10.1 through 10.10.**
-- **Sprint 10.10:** not started.
+- **PR #79 is the complete unmerged Sprint 10 candidate; exact review state and final candidate evidence are recorded in GitHub.**
+- **Sprint 11 remains unstarted.**
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -312,6 +313,19 @@ Workstream 10.9 establishes build provenance, release decision gates, provider r
 
 The validated clean checkpoint is `7ef342452d3561151203605a1d6401133d28c86d` with CI 1496 and DCO 1600. This is maintainer repository, CI, unsigned-export, provenance, and operations-contract evidence. It is not a hosted preview, production or distribution readiness, signing or store qualification, multi-host byte-for-byte reproducibility, a monitoring or on-call program, independent specialist certification, Sprint 11 authorization, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
 
+## Sprint 10.10 final reconciliation and completion package
+
+Workstream 10.10 completes implementation and reconciliation only:
+
+- 24 cross-contract findings reconcile mission, rights, ownership, content, shell, presentation, client authority, offline state, authentication boundary, Chronicle, House of Keys, Aster, accessibility, security, privacy, build provenance, release gates, provider independence, incidents, rollback, funding, newsletter, LI, Phase 0, and Sprint 11 inheritance;
+- 60 stable controls map objectives to owning evidence and revalidation triggers;
+- 24 holdpoints and 24 unresolved-work records preserve acceptance, release, production, specialist, measurement, institutional, LI, and Sprint 11 entry gates;
+- the completion record classifies the package as ready for founding-steward acceptance but not accepted, merged, deployed, distributed, released, privately operational, or authorized to begin Sprint 11;
+- permanent `sprint10:check` policy prevents drift in counts, status, release boundaries, generated-state cleanup, and the private-value-loop handoff; and
+- the exact final durable head, CI, DCO, review state, acceptance, and merge disposition are recorded in issue #80 and PR #79.
+
+The validated predecessor entering 10.10 is `23ec622ec6dfdb4e3a13f42ee30c679222661cd0` with CI 1500 and DCO 1604. Sprint 10 acceptance and merge remain pending.
+
 ## Sprint 10 pull-request model
 
 PR #79 remains draft for workstreams 10.1 through 10.10.
@@ -356,16 +370,22 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-LI-V0 is complete, Sprint 10 is active under issue #80, and Sprint 10.1 through Sprint 10.9 are complete as validated internal checkpoints. PR #79 remains draft for workstreams 10.1 through 10.10.
+Sprint 10 implementation and reconciliation are complete. PR #79 is the single complete unmerged candidate.
 
-The next implementation step is Sprint 10.10 on the same branch and PR. No separate founding-steward acceptance or merge occurs for Sprint 10.1 through Sprint 10.9. Until the complete Sprint 10 package reaches workstream 10.10:
+The next decision is explicit founding-steward acceptance of the complete Sprint 10 package and, if accepted, a directed squash merge. Workstream 10.10 does not self-accept or merge the sprint.
 
-- PR #79 remains draft and unmerged;
-- Sprint 10.10 remains unstarted until entered in sequence;
-- LI-V1 through LI-V8 remain inactive;
-- no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized;
-- Sprint 11 remains unstarted; and
-- all named Phase 0 and specialist holdpoints remain open.
+Until that decision:
+
+- PR #79 remains unmerged;
+- no hosted game preview, route migration, deployment, indexing, signing, store submission, beta, update channel, or official release is authorized;
+- no production authentication, private Chronicle, House of Keys, Aster/provider, analytics, real capture, payment, research, clinical workflow, or LI-V1 through LI-V8 capability is active;
+- Sprint 11 remains unstarted;
+- institutional Phase 0 remains active; and
+- every named specialist, affected-user, device, security, privacy, legal, operational, provider, funding, governance, and LI holdpoint remains open.
+
+After an accepted squash merge, a post-merge repository reconciliation and issue #80 closure are required. Sprint 11 additionally requires a dedicated pre-Sprint 11 alignment decision.
+
+- **Longitudinal Intelligence activation:** LI-V1 through LI-V8 remain inactive.
 
 ## Status rule
 

@@ -177,3 +177,14 @@ Sprint 10 remains planned and not started until the alignment candidate is expli
 - [Health Data Legacy and Succession Architecture](health-data-legacy-and-succession.md)
 
 Provider, queue, scheduler, model, measurement service, storage, analytics, observability, CMS, and infrastructure choices remain replaceable adapters rather than domain authority. Historical, succession, measurement, inference, and personal-experiment capabilities remain separately gated.
+
+## Sprint 10 universal game shell completion package
+
+- [Sprint 10 Cross-Contract Reconciliation](universal-game-shell-sprint-10-cross-contract-reconciliation.md)
+- [Sprint 10 Control and Evidence Map](universal-game-shell-sprint-10-control-and-evidence-map.md)
+- [Sprint 10 Specialist Holdpoints and Unresolved Work](universal-game-shell-sprint-10-specialist-holdpoint-and-unresolved-work-register.md)
+- [Sprint 10 Completion Record](../roadmap/sprint-10-completion-record.md)
+- [Sprint 10 Final Reconciliation and Sprint 11 Handoff](../roadmap/sprint-10-final-reconciliation-and-sprint-11-handoff.md)
+- [Sprint 10.10 Workstream Record](../roadmap/sprint-10.10-final-reconciliation-and-sprint-11-handoff.md)
+
+The package reconciles the complete public/synthetic browser, iOS, and Android shell at maintainer repository and CI evidence level. It does not establish acceptance, merge, hosted operation, distribution, private capability, independent certification, LI activation, Sprint 11 entry, or institutional Phase 0 exit.
