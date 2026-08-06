@@ -713,6 +713,13 @@ Institutional Phase 0 remains active.
     "status next decision",
 )
 
+replace_once(
+    "docs/roadmap/current-status.md",
+    "- **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.",
+    "- **LI-V1 through LI-V8 remain inactive.**",
+    "status LI inactive wording",
+)
+
 # Permanent Sprint 10 validator: accepted/merged and post-merge-reconciled state.
 replace_once(
     "tools/policy/check-sprint-10-completion.mjs",
