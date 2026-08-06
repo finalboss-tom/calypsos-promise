@@ -45,6 +45,22 @@ jobs:
           rm tools/temp-sprint-10-alignment-apply.py
           test ! -e tools/temp-sprint-10-alignment-apply.py
 
+      - name: Preserve inherited LI readiness fact
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("docs/roadmap/current-status.md")
+          text = path.read_text()
+          old = "- **Sprint 10 implementation package is complete.**"
+          new = "- **Sprint 10 implementation package is complete and ready for founding-steward acceptance.**"
+          if text.count(old) != 1:
+              raise SystemExit(
+                  f"current-status readiness anchor: expected one match, found {text.count(old)}"
+              )
+          path.write_text(text.replace(old, new, 1))
+          PY
+
       - name: Format reconciled records
         run: >-
           pnpm exec prettier --write
