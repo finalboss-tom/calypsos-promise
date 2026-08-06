@@ -1,5 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 
+import { ActionLink } from "../../src/components/ActionLink";
 import { BoundaryNotice } from "../../src/components/BoundaryNotice";
 import { SceneRenderer } from "../../src/components/SceneRenderer";
 import { ShellPage } from "../../src/components/ShellPage";
@@ -26,6 +27,12 @@ export default function PlayPresentationScreen() {
       }
     >
       <SceneRenderer initialSceneId={requestedScene} />
+      <ActionLink
+        href="/account"
+        label="Review the future account boundary"
+        description="Informational only: no provider, account, session, or state transfer is active."
+        variant="quiet"
+      />
     </ShellPage>
   );
 }

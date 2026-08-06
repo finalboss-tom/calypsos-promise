@@ -10,7 +10,7 @@ export const colors = {
   inkSoft: "#526168",
   gold: "#D6A84A",
   goldSoft: "#F1DEAE",
-  coral: "#B96B56",
+  coral: "#9F523F",
   border: "#CFC6B5",
   white: "#FFFFFF",
   transparent: "transparent",

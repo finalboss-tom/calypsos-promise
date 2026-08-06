@@ -40,7 +40,7 @@ assert.equal(
 );
 
 const shellLayout = read(join(gameRoot, "app/(shell)/_layout.tsx"));
-for (const route of ["/map", "/hearth", "/direct"]) {
+for (const route of ["/map", "/hearth", "/direct", "/accessibility"]) {
   assert.match(shellLayout, new RegExp(route.replace("/", "\\/")));
 }
 assert.match(shellLayout, /<Slot\s*\/>/);
@@ -64,6 +64,13 @@ assert.match(hearth, /ContentFallback/);
 assert.match(direct, /ContentFallback/);
 assert.match(hearth, /Narrative presentation only/);
 assert.match(direct, /DIRECT INFORMATION PATH/);
+
+const play = read(join(gameRoot, "app/(shell)/play.tsx"));
+assert.match(play, /href="\/account"/);
+const account = read(join(gameRoot, "app/(shell)/account.tsx"));
+assert.match(account, /POST-PROLOGUE ACCOUNT BOUNDARY/);
+const accessibility = read(join(gameRoot, "app/(shell)/accessibility.tsx"));
+assert.match(accessibility, /ACCESSIBILITY AND PLATFORM PARITY/);
 
 const offlineSourcePaths = listFiles(join(gameRoot, "src/offline"))
   .map((path) => relative(gameRoot, path).replaceAll("\\", "/"))

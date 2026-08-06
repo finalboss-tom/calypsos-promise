@@ -15,7 +15,21 @@ function read(path) {
 }
 
 test("shell route contract is unique and includes agency-preserving fallbacks", () => {
-  assert.equal(new Set(SHELL_ROUTES.map(({ route }) => route)).size, 6);
+  const routes = SHELL_ROUTES.map(({ route }) => route);
+  assert.equal(new Set(routes).size, 8);
+  assert.deepEqual(
+    [...routes].sort(),
+    [
+      "/",
+      "/accessibility",
+      "/account",
+      "/direct",
+      "/hearth",
+      "/map",
+      "/unavailable",
+      "+not-found",
+    ].sort(),
+  );
   assert.ok(SHELL_ROUTES.some(({ route }) => route === "/unavailable"));
   assert.ok(SHELL_ROUTES.some(({ route }) => route === "+not-found"));
 });

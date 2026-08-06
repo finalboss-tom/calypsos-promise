@@ -2,6 +2,16 @@ export const SHELL_ROUTES = Object.freeze([
   { route: "/", file: "app/index.tsx", purpose: "no-account arrival" },
   { route: "/map", file: "app/(shell)/map.tsx", purpose: "island map" },
   {
+    route: "/accessibility",
+    file: "app/(shell)/accessibility.tsx",
+    purpose: "accessibility and platform parity",
+  },
+  {
+    route: "/account",
+    file: "app/(shell)/account.tsx",
+    purpose: "post-prologue informational account boundary",
+  },
+  {
     route: "/hearth",
     file: "app/(shell)/hearth.tsx",
     purpose: "narrative Hearth",

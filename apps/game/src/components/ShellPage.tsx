@@ -1,5 +1,11 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 
 import { colors, spacing } from "../theme";
 
@@ -20,10 +26,13 @@ export function ShellPage({
   children,
 }: ShellPageProps) {
   const dark = tone === "dark";
+  const { width } = useWindowDimensions();
+  const compact = width < 480;
+
   return (
     <ScrollView
       style={[styles.scroll, dark && styles.scrollDark]}
-      contentContainerStyle={styles.content}
+      contentContainerStyle={[styles.content, compact && styles.contentCompact]}
     >
       <View style={styles.frame}>
         <View style={styles.heading}>
@@ -32,7 +41,11 @@ export function ShellPage({
           </Text>
           <Text
             accessibilityRole="header"
-            style={[styles.title, dark && styles.titleDark]}
+            style={[
+              styles.title,
+              compact && styles.titleCompact,
+              dark && styles.titleDark,
+            ]}
           >
             {title}
           </Text>
@@ -59,6 +72,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.large,
     paddingVertical: spacing.xlarge,
   },
+  contentCompact: {
+    paddingHorizontal: spacing.medium,
+    paddingVertical: spacing.large,
+  },
   frame: {
     width: "100%",
     maxWidth: 1040,
@@ -83,6 +100,10 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "800",
     lineHeight: 46,
+  },
+  titleCompact: {
+    fontSize: 32,
+    lineHeight: 38,
   },
   titleDark: {
     color: colors.white,

@@ -10,20 +10,24 @@
 - **10.4:** generic package-driven zone and scene renderer, dialogue choices, quest card, Wayfinder Orb, and deterministic synthetic interaction.
 - **10.5:** versioned synthetic session-state machine, explicit pending/failed/stale/corrected/superseded/conflict states, and executable denial of every client-authority claim.
 - **10.6:** bundled public-content fallback plus versioned, expiring, clearable, migratable temporary PUBLIC_SYNTHETIC storage with corruption, conflict, quota, and adapter-failure handling.
+- **10.7:** informational authentication-after-prologue boundary with no provider, no silent transfer, and discard-by-default temporary state.
+- **10.8:** executable browser/iOS/Android accessibility matrix, contrast, reflow, modality alternatives, direct-path parity, and residual limitations.
 
-The application implements only bounded offline storage for public packaged content and minimal temporary synthetic-session state. Authentication, accessibility certification, release, and production-authority work remain assigned to later Sprint 10 workstreams.
+The application implements only bounded offline storage for public packaged content and minimal temporary synthetic-session state. Production authentication, independent accessibility certification, release, and production-authority work remain separately gated. Sprint 10.7 implements only the informational account boundary, and Sprint 10.8 implements maintainer source and CI parity evidence.
 
 ## Route contract
 
-| Route          | Purpose                                                   |
-| -------------- | --------------------------------------------------------- |
-| `/`            | no-account public synthetic arrival                       |
-| `/map`         | island map and availability orientation                   |
-| `/hearth`      | pre-authored narrative preview                            |
-| `/direct`      | direct essential-information preview                      |
-| `/play`        | generic presentation plus synthetic state/authority proof |
-| `/unavailable` | planned/inactive destination explanation                  |
-| `+not-found`   | unknown-route fail-closed return                          |
+| Route            | Purpose                                                   |
+| ---------------- | --------------------------------------------------------- |
+| `/`              | no-account public synthetic arrival                       |
+| `/map`           | island map and availability orientation                   |
+| `/accessibility` | modality and platform-parity evidence                     |
+| `/account`       | post-prologue informational account boundary              |
+| `/hearth`        | pre-authored narrative preview                            |
+| `/direct`        | direct essential-information preview                      |
+| `/play`          | generic presentation plus synthetic state/authority proof |
+| `/unavailable`   | planned/inactive destination explanation                  |
+| `+not-found`     | unknown-route fail-closed return                          |
 
 Navigation, interaction, and session state remain temporary presentation evidence. They create no account, Chronicle record, permission, profile, analytics event, durable progress, reward, health claim, authentic preference, or Longitudinal Intelligence result.
 
@@ -113,6 +117,8 @@ pnpm --filter @calypsos-promise/game validate:shell
 pnpm --filter @calypsos-promise/game validate:presentation
 pnpm --filter @calypsos-promise/game validate:state-authority
 pnpm --filter @calypsos-promise/game validate:offline-resilience
+pnpm --filter @calypsos-promise/game validate:authentication-boundary
+pnpm --filter @calypsos-promise/game validate:accessibility-parity
 ```
 
 Platform entry points:
@@ -135,4 +141,4 @@ The all-platform export checks JavaScript and asset bundling for iOS, Android, a
 
 No environment variables, credentials, authentication, analytics, telemetry provider, model provider, private Chronicle data, House of Keys runtime, durable progression, or production Aster integration are required or permitted. Persistence is limited to the versioned PUBLIC_SYNTHETIC records defined by the 10.6 offline contract.
 
-Run `validate:toolchain`, `validate:shell`, `validate:presentation`, `validate:state-authority`, and `validate:offline-resilience` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
+Run `validate:toolchain`, `validate:shell`, `validate:presentation`, `validate:state-authority`, `validate:offline-resilience`, `validate:authentication-boundary`, and `validate:accessibility-parity` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
