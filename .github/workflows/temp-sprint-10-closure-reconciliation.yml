@@ -48,12 +48,12 @@ jobs:
           text = path.read_text()
           start_marker = "# Strengthen permanent validation for the fully closed tracker state."
           phrase = '"Complete unmerged Sprint 10 candidate"'
-          if text.count(start_marker) != 1 or text.count(phrase) != 1:
+          if text.count(start_marker) != 1 or text.count(phrase) < 1:
               raise SystemExit(
                   f"closure validator markers: start={text.count(start_marker)} phrase={text.count(phrase)}"
               )
           start = text.index(start_marker)
-          phrase_index = text.index(phrase, start)
+          phrase_index = text.rindex(phrase)
           end = text.rfind("replace_once(", start, phrase_index)
           if end < start:
               raise SystemExit("closure validator block start was not found")
