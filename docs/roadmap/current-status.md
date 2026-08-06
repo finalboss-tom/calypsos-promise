@@ -1,6 +1,6 @@
 # Current Project Status
 
-[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 10.3 shell](sprint-10.3-universal-shell-and-navigation.md) · [Sprint 10.4 presentation](sprint-10.4-scene-dialogue-quest-presentation.md) · [Sprint 10.5 state and authority](sprint-10.5-state-and-authority-boundaries.md) · [Sprint 10.6 offline resilience](sprint-10.6-offline-resilience-behavior.md) · [Sprint 10.7 authentication boundary](sprint-10.7-authentication-after-prologue-boundary.md) · [Sprint 10.8 accessibility parity](sprint-10.8-accessibility-platform-parity.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
+[Repository home](../../README.md) · [Documentation home](../README.md) · [Longitudinal Intelligence doctrine](../architecture/longitudinal-intelligence-doctrine.md) · [Longitudinal Intelligence validation plan](longitudinal-intelligence-validation-plan.md) · [LI-V0 completion record](longitudinal-intelligence-li-v0-completion-record.md) · [Pre-Sprint 10 alignment review](pre-sprint-10-alignment-review.md) · [Sprint 10.1 foundation](sprint-10.1-application-toolchain-foundation.md) · [Sprint 10.2 package](sprint-10.2-versioned-game-content-package.md) · [Sprint 10.3 shell](sprint-10.3-universal-shell-and-navigation.md) · [Sprint 10.4 presentation](sprint-10.4-scene-dialogue-quest-presentation.md) · [Sprint 10.5 state and authority](sprint-10.5-state-and-authority-boundaries.md) · [Sprint 10.6 offline resilience](sprint-10.6-offline-resilience-behavior.md) · [Sprint 10.7 authentication boundary](sprint-10.7-authentication-after-prologue-boundary.md) · [Sprint 10.8 accessibility parity](sprint-10.8-accessibility-platform-parity.md) · [Sprint 10.9 operations evidence](sprint-10.9-build-release-rollback-operations-evidence.md) · [Sprint 9 completion](sprint-9-completion-record.md) · [Sprint sequence](sprints.md) · [Public roadmap](../../ROADMAP.md)
 
 ## Status summary
 
@@ -12,7 +12,7 @@
 - **LI-V0 is accepted and complete.**
 - **Inactive Longitudinal Intelligence stages:** LI-V1 through LI-V8.
 - **Sprint 10 is authorized with named holdpoints and active through issue #80.**
-- **Sprint 10.1 through Sprint 10.8 are complete as validated internal checkpoints.**
+- **Sprint 10.1 through Sprint 10.9 are complete as validated internal checkpoints.**
 - **Sprint 10.1 checkpoint:** `2a9fef52c128e79ccdd2a2872f893d44b9d3ff3c` — CI 1367 / DCO 1465.
 - **Sprint 10.2 checkpoint:** `d207fcd42b2d781dd60ae5d752bb25f44970842c` — CI 1402 / DCO 1498.
 - **Sprint 10.3 checkpoint:** `1e3139333c469b9d0bfec41532b38165119c6938` — CI 1421 / DCO 1518.
@@ -21,8 +21,9 @@
 - **Sprint 10.6 checkpoint:** `b792a88bdff49283a304fe0f6939306c18cdd049` — CI 1461 / DCO 1561.
 - **Sprint 10.7 repaired checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
 - **Sprint 10.8 checkpoint:** `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` — CI 1480 / DCO 1582.
+- **Sprint 10.9 checkpoint:** `7ef342452d3561151203605a1d6401133d28c86d` — CI 1496 / DCO 1600.
 - **PR #79 remains draft for workstreams 10.1 through 10.10.**
-- **Sprint 10.9 through Sprint 10.10:** not started.
+- **Sprint 10.10:** not started.
 - **Sprint 9 accepted implementation candidate:** `f976987fbac6dd0e448ac2c10dfbb63025f018cc` — CI 1288 / DCO 1374.
 - **Sprint 9 squash commit:** `b22c32ad8f40610dc95a5b49a745da5adb9c1341`.
 - **Production prologue deployment:** `dpl_CynKp4xKd3KK5BcMuRjmiZv96Aj6` from one-shot release trigger `0100bbe08e0ddb3acddc5a3a926c1972b59b517d`.
@@ -174,7 +175,7 @@ The accepted direction establishes:
 - LI-V1 through LI-V8 remaining inactive; and
 - a bounded Sprint 10.1 through Sprint 10.10 implementation sequence.
 
-Sprint 10 is active through issue #80. PR #79 is the single draft implementation pull request for the entire sprint. Workstreams 10.1 through 10.8 are complete as validated internal checkpoints. Workstream 10.7 was repaired because its prior reported completion had not landed durable implementation. No provider choice, deployment, indexing change, store submission, or Sprint 11 work has begun.
+Sprint 10 is active through issue #80. PR #79 is the single draft implementation pull request for the entire sprint. Workstreams 10.1 through 10.9 are complete as validated internal checkpoints. Workstream 10.7 was repaired because its prior reported completion had not landed durable implementation. No hosted game preview, provider selection, deployment, indexing change, signing, store submission, update channel, official release, or Sprint 11 work has begun.
 
 ## Sprint 10.1 validated checkpoint
 
@@ -295,6 +296,22 @@ Workstream 10.8 establishes accessibility and platform-parity source and CI evid
 
 The exact clean checkpoint is `c04161860eed4ab6ecf55d4c48c0f9a363a4e058` with CI 1480 and DCO 1582. Independent browser, assistive-technology, VoiceOver, TalkBack, switch-access, external-keyboard, orientation, scaling, affected-user, device, security, privacy, legal, and field evidence remains open. This is not a WCAG conformance or independent accessibility certification claim.
 
+## Sprint 10.9 validated checkpoint
+
+Workstream 10.9 establishes build provenance, release decision gates, provider replacement, public/synthetic incident ownership, rollback, and generated-state cleanup evidence only:
+
+- permanent CI exports browser, iOS, and Android without credentials and validates the complete 10.1 through 10.9 contract set;
+- a temporary versioned build manifest binds exact source revision, lockfile SHA-256, pinned toolchain versions, platform set, sorted artifact paths, byte sizes, and artifact SHA-256 digests;
+- the clean checkpoint validated 76 real exported artifacts while recording `signed: false`, `credentialsUsed: false`, `releaseAuthorized: false`, and `distributionAuthorized: false`;
+- no hosted game preview exists, and any future preview must separately record source, provider/project, access, discovery, configuration/secrets, limitations, data classes, monitoring and incident ownership, expiry/teardown, and rollback;
+- merge, hosted preview, browser deployment, canonical routing, public navigation, indexing, signing, store submission or approval, public beta, over-the-air updates, official release, account activation, private capability, and Longitudinal Intelligence activation remain separate closed gates;
+- Expo, EAS, Apple, Google, Vercel, package registries, and monitoring services remain replaceable adapters with manual fallback and no authority;
+- current incident ownership covers repository and CI evidence for the public/synthetic shell only, while protected logs, credentials, private provider records, and sensitive incident evidence remain outside the public repository;
+- repository, hosted-preview, browser-production, and mobile-distribution rollback scenarios are explicit, with only repository rollback currently applicable; and
+- `.expo`, `dist`, generated `android`, and generated `ios` state is removed after validation with no tracked build mutation.
+
+The validated clean checkpoint is `7ef342452d3561151203605a1d6401133d28c86d` with CI 1496 and DCO 1600. This is maintainer repository, CI, unsigned-export, provenance, and operations-contract evidence. It is not a hosted preview, production or distribution readiness, signing or store qualification, multi-host byte-for-byte reproducibility, a monitoring or on-call program, independent specialist certification, Sprint 11 authorization, a later Longitudinal Intelligence stage, or institutional Phase 0 exit.
+
 ## Sprint 10 pull-request model
 
 PR #79 remains draft for workstreams 10.1 through 10.10.
@@ -339,12 +356,12 @@ Before institutional Phase 0 can close, the project still requires:
 
 ## Current next decision
 
-LI-V0 is complete, Sprint 10 is active under issue #80, and Sprint 10.1 through Sprint 10.8 are complete as validated internal checkpoints. PR #79 remains draft for workstreams 10.1 through 10.10.
+LI-V0 is complete, Sprint 10 is active under issue #80, and Sprint 10.1 through Sprint 10.9 are complete as validated internal checkpoints. PR #79 remains draft for workstreams 10.1 through 10.10.
 
-The next implementation step is Sprint 10.9 on the same branch and PR. No separate founding-steward acceptance or merge occurs for Sprint 10.1 through Sprint 10.8. Until the complete Sprint 10 package reaches workstream 10.10:
+The next implementation step is Sprint 10.10 on the same branch and PR. No separate founding-steward acceptance or merge occurs for Sprint 10.1 through Sprint 10.9. Until the complete Sprint 10 package reaches workstream 10.10:
 
 - PR #79 remains draft and unmerged;
-- Sprint 10.9 through Sprint 10.10 remain unstarted until entered in sequence;
+- Sprint 10.10 remains unstarted until entered in sequence;
 - LI-V1 through LI-V8 remain inactive;
 - no production authentication, analytics, provider, private-data, deployment, indexing, or store-distribution change is authorized;
 - Sprint 11 remains unstarted; and

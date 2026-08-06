@@ -1,6 +1,6 @@
 # Sprint 10.9 — Build, release, rollback, and operations evidence
 
-- **Status:** IMPLEMENTED — PENDING EXACT CHECKPOINT VALIDATION
+- **Status:** COMPLETE AND VALIDATED WITHIN ACTIVE SPRINT 10
 - **Parent:** Sprint 10 — universal game shell
 - **Tracker:** issue #80
 - **Implementation:** draft PR #79
@@ -93,6 +93,29 @@ Sprint 10.9 is maintainer repository, CI, unsigned-export, and operations-contra
 ## Validation target
 
 The exact implementation checkpoint must pass focused operations and build-evidence tests, the complete permanent repository suite, real browser/iOS/Android unsigned export, source-bound build-manifest generation and validation, existing production-site validation, generated-state cleanup, no tracked mutation, and DCO.
+
+## Validated checkpoint
+
+Exact clean implementation checkpoint: `7ef342452d3561151203605a1d6401133d28c86d`
+
+- CI 1496: success
+- DCO 1600: success
+- focused build, release, rollback, and operations validation: success
+- exact source, lockfile, pinned-toolchain, platform-set, sorted-artifact, byte-size, and SHA-256 provenance checks: success
+- real credential-free browser, iOS, and Android export: success
+- source-bound unsigned build evidence for 76 exported artifacts: success
+- unsigned, credentials-unused, preview-unauthorized, distribution-unauthorized, and release-unauthorized assertions: success
+- hosted-preview decision fields and no-active-preview boundary: success
+- merge, deployment, routing, navigation, indexing, signing, store, update, beta, release, account, private-capability, and Longitudinal Intelligence gates remain false: success
+- seven provider-adapter replacement and manual-fallback contracts: success
+- public/synthetic incident ownership and protected-evidence separation: success
+- repository, hosted-preview, browser-production, and mobile-distribution rollback contracts: success
+- complete permanent repository suite: success
+- existing production-site and rendered-prologue validation: success
+- generated-state cleanup and no tracked build mutation: success
+- temporary implementation and repair transport: removed before clean checkpoint validation
+
+This is maintainer repository, CI, unsigned-export, artifact-provenance, and operations-contract evidence inside active Sprint 10. It is not multi-host byte-for-byte reproducibility evidence, a hosted preview, production deployment, signing or store qualification, an update channel, a monitoring service, independent release-engineering, security, privacy, accessibility, legal, incident-response, device, or affected-user certification, a release authorization, Sprint 11 authorization, activation of LI-V1 through LI-V8, or institutional Phase 0 exit.
 
 ## Sprint-level gate
 
