@@ -37,7 +37,7 @@ jobs:
       - name: Apply bounded 10.7 and 10.8 implementation
         run: python tools/temp-sprint-10-8-apply.py
 
-      - name: Reconcile React Native types and shell route contract
+      - name: Reconcile React Native types and exact contracts
         run: |
           python - <<'PY'
           import re
@@ -58,8 +58,7 @@ jobs:
             Platform.OS === "web" ? "browser" : Platform.OS;'''
           if old not in source:
               raise SystemExit("current platform expression anchor missing")
-          source = source.replace(old, new, 1)
-          panel.write_text(source)
+          panel.write_text(source.replace(old, new, 1))
 
           for path in [
               Path("apps/game/src/components/AccessibilityParityPanel.tsx"),
@@ -96,6 +95,21 @@ jobs:
           if old not in source:
               raise SystemExit("shell route count anchor missing")
           shell_test.write_text(source.replace(old, new, 1))
+
+          for path in [
+              Path("docs/roadmap/sprint-10.7-authentication-after-prologue-boundary.md"),
+              Path("docs/roadmap/sprint-10.8-accessibility-platform-parity.md"),
+          ]:
+              source = path.read_text()
+              source, count = re.subn(
+                  r"\*\*Status:\*\* ([^\n]+?)  \n\*\*Parent:\*\* ([^\n]+?)  \n\*\*Tracker:\*\* ([^\n]+?)  \n\*\*Implementation:\*\* ([^\n]+)",
+                  r"- **Status:** \1\n- **Parent:** \2\n- **Tracker:** \3\n- **Implementation:** \4",
+                  source,
+                  count=1,
+              )
+              if count != 1:
+                  raise SystemExit(f"{path}: metadata header anchor missing")
+              path.write_text(source)
           PY
 
       - name: Format implementation
