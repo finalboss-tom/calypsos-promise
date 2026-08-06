@@ -9,6 +9,7 @@ const destinations = [
   { href: "/hearth", label: "Hearth" },
   { href: "/direct", label: "Direct path" },
   { href: "/accessibility", label: "Accessibility" },
+  { href: "/operations", label: "Operations" },
 ] as const;
 
 export default function ShellLayout() {

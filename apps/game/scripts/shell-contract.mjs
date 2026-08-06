@@ -7,6 +7,11 @@ export const SHELL_ROUTES = Object.freeze([
     purpose: "accessibility and platform parity",
   },
   {
+    route: "/operations",
+    file: "app/(shell)/operations.tsx",
+    purpose: "build, release, rollback, and operations evidence",
+  },
+  {
     route: "/account",
     file: "app/(shell)/account.tsx",
     purpose: "post-prologue informational account boundary",

@@ -22,7 +22,7 @@
     "economics:check": "node tools/policy/check-funding-records.mjs",
     "game:start": "pnpm --filter @calypsos-promise/game start",
     "game:web": "pnpm --filter @calypsos-promise/game web",
-    "game:validate": "pnpm --filter @calypsos-promise/game validate:toolchain",
+    "game:validate": "pnpm --filter @calypsos-promise/game validate:toolchain && pnpm --filter @calypsos-promise/game validate:operations",
     "game:content:validate": "pnpm --filter @calypsos-promise/game-content validate:package"
   },
   "devDependencies": {

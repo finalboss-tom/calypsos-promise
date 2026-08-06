@@ -16,7 +16,7 @@ function read(path) {
 
 test("shell route contract is unique and includes agency-preserving fallbacks", () => {
   const routes = SHELL_ROUTES.map(({ route }) => route);
-  assert.equal(new Set(routes).size, 8);
+  assert.equal(new Set(routes).size, 9);
   assert.deepEqual(
     [...routes].sort(),
     [
@@ -26,6 +26,7 @@ test("shell route contract is unique and includes agency-preserving fallbacks", 
       "/direct",
       "/hearth",
       "/map",
+      "/operations",
       "/unavailable",
       "+not-found",
     ].sort(),

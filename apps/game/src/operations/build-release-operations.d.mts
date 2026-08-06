@@ -1,7 +1,4 @@
-from pathlib import Path
-
-Path("apps/game/src/operations/build-release-operations.d.mts").write_text(
-    '''export type OperationsPlatform = "web" | "ios" | "android";
+export type OperationsPlatform = "web" | "ios" | "android";
 
 export interface BuildArtifactEvidence {
   path: string;
@@ -132,5 +129,3 @@ export function evaluateReleaseAuthority(): Readonly<{
   authorized: false;
   reason: string;
 }>;
-'''
-)

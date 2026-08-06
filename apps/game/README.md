@@ -142,3 +142,9 @@ The all-platform export checks JavaScript and asset bundling for iOS, Android, a
 No environment variables, credentials, authentication, analytics, telemetry provider, model provider, private Chronicle data, House of Keys runtime, durable progression, or production Aster integration are required or permitted. Persistence is limited to the versioned PUBLIC_SYNTHETIC records defined by the 10.6 offline contract.
 
 Run `validate:toolchain`, `validate:shell`, `validate:presentation`, `validate:state-authority`, `validate:offline-resilience`, `validate:authentication-boundary`, and `validate:accessibility-parity` to enforce these boundaries. Run `pnpm --filter @calypsos-promise/game clean` after local exports to remove `.expo/` and `dist/` generated state.
+
+## Sprint 10.9 build and operations evidence
+
+`/operations` exposes the public/synthetic build, release-gate, provider-replacement, incident, rollback, and cleanup contract. CI exports all three platforms without credentials, writes and validates a source-bound SHA-256 artifact manifest, removes generated state, and proves no tracked mutation.
+
+This is unsigned maintainer build evidence. It is not a hosted preview, signing configuration, store artifact, update channel, production deployment, monitoring service, public beta, or official release.
