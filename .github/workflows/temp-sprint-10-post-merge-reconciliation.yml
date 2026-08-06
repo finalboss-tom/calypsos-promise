@@ -49,6 +49,52 @@ jobs:
           rm tools/temp-sprint-10-post-merge-reconciliation.py
           test ! -e tools/temp-sprint-10-post-merge-reconciliation.py
 
+      - name: Normalize accepted merge evidence wording
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          merge_sha = "28bb5a7ae268d28a67d737777cafdd760c796cd1"
+          accepted_head = "edd954d0e5ce61f53918a74ec804964ad987830f"
+
+          docs_path = Path("docs/README.md")
+          docs = docs_path.read_text()
+          old = (
+              f"The Sprint 10 implementation package passed pre-acceptance alignment at `{accepted_head}` — "
+              f"CI 1519 / DCO 1624 — and was accepted and squash merged through PR #79 as `{merge_sha}`. "
+              "The post-merge reconciliation confirms unchanged authority and release boundaries. "
+              "Sprint 11 remains unstarted."
+          )
+          new = (
+              f"Sprint 10 is accepted and squash merged through PR #79 as `{merge_sha}` after the "
+              f"implementation package passed pre-acceptance alignment at `{accepted_head}` — "
+              "CI 1519 / DCO 1624. The post-merge reconciliation confirms unchanged authority "
+              "and release boundaries. Sprint 11 remains unstarted."
+          )
+          if docs.count(old) != 1:
+              raise SystemExit(
+                  f"docs/README.md accepted-state anchor: expected one match, found {docs.count(old)}"
+              )
+          docs_path.write_text(docs.replace(old, new, 1))
+
+          game_path = Path("apps/game/README.md")
+          game = game_path.read_text()
+          old = (
+              "The application is merged into `main` but remains unhosted, unsigned, "
+              "undistributed, and non-authoritative. Sprint 11 remains unstarted."
+          )
+          new = (
+              f"The application is merged into `main` at Sprint 10 squash commit `{merge_sha}` "
+              "but remains unhosted, unsigned, undistributed, and non-authoritative. "
+              "Sprint 11 remains unstarted."
+          )
+          if game.count(old) != 1:
+              raise SystemExit(
+                  f"apps/game/README.md merge-SHA anchor: expected one match, found {game.count(old)}"
+              )
+          game_path.write_text(game.replace(old, new, 1))
+          PY
+
       - name: Format reconciled records
         run: >-
           pnpm exec prettier --write
