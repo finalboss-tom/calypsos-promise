@@ -45,6 +45,49 @@ jobs:
           rm tools/temp-sprint-10-alignment-evidence.py
           test ! -e tools/temp-sprint-10-alignment-evidence.py
 
+      - name: Reconcile evidence validator placement
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("tools/policy/check-sprint-10-completion.mjs")
+          text = path.read_text()
+          checkpoint = "23dffb031657181d9c0ca42457b95128520f7870"
+
+          old = f'''      "Sprint 10 implementation package is complete",
+                "{checkpoint}",
+                "Complete unmerged Sprint 10 candidate",'''
+          new = '''      "Sprint 10 implementation package is complete",
+                "Complete unmerged Sprint 10 candidate",'''
+          if text.count(old) != 1:
+              raise SystemExit(
+                  f"root README checkpoint placement: expected one match, found {text.count(old)}"
+              )
+          text = text.replace(old, new, 1)
+
+          old = '''      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+                "Sprint 11 remains unstarted",'''
+          new = f'''      "Sprint 10 implementation package is complete and ready for founding-steward acceptance",
+                "{checkpoint}",
+                "Sprint 11 remains unstarted",'''
+          if text.count(old) != 1:
+              raise SystemExit(
+                  f"current-status checkpoint placement: expected one match, found {text.count(old)}"
+              )
+          text = text.replace(old, new, 1)
+
+          old = '''            "temp-sprint-10-10-implementation.yml",
+                  "temp-sprint-10-alignment-reconciliation.yml",'''
+          new = '''            "temp-sprint-10-10-implementation.yml",
+                  "temp-sprint-10-alignment-reconciliation.yml",
+                  "temp-sprint-10-alignment-evidence.yml",'''
+          if text.count(old) != 1:
+              raise SystemExit(
+                  f"temporary evidence allowlist: expected one match, found {text.count(old)}"
+              )
+          path.write_text(text.replace(old, new, 1))
+          PY
+
       - name: Format reconciled evidence
         run: >-
           pnpm exec prettier --write
