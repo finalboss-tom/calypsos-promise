@@ -1,9 +1,35 @@
+import { supporterMovementEnabled } from "@/lib/supporters/feature";
+
 export type NavigationItem = {
   readonly href: string;
   readonly label: string;
   readonly description: string;
   readonly external?: boolean;
 };
+
+const supporterDirectNavigation: readonly NavigationItem[] =
+  supporterMovementEnabled()
+    ? [
+        {
+          href: "/supporters",
+          label: "Support the Promise",
+          description:
+            "Affirm the Personal Health Data Promise and choose private or public support.",
+        },
+      ]
+    : [];
+
+const supporterNarrativeNavigation: readonly NavigationItem[] =
+  supporterMovementEnabled()
+    ? [
+        {
+          href: "/supporters",
+          label: "Stand with the Promise",
+          description:
+            "Add verified support without creating an account or sharing health data.",
+        },
+      ]
+    : [];
 
 export const directNavigation: readonly NavigationItem[] = [
   {
@@ -16,6 +42,7 @@ export const directNavigation: readonly NavigationItem[] = [
     label: "The Promise",
     description: "Player rights, personal value, privacy, and control.",
   },
+  ...supporterDirectNavigation,
   {
     href: "/laws",
     label: "Seven Laws",
@@ -104,6 +131,7 @@ export const narrativeNavigation: readonly NavigationItem[] = [
     label: "Hear the Promise",
     description: "Understand the rights that govern the journey.",
   },
+  ...supporterNarrativeNavigation,
   {
     href: "/laws",
     label: "Learn the Seven Laws",

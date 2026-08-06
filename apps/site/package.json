@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "node src/validate-shell.mjs && node src/validate-release-source.mjs",
+    "lint": "node src/validate-shell.mjs && node src/validate-release-source.mjs && node src/validate-supporter-migrations.mjs",
     "validate:preview": "node src/validate-preview.mjs",
     "validate:prologue-browser": "node src/validate-prologue-browser-entry.mjs",
     "typecheck": "tsc --noEmit",
