@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@calypsos-promise/game-content": "workspace:*",
-    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-async-storage/async-storage": "3.1.1",
     "expo": "57.0.10",
     "expo-constants": "57.0.9",
     "expo-linking": "57.0.5",
