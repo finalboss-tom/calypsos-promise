@@ -27,9 +27,9 @@
     "sprint10:check": "node tools/policy/check-sprint-10-completion.mjs"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.1.2",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "^5.8.3"
+    "turbo": "^2.10.8",
+    "typescript": "^7.0.2"
   }
 }
